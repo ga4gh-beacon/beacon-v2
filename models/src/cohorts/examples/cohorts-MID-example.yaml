@@ -1,0 +1,29 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+cohortId: cohort0001
+cohortName: GCAT Genomes for Life
+cohortType: study-defined
+cohortDesign:
+  id: OMIABIS:0001019
+  label: longitudinal study design
+cohortSize: 20000
+cohortInclusionCriteria:
+  ageRange:
+    start:
+      iso8601duration: P18Y
+    end:
+      iso8601duration: P40Y
+  locations:
+    - id: GAZ:00004501
+      label: Catalonia Autonomous Community
+  genders:
+    - id: NCIT:C16576
+      label: female
+    - id: NCIT:C20197
+      label: male
+cohortDataTypes:
+  - id: OGMS:0000015
+    label: clinical history
+  - id: OBI:0000070
+    label: genotyping assay
+  - id: OMIABIS:0000060
+    label: survey data

@@ -1,0 +1,27 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Complete definition for a minimal response that does *only* a `boolean` exists true|false answer.",
+    "properties": {
+        "beaconHandovers": {
+            "$ref": "../common/beaconCommonComponents.json#/definitions/ListOfHandovers",
+            "description": "List of handovers that apply to the whole response, not to any resultset or result in particular."
+        },
+        "info": {
+            "$ref": "../common/beaconCommonComponents.json#/definitions/Info",
+            "description": "Additional details that could be of interest. Provided to clearly enclose any attribute that is not part of the Beacon specification."
+        },
+        "meta": {
+            "$ref": "./sections/beaconResponseMeta.json",
+            "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
+        },
+        "responseSummary": {
+            "$ref": "./sections/beaconBooleanResponseSection.json",
+            "description": "Boolean (true/false) response section."
+        }
+    },
+    "required": [
+        "meta",
+        "responseSummary"
+    ],
+    "type": "object"
+}

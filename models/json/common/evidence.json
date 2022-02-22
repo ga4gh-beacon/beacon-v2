@@ -1,0 +1,28 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "description": "Definition of an evidence class.",
+    "properties": {
+        "evidenceCode": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "An ontology class that represents the evidence type",
+            "example": {
+                "id": "ECO:0006017",
+                "label": "author statement from published clinical study used in manual assertion"
+            }
+        },
+        "reference": {
+            "$ref": "./externalReference.json",
+            "description": "Representation of the source of the evidence",
+            "example": {
+                "id": "PMID:30962759",
+                "label": "Recurrent Erythema Nodosum in a Child with a SHOC2 Gene Mutation"
+            }
+        }
+    },
+    "required": [
+        "evidenceCode"
+    ],
+    "title": "Evidence",
+    "type": "object"
+}

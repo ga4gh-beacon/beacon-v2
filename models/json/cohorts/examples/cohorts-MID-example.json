@@ -1,0 +1,51 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "cohortDataTypes": [
+        {
+            "id": "OGMS:0000015",
+            "label": "clinical history"
+        },
+        {
+            "id": "OBI:0000070",
+            "label": "genotyping assay"
+        },
+        {
+            "id": "OMIABIS:0000060",
+            "label": "survey data"
+        }
+    ],
+    "cohortDesign": {
+        "id": "OMIABIS:0001019",
+        "label": "longitudinal study design"
+    },
+    "cohortId": "cohort0001",
+    "cohortInclusionCriteria": {
+        "ageRange": {
+            "end": {
+                "iso8601duration": "P40Y"
+            },
+            "start": {
+                "iso8601duration": "P18Y"
+            }
+        },
+        "genders": [
+            {
+                "id": "NCIT:C16576",
+                "label": "female"
+            },
+            {
+                "id": "NCIT:C20197",
+                "label": "male"
+            }
+        ],
+        "locations": [
+            {
+                "id": "GAZ:00004501",
+                "label": "Catalonia Autonomous Community"
+            }
+        ]
+    },
+    "cohortName": "GCAT Genomes for Life",
+    "cohortSize": 20000,
+    "cohortType": "study-defined"
+}

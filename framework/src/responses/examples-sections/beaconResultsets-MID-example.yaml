@@ -1,0 +1,12 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+resultSets:
+  - id: correctWithResults
+    type: dataset
+    exists: true
+    resultsCount: 1
+    results:
+      - id: BEex1
+        name: Basic Element example one
+  - id: correctWOresults
+    type: dataset
+    exists: false

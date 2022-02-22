@@ -1,0 +1,44 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+beaconId: org.example.beacon.v2
+apiVersion: v2.0
+beaconError:
+  errorCode: 404
+  errorMessage: the provided parameters are incomplete. 'xyz' is missing.
+listOfSchemas:
+  - entityType: EntryTypeA
+    schema: entry-typeA-schema-v0.1
+  - entityType: EntryTypeB
+    schema: entry-typeB-schema-v1.0
+schemasPerEntity:
+  entityType: Individual
+  schema: ga4gh-phenopacket-individual-v0.1
+pagination:
+  skip: 0
+  limit: 10
+includeResultsetResponses: HIT
+filters:
+  - BTO:0000199
+  - PATO:0000383
+exists: true
+numTotalResults: 123
+info: {}
+handover:
+  handoverType:
+    id: EFO:0004157
+    label: BAM format
+  url: https://api.mygenomeservice.org/Handover/9dcc48d7-fc88-11e8-9110-b0c592dbf8c0
+  note: This handover link provides access to a summarized VCF.
+handoverType:
+  id: EFO:0004157
+  label: BAM format
+listOfHandovers:
+  - handoverType:
+      id: EFO:0004157
+      label: BAM format
+    url: https://api.mygenomeservice.org/Handover/9dcc48d7-fc88-11e8-9110-b0c592dbf8c0
+    note: This handover link provides access to a summarized VCF.
+  - handoverType:
+      id: EFO:0004157
+      label: BAM format
+    url: https://api.mygenomeservice.org/Handover/9dcc48d7-fc88-11e8-9110-b0c592dbf8c0
+    note: This handover link provides access to a summarized VCF.

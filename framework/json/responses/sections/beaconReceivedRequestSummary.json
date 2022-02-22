@@ -1,0 +1,46 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Section of the response that summarize the request received as it has been interpreted by teh Beacon server. Although it is not expected to differ from the request received, in case of unexpected results or formats, this summary could help to determine the source of confusion or errors. The required properties include those that every request should have implicitly or explicitly. The request summary is making them explicit.",
+    "properties": {
+        "apiVersion": {
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/ApiVersion",
+            "description": "API version expected by the client to be supported by the server and used in the response format."
+        },
+        "filters": {
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/Filters",
+            "description": "Ontology based filters. CURIE syntax is encouraged to be used."
+        },
+        "includeResultsetResponses": {
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses"
+        },
+        "pagination": {
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/Pagination",
+            "description": "Pagination to apply on the results."
+        },
+        "requestParameters": {
+            "$ref": "../../requests/requestParameters.json",
+            "description": "Dictionary of request parameters received in the RequestBody"
+        },
+        "requestedGranularity": {
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/Granularity",
+            "description": "Requested granularity. Targeted Beacon could respond or not with the requested granularity. E.g. record level granularity could be requested, but the Beacon could respond only with boolean or count results."
+        },
+        "requestedSchemas": {
+            "$comment": "TO DO: Add the format attribute as a uri.\n2. minItems:0 is used to confirm that an empty array is acceptable here.",
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/ListOfSchemas",
+            "description": "Set of schemas to be used in the response to a request.",
+            "minItems": 0
+        },
+        "testMode": {
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/TestMode",
+            "description": "Used for indicating that a request was received in a test context. Purposed for compliance testing."
+        }
+    },
+    "required": [
+        "apiVersion",
+        "requestedSchemas",
+        "pagination",
+        "requestedGranularity"
+    ],
+    "type": "object"
+}

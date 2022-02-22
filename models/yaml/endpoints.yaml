@@ -1,0 +1,151 @@
+openapi: 3.0.2
+servers: []
+info:
+  version: 2.0.0
+  title: GA4GH Beacon API Specification
+  description: A Beacon is a web service for data discovery and sharing that can be
+    queried for information about entry types defined by a Model.
+  contact:
+    email: beacon@ga4gh.org
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+paths:
+  /:
+    parameters:
+      - $ref: '#/components/parameters/requestedSchema'
+    get:
+      description: Get information about the beacon
+      operationId: getBeaconRoot
+      tags:
+        - Informational endpoints
+      responses:
+        '200':
+          $ref: '#/components/responses/infoOKResponse'
+        default:
+          description: An unsuccessful operation
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconErrorResponse.json
+  /info:
+    parameters:
+      - $ref: '#/components/parameters/requestedSchema'
+    get:
+      description: Get information about the beacon
+      operationId: getBeaconInfoRoot
+      tags:
+        - Informational endpoints
+      responses:
+        '200':
+          $ref: '#/components/responses/infoOKResponse'
+        default:
+          description: An unsuccessful operation
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconErrorResponse.json
+  /service-info:
+    get:
+      description: Get information about the beacon using GA4GH ServiceInfo format
+      operationId: getBeaconServiceInfo
+      tags:
+        - Informational endpoints
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/ga4gh-service-info-1-0-0-schema.json
+  /configuration:
+    get:
+      description: TBD
+      operationId: getBeaconConfiguration
+      tags:
+        - Configuration
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                description: Response of a request for information about a Beacon
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconConfigurationResponse.json
+        default:
+          description: An unsuccessful operation
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconErrorResponse.json
+  /entry_types:
+    get:
+      description: TBD
+      operationId: getEntryTypes
+      tags:
+        - Configuration
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                description: Response of a request for information about a Beacon
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconEntryTypesResponse.json
+        default:
+          description: An unsuccessful operation
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconErrorResponse.json
+  /map:
+    get:
+      description: TBD
+      operationId: getBeaconMap
+      tags:
+        - Configuration
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                description: Response of a request for information about a Beacon
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconMapResponse.json
+        default:
+          description: An unsuccessful operation
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconErrorResponse.json
+  /filtering_terms:
+    parameters:
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/limit'
+    get:
+      description: Get the list of filtering terms handled by this beacon
+      operationId: getFilteringTerms
+      tags:
+        - Informational endpoints
+      responses:
+        '200':
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconFilteringTermsResponse.json
+        default:
+          description: An unsuccessful operation
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconErrorResponse.json
+components:
+  responses:
+    infoOKResponse:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            description: Response of a request for information about a Beacon
+            $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconInfoResponse.json
+  parameters:
+    requestedSchema:
+      name: requestedSchema
+      description: Schema to be used to format the `result` field in the response.
+        The response will use Beacon format.
+      in: query
+      required: false
+      schema:
+        type: string
+      example: ga4gh-service-info-v1.0
+    skip:
+      name: skip
+      in: query
+      schema:
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/beaconCommonComponents.json#/definitions/Skip
+    limit:
+      name: limit
+      in: query
+      schema:
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/beaconCommonComponents.json#/definitions/Limit

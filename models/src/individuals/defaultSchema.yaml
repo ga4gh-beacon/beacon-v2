@@ -1,0 +1,63 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Individual
+$comment: 'version: ga4gh-beacon-individual-v2.0.0'
+description: Schema for an individual entry.
+type: object
+properties:
+  id:
+    description: Individual identifier (internal ID).
+    type: string
+    example: P0001
+  sex:
+    description: "Sex of the individual. Value from NCIT General Qualifier (NCIT:C27993):\
+      \ 'unknown' (not assessed or not available) (NCIT:C17998), 'female' (NCIT:C16576),\
+      \ or 'male', (NCIT:C20197)."
+    $ref: ../common/commonDefinitions.json#/definitions/Sex
+  ethnicity:
+    description: 'Ethnic background of the individual. Value from NCIT Race (NCIT:C17049)
+      ontology term descendants, e.g. NCIT:C126531 (Latin American). A geographic
+      ancestral origin category that is assigned to a population group based mainly
+      on physical characteristics that are thought to be distinct and inherent. [
+      NCI ] '
+    $ref: ../common/commonDefinitions.json#/definitions/Ethnicity
+  geographicOrigin:
+    description: Individual's country or region of origin (birthplace or residence
+      place regardless of ethnic origin). Value from GAZ Geographic Location ontology
+      (GAZ:00000448), e.g. GAZ:00002459 (United States of America).
+    $ref: ../common/commonDefinitions.json#/definitions/GeographicLocation
+  diseases:
+    description: List of disease(s) been diagnosed to the individual, defined by disease
+      ontology ID(s), age of onset, stage and the presence of family history.
+    type: array
+    items:
+      $ref: ../common/disease.json
+  pedigrees:
+    type: array
+    items:
+      $ref: ../common/pedigree.json
+  phenotypicFeatures:
+    type: array
+    items:
+      $ref: ../common/phenotypicFeature.json
+  treatments:
+    type: array
+    items:
+      $ref: ../common/treatment.json
+  interventionsOrProcedures:
+    type: array
+    items:
+      $ref: ../common/procedure.json
+  measures:
+    type: array
+    items:
+      $ref: ../common/measurement.json
+  exposures:
+    type: array
+    items:
+      $ref: ../common/exposure.json
+  info:
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/beaconCommonComponents.json#/definitions/Info
+required:
+  - id
+  - sex
+additionalProperties: true

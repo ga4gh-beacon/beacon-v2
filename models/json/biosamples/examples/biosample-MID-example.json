@@ -1,0 +1,20 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "biosampleStatus": {
+        "id": "EFO:0009655",
+        "label": "abnormal sample"
+    },
+    "collectionDate": "2020-09-11",
+    "collectionMoment": "P32Y6M1D",
+    "id": "sample-example-0001",
+    "obtentionProcedure": {
+        "code": {
+            "id": "OBI:0002654",
+            "label": "needle biopsy"
+        }
+    },
+    "sampleOriginType": {
+        "id": "UBERON:0000992",
+        "label": "ovary"
+    }
+}

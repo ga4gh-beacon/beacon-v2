@@ -1,0 +1,45 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "disease": {
+        "diseaseCode": {
+            "id": "HP:0004789",
+            "label": "lactose intolerance"
+        }
+    },
+    "id": "SCD-Pedigree001",
+    "members": [
+        {
+            "affected": true,
+            "memberId": "Ind001",
+            "role": {
+                "id": "NCIT:C64435",
+                "label": "Proband"
+            }
+        },
+        {
+            "affected": false,
+            "memberId": "Pedigree1001-m1",
+            "role": {
+                "id": "NCIT:C96572",
+                "label": "Biological Father"
+            }
+        },
+        {
+            "affected": false,
+            "memberId": "Pedigree1001-m3",
+            "role": {
+                "id": "NCIT:C96572",
+                "label": "Biological Father"
+            }
+        },
+        {
+            "affected": false,
+            "memberId": "Pedigree1001-m2",
+            "role": {
+                "id": "NCIT:C111201",
+                "label": "Full Brother"
+            }
+        }
+    ],
+    "numSubjects": 4
+}

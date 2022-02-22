@@ -1,0 +1,3 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+id: ds01010101
+name: Dataset with synthetic data

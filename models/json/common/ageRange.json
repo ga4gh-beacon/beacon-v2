@@ -1,0 +1,16 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Age range definition.",
+    "properties": {
+        "end": {
+            "$ref": "./age.json",
+            "description": "Represents age as a ISO8601 duration (e.g., P59Y)."
+        },
+        "start": {
+            "$ref": "./age.json",
+            "description": "Represents age as a ISO8601 duration (e.g., P18Y)."
+        }
+    },
+    "title": "AgeRange",
+    "type": "object"
+}

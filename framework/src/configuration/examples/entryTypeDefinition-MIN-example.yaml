@@ -1,0 +1,11 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+id: individual
+name: Individual entry
+ontologyTermForThisType:
+  id: DUO:0000004
+  label: General Research Use
+partOfSpecification: Beacon v2
+defaultSchema:
+  id: bdfGenericEntryType-v2
+  name: Beacon v2 default schema for a basic element.
+  referenceToSchemaDefinition: https://raw.githubusercontent.com/ga4gh-beacon/specification-v2-default-schemas/master/default_dataset_schema.yaml

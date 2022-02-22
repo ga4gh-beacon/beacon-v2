@@ -1,0 +1,22 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "resultSets": [
+        {
+            "exists": true,
+            "id": "correctWithResults",
+            "results": [
+                {
+                    "id": "BEex1",
+                    "name": "Basic Element example one"
+                }
+            ],
+            "resultsCount": 1,
+            "type": "dataset"
+        },
+        {
+            "exists": false,
+            "id": "correctWOresults",
+            "type": "dataset"
+        }
+    ]
+}

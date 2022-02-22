@@ -1,0 +1,81 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "diseases": [
+        {
+            "ageOfOnset": {
+                "ageGroup": {
+                    "id": "NCIT:C16731",
+                    "label": "Newborn"
+                }
+            },
+            "diseaseCode": {
+                "id": "HP:0001645",
+                "label": "Sudden cardiac death"
+            },
+            "familyHistory": true,
+            "severityLevel": {
+                "id": "HP:0012828",
+                "label": "Severe"
+            }
+        }
+    ],
+    "ethnicity": {
+        "id": "NCIT:C43851",
+        "label": "European"
+    },
+    "geographicOrigin": {
+        "id": "GAZ:00002586",
+        "label": "State of Wisconsin"
+    },
+    "id": "Ind001",
+    "pedigrees": [
+        {
+            "disease": {
+                "diseaseCode": {
+                    "id": "HP:0001645",
+                    "label": "Sudden cardiac death"
+                }
+            },
+            "id": "SCD-Pedigree001",
+            "members": [
+                {
+                    "affected": true,
+                    "memberId": "Ind001",
+                    "role": {
+                        "id": "NCIT:C64435",
+                        "label": "Proband"
+                    }
+                },
+                {
+                    "affected": false,
+                    "memberId": "Ind011",
+                    "role": {
+                        "id": "NCIT:C96572",
+                        "label": "Biological Father"
+                    }
+                },
+                {
+                    "affected": false,
+                    "memberId": "Ind012",
+                    "role": {
+                        "id": "NCIT:C96572",
+                        "label": "Biological Father"
+                    }
+                },
+                {
+                    "affected": false,
+                    "memberId": "Ind022",
+                    "role": {
+                        "id": "NCIT:C111201",
+                        "label": "Full Brother"
+                    }
+                }
+            ],
+            "numSubjects": 4
+        }
+    ],
+    "sex": {
+        "id": "NCIT:C16576",
+        "label": "female"
+    }
+}

@@ -1,0 +1,31 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+meta:
+  beaconId: org.example.beacon.v2
+  apiVersion: v2.0
+  returnedSchemas:
+    - entityType: EntryTypeB
+      schema: entry-typeB-schema-v1.0
+  receivedRequestSummary:
+    apiVersion: '2.0'
+    requestedSchemas:
+      - entityType: EntryTypeB
+        schema: entry-typeB-schema-v1.0
+    pagination:
+      skip: 0
+      limit: 10
+responseSummary:
+  exists: true
+  numTotalResults: 25355
+info:
+  someInterestingStuff: this is the interesting stuff
+beaconHandovers:
+  - handoverType:
+      id: EFO:0004157
+      label: BAM format
+    url: https://api.mygenomeservice.org/Handover/9dcc48d7-fc88-11e8-9110-b0c592dbf8c0
+    note: This handover link provides access to a summarized VCF.
+  - handoverType:
+      id: EFO:0004157
+      label: BAM format
+    url: https://api.mygenomeservice.org/Handover/9dcc48d7-fc88-11e8-9110-b0c592dbf8c0
+    note: This handover link provides access to a summarized VCF.

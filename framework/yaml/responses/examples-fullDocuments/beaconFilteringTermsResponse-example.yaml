@@ -1,0 +1,25 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+meta:
+  beaconId: string
+  apiVersion: string
+  returnedSchemas:
+    - map: beacon-map-v2.0.0
+response:
+  resources:
+    - id: hp
+      name: Human Phenotype Ontology
+      url: http://purl.obolibrary.org/obo/hp.owl
+      version: 27-03-2020
+      namespacePrefix: HP
+      iriPrefix: http://purl.obolibrary.org/obo/HP_
+  filteringTerms:
+    - type: numeric
+      id: PATO:0000011
+      label: age
+    - type: Human Phenotype Ontology
+      id: HP:0008773
+      label: Aplasia/Hypoplasia of the middle ear
+    - type: custom
+      id: ownsIPhone
+      label: Individuals associated with this term owns an IPhone
+info: {}

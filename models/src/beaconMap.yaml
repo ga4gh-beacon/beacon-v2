@@ -1,0 +1,119 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+endpointSets:
+  dataset:
+    entryType: dataset
+    openAPIEndpointsDefinition: https://exampleBeacons.org/datasets/endpoints.json
+    rootUrl: https://exampleBeacons.org/datasets
+    singleEntryUrl: https://exampleBeacons.org/datasets/{id}
+    filteringTermsUrl: https://exampleBeacons.org/datasets/{id}/filtering_terms
+    endpoints:
+      genomicVariant:
+        returnedEntryType: genomicVariant
+        url: https://exampleBeacons.org/datasets/{id}/g_variants
+      biosample:
+        returnedEntryType: biosample
+        url: https://exampleBeacons.org/datasets/{id}/biosamples
+      individual:
+        returnedEntryType: individual
+        url: https://exampleBeacons.org/datasets/{id}/individuals
+      runs:
+        returnedEntryType: run
+        url: https://exampleBeacons.org/datasets/{id}/runs
+      analyses:
+        returnedEntryType: analysis
+        url: https://exampleBeacons.org/datasets/{id}/analyses
+  cohort:
+    entryType: cohort
+    openAPIEndpointsDefinition: https://exampleBeacons.org/cohorts/endpoints.json
+    rootUrl: https://exampleBeacons.org/cohorts
+    singleEntryUrl: https://exampleBeacons.org/cohorts/{id}
+    filteringTermsUrl: https://exampleBeacons.org/cohorts/{id}/filtering_terms
+    endpoints:
+      individual:
+        returnedEntryType: individual
+        url: https://exampleBeacons.org/cohorts/{id}/individuals
+      genomicVariant:
+        returnedEntryType: genomicVariant
+        url: https://exampleBeacons.org/cohorts/{id}/g_variants
+      biosample:
+        returnedEntryType: biosample
+        url: https://exampleBeacons.org/cohorts/{id}/biosamples
+      runs:
+        returnedEntryType: run
+        url: https://exampleBeacons.org/cohorts/{id}/runs
+      analyses:
+        returnedEntryType: analysis
+        url: https://exampleBeacons.org/cohorts/{id}/analyses
+  genomicVariant:
+    entryType: genomicVariant
+    openAPIEndpointsDefinition: https://exampleBeacons.org/genomicVariations/endpoints.json
+    rootUrl: https://exampleBeacons.org/g_variants
+    singleEntryUrl: https://exampleBeacons.org/g_variants/{id}
+    endpoints:
+      biosample:
+        returnedEntryType: biosample
+        url: https://exampleBeacons.org/g_variants/{id}/biosamples
+      individual:
+        returnedEntryType: individual
+        url: https://exampleBeacons.org/g_variants/{id}/individuals
+      runs:
+        returnedEntryType: run
+        url: https://exampleBeacons.org/g_variants/{id}/runs
+      analyses:
+        returnedEntryType: analysis
+        url: https://exampleBeacons.org/g_variants/{id}/analyses
+  individual:
+    entryType: individual
+    openAPIEndpointsDefinition: https://exampleBeacons.org/individuals/endpoints.json
+    rootUrl: https://exampleBeacons.org/individuals
+    singleEntryUrl: https://exampleBeacons.org/individuals/{id}
+    filteringTermsUrl: https://exampleBeacons.org/individuals/{id}/filtering_terms
+    endpoints:
+      genomicVariant:
+        returnedEntryType: genomicVariant
+        url: https://exampleBeacons.org/individuals/{id}/g_variants
+      biosample:
+        returnedEntryType: biosample
+        url: https://exampleBeacons.org/individuals/{id}/biosamples
+      runs:
+        returnedEntryType: run
+        url: https://exampleBeacons.org/individuals/{id}/runs
+      analyses:
+        returnedEntryType: analysis
+        url: https://exampleBeacons.org/individuals/{id}/analyses
+  biosample:
+    entryType: biosample
+    openAPIEndpointsDefinition: https://exampleBeacons.org/biosamples/endpoints.json
+    rootUrl: https://exampleBeacons.org/biosamples
+    singleEntryUrl: https://exampleBeacons.org/biosamples/{id}
+    endpoints:
+      run:
+        returnedEntryType: run
+        url: https://exampleBeacons.org/biosamples/{id}/runs
+      analysis:
+        returnedEntryType: analysis
+        url: https://exampleBeacons.org/biosamples/{id}/analyses
+      genomicVariant:
+        returnedEntryType: genomicVariant
+        url: https://exampleBeacons.org/biosamples/{id}/g_variants
+  run:
+    entryType: run
+    openAPIEndpointsDefinition: https://exampleBeacons.org/runs/endpoints.json
+    rootUrl: https://exampleBeacons.org/runs
+    singleEntryUrl: https://exampleBeacons.org/runs/{id}
+    endpoints:
+      analysis:
+        returnedEntryType: analysis
+        url: https://exampleBeacons.org/runs/{id}/analyses
+      genomicVariant:
+        returnedEntryType: genomicVariant
+        url: https://exampleBeacons.org/runs/{id}/g_variants
+  analysis:
+    entryType: analysis
+    openAPIEndpointsDefinition: https://exampleBeacons.org/analyses/endpoints.json
+    rootUrl: https://exampleBeacons.org/analyses
+    singleEntryUrl: https://exampleBeacons.org/analyses/{id}
+    endpoints:
+      genomicVariant:
+        returnedEntryType: genomicVariant
+        url: https://exampleBeacons.org/analyses/{id}/g_variants

@@ -1,0 +1,18 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Quantity
+description: Definition of a quantity class
+type: object
+properties:
+  units:
+    $ref: ./commonDefinitions.json#/definitions/Units
+  value:
+    description: The value of the quantity in the units
+    type: number
+  referenceRange:
+    description: The normal range for the value
+    $ref: ./referenceRange.json
+    example: {}
+required:
+  - unit
+  - value
+additionalProperties: true

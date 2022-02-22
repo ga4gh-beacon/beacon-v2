@@ -1,0 +1,34 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "definitions": {
+        "AlternateBases": {
+            "description": "Alternate bases for this variant (starting from `start`).\n* Accepted values: [ACGTN]*.\n* N is a wildcard, that denotes the position of any base, and can be\nused as a standalone base of any type or within a partially known\nsequence. As example, a query of `ANNT` the Ns can take take any form of\n[ACGT] and will match `ANNT`, `ACNT`, `ACCT`, `ACGT` ... and so forth.\n* an *empty value* is used in the case of deletions with the maximally\ntrimmed, deleted sequence being indicated in `ReferenceBases`\n* Categorical variant queries, e.g. such *not* being represented through\nsequence & position, make use of the `variantType` parameter.\n* either `alternateBases` or `variantType` is required.",
+            "pattern": "^([ACGTUNRYSWKMBDHV\\-\\.]*)$",
+            "type": "string"
+        },
+        "Assembly": {
+            "description": "Genomic assembly accession and version as RefSqeq assembly accession (e.g. \"GCF_000001405.39\") or a versioned assembly name or synonym such as UCSC Genome Browser assembly (e.g. \"hg38\") or Genome Reference Consortium Human (e.g. \"GRCh38.p13\") names.",
+            "example": [
+                "GCF_000001405.39",
+                "hg38",
+                "GRCh38.p13"
+            ],
+            "type": "string"
+        },
+        "RefSeqId": {
+            "description": "Reference sequence id for genomic reference sequence in which variant coordinates are given, e.g. \"NC_000009\" for human chromosome 9. Preferably the RefSeqId, alternatively, names, synonymous or aliases e.g. \"Chr9\" could be used.",
+            "example": [
+                "NC_000009",
+                "Chr9",
+                "NC_012920.1"
+            ],
+            "type": "string"
+        },
+        "ReferenceBases": {
+            "description": "Reference bases for this variant (starting from `start`). * Accepted values: [ACGTN]*. * N is a wildcard, that denotes the position of any base, and can be used as a standalone base of any type or within a partially known sequence. As example, a query of `ANNT` the Ns can take take any form of [ACGT] and will match `ANNT`, `ACNT`, `ACCT`, `ACGT` ... and so forth. * an *empty value* is used in the case of insertions with the maximally trimmed, inserted sequence being indicated in `AlternateBases`",
+            "pattern": "^([ACGTUNRYSWKMBDHV\\-\\.]*)$",
+            "type": "string"
+        }
+    },
+    "description": "Component definitions used in 'requestParameters.json'.\nThe purpose of this file is to separate components from actual parameters to avoid confusion."
+}

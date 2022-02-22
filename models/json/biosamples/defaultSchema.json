@@ -1,0 +1,240 @@
+{
+    "$comment": "version: ga4gh-beacon-biosample-v2.0.0",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "description": "Schema for an biosample entry.",
+    "properties": {
+        "biosampleStatus": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "Ontology value from Experimental Factor Ontology (EFO) Material Entity term (BFO:0000040). Classification of the sample in abnormal sample (EFO:0009655) or reference sample (EFO:0009654).",
+            "examples": [
+                {
+                    "id": "EFO:0009654",
+                    "label": "reference sample"
+                },
+                {
+                    "id": "EFO:0009655",
+                    "label": "abnormal sample"
+                },
+                {
+                    "id": "EFO:0009656",
+                    "label": "neoplastic sample"
+                },
+                {
+                    "id": "EFO:0010941",
+                    "label": "metastasis sample"
+                },
+                {
+                    "id": "EFO:0010942",
+                    "label": "primary tumor sample"
+                },
+                {
+                    "id": "EFO:0010943",
+                    "label": "recurrent tumor sample"
+                }
+            ]
+        },
+        "collectionDate": {
+            "description": "Date of biosample collection in ISO8601 format.",
+            "examples": [
+                "2021-04-23"
+            ],
+            "format": "date",
+            "type": "string"
+        },
+        "collectionMoment": {
+            "description": "Individual's or cell cullture age at the time of sample collection in the ISO8601 duration format `P[n]Y[n]M[n]DT[n]H[n]M[n]S`.",
+            "examples": [
+                "P32Y6M1D",
+                "P7D"
+            ],
+            "type": "string"
+        },
+        "diagnosticMarkers": {
+            "description": "Clinically relevant biomarkers. RECOMMENDED.",
+            "items": {
+                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json"
+            },
+            "type": "array"
+        },
+        "histologicalDiagnosis": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "Disease diagnosis that was inferred from the histological examination. RECOMMENDED.",
+            "examples": [
+                {
+                    "id": "NCIT:C3778",
+                    "label": "Serous Cystadenocarcinoma"
+                }
+            ]
+        },
+        "id": {
+            "description": "Biosample identifier (external accession or internal ID).",
+            "examples": [
+                "S0001"
+            ],
+            "type": "string"
+        },
+        "individualId": {
+            "description": "Reference to the individual from which that sample was obtained.",
+            "examples": [
+                "P0001"
+            ],
+            "type": "string"
+        },
+        "info": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/beaconCommonComponents.json#/definitions/Info"
+        },
+        "measurements": {
+            "description": "List of measurements of the sample.",
+            "items": {
+                "$ref": "../common/measurement.json"
+            },
+            "type": "array"
+        },
+        "notes": {
+            "description": "Any relevant info about the biosample that does not fit into any other field in the schema.",
+            "examples": [
+                "Some free text"
+            ],
+            "type": "string"
+        },
+        "obtentionProcedure": {
+            "$ref": "../common/procedure.json",
+            "description": "Ontology value from NCIT Intervention or Procedure ontology term (NCIT:C25218) describing the procedure for sample obtention, e.g. NCIT:C15189 (biopsy).",
+            "examples": [
+                {
+                    "code": {
+                        "id": "NCIT:C15189",
+                        "label": "biopsy"
+                    }
+                },
+                {
+                    "code": {
+                        "id": "NCIT:C157179",
+                        "label": "FGFR1 Mutation Analysis"
+                    }
+                }
+            ]
+        },
+        "pathologicalStage": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "Pathological stage, if applicable, preferably as subclass of NCIT:C28108 - Disease Stage Qualifier. RECOMMENDED.",
+            "examples": [
+                {
+                    "id": "NCIT:C27977",
+                    "label": "Stage IIIA"
+                }
+            ]
+        },
+        "pathologicalTnmFinding": {
+            "description": "Pathological TNM findings, if applicable, preferably as subclass of NCIT:C48698 - Cancer TNM Finding Category (NCIT:C48698). RECOMMENDED.",
+            "examples": [
+                {
+                    "id": "NCIT:C48725",
+                    "label": "T2a Stage Finding"
+                },
+                {
+                    "id": "NCIT:C48709",
+                    "label": "N1c Stage Finding"
+                },
+                {
+                    "id": "NCIT:C48699",
+                    "label": "M0 Stage Finding"
+                }
+            ],
+            "items": {
+                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json"
+            },
+            "type": "array"
+        },
+        "phenotypicFeatures": {
+            "description": "List of phenotypic abnormalities of the sample. RECOMMENDED.",
+            "items": {
+                "$ref": "../common/phenotypicFeature.json"
+            },
+            "type": "array"
+        },
+        "sampleOriginDetail": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "Tissue from which the sample was taken or sample origin matching the category set in 'sampleOriginType'. Value from Uber-anatomy ontology (UBERON) or BRENDA tissue / enzyme source (BTO), Ontology for Biomedical Investigations (OBI) or Cell Line Ontology (CLO), e.g. 'cerebellar vermis' (UBERON:0004720), 'HEK-293T cell' (BTO:0002181), 'nasopharyngeal swab specimen' (OBI:0002606), 'cerebrospinal fluid specimen' (OBI:0002502).",
+            "examples": [
+                {
+                    "id": "UBERON:0000474",
+                    "label": "female reproductive system"
+                },
+                {
+                    "id": "BTO:0002181",
+                    "label": "HEK-293T cell"
+                },
+                {
+                    "id": "OBI:0002606",
+                    "label": "nasopharyngeal swab specimen"
+                }
+            ]
+        },
+        "sampleOriginType": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "Category of sample origin. Value from Ontology for Biomedical Investigations (OBI) material entity (BFO:0000040) ontology, e.g. 'specimen from organism' (OBI:0001479),'xenograft' (OBI:0100058), 'cell culture' (OBI:0001876)",
+            "examples": [
+                {
+                    "id": "OBI:0001479",
+                    "label": "specimen from organism"
+                },
+                {
+                    "id": "OBI:0001876",
+                    "label": "cell culture"
+                },
+                {
+                    "id": "OBI:0100058",
+                    "label": "xenograft"
+                }
+            ]
+        },
+        "sampleProcessing": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "Status of how the specimen was processed,e.g. a child term of EFO:0009091.",
+            "examples": [
+                {
+                    "id": "EFO:0009129",
+                    "label": "mechanical dissociation"
+                }
+            ]
+        },
+        "sampleStorage": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "Status of how the specimen was stored.",
+            "example": {}
+        },
+        "tumorGrade": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "Term representing the tumor grade. Child term of NCIT:C28076 (Disease Grade Qualifier) or equivalent.",
+            "examples": [
+                {
+                    "id": "NCIT:C28080",
+                    "label": "Grade 3a"
+                }
+            ]
+        },
+        "tumorProgression": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "Tumor progression category indicating primary, metastatic or recurrent progression. Ontology value from Neoplasm by Special Category ontology (NCIT:C7062), e.g. NCIT:C84509 (Primary Malignant Neoplasm).",
+            "examples": [
+                {
+                    "id": "NCIT:C84509",
+                    "label": "Primary Malignant Neoplasm"
+                },
+                {
+                    "id": "NCIT:C4813",
+                    "label": "Recurrent Malignant Neoplasm"
+                }
+            ]
+        }
+    },
+    "required": [
+        "id",
+        "biosampleStatus",
+        "sampleOriginType"
+    ],
+    "title": "biosample",
+    "type": "object"
+}

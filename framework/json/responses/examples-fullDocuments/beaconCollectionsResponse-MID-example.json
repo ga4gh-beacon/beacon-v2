@@ -1,0 +1,74 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "meta": {
+        "apiVersion": "v2.0",
+        "beaconId": "org.example.beacon.v2",
+        "receivedRequestSummary": {
+            "apiVersion": "2.0",
+            "pagination": {
+                "limit": 10,
+                "skip": 0
+            },
+            "requestedSchemas": [
+                {
+                    "entityType": "dataset",
+                    "schema": "dataset-schema-v1.0"
+                }
+            ]
+        },
+        "returnedSchemas": [
+            {
+                "entityType": "dataset",
+                "schema": "dataset-schema-v1.0"
+            }
+        ]
+    },
+    "response": {
+        "collections": [
+            {
+                "$schema": "https://schemas-fake-depot.org/beaconv2/datasetSchema.json",
+                "createDateTime": "2011-01-11T11:11:11Z",
+                "dataUseConditions": {
+                    "duoDataUse": [
+                        {
+                            "id": "DUO:0000007",
+                            "label": "disease specific research",
+                            "modifiers": [
+                                {
+                                    "id": "HP:0001631"
+                                }
+                            ],
+                            "version": "2021-02-23"
+                        }
+                    ]
+                },
+                "description": "This is the first dataset",
+                "id": "Dataset1",
+                "name": "Dataset One",
+                "updateDateTime": "2011-01-11T11:11:11Z",
+                "version": "v1"
+            },
+            {
+                "$schema": "https://schemas-fake-depot.org/beaconv2/datasetSchema.json",
+                "createDateTime": "2012-02-22T22:22:22Z",
+                "dataUseConditions": {
+                    "duoDataUse": [
+                        {
+                            "id": "DUO:0000042",
+                            "label": "general research use",
+                            "version": "2021-02-23"
+                        }
+                    ]
+                },
+                "description": "This is the second dataset",
+                "id": "Dataset2",
+                "name": "Dataset Two",
+                "updateDateTime": "2012-02-22T22:22:22Z",
+                "version": "v2"
+            }
+        ]
+    },
+    "responseSummary": {
+        "exists": true
+    }
+}

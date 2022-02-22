@@ -1,0 +1,57 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Sequencing bioinformatics analysis
+$comment: 'version: ga4gh-beacon-biosample-v2.0.0'
+description: Schema for a sequencing bioinformatics analysis.
+type: object
+properties:
+  id:
+    description: Analysis reference ID (external accession or internal ID)
+    type: string
+  runId:
+    description: Run identifier (external accession or internal ID).
+    type: string
+    examples:
+      - SRR10903401
+  biosampleId:
+    description: Reference to Biosample ID.
+    type: string
+    examples:
+      - S0001
+  individualId:
+    description: Reference to Individual ID.
+    type: string
+    examples:
+      - P0001
+  analysisDate:
+    description: Date at which analysis was performed.
+    type: string
+    format: date
+    examples:
+      - '2021-10-17'
+  pipelineName:
+    description: Analysis pipeline and version if a standardized pipeline was used
+    type: string
+    examples:
+      - Pipeline-panel-0001-v1
+  pipelineRef:
+    description: Link to Analysis pipeline resource
+    type: string
+    examples:
+      - https://doi.org/10.48511/workflowhub.workflow.111.1
+  aligner:
+    description: Reference to mapping/alignment software
+    type: string
+    examples:
+      - bwa-0.7.8
+  variantCaller:
+    description: Reference to variant calling software / pipeline
+    type: string
+    examples:
+      - GATK4.0
+  info:
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/beaconCommonComponents.json#/definitions/Info
+required:
+  - id
+  - analysisDate
+  - pipelineName
+additionalProperties: true

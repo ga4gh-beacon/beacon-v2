@@ -1,0 +1,60 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "description": "Treatment(s) prescribed/administered, defined by treatment ID, date and age of onset, dose, schedule and duration.",
+    "properties": {
+        "ageAtOnset": {
+            "$ref": "./age.json"
+        },
+        "dose": {
+            "description": "The amount of any substance administered over a specific period of time. [ NCIT:C15682 ] ",
+            "type": "number"
+        },
+        "duration": {
+            "description": "Treatment duration in ISO8601 duration format",
+            "example": "P7D",
+            "type": "string"
+        },
+        "frequency": {
+            "description": "The number of times a substance is administered within a specific time period. [ NCIT:C89081 ] ",
+            "type": "string"
+        },
+        "route": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "Route of treatment. Value from NCIT Route of Administration tree (NCIT:C38114).",
+            "examples": [
+                {
+                    "id": "NCIT:C38304",
+                    "label": "Topical"
+                },
+                {
+                    "id": "NCIT:C78373",
+                    "label": "Dietary"
+                }
+            ]
+        },
+        "treatmentCode": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "Code of treatment. Value from NCIT or any relevant ontology.",
+            "examples": [
+                {
+                    "id": "NCIT:C287",
+                    "label": "Aspirin"
+                },
+                {
+                    "id": "NCIT:C62078",
+                    "label": "Tamoxifen"
+                }
+            ]
+        },
+        "units": {
+            "$ref": "./commonDefinitions.json#/definitions/Units",
+            "description": "Treatment dose units"
+        }
+    },
+    "required": [
+        "treatmentCode"
+    ],
+    "title": "Treament",
+    "type": "object"
+}

@@ -1,0 +1,4 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+id: analyses-example-0001
+analysisDate: '2021-10-17'
+pipelineName: Pipeline-panel-0001-v1

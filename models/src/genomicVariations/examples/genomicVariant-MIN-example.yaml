@@ -1,0 +1,9 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+variantInternalId: GRCh37-1-55505652-G-A
+variantType: SNP
+alternateBases: A
+position:
+  assemblyId: GRCh37
+  refseqId: chr1
+  start:
+    - 5505652

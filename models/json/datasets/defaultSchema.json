@@ -1,0 +1,141 @@
+{
+    "$comment": "version: ga4gh-beacon-dataset-v2.0.0",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "definitions": {
+        "DUODataUse": {
+            "allOf": [
+                {
+                    "description": "TBD"
+                },
+                {
+                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json"
+                },
+                {
+                    "properties": {
+                        "modifiers": {
+                            "items": {
+                                "allOf": [
+                                    {
+                                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json"
+                                    },
+                                    {
+                                        "examples": [
+                                            {
+                                                "id": "EFO:0001645"
+                                            },
+                                            {
+                                                "id": "EFO:0001655"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            "type": "array"
+                        },
+                        "version": {
+                            "examples": [
+                                "17-07-2016"
+                            ],
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "version"
+                    ],
+                    "type": "object"
+                }
+            ],
+            "examples": [
+                {
+                    "id": "DUO:0000007",
+                    "label": "disease specific research",
+                    "version": "17-07-2016"
+                }
+            ]
+        },
+        "DataUseConditions": {
+            "description": "Data use conditions ruling this dataset",
+            "properties": {
+                "duoDataUse": {
+                    "items": {
+                        "$ref": "#/definitions/DUODataUse"
+                    },
+                    "minItems": 1,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "duoDataUse"
+            ],
+            "type": "object"
+        }
+    },
+    "description": "A dataset available in the beacon",
+    "properties": {
+        "createDateTime": {
+            "description": "The time the dataset was created (ISO 8601 format)",
+            "examples": [
+                "2012-07-29",
+                "2017-01-17T20:33:40Z"
+            ],
+            "format": "date-time",
+            "type": "string"
+        },
+        "dataUseConditions": {
+            "$ref": "#/definitions/DataUseConditions"
+        },
+        "description": {
+            "description": "Description of the dataset",
+            "examples": [
+                "This dataset provides examples of the actual data in this Beacon instance."
+            ],
+            "type": "string"
+        },
+        "externalUrl": {
+            "description": "URL to an external system providing more dataset information (RFC 3986 format).",
+            "examples": [
+                "http://example.org/wiki/Main_Page"
+            ],
+            "type": "string"
+        },
+        "id": {
+            "description": "Unique identifier of the dataset",
+            "examples": [
+                "ds01010101"
+            ],
+            "type": "string"
+        },
+        "info": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/beaconCommonComponents.json#/definitions/Info"
+        },
+        "name": {
+            "description": "Name of the dataset",
+            "examples": [
+                "Dataset with synthetic data"
+            ],
+            "type": "string"
+        },
+        "updateDateTime": {
+            "description": "The time the dataset was updated in (ISO 8601 format)",
+            "examples": [
+                "2012-07-19",
+                "2017-01-17T20:33:40Z"
+            ],
+            "format": "date-time",
+            "type": "string"
+        },
+        "version": {
+            "description": "Version of the dataset",
+            "examples": [
+                "v1.1"
+            ],
+            "type": "string"
+        }
+    },
+    "required": [
+        "id",
+        "name"
+    ],
+    "type": "object"
+}

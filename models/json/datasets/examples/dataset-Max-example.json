@@ -1,0 +1,25 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "createDateTime": "2017-01-17T20:33:40Z",
+    "dataUseConditions": {
+        "duoDataUse": [
+            {
+                "id": "DUO:0000007",
+                "label": "disease specific research",
+                "modifiers": [
+                    {
+                        "id": "EFO:0001645",
+                        "label": "coronary artery disease"
+                    }
+                ],
+                "version": "17-07-2016"
+            }
+        ]
+    },
+    "description": "This dataset provides examples of the actual data in this Beacon instance.",
+    "externalUrl": "http://example.org/wiki/Main_Page",
+    "id": "ds01010101",
+    "name": "Dataset with synthetic data",
+    "updateDateTime": "2017-01-17T20:33:40Z",
+    "version": "v1.1"
+}

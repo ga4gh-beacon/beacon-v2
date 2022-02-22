@@ -1,0 +1,8 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+id: sample-example-0001
+biosampleStatus:
+  id: EFO:0009655
+  label: abnormal sample
+sampleOriginType:
+  id: UBERON:0000474
+  label: female reproductive system

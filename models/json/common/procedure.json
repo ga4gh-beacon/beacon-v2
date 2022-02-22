@@ -1,0 +1,52 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Class describing a clinical procedure or intervention.",
+    "properties": {
+        "ageAtProcedure": {
+            "$ref": "./timeElement.json"
+        },
+        "bodySite": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "Specific body site where the procedure was performed. Recommended valuee from Uber-anatomy ontology (UBERON)",
+            "examples": [
+                {
+                    "id": "UBERON:0003403",
+                    "label": "Skin of forearm"
+                },
+                {
+                    "id": "UBERON:0003214",
+                    "label": "mammary gland alveolus"
+                }
+            ]
+        },
+        "dateOfProcedure": {
+            "description": "Date of procedure, in ISO8601 format",
+            "example": "2010-07-10",
+            "format": "date",
+            "type": "string"
+        },
+        "procedureCode": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "Clinical procedure performed with recommended values from Medical Action Ontology (MAXO) 'Medical action' term tree (MAXO:0000001)",
+            "examples": [
+                {
+                    "id": "MAXO:0001175",
+                    "label": "liver transplantation"
+                },
+                {
+                    "id": "MAXO:0000136",
+                    "label": "high-resolution microendoscopy"
+                },
+                {
+                    "id": "OBI:0002654",
+                    "label": "needle biopsy"
+                }
+            ]
+        }
+    },
+    "required": [
+        "procedureCode"
+    ],
+    "title": "Procedure",
+    "type": "object"
+}

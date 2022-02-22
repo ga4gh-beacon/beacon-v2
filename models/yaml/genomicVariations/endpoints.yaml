@@ -1,0 +1,210 @@
+openapi: 3.0.2
+servers: []
+info:
+  version: 2.0.0
+  title: GA4GH Beacon API Specification - Genomic Variations Endpoints
+  description: TBD
+  contact:
+    email: beacon@ga4gh.org
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+paths:
+  /g_variants:
+    get:
+      parameters:
+        - $ref: '#/components/parameters/requestedSchema'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/includeResultsetResponses'
+        - $ref: '#/components/parameters/genomicAlleleShortForm'
+        - $ref: '#/components/parameters/geneId'
+        - $ref: '#/components/parameters/aminoacidChange'
+      description: Get a list of example entries
+      operationId: getExampleEntries
+      tags:
+        - GET Endpoints
+      responses:
+        '200':
+          $ref: '#/components/responses/ResultsOKResponse'
+        default:
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconErrorResponse.json
+    post:
+      description: Get a list of example entries
+      operationId: postExampleEntriesRequest
+      tags:
+        - POST Endpoints
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/requests/beaconRequestBody.json
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/ResultsOKResponse'
+        default:
+          description: An unsuccessful operation
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconErrorResponse.json
+  /g_variants/{id}:
+    parameters:
+      - $ref: '#/components/parameters/entryId'
+    get:
+      description: Get details about one dummyEntry, identified by its (unique) 'id'
+      operationId: getOneExampleEntry
+      tags:
+        - GET Endpoints
+      responses:
+        '200':
+          $ref: '#/components/responses/ResultsOKResponse'
+        default:
+          description: An unsuccessful operation
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconErrorResponse.json
+    post:
+      description: Get details about one dummyEntry, identified by its (unique) 'id'
+      operationId: postOneExampleEntry
+      tags:
+        - POST Endpoints
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/requests/beaconRequestBody.json
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/ResultsOKResponse'
+        default:
+          description: An unsuccessful operation
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconErrorResponse.json
+  /g_variants/{id}/biosamples:
+    parameters:
+      - $ref: '#/components/parameters/entryId'
+    get:
+      parameters:
+        - $ref: '#/components/parameters/requestedSchema'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/limit'
+      description: Get the biosamples list from one genomic variant, identified by
+        its (unique) 'id'
+      operationId: getOneGenomicVariantBiosamples
+      tags:
+        - GET Endpoints
+      responses:
+        '200':
+          $ref: '#/components/responses/ResultsOKResponse'
+        default:
+          description: An unsuccessful operation
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconErrorResponse.json
+    post:
+      description: Get the biosamples list from one genomic variant, identified by
+        its (unique) 'id'
+      operationId: postOneGenomicVariantBiosamples
+      tags:
+        - POST Endpoints
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/requests/beaconRequestBody.json
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/ResultsOKResponse'
+        default:
+          description: An unsuccessful operation
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconErrorResponse.json
+  /g_variants/{id}/individuals:
+    parameters:
+      - $ref: '#/components/parameters/entryId'
+    get:
+      parameters:
+        - $ref: '#/components/parameters/requestedSchema'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/limit'
+      description: Get the individuals list from one genomic variant, identified by
+        its (unique) 'id'
+      operationId: getOneGenomicVariantIndividuals
+      tags:
+        - GET Endpoints
+      responses:
+        '200':
+          $ref: '#/components/responses/ResultsOKResponse'
+        default:
+          description: An unsuccessful operation
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconErrorResponse.json
+    post:
+      description: Get the biosamples list from one genomic variant, identified by
+        its (unique) 'id'
+      operationId: postOneGenomicVariantIndividuals
+      tags:
+        - POST Endpoints
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/requests/beaconRequestBody.json
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/ResultsOKResponse'
+        default:
+          description: An unsuccessful operation
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconErrorResponse.json
+components:
+  responses:
+    ResultsOKResponse:
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconBooleanResponse.json
+              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconCountResponse.json
+              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/beaconResultsetsResponse.json
+  parameters:
+    requestedSchema:
+      name: requestedSchema
+      description: Schema to be used to format the `result` field in the response.
+        The response will use Beacon format.
+      in: query
+      required: false
+      schema:
+        type: string
+      example: ga4gh-service-info-v1.0
+    skip:
+      name: skip
+      in: query
+      schema:
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/beaconCommonComponents.json#/definitions/Skip
+    limit:
+      name: limit
+      in: query
+      schema:
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/beaconCommonComponents.json#/definitions/Limit
+    includeResultsetResponses:
+      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses
+    entryId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    genomicAlleleShortForm:
+      name: allele
+      in: query
+      schema:
+        type: string
+      example: NM_004006.2:c.4375C>T
+    geneId:
+      name: geneid
+      in: query
+      schema:
+        type: string
+      example: BRAF
+    aminoacidChange:
+      name: aminoacidchange
+      in: query
+      schema:
+        type: string
+      example: V600E

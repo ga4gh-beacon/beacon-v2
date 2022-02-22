@@ -1,0 +1,160 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "endpointSets": {
+        "analysis": {
+            "endpoints": {
+                "genomicVariant": {
+                    "returnedEntryType": "genomicVariant",
+                    "url": "https://exampleBeacons.org/analyses/{id}/g_variants"
+                }
+            },
+            "entryType": "analysis",
+            "openAPIEndpointsDefinition": "https://exampleBeacons.org/analyses/endpoints.json",
+            "rootUrl": "https://exampleBeacons.org/analyses",
+            "singleEntryUrl": "https://exampleBeacons.org/analyses/{id}"
+        },
+        "biosample": {
+            "endpoints": {
+                "analysis": {
+                    "returnedEntryType": "analysis",
+                    "url": "https://exampleBeacons.org/biosamples/{id}/analyses"
+                },
+                "genomicVariant": {
+                    "returnedEntryType": "genomicVariant",
+                    "url": "https://exampleBeacons.org/biosamples/{id}/g_variants"
+                },
+                "run": {
+                    "returnedEntryType": "run",
+                    "url": "https://exampleBeacons.org/biosamples/{id}/runs"
+                }
+            },
+            "entryType": "biosample",
+            "openAPIEndpointsDefinition": "https://exampleBeacons.org/biosamples/endpoints.json",
+            "rootUrl": "https://exampleBeacons.org/biosamples",
+            "singleEntryUrl": "https://exampleBeacons.org/biosamples/{id}"
+        },
+        "cohort": {
+            "endpoints": {
+                "analyses": {
+                    "returnedEntryType": "analysis",
+                    "url": "https://exampleBeacons.org/cohorts/{id}/analyses"
+                },
+                "biosample": {
+                    "returnedEntryType": "biosample",
+                    "url": "https://exampleBeacons.org/cohorts/{id}/biosamples"
+                },
+                "genomicVariant": {
+                    "returnedEntryType": "genomicVariant",
+                    "url": "https://exampleBeacons.org/cohorts/{id}/g_variants"
+                },
+                "individual": {
+                    "returnedEntryType": "individual",
+                    "url": "https://exampleBeacons.org/cohorts/{id}/individuals"
+                },
+                "runs": {
+                    "returnedEntryType": "run",
+                    "url": "https://exampleBeacons.org/cohorts/{id}/runs"
+                }
+            },
+            "entryType": "cohort",
+            "filteringTermsUrl": "https://exampleBeacons.org/cohorts/{id}/filtering_terms",
+            "openAPIEndpointsDefinition": "https://exampleBeacons.org/cohorts/endpoints.json",
+            "rootUrl": "https://exampleBeacons.org/cohorts",
+            "singleEntryUrl": "https://exampleBeacons.org/cohorts/{id}"
+        },
+        "dataset": {
+            "endpoints": {
+                "analyses": {
+                    "returnedEntryType": "analysis",
+                    "url": "https://exampleBeacons.org/datasets/{id}/analyses"
+                },
+                "biosample": {
+                    "returnedEntryType": "biosample",
+                    "url": "https://exampleBeacons.org/datasets/{id}/biosamples"
+                },
+                "genomicVariant": {
+                    "returnedEntryType": "genomicVariant",
+                    "url": "https://exampleBeacons.org/datasets/{id}/g_variants"
+                },
+                "individual": {
+                    "returnedEntryType": "individual",
+                    "url": "https://exampleBeacons.org/datasets/{id}/individuals"
+                },
+                "runs": {
+                    "returnedEntryType": "run",
+                    "url": "https://exampleBeacons.org/datasets/{id}/runs"
+                }
+            },
+            "entryType": "dataset",
+            "filteringTermsUrl": "https://exampleBeacons.org/datasets/{id}/filtering_terms",
+            "openAPIEndpointsDefinition": "https://exampleBeacons.org/datasets/endpoints.json",
+            "rootUrl": "https://exampleBeacons.org/datasets",
+            "singleEntryUrl": "https://exampleBeacons.org/datasets/{id}"
+        },
+        "genomicVariant": {
+            "endpoints": {
+                "analyses": {
+                    "returnedEntryType": "analysis",
+                    "url": "https://exampleBeacons.org/g_variants/{id}/analyses"
+                },
+                "biosample": {
+                    "returnedEntryType": "biosample",
+                    "url": "https://exampleBeacons.org/g_variants/{id}/biosamples"
+                },
+                "individual": {
+                    "returnedEntryType": "individual",
+                    "url": "https://exampleBeacons.org/g_variants/{id}/individuals"
+                },
+                "runs": {
+                    "returnedEntryType": "run",
+                    "url": "https://exampleBeacons.org/g_variants/{id}/runs"
+                }
+            },
+            "entryType": "genomicVariant",
+            "openAPIEndpointsDefinition": "https://exampleBeacons.org/genomicVariations/endpoints.json",
+            "rootUrl": "https://exampleBeacons.org/g_variants",
+            "singleEntryUrl": "https://exampleBeacons.org/g_variants/{id}"
+        },
+        "individual": {
+            "endpoints": {
+                "analyses": {
+                    "returnedEntryType": "analysis",
+                    "url": "https://exampleBeacons.org/individuals/{id}/analyses"
+                },
+                "biosample": {
+                    "returnedEntryType": "biosample",
+                    "url": "https://exampleBeacons.org/individuals/{id}/biosamples"
+                },
+                "genomicVariant": {
+                    "returnedEntryType": "genomicVariant",
+                    "url": "https://exampleBeacons.org/individuals/{id}/g_variants"
+                },
+                "runs": {
+                    "returnedEntryType": "run",
+                    "url": "https://exampleBeacons.org/individuals/{id}/runs"
+                }
+            },
+            "entryType": "individual",
+            "filteringTermsUrl": "https://exampleBeacons.org/individuals/{id}/filtering_terms",
+            "openAPIEndpointsDefinition": "https://exampleBeacons.org/individuals/endpoints.json",
+            "rootUrl": "https://exampleBeacons.org/individuals",
+            "singleEntryUrl": "https://exampleBeacons.org/individuals/{id}"
+        },
+        "run": {
+            "endpoints": {
+                "analysis": {
+                    "returnedEntryType": "analysis",
+                    "url": "https://exampleBeacons.org/runs/{id}/analyses"
+                },
+                "genomicVariant": {
+                    "returnedEntryType": "genomicVariant",
+                    "url": "https://exampleBeacons.org/runs/{id}/g_variants"
+                }
+            },
+            "entryType": "run",
+            "openAPIEndpointsDefinition": "https://exampleBeacons.org/runs/endpoints.json",
+            "rootUrl": "https://exampleBeacons.org/runs",
+            "singleEntryUrl": "https://exampleBeacons.org/runs/{id}"
+        }
+    }
+}

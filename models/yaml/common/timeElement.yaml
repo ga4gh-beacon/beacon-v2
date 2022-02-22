@@ -1,0 +1,25 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: TimeElement
+description: Definition of a wrapper for various time descriptors.
+type: object
+$comments: 'TODO: Add other values from https://github.com/phenopackets/phenopacket-schema/blob/v2/docs/time-element.rst'
+properties:
+  age:
+    description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+    $ref: ./age.json
+    example: P32Y6M1D
+  ageRange:
+    description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+    $ref: ./ageRange.json
+    example:
+      start: P18Y
+      end: P59Y
+  ageGroup:
+    description: Indicates the age of the individual as an ontology class. Recommended
+      from NCIT Age Group ontology term (NCIT:C20587) descendants.
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json
+    examples:
+      - id: NCIT:C27954
+        label: Adolescent
+      - id: NCIT:C49685
+        label: Adult 18-65 Years Old

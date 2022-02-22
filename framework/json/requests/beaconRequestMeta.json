@@ -1,0 +1,21 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Meta section of the Beacon request. It includes request context details relevant for the Beacon server when processing the request.",
+    "properties": {
+        "$schema": {
+            "$ref": "../common/beaconCommonComponents.json#/definitions/$schema"
+        },
+        "apiVersion": {
+            "$ref": "../common/beaconCommonComponents.json#/definitions/ApiVersion",
+            "description": "API version expected by the client to be supported by the server and used in the response format."
+        },
+        "requestedSchemas": {
+            "$ref": "../common/beaconCommonComponents.json#/definitions/ListOfSchemas",
+            "description": "Set of schemas to be used in the response."
+        }
+    },
+    "required": [
+        "apiVersion"
+    ],
+    "type": "object"
+}

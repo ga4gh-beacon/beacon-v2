@@ -1,0 +1,18 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+endpointSets:
+  dataset:
+    entryType: dataset
+    openAPIEndpointsDefinition: ./datasets/endpoints.json
+    rootUrl: https://exampleBeacons.org/datasets
+    singleEntryUrl: https://exampleBeacons.org/datasets/{id}
+    filteringTermsUrl: https://exampleBeacons.org/datasets/{id}/filteringTerms
+    endpoints:
+      exampleEntries:
+        returnedEntryType: exampleEntry
+        url: https://exampleBeacons.org/datasets/{id}/exampleEntries
+  exampleEntry:
+    entryType: exampleEntry
+    openAPIEndpointsDefinition: ./exampleEntries/endpoints.json
+    rootUrl: https://exampleBeacons.org/exampleEntries
+    singleEntryUrl: https://exampleBeacons.org/exampleEntries/{id}
+    filteringTermsUrl: https://exampleBeacons.org/exampleEntries/{id}/filteringTerms

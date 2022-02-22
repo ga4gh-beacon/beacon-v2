@@ -1,0 +1,94 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Pedigree
+description: Pedigree studies in which the individual is part of.
+type: object
+properties:
+  id:
+    description: Pedigree identifier.
+    type: string
+    example: Pedigree1001
+  disease:
+    $ref: ../common/disease.json
+  numSubjects:
+    description: Total number of subjects in pedigree.
+    type: integer
+    example: 10
+  members:
+    type: array
+    description: 'List of members of the pedigree. If the current pedigree definition
+      is attached to the proband, it contains the whole list of pedigree members,
+      including the proband. If the definition is attached to an individual different
+      than the proband, it only contains two entries: one that describes that member,
+      e.g. the proband mother or father, and one that points to the proband.'
+    items:
+      $ref: '#/definitions/pedigreeMember'
+    minItems: 1
+definitions:
+  pedigreeMember:
+    type: object
+    properties:
+      memberId:
+        description: Identifier of the individual. The individual could be part of
+          the same Beacon datasets or not, in which case the information here is meant
+          to complete the pedigree. If the individual is also in the dataset use that
+          Individual ID. If it is not the in the dataset, use a non-collading ID,
+          e.g. concatenating the Pedigree ID with a local ID, similarly to the example
+          'Pedigree1001-m1'.
+        type: string
+        examples:
+          - Pedigree1001-m1
+          - Ind0012122
+      role:
+        description: Pedigree role, defined as relationship to proband. Value from
+          Family Member term (NCIT:C41256), e.g. "proband" (NCIT:C64435),"identical
+          twin" (NCIT:C73429), "mother" (NCIT:C25189).
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json
+        examples:
+          - id: NCIT:C64435
+            label: Proband
+          - id: NCIT:C96580
+            label: Biological Mother
+          - id: NCIT:C96572
+            label: Biological Father
+          - id: NCIT:C165848
+            label: Identical Twin Brother
+      affected:
+        description: Is the individual affected by the disease in the pedigree?
+        type: boolean
+    examples:
+      - membersInProband:
+          - memberId: Ind0012122
+            role:
+              id: NCIT:C64435
+              label: Proband
+            affected: true
+          - memberId: Pedigree1001-m2
+            role:
+              id: NCIT:C96580
+              label: Biological Mother
+            affected: false
+          - memberId: Pedigree1001-m3
+            role:
+              id: NCIT:C96572
+              label: Biological Father
+            affected: true
+      - membersInMother:
+          - memberId: Ind0028989
+            role:
+              id: NCIT:C96580
+              label: Biological Mother
+            affected: false
+          - memberId: Ind0012122
+            role:
+              id: NCIT:C64435
+              label: Proband
+            affected: true
+    required:
+      - memberId
+      - role
+      - affected
+required:
+  - id
+  - disease
+  - members
+additionalProperties: true

@@ -1,0 +1,45 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "definitions": {
+        "TypedQuantity": {
+            "properties": {
+                "quantity": {
+                    "$ref": "./quantity.json",
+                    "description": "Quantity denoting the outcome of the measurement",
+                    "example": {
+                        "quentity": {
+                            "unit": {
+                                "id": "NCIT:C49670",
+                                "label": "Millimeter of Mercury"
+                            }
+                        }
+                    }
+                },
+                "quantityType": {
+                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+                    "description": "OntologyClass to describe the type of the measurement",
+                    "example": {
+                        "id": "NCIT:C25298",
+                        "label": "Systolic Blood Pressure"
+                    }
+                }
+            },
+            "required": [
+                "quantityType",
+                "quantity"
+            ]
+        }
+    },
+    "description": "Definition of a complex value class.",
+    "properties": {
+        "typedQuantities": {
+            "description": "List of quantities required to fully describe the complex value",
+            "items": {
+                "$ref": "#/definitions/TypedQuantity"
+            },
+            "type": "array"
+        }
+    },
+    "title": "Complex Value",
+    "type": "object"
+}

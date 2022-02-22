@@ -1,0 +1,77 @@
+{
+    "$comment": "version: ga4gh-beacon-individual-v2.0.0",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "description": "Schema for an individual entry.",
+    "properties": {
+        "diseases": {
+            "description": "List of disease(s) been diagnosed to the individual, defined by disease ontology ID(s), age of onset, stage and the presence of family history.",
+            "items": {
+                "$ref": "../common/disease.json"
+            },
+            "type": "array"
+        },
+        "ethnicity": {
+            "$ref": "../common/commonDefinitions.json#/definitions/Ethnicity",
+            "description": "Ethnic background of the individual. Value from NCIT Race (NCIT:C17049) ontology term descendants, e.g. NCIT:C126531 (Latin American). A geographic ancestral origin category that is assigned to a population group based mainly on physical characteristics that are thought to be distinct and inherent. [ NCI ] "
+        },
+        "exposures": {
+            "items": {
+                "$ref": "../common/exposure.json"
+            },
+            "type": "array"
+        },
+        "geographicOrigin": {
+            "$ref": "../common/commonDefinitions.json#/definitions/GeographicLocation",
+            "description": "Individual's country or region of origin (birthplace or residence place regardless of ethnic origin). Value from GAZ Geographic Location ontology (GAZ:00000448), e.g. GAZ:00002459 (United States of America)."
+        },
+        "id": {
+            "description": "Individual identifier (internal ID).",
+            "example": "P0001",
+            "type": "string"
+        },
+        "info": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/beaconCommonComponents.json#/definitions/Info"
+        },
+        "interventionsOrProcedures": {
+            "items": {
+                "$ref": "../common/procedure.json"
+            },
+            "type": "array"
+        },
+        "measures": {
+            "items": {
+                "$ref": "../common/measurement.json"
+            },
+            "type": "array"
+        },
+        "pedigrees": {
+            "items": {
+                "$ref": "../common/pedigree.json"
+            },
+            "type": "array"
+        },
+        "phenotypicFeatures": {
+            "items": {
+                "$ref": "../common/phenotypicFeature.json"
+            },
+            "type": "array"
+        },
+        "sex": {
+            "$ref": "../common/commonDefinitions.json#/definitions/Sex",
+            "description": "Sex of the individual. Value from NCIT General Qualifier (NCIT:C27993): 'unknown' (not assessed or not available) (NCIT:C17998), 'female' (NCIT:C16576), or 'male', (NCIT:C20197)."
+        },
+        "treatments": {
+            "items": {
+                "$ref": "../common/treatment.json"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "id",
+        "sex"
+    ],
+    "title": "Individual",
+    "type": "object"
+}

@@ -1,0 +1,25 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "description": "Definition of an external reference class.",
+    "properties": {
+        "id": {
+            "description": "An application specific identifier. RECOMMENDED.",
+            "example": "PMID:34054918",
+            "type": "string"
+        },
+        "notes": {
+            "description": "An optional text descriptor.",
+            "example": "Signatures of Discriminative Copy Number Aberrations in 31 Cancer Subtypes",
+            "type": "string"
+        },
+        "reference": {
+            "description": "A url.",
+            "example": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8155688/",
+            "type": "string"
+        }
+    },
+    "required": [],
+    "title": "ExternalReference",
+    "type": "object"
+}

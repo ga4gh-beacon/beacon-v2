@@ -1,0 +1,61 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "description": "Definition of a measurement class.",
+    "properties": {
+        "assayCode": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "Class that describes the assay used to produce the measurement",
+            "example": {
+                "id": "LOINC:26515-7",
+                "label": "Platelets [#/volume] in Blood"
+            }
+        },
+        "date": {
+            "description": "Date of measurement",
+            "format": "date",
+            "type": "string"
+        },
+        "measurementValue": {
+            "description": "The result of the measurement",
+            "oneOf": [
+                {
+                    "$ref": "./value.json"
+                },
+                {
+                    "$ref": "./complexValue.json"
+                }
+            ]
+        },
+        "notes": {
+            "description": "Unstructured text to describe this measurement",
+            "example": "Some free text",
+            "type": "string"
+        },
+        "observationMoment": {
+            "$ref": "./timeElement.json",
+            "description": "Moment in time at which measurement was performed. RECOMMENDED.",
+            "example": {
+                "age": {
+                    "iso8601duration": "P53Y8M"
+                }
+            }
+        },
+        "procedure": {
+            "$ref": "./procedure.json",
+            "description": "Clinical procedure performed to acquire the sample used for the measurement",
+            "example": {
+                "code": {
+                    "id": "NCIT:C5189",
+                    "label": "Radical Cystoprostatectomy"
+                }
+            }
+        }
+    },
+    "required": [
+        "assayCode",
+        "measurementValue"
+    ],
+    "title": "Measurement",
+    "type": "object"
+}

@@ -1,0 +1,16 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+type: object
+description: Information about the Beacon. Aimed to Beacon clients like web pages
+  or Beacon networks.
+properties:
+  meta:
+    description: Information about the response that could be relevant for the Beacon
+      client in order to interpret the results.
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/sections/beaconInformationalResponseMeta.json
+  response:
+    description: Returning the Beacon configuration.
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/configuration/beaconConfigurationSchema.json
+required:
+  - meta
+  - response
+additionalProperties: true

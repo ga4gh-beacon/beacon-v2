@@ -1,0 +1,7 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Value
+description: Definition of a value class.
+type: object
+oneOf:
+  - $ref: ./quantity.json
+  - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json

@@ -1,0 +1,291 @@
+{
+    "$comment": "version: ga4gh-beacon-cohort-v2.0.0",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "definitions": {
+        "CohortCriteria": {
+            "description": "Criteria used for defining the cohort. It is assumed that all cohort participants will match or NOT match such criteria.",
+            "properties": {
+                "ageRange": {
+                    "$ref": "../common/ageRange.json",
+                    "description": "Individual age range in cohort inclusion criteria"
+                },
+                "diseaseConditions": {
+                    "description": "Diseases in cohort inclusion criteria",
+                    "items": {
+                        "$ref": "../common/disease.json"
+                    },
+                    "type": "array"
+                },
+                "ethnicities": {
+                    "description": "Ethnias in cohort inclusion criteria",
+                    "items": {
+                        "$ref": "../common/commonDefinitions.json#/definitions/Ethnicity"
+                    },
+                    "type": "array"
+                },
+                "genders": {
+                    "description": "Gender(s) in cohort inclusion criteria",
+                    "items": {
+                        "$ref": "../common/commonDefinitions.json#/definitions/Sex"
+                    },
+                    "type": "array"
+                },
+                "locations": {
+                    "description": "Geographic location(s) in cohort inclusion criteria",
+                    "items": {
+                        "$ref": "../common/commonDefinitions.json#/definitions/GeographicLocation"
+                    },
+                    "type": "array"
+                },
+                "phenotypicConditions": {
+                    "description": "Phenotypic condition(s) in cohort inclusion criteria",
+                    "items": {
+                        "$ref": "../common/phenotypicFeature.json"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "CollectionEvent": {
+            "description": "TBD",
+            "properties": {
+                "eventAgeRange": {
+                    "$ref": "#/definitions/DataAvailabilityAndDistribution",
+                    "description": "Individual age range, obtained from individual level info in database."
+                },
+                "eventCases": {
+                    "description": "count of cases",
+                    "examples": [
+                        543,
+                        20
+                    ],
+                    "type": "integer"
+                },
+                "eventControls": {
+                    "description": "count of controls",
+                    "examples": [
+                        1000,
+                        22
+                    ],
+                    "type": "integer"
+                },
+                "eventDataTypes": {
+                    "$ref": "#/definitions/DataAvailabilityAndDistribution",
+                    "description": "Aggregated data type information available for each cohort data type as declared in cohortDataTypes, and obtained from individual level info.",
+                    "type": "object"
+                },
+                "eventDate": {
+                    "description": "date of collection event/data point",
+                    "examples": [
+                        "2018-10-01T13:23:45Z",
+                        "2019-04-23T09:11:13Z",
+                        "2017-01-17T20:33:40Z"
+                    ],
+                    "format": "datetime",
+                    "type": "string"
+                },
+                "eventDiseases": {
+                    "$ref": "#/definitions/DataAvailabilityAndDistribution",
+                    "description": "Aggregated information of disease/condition(s) obtained from individual level info in the database."
+                },
+                "eventEthnicities": {
+                    "$ref": "#/definitions/DataAvailabilityAndDistribution",
+                    "description": "Aggregated information of ethnicity obtained from individual level info in database."
+                },
+                "eventGenders": {
+                    "$ref": "#/definitions/DataAvailabilityAndDistribution",
+                    "description": "Aggregated information of gender(s) obtained from individual level info in the database."
+                },
+                "eventLocations": {
+                    "$ref": "#/definitions/DataAvailabilityAndDistribution",
+                    "description": "Aggregated information of geographic location obtained from individual level info in database."
+                },
+                "eventNum": {
+                    "description": "cardinality of the collection event / data point in a series",
+                    "examples": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ],
+                    "type": "integer"
+                },
+                "eventPhenotypes": {
+                    "$ref": "#/definitions/DataAvailabilityAndDistribution",
+                    "description": "Aggregated information of phenotype(s) obtained from individual level info in the database."
+                },
+                "eventSize": {
+                    "description": "Count of individuals in cohort at data point (for \u00b4user-defined\u00b4 cohorts, this is individuals meeting criteria) obtained from individual level info in database.",
+                    "examples": [
+                        1543,
+                        42
+                    ],
+                    "type": "integer"
+                },
+                "eventTimeline": {
+                    "description": "Aggregated information of dates of visit/diagnostic/inclusion in study obtained from individual level info in database. Will coincide with collection event date for multi-time",
+                    "properties": {
+                        "end": {
+                            "description": "latest date of visit",
+                            "examples": [
+                                "2018-10-01T13:23:45Z",
+                                "2019-04-23T09:11:13Z",
+                                "2017-01-17T20:33:40Z"
+                            ],
+                            "format": "datetime",
+                            "type": "string"
+                        },
+                        "start": {
+                            "description": "earliest date of visit",
+                            "examples": [
+                                "2018-10-01T13:23:45Z",
+                                "2019-04-23T09:11:13Z",
+                                "2017-01-17T20:33:40Z"
+                            ],
+                            "format": "datetime",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DataAvailabilityAndDistribution": {
+            "description": "Aggregated information of geographic location obtained from individual level info in database.",
+            "properties": {
+                "availability": {
+                    "description": "data availability",
+                    "type": "boolean"
+                },
+                "availabilityCount": {
+                    "description": "count of individuals with data available",
+                    "type": "integer"
+                },
+                "distribution": {
+                    "additionalProperties": {
+                        "type": "object"
+                    },
+                    "description": "List of categories and results or counts for each category.",
+                    "examples": [
+                        {
+                            "genders": {
+                                "female": 51,
+                                "male": 50
+                            }
+                        }
+                    ],
+                    "properties": {},
+                    "type": "object"
+                }
+            },
+            "required": [
+                "availability"
+            ],
+            "type": "object"
+        },
+        "DataTypesArray": {
+            "description": "Type of information. Preferably values from Genomics Cohorts Knowledge Ontology (GeCKO) or others when GeCKO is not applicable.",
+            "examples": [
+                {
+                    "id": "OGMS:0000015",
+                    "label": "clinical history"
+                },
+                {
+                    "id": "OBI:0000070",
+                    "label": "genotyping assay"
+                },
+                {
+                    "id": "OMIABIS:0000060",
+                    "label": "survey data"
+                }
+            ],
+            "items": {
+                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json"
+            },
+            "type": "array"
+        }
+    },
+    "description": "A cohort available in the beacon.",
+    "properties": {
+        "cohortDataTypes": {
+            "$ref": "#/definitions/DataTypesArray"
+        },
+        "cohortDesign": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "description": "Cohort type by its design. A plan specification comprised of protocols (which may specify how and what kinds of data will be gathered) that are executed as part of an investigation and is realized during a study design execution. Value from Ontologized MIABIS (OMIABIS) Study design ontology term tree (OBI:0500000).",
+            "examples": [
+                {
+                    "id": "OMIABIS:0001017",
+                    "label": "case control study design"
+                },
+                {
+                    "id": "OMIABIS:0001019",
+                    "label": "longitudinal study design"
+                },
+                {
+                    "id": "OMIABIS:0001024",
+                    "label": "twin study design"
+                }
+            ]
+        },
+        "cohortExclusionCriteria": {
+            "$ref": "#/definitions/CohortCriteria",
+            "description": "Exclusion criteria used for defining the cohort. It is assumed that NONE of the cohort participants will match such criteria.",
+            "type": "object"
+        },
+        "cohortId": {
+            "description": "Cohort identifier. For \u00b4study-defined\u00b4 or \u00b4beacon-defined\u00b4cohorts this field is set by the implementer. For \u00b4user-defined\u00b4 this unique identifier could be generated upon the query that defined the cohort, but could be later edited by the user.",
+            "examples": [
+                "cohort-T2D-2010"
+            ],
+            "type": "string"
+        },
+        "cohortInclusionCriteria": {
+            "$ref": "#/definitions/CohortCriteria",
+            "description": "Inclusion criteria used for defining the cohort. It is assumed that all cohort participants will match such criteria.",
+            "type": "object"
+        },
+        "cohortName": {
+            "description": "Name of the cohort. For \u00b4user-defined\u00b4 this field could be generated upon the query, e.g. a value that is a concatenationor some representation of the user query.",
+            "examples": [
+                "Wellcome Trust Case Control Consortium",
+                "GCAT Genomes for Life"
+            ],
+            "type": "string"
+        },
+        "cohortSize": {
+            "description": "Count of unique Individuals in cohort (individuals meeting criteria for \u00b4user-defined\u00b4 cohorts). If not previously known, it could be calculated by counting the individuals in the cohort.",
+            "examples": [
+                14765,
+                20000
+            ],
+            "type": "integer"
+        },
+        "cohortType": {
+            "default": "beacon-defined",
+            "description": "Cohort type by its definition. If a cohort is declared \u00b4study-defined\u00b4 or \u00b4beacon-defined\u00b4 criteria are to be entered in cohort_inclusion_criteria; if a cohort is declared \u2018user-defined' cohort_inclusion_criteria could be automatically populated from the parameters used to perform the query.",
+            "enum": [
+                "study-defined",
+                "beacon-defined",
+                "user-defined"
+            ],
+            "type": "string"
+        },
+        "collectionEvents": {
+            "description": "TBD",
+            "items": {
+                "$ref": "#/definitions/CollectionEvent"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "cohortId",
+        "cohortName",
+        "cohortType"
+    ],
+    "type": "object"
+}
