@@ -83,7 +83,8 @@ def convert_dir(inpath, supported, clean, e_t, args):
         if ext == args.filetype:
             convert_file(i_f, clean, e_t)
         elif clean is True:
-            deleteFile(i_f)
+            if ext in supported:
+                deleteFile(i_f)
 
     dp = [ d.path for d in scandir(inpath) if d.is_dir() ]
 
@@ -95,7 +96,6 @@ def convert_dir(inpath, supported, clean, e_t, args):
 def convert_file(in_file, clean, e_t):
 
     f_e = pathlib.PurePosixPath(in_file).suffix
-    print(f_e)
     yaml = YAML()
     yaml.indent(mapping=2, sequence=4, offset=2)
 
@@ -103,50 +103,51 @@ def convert_file(in_file, clean, e_t):
         "$schema": { "replaceValue": 'https://json-schema.org/draft/2020-12/schema', "add": False}
     }
 
-    try:
+    # try:
         
-        with open(in_file, 'r') as in_f:
+    with open(in_file, 'r') as in_f:
 
-            print(in_file)
+        print(in_file)
 
-            if f_e == ".json":
-                i_d = in_f.read()
-                in_f.close()
-                s = json.loads(i_d)
-                par_replace(s, replace)
-                if not e_t:
-                    e_t = ".yaml"
-                o_f = re.sub(".json", e_t, in_file)
-                if "yaml" in e_t:
-                    with open(o_f, 'w') as f:
-                        yaml.dump(s, f)
-                        print("Dumped to {}".format(o_f))
-                elif "json" in e_t:
-                    with open(o_f, 'w') as f:
-                        f.write(json.dumps(dict(s), indent=4, sort_keys=True, default=str))
-                    f.close()
-
-            elif f_e == ".yaml":
-                s = yaml.load( in_f )
-                par_replace(s, replace)
-                if not e_t:
-                    e_t = ".json"
-                o_f = re.sub(".yaml", e_t, in_file)
-                if "json" in e_t:                   
-                    with open(o_f, 'w') as f:
-                        f.write(json.dumps(dict(s), indent=4, sort_keys=True, default=str))
-                    f.close()
+        if f_e == ".json":
+            i_d = in_f.read()
+            in_f.close()
+            s = json.loads(i_d)
+            par_replace(s, replace)
+            if not e_t:
+                e_t = ".yaml"
+            o_f = re.sub(r"\.json", e_t, in_file)
+            if ".yaml" in e_t:
+                with open(o_f, 'w') as f:
+                    yaml.dump(s, f)
                     print("Dumped to {}".format(o_f))
-                elif "yaml" in e_t:
-                    with open(o_f, 'w') as f:
-                        yaml.dump(s, f)
+            elif ".json" in e_t:
+                with open(o_f, 'w') as f:
+                    f.write(json.dumps(dict(s), indent=4, sort_keys=True, default=str))
+                f.close()
+                print("Dumped to {}".format(o_f))
 
-            if clean is True:
-                deleteFile(in_file)
+        elif f_e == ".yaml":
+            s = yaml.load( in_f )
+            par_replace(s, replace)
+            if not e_t:
+                e_t = ".json"
+            o_f = re.sub(r"\.yaml", e_t, in_file)
+            if ".json" in e_t:                   
+                with open(o_f, 'w') as f:
+                    f.write(json.dumps(dict(s), indent=4, sort_keys=True, default=str))
+                f.close()
+                print("Dumped to {}".format(o_f))
+                if clean is True:
+                    print("deleting {}".format(in_file))
+                    deleteFile(in_file)
+            elif ".yaml" in e_t:
+                with open(o_f, 'w') as f:
+                    yaml.dump(s, f)
+                    print("Dumped to {}".format(o_f))
 
-    except Exception as e:
-        print("Error loading the file ({}): {}".format(in_file, e) )
-        exit()
+    # except Exception as e:
+    #     print("Error loading the file ({}): {}".format(in_file, e) )
 
 ################################################################################
 
