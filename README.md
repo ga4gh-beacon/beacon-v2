@@ -28,3 +28,5 @@ At this stage, the repository content has been generated automatically:
 |   |
 |   |- yaml     YAML versions of the schema files generated from src, for reference/testing
 ```
+
+Steps 1 & 2 obviously won't be necessary after transitioning to the respective src files as the working versions. Step 3 would be converted into a GH action.
