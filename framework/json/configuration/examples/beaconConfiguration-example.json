@@ -1,0 +1,62 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "entryTypes": {
+        "dataset": {
+            "aCollectionOf": [
+                {
+                    "id": "exampleEntry",
+                    "name": "Example entries"
+                }
+            ],
+            "additionallySupportedSchemas": [],
+            "defaultSchema": {
+                "id": "datasetDefaultSchema",
+                "name": "Default schema for datasets",
+                "referenceToSchemaDefinition": "./datasets/defaultSchema.json",
+                "schemaVersion": "v.2"
+            },
+            "description": "A Dataset is a collection of records, like rows in a database or cards in a cardholder.",
+            "endpoint": "/datasets",
+            "filteringTermsReference": "./datasets/filteringTerms.json",
+            "id": "dataset",
+            "name": "Dataset",
+            "nonFilteredQueriesAllowed": true,
+            "ontologyTermForThisType": {
+                "id": "NCIT:C47824",
+                "label": "Data set"
+            },
+            "partOfSpecification": "Beacon v2.0"
+        },
+        "exampleEntry": {
+            "additionallySupportedSchemas": [],
+            "defaultSchema": {
+                "id": "ExampleEntryTypeDefaultschema",
+                "name": "Default schema for an example entries",
+                "referenceToSchemaDefinition": "./exampleEntry/defaultSchema.json",
+                "schemaVersion": "v.2"
+            },
+            "description": "A generic entry type to allow testing and playing with the specification.",
+            "endpoint": "./exampleEntries",
+            "filteringTermsReference": "./exampleEntry/filteringTerms.json",
+            "id": "exampleEntry",
+            "name": "Example Entry",
+            "nonFilteredQueriesAllowed": false,
+            "ontologyTermForThisType": {
+                "id": "NCIT:C20181",
+                "label": "Conceptual Entity"
+            },
+            "partOfSpecification": "Beacon v2.0"
+        }
+    },
+    "maturityAttributes": {
+        "productionStatus": "DEV"
+    },
+    "securityAttributes": {
+        "defaultGranularity": "boolean",
+        "securityLevels": [
+            "PUBLIC",
+            "REGISTERED",
+            "CONTROLLED"
+        ]
+    }
+}

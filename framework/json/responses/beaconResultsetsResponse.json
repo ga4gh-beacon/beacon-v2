@@ -1,0 +1,33 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "description": "Beacon response that includes record level details, grouped in Resultsets.",
+    "properties": {
+        "beaconHandovers": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/beaconCommonComponents.json#/definitions/ListOfHandovers",
+            "description": "List of handovers that apply to the whole response, not to any resultset or result in particular."
+        },
+        "info": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/beaconCommonComponents.json#/definitions/Info",
+            "description": "Additional details that could be of interest. Provided to clearly enclose any attribute that is not part of the Beacon specification."
+        },
+        "meta": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/sections/beaconResponseMeta.json",
+            "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
+        },
+        "response": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/sections/beaconResultsets.json",
+            "description": "Response for queries that recovers any result."
+        },
+        "responseSummary": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/responses/sections/beaconSummaryResponseSection.json",
+            "description": "Response summary, including Boolean and optionally results count."
+        }
+    },
+    "required": [
+        "meta",
+        "responseSummary",
+        "response"
+    ],
+    "type": "object"
+}

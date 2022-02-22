@@ -1,0 +1,102 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+description: Metadata describing a Beacon instance.
+type: object
+required:
+  - id
+  - name
+  - apiVersion
+  - environment
+  - organization
+properties:
+  id:
+    type: string
+    description: Unique identifier of the Beacon. Use reverse domain name notation.
+    example: org.ga4gh.Beacon
+  name:
+    type: string
+    description: Name of the Beacon.
+  apiVersion:
+    type: string
+    description: Version of the API provided by the Beacon.
+    example: v2.0
+  environment:
+    type: string
+    description: "Environment the service is running in. Use this to distinguish\n\
+      between production, development and testing/staging deployments."
+    enum:
+      - prod
+      - test
+      - dev
+      - staging
+    example: dev
+  organization:
+    $ref: '#/definitions/BeaconOrganization'
+  description:
+    type: string
+    description: Description of the Beacon.
+  version:
+    type: string
+    description: Version of the Beacon.
+    example: v0.1
+  welcomeUrl:
+    type: string
+    description: URL to the welcome page for this Beacon (RFC 3986 format).
+    example: http://example.org/wiki/Main_Page
+  alternativeUrl:
+    type: string
+    description: Alternative URL to the API, e.g. a restricted version of this Beacon
+      (RFC 3986 format).
+    example: http://example.org/wiki/Main_Page
+  createDateTime:
+    type: string
+    description: The time the Beacon was created (ISO 8601 format).
+    example: 2012-07-19 or 2017-01-17T20:33:40Z
+  updateDateTime:
+    type: string
+    description: The time the Beacon was updated in (ISO 8601 format).
+    example: 2012-07-19 or 2017-01-17T20:33:40Z
+  info:
+    description: Additional unspecified metadata about the Beacon service.
+    type: object
+    example:
+      additionalInfoKey1: additionalInfoValue1
+      additionalInfoKey2:
+        - additionalInfoValue2
+        - additionalInfoValue3
+definitions:
+  BeaconOrganization:
+    description: Organization owning the Beacon.
+    type: object
+    required:
+      - id
+      - name
+    properties:
+      id:
+        type: string
+        description: Unique identifier of the organization.
+      name:
+        type: string
+        description: Name of the organization.
+      description:
+        type: string
+        description: Description of the organization.
+      address:
+        type: string
+        description: Address of the organization.
+      welcomeUrl:
+        type: string
+        description: URL of the website of the organization (RFC 3986 format).
+      contactUrl:
+        type: string
+        description: URL with the contact for the Beacon operator/maintainer, e.g.
+          link to a contact form (RFC 3986 format) or an email (RFC 2368 format).
+      logoUrl:
+        type: string
+        description: URL to the logo (PNG/JPG/SVG format) of the organization (RFC
+          3986 format).
+      info:
+        description: Additional unspecified metadata about the host Organization.
+        type: object
+        example:
+          additionalInfoKey: additionalInfoValue
+additionalProperties: true

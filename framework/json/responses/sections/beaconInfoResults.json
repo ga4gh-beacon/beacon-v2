@@ -1,0 +1,130 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "definitions": {
+        "BeaconOrganization": {
+            "description": "Organization owning the Beacon.",
+            "properties": {
+                "address": {
+                    "description": "Address of the organization.",
+                    "type": "string"
+                },
+                "contactUrl": {
+                    "description": "URL with the contact for the Beacon operator/maintainer, e.g. link to a contact form (RFC 3986 format) or an email (RFC 2368 format).",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Description of the organization.",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Unique identifier of the organization.",
+                    "type": "string"
+                },
+                "info": {
+                    "description": "Additional unspecified metadata about the host Organization.",
+                    "example": {
+                        "additionalInfoKey": "additionalInfoValue"
+                    },
+                    "type": "object"
+                },
+                "logoUrl": {
+                    "description": "URL to the logo (PNG/JPG/SVG format) of the organization (RFC 3986 format).",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of the organization.",
+                    "type": "string"
+                },
+                "welcomeUrl": {
+                    "description": "URL of the website of the organization (RFC 3986 format).",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ],
+            "type": "object"
+        }
+    },
+    "description": "Metadata describing a Beacon instance.",
+    "properties": {
+        "alternativeUrl": {
+            "description": "Alternative URL to the API, e.g. a restricted version of this Beacon (RFC 3986 format).",
+            "example": "http://example.org/wiki/Main_Page",
+            "type": "string"
+        },
+        "apiVersion": {
+            "description": "Version of the API provided by the Beacon.",
+            "example": "v2.0",
+            "type": "string"
+        },
+        "createDateTime": {
+            "description": "The time the Beacon was created (ISO 8601 format).",
+            "example": "2012-07-19 or 2017-01-17T20:33:40Z",
+            "type": "string"
+        },
+        "description": {
+            "description": "Description of the Beacon.",
+            "type": "string"
+        },
+        "environment": {
+            "description": "Environment the service is running in. Use this to distinguish\nbetween production, development and testing/staging deployments.",
+            "enum": [
+                "prod",
+                "test",
+                "dev",
+                "staging"
+            ],
+            "example": "dev",
+            "type": "string"
+        },
+        "id": {
+            "description": "Unique identifier of the Beacon. Use reverse domain name notation.",
+            "example": "org.ga4gh.Beacon",
+            "type": "string"
+        },
+        "info": {
+            "description": "Additional unspecified metadata about the Beacon service.",
+            "example": {
+                "additionalInfoKey1": "additionalInfoValue1",
+                "additionalInfoKey2": [
+                    "additionalInfoValue2",
+                    "additionalInfoValue3"
+                ]
+            },
+            "type": "object"
+        },
+        "name": {
+            "description": "Name of the Beacon.",
+            "type": "string"
+        },
+        "organization": {
+            "$ref": "#/definitions/BeaconOrganization"
+        },
+        "updateDateTime": {
+            "description": "The time the Beacon was updated in (ISO 8601 format).",
+            "example": "2012-07-19 or 2017-01-17T20:33:40Z",
+            "type": "string"
+        },
+        "version": {
+            "description": "Version of the Beacon.",
+            "example": "v0.1",
+            "type": "string"
+        },
+        "welcomeUrl": {
+            "description": "URL to the welcome page for this Beacon (RFC 3986 format).",
+            "example": "http://example.org/wiki/Main_Page",
+            "type": "string"
+        }
+    },
+    "required": [
+        "id",
+        "name",
+        "apiVersion",
+        "environment",
+        "organization"
+    ],
+    "type": "object"
+}

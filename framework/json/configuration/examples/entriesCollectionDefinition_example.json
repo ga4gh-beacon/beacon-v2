@@ -1,0 +1,34 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "aCollectionOf": [
+        {
+            "id": "exampleEntry",
+            "name": "Example entries"
+        }
+    ],
+    "additionallySupportedSchemas": [
+        {
+            "description": "ATLAS is an open source software tool for researchers to conduct scientific analyses on standardized observational data converted to the OMOP Common Data Model V5.",
+            "id": "ohdsi-atlas-cohort",
+            "name": "OHDSI ATLAS Cohort",
+            "referenceToSchemaDefinition": "https://raw.githubusercontent.com/OHDSIBr/ATLAS-JSON-Schema/2.7.4/single/atlas_cohort_definition.json",
+            "schemaVersion": "2.7.4"
+        }
+    ],
+    "defaultSchema": {
+        "id": "datasetDefaultSchema",
+        "name": "Default schema for datasets",
+        "referenceToSchemaDefinition": "./datasets/defaultSchema.json",
+        "schemaVersion": "v.2"
+    },
+    "description": "A Dataset is a collection of records, like rows in a database or cards in a cardholder.",
+    "endpoint": "/datasets",
+    "filteringTermsReference": "./datasets/filteringTerms.json",
+    "id": "dataset",
+    "name": "Dataset",
+    "ontologyTermForThisType": {
+        "id": "NCIT:C47824",
+        "label": "Data set"
+    },
+    "partOfSpecification": "Beacon v2.0"
+}

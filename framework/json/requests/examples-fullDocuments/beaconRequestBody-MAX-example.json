@@ -1,0 +1,35 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "meta": {
+        "apiVersion": "2.0",
+        "requestedSchemas": [
+            {
+                "entityType": "EntryTypeA",
+                "schema": "entry-typeA-schema-v0.1"
+            }
+        ]
+    },
+    "query": {
+        "filters": [
+            {
+                "id": "EFO:0001212",
+                "scope": "biosamples"
+            }
+        ],
+        "includeResultsetResponses": "HIT",
+        "pagination": {
+            "limit": 10,
+            "skip": 0
+        },
+        "requestParameters": {
+            "datasets": {
+                "datasetIds": [
+                    "DatasetXYZ",
+                    "Dataset123"
+                ]
+            }
+        },
+        "requestedGranularity": "boolean",
+        "testMode": false
+    }
+}

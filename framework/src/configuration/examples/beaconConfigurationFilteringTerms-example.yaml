@@ -1,0 +1,13 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+filteringTerms:
+  - ftType: alphanumeric
+    id: age
+    scope: individual
+  - ftType: ontologyTerm
+    id: HP:0002664
+    label: Neoplasm
+    scope: biosample
+  - ftType: alphanumeric
+    id: NCIT:C100094
+    label: HGNC gene name
+    scope: genomicVariant

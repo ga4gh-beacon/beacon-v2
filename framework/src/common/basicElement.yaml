@@ -1,0 +1,15 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Basic Element
+description: Definition of the basic element, which is root for most other objects.
+type: object
+properties:
+  id:
+    type: string
+    description: A (unique) identifier of the element.
+  name:
+    type: string
+    description: A distinctive name for the element.
+required:
+  - id
+  - name
+additionalProperties: true

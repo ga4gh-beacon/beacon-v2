@@ -1,0 +1,43 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "info": {},
+    "meta": {
+        "apiVersion": "string",
+        "beaconId": "string",
+        "returnedSchemas": [
+            {
+                "entityType": "info",
+                "schema": "beacon-info-v2.0.0"
+            }
+        ]
+    },
+    "response": {
+        "alternativeUrl": "http://example.org/wiki/Main_Page",
+        "apiVersion": "v0.3",
+        "createDateTime": "2012-07-19 or 2017-01-17T20:33:40Z",
+        "description": "string",
+        "environment": "dev",
+        "id": "org.ga4gh.beacon",
+        "info": {
+            "additionalInfoKey1": "additionalInfoValue1",
+            "additionalInfoKey2": [
+                "additionalInfoValue2",
+                "additionalInfoValue3"
+            ]
+        },
+        "name": "string",
+        "organization": {
+            "address": "string",
+            "contactUrl": "string",
+            "description": "string",
+            "id": "string",
+            "info": {},
+            "logoUrl": "string",
+            "name": "string",
+            "welcomeUrl": "string"
+        },
+        "updateDateTime": "2012-07-19 or 2017-01-17T20:33:40Z",
+        "version": "v0.1",
+        "welcomeUrl": "http://example.org/wiki/Main_Page"
+    }
+}

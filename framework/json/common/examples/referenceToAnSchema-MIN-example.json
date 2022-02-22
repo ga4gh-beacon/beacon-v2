@@ -1,0 +1,6 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "id": "RTAEex1",
+    "name": "Reference to schema one with all its properties.",
+    "referenceToSchemaDefinition": "https://example-schemas.org/an-schema-address.json"
+}

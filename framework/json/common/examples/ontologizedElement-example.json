@@ -1,0 +1,10 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Non-mandatory, longer textual description for the element.",
+    "id": "OEex1",
+    "name": "Element with a description and associated ontology term.",
+    "ontologyTermForThisType": {
+        "id": "DUO:0000004",
+        "label": "General Research Use"
+    }
+}

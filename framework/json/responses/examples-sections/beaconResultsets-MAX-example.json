@@ -1,0 +1,36 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "resultSets": [
+        {
+            "exists": false,
+            "id": "datasetA",
+            "type": "dataset"
+        },
+        {
+            "exists": true,
+            "id": "datasetB",
+            "results": [
+                {
+                    "id": "BEex3",
+                    "name": "Basic Element example three"
+                },
+                {
+                    "id": "BEex4",
+                    "name": "Basic Element example four"
+                }
+            ],
+            "resultsCount": 2,
+            "resultsHandovers": [
+                {
+                    "handoverType": {
+                        "id": "EFO:0004157",
+                        "label": "BAM format"
+                    },
+                    "note": "This handover link provides access to a summarized VCF.",
+                    "url": "https://api.mygenomeservice.org/Handover/9dcc48d7-fc88-11e8-9110-b0c592dbf8c0"
+                }
+            ],
+            "type": "dataset"
+        }
+    ]
+}

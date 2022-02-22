@@ -1,0 +1,20 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "description": "An unsuccessful operation.",
+    "properties": {
+        "error": {
+            "$ref": "../common/beaconCommonComponents.json#/definitions/BeaconError",
+            "description": "Returning an error."
+        },
+        "meta": {
+            "$ref": "./sections/beaconResponseMeta.json",
+            "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
+        }
+    },
+    "required": [
+        "meta",
+        "error"
+    ],
+    "type": "object"
+}

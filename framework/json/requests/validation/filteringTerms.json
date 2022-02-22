@@ -1,0 +1,109 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "definitions": {
+        "AlphanumericFilter": {
+            "description": "Filter results based on operators and values applied to alphanumeric fields.",
+            "properties": {
+                "id": {
+                    "description": "Field identfier to be queried.",
+                    "example": "age",
+                    "type": "string"
+                },
+                "operator": {
+                    "default": "=",
+                    "description": "Defines how the value relates to the field `id`.",
+                    "enum": [
+                        "=",
+                        "<",
+                        ">",
+                        "!",
+                        ">=",
+                        "<="
+                    ],
+                    "example": ">",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Alphanumeric search term to be used within the query which can contain wildcard characters (%) to denote any number of unknown characters.  Values can be assocatied with units if applicable.",
+                    "example": "P70Y",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "operator",
+                "value"
+            ],
+            "type": "object"
+        },
+        "CustomFilter": {
+            "description": "Filter results to include records that contain a custom term defined by this Beacon.",
+            "properties": {
+                "id": {
+                    "description": "Custom filter terms should contain a unique identifier.",
+                    "example": "demographic.ethnicity:asian",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "type": "object"
+        },
+        "OntologyFilter": {
+            "description": "Filter results to include records that contain a specific ontology term.",
+            "properties": {
+                "id": {
+                    "description": "Term ID to be queried, using CURIE syntax where possible.",
+                    "example": "HP:0002664",
+                    "type": "string"
+                },
+                "includeDescendantTerms": {
+                    "default": true,
+                    "description": "Define if the Beacon should implement the ontology hierarchy, thus query the descendant terms of `id`.",
+                    "type": "boolean"
+                },
+                "similarity": {
+                    "default": "exact",
+                    "description": "Allow the Beacon to return results which do not match the filter exactly, but do match to a certain degree of similarity. The Beacon defines the semantic similarity model implemented and how to apply the thresholds of 'high', 'medium' and 'low' similarity.",
+                    "enum": [
+                        "exact",
+                        "high",
+                        "medium",
+                        "low"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "type": "object"
+        }
+    },
+    "description": "Rules for selecting records based upon the field values those records contain. Filters are seperated by the logical AND operator.",
+    "properties": {
+        "$schema": {
+            "description": "Added here to allow the example to comply with the 'additionalProperties:true' restriction.",
+            "type": "string"
+        },
+        "filters": {
+            "items": {
+                "anyOf": [
+                    {
+                        "$ref": "#/definitions/OntologyFilter"
+                    },
+                    {
+                        "$ref": "#/definitions/AlphanumericFilter"
+                    },
+                    {
+                        "$ref": "#/definitions/CustomFilter"
+                    }
+                ]
+            },
+            "type": "array"
+        }
+    },
+    "title": "Filtering Term Element"
+}

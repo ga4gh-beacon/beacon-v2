@@ -1,0 +1,26 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "definitions": {
+        "EntryTypes": {
+            "additionalProperties": {
+                "$ref": "./entryTypeDefinition.json",
+                "type": "object"
+            },
+            "description": "This is a dictionary of the entry types implemented in this Beacon instance.",
+            "minProperties": 1
+        }
+    },
+    "description": "Schema for the Enrty Types list.",
+    "properties": {
+        "entryTypes": {
+            "$ref": "#/definitions/EntryTypes",
+            "description": "List of entry types."
+        }
+    },
+    "required": [
+        "entryTypes"
+    ],
+    "title": "List of Entry Types schema",
+    "type": "object"
+}

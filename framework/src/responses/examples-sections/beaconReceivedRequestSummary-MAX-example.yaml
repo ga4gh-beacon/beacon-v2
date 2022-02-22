@@ -1,0 +1,18 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+apiVersion: v2.0
+requestedSchemas:
+  - entityType: Individual
+    schema: ga4gh-phenopacket-individual-v0.1
+requestParameters:
+  individual:
+    parameters:
+      - id: '123'
+IncludeResultsetResponses: HIT
+filters:
+  - BTO:0000199
+  - PATO:0000383
+pagination:
+  skip: 1
+  limit: 10
+testMode: false
+requestedGranularity: count

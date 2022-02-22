@@ -1,0 +1,66 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "definitions": {
+        "FilterTerm": {
+            "properties": {
+                "ftType": {
+                    "description": "Type of filter term, according to the 'request/filteringTerms.json' schema. * 'ontologyTerm' is a term that belongs to a tree of concepts, hence suitable to operations like 'query by similarity' or 'include all descendants'. Many ontology terms are a value in itself (like 'female'), hence no further information is required to solve the query. * 'alphanumeric' is a field or an ontology term (like 'age') that requires a value to complete the intended query. Only attributes of known schemas SHOULD be used here. For attributes that are not part of the known schemas, the 'custom' type MUST be used. * 'custom' is anything that doesn't fit the previous categories and mainly for custom dictionaries that have no ontology nor a corresponding attribute in the known schemas. Usually only makes sense for close partners that are familiar with the custom dictionary.",
+                    "enum": [
+                        "ontologyTerm",
+                        "alphanumeric",
+                        "custom"
+                    ],
+                    "type": "string"
+                },
+                "id": {
+                    "description": "Term ID, Field ID or custom term string. For term ID use CURIE syntax where possible.",
+                    "examples": [
+                        "HP:0002664",
+                        "age",
+                        "demographic.ethnicity:subsaharan"
+                    ],
+                    "type": "string"
+                },
+                "label": {
+                    "description": "Label for the ontology term. For other `ftTypes` add a readable description",
+                    "examples": [
+                        "Neoplasm",
+                        "age in days",
+                        "Ethnic origin from South of the Sahara Desert."
+                    ],
+                    "type": "string"
+                },
+                "scope": {
+                    "description": "The entry type to which the filter applies",
+                    "examples": [
+                        "biosample",
+                        "individual"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ftType",
+                "id"
+            ],
+            "type": "object"
+        }
+    },
+    "description": "Schema for the Filtering Terms list related to the hosting entry type. It is kept separated to allow updating it independently.",
+    "properties": {
+        "filteringTerms": {
+            "description": "List of filtering terms that could be used to filter this concept in this instance of Beacon.",
+            "items": {
+                "$ref": "#/definitions/FilterTerm"
+            },
+            "minItems": 0,
+            "type": "array"
+        }
+    },
+    "required": [
+        "filteringTerms"
+    ],
+    "title": "Filtering Terms schema",
+    "type": "object"
+}

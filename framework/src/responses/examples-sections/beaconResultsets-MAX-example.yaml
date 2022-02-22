@@ -1,0 +1,20 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+resultSets:
+  - id: datasetA
+    type: dataset
+    exists: false
+  - id: datasetB
+    type: dataset
+    exists: true
+    resultsCount: 2
+    resultsHandovers:
+      - handoverType:
+          id: EFO:0004157
+          label: BAM format
+        url: https://api.mygenomeservice.org/Handover/9dcc48d7-fc88-11e8-9110-b0c592dbf8c0
+        note: This handover link provides access to a summarized VCF.
+    results:
+      - id: BEex3
+        name: Basic Element example three
+      - id: BEex4
+        name: Basic Element example four

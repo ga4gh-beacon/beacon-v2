@@ -1,0 +1,61 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Beacon Configuration
+description: Files complaint with this schema are the configuration ones. The details
+  returned in `service-info` are mirroring the ones in this configuration file.
+type: object
+properties:
+  $schema:
+    $ref: ../common/beaconCommonComponents.json#/definitions/$schema
+  maturityAttributes:
+    description: Declares the level of maturity of the Beacon instance.
+    type: object
+    properties:
+      productionStatus:
+        description: "`DEV`= 'Service potentially unstable, not real data', which\
+          \ availability and data should not be used in production setups. `TEST`=\
+          \ 'Service stable, not real data'. 'PROD'= 'Service stable, actual data'."
+        type: string
+        enum:
+          - DEV
+          - TEST
+          - PROD
+  securityAttributes:
+    description: Configuration of the security aspects of the Beacon. By default,
+      a Beacon that does not declare the configuration settings would return `boolean`
+      (true/false) responses, and only if the user is authenticated and explicitly
+      authorized to access the Beacon resources. Although this is the safest set of
+      settings, it is not recommended unless the Beacon shares very sensitive information.
+      Non sensitive Beacons should preferably opt for a `record` and `PUBLIC` combination.
+    type: object
+    properties:
+      defaultGranularity:
+        description: Default granularity. Some responses could return higher detail,
+          but this would be the granularity by default.
+        $ref: ../common/beaconCommonComponents.json#/definitions/Granularity
+      securityLevels:
+        description: All access levels supported by the Beacon. Any combination is
+          valid, as every option would apply to different parts of the Beacon.
+        type: array
+        items:
+          enum:
+            - PUBLIC
+            - REGISTERED
+            - CONTROLLED
+          default: CONTROLLED
+          $comment: 'TO DO: Check if values can be made unique.'
+  entryTypes:
+    $ref: '#/definitions/EntryTypes'
+definitions:
+  EntryTypes:
+    description: This is a dictionary of the entry types implemented in this Beacon
+      instance.
+    type: object
+    additionalProperties:
+      type: object
+      $ref: ./entryTypeDefinition.json
+    minProperties: 1
+required:
+  - $schema
+  - maturityAttributes
+  - entryTypes
+additionalProperties: true

@@ -1,0 +1,28 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "allOf": [
+        {
+            "$ref": "./elementWithDescription.json"
+        },
+        {
+            "properties": {
+                "referenceToSchemaDefinition": {
+                    "$comment": "this should map to a resolvable reference",
+                    "type": "string"
+                },
+                "schemaVersion": {
+                    "description": "this version reference is only used for readability in the client. The 'referenceToSchemaDefinition' property is the only source for determining the actual schema used.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "referenceToSchemaDefinition"
+            ],
+            "type": "object"
+        }
+    ],
+    "description": "Definition of an annotated URL address or a file reference.",
+    "title": "An annotated URL address or a file reference",
+    "type": "object"
+}

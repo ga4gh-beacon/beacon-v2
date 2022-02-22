@@ -1,0 +1,20 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "description": "Information about the Beacon. Aimed at Beacon clients like web pages or Beacon networks.",
+    "properties": {
+        "meta": {
+            "$ref": "./sections/beaconInformationalResponseMeta.json",
+            "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
+        },
+        "response": {
+            "$ref": "./sections/beaconInfoResults.json",
+            "description": "Metadata describing a Beacon instance."
+        }
+    },
+    "required": [
+        "meta",
+        "response"
+    ],
+    "type": "object"
+}

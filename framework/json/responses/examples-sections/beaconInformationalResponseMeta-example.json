@@ -1,0 +1,6 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "apiVersion": "v2.0",
+    "beaconId": "org.examplebeacons.beacon-v2",
+    "returnedSchemas": []
+}

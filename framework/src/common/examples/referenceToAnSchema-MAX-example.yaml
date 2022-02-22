@@ -1,0 +1,6 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+id: RTAEex1
+name: Reference to schema one with all its properties.
+description: A longer textual description for the element.
+referenceToSchemaDefinition: https://example-schemas.org/an-schema-address.json
+schemaVersion: v1.0

@@ -1,0 +1,33 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+meta:
+  beaconId: string
+  apiVersion: string
+  returnedSchemas:
+    - entityType: info
+      schema: beacon-info-v2.0.0
+response:
+  id: org.ga4gh.beacon
+  name: string
+  apiVersion: v0.3
+  environment: dev
+  organization:
+    id: string
+    name: string
+    description: string
+    address: string
+    welcomeUrl: string
+    contactUrl: string
+    logoUrl: string
+    info: {}
+  description: string
+  version: v0.1
+  welcomeUrl: http://example.org/wiki/Main_Page
+  alternativeUrl: http://example.org/wiki/Main_Page
+  createDateTime: 2012-07-19 or 2017-01-17T20:33:40Z
+  updateDateTime: 2012-07-19 or 2017-01-17T20:33:40Z
+  info:
+    additionalInfoKey1: additionalInfoValue1
+    additionalInfoKey2:
+      - additionalInfoValue2
+      - additionalInfoValue3
+info: {}

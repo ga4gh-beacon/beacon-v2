@@ -1,0 +1,29 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "meta": {
+        "apiVersion": "v2.0",
+        "beaconId": "org.example.beacon.v2",
+        "receivedRequestSummary": {
+            "apiVersion": "2.0",
+            "pagination": {
+                "limit": 10,
+                "skip": 0
+            },
+            "requestedSchemas": [
+                {
+                    "entityType": "EntryTypeB",
+                    "schema": "entry-typeB-schema-v1.0"
+                }
+            ]
+        },
+        "returnedSchemas": [
+            {
+                "entityType": "EntryTypeB",
+                "schema": "entry-typeB-schema-v1.0"
+            }
+        ]
+    },
+    "responseSummary": {
+        "exists": true
+    }
+}

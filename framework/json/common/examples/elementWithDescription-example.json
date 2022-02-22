@@ -1,0 +1,6 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "A longer textual description for the element.",
+    "id": "EWDex1",
+    "name": "Element with description one"
+}

@@ -1,0 +1,68 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "definitions": {
+        "ResultsetInstance": {
+            "additionalProperties": true,
+            "properties": {
+                "exists": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "id of the resultset",
+                    "example": "datasetA",
+                    "type": "string"
+                },
+                "info": {
+                    "description": "Additional details that could be of interest about the Resultset. Provided to clearly enclose any attribute that is not part of the Beacon specification.",
+                    "type": "object"
+                },
+                "results": {
+                    "items": {
+                        "type": "object"
+                    },
+                    "minItems": 0,
+                    "type": "array"
+                },
+                "resultsCount": {
+                    "description": "Number of results in this Resulset.",
+                    "type": "integer"
+                },
+                "resultsHandovers": {
+                    "$ref": "../../common/beaconCommonComponents.json#/definitions/ListOfHandovers",
+                    "description": "List of handovers that apply to this resultset, not to the whole Beacon or to a result in particular."
+                },
+                "setType": {
+                    "default": "dataset",
+                    "description": "Entry type of resultSet. It SHOULD MATCH an entry type declared as collection in the Beacon configuration.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "setType",
+                "exists",
+                "resultsCount",
+                "results"
+            ]
+        }
+    },
+    "description": "Sets of results to be returned as query response.",
+    "properties": {
+        "$schema": {
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/$schema"
+        },
+        "resultSets": {
+            "items": {
+                "$ref": "#/definitions/ResultsetInstance"
+            },
+            "minItems": 0,
+            "type": "array"
+        }
+    },
+    "required": [
+        "resultSets"
+    ],
+    "title": "Beacon ResultSet",
+    "type": "object"
+}

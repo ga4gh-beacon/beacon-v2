@@ -7,7 +7,7 @@ from os import scandir as scandir
 from os import remove as deleteFile
 import argparse
 import pathlib
-from shutil import copytree
+from shutil import copytree, ignore_patterns
 from collections import OrderedDict
 
 """podmd
@@ -62,7 +62,7 @@ def main():
                 print()
                 print("¡¡¡ Please create the out dir first at {} !!!".format(op.as_posix()))
                 exit()               
-            copytree(inpath.as_posix(), op.as_posix(), ignore=ignore_patterns("*.md"))
+            copytree(inpath.as_posix(), op.as_posix(), ignore=ignore_patterns("*.md", "LICENSE", ".git"), dirs_exist_ok=True)
             inpath = op
             clean = True
         convert_dir(inpath, supported, clean, e_t, args)
@@ -133,6 +133,7 @@ def convert_file(in_file, clean, e_t):
 
         elif f_e == ".yaml":
             s = yaml.load( in_f )
+            in_f.close()
             par_replace(s, replace)
             if not e_t:
                 e_t = ".json"
@@ -143,8 +144,9 @@ def convert_file(in_file, clean, e_t):
                 f.close()
                 print("Dumped to {}".format(o_f))
                 if clean is True:
-                    print("deleting {}".format(in_file))
-                    deleteFile(in_file)
+                    if ".yaml" in in_file:
+                        print("deleting {}".format(in_file))
+                        deleteFile(in_file)
             elif ".yaml" in e_t:
                 with open(o_f, 'w') as f:
                     yaml.dump(s, f)

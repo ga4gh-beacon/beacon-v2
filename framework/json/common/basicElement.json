@@ -1,0 +1,21 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "description": "Definition of the basic element, which is root for most other objects.",
+    "properties": {
+        "id": {
+            "description": "A (unique) identifier of the element.",
+            "type": "string"
+        },
+        "name": {
+            "description": "A distinctive name for the element.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "id",
+        "name"
+    ],
+    "title": "Basic Element",
+    "type": "object"
+}

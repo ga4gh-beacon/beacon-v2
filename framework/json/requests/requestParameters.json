@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": {
+        "type": "object"
+    },
+    "description": "The schema below is suited for a dictionary 'key':'object', which is the case of the parameter definitions.",
+    "properties": {
+        "$schema": {
+            "description": "Added here to allow proper validation of the documents.",
+            "type": "string"
+        }
+    },
+    "type": "object"
+}
