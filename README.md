@@ -7,4 +7,24 @@ At this stage, the repository content has been generated automatically:
 2. perform some text replacements over the source tree (see [./tools/replacements.txt](./tools/replacements.txt) - more may be needed?
 3. re-write the modified YAML source files into the output `json` and `yaml` directories
 
+## Directory structure
 
+```
+|-docs              TBD; could contain the source for the Readthedocs documentation
+|
+|- framework
+|   |
+|   |- src          schema source in YAML format; for editing
+|   |
+|   |- json         JSON versions of the schema files generated from src, intended as the authorative/referencable version
+|   |
+|   |- yaml         YAML versions of the schema files generated from src, intended as the authorative/referencable version
+|
+|- models
+|   |
+|   |- src          schema source in YAML format; for editing
+|   |
+|   |- json         JSON versions of the schema files generated from src, intended as the authorative/referencable version
+|   |
+|   |- yaml         YAML versions of the schema files generated from src, intended as the authorative/referencable version
+```
