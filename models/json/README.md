@@ -1,4 +1,4 @@
-This directory contains the schema source files for the Beacon models.
+This directory contains the schema files for the Beacon models.
 
 The schemas are edited in [`../src`](../src) and generated into [`../json`](../json) and [`.yaml`](../representations).
 

@@ -7,7 +7,7 @@ from os import scandir as scandir
 from os import remove as deleteFile
 import argparse
 import pathlib
-from distutils.dir_util import copy_tree
+from shutil import copytree
 from collections import OrderedDict
 
 """podmd
@@ -62,7 +62,7 @@ def main():
                 print()
                 print("¡¡¡ Please create the out dir first at {} !!!".format(op.as_posix()))
                 exit()               
-            copy_tree(inpath.as_posix(), op.as_posix())
+            copytree(inpath.as_posix(), op.as_posix(), ignore=ignore_patterns("*.md"))
             inpath = op
             clean = True
         convert_dir(inpath, supported, clean, e_t, args)
