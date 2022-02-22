@@ -1,0 +1,46 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "description": "Beacon response that includes details about the collections in this Beacon.",
+    "properties": {
+        "beaconHandovers": {
+            "$ref": "../common/beaconCommonComponents.json#/definitions/ListOfHandovers",
+            "description": "List of handovers that apply to the whole response, not to any resultset or result in particular."
+        },
+        "info": {
+            "$ref": "../common/beaconCommonComponents.json#/definitions/Info",
+            "description": "Additional details that could be of interest. Provided to clearly enclose any attribute that is not part of the Beacon specification."
+        },
+        "meta": {
+            "$ref": "./sections/beaconResponseMeta.json",
+            "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
+        },
+        "response": {
+            "additionalProperties": true,
+            "description": "Returning the Beacon Collections list, filtered or unfiltered.",
+            "properties": {
+                "collections": {
+                    "items": {
+                        "type": "object"
+                    },
+                    "minItems": 0,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "collections"
+            ],
+            "type": "object"
+        },
+        "responseSummary": {
+            "$ref": "./sections/beaconSummaryResponseSection.json",
+            "description": "Response summary, including Boolean and optionally results count."
+        }
+    },
+    "required": [
+        "meta",
+        "responseSummary",
+        "response"
+    ],
+    "type": "object"
+}

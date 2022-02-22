@@ -1,0 +1,65 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "apiVersion": "v2.0",
+    "beaconError": {
+        "errorCode": 404,
+        "errorMessage": "the provided parameters are incomplete. 'xyz' is missing."
+    },
+    "beaconId": "org.example.beacon.v2",
+    "exists": true,
+    "filters": [
+        "BTO:0000199",
+        "PATO:0000383"
+    ],
+    "handover": {
+        "handoverType": {
+            "id": "EFO:0004157",
+            "label": "BAM format"
+        },
+        "note": "This handover link provides access to a summarized VCF.",
+        "url": "https://api.mygenomeservice.org/Handover/9dcc48d7-fc88-11e8-9110-b0c592dbf8c0"
+    },
+    "handoverType": {
+        "id": "EFO:0004157",
+        "label": "BAM format"
+    },
+    "includeResultsetResponses": "HIT",
+    "info": {},
+    "listOfHandovers": [
+        {
+            "handoverType": {
+                "id": "EFO:0004157",
+                "label": "BAM format"
+            },
+            "note": "This handover link provides access to a summarized VCF.",
+            "url": "https://api.mygenomeservice.org/Handover/9dcc48d7-fc88-11e8-9110-b0c592dbf8c0"
+        },
+        {
+            "handoverType": {
+                "id": "EFO:0004157",
+                "label": "BAM format"
+            },
+            "note": "This handover link provides access to a summarized VCF.",
+            "url": "https://api.mygenomeservice.org/Handover/9dcc48d7-fc88-11e8-9110-b0c592dbf8c0"
+        }
+    ],
+    "listOfSchemas": [
+        {
+            "entityType": "EntryTypeA",
+            "schema": "entry-typeA-schema-v0.1"
+        },
+        {
+            "entityType": "EntryTypeB",
+            "schema": "entry-typeB-schema-v1.0"
+        }
+    ],
+    "numTotalResults": 123,
+    "pagination": {
+        "limit": 10,
+        "skip": 0
+    },
+    "schemasPerEntity": {
+        "entityType": "Individual",
+        "schema": "ga4gh-phenopacket-individual-v0.1"
+    }
+}

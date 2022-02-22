@@ -1,0 +1,46 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Schema for the Beacon request. It is named `RequestBody` to keep the same nomenclature used by OpenAPI v3, but it actually contains the definition of the whole HTTP POST request payload.",
+    "properties": {
+        "$schema": {
+            "$ref": "../common/beaconCommonComponents.json#/definitions/$schema"
+        },
+        "meta": {
+            "$ref": "./beaconRequestMeta.json",
+            "description": "Information that is relevant to build the response."
+        },
+        "query": {
+            "description": "Parameters to limit the list of returned results.",
+            "properties": {
+                "filters": {
+                    "$ref": "./filteringTerms.json",
+                    "description": "Ontology based filters. Using CURIE syntax is encouraged."
+                },
+                "includeResultsetResponses": {
+                    "$ref": "../common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses"
+                },
+                "pagination": {
+                    "$ref": "../common/beaconCommonComponents.json#/definitions/Pagination",
+                    "description": "Pagination to apply on the results."
+                },
+                "requestParameters": {
+                    "$ref": "./requestParameters.json",
+                    "description": "TBD"
+                },
+                "requestedGranularity": {
+                    "$ref": "../common/beaconCommonComponents.json#/definitions/Granularity",
+                    "description": "Requested granularity. Targeted Beacon could respond or not with the requested granularity. E.g. record level granularity could be requested, but the Beacon could respond only with boolean or count results."
+                },
+                "testMode": {
+                    "$ref": "../common/beaconCommonComponents.json#/definitions/TestMode",
+                    "description": "Used for indicating that a request or response is done in a test context. Purposed for compliance testing."
+                }
+            },
+            "type": "object"
+        }
+    },
+    "required": [
+        "meta"
+    ],
+    "type": "object"
+}

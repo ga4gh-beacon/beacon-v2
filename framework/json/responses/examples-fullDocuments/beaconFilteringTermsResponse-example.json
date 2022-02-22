@@ -1,0 +1,42 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "info": {},
+    "meta": {
+        "apiVersion": "string",
+        "beaconId": "string",
+        "returnedSchemas": [
+            {
+                "map": "beacon-map-v2.0.0"
+            }
+        ]
+    },
+    "response": {
+        "filteringTerms": [
+            {
+                "id": "PATO:0000011",
+                "label": "age",
+                "type": "numeric"
+            },
+            {
+                "id": "HP:0008773",
+                "label": "Aplasia/Hypoplasia of the middle ear",
+                "type": "Human Phenotype Ontology"
+            },
+            {
+                "id": "ownsIPhone",
+                "label": "Individuals associated with this term owns an IPhone",
+                "type": "custom"
+            }
+        ],
+        "resources": [
+            {
+                "id": "hp",
+                "iriPrefix": "http://purl.obolibrary.org/obo/HP_",
+                "name": "Human Phenotype Ontology",
+                "namespacePrefix": "HP",
+                "url": "http://purl.obolibrary.org/obo/hp.owl",
+                "version": "27-03-2020"
+            }
+        ]
+    }
+}

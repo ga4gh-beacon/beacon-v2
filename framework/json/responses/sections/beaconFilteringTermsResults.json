@@ -1,0 +1,87 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "definitions": {
+        "FilteringTerm": {
+            "description": "Entities can be filtered using this term.",
+            "properties": {
+                "id": {
+                    "description": "The field id in the case of numeric or alphanumeric fields, or the term id in the case of ontology or custom terms. CURIE syntax in the case of an ontology term.",
+                    "example": "HP:0008773",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "This would be the \"preferred Label\" in the case of an ontology term.",
+                    "example": "Aplasia/Hypoplasia of the middle ear",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Either \"custom\", \"alphanumeric\" or ontology/terminology full name.",
+                    "example": "Human Phenotype Ontology",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type",
+                "id"
+            ],
+            "type": "object"
+        },
+        "Resource": {
+            "description": "Description of an ontology resource defined externally to this beacon implementation, such as MeSH or EFO, based on the phenopackets resource object (https://phenopacket-schema.readthedocs.io/en/latest/resource.html)",
+            "properties": {
+                "id": {
+                    "description": "OBO ID representing the resource",
+                    "example": "hp",
+                    "type": "string"
+                },
+                "iriPrefix": {
+                    "description": "The full Internationalized Resource Identifier (IRI) prefix",
+                    "example": "http://purl.obolibrary.org/obo/HP_",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of the ontology referred to by the id element",
+                    "example": "Human Phenotype Ontology",
+                    "type": "string"
+                },
+                "nameSpacePrefix": {
+                    "description": "The prefix used in the CURIE of an OntologyClass",
+                    "example": "HP",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "Uniform Resource Locator of the resource",
+                    "example": "http://purl.obolibrary.org/obo/hp.owl",
+                    "type": "string"
+                },
+                "version": {
+                    "description": "The version of the resource or ontology used to make the annotation",
+                    "example": "17-06-2019",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "type": "object"
+        }
+    },
+    "description": "Filtering terms and ontology resources utilised in this Beacon.",
+    "properties": {
+        "filteringTerms": {
+            "items": {
+                "$ref": "#/definitions/FilteringTerm"
+            },
+            "type": "array"
+        },
+        "resources": {
+            "description": "Ontology resources defined externally to this beacon implementation",
+            "items": {
+                "$ref": "#/definitions/Resource"
+            },
+            "type": "array"
+        }
+    },
+    "type": "object"
+}

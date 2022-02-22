@@ -1,0 +1,21 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "filters": [
+        {
+            "id": "HP:0002664",
+            "includeDescendantTerms": true,
+            "scope": "biosamples",
+            "similarity": "exact"
+        },
+        {
+            "id": "age",
+            "operator": ">=",
+            "scope": "individuals",
+            "value": "P70Y"
+        },
+        {
+            "id": "demographic.ethnicity:asian",
+            "scope": "cohorts"
+        }
+    ]
+}
