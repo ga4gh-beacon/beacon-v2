@@ -10,21 +10,21 @@ At this stage, the repository content has been generated automatically:
 ## Directory structure
 
 ```
-|-docs              TBD; could contain the source for the Readthedocs documentation
+|-docs          TBD; could contain the source for the Readthedocs documentation
 |
 |- framework
 |   |
-|   |- src          schema source in YAML format; for editing
+|   |- src      schema source in YAML format; for editing
 |   |
-|   |- json         JSON versions of the schema files generated from src, intended as the authorative/referencable version
+|   |- json     JSON versions of the schema files generated from src, authorative/referenceable version
 |   |
-|   |- yaml         YAML versions of the schema files generated from src, intended as the authorative/referencable version
+|   |- yaml     YAML versions of the schema files generated from src, for reference/testing
 |
 |- models
 |   |
-|   |- src          schema source in YAML format; for editing
+|   |- src      schema source in YAML format; for editing
 |   |
-|   |- json         JSON versions of the schema files generated from src, intended as the authorative/referencable version
+|   |- json     JSON versions of the schema files generated from src, authorative/referenceable version
 |   |
-|   |- yaml         YAML versions of the schema files generated from src, intended as the authorative/referencable version
+|   |- yaml     YAML versions of the schema files generated from src, for reference/testing
 ```
