@@ -1,0 +1,7 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+id: OEex1
+name: Element with a description and associated ontology term.
+description: Non-mandatory, longer textual description for the element.
+ontologyTermForThisType:
+  id: DUO:0000004
+  label: General Research Use

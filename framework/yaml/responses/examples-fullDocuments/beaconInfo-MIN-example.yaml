@@ -1,0 +1,15 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+meta:
+  beaconId: string
+  apiVersion: string
+  returnedSchemas:
+    - entityType: info
+      schema: beacon-info-v2.0.0
+response:
+  id: org.ga4gh.beacon
+  name: string
+  apiVersion: v0.3
+  environment: dev
+  organization:
+    id: string
+    name: string

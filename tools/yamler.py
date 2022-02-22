@@ -8,6 +8,7 @@ from os import remove as deleteFile
 import argparse
 import pathlib
 from distutils.dir_util import copy_tree
+from collections import OrderedDict
 
 """podmd
 The script converts yaml <-> json, either a single file or all files of a given
@@ -121,9 +122,12 @@ def convert_file(in_file, clean, e_t):
                 with open(o_f, 'w') as f:
                     yaml.dump(s, f)
                     print("Dumped to {}".format(o_f))
+                    if clean is True:
+                        print("deleting {}".format(in_file))
+                        deleteFile(in_file)
             elif ".json" in e_t:
                 with open(o_f, 'w') as f:
-                    f.write(json.dumps(dict(s), indent=4, sort_keys=True, default=str))
+                    f.write(json.dumps(OrderedDict(s), indent=4, sort_keys=True, default=str))
                 f.close()
                 print("Dumped to {}".format(o_f))
 
@@ -135,7 +139,7 @@ def convert_file(in_file, clean, e_t):
             o_f = re.sub(r"\.yaml", e_t, in_file)
             if ".json" in e_t:                   
                 with open(o_f, 'w') as f:
-                    f.write(json.dumps(dict(s), indent=4, sort_keys=True, default=str))
+                    f.write(json.dumps(OrderedDict(s), indent=4, sort_keys=True, default=str))
                 f.close()
                 print("Dumped to {}".format(o_f))
                 if clean is True:
@@ -162,8 +166,6 @@ def par_replace(schema, replace):
                     schema.update({r: rv["replaceValue"]})
 
     return schema
-
-
 
 ################################################################################
 ################################################################################

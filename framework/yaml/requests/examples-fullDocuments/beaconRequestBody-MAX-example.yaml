@@ -1,0 +1,21 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+meta:
+  apiVersion: '2.0'
+  requestedSchemas:
+    - entityType: EntryTypeA
+      schema: entry-typeA-schema-v0.1
+query:
+  requestParameters:
+    datasets:
+      datasetIds:
+        - DatasetXYZ
+        - Dataset123
+  filters:
+    - id: EFO:0001212
+      scope: biosamples
+  includeResultsetResponses: HIT
+  pagination:
+    skip: 0
+    limit: 10
+  testMode: false
+  requestedGranularity: boolean

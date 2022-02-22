@@ -1,0 +1,25 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Ontology Term
+description: Definition of an ontology term.
+type: object
+properties:
+  id:
+    $ref: '#/definitions/CURIE'
+  label:
+    type: string
+    description: The text that describes the term. By default it could be the preferred
+      text of the term, but is it acceptable to customize it for a clearer description
+      and understanding of the term in an specific context.
+definitions:
+  CURIE:
+    pattern: ^\w[^:]+:.+$
+    type: string
+    description: A CURIE identifier for an ontology term.
+    examples:
+      - ga4gh:GA.01234abcde
+      - DUO:0000004
+      - orcid:0000-0003-3463-0775
+      - PMID:15254584
+required:
+  - id
+additionalProperties: true
