@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Definition of an evidence class.",
+    "description": "Definition of an evidence class. Provenance: GA4GH Phenopackets v2 `Evidence`",
     "properties": {
         "evidenceCode": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",

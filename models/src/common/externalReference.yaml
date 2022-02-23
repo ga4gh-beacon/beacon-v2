@@ -1,6 +1,7 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: ExternalReference
-description: Definition of an external reference class.
+description: 'Definition of an external reference class. Provenance: GA4GH Phenopackets
+  v2 `ExternalReference`'
 type: object
 properties:
   id:
@@ -12,7 +13,8 @@ properties:
     type: string
     example: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8155688/
   notes:
-    description: An optional text descriptor.
+    description: An optional text descriptor. Renamed compared to GA4GH Phenopackets
+      v2 `ExternalReference.description`
     type: string
     example: Signatures of Discriminative Copy Number Aberrations in 31 Cancer Subtypes
 required: []

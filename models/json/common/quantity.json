@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Definition of a quantity class",
+    "description": "Definition of a quantity class. Provenance: GA4GH Phenopackets v2 `Quantity`",
     "properties": {
         "referenceRange": {
             "$ref": "./referenceRange.json",

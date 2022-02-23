@@ -96,6 +96,7 @@ def yaml2json(f_n, in_path, out_path, config):
     o_n = re.sub(r"\.yaml", ".json", f_n)
     out_file = path.join( out_path, o_n)
 
+    print("converting {}\n        => {}".format(in_file, out_file))
     with open(in_file, 'r') as in_f:
         i_d = in_f.read()
         in_f.close()
@@ -114,6 +115,7 @@ def yaml2yaml(f_n, in_path, out_path, config):
     o_n = f_n
     out_file = path.join( out_path, f_n)
 
+    print("converting {}\n        => {}".format(in_file, out_file))
     with open(in_file, 'r') as in_f:
         i_d = in_f.read()
         in_f.close()
@@ -132,6 +134,7 @@ def json2yaml(f_n, in_path, out_path, config):
     o_n = re.sub(r"\.json", ".yaml", f_n)
     out_file = path.join( out_path, o_n)
 
+    print("converting {}\n        => {}".format(in_file, out_file))
     with open(in_file, 'r') as in_f:
         i_d = in_f.read()
         in_f.close()
@@ -150,6 +153,7 @@ def json2json(f_n, in_path, out_path, config):
     o_n = f_n
     out_file = path.join( out_path, o_n)
 
+    print("converting {}\n        => {}".format(in_file, out_file))
     with open(in_file, 'r') as in_f:
         i_d = in_f.read()
         in_f.close()

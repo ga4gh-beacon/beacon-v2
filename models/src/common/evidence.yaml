@@ -1,6 +1,6 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Evidence
-description: Definition of an evidence class.
+description: 'Definition of an evidence class. Provenance: GA4GH Phenopackets v2 `Evidence`'
 type: object
 properties:
   evidenceCode:

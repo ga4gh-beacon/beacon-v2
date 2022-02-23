@@ -1,6 +1,6 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Age
-description: Age value definition.
+description: 'Age value definition. Provenance: GA4GH Phenopackets v2 `Age`'
 type: object
 properties:
   iso8601duration:

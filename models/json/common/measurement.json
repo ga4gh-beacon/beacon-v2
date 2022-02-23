@@ -1,18 +1,18 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Definition of a measurement class.",
+    "description": "Definition of a measurement class. Provenance: GA4GH Phenopackets v2 `Measurement`",
     "properties": {
         "assayCode": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
-            "description": "Class that describes the assay used to produce the measurement",
+            "description": "Class that describes the assay used to produce the measurement. Renamed compared to GA4GH Phenopackets v2 `Measurement.assay`",
             "example": {
                 "id": "LOINC:26515-7",
                 "label": "Platelets [#/volume] in Blood"
             }
         },
         "date": {
-            "description": "Date of measurement",
+            "description": "Date of measurement. Addition compared to Phenopackets model.",
             "format": "date",
             "type": "string"
         },
@@ -28,13 +28,13 @@
             ]
         },
         "notes": {
-            "description": "Unstructured text to describe this measurement",
+            "description": "Unstructured text to describe this measurement. Addition compared to Phenopackets model.",
             "example": "Some free text",
             "type": "string"
         },
         "observationMoment": {
             "$ref": "./timeElement.json",
-            "description": "Moment in time at which measurement was performed. RECOMMENDED.",
+            "description": "Moment in time at which measurement was performed. RECOMMENDED. Renamed compared to GA4GH Phenopackets v2 `Measurement.time_observed`",
             "example": {
                 "age": {
                     "iso8601duration": "P53Y8M"

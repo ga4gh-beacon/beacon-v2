@@ -17,7 +17,7 @@
                 },
                 "quantityType": {
                     "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
-                    "description": "OntologyClass to describe the type of the measurement",
+                    "description": "OntologyClass to describe the type of the measurement. Renamed compared to GA4GH Phenopackets v2 `ComplexValue.TypedQuantity.type`",
                     "example": {
                         "id": "NCIT:C25298",
                         "label": "Systolic Blood Pressure"
@@ -30,7 +30,7 @@
             ]
         }
     },
-    "description": "Definition of a complex value class.",
+    "description": "Definition of a complex value class. Provenance: GA4GH Phenopackets v2 `TypedQuantity`",
     "properties": {
         "typedQuantities": {
             "description": "List of quantities required to fully describe the complex value",

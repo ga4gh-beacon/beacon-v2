@@ -1,6 +1,5 @@
 BASEDIR=$(dirname $0)
 UNITYPATH=$BASEDIR/..
-UNITYPATH=$BASEDIR/../../beacon-v2-unity-test
 
 # initial conversion from separate schemas
 BEACONMODELPATH=$BASEDIR/../../beacon-v2-Models/BEACON-V2-Model

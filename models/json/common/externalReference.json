@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Definition of an external reference class.",
+    "description": "Definition of an external reference class. Provenance: GA4GH Phenopackets v2 `ExternalReference`",
     "properties": {
         "id": {
             "description": "An application specific identifier. RECOMMENDED.",
@@ -9,7 +9,7 @@
             "type": "string"
         },
         "notes": {
-            "description": "An optional text descriptor.",
+            "description": "An optional text descriptor. Renamed compared to GA4GH Phenopackets v2 `ExternalReference.description`",
             "example": "Signatures of Discriminative Copy Number Aberrations in 31 Cancer Subtypes",
             "type": "string"
         },
