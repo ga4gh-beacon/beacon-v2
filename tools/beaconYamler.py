@@ -72,14 +72,11 @@ def convert_dir(in_path, out_path, from_type, to_type, config):
 
     fs = [ f.name for f in scandir(in_path) if f.is_file() ]
     fs = [ f for f in fs if f.endswith(from_type) ]
+
+    conversion_method = "_{}2{}".format(from_type, to_type)
+
     for f_n in fs:
-        if "yaml" in from_type:
-            if "yaml" in to_type:
-                yaml2yaml(f_n, in_path, out_path, config)
-            else:
-                yaml2json(f_n, in_path, out_path, config)
-        elif "json" in from_type:
-            json2yaml(f_n, in_path, out_path, config)
+        eval(conversion_method)(f_n, in_path, out_path, config)
 
     d_s = [ d.name for d in scandir(in_path) if d.is_dir() ]
     for d in d_s:
@@ -90,82 +87,83 @@ def convert_dir(in_path, out_path, from_type, to_type, config):
 
 ################################################################################
 
-def yaml2json(f_n, in_path, out_path, config):
+def _yaml2json(f_n, in_path, out_path, config):
 
     in_file = path.join( in_path, f_n)
     o_n = re.sub(r"\.yaml", ".json", f_n)
     out_file = path.join( out_path, o_n)
 
     print("converting {}\n        => {}".format(in_file, out_file))
-    with open(in_file, 'r') as in_f:
-        i_d = in_f.read()
-        in_f.close()
-        i_d = text_replace(i_d, config)
-        s = yaml.load( i_d )
-        par_replace(s, config)
-        with open(out_file, 'w') as out_f:
-            out_f.write(json.dumps(OrderedDict(s), indent=4, sort_keys=True, default=str))
-            out_f.close()
+    i_d = _file_read_and_clean(in_file, config)
+    s = yaml.load( i_d )
+    _par_replace(s, config)
+    with open(out_file, 'w') as out_f:
+        out_f.write(json.dumps(OrderedDict(s), indent=4, sort_keys=True, default=str))
+        out_f.close()
 
 ################################################################################
 
-def yaml2yaml(f_n, in_path, out_path, config):
+def _yaml2yaml(f_n, in_path, out_path, config):
 
     in_file = path.join( in_path, f_n)
     o_n = f_n
     out_file = path.join( out_path, f_n)
 
     print("converting {}\n        => {}".format(in_file, out_file))
-    with open(in_file, 'r') as in_f:
-        i_d = in_f.read()
-        in_f.close()
-        i_d = text_replace(i_d, config)
-        s = yaml.load( i_d )
-        par_replace(s, config)
-        with open(out_file, 'w') as out_f:
-            yaml.dump(s, out_f)
-            out_f.close()
+    i_d = _file_read_and_clean(in_file, config)
+    s = yaml.load( i_d )
+    _par_replace(s, config)
+    with open(out_file, 'w') as out_f:
+        yaml.dump(s, out_f)
+        out_f.close()
 
 ################################################################################
 
-def json2yaml(f_n, in_path, out_path, config):
+def _json2yaml(f_n, in_path, out_path, config):
 
     in_file = path.join( in_path, f_n)
     o_n = re.sub(r"\.json", ".yaml", f_n)
     out_file = path.join( out_path, o_n)
 
     print("converting {}\n        => {}".format(in_file, out_file))
-    with open(in_file, 'r') as in_f:
-        i_d = in_f.read()
-        in_f.close()
-        i_d = text_replace(i_d, config)
-        s = json.loads(i_d)
-        par_replace(s, config)
-        with open(out_file, 'w') as out_f:
-            yaml.dump(s, out_f)
-            out_f.close()
+    i_d = _file_read_and_clean(in_file, config)
+    s = json.loads(i_d)
+    _par_replace(s, config)
+    with open(out_file, 'w') as out_f:
+        yaml.dump(s, out_f)
+        out_f.close()
 
 ################################################################################
 
-def json2json(f_n, in_path, out_path, config):
+def _json2json(f_n, in_path, out_path, config):
 
     in_file = path.join( in_path, f_n)
     o_n = f_n
     out_file = path.join( out_path, o_n)
 
     print("converting {}\n        => {}".format(in_file, out_file))
-    with open(in_file, 'r') as in_f:
-        i_d = in_f.read()
-        in_f.close()
-        s = json.loads(i_d)
-        par_replace(s, config)
-        with open(out_file, 'w') as out_f:
-            yaml.dump(s, out_f)
-            out_f.close()
+    i_d = _file_read_and_clean(in_file, config)
+    s = json.loads(i_d)
+    _par_replace(s, config)
+    with open(out_file, 'w') as out_f:
+        yaml.dump(s, out_f)
+        out_f.close()
 
 ################################################################################
 
-def text_replace(text, config):
+def _file_read_and_clean(in_file, config):
+
+    with open(in_file, 'r') as in_f:
+        f_t = in_f.read()
+        in_f.close()
+    
+    f_t = _text_replace(f_t, config)
+
+    return f_t
+
+################################################################################
+
+def _text_replace(text, config):
 
     for r in config["replace_text"]:
         text = text.replace(r["from"], r["to"])
@@ -174,7 +172,7 @@ def text_replace(text, config):
 
 ################################################################################
 
-def par_replace(schema, config):
+def _par_replace(schema, config):
 
     for r, rv in config["replace_vals"].items():
         if r in schema:
@@ -186,6 +184,7 @@ def par_replace(schema, config):
 
     return schema
 
+################################################################################
 ################################################################################
 ################################################################################
 
