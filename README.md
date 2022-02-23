@@ -1,5 +1,10 @@
 # Unified repository for Beacon v2 - For Testing Only (as of Feb '22)
 
+### TODO
+
+* fix path replacements
+* (in the long run) switch to manual maintenance/editing of `src`
+
 ### Changes
 
 #### 2022-02-23: Re-tool
