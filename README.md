@@ -1,5 +1,13 @@
 # Unified repository for Beacon v2 - For Testing Only (as of Feb '22)
 
+## Description
+
+At this stage, the repository content has been generated automatically:
+
+1. convert `.json` files from original framework & model repositories into `.yaml` [./framework/src/](./framework/src/) and [./models/src/](./models/src/), using [./tools/yamlerRunner.sh](./tools/yamlerRunner.sh) with [./tools/beaconYamler.py](./tools/yamler.py).
+2. perform some text replacements over the source tree (see [./tools/config.yaml](./tools/config.yaml) - more may be needed?
+3. re-write the modified YAML source files into the output `json` and `yaml` directories
+
 ### TODO
 
 * fix path replacements
@@ -17,14 +25,6 @@
 
 * design of directory structure
 * test tooling & population with auto-converted files
-
-## Description
-
-At this stage, the repository content has been generated automatically:
-
-1. convert `.json` files from original framework & model repositories into `.yaml` [./framework/src/](./framework/src/) and [./models/src/](./models/src/), using [./tools/yamlerRunner.sh](./tools/yamlerRunner.sh) with [./tools/beaconYamler.py](./tools/yamler.py).
-2. perform some text replacements over the source tree (see [./tools/config.yaml](./tools/config.yaml) - more may be needed?
-3. re-write the modified YAML source files into the output `json` and `yaml` directories
 
 ## Directory structure
 
