@@ -1,22 +1,23 @@
 #!/usr/local/bin/python3
 
 import sys, re, json
+import pathlib
+import argparse
 from ruamel.yaml import YAML
 from os import path as path
 from os import scandir as scandir
 from os import remove as deleteFile
-import argparse
-import pathlib
 from collections import OrderedDict
 
 here_path = path.dirname( path.abspath(__file__) )
 yaml = YAML()
 yaml.indent(mapping=2, sequence=4, offset=2)
+with open(path.join( here_path, "config.yaml"), 'r') as c_f:
+    config = yaml.load( c_f )
 
 """podmd
-The script converts yaml <-> json, either a single file or all files of a given
-directory. If converting a directory, the input file type has to be specified.
-
+The script converts files in directories between yaml <-> json
+It requires the specification of input and output directories and file formats.
 podmd"""
 
 ################################################################################
@@ -37,11 +38,6 @@ def _get_args():
 
 def main():
 
-    """podmd
-    end_podmd"""
-
-    supported = ["json", "yaml"]
-
     args = _get_args()
     in_path = pathlib.Path(args.inpath)
     out_path = pathlib.Path(args.outpath)
@@ -54,13 +50,9 @@ def main():
             exit()
 
     for t in [from_type, to_type]:
-        if t not in supported:
-            print("¡¡¡ WARNING: Only {} are supported!!!".format(join(supported)))
+        if t not in config["supported_types"]:
+            print("¡¡¡ WARNING: Only {} are supported!!!".format(join(config["supported_types"])))
             exit()
-    
-    with open(path.join( here_path, "config.yaml"), 'r') as c_f:
-        config = yaml.load( c_f )
-        c_f.close()
 
     convert_dir(in_path, out_path, from_type, to_type, config)
 
@@ -68,7 +60,12 @@ def main():
 
 def convert_dir(in_path, out_path, from_type, to_type, config):
 
-    pathlib.Path(out_path).mkdir( parents=True, exist_ok=True )
+    pathlib.Path(out_path).mkdir( exist_ok=True )
+
+    if config["delete_existing_files"] is True:
+        for f in scandir(out_path):
+            if to_type in pathlib.Path(f).suffix and f.is_file():
+                deleteFile(f)
 
     fs = [ f.name for f in scandir(in_path) if f.is_file() ]
     fs = [ f for f in fs if f.endswith(from_type) ]
@@ -99,7 +96,6 @@ def _yaml2json(f_n, in_path, out_path, config):
     _par_replace(s, config)
     with open(out_file, 'w') as out_f:
         out_f.write(json.dumps(OrderedDict(s), indent=4, sort_keys=True, default=str))
-        out_f.close()
 
 ################################################################################
 
@@ -115,7 +111,6 @@ def _yaml2yaml(f_n, in_path, out_path, config):
     _par_replace(s, config)
     with open(out_file, 'w') as out_f:
         yaml.dump(s, out_f)
-        out_f.close()
 
 ################################################################################
 
@@ -131,7 +126,6 @@ def _json2yaml(f_n, in_path, out_path, config):
     _par_replace(s, config)
     with open(out_file, 'w') as out_f:
         yaml.dump(s, out_f)
-        out_f.close()
 
 ################################################################################
 
@@ -147,7 +141,6 @@ def _json2json(f_n, in_path, out_path, config):
     _par_replace(s, config)
     with open(out_file, 'w') as out_f:
         yaml.dump(s, out_f)
-        out_f.close()
 
 ################################################################################
 
