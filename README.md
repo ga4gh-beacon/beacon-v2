@@ -1,5 +1,4 @@
-# beacon-v2-unity
-Unified repository for Beacon v2 Components - For Testing Only
+# Unified repository for Beacon v2 Components - For Testing Only (as of Feb '22)
 
 At this stage, the repository content has been generated automatically:
 
