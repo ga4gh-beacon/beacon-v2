@@ -26,6 +26,8 @@ At this stage, the repository content has been generated automatically:
 |   |- json     JSON versions of the schema files generated from src, authorative/referenceable version
 |   |
 |   |- yaml     YAML versions of the schema files generated from src, for reference/testing
+|
+|- tools        scripts and configurations for creating the unified structure
 ```
 
 Steps 1 & 2 obviously won't be necessary after transitioning to the respective src files as the working versions. Step 3 would be converted into a GH action.
