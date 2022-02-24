@@ -10,10 +10,13 @@ At this stage, the repository content has been generated automatically:
 
 ### TODO
 
-* fix path replacements
 * (in the long run) switch to manual maintenance/editing of `src`
 
 ### Changes
+
+#### 2022-02-24: Path fixes
+
+* changed the path replacements to the current repo, resulting in e.g. <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/responses/sections/beaconInformationalResponseMeta.json>
 
 #### 2022-02-23: Re-tool
 
