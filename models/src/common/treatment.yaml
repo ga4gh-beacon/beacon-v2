@@ -6,7 +6,7 @@ type: object
 properties:
   treatmentCode:
     description: Code of treatment. Value from NCIT or any relevant ontology.
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
     examples:
       - id: NCIT:C287
         label: Aspirin
@@ -15,7 +15,7 @@ properties:
   route:
     description: Route of treatment. Value from NCIT Route of Administration tree
       (NCIT:C38114).
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
     examples:
       - id: NCIT:C38304
         label: Topical

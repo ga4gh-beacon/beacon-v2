@@ -44,7 +44,7 @@ properties:
     examples:
       - http://example.org/wiki/Main_Page
   info:
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/beaconCommonComponents.json#/definitions/Info
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/beaconCommonComponents.json#/definitions/Info
   dataUseConditions:
     $ref: '#/definitions/DataUseConditions'
 required:
@@ -65,7 +65,7 @@ definitions:
   DUODataUse:
     allOf:
       - description: TBD
-      - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json
+      - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
       - type: object
         required:
           - version
@@ -78,7 +78,7 @@ definitions:
             type: array
             items:
               allOf:
-                - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json
+                - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
                 - examples:
                     - id: EFO:0001645
                     - id: EFO:0001655

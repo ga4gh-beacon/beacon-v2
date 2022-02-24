@@ -20,7 +20,7 @@
             "type": "string"
         },
         "route": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
             "description": "Route of treatment. Value from NCIT Route of Administration tree (NCIT:C38114).",
             "examples": [
                 {
@@ -34,7 +34,7 @@
             ]
         },
         "treatmentCode": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json",
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
             "description": "Code of treatment. Value from NCIT or any relevant ontology.",
             "examples": [
                 {

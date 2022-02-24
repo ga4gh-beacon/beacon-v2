@@ -4,11 +4,11 @@ replace_vals:
     add: True
 replace_text:
   - from: https://raw.githubusercontent.com/ga4gh-beacon/beacon-framework-v2/main/
-    to: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/
+    to: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/
   - from: /beacon-framework-v2/responses/
-    to: /beacon-v2-unity/framework/json/responses/
+    to: /beacon-v2-unity-testing/framework/json/responses/
   - from: /beacon-framework-v2/common/
-    to: /beacon-v2-unity/framework/json/common/
+    to: /beacon-v2-unity-testing/framework/json/common/
 supported_types:
   - json
   - yaml

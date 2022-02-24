@@ -6,7 +6,7 @@ properties:
   featureType:
     description: Term denoting the phenotypic feature, preferably using a value from
       Human Phenotype Ontology (HPO)
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
     examples:
       - id: HP:0000002
         label: Abnormality of body height
@@ -31,7 +31,7 @@ properties:
       ] '
     type: array
     items:
-      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json
+      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
     examples:
       - id: HP:0032500
         label: Exacerbated by tobacco use

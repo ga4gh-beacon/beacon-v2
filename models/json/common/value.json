@@ -6,7 +6,7 @@
             "$ref": "./quantity.json"
         },
         {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/common/ontologyTerm.json"
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json"
         }
     ],
     "title": "Value",
