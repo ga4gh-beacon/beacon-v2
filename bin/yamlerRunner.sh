@@ -5,6 +5,9 @@ UNITYPATH=$BASEDIR/..
 BEACONMODELPATH=$BASEDIR/../../beacon-v2-Models/BEACON-V2-Model
 BEACONFRAMEWORKPATH=$BASEDIR/../../beacon-framework-v2
 
+git -C $BEACONMODELPATH pull
+git -C $BEACONFRAMEWORKPATH pull
+
 $BASEDIR/beaconYamler.py -i $BEACONMODELPATH -t json -x yaml -o $UNITYPATH/models/src
 $BASEDIR/beaconYamler.py -i $BEACONFRAMEWORKPATH -t json -x yaml -o $UNITYPATH/framework/src
 
