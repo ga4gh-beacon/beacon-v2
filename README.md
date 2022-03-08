@@ -19,7 +19,7 @@ As with other schema projects, here we separate between the schema source files 
 
 ### Status
 
-At this stage, the repository content is beeing generated automatically (using local versions of the repositories):
+At this stage, since the development work still is performed in the framework and model repositories, the `src` content is beeing generated automatically (using local versions of the repositories) and modified - steps 1 & 2 - followed by the export of the schemas (step 3):
 
 1. convert `.json` files from original framework & model repositories into `.yaml` [./framework/src/](./framework/src/) and [./models/src/](./models/src/), using [./tools/yamlerRunner.sh](./tools/yamlerRunner.sh) with [./tools/beaconYamler.py](./tools/yamler.py).
 2. perform some text replacements over the source tree (see [./tools/config.yaml](./tools/config.yaml) - more may be needed?
