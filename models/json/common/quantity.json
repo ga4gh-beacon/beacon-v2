@@ -8,8 +8,8 @@
             "description": "The normal range for the value",
             "example": {}
         },
-        "units": {
-            "$ref": "./commonDefinitions.json#/definitions/Units"
+        "unit": {
+            "$ref": "./commonDefinitions.json#/definitions/Unit"
         },
         "value": {
             "description": "The value of the quantity in the units",

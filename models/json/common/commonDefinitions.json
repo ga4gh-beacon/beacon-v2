@@ -101,7 +101,7 @@
                 }
             ]
         },
-        "Units": {
+        "Unit": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
             "description": "The kind of unit. Recommended from NCIT Unit of Category ontology term (NCIT:C42568) descendants",
             "examples": [

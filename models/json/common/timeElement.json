@@ -6,7 +6,9 @@
         "age": {
             "$ref": "./age.json",
             "description": "Represents age as a ISO8601 duration (e.g., P40Y10M05D).",
-            "example": "P32Y6M1D"
+            "example": {
+                "iso8601duration": "P32Y6M1D"
+            }
         },
         "ageGroup": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
@@ -26,8 +28,12 @@
             "$ref": "./ageRange.json",
             "description": "Represents age as a ISO8601 duration (e.g., P40Y10M05D).",
             "example": {
-                "end": "P59Y",
-                "start": "P18Y"
+                "end": {
+                    "iso8601duration": "P59Y"
+                },
+                "start": {
+                    "iso8601duration": "P18Y"
+                }
             }
         }
     },

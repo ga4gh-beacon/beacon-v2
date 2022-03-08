@@ -67,7 +67,7 @@ definitions:
         label: Mild
       - id: HP:0012827
         label: Bordeline
-  Units:
+  Unit:
     description: The kind of unit. Recommended from NCIT Unit of Category ontology
       term (NCIT:C42568) descendants
     $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json

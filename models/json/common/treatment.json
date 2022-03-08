@@ -47,8 +47,8 @@
                 }
             ]
         },
-        "units": {
-            "$ref": "./commonDefinitions.json#/definitions/Units",
+        "unit": {
+            "$ref": "./commonDefinitions.json#/definitions/Unit",
             "description": "Treatment dose units"
         }
     },

@@ -3,9 +3,9 @@ title: ReferenceRange
 description: Definition of a range class.
 type: object
 properties:
-  units:
+  unit:
     description: The kind of unit. RECOMMENDED.
-    $ref: ./commonDefinitions.json#/definitions/Units
+    $ref: ./commonDefinitions.json#/definitions/Unit
     examples:
       - id: NCIT:C49670
         label: Millimeter of Mercury

@@ -27,9 +27,9 @@ properties:
     description: 'The amount of any substance administered over a specific period
       of time. [ NCIT:C15682 ] '
     type: number
-  units:
+  unit:
     description: Treatment dose units
-    $ref: ./commonDefinitions.json#/definitions/Units
+    $ref: ./commonDefinitions.json#/definitions/Unit
   frequency:
     description: 'The number of times a substance is administered within a specific
       time period. [ NCIT:C89081 ] '

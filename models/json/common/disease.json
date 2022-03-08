@@ -3,7 +3,33 @@
     "description": "Diseases diagnosed e.g. to an individual, defined by diseaseID, age of onset, stage, level of severity, outcome and the presence of family history. Similarities to GA4GH Phenopackets v2 `Disease`",
     "properties": {
         "ageOfOnset": {
-            "$ref": "./age.json"
+            "$ref": "./timeElement.json",
+            "examples": [
+                {
+                    "age": {
+                        "iso8601duration": "P32Y6M1D"
+                    },
+                    "ageGroup": {
+                        "id": "NCIT:C49685",
+                        "label": "Adult 18-65 Years Old"
+                    }
+                },
+                {
+                    "ageRange": {
+                        "end": {
+                            "iso8601duration": "P59Y"
+                        },
+                        "start": {
+                            "iso8601duration": "P18Y"
+                        }
+                    }
+                },
+                {
+                    "age": {
+                        "iso8601duration": "P2M4D"
+                    }
+                }
+            ]
         },
         "diseaseCode": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",

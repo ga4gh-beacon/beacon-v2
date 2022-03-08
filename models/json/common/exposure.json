@@ -30,9 +30,9 @@
                 }
             ]
         },
-        "units": {
-            "$ref": "../common/commonDefinitions.json#/definitions/Units",
-            "description": "Units of the exposure. Recommended from NCIT Unit of Category ontology term (NCIT:C42568) descendants."
+        "unit": {
+            "$ref": "../common/commonDefinitions.json#/definitions/Unit",
+            "description": "Unit of the exposure. Recommended from NCIT Unit of Category ontology term (NCIT:C42568) descendants."
         },
         "value": {
             "description": "Quantification of the exposure.",
