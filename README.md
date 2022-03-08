@@ -25,6 +25,8 @@ At this stage, since the development work still is performed in the framework an
 2. perform some text replacements over the source tree (see [./tools/config.yaml](./tools/config.yaml) - more may be needed?
 3. re-write the modified YAML source files into the output `json` and `yaml` directories
 
+Steps 1 & 2 obviously won't be necessary after transitioning to the respective `src` files as the working versions. Step 3 will be converted into a GH action.
+
 ### TODO
 
 * integrate the documentation repository & generation of the schema tables from `src`
@@ -59,7 +61,7 @@ git -C $BEACONFRAMEWORKPATH pull
 ## Directory structure
 
 ```
-|-docs          TBD; could contain the source for the Readthedocs documentation
+|-docs          TBD; will contain the source for the Readthedocs documentation
 |
 |- framework
 |   |
@@ -86,4 +88,3 @@ git -C $BEACONFRAMEWORKPATH pull
     |- config.yaml        text replacements and options
 ```
 
-Steps 1 & 2 obviously won't be necessary after transitioning to the respective src files as the working versions. Step 3 would be converted into a GH action.
