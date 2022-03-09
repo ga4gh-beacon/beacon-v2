@@ -34,6 +34,36 @@ Steps 1 & 2 obviously won't be necessary after transitioning to the respective `
 
 ### Changes
 
+#### 2022-03-09: Nesting models
+
+The structure of the `models` directory has now be changed to have the default model as one of possibly multiple
+options as per the discussions in [#1](https://github.com/ga4gh-beacon/beacon-v2-unity-testing/issues/1).
+The current structure (below) might not be final (e.g. placing of the `beaconConfiguration.yaml`, `beaconMap.yaml`, `endpoints.yaml` files?).
+
+```
+beacon
+  |
+  |-- framework ...
+  |-- models
+  |    |-- src
+  |    |    |-- beacon-v2-default-model
+  |    |         |-- analyses ...
+  |    |         |-- biosamples ...
+  |    |         |-- genomicVariations ...
+  |    |         |-- ...
+  |    |         |-- endpoints.yaml
+  |    |     
+  |    |-- json
+  |    |    |-- beacon-v2-default-model
+  |    |         |-- analyses ...
+  |    |         |-- biosamples ...
+  |    |         |-- genomicVariations ...
+  |    |         |-- ...
+  |    |         |-- endpoints.yaml
+  |    |          
+...
+```
+
 #### 2022-03-08: Automated pulling from current origin repos
 
 * added simple pull commands to the conversion for automatic update to the donor repos
