@@ -98,9 +98,9 @@ def _yaml2json(f_n, in_path, out_path, config):
     try:
         s = yaml.load( i_d )
     except Exception as e:
-        print("¡¡¡¡¡ ###########################")
+        print("\n¡¡¡¡¡ ###########################\n{}".format(in_file))
         print(e)
-        print("########################### !!!!!")
+        print("########################### !!!!!\n")
         return()
 
     _par_replace(s, config)
@@ -121,10 +121,8 @@ def _yaml2yaml(f_n, in_path, out_path, config):
     try:
         s = yaml.load( i_d )
     except Exception as e:
-        print("¡¡¡¡¡ ###########################")
-        print(e)
-        print("########################### !!!!!")
-        return()
+        _file_conversion_error(e, in_file)
+        return
 
     _par_replace(s, config)
     with open(out_file, 'w') as out_f:
@@ -144,10 +142,8 @@ def _json2yaml(f_n, in_path, out_path, config):
     try:
         s = json.loads(i_d)
     except Exception as e:
-        print("¡¡¡¡¡ ###########################")
-        print(e)
-        print("########################### !!!!!")
-        return()
+        _file_conversion_error(e, in_file)
+        return
 
     _par_replace(s, config)
     with open(out_file, 'w') as out_f:
@@ -167,10 +163,8 @@ def _json2json(f_n, in_path, out_path, config):
     try:
         s = json.loads(i_d)
     except Exception as e:
-        print("¡¡¡¡¡ ###########################")
-        print(e)
-        print("########################### !!!!!")
-        return()
+        _file_conversion_error(e, in_file)
+        return
 
     _par_replace(s, config)
     with open(out_file, 'w') as out_f:
@@ -210,6 +204,16 @@ def _par_replace(schema, config):
                     schema.update({r: rv["replaceValue"]})
 
     return schema
+
+################################################################################
+
+def _file_conversion_error(e, f):
+
+    print("\n¡¡¡¡¡ ######################################################\n{}".format(f))
+    print(e)
+    print("###################################################### !!!!!\n")
+
+    return
 
 ################################################################################
 ################################################################################
