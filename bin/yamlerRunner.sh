@@ -22,6 +22,3 @@ $BASEDIR/beaconYamler.py -i $BEACONFRAMEWORKPATH -t json -x yaml -o $UNITYPATH/f
 # recurring conversion from the source files to the exported versions
 $BASEDIR/beaconYamler.py -i $UNITYPATH/models/src/$BEACONMODELNAME -t yaml -x json -o $UNITYPATH/models/json/$BEACONMODELNAME
 $BASEDIR/beaconYamler.py -i $UNITYPATH/framework/src -t yaml -x json -o $UNITYPATH/framework/json
-
-$BASEDIR/beaconYamler.py -i $UNITYPATH/models/src/$BEACONMODELNAME -t yaml -x yaml -o $UNITYPATH/models/yaml/$BEACONMODELNAME
-$BASEDIR/beaconYamler.py -i $UNITYPATH/framework/src -t yaml -x yaml -o $UNITYPATH/framework/yaml

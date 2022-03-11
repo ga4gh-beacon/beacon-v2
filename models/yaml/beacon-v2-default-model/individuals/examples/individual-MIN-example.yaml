@@ -1,5 +1,0 @@
-$schema: https://json-schema.org/draft/2020-12/schema
-id: Ind001
-sex:
-  id: NCIT:C16576
-  label: female
