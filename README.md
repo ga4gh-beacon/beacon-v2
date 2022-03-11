@@ -34,6 +34,11 @@ Steps 1 & 2 obviously won't be necessary after transitioning to the respective `
 
 ### Changes
 
+#### 2022-03-11: Removing `yaml` export version
+
+Since moving to having the source in YAML the existence of a separate `yaml` export seems unnecessary & maybe confusing. Removed.
+
+
 #### 2022-03-09: Nesting models
 
 The structure of the `models` directory has now be changed to have the default model as one of possibly multiple
@@ -98,16 +103,12 @@ git -C $BEACONFRAMEWORKPATH pull
 |   |- src      schema source in YAML format; for editing
 |   |
 |   |- json     JSON versions of the schema files generated from src, authorative/referenceable version
-|   |
-|   |- yaml     YAML versions of the schema files generated from src, for reference/testing
 |
 |- models
 |   |
 |   |- src      schema source in YAML format; for editing
 |   |
 |   |- json     JSON versions of the schema files generated from src, authorative/referenceable version
-|   |
-|   |- yaml     YAML versions of the schema files generated from src, for reference/testing
 |
 |- bin          scripts and configurations for creating the unified structure
     |
