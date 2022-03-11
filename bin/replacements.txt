@@ -1,8 +1,0 @@
-https://raw.githubusercontent.com/ga4gh-beacon/beacon-framework-v2/main/
-=> https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity/main/framework/json/
-
-/beacon-framework-v2/responses/
-=> /beacon-v2-unity/framework/json/responses/
-
-/beacon-framework-v2/common/
-=> /beacon-v2-unity/framework/json/common/

@@ -44,6 +44,8 @@ def main():
     from_type = args.filetype
     to_type = args.exporttype
 
+    config.update({ "from_type": from_type, "to_type": to_type} )
+
     for p in [in_path, out_path]:
         if not p.is_dir():
             print("¡¡¡ WARNING: No directory in {}!!!".format(p))

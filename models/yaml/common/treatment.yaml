@@ -2,17 +2,20 @@ $schema: https://json-schema.org/draft/2020-12/schema
 title: Treament
 description: Treatment(s) prescribed/administered, defined by treatment ID, date and
   age of onset, dose, schedule and duration.
+$comments: Compares to https://github.com/phenopackets/phenopacket-schema/blob/master/docs/treatment.rst,
+  with modifications.
 type: object
 properties:
   treatmentCode:
-    description: Code of treatment. Value from NCIT or any relevant ontology.
+    description: Code of treatment. Value from NCIT or any relevant ontology. Compares
+      to `agent` in Phenopackets v2
     $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
     examples:
       - id: NCIT:C287
         label: Aspirin
       - id: NCIT:C62078
         label: Tamoxifen
-  route:
+  routeOfAdministration:
     description: Route of treatment. Value from NCIT Route of Administration tree
       (NCIT:C38114).
     $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
@@ -23,21 +26,12 @@ properties:
         label: Dietary
   ageAtOnset:
     $ref: ./age.json
-  dose:
-    description: 'The amount of any substance administered over a specific period
-      of time. [ NCIT:C15682 ] '
-    type: number
-  unit:
-    description: Treatment dose units
-    $ref: ./commonDefinitions.json#/definitions/Unit
-  frequency:
-    description: 'The number of times a substance is administered within a specific
-      time period. [ NCIT:C89081 ] '
-    type: string
-  duration:
-    description: Treatment duration in ISO8601 duration format
-    type: string
-    example: P7D
+  doseIntervals:
+    type: array
+    items:
+      $ref: ./doseInterval.json
+  cumulativeDose:
+    $ref: ./quantity.json
 required:
   - treatmentCode
 additionalProperties: true
