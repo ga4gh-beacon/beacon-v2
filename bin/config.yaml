@@ -9,6 +9,7 @@ replace_text:
     to: /beacon-v2-unity-testing/framework/json/responses/
   - from: /beacon-framework-v2/common/
     to: /beacon-v2-unity-testing/framework/json/common/
+
 supported_types:
   - json
   - yaml

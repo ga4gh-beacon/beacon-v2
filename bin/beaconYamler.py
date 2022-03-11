@@ -44,6 +44,8 @@ def main():
     from_type = args.filetype
     to_type = args.exporttype
 
+    config.update({ "from_type": from_type, "to_type": to_type} )
+
     for p in [in_path, out_path]:
         if not p.is_dir():
             print("¡¡¡ WARNING: No directory in {}!!!".format(p))
@@ -92,7 +94,15 @@ def _yaml2json(f_n, in_path, out_path, config):
 
     print("converting {}\n        => {}".format(in_file, out_file))
     i_d = _file_read_and_clean(in_file, config)
-    s = yaml.load( i_d )
+
+    try:
+        s = yaml.load( i_d )
+    except Exception as e:
+        print("\n¡¡¡¡¡ ###########################\n{}".format(in_file))
+        print(e)
+        print("########################### !!!!!\n")
+        return()
+
     _par_replace(s, config)
     with open(out_file, 'w') as out_f:
         out_f.write(json.dumps(OrderedDict(s), indent=4, sort_keys=True, default=str))
@@ -107,7 +117,13 @@ def _yaml2yaml(f_n, in_path, out_path, config):
 
     print("converting {}\n        => {}".format(in_file, out_file))
     i_d = _file_read_and_clean(in_file, config)
-    s = yaml.load( i_d )
+
+    try:
+        s = yaml.load( i_d )
+    except Exception as e:
+        _file_conversion_error(e, in_file)
+        return
+
     _par_replace(s, config)
     with open(out_file, 'w') as out_f:
         yaml.dump(s, out_f)
@@ -122,7 +138,13 @@ def _json2yaml(f_n, in_path, out_path, config):
 
     print("converting {}\n        => {}".format(in_file, out_file))
     i_d = _file_read_and_clean(in_file, config)
-    s = json.loads(i_d)
+
+    try:
+        s = json.loads(i_d)
+    except Exception as e:
+        _file_conversion_error(e, in_file)
+        return
+
     _par_replace(s, config)
     with open(out_file, 'w') as out_f:
         yaml.dump(s, out_f)
@@ -136,8 +158,14 @@ def _json2json(f_n, in_path, out_path, config):
     out_file = path.join( out_path, o_n)
 
     print("converting {}\n        => {}".format(in_file, out_file))
+
     i_d = _file_read_and_clean(in_file, config)
-    s = json.loads(i_d)
+    try:
+        s = json.loads(i_d)
+    except Exception as e:
+        _file_conversion_error(e, in_file)
+        return
+
     _par_replace(s, config)
     with open(out_file, 'w') as out_f:
         yaml.dump(s, out_f)
@@ -176,6 +204,16 @@ def _par_replace(schema, config):
                     schema.update({r: rv["replaceValue"]})
 
     return schema
+
+################################################################################
+
+def _file_conversion_error(e, f):
+
+    print("\n¡¡¡¡¡ ######################################################\n{}".format(f))
+    print(e)
+    print("###################################################### !!!!!\n")
+
+    return
 
 ################################################################################
 ################################################################################

@@ -35,6 +35,16 @@
                     "iso8601duration": "P18Y"
                 }
             }
+        },
+        "gestationalAge": {
+            "$ref": "./gestationalAge.json",
+            "description": "Measure of the age of a pregnancy.",
+            "examples": [
+                {
+                    "days": 2,
+                    "weeks": 33
+                }
+            ]
         }
     },
     "title": "TimeElement",

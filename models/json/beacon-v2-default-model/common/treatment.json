@@ -1,4 +1,5 @@
 {
+    "$comments": "Compares to https://github.com/phenopackets/phenopacket-schema/blob/master/docs/treatment.rst, with modifications.",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
     "description": "Treatment(s) prescribed/administered, defined by treatment ID, date and age of onset, dose, schedule and duration.",
@@ -6,20 +7,16 @@
         "ageAtOnset": {
             "$ref": "./age.json"
         },
-        "dose": {
-            "description": "The amount of any substance administered over a specific period of time. [ NCIT:C15682 ] ",
-            "type": "number"
+        "cumulativeDose": {
+            "$ref": "./quantity.json"
         },
-        "duration": {
-            "description": "Treatment duration in ISO8601 duration format",
-            "example": "P7D",
-            "type": "string"
+        "doseIntervals": {
+            "items": {
+                "$ref": "./doseInterval.json"
+            },
+            "type": "array"
         },
-        "frequency": {
-            "description": "The number of times a substance is administered within a specific time period. [ NCIT:C89081 ] ",
-            "type": "string"
-        },
-        "route": {
+        "routeOfAdministration": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
             "description": "Route of treatment. Value from NCIT Route of Administration tree (NCIT:C38114).",
             "examples": [
@@ -35,7 +32,7 @@
         },
         "treatmentCode": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
-            "description": "Code of treatment. Value from NCIT or any relevant ontology.",
+            "description": "Code of treatment. Value from NCIT or any relevant ontology. Compares to `agent` in Phenopackets v2",
             "examples": [
                 {
                     "id": "NCIT:C287",
@@ -46,10 +43,6 @@
                     "label": "Tamoxifen"
                 }
             ]
-        },
-        "unit": {
-            "$ref": "./commonDefinitions.json#/definitions/Unit",
-            "description": "Treatment dose units"
         }
     },
     "required": [

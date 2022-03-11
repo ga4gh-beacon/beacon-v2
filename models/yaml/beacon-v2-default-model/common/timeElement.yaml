@@ -26,3 +26,9 @@ properties:
         label: Adolescent
       - id: NCIT:C49685
         label: Adult 18-65 Years Old
+  gestationalAge:
+    description: Measure of the age of a pregnancy.
+    $ref: ./gestationalAge.json
+    examples:
+      - weeks: 33
+        days: 2
