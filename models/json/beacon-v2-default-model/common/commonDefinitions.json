@@ -57,6 +57,25 @@
                 }
             ]
         },
+        "KaryotypicSex": {
+            "$comments": "Compares to https://github.com/phenopackets/phenopacket-schema/blob/master/docs/karyotypicsex.rst",
+            "default": "UNKNOWN_KARYOTYPE",
+            "description": "The chromosomal sex of an individual represented from a selection of options. The values correspond to the ordinal values in the Phenopackets schema where: 0 - UNKNOWN_KARYOTYPE (Untyped or inconclusive karyotyping); 1 - XX (Female); 2 - XY (Male); 3 - XO (Single X chromosome only); 4 - XXY (Two X and one Y chromosome); 5 - XXX (Three X chromosomes); 6 - XXYY (Two X chromosomes and two Y chromosomes); 7 - XXXY (Three X chromosomes and one Y chromosome); 8 - XXXX (Four X chromosomes); 9 - XYY (One X and two Y chromosomes); 10 - OTHER_KARYOTYPE (None of the above types)",
+            "enum": [
+                "UNKNOWN_KARYOTYPE",
+                "XX",
+                "XY",
+                "XO",
+                "XXY",
+                "XXX",
+                "XXYY",
+                "XXXY",
+                "XXXX",
+                "XYY",
+                "OTHER_KARYOTYPE"
+            ],
+            "type": "string"
+        },
         "SeverityLevel": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
             "description": "Level/severity ontology when and as applicable to phenotype observed. Value from Human Phenotype Ontology (HP:0012824), e.g `mild`. The intensity or degree of a manifestation. [ HPO:probinson ] ",

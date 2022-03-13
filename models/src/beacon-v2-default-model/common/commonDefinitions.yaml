@@ -15,6 +15,30 @@ definitions:
         label: male
       - id: NCIT:C1799
         label: unknown
+  KaryotypicSex:
+    description: 'The chromosomal sex of an individual represented from a selection
+      of options. The values correspond to the ordinal values in the Phenopackets
+      schema where: 0 - UNKNOWN_KARYOTYPE (Untyped or inconclusive karyotyping); 1
+      - XX (Female); 2 - XY (Male); 3 - XO (Single X chromosome only); 4 - XXY (Two
+      X and one Y chromosome); 5 - XXX (Three X chromosomes); 6 - XXYY (Two X chromosomes
+      and two Y chromosomes); 7 - XXXY (Three X chromosomes and one Y chromosome);
+      8 - XXXX (Four X chromosomes); 9 - XYY (One X and two Y chromosomes); 10 - OTHER_KARYOTYPE
+      (None of the above types)'
+    $comments: Compares to https://github.com/phenopackets/phenopacket-schema/blob/master/docs/karyotypicsex.rst
+    type: string
+    enum:
+      - UNKNOWN_KARYOTYPE
+      - XX
+      - XY
+      - XO
+      - XXY
+      - XXX
+      - XXYY
+      - XXXY
+      - XXXX
+      - XYY
+      - OTHER_KARYOTYPE
+    default: UNKNOWN_KARYOTYPE
   Ethnicity:
     description: 'Ethnic background of the individual. Value from NCIT Race (NCIT:C17049)
       ontology term descendants, e.g. NCIT:C126531 (Latin American). A geographic

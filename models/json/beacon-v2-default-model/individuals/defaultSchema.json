@@ -39,6 +39,10 @@
             },
             "type": "array"
         },
+        "karyotypicSex": {
+            "$ref": "../common/commonDefinitions.json#/definitions/KaryotypicSex",
+            "description": "The chromosomal sex of an individual represented from a selection of options."
+        },
         "measures": {
             "items": {
                 "$ref": "../common/measurement.json"

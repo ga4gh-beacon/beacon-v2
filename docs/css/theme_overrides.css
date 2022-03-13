@@ -1,0 +1,10 @@
+h2 {
+    color: #2980B9;
+    border-top:  #2980B9 thin solid;
+    border-bottom:  #2980B9 thin solid;
+}
+
+h3 {
+    color: #888;
+    text-decoration: underline;
+}

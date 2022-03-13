@@ -1,0 +1,43 @@
+site_name: Beacon v2 Documentation
+site_description: 'Read the Docs Documentation for Beacon v2'
+#site_author: 'Manuel Rueda, PhD'
+copyright: '&copy; Copyright 2021-2022, Beacon v2 Documentation Contributors'
+repo_name: 'beacon-schema-2'
+
+extra_css: [css/theme_overrides.css]
+
+markdown_extensions:
+  - admonition
+  - attr_list
+
+nav:
+    - Introduction to Beacon v2: index.md
+    - Roles of Documentation Consumers: 
+        - At a glance: roles.md
+    - Implementer:
+        - Implementer: implementer.md
+        - Framework: framework.md         
+        - Models: models.md 
+    - Deployer: https://b2ri-documentation.readthedocs.io/en/latest/
+    - User: user.md
+    - Stakeholder: stakeholder.md
+    - Schemas (Draft v4):
+        - Analyses: schemas-md/analyses_defaultSchema.md
+        - Biosamples: schemas-md/biosamples_defaultSchema.md
+        - Cohorts: schemas-md/cohorts_defaultSchema.md
+        - Datasets: schemas-md/datasets_defaultSchema.md
+        - Genomic Variations: schemas-md/genomicVariations_defaultSchema.md
+        - Individuals: schemas-md/individuals_defaultSchema.md
+        - Runs: schemas-md/runs_defaultSchema.md
+    - Beacon Terms:
+        - Terms List: schemas-md/beacon_terms.md
+    - External Links:
+        - Beacon Project: http://beacon-project.io
+        - Github Repositories: https://github.com/ga4gh-beacon/
+
+
+theme: readthedocs
+
+# Options
+extra:
+  logo: 'img/GA-logo.png'

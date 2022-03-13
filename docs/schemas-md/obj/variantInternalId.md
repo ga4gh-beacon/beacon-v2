@@ -1,0 +1,3 @@
+|Field | description | type | properties | example | enum|
+| ---| ---| ---| ---| ---| --- |
+| variantInternalId | Reference to the **internal** variant ID. This represents the primary key/identifier of that variant **inside** a given Beacon instance. Different Beacon instances may use identical id values, referring to unrelated variants. Public identifiers such as the GA4GH Variant Representation Id (VRSid) MUST be returned in the `identifiers` section. A Beacon instance can, of course, use the VRSid as their own internal id but still MUST represent this then in the `identifiers` section. | string | NA | NA | NA|

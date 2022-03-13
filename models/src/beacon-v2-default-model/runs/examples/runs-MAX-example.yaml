@@ -1,0 +1,15 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+id: SRR10903401
+biosampleId: 008dafdd-a3d1-4801-8c0a-8714e2b58e48
+individualId: TCGA-AO-A0JJ
+runDate: '2021-10-18'
+librarySource:
+  id: GENEPIO:0001966
+  label: genomic source
+librarySelection: RANDOM
+libraryStrategy: WGS
+libraryLayout: PAIRED
+platform: Illumina
+platformModel:
+  id: OBI:0002048
+  label: Illumina HiSeq 3000
