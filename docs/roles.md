@@ -4,7 +4,7 @@ The Beacon documentation provides information for different types of stakeholder
 depending on their interests and use cases. Although those will overlap, we highlight
 information relevant for some general scenarios throughout the documentation.
 
-## User
+## Users
 
 A Beacon **user** is interested in querying Beacon instances and networks, either through
 web interfaces by using the Beacon API. While users of Beacon web forms in principle
@@ -25,14 +25,19 @@ benefit from some insights into the general capabilities of the underlying proto
         * Alternative schemas
 
 
-## Deployer 
+## Deployers and Implementers
+
+A Beacon **Deployer** is someone who wants to make their genomics resource accessible
+through the Beacon protocol, without necessarily being interested or experienced in the
+computational aspects; while a Beacon **Implementer** provides the technical expertise (and
+potentially may get involved with Beacon development itself, e.g. to extend the protocol
+for novel use cases). 
 
 !!! Important "Deployer"
 
     * Beacon v2 Model domain
     * Reference Implementation
-        * Hardware & software requirements
-        * Components
+        * Infrastructure requirements
         * How to install
         * Configuration
             * Cohorts and/or Datasets
@@ -44,10 +49,7 @@ benefit from some insights into the general capabilities of the underlying proto
         * Testing the instance
 
 
-
 ## Implementer
-
-
 
 !!! Note "Implementer"
 
@@ -66,17 +68,8 @@ benefit from some insights into the general capabilities of the underlying proto
 ## Stakeholder
 
 !!! Danger "Stakeholder"
-    * Beacon v2 Model domain
-        * Entry Types
-        * Datasets & Cohorts
-        * Filters
-    * Framework Features
-        * Granularity & security
-        * Protocol/Query basics
-        * Filters
-        * Alternative schemas
     * Integration into GA4GH
-    * Leveraging Fwk in other domains
+    * Leveraging The Beacon Framework in other domains
     * Success Stories:
         * Implementations
         * Real world data

@@ -20,12 +20,13 @@ beacon development team.
 
 ## Potential Documents
 
-1. [Beacon v2 Models](./models.md)
+1. [Beacon v2 Models](models.md)
 1. Protocol basics
     * Requests, responses & errors
     * OpenAPI
 1. Beacon v2 Features
-    * Filters
+    * [Genomic Queries](variant-queries.md)
+    * [Filters](filters.md)
     * Alternative schemas
 1. Configuration
     * Granularity & security
