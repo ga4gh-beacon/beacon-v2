@@ -1,8 +1,8 @@
 site_name: Beacon v2 Documentation
-site_description: 'Read the Docs Documentation for Beacon v2'
-#site_author: 'Manuel Rueda, PhD'
+site_description: 'Documentation for Beacon v2'
+#site_author: 'Manuel Rueda, Michael Baudis and Laureen Fromont'
 copyright: '&copy; Copyright 2021-2022, Beacon v2 Documentation Contributors'
-repo_name: 'beacon-schema-2'
+repo_name: 'beacon-v2-unity-testing'
 
 extra_css: [css/theme_overrides.css]
 
