@@ -7,7 +7,9 @@ repo_name: 'beacon-schema-2'
 extra_css: [css/theme_overrides.css]
 
 plugins:
-    - with-pdf
+    - with-pdf:
+        author: Beacon API Development Team
+        output_path: pdf/beacon.pdf
 
 markdown_extensions:
   - toc:
@@ -50,6 +52,7 @@ nav:
     - External Links:
         - Beacon Project: http://beacon-project.io
         - Github Repositories: https://github.com/ga4gh-beacon/
+    - Download PDF: pdf/beacon.pdf
 
 theme: readthedocs
 
