@@ -36,6 +36,11 @@ Steps 1 & 2 obviously won't be necessary after transitioning to the respective `
 
 ### Changes
 
+#### 2022-03-14: Moving documentation into this repository
+
+As of today the new/emerging Beacon v2 documentation is meintained in this repository. We're testing rendered versions (same text/code base) through Github actions ([here](https://beacon-project.io/beacon-v2-unity-testing/)) and [ReadTheDocs](https://beacon-v2-unity.readthedocs.io/en/latest/).
+
+
 #### 2022-03-11: Removing `yaml` export version
 
 Since moving to having the source in YAML the existence of a separate `yaml` export seems unnecessary & maybe confusing. Removed.
