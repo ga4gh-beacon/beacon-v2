@@ -48,10 +48,7 @@ nav:
         - Beacon Project: http://beacon-project.io
         - Github Repositories: https://github.com/ga4gh-beacon/
 
-
-theme:
-    name: readthedocs
-    logo: img/GA-logo.png
+theme: readthedocs
 
 # Options
 extra:
