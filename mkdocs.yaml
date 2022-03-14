@@ -10,7 +10,12 @@ markdown_extensions:
   - admonition
   - attr_list
   - footnotes
-
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  
 nav:
     - Introduction to Beacon v2: index.md
     - Roles of Documentation Consumers: 
