@@ -9,16 +9,20 @@ extra_css: [css/theme_overrides.css]
 markdown_extensions:
   - admonition
   - attr_list
+  - footnotes
 
 nav:
     - Introduction to Beacon v2: index.md
     - Roles of Documentation Consumers: 
         - At a glance: roles.md
+    - Beacon Flavours: beacon-flavours.md
     - Implement & Deploy a Beacon:
         - Deployment Options: implement-and-deploy.md
         - Beacon Reference Implementation: "https://b2ri-documentation.readthedocs.io/en/latest/"
         - Framework: framework.md         
-        - Models: models.md 
+        - Models: models.md
+        - Filters: filters.md
+        - Genomic Queries: variant-queries.md
     # - User: user.md
     # - Stakeholder: stakeholder.md
     - Schemas:

@@ -1,19 +1,28 @@
-At a glance:
+# Informations for Different Types of Beacon Users
 
-## Implementer 
+The Beacon documentation provides information for different types of stakeholders,
+depending on their interests and use cases. Although those will overlap, we highlight
+information relevant for some general scenarios throughout the documentation.
 
-!!! Note "Implementer"
+## User
 
+A Beacon **user** is interested in querying Beacon instances and networks, either through
+web interfaces by using the Beacon API. While users of Beacon web forms in principle
+do not need to understand the underlying query syntax and response formats they too may
+benefit from some insights into the general capabilities of the underlying protocol.
+
+!!! Warning "User"
     * Beacon v2 Model domain
-    * Protocol basics
+    * Knowing what is available in an instance
+        * Entry Types
+        * Datasets & Cohorts
+        * Granularity & security
+    * Protocol/Query basics
         * Requests, responses & errors
         * OpenAPI
-    * Beacon v2 Features
+    * Using Beacon v2 Features
         * Filters
         * Alternative schemas
-    * Configuration
-        * Granularity & security
-    * Verifying compliance
 
 
 ## Deployer 
@@ -34,20 +43,24 @@ At a glance:
         * Administration
         * Testing the instance
 
-## User
 
-!!! Warning "User"
+
+## Implementer
+
+
+
+!!! Note "Implementer"
+
     * Beacon v2 Model domain
-    * Knowing what is available in an instance
-        * Entry Types
-        * Datasets & Cohorts
-        * Granularity & security
-    * Protocol/Query basics
+    * Protocol basics
         * Requests, responses & errors
         * OpenAPI
-    * Using Beacon v2 Features
+    * Beacon v2 Features
         * Filters
         * Alternative schemas
+    * Configuration
+        * Granularity & security
+    * Verifying compliance
 
 
 ## Stakeholder

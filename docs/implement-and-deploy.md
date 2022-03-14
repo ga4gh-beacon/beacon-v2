@@ -5,7 +5,7 @@ their resources through the implementation of a Beacon API[1] for web-protocol b
 access to their data.
 
 Beacon software can be developed _de novo_, make use of code from existing solutions
-or can directly be derived from the Beacon reference implementation provided by the
+or can directly be derived from the [Beacon reference implementation](https://b2ri-documentation.readthedocs.io/en/latest/) provided by the
 beacon development team.
 
 ## Topics of Interest
