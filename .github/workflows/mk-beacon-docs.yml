@@ -14,4 +14,5 @@ jobs:
       - run: pip install mkdocs-material 
       - run: pip install mkdocs-pdf-export-plugin
       - run: pip install mdx_gh_links
+      - run: pip install mkdocs-with-pdf
       - run: mkdocs gh-deploy --force
