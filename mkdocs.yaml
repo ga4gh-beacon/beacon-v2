@@ -12,19 +12,19 @@ plugins:
         output_path: pdf/beacon.pdf
 
 markdown_extensions:
-  - toc:
-      toc_depth: 2-3
-      permalink: true
+  # - toc:
+  #     toc_depth: 2-3
+  #     permalink: true
   - admonition
   - attr_list
-  - footnotes
-  - md_in_html
-  - pymdownx.critic
-  - pymdownx.caret
-  - pymdownx.keys
-  - pymdownx.mark
-  - pymdownx.tilde
-  - tables
+  # - footnotes
+  # - md_in_html
+  # - pymdownx.critic
+  # - pymdownx.caret
+  # - pymdownx.keys
+  # - pymdownx.mark
+  # - pymdownx.tilde
+  # - tables
 
 nav:
     - Introduction to Beacon v2: index.md
@@ -60,4 +60,4 @@ theme: readthedocs
 extra:
   logo: 'img/GA-logo.png'
 
-# https://pypi.org/project/mkdocs-with-pdf/
+# https://pypi.org/project/mkdocs-with-pdf/ for more PDF configuration ...
