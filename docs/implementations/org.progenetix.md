@@ -1,15 +1,13 @@
-<img align="right" width="160px" src="https://progenetix.org/img/progenetix-logo-black.png">
 
-<h2>Progenetix & Beacon<span style="color: red; font-weight: 800;">+</span></h2>
+<h2>Progenetix & Beacon<span style="color: red; font-weight: 800;"><sup>+</sup>sup></span></h2>
 
 The Beacon+ implementation - developed in the Python & MongoDB based [`bycon` project](https://github.com/progenetix/bycon/) -
 implements an expanding set of Beacon v2 paths for the [Progenetix](http://progenetix.org)
 resource.
 
-### Changes
+<h3>Changes<img align="right" width="160px" src="https://progenetix.org/img/progenetix-logo-black.png"></h3>
 
 * 2021-11-02: added `/testMode` example
-* 2021-11-02: removed `/core` since not used in other examples
 * 2021-07-21: added [`/map`](https://progenetix.org/beacon/map) endpoint (incomplete/unser construction)
 * 2021-07-21: added [`/configuration`](https://progenetix.org/beacon/configuration) endpoint (incomplete/unser construction)
 * 2021-07-02: added for [`/core`](https://progenetix.org/beacon/core/?filters=cellosaurus:CVCL_0004) endpoint (here shown with query)
@@ -97,22 +95,6 @@ The root path provides the standard `BeaconInfoResponse`.
 
 * [/filtering_terms/?filters=PMID](https://progenetix.org/beacon/filtering_terms/?filters=PMID)
 * [/filtering_terms/?filters=NCIT,icdom](https://progenetix.org/beacon/filtering_terms/?filters=NCIT,icdom)
-
-<!--
-
-Commented this since it doesn't look like a general use?
-
-----
-
-#### Base `/core`
-
-##### `/core/` + query
-
-* [/core/?assemblyId=GRCh38&referenceName=17&variantType=DEL&filterLogic=AND&start=7500000&start=7676592&end=7669607&end=7800000](http://progenetix.org/beacon/core/?assemblyId=GRCh38&referenceName=17&variantType=DEL&filterLogic=AND&start=7500000&start=7676592&end=7669607&end=7800000)
-  - this is an example for a Beacon "Bracket Query" which will return "true" if there are any matches in the database
-* [/core/?filters=cellosaurus:CVCL_0004](https://progenetix.org/beacon/core/?filters=cellosaurus:CVCL_0004)
-  - this tests if there is a sample with the Cellosaurus _CVCL_0004_ identifier (K562)
--->
 
 ----
 
