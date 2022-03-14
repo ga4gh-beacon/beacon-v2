@@ -6,6 +6,9 @@ repo_name: 'beacon-schema-2'
 
 extra_css: [css/theme_overrides.css]
 
+plugins:
+    - with-pdf
+
 markdown_extensions:
   - toc:
       toc_depth: 2-3
@@ -53,3 +56,5 @@ theme: readthedocs
 # Options
 extra:
   logo: 'img/GA-logo.png'
+
+# https://pypi.org/project/mkdocs-with-pdf/
