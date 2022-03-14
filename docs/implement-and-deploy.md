@@ -11,12 +11,12 @@ beacon development team.
 ## Topics of Interest
 
 1. Beacon "flavours"
-1. Granularity & security
-    * Protocol details and flow
 1. Error handling
 1. Features to implement
 1. Verifying compliance
 1. Versioning
+1. Granularity & security
+    * Protocol details and flow
 
 ## Potential Documents
 
@@ -31,6 +31,5 @@ beacon development team.
 1. Configuration
     * Granularity & security
 1. Verifying compliance
-
 
 [^1]: Application Programming Interface
