@@ -3,7 +3,7 @@
     "definitions": {
         "Ethnicity": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
-            "description": "Ethnic background of the individual. Value from NCIT Race (NCIT:C17049) ontology term descendants, e.g. NCIT:C126531 (Latin American). A geographic ancestral origin category that is assigned to a population group based mainly on physical characteristics that are thought to be distinct and inherent. [ NCI ] ",
+            "description": "Ethnic background of the individual. Recommended is the use of a value from NCIT Race (NCIT:C17049) ontology term descendants, e.g. NCIT:C126531 (Latin American). A geographic ancestral origin category that is assigned to a population group based mainly on physical characteristics that are thought to be distinct and inherent. [ NCI ]",
             "examples": [
                 {
                     "id": "NCIT:C42331",
@@ -104,7 +104,7 @@
         },
         "Sex": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
-            "description": "Sex of the individual. Value from NCIT General Qualifier (NCIT:C27993): 'unknown' (not assessed or not available) (NCIT:C17998), 'female' (NCIT:C16576), or 'male', (NCIT:C20197).",
+            "description": "Sex of the individual. Recommended values from NCIT General Qualifier (NCIT:C27993): \"unknown\" (not assessed or not available) - NCIT:C17998; \"female\" - NCIT:C16576;  \"male\" - NCIT:C20197",
             "examples": [
                 {
                     "id": "NCIT:C16576",

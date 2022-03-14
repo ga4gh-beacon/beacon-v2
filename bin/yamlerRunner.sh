@@ -14,7 +14,7 @@ git -C $BEACONDOCPATH pull
 
 rsync -av $BEACONDOCPATH/docs/ $UNITYPATH/docs/
 
-for KIND in src yaml json
+for KIND in src json
 do
 	mkdir -p $UNITYPATH/models/$KIND/$BEACONMODELNAME
 	mkdir -p $UNITYPATH/framework/$KIND	
