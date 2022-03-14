@@ -15,7 +15,7 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.tilde
-  
+
 nav:
     - Introduction to Beacon v2: index.md
     - Roles of Documentation Consumers: 
@@ -28,8 +28,7 @@ nav:
         - Models: models.md
         - Filters: filters.md
         - Genomic Queries: variant-queries.md
-    # - User: user.md
-    # - Stakeholder: stakeholder.md
+        - REST API: rest-api.md
     - Schemas:
         - Analyses: schemas-md/analyses_defaultSchema.md
         - Biosamples: schemas-md/biosamples_defaultSchema.md
