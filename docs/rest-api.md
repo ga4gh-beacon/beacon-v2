@@ -6,7 +6,7 @@ be implemented through standard query URLs with parameters (GET queries).
 
 ## Example Beacon API URLs
 
-(TBD)
+==(TBD)==
 
 ## Implementation Examples
 
