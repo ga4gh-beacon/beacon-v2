@@ -1,0 +1,98 @@
+---
+dataUseConditions:
+  description: Data use conditions ruling this dataset
+  properties:
+    duoDataUse:
+      items:
+        allOf:
+        - description: TBD
+        - $schema: http://json-schema.org/draft-07/schema#
+          additionalProperties: 1
+          definitions:
+            CURIE:
+              description: A CURIE identifier for an ontology term.
+              examples:
+              - ga4gh:GA.01234abcde
+              - DUO:0000004
+              - orcid:0000-0003-3463-0775
+              - PMID:15254584
+              pattern: ^\w[^:]+:.+$
+              type: string
+          description: Definition of an ontology term.
+          properties:
+            id:
+              description: A CURIE identifier for an ontology term.
+              examples:
+              - ga4gh:GA.01234abcde
+              - DUO:0000004
+              - orcid:0000-0003-3463-0775
+              - PMID:15254584
+              pattern: ^\w[^:]+:.+$
+              type: string
+            label:
+              description: The text that describes the term. By default it could be
+                the preferred text of the term, but is it acceptable to customize
+                it for a clearer description and understanding of the term in an specific
+                context.
+              type: string
+          required:
+          - id
+          title: Ontology Term
+          type: object
+        - properties:
+            modifiers:
+              items:
+                allOf:
+                - $schema: http://json-schema.org/draft-07/schema#
+                  additionalProperties: 1
+                  definitions:
+                    CURIE:
+                      description: A CURIE identifier for an ontology term.
+                      examples:
+                      - ga4gh:GA.01234abcde
+                      - DUO:0000004
+                      - orcid:0000-0003-3463-0775
+                      - PMID:15254584
+                      pattern: ^\w[^:]+:.+$
+                      type: string
+                  description: Definition of an ontology term.
+                  properties:
+                    id:
+                      description: A CURIE identifier for an ontology term.
+                      examples:
+                      - ga4gh:GA.01234abcde
+                      - DUO:0000004
+                      - orcid:0000-0003-3463-0775
+                      - PMID:15254584
+                      pattern: ^\w[^:]+:.+$
+                      type: string
+                    label:
+                      description: The text that describes the term. By default it
+                        could be the preferred text of the term, but is it acceptable
+                        to customize it for a clearer description and understanding
+                        of the term in an specific context.
+                      type: string
+                  required:
+                  - id
+                  title: Ontology Term
+                  type: object
+                - examples:
+                  - id: EFO:0001645
+                  - id: EFO:0001655
+              type: array
+            version:
+              examples:
+              - 17-07-2016
+              type: string
+          required:
+          - version
+          type: object
+        examples:
+        - id: DUO:0000007
+          label: disease specific research
+          version: 17-07-2016
+      minItems: 1
+      type: array
+  required:
+  - duoDataUse
+  type: object

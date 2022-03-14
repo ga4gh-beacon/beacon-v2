@@ -1,0 +1,219 @@
+---
+collectionEvents:
+  description: TBD
+  items:
+    description: TBD
+    properties:
+      eventAgeRange:
+        description: Aggregated information of geographic location obtained from individual
+          level info in database.
+        properties:
+          availability:
+            description: data availability
+            type: boolean
+          availabilityCount:
+            description: count of individuals with data available
+            type: integer
+          distribution:
+            additionalProperties:
+              type: object
+            description: List of categories and results or counts for each category.
+            examples:
+            - genders:
+                female: 51
+                male: 50
+            properties: {}
+            type: object
+        required:
+        - availability
+        type: object
+      eventCases:
+        description: count of cases
+        examples:
+        - 543
+        - 20
+        type: integer
+      eventControls:
+        description: count of controls
+        examples:
+        - 1000
+        - 22
+        type: integer
+      eventDataTypes:
+        description: Aggregated information of geographic location obtained from individual
+          level info in database.
+        properties:
+          availability:
+            description: data availability
+            type: boolean
+          availabilityCount:
+            description: count of individuals with data available
+            type: integer
+          distribution:
+            additionalProperties:
+              type: object
+            description: List of categories and results or counts for each category.
+            examples:
+            - genders:
+                female: 51
+                male: 50
+            properties: {}
+            type: object
+        required:
+        - availability
+        type: object
+      eventDate:
+        description: date of collection event/data point
+        examples:
+        - 2018-10-1
+        - 2019-04-23
+        - 2020-09-11
+        format: datetime
+        type: string
+      eventDiseases:
+        description: Aggregated information of geographic location obtained from individual
+          level info in database.
+        properties:
+          availability:
+            description: data availability
+            type: boolean
+          availabilityCount:
+            description: count of individuals with data available
+            type: integer
+          distribution:
+            additionalProperties:
+              type: object
+            description: List of categories and results or counts for each category.
+            examples:
+            - genders:
+                female: 51
+                male: 50
+            properties: {}
+            type: object
+        required:
+        - availability
+        type: object
+      eventEthnicities:
+        description: Aggregated information of geographic location obtained from individual
+          level info in database.
+        properties:
+          availability:
+            description: data availability
+            type: boolean
+          availabilityCount:
+            description: count of individuals with data available
+            type: integer
+          distribution:
+            additionalProperties:
+              type: object
+            description: List of categories and results or counts for each category.
+            examples:
+            - genders:
+                female: 51
+                male: 50
+            properties: {}
+            type: object
+        required:
+        - availability
+        type: object
+      eventGenders:
+        description: Aggregated information of geographic location obtained from individual
+          level info in database.
+        properties:
+          availability:
+            description: data availability
+            type: boolean
+          availabilityCount:
+            description: count of individuals with data available
+            type: integer
+          distribution:
+            additionalProperties:
+              type: object
+            description: List of categories and results or counts for each category.
+            examples:
+            - genders:
+                female: 51
+                male: 50
+            properties: {}
+            type: object
+        required:
+        - availability
+        type: object
+      eventLocations:
+        description: Aggregated information of geographic location obtained from individual
+          level info in database.
+        properties:
+          availability:
+            description: data availability
+            type: boolean
+          availabilityCount:
+            description: count of individuals with data available
+            type: integer
+          distribution:
+            additionalProperties:
+              type: object
+            description: List of categories and results or counts for each category.
+            examples:
+            - genders:
+                female: 51
+                male: 50
+            properties: {}
+            type: object
+        required:
+        - availability
+        type: object
+      eventNum:
+        description: cardinality of the collection event / data point in a series
+        examples:
+        - 1
+        - 2
+        - 3
+        - 4
+        type: integer
+      eventPhenotypes:
+        description: Aggregated information of geographic location obtained from individual
+          level info in database.
+        properties:
+          availability:
+            description: data availability
+            type: boolean
+          availabilityCount:
+            description: count of individuals with data available
+            type: integer
+          distribution:
+            additionalProperties:
+              type: object
+            description: List of categories and results or counts for each category.
+            examples:
+            - genders:
+                female: 51
+                male: 50
+            properties: {}
+            type: object
+        required:
+        - availability
+        type: object
+      eventSize:
+        description: Count of individuals in cohort at data point (for ´user-defined´
+          cohorts, this is individuals meeting criteria) obtained from individual
+          level info in database.
+        examples:
+        - 1543
+        - 42
+        type: integer
+      eventTimeline:
+        description: Aggregated information of dates of visit/diagnostic/inclusion
+          in study obtained from individual level info in database. Will coincide
+          with collection event date for multi-time
+        properties:
+          end:
+            description: latest date of visit
+            format: datetime
+            type: string
+          start:
+            description: earliest date of visit
+            format: datetime
+            type: string
+        type: object
+    type: object
+  type: array

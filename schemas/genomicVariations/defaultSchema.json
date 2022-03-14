@@ -1,0 +1,2831 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Genomic Variation",
+    "$comment": "version: ga4gh-beacon-variant-v2.0.0-draft.4",
+    "description": "Schema for a genomic variant entry.",
+    "type": "object",
+    "required": [
+        "variantInternalId",
+        "variantType",
+        "alternateBases",
+        "position"
+    ],
+    "properties": {
+        "variantInternalId": {
+            "description": "Reference to the **internal** variant ID. This represents the primary key/identifier of that variant **inside** a given Beacon instance. Different Beacon instances may use identical id values, referring to unrelated variants. Public identifiers such as the GA4GH Variant Representation Id (VRSid) MUST be returned in the `identifiers` section. A Beacon instance can, of course, use the VRSid as their own internal id but still MUST represent this then in the `identifiers` section.",
+            "type": "string"
+        },
+        "variantType": {
+            "description": "The `variantType` declares the nature of the variation in relation to a reference. In a response, it is used to describe the variation. In a request, it is used to declare the type of event the Beacon client is looking for. If in queries variants can not be defined through a sequence of one or more bases (`precise` variants) it can be used standalone (i.e. without `alternateBases`) together with positional parameters. Examples here are e.g. queries for structural variants such as `DUP` (increased allelic count of material from the genomic region  between `start` and `end` positions without assumption about the placement of the additional sequence) or `DEL` (deletion of sequence following `start`). Either `alternateBases` or `variantType` is required, with the exception of range queries (single `start` and `end` parameters).",
+            "type": "string",
+            "examples": [
+                "SNP",
+                "DEL",
+                "DUP",
+                "BND"
+            ],
+            "default": "SNP"
+        },
+        "referenceBases": {
+            "description": "Reference bases for this variant (starting from `start`). * Accepted values: IUPAC codes for nucleotides (e.g. `https://www.bioinformatics.org/sms/iupac.html`). N is a wildcard, that denotes the position of any base, and can be used as a standalone base of any type or within a partially known sequence. As example, a query of `ANNT` the Ns can take take any form of `[ACGT]` and will match `ANNT`, `ACNT`, `ACCT`, `ACGT` ... and so forth. * an *empty value* is used in the case of insertions with the maximally trimmed, inserted sequence being indicated in `AlternateBases`. NOTE: Many Beacon instances could not support UIPAC codes and it is not mandatory for them to do so. In such cases the use of [ACGTN] is mandated.",
+            "type": "string",
+            "pattern": "^([ACGTUNRYSWKMBDHV\\-\\.]*)$"
+        },
+        "alternateBases": {
+            "description": "Alternate bases for this variant (starting from `start`). * Accepted values: IUPAC codes for nucleotides (e.g. `https://www.bioinformatics.org/sms/iupac.html`). N is a wildcard, that denotes the position of any base, and can beused as a standalone base of any type or within a partially knownsequence. As example, a query of `ANNT` the Ns can take take any form of[ACGT] and will match `ANNT`, `ACNT`, `ACCT`, `ACGT` ... and so forth.* an *empty value* is used in the case of deletions with the maximally trimmed, deleted sequence being indicated in `ReferenceBases`* Categorical variant queries, e.g. such *not* being represented through sequence & position, make use of the `variantType` parameter. * Either `alternateBases` or `variantType` is required.",
+            "type": "string",
+            "pattern": "^([ACGTUNRYSWKMBDHV\\-\\.]*)$"
+        },
+        "position": {
+            "type": "object",
+            "description": "This section groups all attributes that allows to identify a variant via its position in the genome.",
+            "properties": {
+                "assemblyId": {
+                    "description": "Genomic assembly accession and version as RefSqeq assembly accession (e.g. 'GCF_000001405.39') or a versioned assembly name or synonym such as UCSC Genome Browser assembly (e.g. 'hg38') or Genome Reference Consortium Human (e.g. 'GRCh38.p13') names.",
+                    "type": "string",
+                    "example": [
+                        "GCF_000001405.39",
+                        "hg38",
+                        "GRCh38.p13"
+                    ]
+                },
+                "refseqId": {
+                    "description": "Reference sequence id for genomic reference sequence in which variant coordinates are given, e.g. 'NC_000009' for human chromosome 9. Preferably the RefSeqId, alternatively, names, synonymous or aliases e.g. 'Chr9' could be used.",
+                    "type": "string",
+                    "example": [
+                        "NC_000009",
+                        "Chr9",
+                        "NC_012920.1"
+                    ]
+                },
+                "start": {
+                    "description": "Precise or fuzzy start coordinate position(s) of the genomic variation (0-based, inclusive).",
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 0
+                    },
+                    "minItems": 1,
+                    "maxItems": 2,
+                    "examples": [
+                        [
+                            1000
+                        ],
+                        [
+                            1000,
+                            1100
+                        ]
+                    ]
+                },
+                "end": {
+                    "description": "Precise or bracketing the end of the variant, for variants not specified by their sequence content (e.g. structural variants, particularly CNVs).",
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1
+                    },
+                    "minItems": 0,
+                    "maxItems": 2,
+                    "examples": [
+                        [],
+                        [
+                            1200
+                        ],
+                        [
+                            1200,
+                            1350
+                        ]
+                    ]
+                }
+            },
+            "required": [
+                "assemblyId",
+                "refseqId",
+                "start"
+            ]
+        },
+        "identifiers": {
+            "type": "object",
+            "properties": {
+                "variantAlternativeIds": {
+                    "description": "List of cross-referencing ID(s), for the variant in other databases (e.g. dbSNP, clinVarId, ClinGen, COSMIC), , preferably CURIE(s) where available, e.g. 'VCV000055583.1', 'ClinGen:CA003410'.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "dbSNP:rs3975092470",
+                        "ClinGen:CA003410",
+                        "VCV000055583.1"
+                    ]
+                },
+                "genomicHGVSId": {
+                    "description": "HGVSId descriptor.",
+                    "type": "string",
+                    "example": "NC_000017.11:g.43057063G>A"
+                },
+                "transcriptHGVSIds": {
+                    "description": "List of HGVSId descriptor(s) at transcript level.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "NC 000023.10(NM004006.2):c.357+1G"
+                    ]
+                },
+                "proteinHGVSIds": {
+                    "description": "List of HGVSId descriptor(s) at protein level (for protein-altering variants).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "NP_009225.1:p.Glu1817Ter",
+                        "LRG 199p1:p.Val25Gly (preferred)"
+                    ]
+                },
+                "clinVarIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "examples": [
+                        "RCV000009910.19",
+                        "9325",
+                        "VCV000009325.28"
+                    ]
+                }
+            }
+        },
+        "molecularAttributes": {
+            "type": "object",
+            "properties": {
+                "geneIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "genomicFeatures": {
+                    "description": "List of Genomic feature(s) affected by the variant.",
+                    "type": "array",
+                    "items": {
+                        "description": "Genomic feature(s) related to the variant. NOTE: Although genes could also be referenced using these attributes, they have an independent section to allow direct queries.",
+                        "type": "object",
+                        "properties": {
+                            "featureClass": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "featureID": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            }
+                        },
+                        "required": [
+                            "featureClass"
+                        ]
+                    }
+                },
+                "molecularEffects": {
+                    "description": "Ontology term that includes describes the class of molecular consequence generated by the variant. Values from Ensembl Glossary Variant Consequence (ENSGLOSSARY:0000134 ontology branch) are recommended, e.g. Stop gained, Missense variant, Coding sequence variant.",
+                    "type": "array",
+                    "items": {
+                        "$schema": "http://json-schema.org/draft-07/schema#",
+                        "title": "Ontology Term",
+                        "description": "Definition of an ontology term.",
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "pattern": "^\\w[^:]+:.+$",
+                                "type": "string",
+                                "description": "A CURIE identifier for an ontology term.",
+                                "examples": [
+                                    "ga4gh:GA.01234abcde",
+                                    "DUO:0000004",
+                                    "orcid:0000-0003-3463-0775",
+                                    "PMID:15254584"
+                                ]
+                            },
+                            "label": {
+                                "type": "string",
+                                "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                            }
+                        },
+                        "definitions": {
+                            "CURIE": {
+                                "pattern": "^\\w[^:]+:.+$",
+                                "type": "string",
+                                "description": "A CURIE identifier for an ontology term.",
+                                "examples": [
+                                    "ga4gh:GA.01234abcde",
+                                    "DUO:0000004",
+                                    "orcid:0000-0003-3463-0775",
+                                    "PMID:15254584"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "id"
+                        ],
+                        "additionalProperties": true
+                    },
+                    "examples": [
+                        {
+                            "id": "ENSGLOSSARY:0000143",
+                            "label": "Stop gained"
+                        },
+                        {
+                            "id": "ENSGLOSSARY:0000150",
+                            "label": "Missense variant"
+                        }
+                    ]
+                },
+                "aminoacidChanges": {
+                    "description": "Lisf of change(s) at aminoacid level for protein affecting variants.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "V304*"
+                    ]
+                }
+            }
+        },
+        "caseLevelData": {
+            "type": "array",
+            "description": "caseLevelData reports about the variation instances observed in individual analyses.",
+            "items": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "description": "Internal id of this case level *instance* of the variant. This is an optional housekeeping parameter and should not be confused with the identifier of the variant (`variantInternalId`).",
+                        "type": "string"
+                    },
+                    "individualId": {
+                        "description": "Reference to individual ID (`individual.id`)",
+                        "type": "string"
+                    },
+                    "biosampleId": {
+                        "description": "Reference to biosample ID (`biosample.id`)",
+                        "type": "string"
+                    },
+                    "analysisId": {
+                        "description": "Reference to the bioinformatics analysis ID (`analysis.id`)",
+                        "type": "string",
+                        "example": "pgxcs-kftvldsu"
+                    },
+                    "runId": {
+                        "description": "Reference to the experimental run ID (`run.id`)",
+                        "type": "string",
+                        "example": "SRR10903401"
+                    },
+                    "zygosity": {
+                        "$schema": "http://json-schema.org/draft-07/schema#",
+                        "title": "Ontology Term",
+                        "description": "Definition of an ontology term.",
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "pattern": "^\\w[^:]+:.+$",
+                                "type": "string",
+                                "description": "A CURIE identifier for an ontology term.",
+                                "examples": [
+                                    "ga4gh:GA.01234abcde",
+                                    "DUO:0000004",
+                                    "orcid:0000-0003-3463-0775",
+                                    "PMID:15254584"
+                                ]
+                            },
+                            "label": {
+                                "type": "string",
+                                "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                            }
+                        },
+                        "definitions": {
+                            "CURIE": {
+                                "pattern": "^\\w[^:]+:.+$",
+                                "type": "string",
+                                "description": "A CURIE identifier for an ontology term.",
+                                "examples": [
+                                    "ga4gh:GA.01234abcde",
+                                    "DUO:0000004",
+                                    "orcid:0000-0003-3463-0775",
+                                    "PMID:15254584"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "id"
+                        ],
+                        "additionalProperties": true
+                    },
+                    "alleleOrigin": {
+                        "$schema": "http://json-schema.org/draft-07/schema#",
+                        "title": "Ontology Term",
+                        "description": "Definition of an ontology term.",
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "pattern": "^\\w[^:]+:.+$",
+                                "type": "string",
+                                "description": "A CURIE identifier for an ontology term.",
+                                "examples": [
+                                    "ga4gh:GA.01234abcde",
+                                    "DUO:0000004",
+                                    "orcid:0000-0003-3463-0775",
+                                    "PMID:15254584"
+                                ]
+                            },
+                            "label": {
+                                "type": "string",
+                                "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                            }
+                        },
+                        "definitions": {
+                            "CURIE": {
+                                "pattern": "^\\w[^:]+:.+$",
+                                "type": "string",
+                                "description": "A CURIE identifier for an ontology term.",
+                                "examples": [
+                                    "ga4gh:GA.01234abcde",
+                                    "DUO:0000004",
+                                    "orcid:0000-0003-3463-0775",
+                                    "PMID:15254584"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "id"
+                        ],
+                        "additionalProperties": true
+                    },
+                    "clinicalInterpretations": {
+                        "type": "array",
+                        "items": {
+                            "description": "List of annotated effects on disease or phenotypes.",
+                            "type": "object",
+                            "properties": {
+                                "conditionId": {
+                                    "description": "Internal identifier of the phenotype or clinical effect.",
+                                    "type": "string",
+                                    "examples": [
+                                        "disease1",
+                                        "phen2234"
+                                    ]
+                                },
+                                "category": {
+                                    "$schema": "http://json-schema.org/draft-07/schema#",
+                                    "title": "Ontology Term",
+                                    "description": "Definition of an ontology term.",
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "pattern": "^\\w[^:]+:.+$",
+                                            "type": "string",
+                                            "description": "A CURIE identifier for an ontology term.",
+                                            "examples": [
+                                                "ga4gh:GA.01234abcde",
+                                                "DUO:0000004",
+                                                "orcid:0000-0003-3463-0775",
+                                                "PMID:15254584"
+                                            ]
+                                        },
+                                        "label": {
+                                            "type": "string",
+                                            "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                        }
+                                    },
+                                    "definitions": {
+                                        "CURIE": {
+                                            "pattern": "^\\w[^:]+:.+$",
+                                            "type": "string",
+                                            "description": "A CURIE identifier for an ontology term.",
+                                            "examples": [
+                                                "ga4gh:GA.01234abcde",
+                                                "DUO:0000004",
+                                                "orcid:0000-0003-3463-0775",
+                                                "PMID:15254584"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "id"
+                                    ],
+                                    "additionalProperties": true
+                                },
+                                "effect": {
+                                    "$schema": "http://json-schema.org/draft-07/schema#",
+                                    "title": "Ontology Term",
+                                    "description": "Definition of an ontology term.",
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "pattern": "^\\w[^:]+:.+$",
+                                            "type": "string",
+                                            "description": "A CURIE identifier for an ontology term.",
+                                            "examples": [
+                                                "ga4gh:GA.01234abcde",
+                                                "DUO:0000004",
+                                                "orcid:0000-0003-3463-0775",
+                                                "PMID:15254584"
+                                            ]
+                                        },
+                                        "label": {
+                                            "type": "string",
+                                            "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                        }
+                                    },
+                                    "definitions": {
+                                        "CURIE": {
+                                            "pattern": "^\\w[^:]+:.+$",
+                                            "type": "string",
+                                            "description": "A CURIE identifier for an ontology term.",
+                                            "examples": [
+                                                "ga4gh:GA.01234abcde",
+                                                "DUO:0000004",
+                                                "orcid:0000-0003-3463-0775",
+                                                "PMID:15254584"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "id"
+                                    ],
+                                    "additionalProperties": true
+                                },
+                                "clinicalRelevance": {
+                                    "description": "A value from the five-tiered classification from the American College of Medical Genetics (ACMG) designed to describe the likelihood that a genomic sequence variant is causative of an inherited disease. (NCIT:C168798).",
+                                    "type": "string",
+                                    "enum": [
+                                        "benign",
+                                        "likely benign",
+                                        "uncertain significance",
+                                        "likely pathogenic",
+                                        "pathogenic"
+                                    ],
+                                    "example": "pathogenic"
+                                },
+                                "evidenceType": {
+                                    "$schema": "http://json-schema.org/draft-07/schema#",
+                                    "title": "Ontology Term",
+                                    "description": "Definition of an ontology term.",
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "pattern": "^\\w[^:]+:.+$",
+                                            "type": "string",
+                                            "description": "A CURIE identifier for an ontology term.",
+                                            "examples": [
+                                                "ga4gh:GA.01234abcde",
+                                                "DUO:0000004",
+                                                "orcid:0000-0003-3463-0775",
+                                                "PMID:15254584"
+                                            ]
+                                        },
+                                        "label": {
+                                            "type": "string",
+                                            "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                        }
+                                    },
+                                    "definitions": {
+                                        "CURIE": {
+                                            "pattern": "^\\w[^:]+:.+$",
+                                            "type": "string",
+                                            "description": "A CURIE identifier for an ontology term.",
+                                            "examples": [
+                                                "ga4gh:GA.01234abcde",
+                                                "DUO:0000004",
+                                                "orcid:0000-0003-3463-0775",
+                                                "PMID:15254584"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "id"
+                                    ],
+                                    "additionalProperties": true
+                                },
+                                "annotatedWith": {
+                                    "type": "object",
+                                    "properties": {
+                                        "toolName": {
+                                            "description": "Name of the tool.",
+                                            "type": "string",
+                                            "example": "Ensembl Variant Effect Predictor (VEP)"
+                                        },
+                                        "version": {
+                                            "description": "Version used.",
+                                            "type": "string",
+                                            "example": "rel 104"
+                                        },
+                                        "toolReferences": {
+                                            "description": "References to the tool",
+                                            "type": "object",
+                                            "properties": {},
+                                            "additionalProperties": true,
+                                            "examples": [
+                                                {
+                                                    "bio.toolsId": "https://bio.tools/vep"
+                                                },
+                                                {
+                                                    "url": "http://www.ensembl.org/vep"
+                                                }
+                                            ],
+                                            "minProperties": 1
+                                        }
+                                    },
+                                    "required": [
+                                        "toolName",
+                                        "version",
+                                        "toolReferences"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "conditionId",
+                                "effect"
+                            ]
+                        }
+                    },
+                    "phenotypicEffects": {
+                        "type": "array",
+                        "items": {
+                            "description": "List of annotated effects on disease or phenotypes.",
+                            "type": "object",
+                            "properties": {
+                                "conditionId": {
+                                    "description": "Internal identifier of the phenotype or clinical effect.",
+                                    "type": "string",
+                                    "examples": [
+                                        "disease1",
+                                        "phen2234"
+                                    ]
+                                },
+                                "category": {
+                                    "$schema": "http://json-schema.org/draft-07/schema#",
+                                    "title": "Ontology Term",
+                                    "description": "Definition of an ontology term.",
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "pattern": "^\\w[^:]+:.+$",
+                                            "type": "string",
+                                            "description": "A CURIE identifier for an ontology term.",
+                                            "examples": [
+                                                "ga4gh:GA.01234abcde",
+                                                "DUO:0000004",
+                                                "orcid:0000-0003-3463-0775",
+                                                "PMID:15254584"
+                                            ]
+                                        },
+                                        "label": {
+                                            "type": "string",
+                                            "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                        }
+                                    },
+                                    "definitions": {
+                                        "CURIE": {
+                                            "pattern": "^\\w[^:]+:.+$",
+                                            "type": "string",
+                                            "description": "A CURIE identifier for an ontology term.",
+                                            "examples": [
+                                                "ga4gh:GA.01234abcde",
+                                                "DUO:0000004",
+                                                "orcid:0000-0003-3463-0775",
+                                                "PMID:15254584"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "id"
+                                    ],
+                                    "additionalProperties": true
+                                },
+                                "effect": {
+                                    "$schema": "http://json-schema.org/draft-07/schema#",
+                                    "title": "Ontology Term",
+                                    "description": "Definition of an ontology term.",
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "pattern": "^\\w[^:]+:.+$",
+                                            "type": "string",
+                                            "description": "A CURIE identifier for an ontology term.",
+                                            "examples": [
+                                                "ga4gh:GA.01234abcde",
+                                                "DUO:0000004",
+                                                "orcid:0000-0003-3463-0775",
+                                                "PMID:15254584"
+                                            ]
+                                        },
+                                        "label": {
+                                            "type": "string",
+                                            "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                        }
+                                    },
+                                    "definitions": {
+                                        "CURIE": {
+                                            "pattern": "^\\w[^:]+:.+$",
+                                            "type": "string",
+                                            "description": "A CURIE identifier for an ontology term.",
+                                            "examples": [
+                                                "ga4gh:GA.01234abcde",
+                                                "DUO:0000004",
+                                                "orcid:0000-0003-3463-0775",
+                                                "PMID:15254584"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "id"
+                                    ],
+                                    "additionalProperties": true
+                                },
+                                "clinicalRelevance": {
+                                    "description": "A value from the five-tiered classification from the American College of Medical Genetics (ACMG) designed to describe the likelihood that a genomic sequence variant is causative of an inherited disease. (NCIT:C168798).",
+                                    "type": "string",
+                                    "enum": [
+                                        "benign",
+                                        "likely benign",
+                                        "uncertain significance",
+                                        "likely pathogenic",
+                                        "pathogenic"
+                                    ],
+                                    "example": "pathogenic"
+                                },
+                                "evidenceType": {
+                                    "$schema": "http://json-schema.org/draft-07/schema#",
+                                    "title": "Ontology Term",
+                                    "description": "Definition of an ontology term.",
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "pattern": "^\\w[^:]+:.+$",
+                                            "type": "string",
+                                            "description": "A CURIE identifier for an ontology term.",
+                                            "examples": [
+                                                "ga4gh:GA.01234abcde",
+                                                "DUO:0000004",
+                                                "orcid:0000-0003-3463-0775",
+                                                "PMID:15254584"
+                                            ]
+                                        },
+                                        "label": {
+                                            "type": "string",
+                                            "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                        }
+                                    },
+                                    "definitions": {
+                                        "CURIE": {
+                                            "pattern": "^\\w[^:]+:.+$",
+                                            "type": "string",
+                                            "description": "A CURIE identifier for an ontology term.",
+                                            "examples": [
+                                                "ga4gh:GA.01234abcde",
+                                                "DUO:0000004",
+                                                "orcid:0000-0003-3463-0775",
+                                                "PMID:15254584"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "id"
+                                    ],
+                                    "additionalProperties": true
+                                },
+                                "annotatedWith": {
+                                    "type": "object",
+                                    "properties": {
+                                        "toolName": {
+                                            "description": "Name of the tool.",
+                                            "type": "string",
+                                            "example": "Ensembl Variant Effect Predictor (VEP)"
+                                        },
+                                        "version": {
+                                            "description": "Version used.",
+                                            "type": "string",
+                                            "example": "rel 104"
+                                        },
+                                        "toolReferences": {
+                                            "description": "References to the tool",
+                                            "type": "object",
+                                            "properties": {},
+                                            "additionalProperties": true,
+                                            "examples": [
+                                                {
+                                                    "bio.toolsId": "https://bio.tools/vep"
+                                                },
+                                                {
+                                                    "url": "http://www.ensembl.org/vep"
+                                                }
+                                            ],
+                                            "minProperties": 1
+                                        }
+                                    },
+                                    "required": [
+                                        "toolName",
+                                        "version",
+                                        "toolReferences"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "conditionId",
+                                "effect"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "biosampleId"
+                ]
+            }
+        },
+        "variantLevelData": {
+            "type": "object",
+            "properties": {
+                "clinicalInterpretations": {
+                    "type": "array",
+                    "items": {
+                        "description": "List of annotated effects on disease or phenotypes.",
+                        "type": "object",
+                        "properties": {
+                            "conditionId": {
+                                "description": "Internal identifier of the phenotype or clinical effect.",
+                                "type": "string",
+                                "examples": [
+                                    "disease1",
+                                    "phen2234"
+                                ]
+                            },
+                            "category": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "effect": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "clinicalRelevance": {
+                                "description": "A value from the five-tiered classification from the American College of Medical Genetics (ACMG) designed to describe the likelihood that a genomic sequence variant is causative of an inherited disease. (NCIT:C168798).",
+                                "type": "string",
+                                "enum": [
+                                    "benign",
+                                    "likely benign",
+                                    "uncertain significance",
+                                    "likely pathogenic",
+                                    "pathogenic"
+                                ],
+                                "example": "pathogenic"
+                            },
+                            "evidenceType": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "annotatedWith": {
+                                "type": "object",
+                                "properties": {
+                                    "toolName": {
+                                        "description": "Name of the tool.",
+                                        "type": "string",
+                                        "example": "Ensembl Variant Effect Predictor (VEP)"
+                                    },
+                                    "version": {
+                                        "description": "Version used.",
+                                        "type": "string",
+                                        "example": "rel 104"
+                                    },
+                                    "toolReferences": {
+                                        "description": "References to the tool",
+                                        "type": "object",
+                                        "properties": {},
+                                        "additionalProperties": true,
+                                        "examples": [
+                                            {
+                                                "bio.toolsId": "https://bio.tools/vep"
+                                            },
+                                            {
+                                                "url": "http://www.ensembl.org/vep"
+                                            }
+                                        ],
+                                        "minProperties": 1
+                                    }
+                                },
+                                "required": [
+                                    "toolName",
+                                    "version",
+                                    "toolReferences"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "conditionId",
+                            "effect"
+                        ]
+                    }
+                },
+                "phenotypicEffects": {
+                    "type": "array",
+                    "items": {
+                        "description": "List of annotated effects on disease or phenotypes.",
+                        "type": "object",
+                        "properties": {
+                            "conditionId": {
+                                "description": "Internal identifier of the phenotype or clinical effect.",
+                                "type": "string",
+                                "examples": [
+                                    "disease1",
+                                    "phen2234"
+                                ]
+                            },
+                            "category": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "effect": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "clinicalRelevance": {
+                                "description": "A value from the five-tiered classification from the American College of Medical Genetics (ACMG) designed to describe the likelihood that a genomic sequence variant is causative of an inherited disease. (NCIT:C168798).",
+                                "type": "string",
+                                "enum": [
+                                    "benign",
+                                    "likely benign",
+                                    "uncertain significance",
+                                    "likely pathogenic",
+                                    "pathogenic"
+                                ],
+                                "example": "pathogenic"
+                            },
+                            "evidenceType": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "annotatedWith": {
+                                "type": "object",
+                                "properties": {
+                                    "toolName": {
+                                        "description": "Name of the tool.",
+                                        "type": "string",
+                                        "example": "Ensembl Variant Effect Predictor (VEP)"
+                                    },
+                                    "version": {
+                                        "description": "Version used.",
+                                        "type": "string",
+                                        "example": "rel 104"
+                                    },
+                                    "toolReferences": {
+                                        "description": "References to the tool",
+                                        "type": "object",
+                                        "properties": {},
+                                        "additionalProperties": true,
+                                        "examples": [
+                                            {
+                                                "bio.toolsId": "https://bio.tools/vep"
+                                            },
+                                            {
+                                                "url": "http://www.ensembl.org/vep"
+                                            }
+                                        ],
+                                        "minProperties": 1
+                                    }
+                                },
+                                "required": [
+                                    "toolName",
+                                    "version",
+                                    "toolReferences"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "conditionId",
+                            "effect"
+                        ]
+                    }
+                }
+            }
+        },
+        "frequencyInPopulations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "source": {
+                        "type": "string",
+                        "description": "The study",
+                        "examples": [
+                            "The Genome Aggregation Database (gnomAD)",
+                            "The European Genome-phenome Archive (EGA)"
+                        ]
+                    },
+                    "sourceReference": {
+                        "type": "string",
+                        "description": "A reference to further documentation or details.",
+                        "examples": [
+                            "https://gnomad.broadinstitute.org/",
+                            "https://ega-archive.org/"
+                        ]
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "version of the source data.",
+                        "examples": [
+                            "gnomAD v3.1.1"
+                        ]
+                    },
+                    "frequencies": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "population": {
+                                    "type": "string",
+                                    "description": "A name for the population. A population could an ethnic, geographical one or just the `members`of a study.",
+                                    "examples": [
+                                        "East Asian",
+                                        "ICGC Chronic Lymphocytic Leukemia-ES",
+                                        "Men",
+                                        "Children"
+                                    ]
+                                },
+                                "alleleFrequency": {
+                                    "type": "number",
+                                    "description": "Allele frequency between 0 and 1.",
+                                    "examples": [
+                                        3.186e-05
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "population",
+                                "alleleFrequency"
+                            ]
+                        },
+                        "minItems": 1
+                    }
+                },
+                "required": [
+                    "source",
+                    "sourceReference",
+                    "frequencies"
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "Position": {
+            "type": "object",
+            "description": "This section groups all attributes that allows to identify a variant via its position in the genome.",
+            "properties": {
+                "assemblyId": {
+                    "description": "Genomic assembly accession and version as RefSqeq assembly accession (e.g. 'GCF_000001405.39') or a versioned assembly name or synonym such as UCSC Genome Browser assembly (e.g. 'hg38') or Genome Reference Consortium Human (e.g. 'GRCh38.p13') names.",
+                    "type": "string",
+                    "example": [
+                        "GCF_000001405.39",
+                        "hg38",
+                        "GRCh38.p13"
+                    ]
+                },
+                "refseqId": {
+                    "description": "Reference sequence id for genomic reference sequence in which variant coordinates are given, e.g. 'NC_000009' for human chromosome 9. Preferably the RefSeqId, alternatively, names, synonymous or aliases e.g. 'Chr9' could be used.",
+                    "type": "string",
+                    "example": [
+                        "NC_000009",
+                        "Chr9",
+                        "NC_012920.1"
+                    ]
+                },
+                "start": {
+                    "description": "Precise or fuzzy start coordinate position(s) of the genomic variation (0-based, inclusive).",
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 0
+                    },
+                    "minItems": 1,
+                    "maxItems": 2,
+                    "examples": [
+                        [
+                            1000
+                        ],
+                        [
+                            1000,
+                            1100
+                        ]
+                    ]
+                },
+                "end": {
+                    "description": "Precise or bracketing the end of the variant, for variants not specified by their sequence content (e.g. structural variants, particularly CNVs).",
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64",
+                        "minimum": 1
+                    },
+                    "minItems": 0,
+                    "maxItems": 2,
+                    "examples": [
+                        [],
+                        [
+                            1200
+                        ],
+                        [
+                            1200,
+                            1350
+                        ]
+                    ]
+                }
+            },
+            "required": [
+                "assemblyId",
+                "refseqId",
+                "start"
+            ]
+        },
+        "Identifiers": {
+            "type": "object",
+            "properties": {
+                "variantAlternativeIds": {
+                    "description": "List of cross-referencing ID(s), for the variant in other databases (e.g. dbSNP, clinVarId, ClinGen, COSMIC), , preferably CURIE(s) where available, e.g. 'VCV000055583.1', 'ClinGen:CA003410'.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "dbSNP:rs3975092470",
+                        "ClinGen:CA003410",
+                        "VCV000055583.1"
+                    ]
+                },
+                "genomicHGVSId": {
+                    "description": "HGVSId descriptor.",
+                    "type": "string",
+                    "example": "NC_000017.11:g.43057063G>A"
+                },
+                "transcriptHGVSIds": {
+                    "description": "List of HGVSId descriptor(s) at transcript level.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "NC 000023.10(NM004006.2):c.357+1G"
+                    ]
+                },
+                "proteinHGVSIds": {
+                    "description": "List of HGVSId descriptor(s) at protein level (for protein-altering variants).",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "NP_009225.1:p.Glu1817Ter",
+                        "LRG 199p1:p.Val25Gly (preferred)"
+                    ]
+                },
+                "clinVarIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "examples": [
+                        "RCV000009910.19",
+                        "9325",
+                        "VCV000009325.28"
+                    ]
+                }
+            }
+        },
+        "MolecularAttributes": {
+            "type": "object",
+            "properties": {
+                "geneIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "genomicFeatures": {
+                    "description": "List of Genomic feature(s) affected by the variant.",
+                    "type": "array",
+                    "items": {
+                        "description": "Genomic feature(s) related to the variant. NOTE: Although genes could also be referenced using these attributes, they have an independent section to allow direct queries.",
+                        "type": "object",
+                        "properties": {
+                            "featureClass": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "featureID": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            }
+                        },
+                        "required": [
+                            "featureClass"
+                        ]
+                    }
+                },
+                "molecularEffects": {
+                    "description": "Ontology term that includes describes the class of molecular consequence generated by the variant. Values from Ensembl Glossary Variant Consequence (ENSGLOSSARY:0000134 ontology branch) are recommended, e.g. Stop gained, Missense variant, Coding sequence variant.",
+                    "type": "array",
+                    "items": {
+                        "$schema": "http://json-schema.org/draft-07/schema#",
+                        "title": "Ontology Term",
+                        "description": "Definition of an ontology term.",
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "pattern": "^\\w[^:]+:.+$",
+                                "type": "string",
+                                "description": "A CURIE identifier for an ontology term.",
+                                "examples": [
+                                    "ga4gh:GA.01234abcde",
+                                    "DUO:0000004",
+                                    "orcid:0000-0003-3463-0775",
+                                    "PMID:15254584"
+                                ]
+                            },
+                            "label": {
+                                "type": "string",
+                                "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                            }
+                        },
+                        "definitions": {
+                            "CURIE": {
+                                "pattern": "^\\w[^:]+:.+$",
+                                "type": "string",
+                                "description": "A CURIE identifier for an ontology term.",
+                                "examples": [
+                                    "ga4gh:GA.01234abcde",
+                                    "DUO:0000004",
+                                    "orcid:0000-0003-3463-0775",
+                                    "PMID:15254584"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "id"
+                        ],
+                        "additionalProperties": true
+                    },
+                    "examples": [
+                        {
+                            "id": "ENSGLOSSARY:0000143",
+                            "label": "Stop gained"
+                        },
+                        {
+                            "id": "ENSGLOSSARY:0000150",
+                            "label": "Missense variant"
+                        }
+                    ]
+                },
+                "aminoacidChanges": {
+                    "description": "Lisf of change(s) at aminoacid level for protein affecting variants.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "V304*"
+                    ]
+                }
+            }
+        },
+        "GenomicFeature": {
+            "description": "Genomic feature(s) related to the variant. NOTE: Although genes could also be referenced using these attributes, they have an independent section to allow direct queries.",
+            "type": "object",
+            "properties": {
+                "featureClass": {
+                    "$schema": "http://json-schema.org/draft-07/schema#",
+                    "title": "Ontology Term",
+                    "description": "Definition of an ontology term.",
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "pattern": "^\\w[^:]+:.+$",
+                            "type": "string",
+                            "description": "A CURIE identifier for an ontology term.",
+                            "examples": [
+                                "ga4gh:GA.01234abcde",
+                                "DUO:0000004",
+                                "orcid:0000-0003-3463-0775",
+                                "PMID:15254584"
+                            ]
+                        },
+                        "label": {
+                            "type": "string",
+                            "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                        }
+                    },
+                    "definitions": {
+                        "CURIE": {
+                            "pattern": "^\\w[^:]+:.+$",
+                            "type": "string",
+                            "description": "A CURIE identifier for an ontology term.",
+                            "examples": [
+                                "ga4gh:GA.01234abcde",
+                                "DUO:0000004",
+                                "orcid:0000-0003-3463-0775",
+                                "PMID:15254584"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id"
+                    ],
+                    "additionalProperties": true
+                },
+                "featureID": {
+                    "$schema": "http://json-schema.org/draft-07/schema#",
+                    "title": "Ontology Term",
+                    "description": "Definition of an ontology term.",
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "pattern": "^\\w[^:]+:.+$",
+                            "type": "string",
+                            "description": "A CURIE identifier for an ontology term.",
+                            "examples": [
+                                "ga4gh:GA.01234abcde",
+                                "DUO:0000004",
+                                "orcid:0000-0003-3463-0775",
+                                "PMID:15254584"
+                            ]
+                        },
+                        "label": {
+                            "type": "string",
+                            "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                        }
+                    },
+                    "definitions": {
+                        "CURIE": {
+                            "pattern": "^\\w[^:]+:.+$",
+                            "type": "string",
+                            "description": "A CURIE identifier for an ontology term.",
+                            "examples": [
+                                "ga4gh:GA.01234abcde",
+                                "DUO:0000004",
+                                "orcid:0000-0003-3463-0775",
+                                "PMID:15254584"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id"
+                    ],
+                    "additionalProperties": true
+                }
+            },
+            "required": [
+                "featureClass"
+            ]
+        },
+        "PhenoClinicEffect": {
+            "description": "List of annotated effects on disease or phenotypes.",
+            "type": "object",
+            "properties": {
+                "conditionId": {
+                    "description": "Internal identifier of the phenotype or clinical effect.",
+                    "type": "string",
+                    "examples": [
+                        "disease1",
+                        "phen2234"
+                    ]
+                },
+                "category": {
+                    "$schema": "http://json-schema.org/draft-07/schema#",
+                    "title": "Ontology Term",
+                    "description": "Definition of an ontology term.",
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "pattern": "^\\w[^:]+:.+$",
+                            "type": "string",
+                            "description": "A CURIE identifier for an ontology term.",
+                            "examples": [
+                                "ga4gh:GA.01234abcde",
+                                "DUO:0000004",
+                                "orcid:0000-0003-3463-0775",
+                                "PMID:15254584"
+                            ]
+                        },
+                        "label": {
+                            "type": "string",
+                            "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                        }
+                    },
+                    "definitions": {
+                        "CURIE": {
+                            "pattern": "^\\w[^:]+:.+$",
+                            "type": "string",
+                            "description": "A CURIE identifier for an ontology term.",
+                            "examples": [
+                                "ga4gh:GA.01234abcde",
+                                "DUO:0000004",
+                                "orcid:0000-0003-3463-0775",
+                                "PMID:15254584"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id"
+                    ],
+                    "additionalProperties": true
+                },
+                "effect": {
+                    "$schema": "http://json-schema.org/draft-07/schema#",
+                    "title": "Ontology Term",
+                    "description": "Definition of an ontology term.",
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "pattern": "^\\w[^:]+:.+$",
+                            "type": "string",
+                            "description": "A CURIE identifier for an ontology term.",
+                            "examples": [
+                                "ga4gh:GA.01234abcde",
+                                "DUO:0000004",
+                                "orcid:0000-0003-3463-0775",
+                                "PMID:15254584"
+                            ]
+                        },
+                        "label": {
+                            "type": "string",
+                            "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                        }
+                    },
+                    "definitions": {
+                        "CURIE": {
+                            "pattern": "^\\w[^:]+:.+$",
+                            "type": "string",
+                            "description": "A CURIE identifier for an ontology term.",
+                            "examples": [
+                                "ga4gh:GA.01234abcde",
+                                "DUO:0000004",
+                                "orcid:0000-0003-3463-0775",
+                                "PMID:15254584"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id"
+                    ],
+                    "additionalProperties": true
+                },
+                "clinicalRelevance": {
+                    "description": "A value from the five-tiered classification from the American College of Medical Genetics (ACMG) designed to describe the likelihood that a genomic sequence variant is causative of an inherited disease. (NCIT:C168798).",
+                    "type": "string",
+                    "enum": [
+                        "benign",
+                        "likely benign",
+                        "uncertain significance",
+                        "likely pathogenic",
+                        "pathogenic"
+                    ],
+                    "example": "pathogenic"
+                },
+                "evidenceType": {
+                    "$schema": "http://json-schema.org/draft-07/schema#",
+                    "title": "Ontology Term",
+                    "description": "Definition of an ontology term.",
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "pattern": "^\\w[^:]+:.+$",
+                            "type": "string",
+                            "description": "A CURIE identifier for an ontology term.",
+                            "examples": [
+                                "ga4gh:GA.01234abcde",
+                                "DUO:0000004",
+                                "orcid:0000-0003-3463-0775",
+                                "PMID:15254584"
+                            ]
+                        },
+                        "label": {
+                            "type": "string",
+                            "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                        }
+                    },
+                    "definitions": {
+                        "CURIE": {
+                            "pattern": "^\\w[^:]+:.+$",
+                            "type": "string",
+                            "description": "A CURIE identifier for an ontology term.",
+                            "examples": [
+                                "ga4gh:GA.01234abcde",
+                                "DUO:0000004",
+                                "orcid:0000-0003-3463-0775",
+                                "PMID:15254584"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id"
+                    ],
+                    "additionalProperties": true
+                },
+                "annotatedWith": {
+                    "type": "object",
+                    "properties": {
+                        "toolName": {
+                            "description": "Name of the tool.",
+                            "type": "string",
+                            "example": "Ensembl Variant Effect Predictor (VEP)"
+                        },
+                        "version": {
+                            "description": "Version used.",
+                            "type": "string",
+                            "example": "rel 104"
+                        },
+                        "toolReferences": {
+                            "description": "References to the tool",
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": true,
+                            "examples": [
+                                {
+                                    "bio.toolsId": "https://bio.tools/vep"
+                                },
+                                {
+                                    "url": "http://www.ensembl.org/vep"
+                                }
+                            ],
+                            "minProperties": 1
+                        }
+                    },
+                    "required": [
+                        "toolName",
+                        "version",
+                        "toolReferences"
+                    ]
+                }
+            },
+            "required": [
+                "conditionId",
+                "effect"
+            ]
+        },
+        "FrequencyInPopulations": {
+            "type": "object",
+            "properties": {
+                "source": {
+                    "type": "string",
+                    "description": "The study",
+                    "examples": [
+                        "The Genome Aggregation Database (gnomAD)",
+                        "The European Genome-phenome Archive (EGA)"
+                    ]
+                },
+                "sourceReference": {
+                    "type": "string",
+                    "description": "A reference to further documentation or details.",
+                    "examples": [
+                        "https://gnomad.broadinstitute.org/",
+                        "https://ega-archive.org/"
+                    ]
+                },
+                "version": {
+                    "type": "string",
+                    "description": "version of the source data.",
+                    "examples": [
+                        "gnomAD v3.1.1"
+                    ]
+                },
+                "frequencies": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "population": {
+                                "type": "string",
+                                "description": "A name for the population. A population could an ethnic, geographical one or just the `members`of a study.",
+                                "examples": [
+                                    "East Asian",
+                                    "ICGC Chronic Lymphocytic Leukemia-ES",
+                                    "Men",
+                                    "Children"
+                                ]
+                            },
+                            "alleleFrequency": {
+                                "type": "number",
+                                "description": "Allele frequency between 0 and 1.",
+                                "examples": [
+                                    3.186e-05
+                                ]
+                            }
+                        },
+                        "required": [
+                            "population",
+                            "alleleFrequency"
+                        ]
+                    },
+                    "minItems": 1
+                }
+            },
+            "required": [
+                "source",
+                "sourceReference",
+                "frequencies"
+            ]
+        },
+        "PopulationFrequency": {
+            "type": "object",
+            "properties": {
+                "population": {
+                    "type": "string",
+                    "description": "A name for the population. A population could an ethnic, geographical one or just the `members`of a study.",
+                    "examples": [
+                        "East Asian",
+                        "ICGC Chronic Lymphocytic Leukemia-ES",
+                        "Men",
+                        "Children"
+                    ]
+                },
+                "alleleFrequency": {
+                    "type": "number",
+                    "description": "Allele frequency between 0 and 1.",
+                    "examples": [
+                        3.186e-05
+                    ]
+                }
+            },
+            "required": [
+                "population",
+                "alleleFrequency"
+            ]
+        },
+        "CaseLevelVariant": {
+            "type": "object",
+            "description": "",
+            "properties": {
+                "id": {
+                    "description": "Internal id of this case level *instance* of the variant. This is an optional housekeeping parameter and should not be confused with the identifier of the variant (`variantInternalId`).",
+                    "type": "string"
+                },
+                "individualId": {
+                    "description": "Reference to individual ID (`individual.id`)",
+                    "type": "string"
+                },
+                "biosampleId": {
+                    "description": "Reference to biosample ID (`biosample.id`)",
+                    "type": "string"
+                },
+                "analysisId": {
+                    "description": "Reference to the bioinformatics analysis ID (`analysis.id`)",
+                    "type": "string",
+                    "example": "pgxcs-kftvldsu"
+                },
+                "runId": {
+                    "description": "Reference to the experimental run ID (`run.id`)",
+                    "type": "string",
+                    "example": "SRR10903401"
+                },
+                "zygosity": {
+                    "$schema": "http://json-schema.org/draft-07/schema#",
+                    "title": "Ontology Term",
+                    "description": "Definition of an ontology term.",
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "pattern": "^\\w[^:]+:.+$",
+                            "type": "string",
+                            "description": "A CURIE identifier for an ontology term.",
+                            "examples": [
+                                "ga4gh:GA.01234abcde",
+                                "DUO:0000004",
+                                "orcid:0000-0003-3463-0775",
+                                "PMID:15254584"
+                            ]
+                        },
+                        "label": {
+                            "type": "string",
+                            "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                        }
+                    },
+                    "definitions": {
+                        "CURIE": {
+                            "pattern": "^\\w[^:]+:.+$",
+                            "type": "string",
+                            "description": "A CURIE identifier for an ontology term.",
+                            "examples": [
+                                "ga4gh:GA.01234abcde",
+                                "DUO:0000004",
+                                "orcid:0000-0003-3463-0775",
+                                "PMID:15254584"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id"
+                    ],
+                    "additionalProperties": true
+                },
+                "alleleOrigin": {
+                    "$schema": "http://json-schema.org/draft-07/schema#",
+                    "title": "Ontology Term",
+                    "description": "Definition of an ontology term.",
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "pattern": "^\\w[^:]+:.+$",
+                            "type": "string",
+                            "description": "A CURIE identifier for an ontology term.",
+                            "examples": [
+                                "ga4gh:GA.01234abcde",
+                                "DUO:0000004",
+                                "orcid:0000-0003-3463-0775",
+                                "PMID:15254584"
+                            ]
+                        },
+                        "label": {
+                            "type": "string",
+                            "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                        }
+                    },
+                    "definitions": {
+                        "CURIE": {
+                            "pattern": "^\\w[^:]+:.+$",
+                            "type": "string",
+                            "description": "A CURIE identifier for an ontology term.",
+                            "examples": [
+                                "ga4gh:GA.01234abcde",
+                                "DUO:0000004",
+                                "orcid:0000-0003-3463-0775",
+                                "PMID:15254584"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "id"
+                    ],
+                    "additionalProperties": true
+                },
+                "clinicalInterpretations": {
+                    "type": "array",
+                    "items": {
+                        "description": "List of annotated effects on disease or phenotypes.",
+                        "type": "object",
+                        "properties": {
+                            "conditionId": {
+                                "description": "Internal identifier of the phenotype or clinical effect.",
+                                "type": "string",
+                                "examples": [
+                                    "disease1",
+                                    "phen2234"
+                                ]
+                            },
+                            "category": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "effect": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "clinicalRelevance": {
+                                "description": "A value from the five-tiered classification from the American College of Medical Genetics (ACMG) designed to describe the likelihood that a genomic sequence variant is causative of an inherited disease. (NCIT:C168798).",
+                                "type": "string",
+                                "enum": [
+                                    "benign",
+                                    "likely benign",
+                                    "uncertain significance",
+                                    "likely pathogenic",
+                                    "pathogenic"
+                                ],
+                                "example": "pathogenic"
+                            },
+                            "evidenceType": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "annotatedWith": {
+                                "type": "object",
+                                "properties": {
+                                    "toolName": {
+                                        "description": "Name of the tool.",
+                                        "type": "string",
+                                        "example": "Ensembl Variant Effect Predictor (VEP)"
+                                    },
+                                    "version": {
+                                        "description": "Version used.",
+                                        "type": "string",
+                                        "example": "rel 104"
+                                    },
+                                    "toolReferences": {
+                                        "description": "References to the tool",
+                                        "type": "object",
+                                        "properties": {},
+                                        "additionalProperties": true,
+                                        "examples": [
+                                            {
+                                                "bio.toolsId": "https://bio.tools/vep"
+                                            },
+                                            {
+                                                "url": "http://www.ensembl.org/vep"
+                                            }
+                                        ],
+                                        "minProperties": 1
+                                    }
+                                },
+                                "required": [
+                                    "toolName",
+                                    "version",
+                                    "toolReferences"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "conditionId",
+                            "effect"
+                        ]
+                    }
+                },
+                "phenotypicEffects": {
+                    "type": "array",
+                    "items": {
+                        "description": "List of annotated effects on disease or phenotypes.",
+                        "type": "object",
+                        "properties": {
+                            "conditionId": {
+                                "description": "Internal identifier of the phenotype or clinical effect.",
+                                "type": "string",
+                                "examples": [
+                                    "disease1",
+                                    "phen2234"
+                                ]
+                            },
+                            "category": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "effect": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "clinicalRelevance": {
+                                "description": "A value from the five-tiered classification from the American College of Medical Genetics (ACMG) designed to describe the likelihood that a genomic sequence variant is causative of an inherited disease. (NCIT:C168798).",
+                                "type": "string",
+                                "enum": [
+                                    "benign",
+                                    "likely benign",
+                                    "uncertain significance",
+                                    "likely pathogenic",
+                                    "pathogenic"
+                                ],
+                                "example": "pathogenic"
+                            },
+                            "evidenceType": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "annotatedWith": {
+                                "type": "object",
+                                "properties": {
+                                    "toolName": {
+                                        "description": "Name of the tool.",
+                                        "type": "string",
+                                        "example": "Ensembl Variant Effect Predictor (VEP)"
+                                    },
+                                    "version": {
+                                        "description": "Version used.",
+                                        "type": "string",
+                                        "example": "rel 104"
+                                    },
+                                    "toolReferences": {
+                                        "description": "References to the tool",
+                                        "type": "object",
+                                        "properties": {},
+                                        "additionalProperties": true,
+                                        "examples": [
+                                            {
+                                                "bio.toolsId": "https://bio.tools/vep"
+                                            },
+                                            {
+                                                "url": "http://www.ensembl.org/vep"
+                                            }
+                                        ],
+                                        "minProperties": 1
+                                    }
+                                },
+                                "required": [
+                                    "toolName",
+                                    "version",
+                                    "toolReferences"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "conditionId",
+                            "effect"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "biosampleId"
+            ]
+        },
+        "VariantLevelData": {
+            "type": "object",
+            "properties": {
+                "clinicalInterpretations": {
+                    "type": "array",
+                    "items": {
+                        "description": "List of annotated effects on disease or phenotypes.",
+                        "type": "object",
+                        "properties": {
+                            "conditionId": {
+                                "description": "Internal identifier of the phenotype or clinical effect.",
+                                "type": "string",
+                                "examples": [
+                                    "disease1",
+                                    "phen2234"
+                                ]
+                            },
+                            "category": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "effect": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "clinicalRelevance": {
+                                "description": "A value from the five-tiered classification from the American College of Medical Genetics (ACMG) designed to describe the likelihood that a genomic sequence variant is causative of an inherited disease. (NCIT:C168798).",
+                                "type": "string",
+                                "enum": [
+                                    "benign",
+                                    "likely benign",
+                                    "uncertain significance",
+                                    "likely pathogenic",
+                                    "pathogenic"
+                                ],
+                                "example": "pathogenic"
+                            },
+                            "evidenceType": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "annotatedWith": {
+                                "type": "object",
+                                "properties": {
+                                    "toolName": {
+                                        "description": "Name of the tool.",
+                                        "type": "string",
+                                        "example": "Ensembl Variant Effect Predictor (VEP)"
+                                    },
+                                    "version": {
+                                        "description": "Version used.",
+                                        "type": "string",
+                                        "example": "rel 104"
+                                    },
+                                    "toolReferences": {
+                                        "description": "References to the tool",
+                                        "type": "object",
+                                        "properties": {},
+                                        "additionalProperties": true,
+                                        "examples": [
+                                            {
+                                                "bio.toolsId": "https://bio.tools/vep"
+                                            },
+                                            {
+                                                "url": "http://www.ensembl.org/vep"
+                                            }
+                                        ],
+                                        "minProperties": 1
+                                    }
+                                },
+                                "required": [
+                                    "toolName",
+                                    "version",
+                                    "toolReferences"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "conditionId",
+                            "effect"
+                        ]
+                    }
+                },
+                "phenotypicEffects": {
+                    "type": "array",
+                    "items": {
+                        "description": "List of annotated effects on disease or phenotypes.",
+                        "type": "object",
+                        "properties": {
+                            "conditionId": {
+                                "description": "Internal identifier of the phenotype or clinical effect.",
+                                "type": "string",
+                                "examples": [
+                                    "disease1",
+                                    "phen2234"
+                                ]
+                            },
+                            "category": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "effect": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "clinicalRelevance": {
+                                "description": "A value from the five-tiered classification from the American College of Medical Genetics (ACMG) designed to describe the likelihood that a genomic sequence variant is causative of an inherited disease. (NCIT:C168798).",
+                                "type": "string",
+                                "enum": [
+                                    "benign",
+                                    "likely benign",
+                                    "uncertain significance",
+                                    "likely pathogenic",
+                                    "pathogenic"
+                                ],
+                                "example": "pathogenic"
+                            },
+                            "evidenceType": {
+                                "$schema": "http://json-schema.org/draft-07/schema#",
+                                "title": "Ontology Term",
+                                "description": "Definition of an ontology term.",
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context."
+                                    }
+                                },
+                                "definitions": {
+                                    "CURIE": {
+                                        "pattern": "^\\w[^:]+:.+$",
+                                        "type": "string",
+                                        "description": "A CURIE identifier for an ontology term.",
+                                        "examples": [
+                                            "ga4gh:GA.01234abcde",
+                                            "DUO:0000004",
+                                            "orcid:0000-0003-3463-0775",
+                                            "PMID:15254584"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "additionalProperties": true
+                            },
+                            "annotatedWith": {
+                                "type": "object",
+                                "properties": {
+                                    "toolName": {
+                                        "description": "Name of the tool.",
+                                        "type": "string",
+                                        "example": "Ensembl Variant Effect Predictor (VEP)"
+                                    },
+                                    "version": {
+                                        "description": "Version used.",
+                                        "type": "string",
+                                        "example": "rel 104"
+                                    },
+                                    "toolReferences": {
+                                        "description": "References to the tool",
+                                        "type": "object",
+                                        "properties": {},
+                                        "additionalProperties": true,
+                                        "examples": [
+                                            {
+                                                "bio.toolsId": "https://bio.tools/vep"
+                                            },
+                                            {
+                                                "url": "http://www.ensembl.org/vep"
+                                            }
+                                        ],
+                                        "minProperties": 1
+                                    }
+                                },
+                                "required": [
+                                    "toolName",
+                                    "version",
+                                    "toolReferences"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "conditionId",
+                            "effect"
+                        ]
+                    }
+                }
+            }
+        },
+        "SoftwareTool": {
+            "type": "object",
+            "properties": {
+                "toolName": {
+                    "description": "Name of the tool.",
+                    "type": "string",
+                    "example": "Ensembl Variant Effect Predictor (VEP)"
+                },
+                "version": {
+                    "description": "Version used.",
+                    "type": "string",
+                    "example": "rel 104"
+                },
+                "toolReferences": {
+                    "description": "References to the tool",
+                    "type": "object",
+                    "properties": {},
+                    "additionalProperties": true,
+                    "examples": [
+                        {
+                            "bio.toolsId": "https://bio.tools/vep"
+                        },
+                        {
+                            "url": "http://www.ensembl.org/vep"
+                        }
+                    ],
+                    "minProperties": 1
+                }
+            },
+            "required": [
+                "toolName",
+                "version",
+                "toolReferences"
+            ]
+        }
+    },
+    "additionalProperties": true
+}

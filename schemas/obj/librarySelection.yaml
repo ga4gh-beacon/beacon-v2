@@ -1,0 +1,7 @@
+---
+librarySelection:
+  description: Selection method for library preparation, e.g "RANDOM", "RT-PCR"
+  example:
+  - RANDOM
+  - RT-PCR
+  type: string

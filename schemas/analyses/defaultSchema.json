@@ -1,0 +1,65 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Sequencing bioinformatics analysis",
+    "$comment": "version: ga4gh-beacon-biosample-v2.0.0-draft.4",
+    "description": "Schema for a sequencing bioinformatics analysis.",
+    "type": "object",
+    "properties": {
+        "id": {
+            "description": "Analysis reference ID (external accession or internal ID)",
+            "type": "string"
+        },
+        "runId": {
+            "description": "Run identifier (external accession or internal ID).",
+            "type": "string",
+            "example": "SRR10903401"
+        },
+        "biosampleId": {
+            "description": "Reference to Biosample ID.",
+            "type": "string",
+            "example": "S0001"
+        },
+        "individualId": {
+            "description": "Reference to Individual ID.",
+            "type": "string",
+            "example": "P0001"
+        },
+        "analysisDate": {
+            "description": "Date at which analysis was performed.",
+            "type": "string",
+            "format": "date"
+        },
+        "pipelineName": {
+            "description": "Analysis pipeline and version if a standardized pipeline was used",
+            "type": "string"
+        },
+        "pipelineRef": {
+            "description": "Link to Analysis pipeline resource",
+            "type": "string"
+        },
+        "aligner": {
+            "description": "Reference to mapping/alignment software",
+            "type": "string",
+            "examples": [
+                "bwa-0.7.8"
+            ]
+        },
+        "variantCaller": {
+            "description": "Reference to variant calling software / pipeline",
+            "type": "string",
+            "examples": [
+                "GATK4.0"
+            ]
+        },
+        "info": {
+            "description": "Placeholder to allow the Beacon to return any additional information that is necessary or could be of interest in relation to the query or the entry returned. It is recommended to encapsulate additional informations in this attribute instead of directly adding attributes at the same level than the others in order to avoid collision in the names of attributes in future versions of the specification.",
+            "type": "object"
+        }
+    },
+    "required": [
+        "id",
+        "analysisDate",
+        "pipelineName"
+    ],
+    "additionalProperties": true
+}

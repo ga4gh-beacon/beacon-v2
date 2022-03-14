@@ -1,0 +1,7 @@
+---
+eventControls:
+  description: count of controls
+  examples:
+  - 1000
+  - 22
+  type: integer

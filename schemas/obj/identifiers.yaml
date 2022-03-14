@@ -1,0 +1,43 @@
+---
+identifiers:
+  properties:
+    clinVarIds:
+      examples:
+      - RCV000009910.19
+      - 9325
+      - VCV000009325.28
+      items:
+        type: string
+      type: array
+    genomicHGVSId:
+      description: HGVSId descriptor.
+      example: NC_000017.11:g.43057063G>A
+      type: string
+    proteinHGVSIds:
+      description: List of HGVSId descriptor(s) at protein level (for protein-altering
+        variants).
+      example:
+      - NP_009225.1:p.Glu1817Ter
+      - LRG 199p1:p.Val25Gly (preferred)
+      items:
+        type: string
+      type: array
+    transcriptHGVSIds:
+      description: List of HGVSId descriptor(s) at transcript level.
+      example:
+      - NC 000023.10(NM004006.2):c.357+1G
+      items:
+        type: string
+      type: array
+    variantAlternativeIds:
+      description: List of cross-referencing ID(s), for the variant in other databases
+        (e.g. dbSNP, clinVarId, ClinGen, COSMIC), , preferably CURIE(s) where available,
+        e.g. 'VCV000055583.1', 'ClinGen:CA003410'.
+      example:
+      - dbSNP:rs3975092470
+      - ClinGen:CA003410
+      - VCV000055583.1
+      items:
+        type: string
+      type: array
+  type: object

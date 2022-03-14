@@ -1,0 +1,5 @@
+---
+runId:
+  description: Reference to the experimental run ID (`run.id`)
+  example: SRR10903401
+  type: string

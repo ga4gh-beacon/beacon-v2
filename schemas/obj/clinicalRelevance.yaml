@@ -1,0 +1,13 @@
+---
+clinicalRelevance:
+  description: A value from the five-tiered classification from the American College
+    of Medical Genetics (ACMG) designed to describe the likelihood that a genomic
+    sequence variant is causative of an inherited disease. (NCIT:C168798).
+  enum:
+  - benign
+  - likely benign
+  - uncertain significance
+  - likely pathogenic
+  - pathogenic
+  example: pathogenic
+  type: string

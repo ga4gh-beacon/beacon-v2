@@ -1,0 +1,6 @@
+---
+notes:
+  description: Unstructured text to describe additional properties of this disease
+    instance.
+  example: Some free text
+  type: string

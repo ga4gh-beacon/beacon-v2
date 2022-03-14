@@ -1,0 +1,11 @@
+---
+ageAtExposure:
+  $schema: http://json-schema.org/draft-07/schema#
+  description: Age value definition.
+  properties:
+    iso8601duration:
+      description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+      example: P32Y6M1D
+      type: string
+  title: Age
+  type: object

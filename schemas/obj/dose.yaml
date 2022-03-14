@@ -1,0 +1,5 @@
+---
+dose:
+  description: 'The amount of any substance administered over a specific period of
+    time. [ NCIT:C15682 ] '
+  type: number

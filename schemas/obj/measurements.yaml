@@ -1,0 +1,723 @@
+---
+measurements:
+  description: List of measurements of the sample.
+  items:
+    $schema: http://json-schema.org/draft-07/schema#
+    additionalProperties: 1
+    description: Definition of a measurement class.
+    properties:
+      assayCode:
+        $schema: http://json-schema.org/draft-07/schema#
+        additionalProperties: 1
+        definitions:
+          CURIE:
+            description: A CURIE identifier for an ontology term.
+            examples:
+            - ga4gh:GA.01234abcde
+            - DUO:0000004
+            - orcid:0000-0003-3463-0775
+            - PMID:15254584
+            pattern: ^\w[^:]+:.+$
+            type: string
+        description: Definition of an ontology term.
+        properties:
+          id:
+            description: A CURIE identifier for an ontology term.
+            examples:
+            - ga4gh:GA.01234abcde
+            - DUO:0000004
+            - orcid:0000-0003-3463-0775
+            - PMID:15254584
+            pattern: ^\w[^:]+:.+$
+            type: string
+          label:
+            description: The text that describes the term. By default it could be
+              the preferred text of the term, but is it acceptable to customize it
+              for a clearer description and understanding of the term in an specific
+              context.
+            type: string
+        required:
+        - id
+        title: Ontology Term
+        type: object
+      date:
+        description: Date of measurement
+        format: date
+        type: string
+      measurementValue:
+        description: The result of the measurement
+        oneOf:
+        - $schema: http://json-schema.org/draft-07/schema#
+          description: Definition of a value class.
+          oneOf:
+          - $schema: http://json-schema.org/draft-07/schema#
+            additionalProperties: 1
+            description: Definition of a quantity class
+            properties:
+              referenceRange:
+                $schema: http://json-schema.org/draft-07/schema#
+                additionalProperties: 1
+                description: Definition of a range class.
+                properties:
+                  high:
+                    description: Upper range end of normal
+                    examples:
+                    - 135
+                    type: number
+                  low:
+                    description: Lower range end of normal
+                    examples:
+                    - 85
+                    type: number
+                  units:
+                    $schema: http://json-schema.org/draft-07/schema#
+                    additionalProperties: 1
+                    definitions:
+                      CURIE:
+                        description: A CURIE identifier for an ontology term.
+                        examples:
+                        - ga4gh:GA.01234abcde
+                        - DUO:0000004
+                        - orcid:0000-0003-3463-0775
+                        - PMID:15254584
+                        pattern: ^\w[^:]+:.+$
+                        type: string
+                    description: Definition of an ontology term.
+                    properties:
+                      id:
+                        description: A CURIE identifier for an ontology term.
+                        examples:
+                        - ga4gh:GA.01234abcde
+                        - DUO:0000004
+                        - orcid:0000-0003-3463-0775
+                        - PMID:15254584
+                        pattern: ^\w[^:]+:.+$
+                        type: string
+                      label:
+                        description: The text that describes the term. By default
+                          it could be the preferred text of the term, but is it acceptable
+                          to customize it for a clearer description and understanding
+                          of the term in an specific context.
+                        type: string
+                    required:
+                    - id
+                    title: Ontology Term
+                    type: object
+                required:
+                - low
+                - high
+                title: ReferenceRange
+                type: object
+              units:
+                $schema: http://json-schema.org/draft-07/schema#
+                additionalProperties: 1
+                definitions:
+                  CURIE:
+                    description: A CURIE identifier for an ontology term.
+                    examples:
+                    - ga4gh:GA.01234abcde
+                    - DUO:0000004
+                    - orcid:0000-0003-3463-0775
+                    - PMID:15254584
+                    pattern: ^\w[^:]+:.+$
+                    type: string
+                description: Definition of an ontology term.
+                properties:
+                  id:
+                    description: A CURIE identifier for an ontology term.
+                    examples:
+                    - ga4gh:GA.01234abcde
+                    - DUO:0000004
+                    - orcid:0000-0003-3463-0775
+                    - PMID:15254584
+                    pattern: ^\w[^:]+:.+$
+                    type: string
+                  label:
+                    description: The text that describes the term. By default it could
+                      be the preferred text of the term, but is it acceptable to customize
+                      it for a clearer description and understanding of the term in
+                      an specific context.
+                    type: string
+                required:
+                - id
+                title: Ontology Term
+                type: object
+              value:
+                description: The value of the quantity in the units
+                type: number
+            required:
+            - unit
+            - value
+            title: Quantity
+            type: object
+          - $schema: http://json-schema.org/draft-07/schema#
+            additionalProperties: 1
+            definitions:
+              CURIE:
+                description: A CURIE identifier for an ontology term.
+                examples:
+                - ga4gh:GA.01234abcde
+                - DUO:0000004
+                - orcid:0000-0003-3463-0775
+                - PMID:15254584
+                pattern: ^\w[^:]+:.+$
+                type: string
+            description: Definition of an ontology term.
+            properties:
+              id:
+                description: A CURIE identifier for an ontology term.
+                examples:
+                - ga4gh:GA.01234abcde
+                - DUO:0000004
+                - orcid:0000-0003-3463-0775
+                - PMID:15254584
+                pattern: ^\w[^:]+:.+$
+                type: string
+              label:
+                description: The text that describes the term. By default it could
+                  be the preferred text of the term, but is it acceptable to customize
+                  it for a clearer description and understanding of the term in an
+                  specific context.
+                type: string
+            required:
+            - id
+            title: Ontology Term
+            type: object
+          title: Value
+          type: object
+        - $schema: http://json-schema.org/draft-07/schema#
+          definitions:
+            TypedQuantity:
+              properties:
+                quantity:
+                  $schema: http://json-schema.org/draft-07/schema#
+                  additionalProperties: 1
+                  description: Definition of a quantity class
+                  properties:
+                    referenceRange:
+                      $schema: http://json-schema.org/draft-07/schema#
+                      additionalProperties: 1
+                      description: Definition of a range class.
+                      properties:
+                        high:
+                          description: Upper range end of normal
+                          examples:
+                          - 135
+                          type: number
+                        low:
+                          description: Lower range end of normal
+                          examples:
+                          - 85
+                          type: number
+                        units:
+                          $schema: http://json-schema.org/draft-07/schema#
+                          additionalProperties: 1
+                          definitions:
+                            CURIE:
+                              description: A CURIE identifier for an ontology term.
+                              examples:
+                              - ga4gh:GA.01234abcde
+                              - DUO:0000004
+                              - orcid:0000-0003-3463-0775
+                              - PMID:15254584
+                              pattern: ^\w[^:]+:.+$
+                              type: string
+                          description: Definition of an ontology term.
+                          properties:
+                            id:
+                              description: A CURIE identifier for an ontology term.
+                              examples:
+                              - ga4gh:GA.01234abcde
+                              - DUO:0000004
+                              - orcid:0000-0003-3463-0775
+                              - PMID:15254584
+                              pattern: ^\w[^:]+:.+$
+                              type: string
+                            label:
+                              description: The text that describes the term. By default
+                                it could be the preferred text of the term, but is
+                                it acceptable to customize it for a clearer description
+                                and understanding of the term in an specific context.
+                              type: string
+                          required:
+                          - id
+                          title: Ontology Term
+                          type: object
+                      required:
+                      - low
+                      - high
+                      title: ReferenceRange
+                      type: object
+                    units:
+                      $schema: http://json-schema.org/draft-07/schema#
+                      additionalProperties: 1
+                      definitions:
+                        CURIE:
+                          description: A CURIE identifier for an ontology term.
+                          examples:
+                          - ga4gh:GA.01234abcde
+                          - DUO:0000004
+                          - orcid:0000-0003-3463-0775
+                          - PMID:15254584
+                          pattern: ^\w[^:]+:.+$
+                          type: string
+                      description: Definition of an ontology term.
+                      properties:
+                        id:
+                          description: A CURIE identifier for an ontology term.
+                          examples:
+                          - ga4gh:GA.01234abcde
+                          - DUO:0000004
+                          - orcid:0000-0003-3463-0775
+                          - PMID:15254584
+                          pattern: ^\w[^:]+:.+$
+                          type: string
+                        label:
+                          description: The text that describes the term. By default
+                            it could be the preferred text of the term, but is it
+                            acceptable to customize it for a clearer description and
+                            understanding of the term in an specific context.
+                          type: string
+                      required:
+                      - id
+                      title: Ontology Term
+                      type: object
+                    value:
+                      description: The value of the quantity in the units
+                      type: number
+                  required:
+                  - unit
+                  - value
+                  title: Quantity
+                  type: object
+                quantityType:
+                  $schema: http://json-schema.org/draft-07/schema#
+                  additionalProperties: 1
+                  definitions:
+                    CURIE:
+                      description: A CURIE identifier for an ontology term.
+                      examples:
+                      - ga4gh:GA.01234abcde
+                      - DUO:0000004
+                      - orcid:0000-0003-3463-0775
+                      - PMID:15254584
+                      pattern: ^\w[^:]+:.+$
+                      type: string
+                  description: Definition of an ontology term.
+                  properties:
+                    id:
+                      description: A CURIE identifier for an ontology term.
+                      examples:
+                      - ga4gh:GA.01234abcde
+                      - DUO:0000004
+                      - orcid:0000-0003-3463-0775
+                      - PMID:15254584
+                      pattern: ^\w[^:]+:.+$
+                      type: string
+                    label:
+                      description: The text that describes the term. By default it
+                        could be the preferred text of the term, but is it acceptable
+                        to customize it for a clearer description and understanding
+                        of the term in an specific context.
+                      type: string
+                  required:
+                  - id
+                  title: Ontology Term
+                  type: object
+              required:
+              - quantityType
+              - quantity
+          description: Definition of a complex value class.
+          properties:
+            typedQuantities:
+              description: List of quantities required to fully describe the complex
+                value
+              items:
+                properties:
+                  quantity:
+                    $schema: http://json-schema.org/draft-07/schema#
+                    additionalProperties: 1
+                    description: Definition of a quantity class
+                    properties:
+                      referenceRange:
+                        $schema: http://json-schema.org/draft-07/schema#
+                        additionalProperties: 1
+                        description: Definition of a range class.
+                        properties:
+                          high:
+                            description: Upper range end of normal
+                            examples:
+                            - 135
+                            type: number
+                          low:
+                            description: Lower range end of normal
+                            examples:
+                            - 85
+                            type: number
+                          units:
+                            $schema: http://json-schema.org/draft-07/schema#
+                            additionalProperties: 1
+                            definitions:
+                              CURIE:
+                                description: A CURIE identifier for an ontology term.
+                                examples:
+                                - ga4gh:GA.01234abcde
+                                - DUO:0000004
+                                - orcid:0000-0003-3463-0775
+                                - PMID:15254584
+                                pattern: ^\w[^:]+:.+$
+                                type: string
+                            description: Definition of an ontology term.
+                            properties:
+                              id:
+                                description: A CURIE identifier for an ontology term.
+                                examples:
+                                - ga4gh:GA.01234abcde
+                                - DUO:0000004
+                                - orcid:0000-0003-3463-0775
+                                - PMID:15254584
+                                pattern: ^\w[^:]+:.+$
+                                type: string
+                              label:
+                                description: The text that describes the term. By
+                                  default it could be the preferred text of the term,
+                                  but is it acceptable to customize it for a clearer
+                                  description and understanding of the term in an
+                                  specific context.
+                                type: string
+                            required:
+                            - id
+                            title: Ontology Term
+                            type: object
+                        required:
+                        - low
+                        - high
+                        title: ReferenceRange
+                        type: object
+                      units:
+                        $schema: http://json-schema.org/draft-07/schema#
+                        additionalProperties: 1
+                        definitions:
+                          CURIE:
+                            description: A CURIE identifier for an ontology term.
+                            examples:
+                            - ga4gh:GA.01234abcde
+                            - DUO:0000004
+                            - orcid:0000-0003-3463-0775
+                            - PMID:15254584
+                            pattern: ^\w[^:]+:.+$
+                            type: string
+                        description: Definition of an ontology term.
+                        properties:
+                          id:
+                            description: A CURIE identifier for an ontology term.
+                            examples:
+                            - ga4gh:GA.01234abcde
+                            - DUO:0000004
+                            - orcid:0000-0003-3463-0775
+                            - PMID:15254584
+                            pattern: ^\w[^:]+:.+$
+                            type: string
+                          label:
+                            description: The text that describes the term. By default
+                              it could be the preferred text of the term, but is it
+                              acceptable to customize it for a clearer description
+                              and understanding of the term in an specific context.
+                            type: string
+                        required:
+                        - id
+                        title: Ontology Term
+                        type: object
+                      value:
+                        description: The value of the quantity in the units
+                        type: number
+                    required:
+                    - unit
+                    - value
+                    title: Quantity
+                    type: object
+                  quantityType:
+                    $schema: http://json-schema.org/draft-07/schema#
+                    additionalProperties: 1
+                    definitions:
+                      CURIE:
+                        description: A CURIE identifier for an ontology term.
+                        examples:
+                        - ga4gh:GA.01234abcde
+                        - DUO:0000004
+                        - orcid:0000-0003-3463-0775
+                        - PMID:15254584
+                        pattern: ^\w[^:]+:.+$
+                        type: string
+                    description: Definition of an ontology term.
+                    properties:
+                      id:
+                        description: A CURIE identifier for an ontology term.
+                        examples:
+                        - ga4gh:GA.01234abcde
+                        - DUO:0000004
+                        - orcid:0000-0003-3463-0775
+                        - PMID:15254584
+                        pattern: ^\w[^:]+:.+$
+                        type: string
+                      label:
+                        description: The text that describes the term. By default
+                          it could be the preferred text of the term, but is it acceptable
+                          to customize it for a clearer description and understanding
+                          of the term in an specific context.
+                        type: string
+                    required:
+                    - id
+                    title: Ontology Term
+                    type: object
+                required:
+                - quantityType
+                - quantity
+              type: array
+          title: Complex Value
+          type: object
+      notes:
+        description: Unstructured text to describe this measurement
+        example: Some free text
+        type: string
+      observationMoment:
+        $comments: 'TODO: Add other values from https://github.com/phenopackets/phenopacket-schema/blob/v2/docs/time-element.rst'
+        $schema: http://json-schema.org/draft-07/schema#
+        description: Definition of a wrapper for various time descriptors.
+        properties:
+          age:
+            $schema: http://json-schema.org/draft-07/schema#
+            description: Age value definition.
+            properties:
+              iso8601duration:
+                description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+                example: P32Y6M1D
+                type: string
+            title: Age
+            type: object
+          ageGroup:
+            $schema: http://json-schema.org/draft-07/schema#
+            additionalProperties: 1
+            definitions:
+              CURIE:
+                description: A CURIE identifier for an ontology term.
+                examples:
+                - ga4gh:GA.01234abcde
+                - DUO:0000004
+                - orcid:0000-0003-3463-0775
+                - PMID:15254584
+                pattern: ^\w[^:]+:.+$
+                type: string
+            description: Definition of an ontology term.
+            properties:
+              id:
+                description: A CURIE identifier for an ontology term.
+                examples:
+                - ga4gh:GA.01234abcde
+                - DUO:0000004
+                - orcid:0000-0003-3463-0775
+                - PMID:15254584
+                pattern: ^\w[^:]+:.+$
+                type: string
+              label:
+                description: The text that describes the term. By default it could
+                  be the preferred text of the term, but is it acceptable to customize
+                  it for a clearer description and understanding of the term in an
+                  specific context.
+                type: string
+            required:
+            - id
+            title: Ontology Term
+            type: object
+          ageRange:
+            $schema: http://json-schema.org/draft-07/schema#
+            description: Age range definition.
+            properties:
+              end:
+                $schema: http://json-schema.org/draft-07/schema#
+                description: Age value definition.
+                properties:
+                  iso8601duration:
+                    description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+                    example: P32Y6M1D
+                    type: string
+                title: Age
+                type: object
+              start:
+                $schema: http://json-schema.org/draft-07/schema#
+                description: Age value definition.
+                properties:
+                  iso8601duration:
+                    description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+                    example: P32Y6M1D
+                    type: string
+                title: Age
+                type: object
+            title: AgeRange
+            type: object
+        title: TimeElement
+        type: object
+      procedure:
+        $schema: http://json-schema.org/draft-07/schema#
+        description: Class describing a clinical procedure or intervention.
+        properties:
+          ageAtProcedure:
+            $comments: 'TODO: Add other values from https://github.com/phenopackets/phenopacket-schema/blob/v2/docs/time-element.rst'
+            $schema: http://json-schema.org/draft-07/schema#
+            description: Definition of a wrapper for various time descriptors.
+            properties:
+              age:
+                $schema: http://json-schema.org/draft-07/schema#
+                description: Age value definition.
+                properties:
+                  iso8601duration:
+                    description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+                    example: P32Y6M1D
+                    type: string
+                title: Age
+                type: object
+              ageGroup:
+                $schema: http://json-schema.org/draft-07/schema#
+                additionalProperties: 1
+                definitions:
+                  CURIE:
+                    description: A CURIE identifier for an ontology term.
+                    examples:
+                    - ga4gh:GA.01234abcde
+                    - DUO:0000004
+                    - orcid:0000-0003-3463-0775
+                    - PMID:15254584
+                    pattern: ^\w[^:]+:.+$
+                    type: string
+                description: Definition of an ontology term.
+                properties:
+                  id:
+                    description: A CURIE identifier for an ontology term.
+                    examples:
+                    - ga4gh:GA.01234abcde
+                    - DUO:0000004
+                    - orcid:0000-0003-3463-0775
+                    - PMID:15254584
+                    pattern: ^\w[^:]+:.+$
+                    type: string
+                  label:
+                    description: The text that describes the term. By default it could
+                      be the preferred text of the term, but is it acceptable to customize
+                      it for a clearer description and understanding of the term in
+                      an specific context.
+                    type: string
+                required:
+                - id
+                title: Ontology Term
+                type: object
+              ageRange:
+                $schema: http://json-schema.org/draft-07/schema#
+                description: Age range definition.
+                properties:
+                  end:
+                    $schema: http://json-schema.org/draft-07/schema#
+                    description: Age value definition.
+                    properties:
+                      iso8601duration:
+                        description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+                        example: P32Y6M1D
+                        type: string
+                    title: Age
+                    type: object
+                  start:
+                    $schema: http://json-schema.org/draft-07/schema#
+                    description: Age value definition.
+                    properties:
+                      iso8601duration:
+                        description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+                        example: P32Y6M1D
+                        type: string
+                    title: Age
+                    type: object
+                title: AgeRange
+                type: object
+            title: TimeElement
+            type: object
+          bodySite:
+            $schema: http://json-schema.org/draft-07/schema#
+            additionalProperties: 1
+            definitions:
+              CURIE:
+                description: A CURIE identifier for an ontology term.
+                examples:
+                - ga4gh:GA.01234abcde
+                - DUO:0000004
+                - orcid:0000-0003-3463-0775
+                - PMID:15254584
+                pattern: ^\w[^:]+:.+$
+                type: string
+            description: Definition of an ontology term.
+            properties:
+              id:
+                description: A CURIE identifier for an ontology term.
+                examples:
+                - ga4gh:GA.01234abcde
+                - DUO:0000004
+                - orcid:0000-0003-3463-0775
+                - PMID:15254584
+                pattern: ^\w[^:]+:.+$
+                type: string
+              label:
+                description: The text that describes the term. By default it could
+                  be the preferred text of the term, but is it acceptable to customize
+                  it for a clearer description and understanding of the term in an
+                  specific context.
+                type: string
+            required:
+            - id
+            title: Ontology Term
+            type: object
+          dateOfProcedure:
+            description: Date of procedure, in ISO8601 format
+            example: 2010-07-10
+            format: date
+            type: string
+          procedureCode:
+            $schema: http://json-schema.org/draft-07/schema#
+            additionalProperties: 1
+            definitions:
+              CURIE:
+                description: A CURIE identifier for an ontology term.
+                examples:
+                - ga4gh:GA.01234abcde
+                - DUO:0000004
+                - orcid:0000-0003-3463-0775
+                - PMID:15254584
+                pattern: ^\w[^:]+:.+$
+                type: string
+            description: Definition of an ontology term.
+            properties:
+              id:
+                description: A CURIE identifier for an ontology term.
+                examples:
+                - ga4gh:GA.01234abcde
+                - DUO:0000004
+                - orcid:0000-0003-3463-0775
+                - PMID:15254584
+                pattern: ^\w[^:]+:.+$
+                type: string
+              label:
+                description: The text that describes the term. By default it could
+                  be the preferred text of the term, but is it acceptable to customize
+                  it for a clearer description and understanding of the term in an
+                  specific context.
+                type: string
+            required:
+            - id
+            title: Ontology Term
+            type: object
+        required:
+        - procedureCode
+        title: Procedure
+        type: object
+    required:
+    - assayCode
+    - measurementValue
+    title: Measurement
+    type: object
+  type: array

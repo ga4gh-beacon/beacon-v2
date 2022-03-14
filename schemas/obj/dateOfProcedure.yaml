@@ -1,0 +1,6 @@
+---
+dateOfProcedure:
+  description: Date of procedure, in ISO8601 format
+  example: 2010-07-10
+  format: date
+  type: string

@@ -1,0 +1,25 @@
+---
+annotatedWith:
+  properties:
+    toolName:
+      description: Name of the tool.
+      example: Ensembl Variant Effect Predictor (VEP)
+      type: string
+    toolReferences:
+      additionalProperties: 1
+      description: References to the tool
+      examples:
+      - bio.toolsId: https://bio.tools/vep
+      - url: http://www.ensembl.org/vep
+      minProperties: 1
+      properties: {}
+      type: object
+    version:
+      description: Version used.
+      example: rel 104
+      type: string
+  required:
+  - toolName
+  - version
+  - toolReferences
+  type: object
