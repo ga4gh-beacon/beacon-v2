@@ -26,7 +26,9 @@ markdown_extensions:
     - pymdownx.tilde
     - pymdownx.superfences
     - pymdownx.tabbed:
-        alternate_style: true 
+        alternate_style: true
+    - pymdownx.tasklist:
+        custom_checkbox: true
     - tables
 
 nav:
