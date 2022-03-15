@@ -1,6 +1,6 @@
 # Bugs & Changes
 
-## 2002-03-14: Documentation in Repository
+#### 2002-03-14: Documentation in Repository
 
 As of today the new/emerging Beacon v2 documentation is meintained in this repository. We're testing rendered versions (same text/code base) through Github actions ([here](https://beacon-project.io/beacon-v2-unity-testing/)) and [ReadTheDocs](https://beacon-v2-unity.readthedocs.io/en/latest/).
 
