@@ -43,11 +43,11 @@ nav:
     - Implement & Deploy a Beacon:
         - Deployment Options: implement-and-deploy.md
         - Beacon Reference Implementation: https://b2ri-documentation.readthedocs.io/en/latest/
-        - Framework: framework.md         
-        - Models: models.md
-        - Filters: filters.md
-        - Genomic Queries: variant-queries.md
-        - REST API: rest-api.md
+    - Framework: framework.md         
+    - Models: models.md
+    - Filters: filters.md
+    - Genomic Queries: variant-queries.md
+    - REST API: rest-api.md
     - Schemas:
         - Analyses: schemas-md/analyses_defaultSchema.md
         - Biosamples: schemas-md/biosamples_defaultSchema.md
@@ -68,6 +68,8 @@ nav:
 theme:
     # name: readthedocs
     name: material
+    logo: img/GA-logo.png
+    favicon: img/ga4gh_circle.ico
     # name: windmill
     palette:
         primary: teal
@@ -80,6 +82,10 @@ theme:
 
 # Options
 extra:
-    logo: 'img/GA-logo.png'
+  social:
+    - icon: fontawesome/brands/twitter 
+      link: https://twitter.com/genomebeacons
+    - icon: fontawesome/brands/github 
+      link: https://github.com/ga4gh-beacon
 
 # https://pypi.org/project/mkdocs-with-pdf/ for more PDF configuration ...
