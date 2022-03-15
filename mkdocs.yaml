@@ -52,7 +52,8 @@ nav:
         - Genomic Variations: schemas-md/genomicVariations_defaultSchema.md
         - Individuals: schemas-md/individuals_defaultSchema.md
         - Runs: schemas-md/runs_defaultSchema.md
-    - Beacon Terms:
+    - Additional Info:
+        - Bugs & Changes: bugs-changes-log.md
         - Terms List: schemas-md/beacon_terms.md
     - External Links:
         - Beacon Project: http://beacon-project.io
