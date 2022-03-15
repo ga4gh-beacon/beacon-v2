@@ -9,6 +9,7 @@ edit_uri: ""
 extra_css: [css/theme_overrides.css]
 
 plugins:
+    - search
     - with-pdf:
         author: Beacon API Development Team
         output_path: pdf/beacon.pdf
@@ -37,12 +38,11 @@ markdown_extensions:
         repo: beacon-v2-unity-testing
 nav:
     - Introduction to Beacon v2: index.md
-    - Roles of Documentation Consumers: 
-        - At a glance: roles.md
+    - Documentation Scopes: roles.md
     - Beacon Flavours: beacon-flavours.md
     - Implement & Deploy a Beacon:
         - Deployment Options: implement-and-deploy.md
-        - Beacon Reference Implementation: "https://b2ri-documentation.readthedocs.io/en/latest/"
+        - Beacon Reference Implementation: https://b2ri-documentation.readthedocs.io/en/latest/
         - Framework: framework.md         
         - Models: models.md
         - Filters: filters.md
@@ -68,8 +68,15 @@ nav:
 theme:
     # name: readthedocs
     name: material
+    # name: windmill
     palette:
         primary: teal
+    features:
+        - search.highlight
+        - search.share
+        - navigation.instant
+        - navigation.tracking
+        - navigation.sections
 
 # Options
 extra:

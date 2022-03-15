@@ -1,4 +1,4 @@
-# Beacon Types ("Flavours")
+# Beacon "Flavours"
 
 While the original Beacon v1 only provided Boolean (_i.e._ **YES/NO**) responses
 on queries for the existence of specific genomic variants, Beacon v2 is a flexible
@@ -32,5 +32,5 @@ depending on the user's authentication status.
 ### Data Handover
 
 
-[^1] Privacy protecting as in "reasonably protecting by design but not immune to complex
+[^1]: Privacy protecting as in "reasonably protecting by design but not immune to complex
 re-identification attacks".

@@ -1,8 +1,7 @@
-# beacon-framework-v2
-
-Beacon Framework version 2
+# Beacon v2 Framework
 
 ## Introduction
+
 The GA4GH Beacon specification is composed by two parts:
 
 * the Beacon Framework (in *this* repo) 
@@ -38,8 +37,8 @@ For historical reasons, in the names of entities, parameters and URLs we are fol
 * URI path elements: `snake_case` 
 The only exception is: `service-info` which is a required GA4GH standard and has a different word separation convention.
 
+## Folder structure in the framework repo
 
-## Folder structure in this repo
 The above listed elements are organized in several folders (*in alphabetical order*):
 
 * **common:** Json schemas and examples of the components used in other parts of the specification.
@@ -49,6 +48,7 @@ The above listed elements are organized in several folders (*in alphabetical ord
 * ***root* folder:** It only includes the definition of the Beacon root endpoints.
 
 ### The *root* folder and the Beacon root endpoints
+
 The *root* folder only contains the endpoints.json document, an OpenAPI 3.0.2 description of the endpoints that every Beacon instance MUST implement.
 The endpoints are:
 * the *root* (`/`) and `/info` that MUST return information (metadata) about the Beacon service and the organization supporting it.
@@ -63,10 +63,13 @@ Most of these endpoints simply return the configuration files that are in the Be
 *Note:* It could be argued that the Beacon configuration files are different for every Beacon instance and, hence, they should be part of the Model. However, the configuration files MUST be used, exactly with the same schema, by *any* model, independently if that Beacon follows the Beacon v2 Model or any other. Additionally, these endpoints and configuration files are *critical* for a Beacon client to be able to understand and use a Beacon instance. Therefore, we have considered it to be an essential part of the Framework and belonging to it.
 
 ### The Configuration 
+
 Contains the Json schema files that describe the Beacon configuration, its contents are described in the section above, as they have almost a 1-to-1 relationship with such endpoints. Further details about the specific content of each file could be find in the corresponding sections below.
 
 ### The Requests 
+
 Contains the following Json schemas:
+
 * **beaconRequestBody.json:** Schema for the whole Beacon request. It is named `RequestBody` to keep the same nomenclature used by OpenAPI v3, but it actually contains the definition of the whole HTTP POST request payload.
 * **beaconRequestMeta.json:** Meta section of the Beacon request. It includes request context details relevant for the Beacon server when processing the request, like the Beacon API version used to format the request or the schemas expected for the entry types in the response.
 * **filteringTerms.json:** defines the schema for the filters included in the request.
@@ -77,9 +80,10 @@ Contains the following Json schemas:
 #### Differences between FilteringTerms and RequestParameters
 Both, the filters (*filteringTerms*) and the parameters (*requestParameters*), are used to refine the query. The availability of two mechanisms to refine the queries could sound initially confusing, but that separation is  taylored to facilitate the interpretation of the request by the Beacon server.
 
-An basic difference is that, in HTTP GET requests, each parameters is named (e.g. 'id', 'skip','limit') while filters go under the same named parameter 'filters'. For HTTP POST requests, the difference relays on paramaters having each one a separate definition (e.g. `id` is a `string`, while `skip` is an `integer`), while all filters follow the schema described in `/requests/filteringTerms.json'.
+An basic difference is that, in HTTP GET requests, each parameters is named (e.g. 'id', 'skip','limit') while filters go under the same named parameter 'filters'. For HTTP POST requests, the difference relays on paramaters having each one a separate definition (e.g. `id` is a `string`, while `skip` is an `integer`), while all filters follow the schema described in `/requests/filteringTerms.json`.
 
 An unrestricted query like `/datasets` should return the list of all datasets in a Beacon instance. That query could be refined by adding a generic condition like: "return only datasets which could be used for 'general research'" or "return only the first 10 datasets". The former belong to the filter category, the latter to the parameters. If you are a beacon implementer, a rule of thumb could be:
+
 * anything that requires its own schema would be a request parameter 
 * anything that could be represented by an ontology term would go into the filters section.
 * anything else would probably be a request parameter.
@@ -95,7 +99,7 @@ A Beacon is able to return information, details, about itself. Many of the schem
 
 The following schemas refer to informational responses: *beaconConfigurationResponse*, *beaconEntryTypeResponse*, *beaconFilteringTermsResponse*, ând *beaconMapResponse*.
  
-### The results responses
+#### The results responses
 A Beacon could return responses at different granularity levels:
 
 * **boolean response:** only returns `exists: true` ('Yes') or `exists: false` ('No') to a given query.
@@ -103,31 +107,36 @@ A Beacon could return responses at different granularity levels:
 * **resultset response:** returns `Yes`/`No`, the number of matching results and details of them per every collection (e.g. every dataset or cohort) and, if granted, details on every record that matches the query.
 
 Each of these granularity levels has an equivalent response schema: 
-* boolean > *beaconBooleanResponse*
-* count > *beaconCountResponse*
-* resultset (with or w/o record details) > *beaconResultSetsResponse*
+
+* **boolean**: `beaconBooleanResponse`
+* **count**: `beaconCountResponse`
+* **resultset** (with or w/o record details): `beaconResultSetsResponse`
 
 An additional schema, *beaconCollectionsResponse*, describes such responses that returns details about the collections in a Beacon, but not the collection content themselves. Otherwise said, the response describes a dataset, but not returns the contents of any dataset.
 
 ### The common components
+
 Some elements are transerval to the Framework and to any model, e.g. the schema for describing an ontology term or the reference to an external schema (like the reference to GA4GH Phenopackets or GA4GH Service Info schemas). 
 
 ### Testing the compliance of an implementation with *testMode*
+
 Given that the flexibility allowed in the implentation of each Beacon instance, and the security restrictions that could apply (e.g. only answering after authentication of the user), a mechanism is required for allowing testing the compliance of a Beacon. A first step in this compliance testing is done by the implementer by checking that received requests are correct and that the generated responses match the provided schemas. However, an external compliance testing is desirable when the Beacon instance plans to be integrated in a network or to engage in dialogs with a diversity of clients. For this second scenario, the *testMode* parameter was included.
+
 A Beacon instance could receive a request with the *testMode* parameter activated (value= *true*) in which case the Beacon MUST respond, with actual or fake contents, using the response format and skipping any user authentication. The fact that a response has been generated for testing purposes is included in the meta section of the response.
 
 ## The Beacon Configuration file
+
 The file `/configuration/beaconConfiguration.json` defines the schema (in Json schema draft-07) of the Json file that includes core aspects of a Beacon instance configuration.
 The schema includes four sections:
+
 1. **$schema:** that MUST BE a reference to a schema. In the Models, the instances of that file will point to *this file*. Having the schema allows verifying that the document is compliant with it.
 2. **maturityAttributes:** Declares the level of maturity of the Beacon instance. Available values are:
-  * **DEV:** Service potentially unstable, not using real data, which availability and data should not be used in production setups.
-  * **TEST:** The service is expected to be stable, meaning up and available, but does not include real data to be trusted for real world queries.
-  * **PROD:** Service stable, at production level standards, containing actual data.
+    * **DEV:** Service potentially unstable, not using real data, which availability and data should not be used in production setups.
+    * **TEST:** The service is expected to be stable, meaning up and available, but does not include real data to be trusted for real world queries.
+    * **PROD:** Service stable, at production level standards, containing actual data.
 Except when testing, most of the Beacon queries are expected to be answered by 'PROD' Beacons.
-
 3. **securityAttributes:** Configuration of the security aspects of the Beacon. By default, a Beacon that does not declare the configuration settings would return `boolean` (true/false) responses, and only if the user is authenticated and explicitly authorized to access the Beacon resources. Although this is the safest set of settings, it is not recommended unless the Beacon shares very sensitive information. Non sensitive Beacons should preferably opt for a `record` and `PUBLIC` combination.
-  * **defaultGranularity:** Default granularity of the responses. Some responses could return higher detail, but this would be the granularity by default.
+    * **defaultGranularity:** Default granularity of the responses. Some responses could return higher detail, but this would be the granularity by default.
 
   Granularity|Description
   -----------|-----------
@@ -137,17 +146,19 @@ Except when testing, most of the Beacon queries are expected to be answered by '
   `record`|returns details for every row. 
 
   For those cases where a Beacon prefers to return records with less, not all, attributes, different strategies have been considered, e.g.: keep non-mandatory attributes empty, or Beacon to provide a minimal record definition, but these strategies still need to be tested in real world cases and hence no design decision has been taken yet.
+
   * **securityLevels:** All access levels supported by the Beacon. Any combination is valid, as every option would apply to different parts of the Beacon. Available options are:
   
   security level | description
   ---------------|------------
-  PUBLIC|Any anonymous user can read the data
-  REGISTERED|Only known users can read the data
-  CONTROLLED|Only specificly granted users can read the data
+  `PUBLIC` | Any anonymous user can read the data
+  `REGISTERED` | Only known users can read the data
+  `CONTROLLED` | Only specificly granted users can read the data
   
-  #### Example:
+
+  #### Example
   
-  ```
+  ```json
   "maturityAttributes": {
     "productionStatus": "DEV"
   },
@@ -156,5 +167,6 @@ Except when testing, most of the Beacon queries are expected to be answered by '
     "securityLevels": ["PUBLIC", "REGISTERED", "CONTROLLED"]
   }
   ```
+  
   The Beacon in the example is in development status, returns boolean answers by default, and has queries available in any of the access levels.
 

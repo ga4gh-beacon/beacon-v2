@@ -3,19 +3,19 @@
 
 ## Beacon SNV Query 
 
-=== "v2"
+=== "Beacon v2"
 
 	```
 	?datasetIds=TEST&referenceName=NC_000017.11&start=7577121&referenceBases=G&alternateBases=A
 	```
 
-=== "v1"
+=== "Beacon v1"
 
 	```
 	?assemblyId=GRCh38&datasetIds=TEST&referenceName=17&start=7577121&referenceBases=G&alternateBases=A
 	```
 
-=== "v0.3"
+=== "Beacon v0.3"
 
 	```
 	?ref=GRCh38&beacon=TEST&chrom=17&pos=7577122&referenceAllele=C&allele=A
