@@ -1,6 +1,6 @@
 site_name: Beacon v2 Documentation
 site_description: 'Documentation for Beacon v2'
-#site_author: 'Manuel Rueda, Michael Baudis and Laureen Fromont'
+site_author: 'Manuel Rueda, Michael Baudis and Laureen Fromont'
 copyright: '&copy; Copyright 2021-2022, Beacon v2 Documentation Contributors'
 repo_name: 'beacon-v2-unity-testing'
 
@@ -12,19 +12,22 @@ plugins:
         output_path: pdf/beacon.pdf
 
 markdown_extensions:
-  - toc:
-      toc_depth: 2-3
-      permalink: true
-  - admonition
-  - attr_list
-  - footnotes
-  - md_in_html
-  - pymdownx.critic
-  - pymdownx.caret
-  - pymdownx.keys
-  - pymdownx.mark
-  - pymdownx.tilde
-  - tables
+    - toc:
+        toc_depth: 2-3
+        permalink: true
+    - admonition
+    - attr_list
+    - footnotes
+    - md_in_html
+    - pymdownx.critic
+    - pymdownx.caret
+    - pymdownx.keys
+    - pymdownx.mark
+    - pymdownx.tilde
+    - pymdownx.superfences
+    - pymdownx.tabbed:
+        alternate_style: true 
+    - tables
 
 nav:
     - Introduction to Beacon v2: index.md
@@ -58,6 +61,6 @@ theme: readthedocs
 
 # Options
 extra:
-  logo: 'img/GA-logo.png'
+    logo: 'img/GA-logo.png'
 
 # https://pypi.org/project/mkdocs-with-pdf/ for more PDF configuration ...
