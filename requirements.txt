@@ -1,2 +1,4 @@
+mkdocs-material
 mkdocs-with-pdf
+mdx_gh_links
 pymdown-extensions

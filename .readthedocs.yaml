@@ -12,7 +12,8 @@ build:
     python: "3.9"
 
 mkdocs:
-  configuration: mkdocs.yaml
+  # configuration: mkdocs.yaml
+  configuration: mkdocs-readthedocs.yaml
 
 python:
   install:

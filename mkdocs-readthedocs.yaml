@@ -21,16 +21,16 @@ markdown_extensions:
     - attr_list
     - footnotes
     - md_in_html
-    - pymdownx.critic
-    - pymdownx.caret
-    - pymdownx.keys
-    - pymdownx.mark
-    - pymdownx.tilde
-    - pymdownx.superfences
-    - pymdownx.tabbed:
-        alternate_style: true
-    - pymdownx.tasklist:
-        custom_checkbox: true
+    # - pymdownx.critic
+    # - pymdownx.caret
+    # - pymdownx.keys
+    # - pymdownx.mark
+    # - pymdownx.tilde
+    # - pymdownx.superfences
+    # - pymdownx.tabbed:
+    #     alternate_style: true
+    # - pymdownx.tasklist:
+    #     custom_checkbox: true
     - tables
     - mdx_gh_links:
         user: ga4gh-beacon
@@ -66,10 +66,8 @@ nav:
     - Download PDF: pdf/beacon.pdf
 
 theme:
-    # name: readthedocs
-    name: material
-    palette:
-        primary: teal
+    name: readthedocs
+    # name: material
 
 # Options
 extra:

@@ -4,9 +4,10 @@
 
 As of today the new/emerging Beacon v2 documentation is meintained in this repository. We're testing rendered versions (same text/code base) through Github actions ([here](https://beacon-project.io/beacon-v2-unity-testing/)) and [ReadTheDocs](https://beacon-v2-unity.readthedocs.io/en/latest/).
 
-* created and linked [docs.genomebeacons.org](http://docs.genomebeacons.org)
+* [ ] testing of [ReadTheDocs version](https://beacon-v2-unity.readthedocs.io/) vs. a [`material` themed build](https://beacon-project.io/beacon-v2-unity-testing/)
+* [x] created and linked [docs.genomebeacons.org](http://docs.genomebeacons.org)
 sub-domain to the Github hosted version of the rendered documentation
-* merging of previous separate documentation repository content from _beacon-v2-schema-documentation_
+* [x] merging of previous separate documentation repository content from _beacon-v2-schema-documentation_
 in the "unity" repository and archiving of the old one
 
 #### 2022-03-11: Removing `yaml` export version
@@ -63,8 +64,8 @@ git -C $BEACONFRAMEWORKPATH pull
 #### 2022-02-23: Re-tool
 
 * replacement of the previopus general `yamler.py` with a dedicated `beaconYamler.py`
-* moving replacements to [./bin/config.yaml](./tools/config.yaml)
-* requirement for complete arguments (in and out paths, in- and out formats) - see [./bin/yamlerRunner.sh](./bin/yamlerRunner.sh)
+* moving replacements to [bin/config.yaml](https://github.com/ga4gh-beacon/beacon-v2-unity-testing/bin/config.yaml)
+* requirement for complete arguments (in and out paths, in- and out formats) - see [bin/yamlerRunner.sh](https://github.com/ga4gh-beacon/beacon-v2-unity-testing/bin/yamlerRunner.sh)
 
 #### 2022-02-22: Creation of repository
 
