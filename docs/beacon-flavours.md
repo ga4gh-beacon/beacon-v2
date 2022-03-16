@@ -7,7 +7,7 @@ they are more a representation of usage types w/o prescribing their specific det
 
 Importantly, the Beacon framework separates query options from the response side. In that way
 a privacy-protecting[^1] Boolean Beacon still may offer more query features - and therefore better
-usability - compared to the first Beacon concept implementations.
+usability - compared to the first Beacon concept implementations :smile:
 
 ## Boolean Response Beacon
 
