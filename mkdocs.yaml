@@ -69,7 +69,7 @@ nav:
     - External Links:
         - Beacon Project &#8599;: http://beacon-project.io
         - Github Repositories &#8599;: https://github.com/ga4gh-beacon/
-        - Read the Docs Version &#8599;: https://beacon-v2-documentation.readthedocs.io/en/latest/
+        - Read the Docs Version &#8599;: https://beacon-v2-unity.readthedocs.io/en/latest/
     - Download PDF: pdf/beacon.pdf
 
 theme:
