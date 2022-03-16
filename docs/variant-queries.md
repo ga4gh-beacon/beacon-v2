@@ -5,13 +5,22 @@ by earlier versions.
 
 ## Query Examples
 
-### Beacon SNV Query 
+### Beacon SNV Query
+
+#### Example: _EIF4A1_ Single Base Mutation
+
+This is an example for a single base mutation (`G>A`) in the _EIF4A1_ eukaryotic translation initiation factor 4A1.
 
 === "Beacon v2 GET"
 
 	```
-	?datasetIds=TEST&referenceName=NC_000017.11&start=7577120&referenceBases=G&alternateBases=A
+	?referenceName=NC_000017.11&start=7577120&referenceBases=G&alternateBases=A
 	```
+
+	#### Optional
+
+	* `datasetIds=__some-dataset-ids__`
+	* `filters` ...
 
 
 === "Beacon v2 POST"
@@ -30,9 +39,6 @@ by earlier versions.
 	    },
 	    "query": {
 	        "requestParameters": {
-	            "datasets": {
-	                "datasetIds": ["TEST"]
-	            },
 	            "referenceName": "NC_000017.11",
 	            "start": [7577120],
 	            "referenceBases": "G",
@@ -43,25 +49,115 @@ by earlier versions.
 	    "pagination": {
 	        "skip": 0,
 	        "limit": 5
-	    },
-	    "filters": []
+	    }
 	}
 	```
+
+	There are optional parameters [`datasetIds`, `filters` ...] and also the option to specify the response type
+	(through `requestedGranularity`) and returned data format (`requestedSchemas`). Please follow this up in the
+	[framework documentation](framework.md).
+
 
 
 === "Beacon v1"
 
 	```
-	?assemblyId=GRCh38&datasetIds=TEST&referenceName=17&start=7577120&referenceBases=G&alternateBases=A
+	?assemblyId=GRCh38&referenceName=17&start=7577120&referenceBases=G&alternateBases=A
 	```
+
+	#### Optional
+
+	* `datasetIds=__some-dataset-ids__`
 
 === "Beacon v0.3"
 
 	```
-	?ref=GRCh38&beacon=TEST&chrom=17&pos=7577121&referenceAllele=C&allele=A
+	?ref=GRCh38&chrom=17&pos=7577121&referenceAllele=C&allele=A
 	```
 
+	#### Optional
+
+	* `beacon=__some-beacon-id__`
+
 	Before Beacon v0.4 a 1-based coordinate system was being used.
+
+
+
+### Beacon CNV Queries
+
+#### Example: _TP53_ Deletion Query by Coordinates
+
+The following example shows a "bracket query" for focal deletions of the _TP53_ gene locus:
+
+* The start of the deletion has to occurr anywhere from approx. 2.5Mb 5' of the CDR start to just before the end of the CDR.
+* The end of the matched CNVs has to be anywhere from the start of the gene locus to approx. 2.5Mb 3' of its end.
+
+This leads to matching of deletion CNVs which have at least some base overlap with the gene locus but are not
+larger than approx. 5Mb (operational definitions of focality vary between 1 and 5Mb).
+
+=== "Beacon v2 GET"
+
+	```
+	?datasetIds=TEST&referenceName=NC_000017.11&variantType=DEL&start=5000000&start=7676592&end=7669607&end=10000000
+	```
+
+	#### Optional
+
+	* `datasetIds=__some-dataset-ids__`
+	* `filters` ...
+
+
+=== "Beacon v2 POST"
+
+	```
+	{
+	    "$schema":"https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/requests/beaconRequestBody.json",
+	    "meta": {
+	        "apiVersion": "2.0",
+	        "requestedSchemas": [
+	            {
+	                "entityType": "genomicVariation",
+	                "schema:": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json"
+	            }
+	        ]
+	    },
+	    "query": {
+	        "requestParameters": {
+	            "referenceName": "NC_000017.11",
+	            "start": [ 5000000, 7676592 ],
+	            "end": [ 7669607, 10000000 ],
+	            "variantType": "DEL"
+	        }
+	    },
+	    "requestedGranularity": "record",
+	    "pagination": {
+	        "skip": 0,
+	        "limit": 5
+	    }
+	}
+	```
+
+	There are optional parameters [`datasetIds`, `filters` ...] and also the option to specify the response type
+	(through `requestedGranularity`) and returned data format (`requestedSchemas`). Please follow this up in the
+	[framework documentation](framework.md).
+
+
+=== "Beacon v1"
+
+	```
+	?assemblyId=GRCh38&referenceName=17&variantType=DEL&start=5000000&start=7676592&end=7669607&end=10000000
+	```
+
+	#### Optional
+
+	* `datasetIds=__some-dataset-ids__`
+
+
+=== "Beacon v0.3"
+
+	CNV query options were only implemented with Beacon v0.4, based on Beacon<sup>+</sup> prototyping.
+
+
 
 
 ==(TBD)==
