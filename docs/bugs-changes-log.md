@@ -4,6 +4,8 @@
 
 ### Documentation
 
+<!-- When done => please check & move to some dated item in Changes below-->
+
 * [ ] content for [Standards Integration](formats-standards.md) (as noted on page)
 * [ ] re-structuring of [Framework page](framework.md) 
 * [ ] re-structuring of [Models page](framework.md)
@@ -14,6 +16,8 @@
 * [ ] content for the [Filters page](filters.md)
 * [ ] merging (?) of the [Introduction](index.md) and [Documentation Scopes](roles.md) pages
     - clarification, re-structuring, links ...
+* [ ] add more [Implementations](implementations-and-networks.md)
+* [ ] extend [Query documentation](variant-queries.md), also using content from the variant scouts document
 
 
 ### Repositories
