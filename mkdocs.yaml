@@ -46,14 +46,17 @@ markdown_extensions:
 nav:
     - Introduction to Beacon v2: index.md
     - Documentation Scopes: roles.md
-    - Beacon Flavours: beacon-flavours.md
+    - Beacon Types and Examples:
+        - Beacon Flavours: beacon-flavours.md
+        - Genomic Query Examples: variant-queries.md
     - Implement & Deploy a Beacon:
         - Deployment Options: implement-and-deploy.md
+        - Standards Integration: formats-standards.md
         - Beacon Reference Implementation &#8599;: https://b2ri-documentation.readthedocs.io/en/latest/
-    - Framework: framework.md         
-    - Models: models.md
-    - Filters: filters.md
-    - Genomic Queries: variant-queries.md
+    - Beacon Components:
+        - Framework: framework.md         
+        - Models: models.md
+        - Filters: filters.md
     - REST API: rest-api.md
     - Schemas:
         - Analyses: schemas-md/analyses_defaultSchema.md
