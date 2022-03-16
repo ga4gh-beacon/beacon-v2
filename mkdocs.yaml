@@ -58,7 +58,7 @@ nav:
         - Framework: framework.md         
         - Models: models.md
         - Filters: filters.md
-    - REST API: rest-api.md
+        - REST API: rest-api.md
     - Schemas:
         - Analyses: schemas-md/analyses_defaultSchema.md
         - Biosamples: schemas-md/biosamples_defaultSchema.md
