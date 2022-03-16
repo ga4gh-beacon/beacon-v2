@@ -39,13 +39,17 @@ markdown_extensions:
     - mdx_gh_links:
         user: ga4gh-beacon
         repo: beacon-v2-unity-testing
+    - pymdownx.emoji:
+          emoji_index: !!python/name:materialx.emoji.twemoji
+          emoji_generator: !!python/name:materialx.emoji.to_svg
+
 nav:
     - Introduction to Beacon v2: index.md
     - Documentation Scopes: roles.md
     - Beacon Flavours: beacon-flavours.md
     - Implement & Deploy a Beacon:
         - Deployment Options: implement-and-deploy.md
-        - Beacon Reference Implementation: https://b2ri-documentation.readthedocs.io/en/latest/
+        - Beacon Reference Implementation &#8599;: https://b2ri-documentation.readthedocs.io/en/latest/
     - Framework: framework.md         
     - Models: models.md
     - Filters: filters.md
@@ -63,9 +67,9 @@ nav:
         - Bugs & Changes: bugs-changes-log.md
         - Terms List: schemas-md/beacon_terms.md
     - External Links:
-        - Beacon Project: http://beacon-project.io
-        - Github Repositories: https://github.com/ga4gh-beacon/
-        - Read the Docs Version: https://beacon-v2-documentation.readthedocs.io/en/latest/
+        - Beacon Project &#8599;: http://beacon-project.io
+        - Github Repositories &#8599;: https://github.com/ga4gh-beacon/
+        - Read the Docs Version &#8599;: https://beacon-v2-unity.readthedocs.io/en/latest/
     - Download PDF: pdf/beacon.pdf
 
 theme:
