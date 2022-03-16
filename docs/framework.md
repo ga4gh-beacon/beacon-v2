@@ -137,28 +137,27 @@ The schema includes four sections:
 Except when testing, most of the Beacon queries are expected to be answered by 'PROD' Beacons.
 3. **securityAttributes:** Configuration of the security aspects of the Beacon. By default, a Beacon that does not declare the configuration settings would return `boolean` (true/false) responses, and only if the user is authenticated and explicitly authorized to access the Beacon resources. Although this is the safest set of settings, it is not recommended unless the Beacon shares very sensitive information. Non sensitive Beacons should preferably opt for a `record` and `PUBLIC` combination.
     * **defaultGranularity:** Default granularity of the responses. Some responses could return higher detail, but this would be the granularity by default.
-
-  Granularity|Description
-  -----------|-----------
-  `boolean`|returns 'true/false' responses.
-  `count`|adds the total number of positive results found.
-  `aggregated`|returns summary, aggregated or distribution like responses per collection. 
-  `record`|returns details for every row. 
-
-      For those cases where a Beacon prefers to return records with less, not all, attributes, different strategies have been considered, e.g.: keep non-mandatory attributes empty, or Beacon to provide a minimal record definition, but these strategies still need to be tested in real world cases and hence no design decision has been taken yet.
-
     * **securityLevels:** All access levels supported by the Beacon. Any combination is valid, as every option would apply to different parts of the Beacon. Available options are:
+
+Granularity|Description
+-----------|-----------
+`boolean`|returns 'true/false' responses.
+`count`|adds the total number of positive results found.
+`aggregated`|returns summary, aggregated or distribution like responses per collection. 
+`record`|returns details for every row. 
+
+For those cases where a Beacon prefers to return records with less, not all, attributes, different strategies have been considered, e.g.: keep non-mandatory attributes empty, or Beacon to provide a minimal record definition, but these strategies still need to be tested in real world cases and hence no design decision has been taken yet.
   
-  security level | description
-  ---------------|------------
-  `PUBLIC` | Any anonymous user can read the data
-  `REGISTERED` | Only known users can read the data
-  `CONTROLLED` | Only specificly granted users can read the data
+security level | description
+---------------|------------
+`PUBLIC` | Any anonymous user can read the data
+`REGISTERED` | Only known users can read the data
+`CONTROLLED` | Only specificly granted users can read the data
   
 
-  #### Example
+#### Example
   
-  ```json
+```json
   "maturityAttributes": {
     "productionStatus": "DEV"
   },
@@ -166,7 +165,7 @@ Except when testing, most of the Beacon queries are expected to be answered by '
     "defaultGranularity": "boolean",
     "securityLevels": ["PUBLIC", "REGISTERED", "CONTROLLED"]
   }
-  ```
+```
   
-  The Beacon in the example is in development status, returns boolean answers by default, and has queries available in any of the access levels.
+The Beacon in the example is in development status, returns boolean answers by default, and has queries available in any of the access levels.
 

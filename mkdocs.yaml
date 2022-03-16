@@ -27,7 +27,10 @@ markdown_extensions:
     - pymdownx.keys
     - pymdownx.mark
     - pymdownx.tilde
+    - pymdownx.saneheaders
     - pymdownx.superfences
+    - pymdownx.magiclink:
+        hide_protocol: true
     - pymdownx.tabbed:
         alternate_style: true
     - pymdownx.tasklist:
