@@ -9,6 +9,9 @@ Importantly, the Beacon framework separates query options from the response side
 a privacy-protecting[^1] Boolean Beacon still may offer more query features - and therefore better
 usability - compared to the first Beacon concept implementations :smile:
 
+For detailed information about the technical implementation of the different logical
+scopes please see the [Framework](framework.md) documentation.
+
 ## Boolean Response Beacon
 
 A _Boolean_ Beacon is in it's response similar to Beacon v1 - _i.e._ responding
@@ -31,6 +34,7 @@ depending on the user's authentication status.
 
 ### Data Handover
 
+--- 
 
 [^1]: Privacy protecting as in "reasonably protecting by design but not immune to complex
 re-identification attacks".
