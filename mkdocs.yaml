@@ -46,15 +46,21 @@ markdown_extensions:
 nav:
     - Introduction to Beacon v2: index.md
     - Documentation Scopes: roles.md
-    - Beacon Flavours: beacon-flavours.md
+    - Changes: bugs-changes-log.md
+    - Beacon Types and Examples:
+        - Beacon Flavours: beacon-flavours.md
+        - Genomic Query Examples: variant-queries.md
+        - Implementations and Networks: implementations-and-networks.md
     - Implement & Deploy a Beacon:
         - Deployment Options: implement-and-deploy.md
+        - Standards Integration: formats-standards.md
         - Beacon Reference Implementation &#8599;: https://b2ri-documentation.readthedocs.io/en/latest/
-    - Framework: framework.md         
-    - Models: models.md
-    - Filters: filters.md
-    - Genomic Queries: variant-queries.md
-    - REST API: rest-api.md
+    - Beacon Components:
+        - Framework: framework.md         
+        - Models: models.md
+        - Filters: filters.md
+        - REST API: rest-api.md
+        - Terms List: schemas-md/beacon_terms.md
     - Schemas:
         - Analyses: schemas-md/analyses_defaultSchema.md
         - Biosamples: schemas-md/biosamples_defaultSchema.md
@@ -62,10 +68,7 @@ nav:
         - Datasets: schemas-md/datasets_defaultSchema.md
         - Genomic Variations: schemas-md/genomicVariations_defaultSchema.md
         - Individuals: schemas-md/individuals_defaultSchema.md
-        - Runs: schemas-md/runs_defaultSchema.md
-    - Additional Info:
-        - Bugs & Changes: bugs-changes-log.md
-        - Terms List: schemas-md/beacon_terms.md
+        - Runs: schemas-md/runs_defaultSchema.md        
     - External Links:
         - Beacon Project &#8599;: http://beacon-project.io
         - Github Repositories &#8599;: https://github.com/ga4gh-beacon/

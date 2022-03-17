@@ -1,10 +1,45 @@
-# Bugs & Changes
+# TODO, Bugs & Changes
+
+## TODO
+
+### Documentation
+
+<!-- When done => please check & move to some dated item in Changes below-->
+
+* [ ] content for [Standards Integration](formats-standards.md) (as noted on page)
+* [ ] re-structuring of [Framework page](framework.md) 
+* [ ] re-structuring of [Models page](framework.md)
+    - integration with the Schemas pages
+    - removal of the individual schemas from the main navigation
+* [ ] delete documentation in framework and model repo READMEs and point here
+* [ ] fix https (probably @mbaudis has to do some registrar configuration...)
+* [ ] content for the [Filters page](filters.md)
+* [ ] merging (?) of the [Introduction](index.md) and [Documentation Scopes](roles.md) pages
+    - clarification, re-structuring, links ...
+* [ ] add more [Implementations](implementations-and-networks.md)
+* [ ] extend [Query documentation](variant-queries.md), also using content from the variant scouts document
+
+
+### Repositories
+
+* [ ] name and title change
+    - adjusting all the links accordingly
+* [ ] retiring of framework and model repos
+
+
+## Changes
+
+#### 2002-03-16: Documentation Content and Formats Updates
+
+* [x] addition of more variant query examples
+* [x] new landing pages for [Implementations and Networks](implementations-and-networks.md) and [Standards Integration](formats-standards.md)
+* [x] many adjustments to documentation structure, appearance and representation (e.g. content tabs for query examples)
 
 #### 2002-03-14: Documentation in Repository
 
 As of today the new/emerging Beacon v2 documentation is meintained in this repository. We're testing rendered versions (same text/code base) through Github actions ([here](https://beacon-project.io/beacon-v2-unity-testing/)) and [ReadTheDocs](https://beacon-v2-unity.readthedocs.io/en/latest/).
 
-* [ ] testing of [ReadTheDocs version](https://beacon-v2-unity.readthedocs.io/) vs. a [`material` themed build](https://beacon-project.io/beacon-v2-unity-testing/)
+* [x] testing of [ReadTheDocs version](https://beacon-v2-unity.readthedocs.io/) vs. a [`material` themed build](https://beacon-project.io/beacon-v2-unity-testing/)
 * [x] created and linked [docs.genomebeacons.org](http://docs.genomebeacons.org)
 sub-domain to the Github hosted version of the rendered documentation
 * [x] merging of previous separate documentation repository content from _beacon-v2-schema-documentation_
@@ -63,12 +98,12 @@ git -C $BEACONFRAMEWORKPATH pull
 
 #### 2022-02-23: Re-tool
 
-* replacement of the previopus general `yamler.py` with a dedicated `beaconYamler.py`
-* moving replacements to [bin/config.yaml](https://github.com/ga4gh-beacon/beacon-v2-unity-testing/bin/config.yaml)
-* requirement for complete arguments (in and out paths, in- and out formats) - see [bin/yamlerRunner.sh](https://github.com/ga4gh-beacon/beacon-v2-unity-testing/bin/yamlerRunner.sh)
+* [x] replacement of the previopus general `yamler.py` with a dedicated `beaconYamler.py`
+* [x] moving replacements to [bin/config.yaml](https://github.com/ga4gh-beacon/beacon-v2-unity-testing/bin/config.yaml)
+* [x] requirement for complete arguments (in and out paths, in- and out formats) - see [bin/yamlerRunner.sh](https://github.com/ga4gh-beacon/beacon-v2-unity-testing/bin/yamlerRunner.sh)
 
 #### 2022-02-22: Creation of repository
 
-* design of directory structure
-* test tooling & population with auto-converted files
+* [x] design of directory structure
+* [x] test tooling & population with auto-converted files
 

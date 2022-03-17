@@ -1,10 +1,17 @@
-h2 {
-    color: #2980B9;
-    border-top:  #2980B9 thin solid;
-    border-bottom:  #2980B9 thin solid;
+:root {
+  --md-accent-fg-color: #076d63;
 }
 
-h3 {
-    color: #888;
-    text-decoration: underline;
+h2 {
+    color: var(--md-accent-fg-color);
+    border-top:  var(--md-accent-fg-color) thin solid;
+    border-bottom:  var(--md-accent-fg-color) thin solid;
+}
+
+div.tabbed-set {
+    background-color:  #fafafa;
+}
+
+.tabbed-content {
+    padding:  5px;
 }
