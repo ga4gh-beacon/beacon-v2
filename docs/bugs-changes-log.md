@@ -24,10 +24,18 @@
 
 * [ ] name and title change
     - adjusting all the links accordingly
+* [ ] BUG: fix transfer of examples
 * [ ] retiring of framework and model repos
 
-
 ## Changes
+
+#### 2002-03-18: Macros and Variables for Documentation pages
+
+The `mkdocs-macros-plugin` has been activated, allowing the use of site-wide variables:
+
+* `repo_model_url: https://github.com/ga4gh-beacon/beacon-v2-unity-testing/tree/main/models/src`
+* this can be used inline as `{{config.repo_model_url}}`
+
 
 #### 2002-03-16: Documentation Content and Formats Updates
 

@@ -12,7 +12,7 @@ do not need to understand the underlying query syntax and response formats they 
 benefit from some insights into the general capabilities of the underlying protocol.
 
 !!! Warning "User"
-    * Beacon v2 Model domain
+    * Beacon v2 [Model](models.md)
     * Knowing what is available in an instance
         * Entry Types
         * Datasets & Cohorts
@@ -21,7 +21,7 @@ benefit from some insights into the general capabilities of the underlying proto
         * Requests, responses & errors
         * OpenAPI
     * Using Beacon v2 Features
-        * Filters
+        * [Filters](filters.md)
         * Alternative schemas
 
 
@@ -35,7 +35,8 @@ for novel use cases).
 
 !!! Important "Deployer"
 
-    * Beacon v2 Model domain
+    * Beacon v2 [Models](models.md)
+
     * Reference Implementation
         * Infrastructure requirements
         * How to install
@@ -53,7 +54,7 @@ for novel use cases).
 
 !!! Note "Implementer"
 
-    * Beacon v2 Model domain
+    * Beacon v2 [Models](models.md)
     * Protocol basics
         * Requests, responses & errors
         * OpenAPI
@@ -71,6 +72,6 @@ for novel use cases).
     * Integration into GA4GH
     * Leveraging The Beacon Framework in other domains
     * Success Stories:
-        * Implementations
+        * [Implementations](implementations-and-networks.md)
         * Real world data
     
