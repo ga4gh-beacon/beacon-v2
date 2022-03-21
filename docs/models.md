@@ -4,16 +4,16 @@
 
 The GA4GH Beacon specification is composed by two parts:
 
-* the Beacon [Framework](framework.md) [:fontawesome-brands-github:]({{config.repo_framework_url}})
-* the Beacon Models [:fontawesome-brands-github:]({{config.repo_model_url}})
+* the Beacon [Framework](framework.md) {{config.repo_framework_icon}}
+* the Beacon Models {{config.repo_models_icon}}
 
-The **Beacon Framework** (in Framework repo [:fontawesome-brands-github:]({{config.repo_framework_url}})) is the part that describes the overall structure of the API requests, responses, parameters, the common components, etc. It could also be referred in this document as simply the *Framework*.
+The **Beacon Framework** (in Framework repo {{config.repo_framework_icon}}) is the part that describes the overall structure of the API requests, responses, parameters, the common components, etc. It could also be referred in this document as simply the *Framework*.
 
-**Beacon Models** (in the Models repo [:fontawesome-brands-github:]({{config.repo_model_url}})) describes the set of concepts included in a Beacon version (e.g. Beacon v2), like *individual* or *biosample*, and also the relationships between them. It could also be referred in this document as simply the *Model*.
+**Beacon Models** (in the Models repo {{config.repo_models_icon}}) describes the set of concepts included in a Beacon version (e.g. Beacon v2), like *individual* or *biosample*, and also the relationships between them. It could also be referred in this document as simply the *Model*.
 
 The Framework could be considered the *syntax* and the Model as the *semantics*. 
 
-Refer to the [Framework repo](https://github.com/ga4gh-beacon/beacon-framework-v2) for further information about the Framework and its parts.
+Refer to the [Framework](framework.md) {{config.repo_framework_icon}} for further information about the Framework and its parts.
 
 A **Beacon instance** is just an implementation of a Beacon Model that follows the rules stated by the Beacon Framework.
 

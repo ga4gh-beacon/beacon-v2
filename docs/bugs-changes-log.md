@@ -19,7 +19,6 @@
 * [ ] add more [Implementations](implementations-and-networks.md)
 * [ ] extend [Query documentation](variant-queries.md), also using content from the variant scouts document
 
-
 ### Repositories
 
 * [ ] name and title change
@@ -37,7 +36,6 @@ The `mkdocs-macros-plugin` has been activated, allowing the use of site-wide var
 
 * `repo_model_url: https://github.com/ga4gh-beacon/beacon-v2-unity-testing/tree/main/models/src`
 * this can be used inline as `{{config.repo_model_url}}`
-
 
 #### 2002-03-16: Documentation Content and Formats Updates
 
@@ -57,7 +55,7 @@ in the "unity" repository and archiving of the old one
 
 #### 2022-03-11: Removing `yaml` export version
 
-Since moving to having the source in YAML the existence of a separate `yaml` export seems unnecessary & maybe confusing. Removed.
+Since moving to source in YAML the existence of a separate `yaml` export seems unnecessary & maybe confusing. Removed.
 
 #### 2022-03-09: Nesting models
 

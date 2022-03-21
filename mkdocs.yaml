@@ -6,8 +6,8 @@ repo_name: 'beacon-v2-unity-testing'
 repo_url: https://github.com/ga4gh-beacon/beacon-v2-unity-testing
 edit_uri: edit/main/docs/
 
-repo_framework_url: https://github.com/ga4gh-beacon/beacon-v2-unity-testing/tree/main/framework/src
-repo_model_url: https://github.com/ga4gh-beacon/beacon-v2-unity-testing/tree/main/models/src
+repo_framework_icon: " [:fontawesome-brands-github:](https://github.com/ga4gh-beacon/beacon-v2-unity-testing/tree/main/framework/src)"
+repo_models_icon: " [:fontawesome-brands-github:](https://github.com/ga4gh-beacon/beacon-v2-unity-testing/tree/main/models/src)"
 
 extra_css: [css/theme_overrides.css]
 

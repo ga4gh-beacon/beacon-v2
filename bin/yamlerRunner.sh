@@ -4,18 +4,11 @@ UNITYPATH=$BASEDIR/..
 # initial conversion from separate schemas
 BEACONMODELPATH=$BASEDIR/../../beacon-v2-Models/BEACON-V2-Model
 BEACONFRAMEWORKPATH=$BASEDIR/../../beacon-framework-v2
-# BEACONDOCPATH=$BASEDIR/../../beacon-v2-schema-documentation
 
 BEACONMODELNAME=beacon-v2-default-model
 
 git -C $BEACONMODELPATH pull
 git -C $BEACONFRAMEWORKPATH pull
-git -C $BEACONDOCPATH pull
-
-# Documentation is now directly maintained in this repository; no need to update
-# rsync -av $BEACONDOCPATH/docs/ $UNITYPATH/docs/
-# rsync -av $BEACONDOCPATH/schemas/ $UNITYPATH/schemas/
-# rsync -av $BEACONDOCPATH/bin/ $UNITYPATH/bin/
 
 for KIND in src json
 do
