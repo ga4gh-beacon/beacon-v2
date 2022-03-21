@@ -13,7 +13,7 @@
     - removal of the individual schemas from the main navigation
 * [ ] delete documentation in framework and model repo READMEs and point here
 * [ ] fix https (probably @mbaudis has to do some registrar configuration...)
-* [ ] content for the [Filters page](filters.md)
+* [x] content for the [Filters page](filters.md)
 * [ ] merging (?) of the [Introduction](index.md) and [Documentation Scopes](roles.md) pages
     - clarification, re-structuring, links ...
 * [ ] add more [Implementations](implementations-and-networks.md)
@@ -29,7 +29,9 @@
 
 ## Changes
 
-#### 2002-03-18: Macros and Variables for Documentation pages
+#### 2022-03-21: [Filters](filters.md) Page Updated
+
+#### 2022-03-18: Macros and Variables for Documentation pages
 
 The `mkdocs-macros-plugin` has been activated, allowing the use of site-wide variables:
 
