@@ -4,7 +4,7 @@ description: Definition of a range class.
 type: object
 properties:
   unit:
-    description: The kind of unit. RECOMMENDED.
+    description: The kind of unit.
     $ref: ./commonDefinitions.json#/definitions/Unit
     examples:
       - id: NCIT:C49670
@@ -20,6 +20,7 @@ properties:
     examples:
       - 135
 required:
+  - unit
   - low
   - high
 additionalProperties: true

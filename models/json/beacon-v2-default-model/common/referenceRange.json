@@ -19,7 +19,7 @@
         },
         "unit": {
             "$ref": "./commonDefinitions.json#/definitions/Unit",
-            "description": "The kind of unit. RECOMMENDED.",
+            "description": "The kind of unit.",
             "examples": [
                 {
                     "id": "NCIT:C49670",
@@ -29,6 +29,7 @@
         }
     },
     "required": [
+        "unit",
         "low",
         "high"
     ],

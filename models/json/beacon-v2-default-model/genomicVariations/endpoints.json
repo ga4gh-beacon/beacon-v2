@@ -166,8 +166,8 @@
         },
         "/g_variants/{id}": {
             "get": {
-                "description": "Get details about one dummyEntry, identified by its (unique) 'id'",
-                "operationId": "getOneExampleEntry",
+                "description": "Get details about one genomic variation, identified by its (unique) 'id'",
+                "operationId": "getOneGenomicVariation",
                 "responses": {
                     "200": {
                         "$ref": "#/components/responses/ResultsOKResponse"
@@ -187,8 +187,8 @@
                 }
             ],
             "post": {
-                "description": "Get details about one dummyEntry, identified by its (unique) 'id'",
-                "operationId": "postOneExampleEntry",
+                "description": "Get details about one genomic variation, identified by its (unique) 'id'",
+                "operationId": "postOneGenomicVariation",
                 "requestBody": {
                     "content": {
                         "application/json": {

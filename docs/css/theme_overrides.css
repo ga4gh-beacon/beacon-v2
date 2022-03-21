@@ -2,6 +2,11 @@
   --md-accent-fg-color: #076d63;
 }
 
+.md-grid {
+  max-width: 1200px; 
+}
+
+
 h2 {
     color: var(--md-accent-fg-color);
     border-top:  var(--md-accent-fg-color) thin solid;
