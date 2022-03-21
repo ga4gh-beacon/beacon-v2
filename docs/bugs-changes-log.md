@@ -8,7 +8,7 @@
 
 * [ ] content for [Standards Integration](formats-standards.md) (as noted on page)
 * [ ] re-structuring of [Framework page](framework.md) 
-* [ ] re-structuring of [Models page](framework.md)
+* [x] re-structuring of [Models page](framework.md)
     - integration with the Schemas pages
     - removal of the individual schemas from the main navigation
 * [ ] delete documentation in framework and model repo READMEs and point here
@@ -28,10 +28,11 @@
 
 ## Changes
 
-#### 2022-03-21: 
+#### 2022-03-21: Reorganization of navigation
 
+* Reorganization of navigation
 * Deleted page `implement-and-deploy.md`
-* Added pages: [What is Beacon v2](what-is-beacon-v2) and [Implementation options](implementations-options.md)
+* Added pages: [What is Beacon v2](../what-is-beacon-v2) and [Implementation options](../implementations-options.md)
 * [Filters](filters.md) Page Updated
 
 #### 2022-03-18: Macros and Variables for Documentation pages

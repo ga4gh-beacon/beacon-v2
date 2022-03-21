@@ -52,34 +52,39 @@ nav:
     - Introduction to Beacon v2: index.md
     - Documentation Scopes: roles.md
     - Changes: bugs-changes-log.md
-    - Beacon Types and Examples:
+    - Beacon Types:
         - What is Beacon v2?: what-is-beacon-v2.md
         - Beacon Flavours: beacon-flavours.md
-        - Genomic Queries: variant-queries.md
-        - Implementations and Networks: implementations-and-networks.md
-    - Implement & Deploy a Beacon:
+    - 'Implement & Deploy a Beacon':
         - Implementations Options: implementations-options.md
+        - Implementations and Networks: implementations-and-networks.md
         - Standards Integration: formats-standards.md
-        - Beacon Reference Implementation &#8599;: https://b2ri-documentation.readthedocs.io/en/latest/
+        - Beacon Implementations:
+            - Reference Implementation &#8599;: https://b2ri-documentation.readthedocs.io/en/latest/
+            - Others: others.md
     - Beacon Components:
         - Framework: framework.md         
-        - Models: models.md
+        - Models: 
+           - Introduction: models.md
+           - Schemas:
+               - Analyses: schemas-md/analyses_defaultSchema.md
+               - Biosamples: schemas-md/biosamples_defaultSchema.md
+               - Cohorts: schemas-md/cohorts_defaultSchema.md
+               - Datasets: schemas-md/datasets_defaultSchema.md
+               - Genomic Variations: schemas-md/genomicVariations_defaultSchema.md
+               - Individuals: schemas-md/individuals_defaultSchema.md
+               - Runs: schemas-md/runs_defaultSchema.md    
         - Filters: filters.md
         - REST API: rest-api.md
         - Terms List: schemas-md/beacon_terms.md
-    - Schemas:
-        - Analyses: schemas-md/analyses_defaultSchema.md
-        - Biosamples: schemas-md/biosamples_defaultSchema.md
-        - Cohorts: schemas-md/cohorts_defaultSchema.md
-        - Datasets: schemas-md/datasets_defaultSchema.md
-        - Genomic Variations: schemas-md/genomicVariations_defaultSchema.md
-        - Individuals: schemas-md/individuals_defaultSchema.md
-        - Runs: schemas-md/runs_defaultSchema.md        
+    - Example Queries:
+        - Genomic Queries: variant-queries.md
     - External Links:
         - Beacon Project &#8599;: http://beacon-project.io
         - Github Repositories &#8599;: https://github.com/ga4gh-beacon/
         - Read the Docs Version &#8599;: https://beacon-v2-unity.readthedocs.io/en/latest/
     - Download PDF: pdf/beacon.pdf
+    - Citation: citation.md
 
 theme:
     # name: readthedocs
