@@ -50,8 +50,6 @@ for novel use cases).
         * Testing the instance
 
 
-## Implementer
-
 !!! Note "Implementer"
 
     * Beacon v2 [Models](models.md)

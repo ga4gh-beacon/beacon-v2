@@ -20,3 +20,12 @@ div.tabbed-set {
 .tabbed-content {
     padding:  5px;
 }
+
+li li {
+    list-style-type: circle;
+}
+
+li li li {
+    list-style-type: "–";
+    font-size: 0.9em;
+}
