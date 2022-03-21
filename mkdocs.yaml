@@ -53,11 +53,12 @@ nav:
     - Documentation Scopes: roles.md
     - Changes: bugs-changes-log.md
     - Beacon Types and Examples:
+        - What is Beacon v2?: what-is-beacon-v2.md
         - Beacon Flavours: beacon-flavours.md
         - Genomic Queries: variant-queries.md
         - Implementations and Networks: implementations-and-networks.md
     - Implement & Deploy a Beacon:
-        - Deployment Options: implement-and-deploy.md
+        - Implementations Options: implementations-options.md
         - Standards Integration: formats-standards.md
         - Beacon Reference Implementation &#8599;: https://b2ri-documentation.readthedocs.io/en/latest/
     - Beacon Components:

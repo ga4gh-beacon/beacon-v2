@@ -28,7 +28,11 @@
 
 ## Changes
 
-#### 2022-03-21: [Filters](filters.md) Page Updated
+#### 2022-03-21: 
+
+* Deleted page `implement-and-deploy.md`
+* Added pages: [What is Beacon v2](what-is-beacon-v2) and [Implementation options](implementations-options.md)
+* [Filters](filters.md) Page Updated
 
 #### 2022-03-18: Macros and Variables for Documentation pages
 
@@ -37,13 +41,13 @@ The `mkdocs-macros-plugin` has been activated, allowing the use of site-wide var
 * `repo_model_url: https://github.com/ga4gh-beacon/beacon-v2-unity-testing/tree/main/models/src`
 * this can be used inline as `{{config.repo_model_url}}`
 
-#### 2002-03-16: Documentation Content and Formats Updates
+#### 2022-03-16: Documentation Content and Formats Updates
 
 * [x] addition of more variant query examples
 * [x] new landing pages for [Implementations and Networks](implementations-and-networks.md) and [Standards Integration](formats-standards.md)
 * [x] many adjustments to documentation structure, appearance and representation (e.g. content tabs for query examples)
 
-#### 2002-03-14: Documentation in Repository
+#### 2022-03-14: Documentation in Repository
 
 As of today the new/emerging Beacon v2 documentation is meintained in this repository. We're testing rendered versions (same text/code base) through Github actions ([here](https://beacon-project.io/beacon-v2-unity-testing/)) and [ReadTheDocs](https://beacon-v2-unity.readthedocs.io/en/latest/).
 
