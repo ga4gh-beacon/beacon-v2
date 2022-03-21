@@ -25,11 +25,3 @@ The Model repo points to several hosts the default model for Beacon v2:
 2. **The Beacon v2 Model:** (in [Models](https://github.com/ga4gh-beacon/beacon-v2-Models) ) represents the complete Beacon v2 _Default_ Model.
 3. **The Beacon v1 Model:** [repo](https://github.com/ga4gh-beacon/Model-BEACON-v1) Provided as an example for Beacon v1 implementers that want to update to Beacon v2 but not planning to add any additional entry type to their Beacon.
 
-### Coding and naming conventions
-
-For historical reasons, in the names of entities, parameters and URLs we are following the conventions:
-
-* Entity names: `PascalCase` 
-* parameters: `camelCase` 
-* URI path elements: `snake_case` 
-The only exception is: `service-info` which is a required GA4GH standard and has a different word separation convention.

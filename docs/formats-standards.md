@@ -2,6 +2,16 @@
 
 ## Data Formats and Standards
 
+### Coding and naming conventions
+
+For historical reasons, in the names of entities, parameters and URLs we are following these conventions:
+
+* Entity names: `PascalCase` 
+* parameters: `camelCase` 
+* URI path elements: `snake_case` 
+
+The only exception is: `service-info` which is a required GA4GH standard and has a different word separation convention.
+
 ### Schema Language and Conventions
 
 ==JSON Schema, YAML/JSON, camelCasing and others ...==
@@ -13,7 +23,6 @@
 ### Dates and Times
 
 ==ISO8601 etc., see schemablocks.org==
-
 
 ## Integration with External Standards
 
