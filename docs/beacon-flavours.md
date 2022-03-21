@@ -24,17 +24,28 @@ depending on the user's authentication status.
 
 ### Boolean Response
 
+==TBD==
+
 ### Beacon Count Response
+
+==TBD==
 
 ## Beacons Supporting Data and Information Delivery
 
+==TBD==
+
 ### Beacon Data Model
+
+==TBD==
 
 ### Alternative Data Models
 
+==TBD==
+
 ### Data Handover
 
---- 
+==TBD==
+
 
 [^1]: Privacy protecting as in "reasonably protecting by design but not immune to complex
 re-identification attacks".

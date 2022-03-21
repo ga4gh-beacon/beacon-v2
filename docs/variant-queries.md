@@ -3,9 +3,18 @@
 For querying of genomic variations Beacon v2 builds on and extends the options provided
 by earlier versions.
 
-## Query Examples
+## Beacon _Sequence Queries_
 
-### Beacon SNV Query
+_Sequence Queries_ query for the existence of a specified sequence at a given genomic
+position. Such queries correspond to the original Beacon queries and are used to match
+short, precisely defined genomic variants such as SNVs and INDELs.
+
+#### Parameters
+
+* `referenceName`
+* `start` (single value)
+* `alternateBases`
+* `referenceBases`
 
 #### Example: _EIF4A1_ Single Base Mutation
 
@@ -82,10 +91,90 @@ This is an example for a single base mutation (`G>A`) in the _EIF4A1_ eukaryotic
 	Before Beacon v0.4 a 1-based coordinate system was being used.
 
 
+## Beacon _Range Queries_
 
-### Beacon CNV Queries
+Beacon _Range Queries_ are supposed to return matches of any variant with at least
+partial overlap of the sequence range specified by `reference_name`, `start` and `end`
+parameters.
 
-#### Example: _TP53_ Deletion Query by Coordinates
+!!! Warning "Use of `start` and `end`"
+
+    Range queries require the use of **single** `start` and `end` parameters, in contrast
+    to _Bracket Queries_.
+
+#### Parameters
+
+* `referenceName`
+* `start` (single value)
+* `end` (single value)
+* optional `variantType` **OR** `alternateBases`
+
+#### Example: Any variant affecting _EIF4A1_ 
+
+=== "Beacon v2 GET"
+
+	```
+	?assemblyId=GRCh38&referenceName=17&start=7572837&end=7578641
+	```
+
+=== "Beacon v2 POST"
+
+	```
+	{
+	    "$schema":"https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/requests/beaconRequestBody.json",
+	    "meta": {
+	        "apiVersion": "2.0",
+	        "requestedSchemas": [
+	            {
+	                "entityType": "genomicVariation",
+	                "schema:": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json"
+	            }
+	        ]
+	    },
+	    "query": {
+	        "requestParameters": {
+	            "referenceName": "NC_000017.11",
+	            "start": [ 7572837 ],
+	            "end": [ 7578641 ]
+	        }
+	    },
+	    "requestedGranularity": "record",
+	    "pagination": {
+	        "skip": 0,
+	        "limit": 5
+	    }
+	}
+	```
+
+=== "Beacon v1"
+
+	Range Queries are new to Beacon v2
+
+=== "Beacon v0.3"
+
+	Range Queries are new to Beacon v2
+
+
+## Beacon _Bracket Queries_
+
+_Bracket Queries_ allow the specification of sequence ranges for both start and end
+positions of a genomic variation. The typical example here is the query for similar
+structural variants - particularly CNVs - affecting a genomic region but potentially
+differing in their exact base extents.
+
+!!! Warning "Use of `start` and `end`"
+
+    Bracket queries require the use of **two** `start` and `end` parameters, in contrast
+    to _Range Queries_.
+
+#### Parameters
+
+* `referenceName`
+* `start` (min) and `start` (max) - i.e. 2 start parameters
+* `end` (min) and `end` (max) - i.e. 2 end parameters
+* `variantType` (optional)
+
+#### Example: CNV Query - _TP53_ Deletion Query by Coordinates
 
 The following example shows a "bracket query" for focal deletions of the _TP53_ gene locus:
 
@@ -157,10 +246,6 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 
 	CNV query options were only implemented with Beacon v0.4, based on Beacon<sup>+</sup> prototyping.
 
-
-
-
-==(TBD)==
 
 ## Query Parameter Change Log
 

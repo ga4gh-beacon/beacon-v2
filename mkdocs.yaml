@@ -54,7 +54,7 @@ nav:
     - Changes: bugs-changes-log.md
     - Beacon Types and Examples:
         - Beacon Flavours: beacon-flavours.md
-        - Genomic Query Examples: variant-queries.md
+        - Genomic Queries: variant-queries.md
         - Implementations and Networks: implementations-and-networks.md
     - Implement & Deploy a Beacon:
         - Deployment Options: implement-and-deploy.md
