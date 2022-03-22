@@ -16,7 +16,7 @@
 * [x] content for the [Filters page](filters.md)
 * [ ] merging (?) of the [Introduction](index.md) and [Documentation Scopes](roles.md) pages
     - clarification, re-structuring, links ...
-* [ ] add more [Implementations](implementations-and-networks.md)
+* [ ] complete  [Implementations](other-implemebtations.md)
 * [ ] extend [Query documentation](variant-queries.md), also using content from the variant scouts document
 * [ ] create content for [Tips for Implementers](tips-for-implementers)
 
@@ -29,10 +29,13 @@
 
 ## Changes
 
-#### 2022-03-22: More Reorganization of navigation
+#### 2022-03-22: More Reorganization of Navigation
 
+* Moved content from `implementations-and-networks` to `other-implementations` and left only the "Networks" Part.
+* Added `mkdocs-mermaid-plugin` both to `mkdocs.yaml` and to github workflows.
+* Moved Schemas (Markdown Tables) and Terms List from main navigation to `Beacon Compoments/Models`
 * Reorganization of navigation
-* Added pages: [Tips for Implementers](tips-for-implementers)
+* Added pages: [Tips for Implementers](tips-for-implementers.md)
 
 #### 2022-03-21: Reorganization of navigation
 

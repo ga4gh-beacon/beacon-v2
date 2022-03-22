@@ -4,7 +4,7 @@ If this is the case, these are some things to get you started:
 
 ![Option A](img/tips-for-implementers-img1.png)
 
-1. Start with a [boolean](beacon-flavours) beacon
+1. Start with a [boolean](beacon-flavours.md) beacon
 
 2. List your available [endpoints](implementations-and-networks.md)
 

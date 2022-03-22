@@ -63,16 +63,16 @@ nav:
     - 'Implement & Deploy a Beacon':
         - Implementations Options: implementations-options.md
         - Tips for Implementers: tips-for-implementers.md
-        - Implementations and Networks: implementations-and-networks.md
         - Standards Integration: formats-standards.md
         - Beacon Implementations:
             - Reference Implementation &#8599;: https://b2ri-documentation.readthedocs.io/en/latest/
-            - Others: others.md
+            - Others: other-implementations.md
+        - Networks: networks.md
     - Beacon Components:
         - Framework: framework.md         
         - Models: 
            - Introduction: models.md
-           - Schemas:
+           - Default Schemas:
                - Analyses: schemas-md/analyses_defaultSchema.md
                - Biosamples: schemas-md/biosamples_defaultSchema.md
                - Cohorts: schemas-md/cohorts_defaultSchema.md

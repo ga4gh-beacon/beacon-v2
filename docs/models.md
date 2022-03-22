@@ -5,7 +5,7 @@
 The GA4GH Beacon specification is composed by two parts:
 
 * the Beacon [Framework](framework.md) {{config.repo_framework_icon}}
-* the Beacon Models {{config.repo_models_icon}}
+* the Beacon [Models](models.md) {{config.repo_models_icon}}
 
 The **Beacon Framework** (in Framework repo {{config.repo_framework_icon}}) is the part that describes the overall structure of the API requests, responses, parameters, the common components, etc. It could also be referred in this document as simply the *Framework*.
 
@@ -22,7 +22,7 @@ If you are a Beacon implementer, then, you don't need to clone the Framework rep
 The Model repo points to several hosts the default model for Beacon v2:
 
 1. **The TEMPLATE Model:** [repo](https://github.com/ga4gh-beacon/Model-TEMPLATE) is the most basic model. Its purpose is twofold 1) as starting point for any *new* model (so to say, not Beacon v2) and 2) as a learning tool.
-2. **The Beacon v2 Model:** (in [Models](https://github.com/ga4gh-beacon/beacon-v2-Models) ) represents the complete Beacon v2 _Default_ Model.
+2. **The Beacon v2 Model:** (in [Models](https://github.com/ga4gh-beacon/beacon-v2-Models)) represents the complete Beacon v2 _Default_ Model.
 ``` mermaid
 classDiagram
 
