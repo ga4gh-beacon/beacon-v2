@@ -16,4 +16,5 @@ jobs:
       - run: pip install pymdown-extensions
       - run: pip install mdx_gh_links
       - run: pip install mkdocs-with-pdf
+      - run: pip install mkdocs-mermaid-plugin
       - run: mkdocs gh-deploy --force

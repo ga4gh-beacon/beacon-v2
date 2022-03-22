@@ -47,6 +47,11 @@ markdown_extensions:
     - pymdownx.emoji:
           emoji_index: !!python/name:materialx.emoji.twemoji
           emoji_generator: !!python/name:materialx.emoji.to_svg
+    - pymdownx.superfences:
+          custom_fences:
+              - name: mermaid
+                class: mermaid
+                format: !!python/name:pymdownx.superfences.fence_code_format
 
 nav:
     - Introduction to Beacon v2: index.md
@@ -75,9 +80,9 @@ nav:
                - Genomic Variations: schemas-md/genomicVariations_defaultSchema.md
                - Individuals: schemas-md/individuals_defaultSchema.md
                - Runs: schemas-md/runs_defaultSchema.md    
+           - Terms List: schemas-md/beacon_terms.md
         - Filters: filters.md
         - REST API: rest-api.md
-        - Terms List: schemas-md/beacon_terms.md
     - Example Queries:
         - Genomic Queries: variant-queries.md
     - External Links:

@@ -23,5 +23,56 @@ The Model repo points to several hosts the default model for Beacon v2:
 
 1. **The TEMPLATE Model:** [repo](https://github.com/ga4gh-beacon/Model-TEMPLATE) is the most basic model. Its purpose is twofold 1) as starting point for any *new* model (so to say, not Beacon v2) and 2) as a learning tool.
 2. **The Beacon v2 Model:** (in [Models](https://github.com/ga4gh-beacon/beacon-v2-Models) ) represents the complete Beacon v2 _Default_ Model.
-3. **The Beacon v1 Model:** [repo](https://github.com/ga4gh-beacon/Model-BEACON-v1) Provided as an example for Beacon v1 implementers that want to update to Beacon v2 but not planning to add any additional entry type to their Beacon.
+``` mermaid
+classDiagram
 
+    cohorts <-- genomicVariations : 1..n
+    datasets <-- genomicVariations : 1..n
+    cohorts <-- individuals : 1..n
+    datasets <-- individuals : 1..n
+    individuals <-- biosamples : 1..n
+    biosamples <-- analyses : 1..n
+    biosamples <-- runs : 1..n
+    runs <-- genomicVariations : 1..n
+    analyses <-- genomicVariations : 1..n
+    genomicVariations <-- datasets : 1..n
+    genomicVariations <-- cohorts : 1..n
+
+    class biosamples{
+        biosampleStatus
+        collectionDate
+        ...
+    }
+    class individuals{
+        diseases
+        ethnicity
+        ...
+    }
+    class datasets{
+        createDateTime
+        dataUseCondition
+        ...
+    }
+    class runs{
+        biosampleId
+        Id
+        ...
+        }
+    class genomicVariations{
+        alternateBases
+        caseLevelData
+        ...
+    }
+    class analyses{
+        aligner
+        analysisDate
+        ...
+    }
+   class cohorts{
+        cohortDataTypes
+        cohortDesign
+        ...
+    }
+```
+
+3. **The Beacon v1 Model:** [repo](https://github.com/ga4gh-beacon/Model-BEACON-v1) Provided as an example for Beacon v1 implementers that want to update to Beacon v2 but not planning to add any additional entry type to their Beacon.
