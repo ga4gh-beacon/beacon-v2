@@ -18,6 +18,13 @@
     - clarification, re-structuring, links ...
 * [ ] complete  [Implementations](other-implemebtations.md)
 * [ ] extend [Query documentation](variant-queries.md), also using content from the variant scouts document
+    - [ ] include a table comparing different "variant types" between definitions (e.g. like below)
+
+        | Beacon | VCF | SO | EFO | VRS | Not about Beacon use  |
+        | -------|-----|----|-----|-----|---------|
+        | DUP    | DUP | SO:0001742 | EFO:0030070 | low-level gain</br>high-level gain | Increase of allele count compared to locally expected baseline w/o expectation about localization of added sequence copies |
+        | DEL    | ... | ... | ... | ... | ... |
+        
 * [ ] create content for [Tips for Implementers](tips-for-implementers)
 
 ### Repositories
