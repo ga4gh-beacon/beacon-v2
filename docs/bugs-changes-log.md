@@ -18,6 +18,7 @@
     - clarification, re-structuring, links ...
 * [ ] add more [Implementations](implementations-and-networks.md)
 * [ ] extend [Query documentation](variant-queries.md), also using content from the variant scouts document
+* [ ] create content for [Tips for Implementers](tips-for-implementers)
 
 ### Repositories
 
@@ -28,11 +29,16 @@
 
 ## Changes
 
+#### 2022-03-22: More Reorganization of navigation
+
+* Reorganization of navigation
+* Added pages: [Tips for Implementers](tips-for-implementers)
+
 #### 2022-03-21: Reorganization of navigation
 
 * Reorganization of navigation
 * Deleted page `implement-and-deploy.md`
-* Added pages: [What is Beacon v2](../what-is-beacon-v2) and [Implementation options](../implementations-options.md)
+* Added pages: [What is Beacon v2](what-is-beacon-v2.md) and [Implementation options](implementations-options.md)
 * [Filters](filters.md) Page Updated
 
 #### 2022-03-18: Macros and Variables for Documentation pages

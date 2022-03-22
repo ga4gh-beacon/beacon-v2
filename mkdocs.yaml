@@ -57,6 +57,7 @@ nav:
         - Beacon Flavours: beacon-flavours.md
     - 'Implement & Deploy a Beacon':
         - Implementations Options: implementations-options.md
+        - Tips for Implementers: tips-for-implementers.md
         - Implementations and Networks: implementations-and-networks.md
         - Standards Integration: formats-standards.md
         - Beacon Implementations:
