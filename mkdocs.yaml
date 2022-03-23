@@ -96,13 +96,14 @@ theme:
     # name: readthedocs
     # name: windmill
     name: material
+    palette:
+        primary: teal
     logo: img/GA-logo.png
     favicon: img/ga4gh_circle.ico
     icon:
         repo: fontawesome/brands/github-alt 
-    palette:
-        primary: teal
     features:
+        - content.tabs.link
         - search.highlight
         - search.share
         - navigation.instant
