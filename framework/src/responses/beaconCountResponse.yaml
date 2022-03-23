@@ -12,7 +12,7 @@ properties:
     $ref: ./sections/beaconResponseMeta.json
   responseSummary:
     description: Response summary, including Boolean and optionally results count.
-    $ref: ./sections/beaconSummaryResponseSection.json
+    $ref: ./sections/beaconCountResponseSection.json
   info:
     description: Additional details that could be of interest. Provided to clearly
       enclose any attribute that is not part of the Beacon specification.

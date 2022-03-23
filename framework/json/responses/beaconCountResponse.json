@@ -15,7 +15,7 @@
             "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
         },
         "responseSummary": {
-            "$ref": "./sections/beaconSummaryResponseSection.json",
+            "$ref": "./sections/beaconCountResponseSection.json",
             "description": "Response summary, including Boolean and optionally results count."
         }
     },
