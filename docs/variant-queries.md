@@ -42,7 +42,7 @@ This is an example for a single base mutation (`G>A`) in the _EIF4A1_ eukaryotic
 	        "requestedSchemas": [
 	            {
 	                "entityType": "genomicVariation",
-	                "schema:": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json"
+	                "schema:": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json"
 	            }
 	        ]
 	    },
@@ -121,13 +121,13 @@ parameters.
 
 	```
 	{
-	    "$schema":"https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/requests/beaconRequestBody.json",
+	    "$schema":"https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json",
 	    "meta": {
 	        "apiVersion": "2.0",
 	        "requestedSchemas": [
 	            {
 	                "entityType": "genomicVariation",
-	                "schema:": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json"
+	                "schema:": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json"
 	            }
 	        ]
 	    },
@@ -200,13 +200,13 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 
 	```
 	{
-	    "$schema":"https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/requests/beaconRequestBody.json",
+	    "$schema":"https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json",
 	    "meta": {
 	        "apiVersion": "2.0",
 	        "requestedSchemas": [
 	            {
 	                "entityType": "genomicVariation",
-	                "schema:": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json"
+	                "schema:": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json"
 	            }
 	        ]
 	    },

@@ -8,16 +8,16 @@ This repository is intended as a unification and replacement of the main reposit
 * [beacon-v2-Models](https://github.com/ga4gh-beacon/beacon-v2-Models)
 * Beacon v2 Documentation
     - authoritive source already in this repository [`/docs`](docs)
-    - rendered version through [here](https://beacon-project.io/beacon-v2-unity-testing/) and through [ReadTheDocs](https://beacon-v2-unity.readthedocs.io/en/latest/) 
+    - rendered version through [here](https://beacon-project.io/beacon-v2/) and through [ReadTheDocs](https://beacon-v2-unity.readthedocs.io/en/latest/) 
 
 As with other schema projects, here we separate between the schema source files (in `src`; JSON-Schema written in YAML) and the generated versions for referencing. The current setup allows already the direct referencing of the generated JSON schemas but has not been tested yet in its completeness using e.g. the Beacon Verifier. Examples:
 
 * `ontologyTerm`:
-    - YAML (source): <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/src/common/ontologyTerm.yaml>
-    - JSON: <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json>
+    - YAML (source): <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/common/ontologyTerm.yaml>
+    - JSON: <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json>
 * `beaconRequestBody`:
-    - YAML (source): <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/src/requests/beaconRequestBody.yaml>
-    - JSON: <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/requests/beaconRequestBody.json>
+    - YAML (source): <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/requests/beaconRequestBody.yaml>
+    - JSON: <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json>
 
 ### Status
 

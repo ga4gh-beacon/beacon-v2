@@ -7,8 +7,11 @@ BEACONFRAMEWORKPATH=$BASEDIR/../../beacon-framework-v2
 
 BEACONMODELNAME=beacon-v2-default-model
 
-git -C $BEACONMODELPATH pull
-git -C $BEACONFRAMEWORKPATH pull
+for UPSTREAM in $BEACONMODELPATH $BEACONFRAMEWORKPATH
+do
+	echo "pulling $UPSTREAM"
+	git -C $UPSTREAM pull
+done
 
 for KIND in src json
 do

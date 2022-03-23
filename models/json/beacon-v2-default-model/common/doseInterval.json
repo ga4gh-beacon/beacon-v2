@@ -18,7 +18,7 @@
             "$ref": "./quantity.json"
         },
         "scheduleFrequency": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
             "description": "How often doses are administered per day (or other indicated duration)",
             "examples": [
                 {

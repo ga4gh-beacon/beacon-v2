@@ -7,7 +7,7 @@
             "description": "Compares to Phenopackets v2 `Procedure.performed`"
         },
         "bodySite": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
             "description": "Specific body site where the procedure was performed. Recommended valuee from Uber-anatomy ontology (UBERON)",
             "examples": [
                 {
@@ -27,7 +27,7 @@
             "type": "string"
         },
         "procedureCode": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
             "description": "Clinical procedure performed with recommended values from Medical Action Ontology (MAXO) 'Medical action' term tree (MAXO:0000001). Compares to Phenopackets v2 `Procedure.code`",
             "examples": [
                 {

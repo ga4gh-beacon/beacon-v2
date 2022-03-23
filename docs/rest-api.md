@@ -21,7 +21,7 @@ A typical example would e.g. the request to retrieve all genomic variants associ
 ??? note "REST Endpoint Definitions"
 
     The endpoind paths available for a given Beacon instance are defined in
-    `__APIroot__/beaconMap/` [Github](https://github.com/ga4gh-beacon/beacon-v2-unity-testing/blob/main/models/src/beacon-v2-default-model/beaconMap.yaml)
+    `__APIroot__/beaconMap/` [Github](https://github.com/ga4gh-beacon/beacon-v2/blob/main/models/src/beacon-v2-default-model/beaconMap.yaml)
   
 ### Typical Endpoint Patterns
 

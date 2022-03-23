@@ -203,7 +203,7 @@
                 }
             ],
             "items": {
-                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json"
+                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
             },
             "type": "array"
         }
@@ -214,7 +214,7 @@
             "$ref": "#/definitions/DataTypesArray"
         },
         "cohortDesign": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
             "description": "Cohort type by its design. A plan specification comprised of protocols (which may specify how and what kinds of data will be gathered) that are executed as part of an investigation and is realized during a study design execution. Value from Ontologized MIABIS (OMIABIS) Study design ontology term tree (OBI:0500000).",
             "examples": [
                 {

@@ -4,4 +4,4 @@ description: 'Definition of a value class. Provenance: GA4GH Phenopackets v2 `Va
 type: object
 oneOf:
   - $ref: ./quantity.json
-  - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
+  - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json

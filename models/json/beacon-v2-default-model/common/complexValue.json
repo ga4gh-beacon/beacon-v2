@@ -16,7 +16,7 @@
                     }
                 },
                 "quantityType": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
+                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
                     "description": "OntologyClass to describe the type of the measurement. Renamed compared to GA4GH Phenopackets v2 `ComplexValue.TypedQuantity.type`",
                     "example": {
                         "id": "NCIT:C25298",

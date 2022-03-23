@@ -42,7 +42,7 @@ definitions:
         description: Pedigree role, defined as relationship to proband. Value from
           Family Member term (NCIT:C41256), e.g. "proband" (NCIT:C64435),"identical
           twin" (NCIT:C73429), "mother" (NCIT:C25189).
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
         examples:
           - id: NCIT:C64435
             label: Proband

@@ -7,7 +7,7 @@ definitions:
     description: 'Sex of the individual. Recommended values from NCIT General Qualifier
       (NCIT:C27993): "unknown" (not assessed or not available) - NCIT:C17998; "female"
       - NCIT:C16576;  "male" - NCIT:C20197'
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     examples:
       - id: NCIT:C16576
         label: female
@@ -45,7 +45,7 @@ definitions:
       (Latin American). A geographic ancestral origin category that is assigned to
       a population group based mainly on physical characteristics that are thought
       to be distinct and inherent. [ NCI ]
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     examples:
       - id: NCIT:C42331
         label: African
@@ -65,7 +65,7 @@ definitions:
     description: Country or region of origin of the individual (birthplace or residence
       place regardless of ethnic origin). Value from GAZ Geographic Location ontology
       (GAZ:00000448), e.g. GAZ:00002459 (United States of America).
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     examples:
       - id: GAZ:00002955
         label: Slovenia
@@ -79,7 +79,7 @@ definitions:
     description: 'Level/severity ontology when and as applicable to phenotype observed.
       Value from Human Phenotype Ontology (HP:0012824), e.g `mild`. The intensity
       or degree of a manifestation. [ HPO:probinson ] '
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     examples:
       - id: HP:0012825
         label: Severe
@@ -94,7 +94,7 @@ definitions:
   Unit:
     description: The kind of unit. Recommended from NCIT Unit of Category ontology
       term (NCIT:C42568) descendants
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     examples:
       - id: NCIT:C70575
         label: Roentgen

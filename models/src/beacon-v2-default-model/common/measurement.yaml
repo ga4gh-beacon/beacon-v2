@@ -7,7 +7,7 @@ properties:
   assayCode:
     description: Class that describes the assay used to produce the measurement. Renamed
       compared to GA4GH Phenopackets v2 `Measurement.assay`
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     example:
       id: LOINC:26515-7
       label: Platelets [#/volume] in Blood

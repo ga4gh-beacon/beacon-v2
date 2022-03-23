@@ -31,6 +31,7 @@ def _get_args():
     parser.add_argument("-o", "--outpath", help="Directory to be saved to.", required=True)
     parser.add_argument("-t", "--filetype", help="File type to convert from; for directory parsing.", required=True)
     parser.add_argument("-x", "--exporttype", help="File type to convert to.", required=True)
+    parser.add_argument("-v", "--verbose", help="Show conversion details.", default=False)
 
     return parser.parse_args()
 
@@ -44,7 +45,7 @@ def main():
     from_type = args.filetype
     to_type = args.exporttype
 
-    config.update({ "from_type": from_type, "to_type": to_type} )
+    config.update({ "args": args, "from_type": from_type, "to_type": to_type} )
 
     for p in [in_path, out_path]:
         if not p.is_dir():
@@ -92,7 +93,7 @@ def _yaml2json(f_n, in_path, out_path, config):
     o_n = re.sub(r"\.yaml", ".json", f_n)
     out_file = path.join( out_path, o_n)
 
-    print("converting {}\n        => {}".format(in_file, out_file))
+    _file_conversion_message(config, in_file, out_file)
     i_d = _file_read_and_clean(in_file, config)
 
     try:
@@ -115,7 +116,7 @@ def _yaml2yaml(f_n, in_path, out_path, config):
     o_n = f_n
     out_file = path.join( out_path, f_n)
 
-    print("converting {}\n        => {}".format(in_file, out_file))
+    _file_conversion_message(config, in_file, out_file)
     i_d = _file_read_and_clean(in_file, config)
 
     try:
@@ -136,7 +137,7 @@ def _json2yaml(f_n, in_path, out_path, config):
     o_n = re.sub(r"\.json", ".yaml", f_n)
     out_file = path.join( out_path, o_n)
 
-    print("converting {}\n        => {}".format(in_file, out_file))
+    _file_conversion_message(config, in_file, out_file)
     i_d = _file_read_and_clean(in_file, config)
 
     try:
@@ -157,8 +158,7 @@ def _json2json(f_n, in_path, out_path, config):
     o_n = f_n
     out_file = path.join( out_path, o_n)
 
-    print("converting {}\n        => {}".format(in_file, out_file))
-
+    _file_conversion_message(config, in_file, out_file)
     i_d = _file_read_and_clean(in_file, config)
     try:
         s = json.loads(i_d)
@@ -213,6 +213,16 @@ def _file_conversion_error(e, f):
     print(e)
     print("###################################################### !!!!!\n")
 
+    return
+
+################################################################################
+
+def _file_conversion_message(config, in_file, out_file):
+
+    if config["args"].verbose is False:
+        return 
+
+    print("converting {}\n        => {}".format(in_file, out_file))
     return
 
 ################################################################################

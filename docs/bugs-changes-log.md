@@ -29,12 +29,17 @@
 
 ### Repositories
 
-* [ ] name and title change
+* [x] name and title change
     - adjusting all the links accordingly
 * [ ] BUG: fix transfer of examples
 * [ ] retiring of framework and model repos
 
 ## Changes
+
+#### 2022-03-23: Name Change to `beacon-v2`
+
+The repository name and file paths have been changed from `beacon-v2-unity-testing`
+to `beacon-v2`.
 
 #### 2022-03-22: More Reorganization of Navigation
 
@@ -55,7 +60,7 @@
 
 The `mkdocs-macros-plugin` has been activated, allowing the use of site-wide variables:
 
-* `repo_model_url: https://github.com/ga4gh-beacon/beacon-v2-unity-testing/tree/main/models/src`
+* `repo_model_url: https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src`
 * this can be used inline as `{{config.repo_model_url}}`
 
 #### 2022-03-16: Documentation Content and Formats Updates
@@ -66,9 +71,9 @@ The `mkdocs-macros-plugin` has been activated, allowing the use of site-wide var
 
 #### 2022-03-14: Documentation in Repository
 
-As of today the new/emerging Beacon v2 documentation is meintained in this repository. We're testing rendered versions (same text/code base) through Github actions ([here](https://beacon-project.io/beacon-v2-unity-testing/)) and [ReadTheDocs](https://beacon-v2-unity.readthedocs.io/en/latest/).
+As of today the new/emerging Beacon v2 documentation is meintained in this repository. We're testing rendered versions (same text/code base) through Github actions ([here](https://beacon-project.io/beacon-v2/)) and [ReadTheDocs](https://beacon-v2-unity.readthedocs.io/en/latest/).
 
-* [x] testing of [ReadTheDocs version](https://beacon-v2-unity.readthedocs.io/) vs. a [`material` themed build](https://beacon-project.io/beacon-v2-unity-testing/)
+* [x] testing of [ReadTheDocs version](https://beacon-v2-unity.readthedocs.io/) vs. a [`material` themed build](https://beacon-project.io/beacon-v2/)
 * [x] created and linked [docs.genomebeacons.org](http://docs.genomebeacons.org)
 sub-domain to the Github hosted version of the rendered documentation
 * [x] merging of previous separate documentation repository content from _beacon-v2-schema-documentation_
@@ -81,7 +86,7 @@ Since moving to source in YAML the existence of a separate `yaml` export seems u
 #### 2022-03-09: Nesting models
 
 The structure of the `models` directory has now be changed to have the default model as one of possibly multiple
-options as per the discussions in [#1](https://github.com/ga4gh-beacon/beacon-v2-unity-testing/issues/1).
+options as per the discussions in [#1](https://github.com/ga4gh-beacon/beacon-v2/issues/1).
 The current structure (below) might not be final (e.g. placing of the `beaconConfiguration.yaml`, `beaconMap.yaml`, `endpoints.yaml` files?).
 
 ```
@@ -123,13 +128,13 @@ git -C $BEACONFRAMEWORKPATH pull
 
 #### 2022-02-24: Path fixes
 
-* changed the path replacements to the current repo, resulting in e.g. <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/responses/sections/beaconInformationalResponseMeta.json>
+* changed the path replacements to the current repo, resulting in e.g. <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/sections/beaconInformationalResponseMeta.json>
 
 #### 2022-02-23: Re-tool
 
 * [x] replacement of the previopus general `yamler.py` with a dedicated `beaconYamler.py`
-* [x] moving replacements to [bin/config.yaml](https://github.com/ga4gh-beacon/beacon-v2-unity-testing/bin/config.yaml)
-* [x] requirement for complete arguments (in and out paths, in- and out formats) - see [bin/yamlerRunner.sh](https://github.com/ga4gh-beacon/beacon-v2-unity-testing/bin/yamlerRunner.sh)
+* [x] moving replacements to [bin/config.yaml](https://github.com/ga4gh-beacon/beacon-v2/bin/config.yaml)
+* [x] requirement for complete arguments (in and out paths, in- and out formats) - see [bin/yamlerRunner.sh](https://github.com/ga4gh-beacon/beacon-v2/bin/yamlerRunner.sh)
 
 #### 2022-02-22: Creation of repository
 

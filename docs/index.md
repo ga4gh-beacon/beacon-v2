@@ -4,7 +4,7 @@
 
 	Note that Beacon v2 is still [under development](https://github.com/ga4gh-beacon/beacon-v2-Models) and needs to be approved by the [GA4GH](https://www.ga4gh.org/).
 
-The core documentation (i.e. this document) can be found on [here](https://beacon-project.io/beacon-v2-unity-testing/).
+The core documentation (i.e. this document) can be found on [here](https://beacon-project.io/beacon-v2/).
 
 ## Scope and Purpose
 

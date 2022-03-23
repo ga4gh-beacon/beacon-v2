@@ -32,7 +32,7 @@
             ]
         },
         "diseaseCode": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
             "description": "Disease identifier. Value from disease ontologies such as HPO, OMIM, Orphanet, MONDO, e.g. lactose intolerance (HP:0004789, ICD10CM:E73). Provenance: GA4GH Phenopackets v2 `Disease.term`",
             "examples": [
                 {
@@ -63,7 +63,7 @@
             "$ref": "./commonDefinitions.json#/definitions/SeverityLevel"
         },
         "stage": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
             "description": "Ontology term from Ontology for General Medical Science (OGMS), e.g. acute onset (OGMS:0000119). Provenance: GA4GH Phenopackets v2 `Disease.disease_stage`",
             "examples": [
                 {

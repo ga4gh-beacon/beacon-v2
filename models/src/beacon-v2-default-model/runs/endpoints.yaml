@@ -25,7 +25,7 @@ paths:
         '200':
           $ref: '#/components/responses/ResultsOKResponse'
         default:
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/responses/beaconErrorResponse.json
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
       description: Get a list of sequencing runs
       operationId: postRunsRequest
@@ -35,14 +35,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/requests/beaconRequestBody.json
+              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json
         required: true
       responses:
         '200':
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/responses/beaconErrorResponse.json
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /runs/{id}:
     parameters:
       - $ref: '#/components/parameters/entryId'
@@ -57,7 +57,7 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/responses/beaconErrorResponse.json
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
       description: Get details about one Run, identified by its (unique) 'id'
       operationId: postOneRun
@@ -67,14 +67,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/requests/beaconRequestBody.json
+              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json
         required: true
       responses:
         '200':
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/responses/beaconErrorResponse.json
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /runs/{id}/g_variants:
     parameters:
       - $ref: '#/components/parameters/entryId'
@@ -93,7 +93,7 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/responses/beaconErrorResponse.json
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
       description: Get the genomic variants list from one run, identified by its (unique)
         'id'
@@ -104,14 +104,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/requests/beaconRequestBody.json
+              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json
         required: true
       responses:
         '200':
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/responses/beaconErrorResponse.json
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /runs/{id}/analyses:
     parameters:
       - $ref: '#/components/parameters/entryId'
@@ -130,7 +130,7 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/responses/beaconErrorResponse.json
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
       description: Get the analysis list from one sequencing run, identified by its
         (unique) 'id'
@@ -141,14 +141,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/requests/beaconRequestBody.json
+              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json
         required: true
       responses:
         '200':
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/responses/beaconErrorResponse.json
+          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
 components:
   responses:
     ResultsOKResponse:
@@ -157,9 +157,9 @@ components:
         application/json:
           schema:
             oneOf:
-              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/responses/beaconBooleanResponse.json
-              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/responses/beaconCountResponse.json
-              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/responses/beaconResultsetsResponse.json
+              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconBooleanResponse.json
+              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCountResponse.json
+              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconResultsetsResponse.json
   parameters:
     requestedSchema:
       name: requestedSchema
@@ -174,14 +174,14 @@ components:
       name: skip
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/beaconCommonComponents.json#/definitions/Skip
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Skip
     limit:
       name: limit
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/beaconCommonComponents.json#/definitions/Limit
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Limit
     includeResultsetResponses:
-      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses
+      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses
     entryId:
       name: id
       in: path

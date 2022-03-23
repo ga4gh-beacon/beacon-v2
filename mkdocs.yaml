@@ -2,12 +2,12 @@ site_name: Beacon v2 Documentation
 site_description: 'Documentation for Beacon v2'
 site_author: 'Manuel Rueda, Michael Baudis, Laureen Fromont & Beacon Developers'
 copyright: '&copy; Copyright 2021-2022, Beacon v2 Documentation Contributors'
-repo_name: 'beacon-v2-unity-testing'
-repo_url: https://github.com/ga4gh-beacon/beacon-v2-unity-testing
+repo_name: 'beacon-v2'
+repo_url: https://github.com/ga4gh-beacon/beacon-v2
 edit_uri: edit/main/docs/
 
-repo_framework_icon: " [:fontawesome-brands-github:](https://github.com/ga4gh-beacon/beacon-v2-unity-testing/tree/main/framework/src)"
-repo_models_icon: " [:fontawesome-brands-github:](https://github.com/ga4gh-beacon/beacon-v2-unity-testing/tree/main/models/src)"
+repo_framework_icon: " [:fontawesome-brands-github:](https://github.com/ga4gh-beacon/beacon-v2/tree/main/framework/src)"
+repo_models_icon: " [:fontawesome-brands-github:](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src)"
 
 extra_css: [css/theme_overrides.css]
 
@@ -43,7 +43,7 @@ markdown_extensions:
     - tables
     - mdx_gh_links:
         user: ga4gh-beacon
-        repo: beacon-v2-unity-testing
+        repo: beacon-v2
     - pymdownx.emoji:
           emoji_index: !!python/name:materialx.emoji.twemoji
           emoji_generator: !!python/name:materialx.emoji.to_svg

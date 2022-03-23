@@ -9,7 +9,7 @@
                     "description": "TBD"
                 },
                 {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json"
+                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
                 },
                 {
                     "properties": {
@@ -17,7 +17,7 @@
                             "items": {
                                 "allOf": [
                                     {
-                                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json"
+                                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
                                     },
                                     {
                                         "examples": [
@@ -107,7 +107,7 @@
             "type": "string"
         },
         "info": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/beaconCommonComponents.json#/definitions/Info"
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Info"
         },
         "name": {
             "description": "Name of the dataset",

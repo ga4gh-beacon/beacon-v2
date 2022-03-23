@@ -6,7 +6,7 @@ meta:
     - entityType: info
       schema: beacon-map-v2.0.0
 response:
-  $schema: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/configuration/beaconConfigurationSchema.json
+  $schema: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/configuration/beaconConfigurationSchema.json
   maturityAttributes:
     productionStatus: DEV
   securityAttributes:

@@ -2,7 +2,7 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "definitions": {
         "Ethnicity": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
             "description": "Ethnic background of the individual. Recommended is the use of a value from NCIT Race (NCIT:C17049) ontology term descendants, e.g. NCIT:C126531 (Latin American). A geographic ancestral origin category that is assigned to a population group based mainly on physical characteristics that are thought to be distinct and inherent. [ NCI ]",
             "examples": [
                 {
@@ -36,7 +36,7 @@
             ]
         },
         "GeographicLocation": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
             "description": "Country or region of origin of the individual (birthplace or residence place regardless of ethnic origin). Value from GAZ Geographic Location ontology (GAZ:00000448), e.g. GAZ:00002459 (United States of America).",
             "examples": [
                 {
@@ -77,7 +77,7 @@
             "type": "string"
         },
         "SeverityLevel": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
             "description": "Level/severity ontology when and as applicable to phenotype observed. Value from Human Phenotype Ontology (HP:0012824), e.g `mild`. The intensity or degree of a manifestation. [ HPO:probinson ] ",
             "examples": [
                 {
@@ -103,7 +103,7 @@
             ]
         },
         "Sex": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
             "description": "Sex of the individual. Recommended values from NCIT General Qualifier (NCIT:C27993): \"unknown\" (not assessed or not available) - NCIT:C17998; \"female\" - NCIT:C16576;  \"male\" - NCIT:C20197",
             "examples": [
                 {
@@ -121,7 +121,7 @@
             ]
         },
         "Unit": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2-unity-testing/main/framework/json/common/ontologyTerm.json",
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
             "description": "The kind of unit. Recommended from NCIT Unit of Category ontology term (NCIT:C42568) descendants",
             "examples": [
                 {
