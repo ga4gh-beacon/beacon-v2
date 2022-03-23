@@ -1,0 +1,23 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "variantInternalId": "GRCh37-1-55505652-G-A",
+    "variation": {
+        "alternateBases": "A",
+        "location": {
+            "interval": {
+                "end": {
+                    "type": "Number",
+                    "value": 5505653
+                },
+                "start": {
+                    "type": "Number",
+                    "value": 5505652
+                },
+                "type": "SequenceInterval"
+            },
+            "sequenceId": "refseq:NC_000001.10",
+            "type": "SequenceLocation"
+        },
+        "variantType": "SNP"
+    }
+}

@@ -1,52 +1,27 @@
 {
-    "$comments": "TODO: Add other values from https://github.com/phenopackets/phenopacket-schema/blob/v2/docs/time-element.rst",
+    "$comments": "If using an ontology class the use of NCIT Age Group ontology term (NCIT:C20587) descendants is recommended.",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Definition of a wrapper for various time descriptors.",
-    "properties": {
-        "age": {
-            "$ref": "./age.json",
-            "description": "Represents age as a ISO8601 duration (e.g., P40Y10M05D).",
-            "example": {
-                "iso8601duration": "P32Y6M1D"
-            }
+    "description": "Definition of a wrapper for various time descriptors. This follows the Phenopackets structure https://github.com/phenopackets/phenopacket-schema/blob/v2/docs/time-element.rst",
+    "oneOf": [
+        {
+            "$ref": "./age.json"
         },
-        "ageGroup": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
-            "description": "Indicates the age of the individual as an ontology class. Recommended from NCIT Age Group ontology term (NCIT:C20587) descendants.",
-            "examples": [
-                {
-                    "id": "NCIT:C27954",
-                    "label": "Adolescent"
-                },
-                {
-                    "id": "NCIT:C49685",
-                    "label": "Adult 18-65 Years Old"
-                }
-            ]
+        {
+            "$ref": "./ageRange.json"
         },
-        "ageRange": {
-            "$ref": "./ageRange.json",
-            "description": "Represents age as a ISO8601 duration (e.g., P40Y10M05D).",
-            "example": {
-                "end": {
-                    "iso8601duration": "P59Y"
-                },
-                "start": {
-                    "iso8601duration": "P18Y"
-                }
-            }
+        {
+            "$ref": "./gestationalAge.json"
         },
-        "gestationalAge": {
-            "$ref": "./gestationalAge.json",
-            "description": "Measure of the age of a pregnancy.",
-            "examples": [
-                {
-                    "days": 2,
-                    "weeks": 33
-                }
-            ]
+        {
+            "$ref": "./commonDefinitions.json#/definitions/Timestamp"
+        },
+        {
+            "$ref": "./timeInterval.json"
+        },
+        {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
         }
-    },
+    ],
     "title": "TimeElement",
     "type": "object"
 }

@@ -120,6 +120,15 @@
                 }
             ]
         },
+        "Timestamp": {
+            "description": "Time in date-time ISO8601 string format.",
+            "examples": [
+                "1999-08-05T17:21:00+01:00",
+                "2002-09-21T02:37:00-08:00"
+            ],
+            "format": "date-time",
+            "type": "string"
+        },
         "Unit": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
             "description": "The kind of unit. Recommended from NCIT Unit of Category ontology term (NCIT:C42568) descendants",

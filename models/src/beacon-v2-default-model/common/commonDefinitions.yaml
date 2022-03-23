@@ -39,6 +39,13 @@ definitions:
       - XYY
       - OTHER_KARYOTYPE
     default: UNKNOWN_KARYOTYPE
+  Timestamp:
+    description: Time in date-time ISO8601 string format.
+    type: string
+    format: date-time
+    examples:
+      - '1999-08-05T17:21:00+01:00'
+      - '2002-09-21T02:37:00-08:00'
   Ethnicity:
     description: Ethnic background of the individual. Recommended is the use of a
       value from NCIT Race (NCIT:C17049) ontology term descendants, e.g. NCIT:C126531
