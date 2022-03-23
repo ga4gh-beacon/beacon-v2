@@ -2,7 +2,7 @@
 
 While the original Beacon v1 only provided Boolean (_i.e._ **YES/NO**) responses
 on queries for the existence of specific genomic variants, Beacon v2 is a flexible
-protocol that supports differentg usage scenarios - also called "flavours", since
+protocol that supports different usage scenarios - also called "flavours", since
 they are more a representation of usage types w/o prescribing their specific details.
 
 Importantly, the Beacon framework separates query options from the response side. In that way

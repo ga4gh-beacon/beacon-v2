@@ -7,6 +7,7 @@
 <!-- When done => please check & move to some dated item in Changes below-->
 
 * [ ] content for [Standards Integration](formats-standards.md) (as noted on page)
+* [ ] re-structuring of [Documentation Scopes](roles.md)
 * [ ] re-structuring of [Framework page](framework.md) 
 * [x] re-structuring of [Models page](framework.md)
     - integration with the Schemas pages
@@ -31,7 +32,7 @@
 
 * [x] name and title change
     - adjusting all the links accordingly
-* [ ] BUG: fix transfer of examples
+* [x] BUG: fix transfer of examples
 * [ ] retiring of framework and model repos
 
 ## Changes
@@ -40,6 +41,7 @@
 
 The repository name and file paths have been changed from `beacon-v2-unity-testing`
 to `beacon-v2`.
+Added miscellanea suggestions from Jorge (not all of them).
 
 #### 2022-03-22: More Reorganization of Navigation
 

@@ -24,7 +24,7 @@ Bio-ontology and custom term Filter types contain:
 * `label` = term label (optional)
 
 ```
-"reponse":{
+"response":{
 	"resources":[
 		{
 			"id":"hp",
