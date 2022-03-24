@@ -54,12 +54,14 @@ markdown_extensions:
                 format: !!python/name:pymdownx.superfences.fence_code_format
 
 nav:
-    - Introduction to Beacon v2: index.md
+    - Introduction: index.md
+    - What is Beacon v2?: what-is-beacon-v2.md  
     - Documentation Scopes: roles.md
     - Changes: bugs-changes-log.md
     - Beacon Types:
-        - What is Beacon v2?: what-is-beacon-v2.md
         - Beacon Flavours: beacon-flavours.md
+        - Security: security.md
+        - Networks: networks.md
     - 'Implement & Deploy a Beacon':
         - Implementations Options: implementations-options.md
         - Tips for Implementers: tips-for-implementers.md
@@ -67,7 +69,6 @@ nav:
         - Beacon Implementations:
             - Reference Implementation &#8599;: https://b2ri-documentation.readthedocs.io/en/latest/
             - Others: other-implementations.md
-        - Networks: networks.md
     - Beacon Components:
         - Framework: framework.md         
         - Models: 
