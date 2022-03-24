@@ -12,11 +12,11 @@ repo_models_icon: " [:fontawesome-brands-github:](https://github.com/ga4gh-beaco
 extra_css: [css/theme_overrides.css]
 
 plugins:
-    - search
-    - with-pdf:
-        author: Beacon API Development Team
-        output_path: pdf/beacon.pdf
-    # - macros
+  - search
+  - with-pdf:
+       author: Beacon API Development Team
+       output_path: pdf/beacon.pdf
+  - macros
 
 markdown_extensions:
     - toc:
