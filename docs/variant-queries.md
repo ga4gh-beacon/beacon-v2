@@ -119,7 +119,6 @@ a positional translation is being applied.
 
 #### Example: Any variant affecting _EIF4A1_ 
 
-
 === "Beacon v2 GET"
 
 	```
