@@ -19,7 +19,7 @@
     - clarification, re-structuring, links ...
 * [ ] complete  [Implementations](other-implementations.md)
 * [ ] extend [Query documentation](variant-queries.md), also using content from the variant scouts document
-    - [ ] expand on the [table comparing different "variant types"](variant-queries.md) between definitions        
+    - [ ] expand on the table comparing different "variant types"
 * [ ] create content for [Tips for Implementers](tips-for-implementers)
 
 ### Repositories
