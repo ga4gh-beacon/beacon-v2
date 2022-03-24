@@ -78,10 +78,10 @@
         },
         "SeverityLevel": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
-            "description": "Level/severity ontology when and as applicable to phenotype observed. Value from Human Phenotype Ontology (HP:0012824), e.g `mild`. The intensity or degree of a manifestation. [ HPO:probinson ] ",
+            "description": "Severity as applicable to phenotype or disease observed. Recommended are values from Human Phenotype Ontology (HP:0012824), e.g `mild`. The intensity or degree of a manifestation. Source: Phenopackets v2",
             "examples": [
                 {
-                    "id": "HP:0012825",
+                    "id": "HP:0012828",
                     "label": "Severe"
                 },
                 {
@@ -98,7 +98,7 @@
                 },
                 {
                     "id": "HP:0012827",
-                    "label": "Bordeline"
+                    "label": "Borderline"
                 }
             ]
         },

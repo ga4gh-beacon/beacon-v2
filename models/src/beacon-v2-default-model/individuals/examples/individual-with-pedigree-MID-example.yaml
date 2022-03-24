@@ -18,7 +18,7 @@ diseases:
         id: NCIT:C16731
         label: Newborn
     familyHistory: true
-    severityLevel:
+    severity:
       id: HP:0012828
       label: Severe
 pedigrees:

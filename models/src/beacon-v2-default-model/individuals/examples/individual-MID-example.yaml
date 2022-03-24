@@ -18,7 +18,7 @@ diseases:
         id: NCIT:C49685
         label: Adult 18-65 Years Old
     familyHistory: false
-    severityLevel:
+    severity:
       id: HP:0012829
       label: Profound
     stage:

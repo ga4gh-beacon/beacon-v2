@@ -13,7 +13,7 @@
                 "label": "Sudden cardiac death"
             },
             "familyHistory": true,
-            "severityLevel": {
+            "severity": {
                 "id": "HP:0012828",
                 "label": "Severe"
             }

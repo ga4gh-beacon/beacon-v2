@@ -83,12 +83,12 @@ definitions:
       - id: GAZ:00000460
         label: Eurasia
   SeverityLevel:
-    description: 'Level/severity ontology when and as applicable to phenotype observed.
-      Value from Human Phenotype Ontology (HP:0012824), e.g `mild`. The intensity
-      or degree of a manifestation. [ HPO:probinson ] '
+    description: 'Severity as applicable to phenotype or disease observed. Recommended
+      are values from Human Phenotype Ontology (HP:0012824), e.g `mild`. The intensity
+      or degree of a manifestation. Source: Phenopackets v2'
     $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     examples:
-      - id: HP:0012825
+      - id: HP:0012828
         label: Severe
       - id: HP:0012829
         label: Profound
@@ -97,7 +97,7 @@ definitions:
       - id: HP:0012825
         label: Mild
       - id: HP:0012827
-        label: Bordeline
+        label: Borderline
   Unit:
     description: The kind of unit. Recommended from NCIT Unit of Category ontology
       term (NCIT:C42568) descendants

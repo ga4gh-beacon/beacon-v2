@@ -13,12 +13,14 @@ properties:
     examples:
       - SRR10903401
   biosampleId:
-    description: Reference to Biosample ID.
+    description: Reference to the `id` of the biosample this analysis is reporting
+      on.
     type: string
     examples:
       - S0001
   individualId:
-    description: Reference to Individual ID.
+    description: Reference to the `id` of the individual this analysis is reporting
+      on.
     type: string
     examples:
       - P0001

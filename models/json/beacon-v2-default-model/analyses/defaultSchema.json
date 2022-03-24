@@ -20,7 +20,7 @@
             "type": "string"
         },
         "biosampleId": {
-            "description": "Reference to Biosample ID.",
+            "description": "Reference to the `id` of the biosample this analysis is reporting on.",
             "examples": [
                 "S0001"
             ],
@@ -31,7 +31,7 @@
             "type": "string"
         },
         "individualId": {
-            "description": "Reference to Individual ID.",
+            "description": "Reference to the `id` of the individual this analysis is reporting on.",
             "examples": [
                 "P0001"
             ],
