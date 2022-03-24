@@ -66,8 +66,6 @@ This is an example for a single base mutation (`G>A`) in the _EIF4A1_ eukaryotic
 	(through `requestedGranularity`) and returned data format (`requestedSchemas`). Please follow this up in the
 	[framework documentation](framework.md).
 
-
-
 === "Beacon v1"
 
 	```
@@ -91,16 +89,23 @@ This is an example for a single base mutation (`G>A`) in the _EIF4A1_ eukaryotic
 	Before Beacon v0.4 a 1-based coordinate system was being used.
 
 
-## Beacon _Range Queries_ and _GeneId Queries_
-
-Beacon _Range Queries_ are supposed to return matches of any variant with at least
-partial overlap of the sequence range specified by `reference_name`, `start` and `end`
-parameters.
+## _GeneId Queries_
 
 _GeneId Queries_ are in essence a variation of _Range Queries_ in which the coordinates
 are replaced by the [HGNC](https://www.genenames.org) gene symbol. It is left to the
 implementation if the matching is done on variants annotated for the gene symbol or if
-a positional translation is being applied. 
+a positional translation is being applied.
+
+Especially in a managed Beacon network one could envision a central service translating
+incoming _GeneId Queries_ to genomic coordinates and forwwarding those as _Range Queries_
+to the participating nodes.
+
+
+## Beacon _Range Queries_
+
+Beacon _Range Queries_ are supposed to return matches of any variant with at least
+partial overlap of the sequence range specified by `reference_name`, `start` and `end`
+parameters.
 
 !!! Warning "Use of `start` and `end`"
 
@@ -118,7 +123,6 @@ a positional translation is being applied.
 	- `variantMaxLength`
 
 #### Example: Any variant affecting _EIF4A1_ 
-
 
 === "Beacon v2 GET"
 
@@ -260,6 +264,16 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 === "Beacon v0.3"
 
 	CNV query options were only implemented with Beacon v0.4, based on Beacon<sup>+</sup> prototyping.
+
+
+## `variantType` Parameter Interpretation
+
+| Beacon | VCF | SO | EFO | VRS | Note about Beacon use  |
+| -------|-----|----|-----|-----|---------|
+| DUP    | DUP | SO:0001742 | EFO:0030070 | <ul><li>low-level gain</li><li>high-level gain</li></ul> | Increase of allele count compared to locally expected baseline w/o expectation about localization of added sequence copies |
+| DEL    | ... | ... | ... | ... | ... |
+
+
 
 
 ## Query Parameter Change Log
