@@ -23,8 +23,8 @@
 
         | Beacon | VCF | SO | EFO | VRS | Note about Beacon use  |
         | -------|-----|----|-----|-----|---------|
-        | DUP    | DUP | SO:0001742 | EFO:0030070 | <ul><li>low-level gain</li><li>high-level gain</li></ul> | Increase of allele count compared to locally expected baseline w/o expectation about localization of added sequence copies |
-        | DEL    | ... | ... | ... | ... | ... |
+        | DUP    | DUP | SO:0001742 | <ul><li>EFO:0030070</li><li>EFO:0030071</li><li>EFO:0030072</li></ul> | <ul><li>low-level gain</li><li>high-level gain</li></ul> | Increase of allele count compared to locally expected baseline w/o expectation about localization of added sequence copies |
+        | DEL    | DEL | SO:0001743 | <ul><li>EFO:0030067</li><li>EFO:0030068</li><li>EFO:0030069</li></ul> | <ul><li>partial loss</li><li>complete loss</li></ul> | Decrease of allele count compared to locally expected baseline w/o expectation about localization of added sequence copies|
         
 * [ ] create content for [Tips for Implementers](tips-for-implementers)
 
