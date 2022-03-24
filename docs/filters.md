@@ -10,7 +10,6 @@ A Beacon can support four types of Filters.
 3. **Numerical values** include integer, decimal and float data types.
 4. **Alphanumerical values** include alphabetic letters and special characters with or without numbers.
 
-
 ## _/filtering_terms_  informational endpoint
 
 The _/filtering_terms_ endpoint returns a list of all data fields whose values may be subjected to filtering, plus the data type(s) for those fields, and/or the list of extant values for each of those data fields in the current dataset.  In addition, for each bio-ontology used by a Beacon, the endpoint response includes a description of the bio-ontology in [Phenopackets Resource](https://phenopacket-schema.readthedocs.io/en/latest/resource.html) format.
