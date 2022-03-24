@@ -13,7 +13,7 @@ jobs:
           python-version: 3.x
       - run: pip install pymdown-extensions
       - run: pip install mkdocs-material 
-      # - run: pip install mkdocs-macros-plugin
+      - run: pip install mkdocs-macros-plugin
       - run: pip install mkdocs-with-pdf
       - run: pip install mkdocs-mermaid-plugin
       - run: pip install mdx_gh_links
