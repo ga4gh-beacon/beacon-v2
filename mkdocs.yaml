@@ -16,7 +16,7 @@ plugins:
     - with-pdf:
         author: Beacon API Development Team
         output_path: pdf/beacon.pdf
-    - macros
+    # - macros
 
 markdown_extensions:
     - toc:

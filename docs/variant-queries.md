@@ -66,6 +66,8 @@ This is an example for a single base mutation (`G>A`) in the _EIF4A1_ eukaryotic
 	(through `requestedGranularity`) and returned data format (`requestedSchemas`). Please follow this up in the
 	[framework documentation](framework.md).
 
+
+
 === "Beacon v1"
 
 	```
@@ -89,23 +91,16 @@ This is an example for a single base mutation (`G>A`) in the _EIF4A1_ eukaryotic
 	Before Beacon v0.4 a 1-based coordinate system was being used.
 
 
-## _GeneId Queries_
-
-_GeneId Queries_ are in essence a variation of _Range Queries_ in which the coordinates
-are replaced by the [HGNC](https://www.genenames.org) gene symbol. It is left to the
-implementation if the matching is done on variants annotated for the gene symbol or if
-a positional translation is being applied.
-
-Especially in a managed Beacon network one could envision a central service translating
-incoming _GeneId Queries_ to genomic coordinates and forwwarding those as _Range Queries_
-to the participating nodes.
-
-
-## Beacon _Range Queries_
+## Beacon _Range Queries_ and _GeneId Queries_
 
 Beacon _Range Queries_ are supposed to return matches of any variant with at least
 partial overlap of the sequence range specified by `reference_name`, `start` and `end`
 parameters.
+
+_GeneId Queries_ are in essence a variation of _Range Queries_ in which the coordinates
+are replaced by the [HGNC](https://www.genenames.org) gene symbol. It is left to the
+implementation if the matching is done on variants annotated for the gene symbol or if
+a positional translation is being applied. 
 
 !!! Warning "Use of `start` and `end`"
 
@@ -265,21 +260,6 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 
 	CNV query options were only implemented with Beacon v0.4, based on Beacon<sup>+</sup> prototyping.
 
-
-## `variantType` Parameter Interpretation
-
-The `variantType` parameter is essential for scoping queries beyond precise sequence
-queries. While versions of Beacon before v2 had demonstrated the use of a few, VCF
-derived values (particularly for CNV queries using `DUP` or `DEL`), the relation of these
-values to underlying genomic variations had not been precisely defined.
-
-### Term Use Comparison
-
-| Beacon | VCF | SO | EFO | VRS | Note about Beacon use  |
-| -------|-----|----|-----|-----|---------|
-| DUP    | DUP | SO:0001742 | <ul><li>EFO:0030070</li><li>EFO:0030071</li><li>EFO:0030072</li></ul> | <ul><li>low-level gain</li><li>high-level gain</li></ul> | Increase of allele count compared to locally expected baseline w/o expectation about localization of added sequence copies |
-| DEL    | DEL | SO:0001743 | <ul><li>EFO:0030067</li><li>EFO:0030068</li><li>EFO:0030069</li></ul> | <ul><li>partial loss</li><li>complete loss</li></ul> | Decrease of allele count compared to locally expected baseline w/o expectation about localization of added sequence copies |
-| ==TBD== |  |  |  |  |  |
 
 
 
