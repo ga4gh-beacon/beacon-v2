@@ -23,7 +23,7 @@
 
         | Beacon | VCF | SO | EFO | VRS | Note about Beacon use  |
         | -------|-----|----|-----|-----|---------|
-        | DUP    | DUP | SO:0001742 | EFO:0030070 | low-level gain</br>high-level gain | Increase of allele count compared to locally expected baseline w/o expectation about localization of added sequence copies |
+        | DUP    | DUP | SO:0001742 | EFO:0030070 | <ul><li>low-level gain</li><li>high-level gain</li></ul> | Increase of allele count compared to locally expected baseline w/o expectation about localization of added sequence copies |
         | DEL    | ... | ... | ... | ... | ... |
         
 * [ ] create content for [Tips for Implementers](tips-for-implementers)
@@ -36,6 +36,10 @@
 * [ ] retiring of framework and model repos
 
 ## Changes
+
+#### 2022-03-24: Retiring Separate _Implementations_ Repository
+
+Example implementations have been moved to from the [`implementations-v2` repository](https://github.com/ga4gh-beacon/implementations-v2) to the [Beacon v2 Documentation](https://github.com/ga4gh-beacon/beacon-v2/edit/main/docs/implementations/) - web [access here](http://docs.genomebeacons.org/other-implementations/).
 
 #### 2022-03-23: Name Change to `beacon-v2`
 

@@ -11,7 +11,7 @@ in Beacon protocol development.
 ### Progenetix API
 
 The Progenetix database and cancer genomic information resource contains genome profiles
-of more than 140?~@~Y000 individual cancer genome screening experiments, with the majority
+of more than 140000 individual cancer genome screening experiments, with the majority
 representing results from genomic copy number assessment studies. With its
 Beacon<span style="color: red; font-weight: 800;"><sup>+</sup></span> forward-looking test
 implementation, since 2016 Progenetix has been developing concepts for Beacon protocol extensions
