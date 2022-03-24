@@ -29,8 +29,6 @@ Those leveraging the Beacon instances data.
     * Filters
     * Alternative schemas
 
-
-
 # Deployer
 
 Those deploying a new Beacon instance.
@@ -90,7 +88,6 @@ Those deploying a new Beacon instance.
     * Granularity & security
 1. Verifying compliance
 
-
 # Stakeholder
 
 Partners that have some relationship or investment in Beacon (e.g. GA4GH, ELIXIR...).
@@ -125,5 +122,3 @@ Partners that have some relationship or investment in Beacon (e.g. GA4GH, ELIXIR
 1. Success Stories:
     * Implementations
     * Real world data
-
-
