@@ -6,7 +6,7 @@ If this is the case, these are some things to get you started:
 
 1. Start with a [boolean](beacon-flavours.md) beacon
 
-2. List your available [endpoints](implementations-and-networks.md)
+2. List your available [endpoints](framework.md)
 
 3. Map the data from your DB to the [Models](models.md)
 

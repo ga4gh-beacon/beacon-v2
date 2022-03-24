@@ -17,7 +17,7 @@
 * [x] content for the [Filters page](filters.md)
 * [ ] merging (?) of the [Introduction](index.md) and [Documentation Scopes](roles.md) pages
     - clarification, re-structuring, links ...
-* [ ] complete  [Implementations](other-implemebtations.md)
+* [ ] complete  [Implementations](other-implementations.md)
 * [ ] extend [Query documentation](variant-queries.md), also using content from the variant scouts document
     - [ ] expand on the [table comparing different "variant types"](variant-queries.md) between definitions        
 * [ ] create content for [Tips for Implementers](tips-for-implementers)
@@ -33,13 +33,15 @@
 
 #### 2022-03-24: Retiring Separate _Implementations_ Repository
 
-Example implementations have been moved to from the [`implementations-v2` repository](https://github.com/ga4gh-beacon/implementations-v2) to the [Beacon v2 Documentation](https://github.com/ga4gh-beacon/beacon-v2/edit/main/docs/implementations/) - web [access here](http://docs.genomebeacons.org/other-implementations/).
+* Started adding content to pages such as `networks.md and `roles.md`
+* Moved pages to different locations in navigation. Created `security.md` under *Beacon Types*.
+* Example implementations have been moved to from the [`implementations-v2` repository](https://github.com/ga4gh-beacon/implementations-v2) to the [Beacon v2 Documentation](https://github.com/ga4gh-beacon/beacon-v2/edit/main/docs/implementations/) - web [access here](http://docs.genomebeacons.org/other-implementations/).
 
 #### 2022-03-23: Name Change to `beacon-v2`
 
-The repository name and file paths have been changed from `beacon-v2-unity-testing`
+* The repository name and file paths have been changed from `beacon-v2-unity-testing`
 to `beacon-v2`.
-Added miscellanea suggestions from Jorge (not all of them).
+* Added miscellanea suggestions from Jorge (not all of them).
 
 #### 2022-03-22: More Reorganization of Navigation
 
@@ -66,7 +68,7 @@ The `mkdocs-macros-plugin` has been activated, allowing the use of site-wide var
 #### 2022-03-16: Documentation Content and Formats Updates
 
 * [x] addition of more variant query examples
-* [x] new landing pages for [Implementations and Networks](implementations-and-networks.md) and [Standards Integration](formats-standards.md)
+* [x] new landing pages for `Implementations and Networks` and [Standards Integration](formats-standards.md)
 * [x] many adjustments to documentation structure, appearance and representation (e.g. content tabs for query examples)
 
 #### 2022-03-14: Documentation in Repository

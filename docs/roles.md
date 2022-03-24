@@ -1,12 +1,12 @@
 # Informations for Different Types of Beacon Users
 
-The Beacon documentation provides information for different types of stakeholders,
+The Beacon documentation provides information for different types of users,
 depending on their interests and use cases. Although those will overlap, we highlight
 information relevant for some general scenarios throughout the documentation.
 
 ## Users
 
-A Beacon **user** is interested in querying Beacon instances and networks, either through
+A Beacon **user** (or end-user) is interested in querying Beacon instances and networks, either through
 web interfaces by using the Beacon API. While users of Beacon web forms in principle
 do not need to understand the underlying query syntax and response formats they too may
 benefit from some insights into the general capabilities of the underlying protocol.
@@ -14,15 +14,15 @@ benefit from some insights into the general capabilities of the underlying proto
 !!! Warning "User"
     * Beacon v2 [Model](models.md)
     * Knowing what is available in an instance
-        * Entry Types
-        * Datasets & Cohorts
-        * Granularity & security
+        * Entry Types [Link](models.md)
+        * Datasets & Cohorts [Link](models.md)
+        * Granularity & security [Link](beacon-flavours.md)
     * Protocol/Query basics
-        * Requests, responses & errors
-        * OpenAPI
+        * Requests, responses & errors [variant-queriesi.md]
+        * [OpenAPI](https://www.openapis.org)
     * Using Beacon v2 Features
         * [Filters](filters.md)
-        * Alternative schemas
+        * Alternative schemas [Link](models.md)
 
 
 ## Deployers and Implementers
@@ -37,7 +37,7 @@ for novel use cases).
 
     * Beacon v2 [Models](models.md)
 
-    * Reference Implementation
+    * Reference Implementation [Link](https://b2ri-documentation.readthedocs.io/en/latest/)
         * Infrastructure requirements
         * How to install
         * Configuration
@@ -54,13 +54,13 @@ for novel use cases).
 
     * Beacon v2 [Models](models.md)
     * Protocol basics
-        * Requests, responses & errors
-        * OpenAPI
+        * Requests, responses & errors [variant-queriesi.md]
+        * [OpenAPI](https://www.openapis.org)
     * Beacon v2 Features
-        * Filters
-        * Alternative schemas
+        * [Filters](filters.md)
+        * Alternative schemas [Link](models.md)
     * Configuration
-        * Granularity & security
+        * Granularity & security [Link](framework.md)
     * Verifying compliance
 
 
@@ -70,6 +70,6 @@ for novel use cases).
     * Integration into GA4GH
     * Leveraging The Beacon Framework in other domains
     * Success Stories:
-        * [Implementations](implementations-and-networks.md)
+        * [Implementations](other-implementations.md)
         * Real world data
     
