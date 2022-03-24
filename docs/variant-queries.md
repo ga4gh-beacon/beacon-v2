@@ -91,11 +91,16 @@ This is an example for a single base mutation (`G>A`) in the _EIF4A1_ eukaryotic
 	Before Beacon v0.4 a 1-based coordinate system was being used.
 
 
-## Beacon _Range Queries_
+## Beacon _Range Queries_ and _GeneId Queries_
 
 Beacon _Range Queries_ are supposed to return matches of any variant with at least
 partial overlap of the sequence range specified by `reference_name`, `start` and `end`
 parameters.
+
+_GeneId Queries_ are in essence a variation of _Range Queries_ in which the coordinates
+are replaced by the [HGNC](https://www.genenames.org) gene symbol. It is left to the
+implementation if the matching is done on variants annotated for the gene symbol or if
+a positional translation is being applied. 
 
 !!! Warning "Use of `start` and `end`"
 
@@ -107,14 +112,24 @@ parameters.
 * `referenceName`
 * `start` (single value)
 * `end` (single value)
-* optional `variantType` **OR** `alternateBases`
+* optional
+	- `variantType` **OR** `alternateBases` **OR** `aminoacidChange`
+	- `variantMinLength`
+	- `variantMaxLength`
 
 #### Example: Any variant affecting _EIF4A1_ 
+
 
 === "Beacon v2 GET"
 
 	```
 	?assemblyId=GRCh38&referenceName=17&start=7572837&end=7578641
+	```
+
+=== "Beacon v2 GET for `geneId`"
+
+	```
+	?geneId=EIF4A1
 	```
 
 === "Beacon v2 POST"
@@ -259,6 +274,9 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 	with partial or complete overlap with this sequence range
 	- additional parameters (e.g. `referenceBases`, `alternateBases`, `variantType`...)
 	may be used to scope the range query
+* query by `aminoacidChange`
+* query by `geneId`
+* `variantMinLength`, `variantMaxLength`
 
 ### Beacon v1 (based on v0.4)
 
