@@ -1,11 +1,6 @@
 !!! Important
     As previously described, **Beacon v2 is an specification** for sharing/discovery of data. Thus, _a priori_, it has nothing to do with any particular software, database or computer language.
 
-Owners and managers of genomic data resources may (should!) be interested in "beaconizing"
-their resources through the implementation of a Beacon API[1] for web-protocol based
-access to their data.
-
-
 # Which are the implementation options?
 
 Two elements are needed to implement (or "light") a Beacon v2: 
