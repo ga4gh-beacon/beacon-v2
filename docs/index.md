@@ -14,3 +14,5 @@ With growing interest from the community in the implementation of the Beacon pro
 * get a list of samples related to a phenotype, provided the required authentication or authorization
 * powerful _filters_, primarily based on CURIE terms for ontologies and references, including options to control the use of hierarchical terms or the precision of term matching
 * scoped data delivery (e.g. matched variant details or sample information) as part of Beacon responses or through _handover_ protocols
+
+![Beacon v2 Cartoon](img/Beacon-Networks-v2-graphics/Beacon-Networks-v2-graphics-Michael.003.png)
