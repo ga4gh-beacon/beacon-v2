@@ -273,17 +273,26 @@ queries. While versions of Beacon before v2 had demonstrated the use of a few, V
 derived values (particularly for CNV queries using `DUP` or `DEL`), the relation of these
 values to underlying genomic variations had not been precisely defined.
 
+??? Note "Future `variantType` parameter use"
+
+	While for legacy reasons and widespread use of VCFs as input source Beacon v2 documents
+	the use of VCF-like terms, in principle other variant terms can be used (though with possibly negative
+	implications in federated settings). The field of structural genomic variant annotations is rapidly
+	developing, with more specific terms now becoming available e.g. through the
+	Experimental Factor Ontology or the GA4GH Variant Representation Standard VRS
+	(which ligns with the main EFO terms).
+
 ### Term Use Comparison
 
-| Beacon | VCF | SO | EFO | VRS | Note about Beacon use  |
+| Beacon | VCF | SO | EFO | VRS | Notes   |
 | -------|-----|----|-----|-----|---------|
-| DUP    | DUP | SO:0001742 | EFO:0030070 |   | a sequence alteration whereby the copy number of a given genomic region is greater than the reference sequence |
-| DUP    | DUP | SO:0001742 |EFO:0030071 | low-level gain |  |
-| DUP    | DUP | SO:0001742 |EFO:0030072 | high-level gain  | commonly but not consistently used for >=5 copies on a bi-allelic genome region |
-
-| DEL    | DEL | SO:0001743 | EFO:0030067 |  | a sequence alteration whereby the copy number of a given genomic region is smaller than the reference sequence | 
-| DEL    | DEL | SO:0001743 | EFO:0030068 | partial loss | |
-| DEL    | DEL | SO:0001743 | EFO:0030069 | complete loss | complete genomic deletion (e.g. homozygous deletion on a bi-allelic genome region) |
+| `DUP`    | `DUP` | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain | [`EFO:0030070`](http://www.ebi.ac.uk/efo/EFO_0030070) copy number gain | `low-level gain` (implicit) | a sequence alteration whereby the copy number of a given genomic region is greater than the reference sequence |
+| `DUP`    | `DUP` | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain |[`EFO:0030071`](http://www.ebi.ac.uk/efo/EFO_0030071) low-level copy number gain | `low-level gain` |  |
+| `DUP`    | `DUP` | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain |[`EFO:0030072`](http://www.ebi.ac.uk/efo/EFO_0030072) high-level copy number gain | `high-level gain`  | commonly but not consistently used for >=5 copies on a bi-allelic genome region |
+| `DUP`    | `DUP` | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain |[`EFO:0030072`](http://www.ebi.ac.uk/efo/EFO_0030073) focal genome amplification | `high-level gain`  | commonly but not consistently used for >=5 copies on a bi-allelic genome region, of limited size (operationally max. 1-5Mb) |
+| `DEL`    | `DEL` | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | [`EFO:0030067`](http://www.ebi.ac.uk/efo/EFO_0030067) copy number loss | `partial loss` (implicit) | a sequence alteration whereby the copy number of a given genomic region is smaller than the reference sequence | 
+| `DEL`    | `DEL` | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | [`EFO:0030068`](http://www.ebi.ac.uk/efo/EFO_0030068) low-level copy number loss | `partial loss` | |
+| `DEL`    | `DEL` | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | [`EFO:0030069`](http://www.ebi.ac.uk/efo/EFO_0030069) complete genomic deletion | `complete loss` | complete genomic deletion (e.g. homozygous deletion on a bi-allelic genome region) |
 
 ## Query Parameter Change Log
 

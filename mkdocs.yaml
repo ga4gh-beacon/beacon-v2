@@ -13,9 +13,9 @@ extra_css: [css/theme_overrides.css]
 
 plugins:
   - search
-  - with-pdf:
-       author: Beacon API Development Team
-       output_path: pdf/beacon.pdf
+  # - with-pdf:
+  #      author: Beacon API Development Team
+  #      output_path: pdf/beacon.pdf
   - macros
   - mermaid2
 
@@ -91,7 +91,7 @@ nav:
         - Beacon Project &#8599;: http://beacon-project.io
         - Github Repositories &#8599;: https://github.com/ga4gh-beacon/
         - Read the Docs Version &#8599;: https://beacon-v2-unity.readthedocs.io/en/latest/
-    - Download PDF: pdf/beacon.pdf
+    # - Download PDF: pdf/beacon.pdf
     - Citation: citation.md
 
 theme:
