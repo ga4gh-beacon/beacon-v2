@@ -14,15 +14,17 @@ benefit from some insights into the general capabilities of the underlying proto
 !!! Warning "User"
     * Beacon v2 [Model](models.md)
     * Knowing what is available in an instance
-        * Entry Types [Link](models.md)
-        * Datasets & Cohorts [Link](models.md)
-        * Granularity & security [Link](beacon-flavours.md)
+        * Data [Models and Schemas](models.md)
+        * Beacon [Flavours](beacon-flavours.md) & Response Granularity
+        * [Security](security.md) 
     * Protocol/Query basics
-        * Requests, responses & errors [variant-queriesi.md]
-        * [OpenAPI](https://www.openapis.org)
+        * Genomic [Variant Queries](variant-queries.md)
+        * Other Request, Response & Error Elements
     * Using Beacon v2 Features
         * [Filters](filters.md)
-        * Alternative schemas [Link](models.md)
+        * Alternative Schemas [Link](models.md)
+
+<!--        * [OpenAPI](https://www.openapis.org) -->
 
 
 ## Deployers and Implementers
