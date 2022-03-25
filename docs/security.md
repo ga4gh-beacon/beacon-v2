@@ -2,6 +2,12 @@
 
 The Beacon uses a 3-tiered access model: `anonymous`, `registered`, and `controlled access`.
 
+!!! Important "Technical Notes"
+
+        For detailed information about the technical implementation of the different levels
+        of security please see the [Framework](framework.md) documentation.
+
+
 ## Registered
 For a Beacon to respond to a query at the **registered** tier, the user must identify themselves to the Beacon, for example by using an [ELIXIR identity](https://elixir-europe.org/internal-projects/commissioned-services/identity-access). 
 
@@ -13,5 +19,5 @@ individuals) whose data is only accessible at specified tiers within the Beacon.
 Anonymous Beacon can be accessed by any request.
 
 
-!!! Important "Synthetic data"
+!!! Warning "Synthetic data"
     The use of synthetic data for testing is important in that it ensures that the full functionality of a Beacon can be tested and / or demonstrated without risk of exposing data from individuals. In addition to testing or demonstrating a deployment, synthetic data should be used for development, for example adding new features.
