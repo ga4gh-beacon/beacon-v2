@@ -277,10 +277,13 @@ values to underlying genomic variations had not been precisely defined.
 
 | Beacon | VCF | SO | EFO | VRS | Note about Beacon use  |
 | -------|-----|----|-----|-----|---------|
-| DUP    | DUP | SO:0001742 | <ul><li>EFO:0030070</li><li>EFO:0030071</li><li>EFO:0030072</li></ul> | <ul><li>low-level gain</li><li>high-level gain</li></ul> | Increase of allele count compared to locally expected baseline w/o expectation about localization of added sequence copies |
-| DEL    | DEL | SO:0001743 | <ul><li>EFO:0030067</li><li>EFO:0030068</li><li>EFO:0030069</li></ul> | <ul><li>partial loss</li><li>complete loss</li></ul> | Decrease of allele count compared to locally expected baseline w/o expectation about localization of added sequence copies |
-| ==TBD== |  |  |  |  |  |
+| DUP    | DUP | SO:0001742 | EFO:0030070 |   | a sequence alteration whereby the copy number of a given genomic region is greater than the reference sequence |
+| DUP    | DUP | SO:0001742 |EFO:0030071 | low-level gain |  |
+| DUP    | DUP | SO:0001742 |EFO:0030072 | high-level gain  | commonly but not consistently used for >=5 copies on a bi-allelic genome region |
 
+| DEL    | DEL | SO:0001743 | EFO:0030067 |  | a sequence alteration whereby the copy number of a given genomic region is smaller than the reference sequence | 
+| DEL    | DEL | SO:0001743 | EFO:0030068 | partial loss | |
+| DEL    | DEL | SO:0001743 | EFO:0030069 | complete loss | complete genomic deletion (e.g. homozygous deletion on a bi-allelic genome region) |
 
 ## Query Parameter Change Log
 
