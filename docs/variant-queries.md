@@ -98,6 +98,8 @@ Beacon _Range Queries_ are supposed to return matches of any variant with at lea
 partial overlap of the sequence range specified by `reference_name`, `start` and `end`
 parameters.
 
+![Beacon Range Query Schema](img/BeaconRangeQuery-graphics.png)
+
 _GeneId Queries_ are in essence a variation of _Range Queries_ in which the coordinates
 are replaced by the [HGNC](https://www.genenames.org) gene symbol. It is left to the
 implementation if the matching is done on variants annotated for the gene symbol or if
@@ -181,6 +183,8 @@ differing in their exact base extents.
 
     Bracket queries require the use of **two** `start` and `end` parameters, in contrast
     to _Range Queries_.
+
+![Beacon Bracket Query Schema](img/BeaconBracketQuery-limited-match-graphics.png)
 
 #### Parameters
 
