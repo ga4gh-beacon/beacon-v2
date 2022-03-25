@@ -17,6 +17,7 @@ plugins:
        author: Beacon API Development Team
        output_path: pdf/beacon.pdf
   - macros
+  - mermaid2
 
 markdown_extensions:
     - toc:
@@ -48,10 +49,10 @@ markdown_extensions:
           emoji_index: !!python/name:materialx.emoji.twemoji
           emoji_generator: !!python/name:materialx.emoji.to_svg
     - pymdownx.superfences:
-          custom_fences:
-              - name: mermaid
-                class: mermaid
-                format: !!python/name:pymdownx.superfences.fence_code_format
+        custom_fences:
+            - name: mermaid
+              class: mermaid
+              format: !!python/name:mermaid2.fence_mermaid   
 
 nav:
     - Introduction: index.md

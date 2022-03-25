@@ -46,7 +46,7 @@ to `beacon-v2`.
 #### 2022-03-22: More Reorganization of Navigation
 
 * Moved content from `implementations-and-networks` to `other-implementations` and left only the "Networks" Part.
-* Added `mkdocs-mermaid-plugin` both to `mkdocs.yaml` and to github workflows.
+* Added `mkdocs-mermaid2-plugin` both to `mkdocs.yaml` and to github workflows.
 * Moved Schemas (Markdown Tables) and Terms List from main navigation to `Beacon Compoments/Models`
 * Reorganization of navigation
 * Added pages: [Tips for Implementers](tips-for-implementers.md)

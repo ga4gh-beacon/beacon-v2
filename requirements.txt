@@ -2,4 +2,4 @@ mkdocs-material
 mkdocs-with-pdf
 mdx_gh_links
 pymdown-extensions
-mkdocs-mermaid-plugin
+mkdocs-mermaid2-plugin

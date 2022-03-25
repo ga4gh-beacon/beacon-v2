@@ -14,7 +14,7 @@ jobs:
       - run: pip install mkdocs-material 
       - run: pip install mkdocs-macros-plugin
       - run: pip install mkdocs-with-pdf
-      - run: pip install mkdocs-mermaid-plugin
+      - run: pip install mkdocs-mermaid2-plugin
       - run: pip install pymdown-extensions
       - run: pip install mdx_gh_links
       - run: mkdocs gh-deploy --force
