@@ -94,8 +94,6 @@ nav:
     - Citation: citation.md
 
 theme:
-    # name: readthedocs
-    # name: windmill
     name: material
     palette:
         primary: teal

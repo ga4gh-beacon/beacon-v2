@@ -9,8 +9,10 @@ Importantly, the Beacon framework separates query options from the response side
 a privacy-protecting[^1] Boolean Beacon still may offer more query features - and therefore better
 usability - compared to the first Beacon concept implementations.
 
-For detailed information about the technical implementation of the different logical
-scopes please see the [Framework](framework.md) documentation.
+!!! Important "Technical Notes"
+
+	For detailed information about the technical implementation of the different logical
+	scopes please see the [Framework](framework.md) documentation.
 
 ## Aggregate Response Beacons - Boolean and Count
 
@@ -66,6 +68,11 @@ handle extended options depending on the user's authentication status.
 	```
 
 ## Beacons Supporting Data and Information Delivery
+
+!!! Important "Technical Notes"
+
+	For detailed information about the technical implementation of the different logical
+	scopes please see the [Models](models.md) documentation.
 
 ==TBD==
 

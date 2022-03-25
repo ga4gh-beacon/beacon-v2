@@ -18,7 +18,8 @@ short, precisely defined genomic variants such as SNVs and INDELs.
 
 #### Example: _EIF4A1_ Single Base Mutation
 
-This is an example for a single base mutation (`G>A`) in the _EIF4A1_ eukaryotic translation initiation factor 4A1.
+This is an example for a single base mutation (`G>A`) at a specific position (GRCh38 chromosome 17 `7577120`)
+in the _EIF4A1_ eukaryotic translation initiation factor 4A1.
 
 === "Beacon v2 GET"
 
