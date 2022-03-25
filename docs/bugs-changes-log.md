@@ -31,6 +31,11 @@
 
 ## Changes
 
+#### 2022-03-25: Miscellanea changes in `docs/*.md`
+
+* Changes in multiple Markdown pages.
+* Moved from `mermaid` to `mermaid2` plugin.
+
 #### 2022-03-24: Retiring Separate _Implementations_ Repository
 
 * Started adding content to pages such as `networks.md and `roles.md`
