@@ -98,15 +98,12 @@ Beacon _Range Queries_ are supposed to return matches of any variant with at lea
 partial overlap of the sequence range specified by `reference_name`, `start` and `end`
 parameters.
 
+![Beacon Range Query Schema](img/BeaconRangeQuery-graphics.png)
+
 _GeneId Queries_ are in essence a variation of _Range Queries_ in which the coordinates
 are replaced by the [HGNC](https://www.genenames.org) gene symbol. It is left to the
 implementation if the matching is done on variants annotated for the gene symbol or if
 a positional translation is being applied. 
-
-!!! Warning "Use of `start` and `end`"
-
-    Range queries require the use of **single** `start` and `end` parameters, in contrast
-    to _Bracket Queries_.
 
 #### Parameters
 
@@ -117,6 +114,11 @@ a positional translation is being applied.
 	- `variantType` **OR** `alternateBases` **OR** `aminoacidChange`
 	- `variantMinLength`
 	- `variantMaxLength`
+
+!!! Warning "Use of `start` and `end`"
+
+    Range queries require the use of **single** `start` and `end` parameters, in contrast
+    to _Bracket Queries_.
 
 #### Example: Any variant affecting _EIF4A1_ 
 
@@ -177,10 +179,7 @@ positions of a genomic variation. The typical example here is the query for simi
 structural variants - particularly CNVs - affecting a genomic region but potentially
 differing in their exact base extents.
 
-!!! Warning "Use of `start` and `end`"
-
-    Bracket queries require the use of **two** `start` and `end` parameters, in contrast
-    to _Range Queries_.
+![Beacon Bracket Query Schema](img/BeaconBracketQuery-limited-match-graphics.png)
 
 #### Parameters
 
@@ -188,6 +187,11 @@ differing in their exact base extents.
 * `start` (min) and `start` (max) - i.e. 2 start parameters
 * `end` (min) and `end` (max) - i.e. 2 end parameters
 * `variantType` (optional)
+
+!!! Warning "Use of `start` and `end`"
+
+    Bracket queries require the use of **two** `start` and `end` parameters, in contrast
+    to _Range Queries_.
 
 #### Example: CNV Query - _TP53_ Deletion Query by Coordinates
 
