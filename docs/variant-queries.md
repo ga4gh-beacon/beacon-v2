@@ -212,7 +212,7 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 
 === "Beacon v2 POST"
 
-	```
+	```json
 	{
 	    "$schema":"https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json",
 	    "meta": {

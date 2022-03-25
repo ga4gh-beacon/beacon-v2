@@ -12,23 +12,58 @@ usability - compared to the first Beacon concept implementations.
 For detailed information about the technical implementation of the different logical
 scopes please see the [Framework](framework.md) documentation.
 
-## Boolean Response Beacon
+## Aggregate Response Beacons - Boolean and Count
 
-A _Boolean_ Beacon is in it's response similar to Beacon v1 - _i.e._ responding
-with a _true_ or _false_ value when queried for the existence of some data in a resource.
+A _Boolean Response_ Beacon is in it's response similar to Beacon v1 - _i.e._ responding
+with a _true_ or _false_ value when queried for the existence of some data in a resource. Similarly
+a _Count Response_ Beacon only returns aggregate information, _i.e._ the number of matched
+entries (e.g. genomic variants), a feature also part of the Beacon v1 protocol.
 
-However, in contrast to earlier versions, in Beacon v1 _in principle_ a "Boolean Beacon"
+However, in contrast to earlier versions, in Beacon v2 _in principle_ a beaconized resource
 may implement all types of query options (e.g. combinations of various filters and
-genomic query parameters) but still offer a Boolean response, either as sole option or
-depending on the user's authentication status.
+genomic query parameters) but still only offer a Boolean and optionally Count response.
 
-### Boolean Response
+Also, all Beacons _should_ implement the _Boolean Response_ format as fallback option and
+handle extended options depending on the user's authentication status.
 
-==TBD==
+=== "Boolean Response in v2"
 
-### Beacon Count Response
+	```json
+	{
+	  "meta": {
+	    "apiVersion": "v2.0.0",
+	    "__other_meta_parameters__": "..."
+	    "receivedRequestSummary": {
+	      "requestedGranularity": "boolean",
+	      "__other_request_parameters__": "..."
+	    },
+	    "returnedGranularity": "boolean"
+	   },
+	  "responseSummary": {
+	    "exists": true
+	  }
+	}
+	```
 
-==TBD==
+=== "Count Response in v2"
+
+	```json
+	{
+	  "meta": {
+	    "apiVersion": "v2.0.0",
+	    "__other_meta_parameters__": "..."
+	    "receivedRequestSummary": {
+	      "requestedGranularity": "count",
+	      "__other_request_parameters__": "..."
+	    },
+	    "returnedGranularity": "count"
+	   },
+	  "responseSummary": {
+	    "exists": true,
+	    "numTotalResults": 42
+	  }
+	}
+	```
 
 ## Beacons Supporting Data and Information Delivery
 
