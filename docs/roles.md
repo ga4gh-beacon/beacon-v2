@@ -17,11 +17,10 @@ benefit from some insights into the general capabilities of the underlying proto
         * Data [Models and Schemas](models.md)
         * Beacon [Flavours](beacon-flavours.md) & Response Granularity
         * [Security](security.md) 
-    * Protocol/Query basics
-        * Genomic [Variant Queries](variant-queries.md)
         * Other Request, Response & Error Elements
     * Using Beacon v2 Features
-        * [Filters](filters.md)
+        * Genomic [Variant Queries](variant-queries.md)
+        * [Filters](filters.md) for Phenotypes, Diseases & Other Parameters
         * Alternative Schemas [Link](models.md)
 
 <!--        * [OpenAPI](https://www.openapis.org) -->
