@@ -75,4 +75,13 @@ classDiagram
     }
 ```
 
-3. **The Beacon v1 Model:** [repo](https://github.com/ga4gh-beacon/Model-BEACON-v1) Provided as an example for Beacon v1 implementers that want to update to Beacon v2 but not planning to add any additional entry type to their Beacon.
+The above entities are defined as follows;
+
+  * Collections (**Datasets** and **Cohorts**): groupings of variants or individuals that share something in common: e.g., who belong to the same repository (datasets) or study population (cohorts).
+  * **Genomic variations**: unique genomic alterations, e.g., position in a genome, sequence alterations, type, etc.
+  * **Individuals**: either patients or healthy controls whose details (including phenotypic and clinical) are stored in the repository.
+  * **Biosamples**: samples taken from individuals, including details of procedures, dates and times.
+  * **Analyses & Runs**: details on (a) procedures used for sequencing a biosample (runs), and (b) bioinformatic procedures to identify variants (analyses)
+
+!!! Important "**Beacon v1 Model:** [Repo](https://github.com/ga4gh-beacon/Model-BEACON-v1)"
+    Provided as an example for Beacon v1 implementers that want to update to Beacon v2 but not planning to add any additional entry type to their Beacon.
