@@ -6,6 +6,11 @@
   max-width: 1200px; 
 }
 
+.md-header__source {
+    background-image: url("/img/elixir-white-48x36.svg");
+    background-repeat: no-repeat;
+    background-position: right;   
+}
 
 h2 {
     color: var(--md-accent-fg-color);
