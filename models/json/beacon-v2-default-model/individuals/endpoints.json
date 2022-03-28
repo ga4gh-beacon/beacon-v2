@@ -163,11 +163,6 @@
                     "GET Endpoints"
                 ]
             },
-            "parameters": [
-                {
-                    "$ref": "#/components/parameters/entryId"
-                }
-            ],
             "post": {
                 "description": "Get the list of filtering terms that could be used with individuals.",
                 "operationId": "postIndividualsFilteringTerms",

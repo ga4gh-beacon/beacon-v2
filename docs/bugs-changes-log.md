@@ -6,20 +6,20 @@
 
 <!-- When done => please check & move to some dated item in Changes below-->
 
-* [ ] content for [Standards Integration](formats-standards.md) (as noted on page)
+* [x] content for [Standards Integration](formats-standards.md) (as noted on page)
 * [ ] re-structuring of [Documentation Scopes](roles.md)
 * [ ] re-structuring of [Framework page](framework.md) 
 * [x] re-structuring of [Models page](framework.md)
     - integration with the Schemas pages
     - removal of the individual schemas from the main navigation
-* [ ] delete documentation in framework and model repo READMEs and point here
+* [x] delete documentation in framework and model repo READMEs and point here
 * [ ] fix https (probably @mbaudis has to do some registrar configuration...)
 * [x] content for the [Filters page](filters.md)
 * [ ] merging (?) of the [Introduction](index.md) and [Documentation Scopes](roles.md) pages
     - clarification, re-structuring, links ...
 * [ ] complete  [Implementations](other-implementations.md)
 * [ ] extend [Query documentation](variant-queries.md), also using content from the variant scouts document
-    - [ ] expand on the table comparing different "variant types"
+    - [ ] expand the table comparing different "variant types"
 * [ ] create content for [Tips for Implementers](tips-for-implementers)
 
 ### Repositories
@@ -30,6 +30,11 @@
 * [ ] retiring of framework and model repos
 
 ## Changes
+
+#### 2022-03-28: More documentation updates
+
+* added content to the [Standards](formats-standards.md) page (VRS, Phenopackets, coordinates)
+* [Queries](variant-queries.md) page now with comparison table for (some) variant type terms
 
 #### 2022-03-25: Miscellanea changes in `docs/*.md`
 

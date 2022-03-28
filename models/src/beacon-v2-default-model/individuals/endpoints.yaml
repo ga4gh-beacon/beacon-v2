@@ -149,8 +149,6 @@ paths:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /individuals/filtering_terms:
-    parameters:
-      - $ref: '#/components/parameters/entryId'
     get:
       parameters:
         - $ref: '#/components/parameters/skip'

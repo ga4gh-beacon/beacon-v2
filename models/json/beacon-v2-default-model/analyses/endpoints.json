@@ -77,7 +77,7 @@
         "/analyses": {
             "get": {
                 "description": "Get a list of bioinformatics analysis",
-                "operationId": "getAnalysis",
+                "operationId": "getAnalyses",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/requestedSchema"
@@ -106,7 +106,7 @@
             },
             "post": {
                 "description": "Get a list of bioinformatics analysis",
-                "operationId": "postAnalysisRequest",
+                "operationId": "postAnalysesRequest",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -162,7 +162,7 @@
             ],
             "post": {
                 "description": "Get details about one bioinformatics analysis, identified by its (unique) 'id'",
-                "operationId": "postOneAnalysis",
+                "operationId": "postOneAnalysisRequest",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -222,7 +222,7 @@
             ],
             "post": {
                 "description": "Get the list of variants instances for one bioinformatics analysis, identified by its (unique) 'id'",
-                "operationId": "postOneAnalysisVariants",
+                "operationId": "postOneAnalysisVariantsRequest",
                 "requestBody": {
                     "content": {
                         "application/json": {

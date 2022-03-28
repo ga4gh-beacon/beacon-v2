@@ -18,7 +18,7 @@ paths:
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/includeResultsetResponses'
       description: Get a list of bioinformatics analysis
-      operationId: getAnalysis
+      operationId: getAnalyses
       tags:
         - GET Endpoints
       responses:
@@ -28,7 +28,7 @@ paths:
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
       description: Get a list of bioinformatics analysis
-      operationId: postAnalysisRequest
+      operationId: postAnalysesRequest
       tags:
         - POST Endpoints
       requestBody:
@@ -65,7 +65,7 @@ paths:
     post:
       description: Get details about one bioinformatics analysis, identified by its
         (unique) 'id'
-      operationId: postOneAnalysis
+      operationId: postOneAnalysisRequest
       tags:
         - POST Endpoints
       requestBody:
@@ -102,7 +102,7 @@ paths:
     post:
       description: Get the list of variants instances for one bioinformatics analysis,
         identified by its (unique) 'id'
-      operationId: postOneAnalysisVariants
+      operationId: postOneAnalysisVariantsRequest
       tags:
         - POST Endpoints
       requestBody:

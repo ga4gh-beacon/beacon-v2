@@ -14,11 +14,14 @@ The only exception is: `service-info` which is a required GA4GH standard and has
 
 ### Schema Language and Conventions
 
-==JSON Schema, YAML/JSON, camelCasing and others ...==
+==TBD: JSON Schema, YAML/JSON and others ...==
 
 ### Genome Coordinates
 
-==0-based interbase etc., see schemablocks.org==
+!!! Attention "GA4GH Genome Coordinate Use Recommendation[^1]"
+
+    * We recommends the use of __"0-start, half-open"__ (interbase) coordinate system in all systems
+    * __"1-start, fully-closed"__ should be used when displaying coordinates through a GUI or report
 
 ### Dates and Times
 
@@ -48,13 +51,146 @@ Phenopackets and the Variant Representation Standard (VRS).
 
 ### Variant Representation Standard (VRS)
 
-==(TBD)==
+The GA4GH Variant Representation Standard (VRS) constitutes the reference one should use
+when implementing representations of genomic variations. The [current version 1.2](https://vrs.ga4gh.org/en/stable/releases/1.2.html)
+has been approved and covers a set of use cases and requirements, especially with respect
+to genomic (including cytogenetic or feature based) locations. However, it is not yet
+suitable for a number of practical use cases, especially the representation of some structural variations.
+
+The Beacon v2 default model for `GenomicVariation` makes use of the VRS standard to represent
+the `variation` part, _i.e._ the location and sequence or copy number changes of the
+genomic variation. While a "legacy" alternative is still allowed this one too has been adjusted
+to make use of the VRS `Location` format.
+
+#### Examples
+
+The examples are for different forma of the `location` property inside a `genomicVariation`.
+
+=== "Beacon v2 VRS Allele"
+
+    ```json
+    "variation": {
+        "type": "Allele",
+        "state": {
+            "sequence": "G",
+            "type": "LiteralSequenceExpression"
+        },
+        "location": {
+            "type": "SequenceLocation",
+            "sequenceId": "refseq:NC_000017.11",
+            "interval": {
+                "type": "SequenceInterval",
+                "start": {
+                    "type": "Number",
+                    "value": 7577120
+                },
+                "end": {
+                    "type": "Number",
+                    "value": 7577121
+                }
+            }
+        }
+    }
+    ```
+
+=== "Beacon v2 VRS CNV"
+
+    ```json
+    "variation": {
+        "type": "RelativeCopyNumber",
+        "relativeCopyClass": "partial loss",
+        "location": {
+            "type": "SequenceLocation",
+            "sequenceId": "refseq:NC_000018.10",
+            "interval": {
+                "start": {
+                    "type": "Number",
+                    "value": 23029501
+                },
+                "end": {
+                    "type": "Number",
+                    "value": 62947165
+                }
+            }
+        }
+    }
+    ```
+
+=== "Beacon v2 legacy SNV"
+
+    ```json
+    "variation": {
+        "variantType": "SNP",
+        "referenceBases": "C",
+        "alternateBases": "G",
+        "location": {
+            "type": "SequenceLocation",
+            "sequenceId": "refseq:NC_000017.11",
+            "interval": {
+                "type": "SequenceInterval",
+                "start": {
+                    "type": "Number",
+                    "value": 7577120
+                },
+                "end": {
+                    "type": "Number",
+                    "value": 7577121
+                }
+            }
+        }
+    }
+    ```
+
+=== "Beacon v2 legacy CNV"
+
+    ```json
+    "variation": {
+        "variantType": "DEL",
+        "location": {
+            "type": "SequenceLocation",
+            "sequenceId": "refseq:NC_000018.10",
+            "interval": {
+                "start": {
+                    "type": "Number",
+                    "value": 23029501
+                },
+                "end": {
+                    "type": "Number",
+                    "value": 62947165
+                }
+            }
+        }
+    }
+    ```
+
 
 ##### LINK: [VRS Documentation](https://vrs.ga4gh.org/en/stable/)
 
+
 ### Phenopackets
 
-==(TBD)==
+In the Beacon v2 default data model, many schemas are either directly compatible to
+[Phenopackets v2 building blocks](https://phenopacket-schema.readthedocs.io/en/latest/building-blocks.html)
+or at least reflect them but with some adjustments. While the Beacon v2 default model's schemas do not _per se_ have to reflect
+PXF schemas, we target an as-close-as-possible alignment to promote/leverage GA4GH-wide
+standardization.
+
+#### Top-level differences
+
+The Phenopackets model is centered around the `Phenopacket`, which is the collector
+and integrator of all sub-schemas (with the addition of the external `Family` and
+`Cohort` schemas). While `Phenopacket` usually describes information related to a
+`subject` -  which is defined in an `Individual` - and the top level elements in
+`Phenopacket` relate to a specific `proband` (`measurements` as "Measurements performed
+in the proband"), the phenopacket itself does not explicitely _represent_ an individual.
+
+In contrast, the Beacon v2 default model uses a hierarchy in which biosamples
+reference individuals directly (if existing). For most purposes one can equate Beacon's
+`Individual` with a merge of Phenopacket's core `Phenopacket` and `Individual` parameters. 
+
+==(TBD details/comparisons)==
 
 ##### LINK: [Phenopackets Documentation](https://phenopacket-schema.readthedocs.io/en/latest/index.html)
+
+[^1]: Source: [@andrewyatz](https://github.com/@andrewyatz/) at [SchemaBlocks {S}[B]](http://schemablocks.org/standards/genome-coordinates.html)
 

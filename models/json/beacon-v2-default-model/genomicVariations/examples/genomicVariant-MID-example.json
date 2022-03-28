@@ -68,13 +68,6 @@
             }
         ]
     },
-    "position": {
-        "assemblyId": "GRCh38",
-        "refseqId": "chr1",
-        "start": [
-            55039979
-        ]
-    },
     "variantInternalId": "var123",
     "variantLevelData": {
         "clinicalInterpretations": [
