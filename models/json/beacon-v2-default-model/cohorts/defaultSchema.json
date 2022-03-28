@@ -231,31 +231,6 @@
                 }
             ]
         },
-        "cohortExclusionCriteria": {
-            "$ref": "#/definitions/CohortCriteria",
-            "description": "Exclusion criteria used for defining the cohort. It is assumed that NONE of the cohort participants will match such criteria.",
-            "type": "object"
-        },
-        "cohortId": {
-            "description": "Cohort identifier. For \u00b4study-defined\u00b4 or \u00b4beacon-defined\u00b4cohorts this field is set by the implementer. For \u00b4user-defined\u00b4 this unique identifier could be generated upon the query that defined the cohort, but could be later edited by the user.",
-            "examples": [
-                "cohort-T2D-2010"
-            ],
-            "type": "string"
-        },
-        "cohortInclusionCriteria": {
-            "$ref": "#/definitions/CohortCriteria",
-            "description": "Inclusion criteria used for defining the cohort. It is assumed that all cohort participants will match such criteria.",
-            "type": "object"
-        },
-        "cohortName": {
-            "description": "Name of the cohort. For \u00b4user-defined\u00b4 this field could be generated upon the query, e.g. a value that is a concatenationor some representation of the user query.",
-            "examples": [
-                "Wellcome Trust Case Control Consortium",
-                "GCAT Genomes for Life"
-            ],
-            "type": "string"
-        },
         "cohortSize": {
             "description": "Count of unique Individuals in cohort (individuals meeting criteria for \u00b4user-defined\u00b4 cohorts). If not previously known, it could be calculated by counting the individuals in the cohort.",
             "examples": [
@@ -280,11 +255,36 @@
                 "$ref": "#/definitions/CollectionEvent"
             },
             "type": "array"
+        },
+        "exclusionCriteria": {
+            "$ref": "#/definitions/CohortCriteria",
+            "description": "Exclusion criteria used for defining the cohort. It is assumed that NONE of the cohort participants will match such criteria.",
+            "type": "object"
+        },
+        "id": {
+            "description": "Cohort identifier. For \u00b4study-defined\u00b4 or \u00b4beacon-defined\u00b4cohorts this field is set by the implementer. For \u00b4user-defined\u00b4 this unique identifier could be generated upon the query that defined the cohort, but could be later edited by the user.",
+            "examples": [
+                "cohort-T2D-2010"
+            ],
+            "type": "string"
+        },
+        "inclusionCriteria": {
+            "$ref": "#/definitions/CohortCriteria",
+            "description": "Inclusion criteria used for defining the cohort. It is assumed that all cohort participants will match such criteria.",
+            "type": "object"
+        },
+        "name": {
+            "description": "Name of the cohort. For \u00b4user-defined\u00b4 this field could be generated upon the query, e.g. a value that is a concatenationor some representation of the user query.",
+            "examples": [
+                "Wellcome Trust Case Control Consortium",
+                "GCAT Genomes for Life"
+            ],
+            "type": "string"
         }
     },
     "required": [
-        "cohortId",
-        "cohortName",
+        "id",
+        "name",
         "cohortType"
     ],
     "type": "object"

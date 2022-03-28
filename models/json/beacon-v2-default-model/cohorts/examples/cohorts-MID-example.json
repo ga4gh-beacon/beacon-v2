@@ -18,8 +18,10 @@
         "id": "OMIABIS:0001019",
         "label": "longitudinal study design"
     },
-    "cohortId": "cohort0001",
-    "cohortInclusionCriteria": {
+    "cohortSize": 20000,
+    "cohortType": "study-defined",
+    "id": "cohort0001",
+    "inclusionCriteria": {
         "ageRange": {
             "end": {
                 "iso8601duration": "P40Y"
@@ -45,7 +47,5 @@
             }
         ]
     },
-    "cohortName": "GCAT Genomes for Life",
-    "cohortSize": 20000,
-    "cohortType": "study-defined"
+    "name": "GCAT Genomes for Life"
 }

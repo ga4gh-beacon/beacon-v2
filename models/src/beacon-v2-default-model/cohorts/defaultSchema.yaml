@@ -27,7 +27,7 @@ properties:
         label: longitudinal study design
       - id: OMIABIS:0001024
         label: twin study design
-  cohortId:
+  id:
     description: Cohort identifier. For ´study-defined´ or ´beacon-defined´cohorts
       this field is set by the implementer. For ´user-defined´ this unique identifier
       could be generated upon the query that defined the cohort, but could be later
@@ -35,7 +35,7 @@ properties:
     type: string
     examples:
       - cohort-T2D-2010
-  cohortName:
+  name:
     description: Name of the cohort. For ´user-defined´ this field could be generated
       upon the query, e.g. a value that is a concatenationor some representation of
       the user query.
@@ -43,12 +43,12 @@ properties:
     examples:
       - Wellcome Trust Case Control Consortium
       - GCAT Genomes for Life
-  cohortInclusionCriteria:
+  inclusionCriteria:
     description: Inclusion criteria used for defining the cohort. It is assumed that
       all cohort participants will match such criteria.
     type: object
     $ref: '#/definitions/CohortCriteria'
-  cohortExclusionCriteria:
+  exclusionCriteria:
     description: Exclusion criteria used for defining the cohort. It is assumed that
       NONE of the cohort participants will match such criteria.
     type: object
@@ -231,7 +231,7 @@ definitions:
     required:
       - availability
 required:
-  - cohortId
-  - cohortName
+  - id
+  - name
   - cohortType
 additionalProperties: true

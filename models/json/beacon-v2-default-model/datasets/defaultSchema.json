@@ -2,75 +2,6 @@
     "$comment": "version: ga4gh-beacon-dataset-v2.0.0",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "definitions": {
-        "DUODataUse": {
-            "allOf": [
-                {
-                    "description": "TBD"
-                },
-                {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
-                },
-                {
-                    "properties": {
-                        "modifiers": {
-                            "items": {
-                                "allOf": [
-                                    {
-                                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
-                                    },
-                                    {
-                                        "examples": [
-                                            {
-                                                "id": "EFO:0001645"
-                                            },
-                                            {
-                                                "id": "EFO:0001655"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            "type": "array"
-                        },
-                        "version": {
-                            "examples": [
-                                "17-07-2016"
-                            ],
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "version"
-                    ],
-                    "type": "object"
-                }
-            ],
-            "examples": [
-                {
-                    "id": "DUO:0000007",
-                    "label": "disease specific research",
-                    "version": "17-07-2016"
-                }
-            ]
-        },
-        "DataUseConditions": {
-            "description": "Data use conditions ruling this dataset",
-            "properties": {
-                "duoDataUse": {
-                    "items": {
-                        "$ref": "#/definitions/DUODataUse"
-                    },
-                    "minItems": 1,
-                    "type": "array"
-                }
-            },
-            "required": [
-                "duoDataUse"
-            ],
-            "type": "object"
-        }
-    },
     "description": "A dataset available in the beacon",
     "properties": {
         "createDateTime": {
@@ -81,7 +12,8 @@
             ]
         },
         "dataUseConditions": {
-            "$ref": "#/definitions/DataUseConditions"
+            "$ref": "../common/dataUseConditions.json",
+            "description": "Data use conditions applying to this dataset."
         },
         "description": {
             "description": "Description of the dataset",
