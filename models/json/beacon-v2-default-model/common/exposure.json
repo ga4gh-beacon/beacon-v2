@@ -42,9 +42,9 @@
     "required": [
         "exposureCode",
         "ageAtExposure",
-        "units",
+        "unit",
         "duration"
     ],
-    "title": "Procedure",
+    "title": "Exposure",
     "type": "object"
 }

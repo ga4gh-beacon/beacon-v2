@@ -181,80 +181,83 @@
             "type": "object"
         },
         "Identifiers": {
-            "clinvarVariantId": {
-                "description": "ClinVar variant id. Other id values used by ClinVar can be added to `variantAlternativeIds`",
-                "examples": [
-                    "clinvar:12345",
-                    "9325"
-                ],
-                "pattern": "^(clinvar:)?\\d+$",
-                "type": "string"
-            },
-            "genomicHGVSId": {
-                "description": "HGVSId descriptor.",
-                "examples": [
-                    "NC_000017.11:g.43057063G>A"
-                ],
-                "type": "string"
-            },
-            "proteinHGVSIds": {
-                "description": "List of HGVSId descriptor(s) at protein level (for protein-altering variants).",
-                "examples": [
-                    [
-                        "NP_009225.1:p.Glu1817Ter"
+            "properties": {
+                "clinvarVariantId": {
+                    "description": "ClinVar variant id. Other id values used by ClinVar can be added to `variantAlternativeIds`",
+                    "examples": [
+                        "clinvar:12345",
+                        "9325"
                     ],
-                    [
-                        "LRG 199p1:p.Val25Gly (preferred)"
-                    ]
-                ],
-                "items": {
+                    "pattern": "^(clinvar:)?\\d+$",
                     "type": "string"
                 },
-                "type": "array"
-            },
-            "transcriptHGVSIds": {
-                "description": "List of HGVSId descriptor(s) at transcript level.",
-                "examples": [
-                    [
-                        "NC 000023.10(NM004006.2):c.357+1G"
-                    ]
-                ],
-                "items": {
+                "genomicHGVSId": {
+                    "description": "HGVSId descriptor.",
+                    "examples": [
+                        "NC_000017.11:g.43057063G>A"
+                    ],
                     "type": "string"
                 },
-                "type": "array"
-            },
-            "variantAlternativeIds": {
-                "description": "List of cross-referencing ID(s), for the variant in other databases (e.g. dbSNP, ClinVar, ClinGen, COSMIC), as `externalReferences` with CURIE(s).",
-                "examples": [
-                    [
-                        {
-                            "id": "dbSNP:rs587780345",
-                            "notes": "dbSNP id",
-                            "reference": "https://www.ncbi.nlm.nih.gov/snp/rs587780345"
-                        },
-                        {
-                            "id": "ClinGen:CA152954",
-                            "notes": "ClinGen Allele Registry id",
-                            "reference": "http://reg.clinicalgenome.org/redmine/projects/registry/genboree_registry/by_caid?caid=CA152954"
-                        },
-                        {
-                            "id": "UniProtKB:P35557#VAR_003699",
-                            "reference": "https://www.uniprot.org/uniprot/P35557#VAR_003699"
-                        }
+                "proteinHGVSIds": {
+                    "description": "List of HGVSId descriptor(s) at protein level (for protein-altering variants).",
+                    "examples": [
+                        [
+                            "NP_009225.1:p.Glu1817Ter"
+                        ],
+                        [
+                            "LRG 199p1:p.Val25Gly (preferred)"
+                        ]
                     ],
-                    [
-                        {
-                            "id": "OMIM:164757.0001",
-                            "reference": "https://www.omim.org/entry/164757#0001"
-                        }
-                    ]
-                ],
-                "items": {
-                    "$ref": "../common/externalReference.json"
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 },
-                "type": "array"
-            }
+                "transcriptHGVSIds": {
+                    "description": "List of HGVSId descriptor(s) at transcript level.",
+                    "examples": [
+                        [
+                            "NC 000023.10(NM004006.2):c.357+1G"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "variantAlternativeIds": {
+                    "description": "List of cross-referencing ID(s), for the variant in other databases (e.g. dbSNP, ClinVar, ClinGen, COSMIC), as `externalReferences` with CURIE(s).",
+                    "examples": [
+                        [
+                            {
+                                "id": "dbSNP:rs587780345",
+                                "notes": "dbSNP id",
+                                "reference": "https://www.ncbi.nlm.nih.gov/snp/rs587780345"
+                            },
+                            {
+                                "id": "ClinGen:CA152954",
+                                "notes": "ClinGen Allele Registry id",
+                                "reference": "http://reg.clinicalgenome.org/redmine/projects/registry/genboree_registry/by_caid?caid=CA152954"
+                            },
+                            {
+                                "id": "UniProtKB:P35557#VAR_003699",
+                                "reference": "https://www.uniprot.org/uniprot/P35557#VAR_003699"
+                            }
+                        ],
+                        [
+                            {
+                                "id": "OMIM:164757.0001",
+                                "reference": "https://www.omim.org/entry/164757#0001"
+                            }
+                        ]
+                    ],
+                    "items": {
+                        "$ref": "../common/externalReference.json"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
         },
         "LegacyVariation": {
             "properties": {
@@ -305,54 +308,59 @@
             "type": "object"
         },
         "MolecularAttributes": {
-            "aminoacidChanges": {
-                "description": "Lisf of change(s) at aminoacid level for protein affecting variants.",
-                "examples": [
-                    [
-                        "V304*"
-                    ]
-                ],
-                "items": {
-                    "type": "string"
-                },
-                "type": "array"
-            },
-            "geneIds": {
-                "examples": [
-                    [
-                        "ACE2"
+            "properties": {
+                "aminoacidChanges": {
+                    "description": "Lisf of change(s) at aminoacid level for protein affecting variants.",
+                    "examples": [
+                        [
+                            "V304*"
+                        ]
                     ],
-                    [
-                        "BRCA1"
-                    ]
-                ],
-                "items": "string",
-                "type": "array"
-            },
-            "genomicFeatures": {
-                "description": "List of Genomic feature(s) affected by the variant.",
-                "items": {
-                    "$ref": "#/definitions/GenomicFeature"
-                },
-                "type": "array"
-            },
-            "molecularEffects": {
-                "description": "Ontology term that includes describes the class of molecular consequence generated by the variant. Values from Ensembl Glossary Variant Consequence (ENSGLOSSARY:0000134 ontology branch) are recommended, e.g. Stop gained, Missense variant, Coding sequence variant.",
-                "examples": [
-                    {
-                        "id": "ENSGLOSSARY:0000143",
-                        "label": "Stop gained"
+                    "items": {
+                        "type": "string"
                     },
-                    {
-                        "id": "ENSGLOSSARY:0000150",
-                        "label": "Missense variant"
-                    }
-                ],
-                "items": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
+                    "type": "array"
                 },
-                "type": "array"
-            }
+                "geneIds": {
+                    "examples": [
+                        [
+                            "ACE2"
+                        ],
+                        [
+                            "BRCA1"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "genomicFeatures": {
+                    "description": "List of Genomic feature(s) affected by the variant.",
+                    "items": {
+                        "$ref": "#/definitions/GenomicFeature"
+                    },
+                    "type": "array"
+                },
+                "molecularEffects": {
+                    "description": "Ontology term that includes describes the class of molecular consequence generated by the variant. Values from Ensembl Glossary Variant Consequence (ENSGLOSSARY:0000134 ontology branch) are recommended, e.g. Stop gained, Missense variant, Coding sequence variant.",
+                    "examples": [
+                        {
+                            "id": "ENSGLOSSARY:0000143",
+                            "label": "Stop gained"
+                        },
+                        {
+                            "id": "ENSGLOSSARY:0000150",
+                            "label": "Missense variant"
+                        }
+                    ],
+                    "items": {
+                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
         },
         "PhenoClinicEffect": {
             "description": "List of annotated effects on disease or phenotypes.",
@@ -495,18 +503,21 @@
             "type": "object"
         },
         "VariantLevelData": {
-            "clinicalInterpretations": {
-                "items": {
-                    "$ref": "#/definitions/PhenoClinicEffect"
+            "properties": {
+                "clinicalInterpretations": {
+                    "items": {
+                        "$ref": "#/definitions/PhenoClinicEffect"
+                    },
+                    "type": "array"
                 },
-                "type": "array"
+                "phenotypicEffects": {
+                    "items": {
+                        "$ref": "#/definitions/PhenoClinicEffect"
+                    },
+                    "type": "array"
+                }
             },
-            "phenotypicEffects": {
-                "items": {
-                    "$ref": "#/definitions/PhenoClinicEffect"
-                },
-                "type": "array"
-            }
+            "type": "object"
         }
     },
     "description": "Schema for a genomic variant entry.",

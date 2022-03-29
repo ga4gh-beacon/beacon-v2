@@ -48,6 +48,6 @@
     "required": [
         "treatmentCode"
     ],
-    "title": "Treament",
+    "title": "Treatment",
     "type": "object"
 }

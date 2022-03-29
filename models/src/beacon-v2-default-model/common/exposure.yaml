@@ -1,5 +1,5 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-title: Procedure
+title: Exposure
 description: Exposures (lifestyle, behavioural exposures) occurred to individual,defined
   by exposure ID, date and age of onset, dose, and duration.
 type: object
@@ -32,6 +32,6 @@ properties:
 required:
   - exposureCode
   - ageAtExposure
-  - units
+  - unit
   - duration
 additionalProperties: true
