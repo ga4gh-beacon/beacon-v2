@@ -46,6 +46,26 @@ classDiagram
     datasets o-- biosamples : 1..n
     datasets o-- individuals : 1..n
 
+    class genomicVariations{
+        analysisId
+        runId
+        biosampleId
+        individualId
+        variation
+        clinicalInterpretations
+        caseLevelData
+        ...
+    }
+    class analyses{
+        id
+        runId
+        biosampleId
+        individualId
+        analysisDate
+        pipelineName
+        aligner
+        ...
+    }
     class biosamples{
         id
         individualId
@@ -74,26 +94,6 @@ classDiagram
         platform
         ...
         }
-    class genomicVariations{
-        analysisId
-        runId
-        biosampleId
-        individualId
-        variation
-        clinicalInterpretations
-        caseLevelData
-        ...
-    }
-    class analyses{
-        id
-        runId
-        biosampleId
-        individualId
-        analysisDate
-        pipelineName
-        aligner
-        ...
-    }
     class datasets{
         id
         name
