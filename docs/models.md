@@ -27,55 +27,87 @@ The Model repo points to several hosts the default model for Beacon v2:
 ``` mermaid
 classDiagram
 
-    runs <-- genomicVariations : 1..n
-    analyses <-- runs : 1..n
     analyses <-- genomicVariations : 1..n
-    biosamples <-- analyses : 1..n
+    runs <-- analyses : 1..n
     biosamples <-- runs : 1..n
-    biosamples <-- genomicVariations : 1..n
-    individuals <-- runs : 1..n
-    individuals <-- analyses : 1..n
-    individuals <-- genomicVariations : 1..n
     individuals <-- biosamples : 1..n
 
-    cohorts <-- individuals : 1..n
-    datasets <-- genomicVariations : 1..n
-    datasets <-- runs : 1..n
-    datasets <-- analyses : 1..n
-    datasets <-- biosamples : 1..n
-    datasets <-- individuals : 1..n
+    runs <.. genomicVariations : 1..n
+    biosamples <.. genomicVariations : 1..n
+    individuals <.. genomicVariations : 1..n
+    biosamples <.. analyses : 1..n
+    individuals <.. analyses : 1..n
+    individuals <.. runs : 1..n
+
+    cohorts o-- individuals : 1..n
+    datasets o-- genomicVariations : 1..n
+    datasets o-- runs : 1..n
+    datasets o-- analyses : 1..n
+    datasets o-- biosamples : 1..n
+    datasets o-- individuals : 1..n
 
     class biosamples{
+        id
+        individualId
         biosampleStatus
+        sampleOriginType
+        histologicalDiagnosis
         collectionDate
         ...
     }
     class individuals{
+        id
+        sex
         diseases
+        phenotypicFeatures
         ethnicity
-        ...
-    }
-    class datasets{
-        createDateTime
-        dataUseCondition
+        pedigrees
         ...
     }
     class runs{
+        id
         biosampleId
-        Id
+        individualId
+        runDate
+        librarySource
+        libraryStrategy
+        platform
         ...
         }
     class genomicVariations{
-        alternateBases
+        analysisId
+        runId
+        biosampleId
+        individualId
+        variation
+        clinicalInterpretations
         caseLevelData
         ...
     }
     class analyses{
-        aligner
+        id
+        runId
+        biosampleId
+        individualId
         analysisDate
+        pipelineName
+        aligner
         ...
     }
-   class cohorts{
+    class datasets{
+        id
+        name
+        description
+        dataUseCondition
+        info
+        updateDateTime
+        ...
+    }
+    class cohorts{
+        id
+        name
+        cohortType
+        cohortSize
         cohortDataTypes
         cohortDesign
         ...
