@@ -10,16 +10,17 @@
 * [ ] re-structuring of [Documentation Scopes](roles.md)
 * [ ] re-structuring of [Framework page](framework.md) 
 * [x] re-structuring of [Models page](framework.md)
-    - integration with the Schemas pages
-    - removal of the individual schemas from the main navigation
+    - [ ] integration with the Schemas pages
+    - [x] removal of the individual schemas from the main navigation
 * [x] delete documentation in framework and model repo READMEs and point here
 * [ ] fix https (probably @mbaudis has to do some registrar configuration...)
 * [x] content for the [Filters page](filters.md)
 * [ ] merging (?) of the [Introduction](index.md) and [Documentation Scopes](roles.md) pages
     - clarification, re-structuring, links ...
 * [ ] complete  [Implementations](other-implementations.md)
-* [ ] extend [Query documentation](variant-queries.md), also using content from the variant scouts document
-    - [ ] expand the table comparing different "variant types"
+* [ ] extend [Query documentation](variant-queries.md)
+    - [x] expand the table comparing different "variant types"
+    - [ ] use content from the variant scouts document
 * [ ] create content for [Tips for Implementers](tips-for-implementers)
 
 ### Repositories
@@ -34,6 +35,8 @@
 #### 2022-03-30: More documentation updates
 
 * Updated diagram in [Models](models.md#Introduction) page.
+* Removal of some outdated text, e.g. reference to TEMPLATE model (for now)
+* continuous updates from upstream
 
 #### 2022-03-28: More documentation updates
 
