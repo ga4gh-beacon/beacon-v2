@@ -1,12 +1,40 @@
 {
     "components": {
         "parameters": {
+            "alternateBases": {
+                "in": "query",
+                "name": "alternateBases",
+                "schema": {
+                    "type": "string"
+                }
+            },
             "aminoacidChange": {
                 "example": "V600E",
                 "in": "query",
                 "name": "aminoacidchange",
                 "schema": {
                     "type": "string"
+                }
+            },
+            "assemblyId": {
+                "in": "query",
+                "name": "assemblyId",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "end": {
+                "in": "query",
+                "name": "end",
+                "schema": {
+                    "items": {
+                        "format": "int64",
+                        "minimum": 0,
+                        "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 0,
+                    "type": "array"
                 }
             },
             "entryId": {
@@ -43,6 +71,20 @@
                     "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Limit"
                 }
             },
+            "referenceBases": {
+                "in": "query",
+                "name": "referenceBases",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "referenceName": {
+                "in": "query",
+                "name": "referenceName",
+                "schema": {
+                    "type": "string"
+                }
+            },
             "requestedSchema": {
                 "description": "Schema to be used to format the `result` field in the response. The response will use Beacon format.",
                 "example": "ga4gh-service-info-v1.0",
@@ -58,6 +100,38 @@
                 "name": "skip",
                 "schema": {
                     "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Skip"
+                }
+            },
+            "start": {
+                "in": "query",
+                "name": "start",
+                "schema": {
+                    "items": {
+                        "format": "int64",
+                        "minimum": 0,
+                        "type": "integer"
+                    },
+                    "maxItems": 2,
+                    "minItems": 1,
+                    "type": "array"
+                }
+            },
+            "variantMaxLength": {
+                "in": "query",
+                "name": "variantMaxLength",
+                "schema": {
+                    "format": "int64",
+                    "minimum": 0,
+                    "type": "integer"
+                }
+            },
+            "variantMinLength": {
+                "in": "query",
+                "name": "variantMinLength",
+                "schema": {
+                    "format": "int64",
+                    "minimum": 0,
+                    "type": "integer"
                 }
             }
         },
@@ -114,6 +188,30 @@
                     },
                     {
                         "$ref": "#/components/parameters/includeResultsetResponses"
+                    },
+                    {
+                        "$ref": "#/components/parameters/start"
+                    },
+                    {
+                        "$ref": "#/components/parameters/end"
+                    },
+                    {
+                        "$ref": "#/components/parameters/assemblyId"
+                    },
+                    {
+                        "$ref": "#/components/parameters/referenceName"
+                    },
+                    {
+                        "$ref": "#/components/parameters/referenceBases"
+                    },
+                    {
+                        "$ref": "#/components/parameters/alternateBases"
+                    },
+                    {
+                        "$ref": "#/components/parameters/variantMinLength"
+                    },
+                    {
+                        "$ref": "#/components/parameters/variantMaxLength"
                     },
                     {
                         "$ref": "#/components/parameters/genomicAlleleShortForm"

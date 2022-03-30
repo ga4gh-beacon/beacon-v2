@@ -17,6 +17,14 @@ paths:
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/includeResultsetResponses'
+        - $ref: '#/components/parameters/start'
+        - $ref: '#/components/parameters/end'
+        - $ref: '#/components/parameters/assemblyId'
+        - $ref: '#/components/parameters/referenceName'
+        - $ref: '#/components/parameters/referenceBases'
+        - $ref: '#/components/parameters/alternateBases'
+        - $ref: '#/components/parameters/variantMinLength'
+        - $ref: '#/components/parameters/variantMaxLength'
         - $ref: '#/components/parameters/genomicAlleleShortForm'
         - $ref: '#/components/parameters/geneId'
         - $ref: '#/components/parameters/aminoacidChange'
@@ -192,6 +200,62 @@ components:
       required: true
       schema:
         type: string
+    start:
+      name: start
+      in: query
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
+          minimum: 0
+        minItems: 1
+        maxItems: 2
+    end:
+      name: end
+      in: query
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
+          minimum: 0
+        minItems: 0
+        maxItems: 2
+    assemblyId:
+      name: assemblyId
+      in: query
+      schema:
+        type: string
+    referenceName:
+      name: referenceName
+      in: query
+      schema:
+        type: string
+    referenceBases:
+      name: referenceBases
+      in: query
+      schema:
+        type: string
+    alternateBases:
+      name: alternateBases
+      in: query
+      schema:
+        type: string
+    variantMinLength:
+      name: variantMinLength
+      in: query
+      schema:
+        type: integer
+        format: int64
+        minimum: 0
+    variantMaxLength:
+      name: variantMaxLength
+      in: query
+      schema:
+        type: integer
+        format: int64
+        minimum: 0
     genomicAlleleShortForm:
       name: allele
       in: query
