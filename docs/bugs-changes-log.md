@@ -31,6 +31,10 @@
 
 ## Changes
 
+#### 2022-03-30: More documentation updates
+
+* Updated diagram in [Models](models.md#Introduction) page.
+
 #### 2022-03-28: More documentation updates
 
 * added content to the [Standards](formats-standards.md) page (VRS, Phenopackets, coordinates)

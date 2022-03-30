@@ -26,17 +26,28 @@ The Model repo points to several hosts the default model for Beacon v2:
 ``` mermaid
 classDiagram
 
-    cohorts <-- genomicVariations : 1..n
-    datasets <-- genomicVariations : 1..n
-    cohorts <-- individuals : 1..n
-    datasets <-- individuals : 1..n
-    individuals <-- biosamples : 1..n
-    biosamples <-- analyses : 1..n
-    biosamples <-- runs : 1..n
-    runs <-- genomicVariations : 1..n
+    analyses <-- biosamples : 1..n
+    analyses <-- cohorts : 1..n
+    analyses <-- datasets : 1..n
     analyses <-- genomicVariations : 1..n
+    analyses <-- individuals : 1..n
+    analyses <-- runs : 1..n
+    biosamples <-- datasets : 1..n
+    biosamples <-- genomicVariations : 1..n
+    biosamples <-- individuals : 1..n
+    genomicVariations <-- analyses : 1..n
+    genomicVariations <-- biosamples : 1..n
     genomicVariations <-- datasets : 1..n
-    genomicVariations <-- cohorts : 1..n
+    genomicVariations <-- individuals : 1..n
+    genomicVariations <-- runs : 1..n
+    individuals <-- cohorts : 1..n
+    individuals <-- datasets : 1..n
+    individuals <-- genomicVariations : 1..n
+    runs <-- biosamples : 1..n
+    runs <-- cohorts : 1..n
+    runs <-- datasets : 1..n
+    runs <-- genomicVariations : 1..n
+    runs <-- individuals : 1..n
 
     class biosamples{
         biosampleStatus
