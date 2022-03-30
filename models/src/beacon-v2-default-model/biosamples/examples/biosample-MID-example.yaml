@@ -9,6 +9,6 @@ sampleOriginType:
 collectionMoment: P32Y6M1D
 collectionDate: '2020-09-11'
 obtentionProcedure:
-  code:
+  procedureCode:
     id: OBI:0002654
     label: needle biopsy

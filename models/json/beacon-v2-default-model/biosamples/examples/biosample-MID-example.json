@@ -8,7 +8,7 @@
     "collectionMoment": "P32Y6M1D",
     "id": "sample-example-0001",
     "obtentionProcedure": {
-        "code": {
+        "procedureCode": {
             "id": "OBI:0002654",
             "label": "needle biopsy"
         }
