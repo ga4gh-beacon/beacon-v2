@@ -28,10 +28,17 @@
                 "type": "array"
             },
             "geneId": {
-                "description": "Gene identifir, it is strongly suggested to use a symbol following the HGNC (https://www.genenames.org) nomenclature.",
+                "description": "Gene identifier, it is strongly suggested to use a symbol following the HGNC (https://www.genenames.org) nomenclature.",
                 "examples": [
                     "BRAF",
                     "SCN5A"
+                ],
+                "type": "string"
+            },
+            "genomicAlleleShortForm": {
+                "description": "HGVSId descriptor",
+                "examples": [
+                    "NM_004006.2:c.4375C>T"
                 ],
                 "type": "string"
             },

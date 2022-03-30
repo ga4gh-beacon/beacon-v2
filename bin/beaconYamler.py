@@ -10,9 +10,10 @@ from os import remove as deleteFile
 from collections import OrderedDict
 
 here_path = path.dirname( path.abspath(__file__) )
+this_script = re.sub(".py", ".yaml", path.basename( __file__ ) )
 yaml = YAML()
 yaml.indent(mapping=2, sequence=4, offset=2)
-with open(path.join( here_path, "config.yaml"), 'r') as c_f:
+with open(path.join( here_path, "config", this_script), 'r') as c_f:
     config = yaml.load( c_f )
 
 """podmd

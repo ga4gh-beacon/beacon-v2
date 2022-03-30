@@ -80,7 +80,7 @@ g_variant:
     mateName:
       $ref: ./requestParametersComponents.json#/definitions/RefSeqId
     geneId:
-      description: Gene identifir, it is strongly suggested to use a symbol following
+      description: Gene identifier, it is strongly suggested to use a symbol following
         the HGNC (https://www.genenames.org) nomenclature.
       type: string
       examples:
@@ -92,3 +92,8 @@ g_variant:
       examples:
         - V600E
         - M734V
+    genomicAlleleShortForm:
+      description: HGVSId descriptor
+      type: string
+      examples:
+        - NM_004006.2:c.4375C>T
