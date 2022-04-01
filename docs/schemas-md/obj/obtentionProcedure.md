@@ -1,3 +1,3 @@
 |Field | description | type | properties | example | enum|
 | ---| ---| ---| ---| ---| --- |
-| obtentionProcedure | Class describing a clinical procedure or intervention. | object | [ageAtProcedure](./ageAtProcedure.md), [bodySite](./bodySite.md), [dateOfProcedure](./dateOfProcedure.md), [procedureCode](./procedureCode.md) | NA | NA|
+| obtentionProcedure | Class describing a clinical procedure or intervention. Provenance: GA4GH Phenopackets v2 `Procedure` | object | [ageAtProcedure](./ageAtProcedure.md), [bodySite](./bodySite.md), [dateOfProcedure](./dateOfProcedure.md), [procedureCode](./procedureCode.md) | NA | NA|

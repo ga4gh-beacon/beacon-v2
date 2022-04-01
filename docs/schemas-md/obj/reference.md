@@ -1,3 +1,3 @@
 |Field | description | type | properties | example | enum|
 | ---| ---| ---| ---| ---| --- |
-| reference | Definition of an external reference class. | object | [id](./id.md), [notes](./notes.md), [reference](./reference.md) | NA | NA|
+| reference | Definition of an external reference class. Provenance: GA4GH Phenopackets v2 `ExternalReference` | object | [id](./id.md), [notes](./notes.md), [reference](./reference.md) | NA | NA|

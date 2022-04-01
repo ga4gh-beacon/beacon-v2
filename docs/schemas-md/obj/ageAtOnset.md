@@ -1,3 +1,3 @@
 |Field | description | type | properties | example | enum|
 | ---| ---| ---| ---| ---| --- |
-| ageAtOnset | Age value definition. | object | [iso8601duration](./iso8601duration.md) | NA | NA|
+| ageAtOnset | Age value definition. Provenance: GA4GH Phenopackets v2 `Age` | object | [iso8601duration](./iso8601duration.md) | NA | NA|

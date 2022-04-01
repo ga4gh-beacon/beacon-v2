@@ -1,3 +1,3 @@
 |Field | description | type | properties | example | enum|
 | ---| ---| ---| ---| ---| --- |
-| observationMoment | Definition of a wrapper for various time descriptors. | object | [age](./age.md), [ageGroup](./ageGroup.md), [ageRange](./ageRange.md) | NA | NA|
+| observationMoment | Definition of a wrapper for various time descriptors. This follows the Phenopackets structure https://github.com/phenopackets/phenopacket-schema/blob/v2/docs/time-element.rst | object | NA | NA | NA|

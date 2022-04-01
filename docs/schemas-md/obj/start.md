@@ -1,3 +1,3 @@
 |Field | description | type | properties | example | enum|
 | ---| ---| ---| ---| ---| --- |
-| start | Precise or fuzzy start coordinate position(s) of the genomic variation (0-based, inclusive). | array | NA | [1000]<br />[1000,1100] | NA|
+| start | earliest date of visit | string | NA | 2018-10-01T13:23:45Z, 2019-04-23T09:11:13Z, 2017-01-17T20:33:40Z | NA|

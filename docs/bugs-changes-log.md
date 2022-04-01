@@ -32,6 +32,10 @@
 
 ## Changes
 
+#### 2022-04-01: More documentation updates
+
+* Partial update of Default schemas Tables (still work in progress)
+
 #### 2022-03-30: More documentation updates
 
 * Updated diagram in [Models](models.md#Introduction) page.

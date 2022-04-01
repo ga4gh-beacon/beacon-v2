@@ -1,3 +1,3 @@
 |Field | description | type | properties | example | enum|
 | ---| ---| ---| ---| ---| --- |
-| analysisDate | Date at which analysis was performed. | string | NA | 2021-10-17 | NA|
+| type | MUST be "Allele" | string | NA | NA | NA|

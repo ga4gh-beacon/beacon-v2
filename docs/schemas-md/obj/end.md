@@ -1,3 +1,3 @@
 |Field | description | type | properties | example | enum|
 | ---| ---| ---| ---| ---| --- |
-| end | Precise or bracketing the end of the variant, for variants not specified by their sequence content (e.g. structural variants, particularly CNVs). | array | NA | []<br />[1200]<br />[1200,1350] | NA|
+| end | latest date of visit | string | NA | 2018-10-01T13:23:45Z, 2019-04-23T09:11:13Z, 2017-01-17T20:33:40Z | NA|

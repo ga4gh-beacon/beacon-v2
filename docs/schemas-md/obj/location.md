@@ -1,3 +1,3 @@
 |Field | description | type | properties | example | enum|
 | ---| ---| ---| ---| ---| --- |
-| analysisDate | Date at which analysis was performed. | string | NA | 2021-10-17 | NA|
+| location | A contiguous segment of a biological sequence. | NA | NA | NA | NA|

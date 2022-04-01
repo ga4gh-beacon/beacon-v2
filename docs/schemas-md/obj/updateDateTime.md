@@ -1,3 +1,3 @@
 |Field | description | type | properties | example | enum|
 | ---| ---| ---| ---| ---| --- |
-| updateDateTime | The time the dataset was updated in (ISO 8601 format) | string | NA | 2012-07-19, 2017-01-17T20:33:40Z | NA|
+| updateDateTime | Time in date-time ISO8601 string format. | string | NA | 1999-08-05T17:21:00+01:00, 2002-09-21T02:37:00-08:00 | NA|

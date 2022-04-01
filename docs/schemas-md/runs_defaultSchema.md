@@ -7,7 +7,7 @@
 | [libraryLayout](./obj/libraryLayout.md) | Ontology value for the library layout e.g "PAIRED", "SINGLE" #todo add Ontology name? | string | NA | NA | PAIRED, SINGLE|
 | [librarySelection](./obj/librarySelection.md) | Selection method for library preparation, e.g "RANDOM", "RT-PCR" | string | NA | RANDOM, RT-PCR | NA|
 | [librarySource](./obj/librarySource.md) | Definition of an ontology term. | object | [id](./obj/id.md), [label](./obj/label.md) | NA | NA|
-| [libraryStrategy](./obj/libraryStrategy.md) | Library strategy, e.g. "WIG'S" | string | NA | NA | NA|
+| [libraryStrategy](./obj/libraryStrategy.md) | Library strategy, e.g. "WGS" | string | NA | WGS | NA|
 | [platform](./obj/platform.md) | General platform technology label. It SHOULD be a subset of the platformModel and used only for query convenience, e.g. "return everything sequenced with Illimuna", where the specific model is not relevant | string | NA | Illumina, Oxford Nanopore, Affymetrix | NA|
 | [platformModel](./obj/platformModel.md) | Definition of an ontology term. | object | [id](./obj/id.md), [label](./obj/label.md) | NA | NA|
-| [runDate](./obj/runDate.md) | Date at which the experiment was performed. | string | NA | NA | NA|
+| [runDate](./obj/runDate.md) | Date at which the experiment was performed. | string | NA | 2021-10-18 | NA|
