@@ -11,3 +11,40 @@
 | [platform](./obj/platform.md) | General platform technology label. It SHOULD be a subset of the platformModel and used only for query convenience, e.g. "return everything sequenced with Illimuna", where the specific model is not relevant | string | NA | Illumina, Oxford Nanopore, Affymetrix | NA|
 | [platformModel](./obj/platformModel.md) | Definition of an ontology term. | object | [id](./obj/id.md), [label](./obj/label.md) | NA | NA|
 | [runDate](./obj/runDate.md) | Date at which the experiment was performed. | string | NA | 2021-10-18 | NA|
+
+## Examples
+These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
+
+=== "MIN"
+	```
+	{
+	    "$schema": "https://json-schema.org/draft/2020-12/schema",
+	    "biosampleId": "008dafdd-a3d1-4801-8c0a-8714e2b58e48",
+	    "id": "SRR10903401",
+	    "runDate": "2021-10-18"
+	}
+	```
+
+=== "MAX"
+	```
+	{
+	    "$schema": "https://json-schema.org/draft/2020-12/schema",
+	    "biosampleId": "008dafdd-a3d1-4801-8c0a-8714e2b58e48",
+	    "id": "SRR10903401",
+	    "individualId": "TCGA-AO-A0JJ",
+	    "libraryLayout": "PAIRED",
+	    "librarySelection": "RANDOM",
+	    "librarySource": {
+	        "id": "GENEPIO:0001966",
+	        "label": "genomic source"
+	    },
+	    "libraryStrategy": "WGS",
+	    "platform": "Illumina",
+	    "platformModel": {
+	        "id": "OBI:0002048",
+	        "label": "Illumina HiSeq 3000"
+	    },
+	    "runDate": "2021-10-18"
+	}
+	```
+

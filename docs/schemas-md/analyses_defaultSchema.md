@@ -10,3 +10,33 @@
 | [pipelineRef](./obj/pipelineRef.md) | Link to Analysis pipeline resource | string | NA | https://doi.org/10.48511/workflowhub.workflow.111.1 | NA|
 | [runId](./obj/runId.md) | Run identifier (external accession or internal ID). | string | NA | SRR10903401 | NA|
 | [variantCaller](./obj/variantCaller.md) | Reference to variant calling software / pipeline | string | NA | GATK4.0 | NA|
+
+## Examples
+These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
+
+=== "MIN"
+	```
+	{
+	    "$schema": "https://json-schema.org/draft/2020-12/schema",
+	    "analysisDate": "2021-10-17",
+	    "id": "analyses-example-0001",
+	    "pipelineName": "Pipeline-panel-0001-v1"
+	}
+	```
+
+=== "MAX"
+	```
+	{
+	    "$schema": "https://json-schema.org/draft/2020-12/schema",
+	    "aligner": "bwa-0.7.8",
+	    "analysisDate": "2021-10-17",
+	    "biosampleId": "S0001",
+	    "id": "analyses-example-0001",
+	    "individualId": "P0001",
+	    "pipelineName": "Pipeline-panel-0001-v1",
+	    "pipelineRef": "https://doi.org/10.48511/workflowhub.workflow.111.1",
+	    "runId": "SRR10903401",
+	    "variantCaller": "GATK4.0"
+	}
+	```
+

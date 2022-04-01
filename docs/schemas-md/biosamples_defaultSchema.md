@@ -20,3 +20,47 @@
 | [sampleStorage](./obj/sampleStorage.md) | Definition of an ontology term. | object | [id](./obj/id.md), [label](./obj/label.md) | NA | NA|
 | [tumorGrade](./obj/tumorGrade.md) | Definition of an ontology term. | object | [id](./obj/id.md), [label](./obj/label.md) | NA | NA|
 | [tumorProgression](./obj/tumorProgression.md) | Definition of an ontology term. | object | [id](./obj/id.md), [label](./obj/label.md) | NA | NA|
+
+## Examples
+These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
+
+=== "MIN"
+	```
+	{
+	    "$schema": "https://json-schema.org/draft/2020-12/schema",
+	    "biosampleStatus": {
+	        "id": "EFO:0009655",
+	        "label": "abnormal sample"
+	    },
+	    "id": "sample-example-0001",
+	    "sampleOriginType": {
+	        "id": "UBERON:0000474",
+	        "label": "female reproductive system"
+	    }
+	}
+	```
+
+=== "MID"
+	```
+	{
+	    "$schema": "https://json-schema.org/draft/2020-12/schema",
+	    "biosampleStatus": {
+	        "id": "EFO:0009655",
+	        "label": "abnormal sample"
+	    },
+	    "collectionDate": "2020-09-11",
+	    "collectionMoment": "P32Y6M1D",
+	    "id": "sample-example-0001",
+	    "obtentionProcedure": {
+	        "code": {
+	            "id": "OBI:0002654",
+	            "label": "needle biopsy"
+	        }
+	    },
+	    "sampleOriginType": {
+	        "id": "UBERON:0000992",
+	        "label": "ovary"
+	    }
+	}
+	```
+

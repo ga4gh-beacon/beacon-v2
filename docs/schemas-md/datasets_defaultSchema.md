@@ -9,3 +9,45 @@
 | [name](./obj/name.md) | Name of the dataset | string | NA | Dataset with synthetic data | NA|
 | [updateDateTime](./obj/updateDateTime.md) | Time in date-time ISO8601 string format. | string | NA | 1999-08-05T17:21:00+01:00, 2002-09-21T02:37:00-08:00 | NA|
 | [version](./obj/version.md) | Version of the dataset | string | NA | v1.1 | NA|
+
+## Examples
+These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
+
+=== "Max"
+	```
+	{
+	    "$schema": "https://json-schema.org/draft/2020-12/schema",
+	    "createDateTime": "2017-01-17T20:33:40Z",
+	    "dataUseConditions": {
+	        "duoDataUse": [
+	            {
+	                "id": "DUO:0000007",
+	                "label": "disease specific research",
+	                "modifiers": [
+	                    {
+	                        "id": "EFO:0001645",
+	                        "label": "coronary artery disease"
+	                    }
+	                ],
+	                "version": "17-07-2016"
+	            }
+	        ]
+	    },
+	    "description": "This dataset provides examples of the actual data in this Beacon instance.",
+	    "externalUrl": "http://example.org/wiki/Main_Page",
+	    "id": "ds01010101",
+	    "name": "Dataset with synthetic data",
+	    "updateDateTime": "2017-01-17T20:33:40Z",
+	    "version": "v1.1"
+	}
+	```
+
+=== "MIN"
+	```
+	{
+	    "$schema": "https://json-schema.org/draft/2020-12/schema",
+	    "id": "ds01010101",
+	    "name": "Dataset with synthetic data"
+	}
+	```
+
