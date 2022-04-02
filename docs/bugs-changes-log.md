@@ -35,6 +35,7 @@
 #### 2022-04-01: More documentation updates
 
 * Partial update of Default schemas Tables (still work in progress)
+* Updated `bin` files that parse JSON schemas
 
 #### 2022-03-30: More documentation updates
 

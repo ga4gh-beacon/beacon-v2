@@ -1,3 +1,3 @@
-|Field | description | type | properties | example | enum|
+|Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| date | Date of the exposure in ISO8601 format. | string | NA | NA | NA|
+| date | Date of measurement. Addition compared to Phenopackets model. | string | NA | NA | NA|

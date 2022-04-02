@@ -1,0 +1,3 @@
+|Term | Description | Type | Properties | Example | Enum|
+| ---| ---| ---| ---| ---| --- |
+| GestationalAge | Gestational age (or menstrual age) is the time elapsed between the first day of the last normal menstrual period and the day of delivery. The first day of the last menstrual period occurs approximately 2 weeks before ovulation and approximately 3 weeks before implantation of the blastocyst. Because most women know when their last period began but not when ovulation occurred, this definition traditionally has been used when estimating the expected date of delivery. In contrast, chronological age (or postnatal age) is the time elapsed after birth. Provenance: Phenopackets v2 | object | [days](./days.md), [weeks](./weeks.md) | NA | NA|

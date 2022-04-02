@@ -1,4 +1,4 @@
-|Field | description | type | properties | example | enum|
+|Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
 | [caseLevelData](./obj/caseLevelData.md) | caseLevelData reports about the variation instances observed in individual analyses. | array | [alleleOrigin](./obj/alleleOrigin.md), [analysisId](./obj/analysisId.md), [biosampleId](./obj/biosampleId.md), [clinicalInterpretations](./obj/clinicalInterpretations.md), [id](./obj/id.md), [individualId](./obj/individualId.md), [phenotypicEffects](./obj/phenotypicEffects.md), [runId](./obj/runId.md), [zygosity](./obj/zygosity.md) | NA | NA|
 | [frequencyInPopulations](./obj/frequencyInPopulations.md) | NA | array | [frequencies](./obj/frequencies.md), [source](./obj/source.md), [sourceReference](./obj/sourceReference.md), [version](./obj/version.md) | NA | NA|

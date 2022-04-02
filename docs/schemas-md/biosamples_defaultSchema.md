@@ -1,4 +1,4 @@
-|Field | description | type | properties | example | enum|
+|Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
 | [biosampleStatus](./obj/biosampleStatus.md) | Definition of an ontology term. | object | [id](./obj/id.md), [label](./obj/label.md) | NA | NA|
 | [collectionDate](./obj/collectionDate.md) | Date of biosample collection in ISO8601 format. | string | NA | 2021-04-23 | NA|
@@ -52,7 +52,7 @@ These are examples extracted directly from the [GitHub repository](https://githu
 	    "collectionMoment": "P32Y6M1D",
 	    "id": "sample-example-0001",
 	    "obtentionProcedure": {
-	        "code": {
+	        "procedureCode": {
 	            "id": "OBI:0002654",
 	            "label": "needle biopsy"
 	        }

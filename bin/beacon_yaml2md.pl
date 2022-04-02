@@ -1,8 +1,8 @@
 #!/usr/bin/env perl
 #
-#   Script to convert Beacon v2 Model schemas to Markdown
+#   Script to convert Beacon v2 Models schemas to Markdown tables
 #
-#   Last Modified: Jan/13/2022
+#   Last Modified: Apr/04/2022
 #
 #   Version 2.0.0
 #
@@ -46,7 +46,7 @@ sub beacon_yaml2md {
     my $version = '2.0.0';
 
     # https://github.com/ga4gh-beacon/beacon-v2-Models/tree/main/BEACON-V2-draft3-Model
-    my $schema_dir   = '../schemas';
+    my $schema_dir   = './tmp_deref_schemas';
     my $markdown_dir = '../docs/schemas-md';
     my $obj          = 'obj';
 
@@ -78,11 +78,14 @@ sub beacon_yaml2md {
 
     # Define a few more variables...
     my @schemas =
+
       qw (analyses biosamples cohorts datasets genomicVariations individuals runs);
+
+    #qw (genomicVariations);
 
     my $schema_obj_dir   = catdir( $schema_dir,   $obj );
     my $markdown_obj_dir = catdir( $markdown_dir, $obj );
-    my $raa_header       = [qw(Field Description Type Properties Example Enum)];
+    my $raa_header       = [qw(Term Description Type Properties Example Enum)];
 
     # Load a hash with schema location
     my %schema = ();
@@ -147,6 +150,7 @@ use File::Basename;
 use Path::Tiny;
 use Data::Dumper;
 use File::Spec::Functions qw(catdir catfile);
+use Mojo::JSON::Pointer;
 
 $Data::Dumper::Sortkeys        = 1;
 $YAML::XS::QuoteNumericStrings = 0;
@@ -191,6 +195,7 @@ sub yaml2md {
     my $out_str = $header;
     $out_str .=
       table_content( $yaml_properties, $ra_properties, $raa_header, $obj, 1 );
+    $out_str .= add_tabs_with_examples($schema);
     write_file( $m_file, $out_str );
     return 1;
 }
@@ -268,11 +273,25 @@ sub yaml_slicer {
     # Object properties => 1D #
     ###########################
 
-    # Instead of working directly with recursive hash slices, for xD we create
+    # Instead of working directly with recursive hash slices, we create
     # one YAML file for each property and then re-use code from the 'main' schema
+
+    ##########################################
+    # **** Note about VRS / PHX adoption *** #
+    ##########################################
+
+    # The adoption of those standards had technical implications. The script expects objects to have
+    #  <key> for the object and then <properties>. VRS/PHX follow JSON schemas that include /oneOf allOf anyOf/
+    # plus other complex intructions such as <if:> <else:>.
+    # This becomes a real challenge with $ref pointers as, for instance, in <g_v.variation> we can not find the key for
+    # 'MolecularVariation', 'SystemicVariation', 'LegacyVariation'
+    # TL;DR; WE ARE INTRODUCING A FEW AD HOC CHANGES BELOW....
 
     for my $property (@$ra_properties) {
 
+        #next unless lc($property) eq 'variation';
+        $yaml_properties->{$property} =
+          parse_json_keywords( $property, $yaml_properties->{$property} );
         my $yaml_properties_1d = $yaml_properties->{$property};
         dump_yaml( $property, $yaml_properties_1d, $yo_dir );
 
@@ -299,6 +318,8 @@ sub yaml_slicer {
           ? $yaml_properties_1d->{items}{properties}
           : $yaml_properties_1d->{properties};
         for my $property ( keys %$yaml_properties_2d ) {
+            $yaml_properties_2d->{$property} = parse_json_keywords( $property,
+                $yaml_properties_2d->{$property} );
             dump_yaml( $property, $yaml_properties_2d->{$property}, $yo_dir );
 
             #################################
@@ -310,6 +331,13 @@ sub yaml_slicer {
               ? $yaml_properties_2d->{$property}{items}{properties}
               : $yaml_properties_2d->{$property}{properties};
             for my $property ( keys %$yaml_properties_3d ) {
+                $yaml_properties_3d->{$property} =
+                  parse_json_keywords( $property,
+                    $yaml_properties_3d->{$property} );
+
+                # Can't bo beyond 3D, using subroutine to add links
+                $yaml_properties_3d->{$property} =
+                  add_vrs_url( $property, $yaml_properties_3d->{$property} );
                 dump_yaml( $property, $yaml_properties_3d->{$property},
                     $yo_dir );
             }
@@ -322,25 +350,50 @@ sub yaml_slicer {
 sub table_content {
 
     my ( $yaml_properties, $ra_properties, $headers, $obj, $link ) = @_;
-    my $out_str = '';
-    for my $property ( sort @$ra_properties ) {
-        my @refs = ();
-        for my $value ( $yaml_properties->{$property} ) {
+    my @lc_headers = map { lc } @$headers; # Copy array uc to avoid modifying original $ref
+    my $out_str    = '';
 
-            for my $header (@$headers) {
-                next if $header eq 'Field';
-                $header = lc($header);
-                my $value_header = $value->{$header};
+    #---------------------------------------------------------|
+    # Term (Header 1) | Header 2 | Header 3 | .... | Header N |
+    #---------------------------------------------------------|
+    # Property        | Value  2 | Value  3 | .... | Value  N |
+    #---------------------------------------------------------|
+
+    # Property = identifiers
+    for my $property ( sort @$ra_properties ) {
+
+        # @refs will be needed below
+        my @refs = ();
+
+        # object ={description,examples,etc...}
+        for my $object ( $yaml_properties->{$property} ) {
+
+            # $object has to be defined as an object in the schema, otherwise we skip it
+            next unless ref $object eq 'HASH';
+
+            # Now we process all values (matching header terms)
+            for my $header (@lc_headers) {
+
+                # Skipping term (not needed)
+                next if $header eq 'term';
+
+                # General assignation
+                my $value_header = $object->{$header};
+
+                ##################################################
+                # Change assignation depending of content/header #
+                ##################################################
 
                 # Check presence of plural 'examples'
                 $value_header =
-                  exists $value->{examples}
-                  ? $value->{examples}
-                  : $value->{$header}
+                  exists $object->{examples}
+                  ? $object->{examples}
+                  : $object->{$header}
                   if $header eq 'example';
 
-                # Slice differentely if $value->{type} eq 'array'
-                $value_header = $value->{items}{properties} if ( $header eq 'properties' && $value->{type} eq 'array' );
+                # Slice differentely if $object->{type} eq 'array'
+                $value_header = $object->{items}{properties}
+                  if ( $header eq 'properties' && $object->{type} eq 'array' );
 
                 # Now convert data structure to string
                 say "#### $property => $header  ####" if $debug;
@@ -374,7 +427,7 @@ sub ref2str {
     my $out_str = '';
 
     # Check data types
-    # We can have ARRAY, HASH and STRING
+    # We can have ARRAY, HASH, STRING and undef
     if ( ref $data eq 'ARRAY' ) {
 
         # Options found: A, AoH, AoHoH
@@ -472,6 +525,26 @@ sub check_data_type {
 
 sub create_str_yaml {
 
+    # This is an ad hoc solution :-(
+
+# Apr-2-2022
+#=head1
+#WARNING  -  Documentation file 'schemas-md/obj/Allele.md' contains a link to 'schemas-md/obj/_id.md' which is not found in the documentation files.
+#WARNING  -  Documentation file 'schemas-md/obj/Allele.md' contains a link to 'schemas-md/obj/state.md' which is not found in the documentation files.
+#WARNING  -  Documentation file 'schemas-md/obj/Allele.md' contains a link to 'schemas-md/obj/type.md' which is not found in the documentation files.
+#WARNING  -  Documentation file 'schemas-md/obj/Complex Value.md' contains a link to 'schemas-md/obj/typedQuantities.md' which is not found in the documentation files.
+#WARNING  -  Documentation file 'schemas-md/obj/GestationalAge.md' contains a link to 'schemas-md/obj/days.md' which is not found in the documentation files.
+#WARNING  -  Documentation file 'schemas-md/obj/GestationalAge.md' contains a link to 'schemas-md/obj/weeks.md' which is not found in the documentation files.
+#WARNING  -  Documentation file 'schemas-md/obj/Haplotype.md' contains a link to 'schemas-md/obj/_id.md' which is not found in the documentation files.
+#WARNING  -  Documentation file 'schemas-md/obj/Haplotype.md' contains a link to 'schemas-md/obj/type.md' which is not found in the documentation files.
+#WARNING  -  Documentation file 'schemas-md/obj/Value.md' contains a link to 'schemas-md/obj/Quantity.md' which is not found in the documentation files.
+#WARNING  -  Documentation file 'schemas-md/obj/location.md' contains a link to 'schemas-md/obj/CURIE.md' which is not found in the documentation files.
+#WARNING  -  Documentation file 'schemas-md/obj/location.md' contains a link to 'schemas-md/obj/Location.md' which is not found in the documentation files.
+#WARNING  -  Documentation file 'schemas-md/obj/referenceRange.md' contains a link to 'schemas-md/obj/high.md' which is not found in the documentation files.
+#WARNING  -  Documentation file 'schemas-md/obj/referenceRange.md' contains a link to 'schemas-md/obj/low.md' which is not found in the documentation files.
+#=cut
+
+    # Changes in the repo won't be reflected here
     my $file           = shift;
     my $str_duoDataUse = <<EOF;
 ---
@@ -528,11 +601,119 @@ EOF
     return $yaml{$file};
 }
 
+sub add_tabs_with_examples {
+
+    # This subroutine is quick workaround to embed json links directly in Markdown
+    # We dound two alternatives for mkdocs
+    # A - https://pypi.org/project/mkdocs-embed-external-markdown/
+    #     Suboptimal - Only embed .md (not json) and issues with {{}} syntax
+    # B - https://pypi.org/project/mkdocs-include-markdown-plugin/
+    #     To be tested (Apr-01-2022)
+    my $schema = shift;
+    my $dir =
+      catdir( '../models/json/beacon-v2-default-model', $schema, 'examples' );
+    my $str = <<EOF;
+
+## Examples
+These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
+
+EOF
+
+    #=== "MIN"
+    #
+    #        ```
+    #        {
+    #        }
+    #        ```
+
+    # Will process al JSON files but only retain those having MAX, MIN or MID
+    # ---- biosample-MID-example.json  biosample-MIN-example.json -----
+    foreach my $file ( reverse sort glob("$dir/*.json") ) {
+        my $filename = basename($file);
+        my @tmp      = split /\-/, $filename;
+        my $label    = uc( $tmp[1] );
+        next unless ( $label eq 'MAX' || $label eq 'MID' || $label eq 'MIN' );
+        $str .= "=== \"$label\"\n";
+        $str .= "\t```\n";
+        open my $fh, "<", $file;
+        while (<$fh>) {
+            $str .= "\t$_";
+        }
+        close $fh;
+        $str .= "\n\t```\n\n";
+    }
+    return $str;
+}
+
+sub parse_json_keywords {
+
+    # We'll be using JSON Pointers to facilitate the search
+
+    my ( $property, $data ) = @_;
+    my $pointer = Mojo::JSON::Pointer->new($data);
+
+    # Defining some info (for > 1D we should be able to take this info from properties/type/const)
+    # but we have sub nested $keyowrds that complicate a lot the task
+    my $terms = {
+        'variation' =>
+          [ 'MolecularVariation', 'SystemicVariation', 'LegacyVariation' ],
+        'SystemicVariation'  => ['CopyNumber'],
+        'MolecularVariation' => [ 'Allele', 'Haplotype' ],
+        'location'           => [ 'CURIE', 'Location' ],
+        'state'              => [ 'SequenceState', 'SequenceExpression' ]
+    };
+
+    # We'll be checking <oneOf allOf anyOf>
+    for my $keyword (qw(oneOf allOf anyOf)) {
+
+        if ( $pointer->contains("/$keyword") ) {
+
+            #say "$property has /$keyword";
+            my $tmp_hash;
+            $tmp_hash->{type} = $keyword;
+
+            my $count = 0;
+            for my $elements ( @{ $data->{$keyword} } ) {
+
+                #if ($pointer->contains("/$keyword/$property/$count/properties/type/const")) {
+                #  say "Route pointer const /$keyword/$property/$count/properties/type/const";
+                #  my $const = $pointer->get("/$keyword/$property/$count/properties/type/const");
+                #   $tmp_hash->{properties}{$const} = $elements;
+                #} else{
+                my $tmp_term =  ($pointer->contains("/$keyword/$count/title") && $pointer->get("/$keyword/$count/title") ne 'Ontology Term') ? $pointer->get("/$keyword/$count/title") : @{ $terms->{$property} }[$count];
+                $tmp_hash->{properties}{ $tmp_term } = $elements if $tmp_term; # Ad-hoc some terms appear duplicated and come empty....
+                #}
+                $count++;
+            }
+            $data = $tmp_hash;    # Adding new reference
+        }
+    }
+    return $data;
+}
+
+sub add_vrs_url {
+
+    my ( $property, $data ) = @_;
+    my %url = (
+        'SequenceExpression' =>
+'https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/',
+        'CopyNumber' =>
+'https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/'
+    );
+    if ( exists $url{$property} ) {
+        $data->{properties} =
+            "[VRS definition for $property]" . '('
+          . $url{$property}
+          . $property . ')';
+    }
+    return $data;
+}
+
 1;
 
 =head1 NAME
 
-beacon_yaml2md: Script to convert Beacon v2 Model schemas to Markdown
+beacon_yaml2md: Script to convert Beacon v2 Models schemas to Markdown tables
 
 
 =head1 SYNOPSIS
@@ -556,7 +737,7 @@ To be defined.
 
 =head1 SUMMARY
 
-beacon_yaml2md: Script to convert Beacon v2 Model schemas to Markdown
+beacon_yaml2md: Script to convert Beacon v2 Models schemas to Markdown tables
 
 B<NOTE:> This script is B<UNDER CONSTRUCTION> and improvements are added often.
 
@@ -567,17 +748,44 @@ YAMLs schemas. Each time the original MS Word document was edited, someone had t
 
 This script inverts the process, i.e., B<it enforces modifying the schema specification directly at the YAML/JSON level>.
 
-Editing the schemas directly at the YAML/JSON leven has two advantages, the first is that (because we follow L<OpenAPI|https://swagger.io/specification/> specifications) the endpoints documentation can be directly displayed with L<SWAGGER UI|https://ga4gh-approval-service-registry.ega-archive.org>. The second is that the YAML/JSON files can be converted to Markdown tables in order to create L<Read The Docs|https://beacon-schema-2.readthedocs.io/en/latest/> documentation. This script B<transforms YAML/JSON to Markdown tables>, including their nested objects up to a third degree of hierarchy.
+Editing the schemas directly at the YAML/JSON leven has two advantages, the first is that (because we follow L<OpenAPI|https://swagger.io/specification/> specifications) the endpoints documentation can be directly displayed with L<SWAGGER UI|https://swagger.io/docs/open-source-tools/swagger-ui/usage/installation>. The second is that the YAML/JSON files can be converted to Markdown tables in order to create L<Markdown based documentation|http://docs.genomebeacons.org> documentation. This script B<transforms YAML/JSON to Markdown tables>, including their nested objects B<up to a third degree of hierarchy>.
 
-The B<Markdown> format can be directly rendered as tables at the L<GitHub repository|https://github.com/mrueda/beacon-schema-2/tree/main/docs/schemas-md>, and it can be used  with L<MkDocs|https://www.mkdocs.org/> to create  L<Read The Docs|https://beacon-schema-2.readthedocs.io/en/latest/> documentation. 
+The B<Markdown> format can be directly rendered as tables at the GitHub repository, and it can be used with L<MkDocs|https://www.mkdocs.org/> to create L<HTML|http://docs.genomebeacons.org> documentation. 
 
-Everytime a C<git push> is performed to the L<repo|https://github.com/mrueda/beacon-schema-2> the documentation at L<Read The Docs|https://beacon-schema-2.readthedocs.io/en/latest/> gets updated. Note that only content under directory C<docs/> will make it to L<Read The Docs|https://beacon-schema-2.readthedocs.io/en/latest/>.
+Everytime a C<git push> is performed to the L<repo|https://github.com/ga4gh-beacon/beacon-v2> the documentation at L<Github Pages|http://docs.genomebeacons.org> gets updated. Note that only content under directory C<docs/> will make it to L<Github Pages|http://docs.genomebeacons.org>.
 
 Before creating this tool, the author made an exhaustive search on what had been dveloped by the I<community> to automatically convert YAML/JSON to Markdown tables and found that there were many ways to go from YAML/JSON to HTML (e.g., CPAN, Python, Node.js), but not much from YAML/JSON to Markdown. Obviously, even in the case we had found something, some major tweaking will be needed in order to display things the way we want.
 
 In the Beacon context, I<mbaudis> has developed a nice framework for L<schemablocks|https://github.com/ga4gh-schemablocks/schemablocks-tools> which creates HTML from YAML schemas to be used with L<Yekyll|https://jekyllrb.com/>. However, personalizing his tools to work in our scenario will still not solve the initial objective of creating Markdown tables from the YAML/JSON.
 
 All of the above lead to the creation of this tool, which was written in L<Perl|https://www.perl.org> language.
+
+
+=head2 ADDENDUM: How to update Documentation
+
+There are several steps that need to be peformed to update the documentation:
+
+   1 - Install C<jsonref>.
+
+      $ sudo pip3 install jsonref #  Python 2 => sudo pip install jsonref
+
+      The reason for installing this tool is that we need it to convert JSON files with JSON references ($ref) to JSON files with no references (i.e., all references will be embeded in the file).
+
+   2 - Modify the two variables 'mod_dir' and 'fw_dir' inside transform_json2md.sh according to the Models and Framework directories.
+
+   4 - Now run the script:
+    
+     $ # cd bin # skip this step if you are already at bin directory
+
+     $ ./transform_json2md.sh
+
+     $ cd ..
+
+     $ git add docs/schemas-md
+
+   5 - Finally you need to push beacon-v2 repo to GitHub.
+
+   6 - Documentation will get automatically updated via GitHub actions.
 
 
 =head1 HOW TO RUN BEACON_YAML2MD
@@ -588,6 +796,7 @@ but you might need to manually install the below CPAN module(s).
     * YAML::XS
     * JSON::XS
     * Path::Tiny
+    * Mojo::JSON::Pointer
 
 First we install cpanminus (with sudo privileges):
 
@@ -595,11 +804,11 @@ First we install cpanminus (with sudo privileges):
 
 Then the module(s):
 
-   $ cpanm --sudo YAML::XS JSON::XS Path::Tiny
+   $ cpanm --sudo YAML::XS JSON::XS Path::Tiny Mojo::JSON::Pointer
 
 The script takes YAMLs as input file and when no arguments is used it will read them from C<../schemas/> directory.
 
-B<NB:> We recommend running the script with the provided bash file C<transform_yaml2md.sh> (B<see ADDENDUM: How to update Read The Docs documentation>).
+B<NB:> We recommend running the script with the provided bash file C<transform_yaml2md.sh> (B<see ADDENDUM: How to update Documentation>).
 
 B<Example 1:>
 
@@ -628,14 +837,12 @@ See the directory tree below:
 
 C<
 ```
- beacon-schema-2/
+ beacon-v2/
  |-- bin
  |-- docs
  |   |-- img
  |   `-- schemas-md
  |       `-- obj
- `-- schemas
-     `-- obj
 ```
 >
 
@@ -643,46 +850,17 @@ I<NB:> The script was built to work with the Beacon v2 Model schemas and the aut
 
 I<NB:> The decission to take YAMLs (and not JSON) as an input is deliberate and made by the author.
 
-
-=head2 ADDENDUM: How to update Read The Docs documentation
-
-There are several steps that need to be peformed to update readthedocs:
-
-   1 - Clone or download:
-
-     a ) Beacon v2 Models from L<Github|https://github.com/ga4gh-beacon/beacon-v2-Models>.
-
-     b ) Beacon framework v2 from L<Github|https://github.com/ga4gh-beacon/beacon-framework-v2>.
-
-   2 - Install C<jsonref> and C<jq>.
-
-      $ sudo pip3 install jsonref #  Python 2 => sudo pip install jsonref
-
-      The reason for installing this tool is that we need it to convert JSON files with JSON references ($ref) to JSON files with no references (i.e., all references will be embeded in the file).
-
-      $ sudo apt-get install jq
-
-      Tool needed to parse JSON files.
-
-   3 - Modify the two variables 'mod_dir' and 'fw_dir' inside transform_json2md.sh according to the paths from Step 1:
-       
-   4 - Inside 'bin' directory run:
-
-     $ ./transform_json2md.sh
-
-     $ cd ..
-     
-     $ git add schemas docs 
-
-   5 - Finally you need to push beacon-schema-2 repo to GitHub.
-
-   6 - Readthedocs should be updated.
-
+I<NB:> The script only processes the C<Terms> nested B<up to 3 degrees of hierarchy>. Before Adoption of VRS/PHX that limit was OK.
 
 =head1 AUTHOR 
 
 Written by Manuel Rueda, PhD. Info about EGA can be found at L<https://ega-archive.org/>.
 
+=head1 KNOWN ISSUES
+
+* The description/examples of the objects/terms correspond to the last created by the script. Ideally all shared-objects should have a common description.
+* As of March 2022 we're only processing 3 levels of nesting.
+* We are not processing <if: then:> statements in JSON Schema.
 
 =head1 REPORTING BUGS
 

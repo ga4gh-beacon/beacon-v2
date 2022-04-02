@@ -1,3 +1,3 @@
-|Field | description | type | properties | example | enum|
+|Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
 | availability | data availability | boolean | NA | NA | NA|

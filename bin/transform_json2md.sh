@@ -2,7 +2,7 @@
 #
 #   Script to convert Beacon v2 Models to Markdown
 #
-#   Last Modified: Jan/01/2021
+#   Last Modified: Apr/02/2022
 #
 #   Version 2.0.0
 #
@@ -24,10 +24,10 @@
 #   If this program helps you in your research, please cite.
 
 set -eu
-mod_dir=/media/mrueda/4TB/CRG_EGA/Project_Beacon/beacon-v2-Models-main/BEACON-V2-draft4-Model
-fw_dir=/media/mrueda/4TB/CRG_EGA/Project_Beacon/beacon-framework-v2-main
+mod_dir=/media/mrueda/4TB/CRG_EGA/Project_Beacon/beacon-v2-Models/BEACON-V2-Model
+fw_dir=/media/mrueda/4TB/CRG_EGA/Project_Beacon/readthedocs/beacon-v2-test/framework/json/
 fw_url=https://raw.githubusercontent.com/ga4gh-beacon/beacon-framework-v2/main
-out_dir=../schemas
+out_dir=./tmp_deref_schemas
 jsonref=./jsonref2json.py
 yaml2md=./beacon_yaml2md.pl
 yaml2json='perl -MYAML -MJSON -0777 -wnl -e'
@@ -42,27 +42,9 @@ Fixing errors in JSON
 EOT
 
 # Miscellanea errors in 'properties'
-sed -i 's#\./Age\.json#./age.json#' $mod_dir/common/ageRange.json
-
-# Errors from 'mkdocs serve'
-# 1 - ageGroup is an an ontologyTerm (https://raw.githubusercontent.com/ga4gh-beacon/beacon-framework-v2/main/common/ontologyTerm.json)
-# 2 - age.md (and nested 'iso8601duration') are not created (>3rd degree?)
-# ** 1 and 2 fixed below:
-cat $fw_dir/common/ontologyTerm.json | sed -e '1s#^#{"ageGroup":\n#' -e '$s#$#\n}#' | $yaml2json 'print YAML::Dump(decode_json($_))' | perl -pe 's/ \*(\d+)$/ $1/' > $out_dir/obj/ageGroup.yaml 
-sed -e '1s#^#{"age":\n#' -e '$s#$#\n}#' $mod_dir/common/age.json | $yaml2json 'print YAML::Dump(decode_json($_))' | perl -pe 's/ \*(\d+)$/ $1/' > $out_dir/obj/age.yaml
-cat $mod_dir/common/age.json | jq .properties | $yaml2json 'print YAML::Dump(decode_json($_))' | perl -pe 's/ \*(\d+)$/ $1/' > $out_dir/obj/iso8601duration.yaml
-
+# N/A
 # Errors in <genomicVariations>
-# identifiers/molecularAttributes/variantLevelData were enforced to be type:objects w/ properties
-#sed -e 's/"items": "string"/"items": {"type": "string"}/'  \
-#    -e 's/"Identifiers": {/"Identifiers": {"type": "object", "properties": {/' \
-#    -e '143s/},/}},/' \
-#    -e 's/"MolecularAttributes": {/"MolecularAttributes": {"type": "object", "properties": {/' \
-#    -e '175s/},/}},/' \
-#    -e 's/"VariantLevelData": {/"VariantLevelData": {"type": "object", "properties": {/' \
-#    -e '381s/},/}},/' \
-#    $mod_dir/genomicVariations/defaultSchema.json  |jq . > $mod_dir/genomicVariations/defaultSchema.json.json
-#mv  $mod_dir/genomicVariations/defaultSchema.json.json $mod_dir/genomicVariations/defaultSchema.json
+# N/A
 
 cat<<EOT
 ============================
@@ -72,6 +54,7 @@ Transforming Schemas to YAML
 EOT
 
 for schema in analyses biosamples cohorts datasets genomicVariations individuals runs
+#for schema in genomicVariations
 do
  mkdir -p $out_dir/$schema
 
@@ -81,9 +64,9 @@ do
  #   A: NodeJS => https://apitools.dev/json-schema-ref-parser/docs
  #   B: Python => https://pypi.org/project/jsonref/#description   <======== CHOSEN
  # NB: Dereferencing performed only at the schema-level
+ # jsonref needs FULL_PATH for external files (file:)
  echo "Fixing relative paths in JSON $schema ..."
  sed -e "s#$fw_url#file:$fw_dir#" \
-     -e 's#mmon/Age#mmon/age#' \
      -e "s#\.\./common#file:$mod_dir/common#" $mod_dir/$schema/defaultSchema.json > $out_dir/$schema/defaultSchema.mod.json
 
  echo "Dereferencing \$ref in JSON $schema ..."
@@ -103,7 +86,12 @@ Transforming Schemas to Markdown
 
 EOT
 
+# Running $yaml2md with option -D (delete previous objects)
 $yaml2md --D
+
+# Cleaning tmp_files
+echo "Deleting $out_dir/ files"
+rm -fr $out_dir/ 
 
 cat<<EOT
 

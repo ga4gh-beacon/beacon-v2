@@ -1,4 +1,4 @@
-|Field | description | type | properties | example | enum|
+|Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
 | [biosampleId](./obj/biosampleId.md) | Reference to the biosample ID. | string | NA | 008dafdd-a3d1-4801-8c0a-8714e2b58e48 | NA|
 | [id](./obj/id.md) | Run ID. | string | NA | SRR10903401 | NA|

@@ -1,3 +1,3 @@
-|Field | description | type | properties | example | enum|
+|Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| value | Quantification of the exposure. | number | NA | NA | NA|
+| value | The value of the quantity in the units | number | NA | NA | NA|

@@ -1,3 +1,3 @@
-|Field | description | type | properties | example | enum|
+|Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| location | A contiguous segment of a biological sequence. | NA | NA | NA | NA|
+| location | NA | oneOf | [CURIE](./CURIE.md), [Location](./Location.md) | NA | NA|

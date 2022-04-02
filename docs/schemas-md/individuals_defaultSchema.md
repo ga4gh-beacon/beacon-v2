@@ -1,4 +1,4 @@
-|Field | description | type | properties | example | enum|
+|Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
 | [diseases](./obj/diseases.md) | List of disease(s) been diagnosed to the individual, defined by disease ontology ID(s), age of onset, stage and the presence of family history. | array | [ageOfOnset](./obj/ageOfOnset.md), [diseaseCode](./obj/diseaseCode.md), [familyHistory](./obj/familyHistory.md), [notes](./obj/notes.md), [severity](./obj/severity.md), [stage](./obj/stage.md) | NA | NA|
 | [ethnicity](./obj/ethnicity.md) | Definition of an ontology term. | object | [id](./obj/id.md), [label](./obj/label.md) | NA | NA|

@@ -1,4 +1,4 @@
-|Field | Description | Type | Properties | Example | Enum|
+|Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
 | [aligner](./obj/aligner.md) | Reference to mapping/alignment software | string | NA | bwa-0.7.8 | NA|
 | [analysisDate](./obj/analysisDate.md) | Date at which analysis was performed. | string | NA | 2021-10-17 | NA|

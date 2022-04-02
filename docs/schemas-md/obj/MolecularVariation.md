@@ -1,3 +1,3 @@
-|Field | description | type | properties | example | enum|
+|Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| MolecularVariation | A variation on a contiguous molecule. | NA | NA | NA | NA|
+| MolecularVariation | NA | oneOf | [Allele](./Allele.md), [Haplotype](./Haplotype.md) | NA | NA|

@@ -1,3 +1,3 @@
-|Field | description | type | properties | example | enum|
+|Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| measurementValue | The result of the measurement | NA | NA | NA | NA|
+| measurementValue | NA | oneOf | [Complex Value](./Complex Value.md), [Value](./Value.md) | NA | NA|
