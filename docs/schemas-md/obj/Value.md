@@ -1,3 +1,3 @@
 |Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| Value | NA | oneOf | [Quantity](./Quantity.md) | NA | NA|
+| value | The value of the quantity in the units | number | NA | NA | NA|

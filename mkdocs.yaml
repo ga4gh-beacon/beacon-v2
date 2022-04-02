@@ -85,7 +85,7 @@ nav:
            - Terms List: schemas-md/beacon_terms.md
         - Filters: filters.md
         - REST API: rest-api.md
-    - Example Queries:
+    - Querying Beacons:
         - Genomic Queries: variant-queries.md
     - External Links:
         - Beacon Project &#8599;: http://beacon-project.io
