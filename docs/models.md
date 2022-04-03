@@ -20,6 +20,8 @@ A **Beacon instance** is just an implementation of a Beacon Model that follows t
 If you are a Beacon implementer, then, you don't need to clone the Framework repo, you only need to **copy** (*or clone*) the Beacon Model and modify it to your specific case. You will find plenty of references to the Framework in the Model copy, and you will use the Json schemas there to validate that both the structure of your requests and responses are compliant with the Beacon Framework. The Framewrok is not used to check the schema in the responses payload (e.g. the actual details of a biosample of a cohort). The schemas for that are included in the Model that you should have copied.
 
 
+<figure markdown>
+
 ``` mermaid
 classDiagram
 
@@ -109,6 +111,8 @@ classDiagram
         ...
     }
 ```
+  <figcaption>Beacon v2 Models entities and their relationships</figcaption>
+</figure>
 
 The above entities are defined as follows;
 
