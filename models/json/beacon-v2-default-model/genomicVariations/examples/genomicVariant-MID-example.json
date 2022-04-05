@@ -111,7 +111,7 @@
                 },
                 "type": "SequenceInterval"
             },
-            "sequenceId": "refseq:NC_000001.11",
+            "sequence_id": "refseq:NC_000001.11",
             "type": "SequenceLocation"
         },
         "referenceBases": "G",

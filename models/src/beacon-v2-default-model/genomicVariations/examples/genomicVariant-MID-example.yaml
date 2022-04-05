@@ -14,7 +14,7 @@ variation:
       end:
         type: Number
         value: 55039980
-    sequenceId: refseq:NC_000001.11
+    sequence_id: refseq:NC_000001.11
 identifiers:
   variantAlternativeIds:
     - dbSNP:rs3975092470

@@ -15,7 +15,7 @@
                 },
                 "type": "SequenceInterval"
             },
-            "sequenceId": "refseq:NC_000001.10",
+            "sequence_id": "refseq:NC_000001.10",
             "type": "SequenceLocation"
         },
         "variantType": "SNP"
