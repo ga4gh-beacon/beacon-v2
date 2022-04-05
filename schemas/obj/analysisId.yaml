@@ -1,5 +1,0 @@
----
-analysisId:
-  description: Reference to the bioinformatics analysis ID (`analysis.id`)
-  example: pgxcs-kftvldsu
-  type: string

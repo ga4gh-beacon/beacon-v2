@@ -1,5 +1,0 @@
----
-biosampleId:
-  description: Reference to the biosample ID.
-  example: 008dafdd-a3d1-4801-8c0a-8714e2b58e48
-  type: string

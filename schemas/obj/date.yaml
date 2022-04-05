@@ -1,5 +1,0 @@
----
-date:
-  description: Date of the exposure in ISO8601 format.
-  format: date
-  type: string

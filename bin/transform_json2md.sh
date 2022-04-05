@@ -24,10 +24,10 @@
 #   If this program helps you in your research, please cite.
 
 set -eu
-mod_dir=/media/mrueda/4TB/CRG_EGA/Project_Beacon/beacon-v2-Models/BEACON-V2-Model
-fw_dir=/media/mrueda/4TB/CRG_EGA/Project_Beacon/readthedocs/beacon-v2-test/framework/json/
+mod_dir=/media/mrueda/4TB/CRG_EGA/Project_Beacon/readthedocs/beacon-v2/models/json/beacon-v2-default-model
+fw_dir=/media/mrueda/4TB/CRG_EGA/Project_Beacon/readthedocs/beacon-v2/framework/json
 fw_url=https://raw.githubusercontent.com/ga4gh-beacon/beacon-framework-v2/main
-out_dir=./tmp_deref_schemas
+out_dir=./deref_schemas
 jsonref=./jsonref2json.py
 yaml2md=./beacon_yaml2md.pl
 yaml2json='perl -MYAML -MJSON -0777 -wnl -e'
@@ -90,8 +90,8 @@ EOT
 $yaml2md --D
 
 # Cleaning tmp_files
-echo "Deleting $out_dir/ files"
-rm -fr $out_dir/ 
+#echo "Deleting $out_dir/ files"
+#rm -fr $out_dir/ 
 
 cat<<EOT
 

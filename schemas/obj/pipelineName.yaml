@@ -1,4 +1,0 @@
----
-pipelineName:
-  description: Analysis pipeline and version if a standardized pipeline was used
-  type: string

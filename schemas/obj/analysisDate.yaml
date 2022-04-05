@@ -1,5 +1,0 @@
----
-analysisDate:
-  description: Date at which analysis was performed.
-  format: date
-  type: string

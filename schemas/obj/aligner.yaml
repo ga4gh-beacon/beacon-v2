@@ -1,6 +1,0 @@
----
-aligner:
-  description: Reference to mapping/alignment software
-  examples:
-  - bwa-0.7.8
-  type: string

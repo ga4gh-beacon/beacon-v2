@@ -1,5 +1,0 @@
----
-individualId:
-  description: Reference to the individual ID.
-  example: TCGA-AO-A0JJ
-  type: string

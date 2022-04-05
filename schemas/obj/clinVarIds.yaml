@@ -1,9 +1,0 @@
----
-clinVarIds:
-  examples:
-  - RCV000009910.19
-  - 9325
-  - VCV000009325.28
-  items:
-    type: string
-  type: array

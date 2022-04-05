@@ -1,4 +1,0 @@
----
-availabilityCount:
-  description: count of individuals with data available
-  type: integer

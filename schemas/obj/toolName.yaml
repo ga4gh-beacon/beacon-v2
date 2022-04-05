@@ -1,5 +1,0 @@
----
-toolName:
-  description: Name of the tool.
-  example: Ensembl Variant Effect Predictor (VEP)
-  type: string

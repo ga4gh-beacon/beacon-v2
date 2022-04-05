@@ -1,7 +1,0 @@
----
-toolReferences:
-  description: References to the tool
-  examples:
-    - bio.toolsId: https://bio.tools/vep
-    - url: http://www.ensembl.org/vep
-  type: object

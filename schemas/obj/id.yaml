@@ -1,5 +1,0 @@
----
-id:
-  description: Run ID.
-  example: SRR10903401
-  type: string

@@ -1,4 +1,0 @@
----
-pipelineRef:
-  description: Link to Analysis pipeline resource
-  type: string

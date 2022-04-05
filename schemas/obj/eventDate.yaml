@@ -1,9 +1,0 @@
----
-eventDate:
-  description: date of collection event/data point
-  examples:
-  - 2018-10-1
-  - 2019-04-23
-  - 2020-09-11
-  format: datetime
-  type: string

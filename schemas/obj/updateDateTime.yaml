@@ -1,8 +1,0 @@
----
-updateDateTime:
-  description: The time the dataset was updated in (ISO 8601 format)
-  examples:
-  - 2012-07-19
-  - 2017-01-17T20:33:40Z
-  format: date-time
-  type: string

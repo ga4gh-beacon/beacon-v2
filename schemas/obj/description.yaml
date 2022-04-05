@@ -1,6 +1,0 @@
----
-description:
-  description: Description of the dataset
-  examples:
-  - This dataset provides examples of the actual data in this Beacon instance.
-  type: string

@@ -1,4 +1,0 @@
----
-affected:
-  description: Is the individual affected by the disease in the pedigree?
-  type: boolean

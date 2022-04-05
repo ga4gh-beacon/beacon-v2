@@ -1,9 +1,0 @@
----
-eventNum:
-  description: cardinality of the collection event / data point in a series
-  examples:
-  - 1
-  - 2
-  - 3
-  - 4
-  type: integer

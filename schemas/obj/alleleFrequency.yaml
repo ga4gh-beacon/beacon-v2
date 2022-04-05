@@ -1,6 +1,0 @@
----
-alleleFrequency:
-  description: Allele frequency between 0 and 1.
-  examples:
-  - 3.186e-05
-  type: number

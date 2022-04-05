@@ -1,5 +1,0 @@
----
-frequency:
-  description: 'The number of times a substance is administered within a specific
-    time period. [ NCIT:C89081 ] '
-  type: string

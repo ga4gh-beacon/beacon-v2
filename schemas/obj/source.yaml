@@ -1,7 +1,0 @@
----
-source:
-  description: The study
-  examples:
-  - The Genome Aggregation Database (gnomAD)
-  - The European Genome-phenome Archive (EGA)
-  type: string

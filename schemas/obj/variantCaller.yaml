@@ -1,6 +1,0 @@
----
-variantCaller:
-  description: Reference to variant calling software / pipeline
-  examples:
-  - GATK4.0
-  type: string

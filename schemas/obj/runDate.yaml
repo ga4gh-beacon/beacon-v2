@@ -1,5 +1,0 @@
----
-runDate:
-  description: Date at which the experiment was performed.
-  format: date
-  type: string
