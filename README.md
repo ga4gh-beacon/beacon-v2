@@ -49,7 +49,7 @@ Steps 1 & 2 obviously won't be necessary after transitioning to the respective `
 
 ### Changes
 
-* change notes with respect to the repository & documentation are now in [docs.genomenbeacons.org](http://docs.genomenbeacons.org/bugs-changes-log/)
+* change notes with respect to the repository & documentation are now in [docs.genomebeacons.org](http://docs.genomebeacons.org/bugs-changes-log/)
 
 ## Directory structure
 
