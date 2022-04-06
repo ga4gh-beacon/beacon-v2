@@ -84,10 +84,25 @@ handle extended options depending on the user's authentication status.
 
 ==TBD==
 
-### Data Handover
+### [H—>O] Beacon Handovers for Data Delivery
 
-==TBD==
+While the Beacon v1 response was restricted to aggregate data and Beacon v2 itself provides
+schemas for structuring response objects (e.g. henomic variation  or biosample data) 
+the protocol can be expanded by providing custom access methods to data elements
+matched by a Beacon query. Since November 2018, Beacon v1.n has included support for a "handover" protocol,
+in which rich data content can be provided from linked services, initiated through a Beacon query[^2].
+
+Typical examples of `Handover` use include:
+
+* access to restricted data, in which a handover URL points to data behind an authentication service
+or Firewall
+* delivery of large/binary datasets, e.g. original array data or BAM files for a guiven analysis
+* asynchronous calls in which a front-end follows handover URLs for additional data
+
 
 
 [^1]: Privacy protecting as in "reasonably protecting by design but not immune to complex
 re-identification attacks".
+
+[^2]: An early discussion of the topic can e.g. be found in the Beacon developer area on [Github](https://github.com/ga4gh-beacon/specification/issues/114). As of 2018-11-13, the __handover__ concept had become part of the [code development](https://github.com/ga4gh-beacon/specification/pull/230/files).
+
