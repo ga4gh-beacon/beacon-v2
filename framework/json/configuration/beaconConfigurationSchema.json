@@ -45,8 +45,9 @@
                 "securityLevels": {
                     "description": "All access levels supported by the Beacon. Any combination is valid, as every option would apply to different parts of the Beacon.",
                     "items": {
-                        "$comment": "TO DO: Check if values can be made unique.",
-                        "default": "CONTROLLED",
+                        "default": [
+                            "CONTROLLED"
+                        ],
                         "enum": [
                             "PUBLIC",
                             "REGISTERED",
