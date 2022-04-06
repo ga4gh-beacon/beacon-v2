@@ -77,7 +77,7 @@ The examples are for different forma of the `location` property inside a `genomi
         },
         "location": {
             "type": "SequenceLocation",
-            "sequenceId": "refseq:NC_000017.11",
+            "sequence_id": "refseq:NC_000017.11",
             "interval": {
                 "type": "SequenceInterval",
                 "start": {
@@ -98,10 +98,10 @@ The examples are for different forma of the `location` property inside a `genomi
     ```json
     "variation": {
         "type": "RelativeCopyNumber",
-        "relativeCopyClass": "partial loss",
+        "relative_copy_class": "partial loss",
         "location": {
             "type": "SequenceLocation",
-            "sequenceId": "refseq:NC_000018.10",
+            "sequence_id": "refseq:NC_000018.10",
             "interval": {
                 "start": {
                     "type": "Number",
@@ -125,7 +125,7 @@ The examples are for different forma of the `location` property inside a `genomi
         "alternateBases": "G",
         "location": {
             "type": "SequenceLocation",
-            "sequenceId": "refseq:NC_000017.11",
+            "sequence_id": "refseq:NC_000017.11",
             "interval": {
                 "type": "SequenceInterval",
                 "start": {
@@ -148,7 +148,7 @@ The examples are for different forma of the `location` property inside a `genomi
         "variantType": "DEL",
         "location": {
             "type": "SequenceLocation",
-            "sequenceId": "refseq:NC_000018.10",
+            "sequence_id": "refseq:NC_000018.10",
             "interval": {
                 "start": {
                     "type": "Number",
