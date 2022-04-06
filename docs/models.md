@@ -15,13 +15,13 @@ The Framework could be considered the *syntax* and the Model as the *semantics*.
 
 Refer to the [Framework](framework.md) {{config.repo_framework_icon}} for further information about the Framework and its parts.
 
-A **Beacon instance** is just an implementation of a Beacon Model that follows the rules stated by the Beacon Framework.
+A **beacon instance** is just an implementation of a Beacon Model that follows the rules stated by the Beacon Framework.
 
-!!! Attention "Beacon default model vs. Beacon instances"
+!!! Attention "Beacon default model vs. beacon instances"
 
     While the Beacon default model provides templates for responses and formats for uniform data delivery
     - especially for networked beacons - it does not prescribe how data should be organised in individual
-    instances. 
+    instances or what schemas should be used for local storage. 
 
 If you are a Beacon implementer, then, you don't need to clone the Framework repo, you only need to **copy** (*or clone*) the Beacon Model and modify it to your specific case. You will find plenty of references to the Framework in the Model copy, and you will use the Json schemas there to validate that both the structure of your requests and responses are compliant with the Beacon Framework. The Framewrok is not used to check the schema in the responses payload (e.g. the actual details of a biosample of a cohort). The schemas for that are included in the Model that you should have copied.
 
