@@ -28,6 +28,7 @@ paths:
         - $ref: '#/components/parameters/genomicAlleleShortForm'
         - $ref: '#/components/parameters/geneId'
         - $ref: '#/components/parameters/aminoacidChange'
+        - $ref: '#/components/parameters/filters'
       description: Get a list of example entries
       operationId: getExampleEntries
       tags:
@@ -274,3 +275,14 @@ components:
       schema:
         type: string
       example: V600E
+    filters:
+      name: filters
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+        examples:
+          -   - EFO:0009655
+          -   - NCIT:C48725
+              - NCIT:C28080

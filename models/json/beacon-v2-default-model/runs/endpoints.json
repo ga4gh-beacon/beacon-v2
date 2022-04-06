@@ -17,6 +17,21 @@
                     "type": "string"
                 }
             },
+            "filters": {
+                "in": "query",
+                "name": "filters",
+                "schema": {
+                    "examples": [
+                        [
+                            "OBI:0002048"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
             "includeResultsetResponses": {
                 "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses"
             },
@@ -106,6 +121,9 @@
                     },
                     {
                         "$ref": "#/components/parameters/includeResultsetResponses"
+                    },
+                    {
+                        "$ref": "#/components/parameters/filters"
                     }
                 ],
                 "responses": {

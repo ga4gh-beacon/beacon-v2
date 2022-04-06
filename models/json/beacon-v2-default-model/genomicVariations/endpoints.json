@@ -45,6 +45,25 @@
                     "type": "string"
                 }
             },
+            "filters": {
+                "in": "query",
+                "name": "filters",
+                "schema": {
+                    "examples": [
+                        [
+                            "EFO:0009655"
+                        ],
+                        [
+                            "NCIT:C48725",
+                            "NCIT:C28080"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
             "geneId": {
                 "example": "BRAF",
                 "in": "query",
@@ -221,6 +240,9 @@
                     },
                     {
                         "$ref": "#/components/parameters/aminoacidChange"
+                    },
+                    {
+                        "$ref": "#/components/parameters/filters"
                     }
                 ],
                 "responses": {

@@ -9,6 +9,21 @@
                     "type": "string"
                 }
             },
+            "filters": {
+                "in": "query",
+                "name": "filters",
+                "schema": {
+                    "examples": [
+                        [
+                            "OMIABIS:0001017"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
             "limit": {
                 "in": "query",
                 "name": "limit",
@@ -104,6 +119,9 @@
                     },
                     {
                         "$ref": "#/components/parameters/limit"
+                    },
+                    {
+                        "$ref": "#/components/parameters/filters"
                     }
                 ],
                 "responses": {

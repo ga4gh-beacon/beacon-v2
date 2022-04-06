@@ -17,6 +17,7 @@ paths:
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/includeResultsetResponses'
+        - $ref: '#/components/parameters/filters'
       description: Get a list of bioinformatics analysis
       operationId: getAnalyses
       tags:
@@ -156,3 +157,12 @@ components:
       required: true
       schema:
         type: string
+    filters:
+      name: filters
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+        examples:
+          -   - variantcaller:GATK4.0

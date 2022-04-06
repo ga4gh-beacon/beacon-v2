@@ -21,6 +21,7 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/filters'
       description: Get a list of cohorts
       operationId: getCohorts
       tags:
@@ -207,3 +208,12 @@ components:
       required: true
       schema:
         type: string
+    filters:
+      name: filters
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+        examples:
+          -   - OMIABIS:0001017
