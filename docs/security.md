@@ -2,6 +2,11 @@
 
 The Beacon uses a 3-tiered access model: `anonymous`, `registered`, and `controlled access`.
 
+!!! Warning "Disclaimer"
+        A stand-alone regulatory and ethics review has been performed on the specification itself, 
+        however, it is the responsibility of the implementer to ensure that appropriate measures are taken 
+        to remove risks related to privacy, confidentiality, and/or security of data.
+
 !!! Important "Technical Notes"
 
         For detailed information about the technical implementation of the different levels
