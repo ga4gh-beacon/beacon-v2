@@ -4,8 +4,8 @@
 
 The GA4GH Beacon specification is composed by two parts:
 
-* the Beacon Framework (in *this* repo) 
-* the Beacon Model (in the [Models repo](https://github.com/ga4gh-beacon/beacon-v2-Models))
+* the Beacon [Framework](framework.md) {{config.repo_framework_icon}}
+* the Beacon [Models](models.md) {{config.repo_models_icon}}
 
 The **Beacon Framework** is the part that describes the overall structure of the API requests, responses, parameters, the common components, etc. It could also be referred in this document as simply the *Framework*.
 
@@ -13,7 +13,7 @@ A **Beacon Model** describes the set of concepts included in a Beacon version (e
 
 The Framework could be considered the *syntax* and the Model as the *semantics*. 
 
-Refer to the [Models repo](https://github.com/ga4gh-beacon/beacon-v2-Models) for further information about the Model and how to use it.
+Refer to the [Models](models.md) {{config.repo_models_icon}} for further information about the default model and how to use it.
 
 The Framework doesn't include anything related to specific entities but only the mechanisms for querying them and parsing the responses. 
 The BF is, therefore, independent from/agnostic to any specific Model. It can be leveraged to describe models from other domains like proteomics, imaging, biobanking, etc.
@@ -33,7 +33,6 @@ The Framework repo includes the elements that are common to all Beacons:
 ### Coding and naming conventions
 
 Please visit the [Standards Page](formats-standards.md)
-
 
 ## Folder structure in the framework repo
 
