@@ -30,7 +30,7 @@ These are examples extracted directly from the [GitHub repository](https://githu
 	                },
 	                "type": "SequenceInterval"
 	            },
-	            "sequenceId": "refseq:NC_000001.10",
+	            "sequence_id": "refseq:NC_000001.10",
 	            "type": "SequenceLocation"
 	        },
 	        "variantType": "SNP"
@@ -56,7 +56,7 @@ These are examples extracted directly from the [GitHub repository](https://githu
 	                },
 	                "type": "SequenceInterval"
 	            },
-	            "sequenceId": "refseq:NC_000001.10",
+	            "sequence_id": "refseq:NC_000001.10",
 	            "type": "SequenceLocation"
 	        },
 	        "state": {
@@ -183,7 +183,7 @@ These are examples extracted directly from the [GitHub repository](https://githu
 	                },
 	                "type": "SequenceInterval"
 	            },
-	            "sequenceId": "refseq:NC_000001.11",
+	            "sequence_id": "refseq:NC_000001.11",
 	            "type": "SequenceLocation"
 	        },
 	        "referenceBases": "G",

@@ -46,7 +46,7 @@ sub beacon_yaml2md {
     my $version = '2.0.0';
 
     # https://github.com/ga4gh-beacon/beacon-v2-Models/tree/main/BEACON-V2-draft3-Model
-    my $schema_dir   = './tmp_deref_schemas';
+    my $schema_dir   = './deref_schemas';
     my $markdown_dir = '../docs/schemas-md';
     my $obj          = 'obj';
 
@@ -647,13 +647,12 @@ EOF
 
 sub parse_json_keywords {
 
-    # We'll be using JSON Pointers to facilitate the search
-
+    # We'll be using JSON Pointer to facilitate the search
     my ( $property, $data ) = @_;
     my $pointer = Mojo::JSON::Pointer->new($data);
 
     # Defining some info (for > 1D we should be able to take this info from properties/type/const)
-    # but we have sub nested $keyowrds that complicate a lot the task
+    # but we have sub nested $keywords that complicate a lot the task
     my $terms = {
         'variation' =>
           [ 'MolecularVariation', 'SystemicVariation', 'LegacyVariation' ],
