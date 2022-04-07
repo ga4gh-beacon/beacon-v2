@@ -22,10 +22,8 @@ The current version of the protocol is **v2** and introduces new features which 
 
 !!! Attention "Framework interdependency, releases and alternative models"
 
-    In principle, the separation of framework and models allows for different models in domains outside of
-    the genomics focussed Beacon v2 realm, e.g. “Imaging Beacon”, to be built using the same Framework. However,
-    for the Beacon v2 developent we consider the "genomics beacon" default model as interdependent with the framework,
-    with combined releases for subsequent major version updates.
+    In principle, this system allows for different Models (in other domains outside of the Beacon v2 realm, e.g. “Imaging Beacon”) to be built using the same Framework. However, in the current context of Beacon v2, we consider the two elements interdependent and likely to be updated together for subsequent major versions (e.g. from v2 to v3).
+
 
 !!! Note "About UI"
     Most of the information that you will find here is related to the Beacon v2 specification. For that reason, in the documentation the examples are shown as REST API requests/responses in the form of [JSON](https://www.json.org/json-en.html). If you are only interested in using beacon with a **graphical interface** please visit the [implementations](implementations-options.md) page. 
