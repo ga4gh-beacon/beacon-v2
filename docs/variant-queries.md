@@ -92,7 +92,7 @@ in the _EIF4A1_ eukaryotic translation initiation factor 4A1.
 	Before Beacon v0.4 a 1-based coordinate system was being used.
 
 
-## Beacon _Range Queries_ and _GeneId Queries_
+## Beacon _Range Queries_
 
 Beacon _Range Queries_ are supposed to return matches of any variant with at least
 partial overlap of the sequence range specified by `reference_name`, `start` and `end`
@@ -100,16 +100,11 @@ parameters.
 
 ![Beacon Range Query Schema](img/BeaconRangeQuery-graphics.png)
 
-_GeneId Queries_ are in essence a variation of _Range Queries_ in which the coordinates
-are replaced by the [HGNC](https://www.genenames.org) gene symbol. It is left to the
-implementation if the matching is done on variants annotated for the gene symbol or if
-a positional translation is being applied. 
-
 #### Parameters
 
 * `referenceName`
-* `start` (single value)
-* `end` (single value)
+* `start` (**single** value)
+* `end` (**single** value)
 * optional
 	- `variantType` **OR** `alternateBases` **OR** `aminoacidChange`
 	- `variantMinLength`
@@ -126,12 +121,6 @@ a positional translation is being applied.
 
 	```
 	?assemblyId=GRCh38&referenceName=17&start=7572837&end=7578641
-	```
-
-=== "Beacon v2 GET for `geneId`"
-
-	```
-	?geneId=EIF4A1
 	```
 
 === "Beacon v2 POST"
@@ -172,6 +161,28 @@ a positional translation is being applied.
 	Range Queries are new to Beacon v2
 
 
+## Beacon _GeneId Queries_
+
+_GeneId Queries_ are in essence a variation of _Range Queries_ in which the coordinates
+are replaced by the [HGNC](https://www.genenames.org) gene symbol. It is left to the
+implementation if the matching is done on variants annotated for the gene symbol or if
+a positional translation is being applied. 
+
+#### Parameters
+
+* `geneId`
+* optional
+	- `variantType` **OR** `alternateBases` **OR** `aminoacidChange`
+	- `variantMinLength`
+	- `variantMaxLength`
+
+=== "Beacon v2 GET for `geneId` (deletion CNV)"
+
+	```
+	?geneId=EIF4A1&variantMaxLength=1000000&variantType=DEL
+	```
+
+
 ## Beacon _Bracket Queries_
 
 _Bracket Queries_ allow the specification of sequence ranges for both start and end
@@ -193,6 +204,7 @@ differing in their exact base extents.
     Bracket queries require the use of **two** `start` and `end` parameters, in contrast
     to _Range Queries_.
 
+
 #### Example: CNV Query - _TP53_ Deletion Query by Coordinates
 
 The following example shows a "bracket query" for focal deletions of the _TP53_ gene locus:
@@ -206,13 +218,19 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 === "Beacon v2 GET"
 
 	```
-	?datasetIds=TEST&referenceName=NC_000017.11&variantType=DEL&start=5000000&start=7676592&end=7669607&end=10000000
+	?datasetIds=TEST&referenceName=NC_000017.11&variantType=DEL&start=5000000,7676592&end=7669607,10000000
 	```
 
 	#### Optional
 
 	* `datasetIds=__some-dataset-ids__`
 	* `filters` ...
+
+	!!! Attention "List Parameters in GET Requests"
+
+		Since the direct interpretation of list parameters in queries is not supported by
+		some server environments (e.g. PHP, GO…), list parameters such as `start` and `end`
+		should be provided as **comma-concatenated** strings when using them in GET requests.
 
 
 === "Beacon v2 POST"
@@ -253,7 +271,7 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 === "Beacon v1"
 
 	```
-	?assemblyId=GRCh38&referenceName=17&variantType=DEL&start=5000000&start=7676592&end=7669607&end=10000000
+	?assemblyId=GRCh38&referenceName=17&variantType=DEL&start=5000000,7676592&end=7669607,10000000
 	```
 
 	#### Optional
@@ -266,12 +284,42 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 	CNV query options were only implemented with Beacon v0.4, based on Beacon<sup>+</sup> prototyping.
 
 
+## Genomic Allele Query (Short Form)
+
+==TBD==
+
+=== "Beacon v2 GET"
+
+	```
+	?allele=NM_004006.2:c.4375C>T
+	```
+
+	==to be completed==
+
+## Aminoacid Change Query
+
+==TBD==
+
+=== "Beacon v2 GET"
+
+	```
+	?aminoacidChange=V600E
+	```
+
+	==to be complete==
+
 ## `variantType` Parameter Interpretation
 
 The `variantType` parameter is essential for scoping queries beyond precise sequence
 queries. While versions of Beacon before v2 had demonstrated the use of a few, VCF
 derived values (particularly for CNV queries using `DUP` or `DEL`), the relation of these
 values to underlying genomic variations had not been precisely defined.
+
+!!! Attention "Implementation of `variantType` in Beacon Instances"
+
+	The current Beacon query model does not limit the use of values for `variantType` since
+	at this time no single specification provides unanimous definitions
+	of genomic variation categories. 
 
 ??? Note "Future `variantType` parameter use"
 
