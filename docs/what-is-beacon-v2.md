@@ -9,9 +9,9 @@ Beacon v2 is a **protocol/specification** established by the **Global Alliance f
 
 The current version of the protocol is **v2** and introduces new features which were considered important by the community such as:
 
-* extended and clearer specified genomic variation queries, including patterns (wildcards) and region queries (i.e. returning variants within a genomic/chromosomal region)
+* extended and clearer specified [genomic variation queries](/variant-queries), including patterns (wildcards) and region queries (i.e. returning variants within a genomic/chromosomal region)
 * get a list of samples related to a phenotype, provided the required authentication or authorization
-* powerful _filters_, primarily based on CURIE terms for ontologies and references, including options to control the use of hierarchical terms or the precision of term matching
+* powerful [_filters_](/filters), primarily based on CURIE terms for ontologies and references, including options to control the use of hierarchical terms or the precision of term matching
 * scoped data delivery (e.g. matched variant details or sample information) as part of Beacon responses or through _handover_ protocols
 
 !!! Important "Beacon v2 Components"
@@ -20,6 +20,12 @@ The current version of the protocol is **v2** and introduces new features which 
 
     The [Framework](framework.md) {{config.repo_framework_icon}} contains the format for requests and responses, whereas the [Models](framework.md) {{config.repo_models_icon}} contain the data structure (schemas) for the biological data. The overall function of these components is to provide the instructions to design a **REST API** (REpresentational State Transfer Application Programming Interface) with **OpenAPI** Specification (OAS). The [OAS](https://swagger.io/resources/open-api)  defines a standard, language-agnostic interface that is used by software developers to implement [REST APIs](https://en.wikipedia.org/wiki/Overview_of_RESTful_API_Description_Languages). 
 
+!!! Attention "Framework interdependency, releases and alternative models"
 
-!!! Danger "About UI"
+    In principle, the separation of framework and models allows for different models in domains outside of
+    the genomics focussed Beacon v2 realm, e.g. “Imaging Beacon”, to be built using the same Framework. However,
+    for the Beacon v2 developent we consider the "genomics beacon" default model as interdependent with the framework,
+    with combined releases for subsequent major version updates.
+
+!!! Note "About UI"
     Most of the information that you will find here is related to the Beacon v2 specification. For that reason, in the documentation the examples are shown as REST API requests/responses in the form of [JSON](https://www.json.org/json-en.html). If you are only interested in using beacon with a **graphical interface** please visit the [implementations](implementations-options.md) page. 
