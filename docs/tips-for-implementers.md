@@ -5,24 +5,21 @@ If this is the case, these are some things to get you started:
 ![Option A](img/tips-for-implementers-img1.png)
 
 1. Start with a [boolean](beacon-flavours.md) beacon
-
 2. List your available [endpoints](framework.md)
-
-3. Map the data from your DB to the [Models](models.md)
-
+3. Map the data from your DB to the [Models](models.md) {{config.repo_models_icon}}
 4. Handle the different types of [filters](filters.md)
-
-5. Build a response following the [Framework](framework.md)
+5. Build a response following the [Framework](framework.md) {{config.repo_framework_icon}}
 
 ## Request Example
-```
+
+```json
 {
   "meta": {
     "apiVersion": "v2.0",
     "requestedSchemas": [
       {
-        "entityType": "EntryTypeA",
-        "schema": "entry-typeA-schema-v2.0"
+        "entityType": "biosample",
+        "schema": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/biosamples/defaultSchema.json"
       }
     ]
   },
@@ -52,15 +49,16 @@ If this is the case, these are some things to get you started:
 ```
 
 ## Response Example
-```
+
+```json
 {
   "meta": {
     "beaconId": "org.example.beacon.v2",
     "apiVersion": "v2.0",
     "returnedSchemas": [
       {
-        "entityType": "EntryTypeA",
-        "schema": "entry-typeA-schema-v2.0"
+        "entityType": "biosample",
+        "schema": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/biosamples/defaultSchema.json"
       }
     ],
     "receivedRequestSummary": {
@@ -70,8 +68,8 @@ If this is the case, these are some things to get you started:
       "includeResultsetResponses": "HIT",
       "requestedSchemas": [
         {
-          "entityType": "EntryTypeA",
-          "schema": "entry-typeA-schema-v2.0"
+          "entityType": "biosample",
+          "schema": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/biosamples/defaultSchema.json"
         }
       ],
       "pagination": {

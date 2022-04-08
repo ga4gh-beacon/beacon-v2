@@ -74,15 +74,23 @@ handle extended options depending on the user's authentication status.
 	For detailed information about the technical implementation of the different logical
 	scopes please see the [Models](models.md) documentation.
 
-==TBD==
+### Beacon Default Data Model
 
-### Beacon Data Model
+The Beacon v2 default data model provides a set of schemas for common data entities with
+a focus on biomedical genomics (although neither specific to medical application or human genomics _per se_).
 
-==TBD==
+In contrast to earlier versions of the protocol, the Beacon v2 default models provide
+the technical blueprint for rich, structured data responses to Beacon queries, such as
+annotated genomic variations, biosamples from which matched variants were retrieved
+or data about individuals and study cohorts, where available and authorized.
+
+Detailed information is available through the [Models Introduction](/models/#introduction)
+and the default schemas documented from there.
 
 ### Alternative Data Models
 
-==TBD==
+ In principle, the separation of framework and models allows for different models in domains
+ outside of the genomics focussed Beacon v2 realm, e.g. “Imaging Beacon”, to be built using the same Framework.
 
 ### [H—>O] Beacon Handovers for Data Delivery
 

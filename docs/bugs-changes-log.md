@@ -57,7 +57,7 @@
 
 * Started adding content to pages such as `networks.md and `roles.md`
 * Moved pages to different locations in navigation. Created `security.md` under *Beacon Types*.
-* Example implementations have been moved to from the [`implementations-v2` repository](https://github.com/ga4gh-beacon/implementations-v2) to the [Beacon v2 Documentation](https://github.com/ga4gh-beacon/beacon-v2/edit/main/docs/implementations/) - web [access here](http://docs.genomebeacons.org/other-implementations/).
+* Example implementations have been moved from the [`implementations-v2` repository](https://github.com/ga4gh-beacon/implementations-v2) to the [Beacon v2 Documentation](https://github.com/ga4gh-beacon/beacon-v2/edit/main/docs/implementations/) - web [access here](https://docs.genomebeacons.org/other-implementations/).
 
 #### 2022-03-23: Name Change to `beacon-v2`
 
