@@ -21,7 +21,7 @@ entry to
 would change this to a biosample response. The example ccan be tested by POSTing this as `application/json`
 to `http://progenetix.org/beacon/variants/` or `http://progenetix.org/beacon/biosamples/`.
 
-```
+```json
 {
     "$schema":"beaconRequestBody.json",
     "meta": {
@@ -29,7 +29,7 @@ to `http://progenetix.org/beacon/variants/` or `http://progenetix.org/beacon/bio
         "requestedSchemas": [
             {
                 "entityType": "g_variant",
-                "schema:": "https://progenetix.org/services/schemas/genomicVariation/"
+                "schema:": "https://progenetix.org/services/schemas/genomicVariant/"
             }
         ]
     },
@@ -67,12 +67,7 @@ The root path provides the standard `BeaconInfoResponse`.
 ##### `/filtering_terms/`
 
 * [/filtering_terms/](https://progenetix.org/beacon/filtering_terms/)
-
-##### `/filtering_terms/` + query
-
-* [/filtering_terms/?filters=PMID](https://progenetix.org/beacon/filtering_terms/?filters=PMID)
-* [/filtering_terms/?filters=NCIT,icdom](https://progenetix.org/beacon/filtering_terms/?filters=NCIT,icdom)
-
+* 
 ----
 
 #### Base `/biosamples`
@@ -97,9 +92,7 @@ The root path provides the standard `BeaconInfoResponse`.
 ##### `/biosamples/{id}/variants/` & `/biosamples/{id}/variants_in_sample/`
 
 * [/biosamples/pgxbs-kftva5c9/variants/](http://progenetix.org/beacon/biosamples/pgxbs-kftva5c9/variants/)
-* [/biosamples/pgxbs-kftva5c9/variants_in_sample/](http://progenetix.org/beacon/biosamples/pgxbs-kftva5c9/variants_in_sample/)
   - retrieval of all variants from a single biosample
-  - currently - and especially since for a mostly CNV containing resource - `variants` means "variant instances" (or as in the early v2 draft `variantsInSample`)
 
 ----
 
@@ -194,6 +187,7 @@ CNV statistics or binned genome calls.
 
 <h3>Changes<img align="right" width="160px" src="https://progenetix.org/img/progenetix-logo-black.png"></h3>
 
+* 2022-04-13: removed some non-standard examples
 * 2021-11-02: added `/testMode` example
 * 2021-07-21: added [`/map`](https://progenetix.org/beacon/map) endpoint (incomplete/unser construction)
 * 2021-07-21: added [`/configuration`](https://progenetix.org/beacon/configuration) endpoint (incomplete/unser construction)

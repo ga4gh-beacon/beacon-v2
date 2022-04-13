@@ -8,7 +8,7 @@
 
 * [x] content for [Standards Integration](formats-standards.md) (as noted on page)
 * [ ] re-structuring of [Documentation Scopes](roles.md)
-* [ ] re-structuring of [Framework page](framework.md) 
+* [x] re-structuring of [Framework page](framework.md) 
 * [x] re-structuring of [Models page](framework.md)
     - [ ] integration with the Schemas pages
     - [x] removal of the individual schemas from the main navigation
