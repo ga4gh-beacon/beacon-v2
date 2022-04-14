@@ -186,9 +186,125 @@ in the proband"), the phenopacket itself does not explicitely _represent_ an ind
 
 In contrast, the Beacon v2 default model uses a hierarchy in which biosamples
 reference individuals directly (if existing). For most purposes one can equate Beacon's
-`Individual` with a merge of Phenopacket's core `Phenopacket` and `Individual` parameters. 
+`Individual` with a merge of Phenopacket's core `Phenopacket` and `Individual` parameters.
 
-==(TBD details/comparisons)==
+#### Building block comparisons: Beacon v2 `==` PXF v2
+
+##### `Age`
+
+* [PXF Age](https://phenopacket-schema.readthedocs.io/en/latest/age.html)
+* [Beacon v2 Age](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/age.yaml)
+
+##### `AgeRange`
+
+* [PXF AgeRange](https://phenopacket-schema.readthedocs.io/en/latest/age.html#agerange)
+* [Beacon v2 AgeRange](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/ageRange.yaml)
+
+##### `Evidence`
+
+* [PXF Evidence](https://phenopacket-schema.readthedocs.io/en/latest/evidence.html)
+* [Beacon v2 Evidence](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/evidence.yaml)
+
+##### `KaryotypicSex`
+
+* [PXF](https://github.com/phenopackets/phenopacket-schema/blob/master/docs/karyotypicsex.rst)
+* [Beacon](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/commonDefinitions.yaml)
+
+##### `ReferenceRange`
+
+* [PXF ReferenceRange](https://phenopacket-schema.readthedocs.io/en/latest/reference-range.html)
+* [Beacon v2 ReferenceRange](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/referenceRange.yaml)
+
+While `unit` in Beacon points to a `Unit` definition, this is itself an `OntologyTerm` i.e. structurally the same.
+
+##### `Value`
+
+* [PXF Value](https://phenopacket-schema.readthedocs.io/en/latest/value.html)
+* [Beacon v2 Value](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/value.yaml)
+
+
+
+#### Beacon v2 `=~` PXF v2 (e.g. renamed or additional parameters)
+
+##### `ComplexValue `
+
+* [PXF ComplexValue](https://phenopacket-schema.readthedocs.io/en/latest/complex-value.html)
+* [Beacon v2 ComplexValue](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/complexValue.yaml)
+
+Renamed `ComplexValue.TypedQuantity.quantityType` compared to GA4GH Phenopackets v2 `ComplexValue.TypedQuantity.type` due to problematic use of `type` as parameter
+
+##### `ExternalReference`
+
+* [PXF ExternalReference](https://phenopacket-schema.readthedocs.io/en/latest/externalreference.html)
+* [Beacon v2 ExternalReference](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/externalReference.yaml)
+
+Renamed `ExternalReference.notes` compared to GA4GH Phenopackets v2 `ExternalReference.description` due to problematic use of `description` as parameter
+
+##### `Measurement`
+
+* [PXF Measurement](https://phenopacket-schema.readthedocs.io/en/latest/measurement.html)
+* [Beacon v2 Measurement](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/measurement.yaml)
+
+Added `notes` and `date`.
+
+##### `PhenotypicFeature`
+
+* [PXF PhenotypicFeature](https://phenopacket-schema.readthedocs.io/en/latest/phenotype.html)
+* [Beacon v2 PhenotypicFeature](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/phenotypicFeature.yaml)
+
+Beacon | Phenopackets
+--------- | ------------
+`featureType` | `type`
+`severity`  (re-used definition reflecting an ontology term) | `severity` (ontology class)
+`notes` | 
+
+##### `Procedure `
+
+* [PXF Procedure](https://phenopacket-schema.readthedocs.io/en/latest/procedure.html)
+* [Beacon v2 Procedure](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/procedure.yaml)
+
+Beacon | Phenopackets
+--------- | ------------
+`procedureCode` | `code`
+`ageAtProcedure`  (TimeElement) | `performed ` (`TimeElement`)
+`dateOfProcedure`  (ISO date) | 
+
+##### `TimeElement `
+
+* [PXF TimeElement](https://phenopacket-schema.readthedocs.io/en/latest/time-element.html)
+* [Beacon v2 TimeElement](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/timeElement.yaml)
+
+The specific parameters have been aligned w/ minimal differences in naming or use of general parameters.
+
+| Beacon | Phenopackets
+|--------- | ------------
+| `ontologyTerm` | `ontology_class `
+| `age ` | `age ` (`Age`)
+| `ageRange` | `age_range ` (`AgeRange`)
+| `gestationalAge`  | `gestational_age ` (`GestationalAge`)
+|  `...Timestamp` | `timestamp ` (`TimeStamp`)
+|  `timeInterval` | `interval ` (`TimeInterval`)
+
+
+##### `Treatment `
+
+* [PXF Treatment](https://phenopacket-schema.readthedocs.io/en/latest/treatment.html)
+* [Beacon v2 Treatment](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/treatment.yaml)
+
+Beacon still has an `ageOfOnset` parameter (?). Also, PXF `agent` has been renamed to a more general `treatmentCode`.
+
+#### Beacon v2 `~` PXF v2 (e.g. multiple/complex differences)
+
+##### `Disease`
+
+##### `Pedigree`
+
+While the Beacon & Phenopackets schemas for "pedigree" representation are not aligned, they may become superseded by the [GA4GH pedigree standard](https://github.com/GA4GH-Pedigree-Standard/pedigree) currenty under development.
+
+##### `Sex`
+
+Beacon directly uses the (IMO preferable) [representation through an ontology term](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/commonDefinitions.yaml), while PXF uses an [ordinal mapping](https://phenopacket-schema.readthedocs.io/en/latest/sex.html)
+
 
 ##### LINK: [Phenopackets Documentation](https://phenopacket-schema.readthedocs.io/en/latest/index.html)
 
