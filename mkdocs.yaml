@@ -65,8 +65,9 @@ nav:
         - Networks: networks.md
     - 'Implement & Deploy a Beacon':
         - Implementations Options: implementations-options.md
-        - Tips for Implementers: tips-for-implementers.md
+#        - Tips for Implementers: _tips-for-implementers.md
         - Standards Integration: formats-standards.md
+        - Filters: filters.md
         - Beacon Implementations:
             - Reference Implementation &#8599;: https://b2ri-documentation.readthedocs.io/en/latest/
             - Others: other-implementations.md
@@ -83,15 +84,14 @@ nav:
                - Individuals: schemas-md/individuals_defaultSchema.md
                - Runs: schemas-md/runs_defaultSchema.md    
            - Terms List: schemas-md/beacon_terms.md
-        - Filters: filters.md
-        - REST API: rest-api.md
+#        - REST API: _rest-api.md
     - Querying Beacons:
         - Genomic Queries: variant-queries.md
         - Filters in Queries: filter-queries.md
     - External Links:
         - Beacon Project &#8599;: http://beacon-project.io
         - Github Repositories &#8599;: https://github.com/ga4gh-beacon/
-        - Read the Docs Version &#8599;: https://beacon-v2-unity.readthedocs.io/en/latest/
+#        - Read the Docs Version &#8599;: https://beacon-v2-unity.readthedocs.io/en/latest/
     # - Download PDF: pdf/beacon.pdf
     - Citation: citation.md
 
