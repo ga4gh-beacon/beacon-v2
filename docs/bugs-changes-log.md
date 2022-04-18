@@ -39,7 +39,7 @@
 
 * Updated default schemas tables according to the newest changes.
 * Moved `filters.md` from section _Beacon Components_ to _Implement..._.
-* Dismissed pages w/o content (`rest-api.md` and `tips-for-implementers.md`).
+* Dismissed pages w/o content (`_rest-api.md` and `_tips-for-implementers.md`).
 * Dismissed link to RTD version (deprecated).
 
 #### 2022-04-01: More documentation updates
@@ -81,7 +81,7 @@ to `beacon-v2`.
 * Added `mkdocs-mermaid2-plugin` both to `mkdocs.yaml` and to github workflows.
 * Moved Schemas (Markdown Tables) and Terms List from main navigation to `Beacon Compoments/Models`
 * Reorganization of navigation
-* Added pages: [Tips for Implementers](tips-for-implementers.md)
+* Added pages: [Tips for Implementers](_tips-for-implementers.md)
 
 #### 2022-03-21: Reorganization of navigation
 

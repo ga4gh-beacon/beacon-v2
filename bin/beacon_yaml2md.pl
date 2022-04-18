@@ -2,7 +2,7 @@
 #
 #   Script to convert Beacon v2 Models schemas to Markdown tables
 #
-#   Last Modified: Apr/04/2022
+#   Last Modified: Apr/18/2022
 #
 #   Version 2.0.0
 #
@@ -147,6 +147,7 @@ use feature qw(say);
 use YAML::XS qw(LoadFile DumpFile);
 use JSON::XS;
 use File::Basename;
+use List::MoreUtils qw/any/;
 use Path::Tiny;
 use Data::Dumper;
 use File::Spec::Functions qw(catdir catfile);
@@ -337,7 +338,8 @@ sub yaml_slicer {
 
                 # Can't bo beyond 3D, using subroutine to add links
                 $yaml_properties_3d->{$property} =
-                  add_vrs_url( $property, $yaml_properties_3d->{$property} );
+                  add_properties_vrs( $property,
+                    $yaml_properties_3d->{$property} );
                 dump_yaml( $property, $yaml_properties_3d->{$property},
                     $yo_dir );
             }
@@ -438,22 +440,22 @@ sub ref2str {
             my @tmp;
             for my $i ( 0 .. $#{$data} ) {
                 my $r_data_i = $data->[$i];
-                push @tmp, join ', ',
-                  map { $_ = "$_:$r_data_i->{$_}" } sort keys %$r_data_i; # Note ', ' to allow HTML column rendering
+                push @tmp, join ', ', map {
+                    ref $r_data_i->{$_} eq 'HASH'
+                      ? ( "`$_:" . encode_json( $r_data_i->{$_} ) . '`' )
+                      : "$_:$r_data_i->{$_}"
+                } sort keys %$r_data_i; # Note ', ' to allow HTML column rendering
             }
-            $out_str = join '<br />', @tmp;
+            $out_str = join ',<br />', @tmp;
         }
 
         # A
         else {
-            # We can have strings or array references (end.md, start.md)
+            # We can have strings or array references (end.md, start.md, variantAlternativeIds.md)
             if ( ref $data->[0] eq 'ARRAY' ) {
-                my @tmp;
-                for my $i ( 0 .. $#{$data} ) {
-                    my $tmp_str = join ',', @{ $data->[$i] };
-                    push @tmp, "[$tmp_str]";
-                }
-                $out_str = join '<br />', @tmp;
+                $out_str = join ',<br />',
+                  map { '`' . encode_json( $data->[$_] ) . '`' }
+                  ( 0 .. $#{$data} );
             }
             else {
                 $out_str = defined $data->[0] ? join ', ', @$data : 'NA'; # Note ', ' to allow HTML column rendering
@@ -466,7 +468,7 @@ sub ref2str {
         #print Dumper $data;
         my $tmp_str = $link ? "./$obj" : '.';
         $out_str = join ', ',
-          map { $_ = "[$_]($tmp_str/$_.md)" } sort keys %$data; # Note ', ' to allow HTML column rendering
+          map { add_external_links( $tmp_str, $_ ) } sort keys %$data;
         $out_str =~ s/(HASH|ARRAY)\(\w+\)//g;
         $out_str =~ s/,,/,/g;
         $out_str =~ s/,$//;
@@ -477,8 +479,21 @@ sub ref2str {
 
     # Finally remove newlines at string level
     $out_str =~ s/\R//g;
-
     return $out_str;
+}
+
+sub add_external_links {
+
+    my ( $tmp_str, $key ) = @_;
+
+    # Note: This is an ad hoc solution to fix errors with deeply-nested data
+    my @phx = qw( typedQuantities days weeks Quantity high low);
+    my @vrs = qw(_id state type CURIE Location);
+    return ( any { ( $_ eq $key ) } @phx )
+      ? "[$key](https://phenopacket-schema.readthedocs.io/en/latest/building-blocks.html)"
+      : ( any { ( $_ eq $key ) } @vrs )
+      ? "[$key](https://vrs.ga4gh.org/en/stable/terms_and_model.html#$key)"
+      : "[$key]($tmp_str/$key.md)";
 }
 
 sub load_yaml {
@@ -526,24 +541,6 @@ sub check_data_type {
 sub create_str_yaml {
 
     # This is an ad hoc solution :-(
-
-# Apr-2-2022
-#=head1
-#WARNING  -  Documentation file 'schemas-md/obj/Allele.md' contains a link to 'schemas-md/obj/_id.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/Allele.md' contains a link to 'schemas-md/obj/state.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/Allele.md' contains a link to 'schemas-md/obj/type.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/Complex Value.md' contains a link to 'schemas-md/obj/typedQuantities.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/GestationalAge.md' contains a link to 'schemas-md/obj/days.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/GestationalAge.md' contains a link to 'schemas-md/obj/weeks.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/Haplotype.md' contains a link to 'schemas-md/obj/_id.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/Haplotype.md' contains a link to 'schemas-md/obj/type.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/Value.md' contains a link to 'schemas-md/obj/Quantity.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/location.md' contains a link to 'schemas-md/obj/CURIE.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/location.md' contains a link to 'schemas-md/obj/Location.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/referenceRange.md' contains a link to 'schemas-md/obj/high.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/referenceRange.md' contains a link to 'schemas-md/obj/low.md' which is not found in the documentation files.
-#=cut
-
     # Changes in the repo won't be reflected here
     my $file           = shift;
     my $str_duoDataUse = <<EOF;
@@ -679,9 +676,14 @@ sub parse_json_keywords {
                 #  my $const = $pointer->get("/$keyword/$property/$count/properties/type/const");
                 #   $tmp_hash->{properties}{$const} = $elements;
                 #} else{
-                my $tmp_term =  ($pointer->contains("/$keyword/$count/title") && $pointer->get("/$keyword/$count/title") ne 'Ontology Term') ? $pointer->get("/$keyword/$count/title") : @{ $terms->{$property} }[$count];
-                $tmp_hash->{properties}{ $tmp_term } = $elements if $tmp_term; # Ad-hoc some terms appear duplicated and come empty....
-                #}
+                my $tmp_term =
+                  (      $pointer->contains("/$keyword/$count/title")
+                      && $pointer->get("/$keyword/$count/title") ne
+                      'Ontology Term' )
+                  ? $pointer->get("/$keyword/$count/title")
+                  : @{ $terms->{$property} }[$count];
+                $tmp_hash->{properties}{$tmp_term} = $elements if $tmp_term; # Ad-hoc some terms appear duplicated and come empty....
+                                                                             #}
                 $count++;
             }
             $data = $tmp_hash;    # Adding new reference
@@ -690,7 +692,7 @@ sub parse_json_keywords {
     return $data;
 }
 
-sub add_vrs_url {
+sub add_properties_vrs {
 
     my ( $property, $data ) = @_;
     my %url = (
