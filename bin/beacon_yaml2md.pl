@@ -432,40 +432,24 @@ sub ref2str {
     # We can have ARRAY, HASH, STRING and undef
     if ( ref $data eq 'ARRAY' ) {
 
-        # Options found: A, AoH, AoHoH
-        my $array_type = ref $data->[0];
-
         # AoH
-        if ( $array_type eq 'HASH' ) {
-            my @tmp;
-            for my $i ( 0 .. $#{$data} ) {
-                my $r_data_i = $data->[$i];
-                push @tmp, join ', ', map {
-                    ref $r_data_i->{$_} eq 'HASH'
-                      ? ( "`$_:" . encode_json( $r_data_i->{$_} ) . '`' )
-                      : "$_:$r_data_i->{$_}"
-                } sort keys %$r_data_i; # Note ', ' to allow HTML column rendering
-            }
-            $out_str = join ',<br />', @tmp;
+        if ( ref $data->[0] eq 'HASH' ) {
+            $out_str = '`' . encode_json($data) . '`';
         }
 
         # A
+        elsif ( ref $data->[0] eq 'ARRAY' ) {
+            $out_str = join ',<br />',
+              map { '`' . encode_json( $data->[$_] ) . '`' } ( 0 .. $#{$data} );
+        }
+
+        # string or undef
         else {
-            # We can have strings or array references (end.md, start.md, variantAlternativeIds.md)
-            if ( ref $data->[0] eq 'ARRAY' ) {
-                $out_str = join ',<br />',
-                  map { '`' . encode_json( $data->[$_] ) . '`' }
-                  ( 0 .. $#{$data} );
-            }
-            else {
-                $out_str = defined $data->[0] ? join ', ', @$data : 'NA'; # Note ', ' to allow HTML column rendering
-            }
+            $out_str = defined $data->[0] ? join ', ', @$data : 'NA'; # Note ', ' to allow HTML column rendering
         }
     }
-
     elsif ( ref $data eq 'HASH' ) {
 
-        #print Dumper $data;
         my $tmp_str = $link ? "./$obj" : '.';
         $out_str = join ', ',
           map { add_external_links( $tmp_str, $_ ) } sort keys %$data;
