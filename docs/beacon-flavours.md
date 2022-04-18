@@ -1,5 +1,8 @@
 # Beacon "Flavours"
 
+!!! Note "About UI"
+    Most of the information that you will find here is related to the [Beacon v2 specification](./whay-is-beacon-v2.md). For that reason, the examples are shown as REST API requests/responses in the form of [JSON](https://www.json.org/json-en.html). If you are only interested in using beacon with a **graphical interface** please visit the [implementations](implementations-options.md) page.
+
 While the original Beacon v1 only provided Boolean (_i.e._ **YES/NO**) responses
 on queries for the existence of specific genomic variants, Beacon v2 is a flexible
 protocol that supports different usage scenarios - also called "flavours", since
@@ -104,7 +107,7 @@ Typical examples of `Handover` use include:
 
 * access to restricted data, in which a handover URL points to data behind an authentication service
 or Firewall
-* delivery of large/binary datasets, e.g. original array data or BAM files for a guiven analysis
+* delivery of large/binary datasets, e.g. original array data or BAM files for a given analysis
 * asynchronous calls in which a front-end follows handover URLs for additional data
 
 

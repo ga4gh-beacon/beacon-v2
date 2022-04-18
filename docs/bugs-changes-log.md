@@ -31,10 +31,14 @@
 
 ## Changes
 
+#### 2022-04-18: More documentation updates
+
+* Shuffled small fragments to facilitate comprehension.
+
 #### 2022-04-17: More documentation updates
 
 * Updated default schemas tables according to the newest changes.
-* Moved `filters.md` from section _Beacon Components_ to _Implement & Deploy a Beacon_.
+* Moved `filters.md` from section _Beacon Components_ to _Implement..._.
 * Dismissed pages w/o content (`rest-api.md` and `tips-for-implementers.md`).
 * Dismissed link to RTD version (deprecated).
 
