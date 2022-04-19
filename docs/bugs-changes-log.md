@@ -10,7 +10,7 @@
 * [ ] re-structuring of [Documentation Scopes](roles.md)
 * [x] re-structuring of [Framework page](framework.md) 
 * [x] re-structuring of [Models page](framework.md)
-    - [ ] integration with the Schemas pages
+    - [x] integration with the Schemas pages
     - [x] removal of the individual schemas from the main navigation
 * [x] delete documentation in framework and model repo READMEs and point here
 * [ ] fix https (probably @mbaudis has to do some registrar configuration...)
@@ -21,7 +21,6 @@
 * [ ] extend [Query documentation](variant-queries.md)
     - [x] expand the table comparing different "variant types"
     - [ ] use content from the variant scouts document
-* [ ] create content for [Tips for Implementers](tips-for-implementers)
 
 ### Repositories
 
@@ -31,6 +30,17 @@
 * [ ] retiring of framework and model repos
 
 ## Changes
+
+#### 2022-04-18: More documentation updates
+
+* Shuffled small fragments to facilitate comprehension.
+
+#### 2022-04-17: More documentation updates
+
+* Updated default schemas tables according to the newest changes.
+* Moved `filters.md` from section _Beacon Components_ to _Implement..._.
+* Dismissed pages w/o content (`_rest-api.md` and `_tips-for-implementers.md`).
+* Dismissed link to RTD version (deprecated).
 
 #### 2022-04-01: More documentation updates
 
@@ -71,7 +81,7 @@ to `beacon-v2`.
 * Added `mkdocs-mermaid2-plugin` both to `mkdocs.yaml` and to github workflows.
 * Moved Schemas (Markdown Tables) and Terms List from main navigation to `Beacon Compoments/Models`
 * Reorganization of navigation
-* Added pages: [Tips for Implementers](tips-for-implementers.md)
+* Added pages: [Tips for Implementers](_tips-for-implementers.md)
 
 #### 2022-03-21: Reorganization of navigation
 

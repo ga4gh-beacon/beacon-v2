@@ -1,3 +1,3 @@
 |Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| value | The value of the quantity in the units | number | NA | NA | NA|
+| Value | NA | oneOf | [Quantity](https://phenopacket-schema.readthedocs.io/en/latest/building-blocks.html) | NA | NA|

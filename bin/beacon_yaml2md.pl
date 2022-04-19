@@ -2,7 +2,7 @@
 #
 #   Script to convert Beacon v2 Models schemas to Markdown tables
 #
-#   Last Modified: Apr/04/2022
+#   Last Modified: Apr/18/2022
 #
 #   Version 2.0.0
 #
@@ -147,6 +147,7 @@ use feature qw(say);
 use YAML::XS qw(LoadFile DumpFile);
 use JSON::XS;
 use File::Basename;
+use List::MoreUtils qw/any/;
 use Path::Tiny;
 use Data::Dumper;
 use File::Spec::Functions qw(catdir catfile);
@@ -337,7 +338,8 @@ sub yaml_slicer {
 
                 # Can't bo beyond 3D, using subroutine to add links
                 $yaml_properties_3d->{$property} =
-                  add_vrs_url( $property, $yaml_properties_3d->{$property} );
+                  add_properties_vrs( $property,
+                    $yaml_properties_3d->{$property} );
                 dump_yaml( $property, $yaml_properties_3d->{$property},
                     $yo_dir );
             }
@@ -430,43 +432,33 @@ sub ref2str {
     # We can have ARRAY, HASH, STRING and undef
     if ( ref $data eq 'ARRAY' ) {
 
-        # Options found: A, AoH, AoHoH
-        my $array_type = ref $data->[0];
-
         # AoH
-        if ( $array_type eq 'HASH' ) {
-            my @tmp;
-            for my $i ( 0 .. $#{$data} ) {
-                my $r_data_i = $data->[$i];
-                push @tmp, join ', ',
-                  map { $_ = "$_:$r_data_i->{$_}" } sort keys %$r_data_i; # Note ', ' to allow HTML column rendering
-            }
-            $out_str = join '<br />', @tmp;
+        if ( ref $data->[0] eq 'HASH' ) {
+            $out_str = '`'
+              . JSON::XS->new->utf8->space_after->canonical->encode($data)
+              . '`';    # ->pretty (encode) does not work inside tables
         }
 
         # A
+        elsif ( ref $data->[0] eq 'ARRAY' ) {
+            $out_str = join ',<br />', map {
+                '`'
+                  . JSON::XS->new->utf8->space_after->canonical->encode(
+                    $data->[$_] )
+                  . '`'
+            } ( 0 .. $#{$data} );
+        }
+
+        # string or undef
         else {
-            # We can have strings or array references (end.md, start.md)
-            if ( ref $data->[0] eq 'ARRAY' ) {
-                my @tmp;
-                for my $i ( 0 .. $#{$data} ) {
-                    my $tmp_str = join ',', @{ $data->[$i] };
-                    push @tmp, "[$tmp_str]";
-                }
-                $out_str = join '<br />', @tmp;
-            }
-            else {
-                $out_str = defined $data->[0] ? join ', ', @$data : 'NA'; # Note ', ' to allow HTML column rendering
-            }
+            $out_str = defined $data->[0] ? join ', ', @$data : 'NA'; # Note ', ' to allow HTML column rendering
         }
     }
-
     elsif ( ref $data eq 'HASH' ) {
 
-        #print Dumper $data;
         my $tmp_str = $link ? "./$obj" : '.';
         $out_str = join ', ',
-          map { $_ = "[$_]($tmp_str/$_.md)" } sort keys %$data; # Note ', ' to allow HTML column rendering
+          map { add_external_links( $tmp_str, $_ ) } sort keys %$data;
         $out_str =~ s/(HASH|ARRAY)\(\w+\)//g;
         $out_str =~ s/,,/,/g;
         $out_str =~ s/,$//;
@@ -477,8 +469,21 @@ sub ref2str {
 
     # Finally remove newlines at string level
     $out_str =~ s/\R//g;
-
     return $out_str;
+}
+
+sub add_external_links {
+
+    my ( $tmp_str, $key ) = @_;
+
+    # Note: This is an ad hoc solution to fix errors with deeply-nested data
+    my @phx = qw( typedQuantities days weeks Quantity high low);
+    my @vrs = qw(_id state type CURIE Location);
+    return ( any { ( $_ eq $key ) } @phx )
+      ? "[$key](https://phenopacket-schema.readthedocs.io/en/latest/building-blocks.html)"
+      : ( any { ( $_ eq $key ) } @vrs )
+      ? "[$key](https://vrs.ga4gh.org/en/stable/terms_and_model.html#$key)"
+      : "[$key]($tmp_str/$key.md)";
 }
 
 sub load_yaml {
@@ -526,24 +531,6 @@ sub check_data_type {
 sub create_str_yaml {
 
     # This is an ad hoc solution :-(
-
-# Apr-2-2022
-#=head1
-#WARNING  -  Documentation file 'schemas-md/obj/Allele.md' contains a link to 'schemas-md/obj/_id.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/Allele.md' contains a link to 'schemas-md/obj/state.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/Allele.md' contains a link to 'schemas-md/obj/type.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/Complex Value.md' contains a link to 'schemas-md/obj/typedQuantities.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/GestationalAge.md' contains a link to 'schemas-md/obj/days.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/GestationalAge.md' contains a link to 'schemas-md/obj/weeks.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/Haplotype.md' contains a link to 'schemas-md/obj/_id.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/Haplotype.md' contains a link to 'schemas-md/obj/type.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/Value.md' contains a link to 'schemas-md/obj/Quantity.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/location.md' contains a link to 'schemas-md/obj/CURIE.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/location.md' contains a link to 'schemas-md/obj/Location.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/referenceRange.md' contains a link to 'schemas-md/obj/high.md' which is not found in the documentation files.
-#WARNING  -  Documentation file 'schemas-md/obj/referenceRange.md' contains a link to 'schemas-md/obj/low.md' which is not found in the documentation files.
-#=cut
-
     # Changes in the repo won't be reflected here
     my $file           = shift;
     my $str_duoDataUse = <<EOF;
@@ -634,7 +621,7 @@ EOF
         my $label    = uc( $tmp[1] );
         next unless ( $label eq 'MAX' || $label eq 'MID' || $label eq 'MIN' );
         $str .= "=== \"$label\"\n";
-        $str .= "\t```\n";
+        $str .= "\t```json\n";
         open my $fh, "<", $file;
         while (<$fh>) {
             $str .= "\t$_";
@@ -679,9 +666,14 @@ sub parse_json_keywords {
                 #  my $const = $pointer->get("/$keyword/$property/$count/properties/type/const");
                 #   $tmp_hash->{properties}{$const} = $elements;
                 #} else{
-                my $tmp_term =  ($pointer->contains("/$keyword/$count/title") && $pointer->get("/$keyword/$count/title") ne 'Ontology Term') ? $pointer->get("/$keyword/$count/title") : @{ $terms->{$property} }[$count];
-                $tmp_hash->{properties}{ $tmp_term } = $elements if $tmp_term; # Ad-hoc some terms appear duplicated and come empty....
-                #}
+                my $tmp_term =
+                  (      $pointer->contains("/$keyword/$count/title")
+                      && $pointer->get("/$keyword/$count/title") ne
+                      'Ontology Term' )
+                  ? $pointer->get("/$keyword/$count/title")
+                  : @{ $terms->{$property} }[$count];
+                $tmp_hash->{properties}{$tmp_term} = $elements if $tmp_term; # Ad-hoc some terms appear duplicated and come empty....
+                                                                             #}
                 $count++;
             }
             $data = $tmp_hash;    # Adding new reference
@@ -690,7 +682,7 @@ sub parse_json_keywords {
     return $data;
 }
 
-sub add_vrs_url {
+sub add_properties_vrs {
 
     my ( $property, $data ) = @_;
     my %url = (
@@ -747,7 +739,7 @@ YAMLs schemas. Each time the original MS Word document was edited, someone had t
 
 This script inverts the process, i.e., B<it enforces modifying the schema specification directly at the YAML/JSON level>.
 
-Editing the schemas directly at the YAML/JSON leven has two advantages, the first is that (because we follow L<OpenAPI|https://swagger.io/specification/> specifications) the endpoints documentation can be directly displayed with L<SWAGGER UI|https://swagger.io/docs/open-source-tools/swagger-ui/usage/installation>. The second is that the YAML/JSON files can be converted to Markdown tables in order to create L<Markdown based documentation|http://docs.genomebeacons.org> documentation. This script B<transforms YAML/JSON to Markdown tables>, including their nested objects B<up to a third degree of hierarchy>.
+Editing the schemas directly at the YAML/JSON level has two advantages, the first is that because we follow L<OpenAPI|https://swagger.io/specification/> specification (along with JSON schema), I<a priori> we could use L<SWAGGER UI|https://swagger.io/docs/open-source-tools/swagger-ui/usage/installation>. The second is that the YAML/JSON files can be converted to Markdown tables in order to create L<Markdown based documentation|http://docs.genomebeacons.org> documentation. This script B<transforms YAML/JSON to Markdown tables>, including their nested objects B<up to a third degree of hierarchy>.
 
 The B<Markdown> format can be directly rendered as tables at the GitHub repository, and it can be used with L<MkDocs|https://www.mkdocs.org/> to create L<HTML|http://docs.genomebeacons.org> documentation. 
 
@@ -758,7 +750,6 @@ Before creating this tool, the author made an exhaustive search on what had been
 In the Beacon context, I<mbaudis> has developed a nice framework for L<schemablocks|https://github.com/ga4gh-schemablocks/schemablocks-tools> which creates HTML from YAML schemas to be used with L<Yekyll|https://jekyllrb.com/>. However, personalizing his tools to work in our scenario will still not solve the initial objective of creating Markdown tables from the YAML/JSON.
 
 All of the above lead to the creation of this tool, which was written in L<Perl|https://www.perl.org> language.
-
 
 =head2 ADDENDUM: How to update Documentation
 
@@ -796,6 +787,7 @@ but you might need to manually install the below CPAN module(s).
     * JSON::XS
     * Path::Tiny
     * Mojo::JSON::Pointer
+    * List::MoreUtils
 
 First we install cpanminus (with sudo privileges):
 
@@ -803,9 +795,9 @@ First we install cpanminus (with sudo privileges):
 
 Then the module(s):
 
-   $ cpanm --sudo YAML::XS JSON::XS Path::Tiny Mojo::JSON::Pointer
+   $ cpanm --sudo YAML::XS JSON::XS Path::Tiny Mojo::JSON::Pointer List::MoreUtils
 
-The script takes YAMLs as input file and when no arguments is used it will read them from C<../schemas/> directory.
+The script takes YAMLs as input file and when no arguments is used it will read them from C<./deref_schemas/> directory.
 
 B<NB:> We recommend running the script with the provided bash file C<transform_yaml2md.sh> (B<see ADDENDUM: How to update Documentation>).
 
@@ -815,7 +807,6 @@ B<Example 1:>
 
 If the script is run directly at C<bin/> directory (default) and with no arguments, then it will create contents in:
 
-    * YAMLs at ../schemas/
     * Markdowns at ../docs/schemas-md/
 
 
@@ -823,14 +814,14 @@ B<Example 2:>
 
 Here we are providind arguments for --schema-dir and for markdown-dir.
 
-   $ $path/beacon_yaml2md.pl --schema-dir ../schemas --markdown-dir ../docs/schemas-md --D
+   $ $path/beacon_yaml2md.pl --schema-dir ./deref_schemas --markdown-dir ../docs/schemas-md --D
 
 
 I<NB:> if the YAML is not well defined (e.g., wrong indentation, etc.) the script will complain about it. Thus, it indirectly serves as a YAML validator.
 
 B<Notes:>
 
-The argument C<-D|delete> deletes all C<../schemas/obj/*yaml> files prior to doing anything else. It's harmless so you may want to use it you're unsure of who created those files.
+The argument C<-D|delete> deletes all C<./deref_schemas/obj/*yaml> files prior to doing anything else. It's harmless so you may want to use it you're unsure of who created those files.
 
 See the directory tree below:
 
@@ -851,20 +842,21 @@ I<NB:> The decission to take YAMLs (and not JSON) as an input is deliberate and 
 
 I<NB:> The script only processes the C<Terms> nested B<up to 3 degrees of hierarchy>. Before Adoption of VRS/PHX that limit was OK.
 
+I<NB:> The script also includes the Beacon v2 Models examples from L<beacon-v2 repo|https://github.com/ga4gh-beacon/beacon-v2> in JSON format.
+
 =head1 AUTHOR 
 
 Written by Manuel Rueda, PhD. Info about EGA can be found at L<https://ega-archive.org/>.
 
 =head1 KNOWN ISSUES
 
-* The description/examples of the objects/terms correspond to the last created by the script. Ideally all shared-objects should have a common description.
-* As of March 2022 we're only processing 3 levels of nesting.
-* We are not processing <if: then:> statements in JSON Schema.
+    * If two entities share a term/object (e.g., id, label) the text will correspond to the latest one (alphabetical order). "Ideally" all shared-objects should have a common description, shouldn't them? This way we avoid having to create sub-objects for every entity.
+    * As of April 2022 we're only processing 3 levels of nesting and adding external URLs for deeper levels.
+    * We are not processing <if: then:> statements in JSON Schema.
 
 =head1 REPORTING BUGS
 
 Report bugs or comments to <manuel.rueda@crg.eu>.
-
 
 =head1 COPYRIGHT
 

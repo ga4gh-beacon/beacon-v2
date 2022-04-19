@@ -14,7 +14,7 @@
 These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
 
 === "MAX"
-	```
+	```json
 	{
 	    "$schema": "https://json-schema.org/draft/2020-12/schema",
 	    "createDateTime": "2017-01-17T20:33:40Z",
@@ -43,7 +43,7 @@ These are examples extracted directly from the [GitHub repository](https://githu
 	```
 
 === "MIN"
-	```
+	```json
 	{
 	    "$schema": "https://json-schema.org/draft/2020-12/schema",
 	    "id": "ds01010101",
