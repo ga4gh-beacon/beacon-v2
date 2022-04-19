@@ -16,7 +16,7 @@
 These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
 
 === "MIN"
-	```
+	```json
 	{
 	    "$schema": "https://json-schema.org/draft/2020-12/schema",
 	    "biosampleId": "008dafdd-a3d1-4801-8c0a-8714e2b58e48",
@@ -26,7 +26,7 @@ These are examples extracted directly from the [GitHub repository](https://githu
 	```
 
 === "MAX"
-	```
+	```json
 	{
 	    "$schema": "https://json-schema.org/draft/2020-12/schema",
 	    "biosampleId": "008dafdd-a3d1-4801-8c0a-8714e2b58e48",
