@@ -434,13 +434,19 @@ sub ref2str {
 
         # AoH
         if ( ref $data->[0] eq 'HASH' ) {
-            $out_str = '`' . encode_json($data) . '`'; # ->pretty (encode) does not work inside tables
+            $out_str = '`'
+              . JSON::XS->new->utf8->space_after->canonical->encode($data)
+              . '`';    # ->pretty (encode) does not work inside tables
         }
 
         # A
         elsif ( ref $data->[0] eq 'ARRAY' ) {
-            $out_str = join ',<br />',
-              map { '`' . encode_json( $data->[$_] ) . '`' } ( 0 .. $#{$data} );
+            $out_str = join ',<br />', map {
+                '`'
+                  . JSON::XS->new->utf8->space_after->canonical->encode(
+                    $data->[$_] )
+                  . '`'
+            } ( 0 .. $#{$data} );
         }
 
         # string or undef
