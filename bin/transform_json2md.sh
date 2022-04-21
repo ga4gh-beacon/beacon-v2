@@ -58,7 +58,7 @@ for schema in analyses biosamples cohorts datasets genomicVariations individuals
 do
  mkdir -p $out_dir/$schema
 
- # Problem: Original JSON files use JSON pointers ($ref) and this COMPLICATES A LOT the markdown creation
+ # Problem: Original JSON files use JSON references ($ref) and this COMPLICATES A LOT the markdown creation
  # Solution: Dereference JSON Pointers
  #  Options found (08/31/21):
  #   A: NodeJS => https://apitools.dev/json-schema-ref-parser/docs
