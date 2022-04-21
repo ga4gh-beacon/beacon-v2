@@ -19,7 +19,7 @@ The **Beacon v2 API** follows [OpenAPI 3.0.2](https://spec.openapis.org/oas/v3.0
 The Beacon v2 specification is written in [YAML](https://yaml.org). The original files are located under `src` directory (see below). For technical purposes, we also provide a **copy** of the original YAML in JSON format (see `json` directory below). Changes in the specification must be performed in the YAML version.
 
 === "Framework"
-        ```
+
         framework
         |-- json
         |   |-- common
@@ -49,11 +49,10 @@ The Beacon v2 specification is written in [YAML](https://yaml.org). The original
                 |-- examples-fullDocuments
                 |-- examples-sections
                 `-- sections
-        ```
 
 === "Models"
-        ``` 
-        models/
+
+        models
         |-- json
         |   `-- beacon-v2-default-model
         |       |-- analyses
@@ -88,7 +87,6 @@ The Beacon v2 specification is written in [YAML](https://yaml.org). The original
                 |   `-- examples
                 `-- runs
                     `-- examples
-        ```
 
 ### Genome Coordinates
 
