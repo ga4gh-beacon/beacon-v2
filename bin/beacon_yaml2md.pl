@@ -284,7 +284,7 @@ sub yaml_slicer {
     # The adoption of those standards had technical implications. The script expects objects to have
     #  <key> for the object and then <properties>. VRS/PHX follow JSON schemas that include /oneOf allOf anyOf/
     # plus other complex intructions such as <if:> <else:>.
-    # This becomes a real challenge with $ref pointers as, for instance, in <g_v.variation> we can not find the key for
+    # This becomes a real challenge with $ref as, for instance, in <g_v.variation> we can not find the key for
     # 'MolecularVariation', 'SystemicVariation', 'LegacyVariation'
     # TL;DR; WE ARE INTRODUCING A FEW AD HOC CHANGES BELOW....
 
