@@ -31,6 +31,8 @@
 
 ## Changes
 
+#### 2021-04-21: GA4GH approval notice
+
 #### 2022-04-18: More documentation updates
 
 * Shuffled small fragments to facilitate comprehension.
