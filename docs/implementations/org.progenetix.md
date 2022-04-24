@@ -28,7 +28,7 @@ to `http://progenetix.org/beacon/variants/` or `http://progenetix.org/beacon/bio
         "apiVersion": "2.0",
         "requestedSchemas": [
             {
-                "entityType": "g_variant",
+                "entityType": "genomicVariant",
                 "schema:": "https://progenetix.org/services/schemas/genomicVariant"
             }
         ]

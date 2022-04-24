@@ -12,7 +12,7 @@ do not need to understand the underlying query syntax and response formats they 
 benefit from some insights into the general capabilities of the underlying protocol.
 
 !!! Warning "User"
-    * Beacon v2 [Model](models.md)
+    * Beacon v2 [Models](models.md)
     * Knowing what is available in an instance
         * Data [Models and Schemas](models.md)
         * Beacon [Flavours](beacon-flavours.md) & Response Granularity
@@ -41,7 +41,7 @@ for novel use cases).
     * Reference Implementation [Link](https://b2ri-documentation.readthedocs.io/en/latest/)
         * Infrastructure requirements
         * How to install
-        * Configuration
+        * [Configuration](https://github.com/EGA-archive/beacon-2.x)
             * Cohorts and/or Datasets
             * Entry types
             * Filtering terms
@@ -53,16 +53,18 @@ for novel use cases).
 
 !!! Note "Implementer"
 
-    * Beacon v2 [Models](models.md)
+    * Beacon v2
+        * [Framework](framework.md)
+        * [Models](models.md)
     * Protocol basics
-        * Requests, responses & errors [variant-queriesi.md]
+        * [Requests](variant-queries.md), responses & errors
         * [OpenAPI](https://www.openapis.org)
     * Beacon v2 Features
         * [Filters](filters.md)
         * Alternative schemas [Link](models.md)
     * Configuration
         * Granularity & security [Link](framework.md)
-    * Verifying compliance
+    * Verifying [compliance](https://ga4gh-approval-service-registry-demo.ega-archive.org/)
 
 
 ## Stakeholder
@@ -73,4 +75,3 @@ for novel use cases).
     * Success Stories:
         * [Implementations](other-implementations.md)
         * Real world data
-    

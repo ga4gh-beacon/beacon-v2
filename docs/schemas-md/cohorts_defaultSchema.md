@@ -1,6 +1,6 @@
 |Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| [cohortDataTypes](./obj/cohortDataTypes.md) | Type of information. Preferably values from Genomics Cohorts Knowledge Ontology (GeCKO) or others when GeCKO is not applicable. | array | [id](./obj/id.md), [label](./obj/label.md) | id:OGMS:0000015, label:clinical history<br />id:OBI:0000070, label:genotyping assay<br />id:OMIABIS:0000060, label:survey data | NA|
+| [cohortDataTypes](./obj/cohortDataTypes.md) | Type of information. Preferably values from Genomics Cohorts Knowledge Ontology (GeCKO) or others when GeCKO is not applicable. | array | [id](./obj/id.md), [label](./obj/label.md) | `[{"id": "OGMS:0000015", "label": "clinical history"}, {"id": "OBI:0000070", "label": "genotyping assay"}, {"id": "OMIABIS:0000060", "label": "survey data"}]` | NA|
 | [cohortDesign](./obj/cohortDesign.md) | Definition of an ontology term. | object | [id](./obj/id.md), [label](./obj/label.md) | NA | NA|
 | [cohortSize](./obj/cohortSize.md) | Count of unique Individuals in cohort (individuals meeting criteria for ´user-defined´ cohorts). If not previously known, it could be calculated by counting the individuals in the cohort. | integer | NA | 14765, 20000 | NA|
 | [cohortType](./obj/cohortType.md) | Cohort type by its definition. If a cohort is declared ´study-defined´ or ´beacon-defined´ criteria are to be entered in cohort_inclusion_criteria; if a cohort is declared ‘user-defined' cohort_inclusion_criteria could be automatically populated from the parameters used to perform the query. | string | NA | NA | study-defined, beacon-defined, user-defined|
@@ -14,7 +14,7 @@
 These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
 
 === "MIN"
-	```
+	```json
 	{
 	    "$schema": "https://json-schema.org/draft/2020-12/schema",
 	    "cohortType": "study-defined",
@@ -24,7 +24,7 @@ These are examples extracted directly from the [GitHub repository](https://githu
 	```
 
 === "MID"
-	```
+	```json
 	{
 	    "$schema": "https://json-schema.org/draft/2020-12/schema",
 	    "cohortDataTypes": [
@@ -79,7 +79,7 @@ These are examples extracted directly from the [GitHub repository](https://githu
 	```
 
 === "MAX"
-	```
+	```json
 	{
 	    "$schema": "https://json-schema.org/draft/2020-12/schema",
 	    "cohortDataTypes": [

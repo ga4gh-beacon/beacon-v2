@@ -12,7 +12,7 @@
 | [notes](./obj/notes.md) | Any relevant info about the biosample that does not fit into any other field in the schema. | string | NA | Some free text | NA|
 | [obtentionProcedure](./obj/obtentionProcedure.md) | Class describing a clinical procedure or intervention. Provenance: GA4GH Phenopackets v2 `Procedure` | object | [ageAtProcedure](./obj/ageAtProcedure.md), [bodySite](./obj/bodySite.md), [dateOfProcedure](./obj/dateOfProcedure.md), [procedureCode](./obj/procedureCode.md) | NA | NA|
 | [pathologicalStage](./obj/pathologicalStage.md) | Definition of an ontology term. | object | [id](./obj/id.md), [label](./obj/label.md) | NA | NA|
-| [pathologicalTnmFinding](./obj/pathologicalTnmFinding.md) | Pathological TNM findings, if applicable, preferably as subclass of NCIT:C48698 - Cancer TNM Finding Category (NCIT:C48698). RECOMMENDED. | array | [id](./obj/id.md), [label](./obj/label.md) | id:NCIT:C48725, label:T2a Stage Finding<br />id:NCIT:C48709, label:N1c Stage Finding<br />id:NCIT:C48699, label:M0 Stage Finding | NA|
+| [pathologicalTnmFinding](./obj/pathologicalTnmFinding.md) | Pathological TNM findings, if applicable, preferably as subclass of NCIT:C48698 - Cancer TNM Finding Category (NCIT:C48698). RECOMMENDED. | array | [id](./obj/id.md), [label](./obj/label.md) | `[{"id": "NCIT:C48725", "label": "T2a Stage Finding"}, {"id": "NCIT:C48709", "label": "N1c Stage Finding"}, {"id": "NCIT:C48699", "label": "M0 Stage Finding"}]` | NA|
 | [phenotypicFeatures](./obj/phenotypicFeatures.md) | List of phenotypic abnormalities of the sample. RECOMMENDED. | array | [evidence](./obj/evidence.md), [excluded](./obj/excluded.md), [featureType](./obj/featureType.md), [modifiers](./obj/modifiers.md), [notes](./obj/notes.md), [onset](./obj/onset.md), [resolution](./obj/resolution.md), [severity](./obj/severity.md) | NA | NA|
 | [sampleOriginDetail](./obj/sampleOriginDetail.md) | Definition of an ontology term. | object | [id](./obj/id.md), [label](./obj/label.md) | NA | NA|
 | [sampleOriginType](./obj/sampleOriginType.md) | Definition of an ontology term. | object | [id](./obj/id.md), [label](./obj/label.md) | NA | NA|
@@ -25,7 +25,7 @@
 These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
 
 === "MIN"
-	```
+	```json
 	{
 	    "$schema": "https://json-schema.org/draft/2020-12/schema",
 	    "biosampleStatus": {
@@ -41,7 +41,7 @@ These are examples extracted directly from the [GitHub repository](https://githu
 	```
 
 === "MID"
-	```
+	```json
 	{
 	    "$schema": "https://json-schema.org/draft/2020-12/schema",
 	    "biosampleStatus": {

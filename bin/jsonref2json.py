@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-#   Script to dereference JSON pointers in Beacon v2 Models schemas
+#   Script to dereference JSON $ref in Beacon v2 Models schemas
 #
 #   Last Modified: Sep/01/2021
 #

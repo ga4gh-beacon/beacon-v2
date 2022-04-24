@@ -32,7 +32,7 @@ YAMLs schemas. Each time the original MS Word document was edited, someone had t
 
 This script inverts the process, i.e., **it enforces modifying the schema specification directly at the YAML/JSON level**.
 
-Editing the schemas directly at the YAML/JSON leven has two advantages, the first is that (because we follow [OpenAPI](https://swagger.io/specification/) specifications) the endpoints documentation can be directly displayed with [SWAGGER UI](https://swagger.io/docs/open-source-tools/swagger-ui/usage/installation). The second is that the YAML/JSON files can be converted to Markdown tables in order to create [Markdown based documentation](http://docs.genomebeacons.org) documentation. This script **transforms YAML/JSON to Markdown tables**, including their nested objects **up to a third degree of hierarchy**.
+Editing the schemas directly at the YAML/JSON level has two advantages, the first is that because we follow [OpenAPI](https://swagger.io/specification/) specification (along with JSON schema), _a priori_ we could use [SWAGGER UI](https://swagger.io/docs/open-source-tools/swagger-ui/usage/installation). The second is that the YAML/JSON files can be converted to Markdown tables in order to create [Markdown based documentation](http://docs.genomebeacons.org) documentation. This script **transforms YAML/JSON to Markdown tables**, including their nested objects **up to a third degree of hierarchy**.
 
 The **Markdown** format can be directly rendered as tables at the GitHub repository, and it can be used with [MkDocs](https://www.mkdocs.org/) to create [HTML](http://docs.genomebeacons.org) documentation. 
 
@@ -79,6 +79,7 @@ but you might need to manually install the below CPAN module(s).
     * JSON::XS
     * Path::Tiny
     * Mojo::JSON::Pointer
+    * List::MoreUtils
 
 First we install cpanminus (with sudo privileges):
 
@@ -86,9 +87,9 @@ First we install cpanminus (with sudo privileges):
 
 Then the module(s):
 
-    $ cpanm --sudo YAML::XS JSON::XS Path::Tiny Mojo::JSON::Pointer
+    $ cpanm --sudo YAML::XS JSON::XS Path::Tiny Mojo::JSON::Pointer List::MoreUtils
 
-The script takes YAMLs as input file and when no arguments is used it will read them from `../schemas/` directory.
+The script takes YAMLs as input file and when no arguments is used it will read them from `./deref_schemas/` directory.
 
 **NB:** We recommend running the script with the provided bash file `transform_yaml2md.sh` (**see ADDENDUM: How to update Documentation**).
 
@@ -98,20 +99,19 @@ The script takes YAMLs as input file and when no arguments is used it will read 
 
 If the script is run directly at `bin/` directory (default) and with no arguments, then it will create contents in:
 
-    * YAMLs at ../schemas/
     * Markdowns at ../docs/schemas-md/
 
 **Example 2:**
 
 Here we are providind arguments for --schema-dir and for markdown-dir.
 
-    $ $path/beacon_yaml2md.pl --schema-dir ../schemas --markdown-dir ../docs/schemas-md --D
+    $ $path/beacon_yaml2md.pl --schema-dir ./deref_schemas --markdown-dir ../docs/schemas-md --D
 
 _NB:_ if the YAML is not well defined (e.g., wrong indentation, etc.) the script will complain about it. Thus, it indirectly serves as a YAML validator.
 
 **Notes:**
 
-The argument `-D|delete` deletes all `../schemas/obj/*yaml` files prior to doing anything else. It's harmless so you may want to use it you're unsure of who created those files.
+The argument `-D|delete` deletes all `./deref_schemas/obj/*yaml` files prior to doing anything else. It's harmless so you may want to use it you're unsure of who created those files.
 
 See the directory tree below:
 
@@ -132,15 +132,17 @@ _NB:_ The decission to take YAMLs (and not JSON) as an input is deliberate and m
 
 _NB:_ The script only processes the `Terms` nested **up to 3 degrees of hierarchy**. Before Adoption of VRS/PHX that limit was OK.
 
+_NB:_ The script also includes the Beacon v2 Models examples from [beacon-v2 repo](https://github.com/ga4gh-beacon/beacon-v2) in JSON format.
+
 # AUTHOR 
 
 Written by Manuel Rueda, PhD. Info about EGA can be found at [https://ega-archive.org/](https://ega-archive.org/).
 
 # KNOWN ISSUES
 
-\* The description/examples of the objects/terms correspond to the last created by the script. Ideally all shared-objects should have a common description.
-\* As of March 2022 we're only processing 3 levels of nesting.
-\* We are not processing &lt;if: then:> statements in JSON Schema.
+    * If two entities share a term/object (e.g., id, label) the text will correspond to the latest one (alphabetical order). "Ideally" all shared-objects should have a common description, shouldn't them? This way we avoid having to create sub-objects for every entity.
+    * As of April 2022 we're only processing 3 levels of nesting and adding external URLs for deeper levels.
+    * We are not processing <if: then:> statements in JSON Schema.
 
 # REPORTING BUGS
 

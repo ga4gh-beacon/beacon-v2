@@ -1,3 +1,3 @@
 |Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| notes | Unstructured text to describe this measurement. Addition compared to Phenopackets model. | string | NA | Some free text | NA|
+| notes | Unstructured text to describe additional properties of this disease instance. | string | NA | Some free text | NA|

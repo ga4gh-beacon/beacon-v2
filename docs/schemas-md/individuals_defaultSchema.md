@@ -18,7 +18,7 @@
 These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
 
 === "MIN"
-	```
+	```json
 	{
 	    "$schema": "https://json-schema.org/draft/2020-12/schema",
 	    "id": "Ind001",
@@ -30,7 +30,7 @@ These are examples extracted directly from the [GitHub repository](https://githu
 	```
 
 === "MID"
-	```
+	```json
 	{
 	    "$schema": "https://json-schema.org/draft/2020-12/schema",
 	    "diseases": [
