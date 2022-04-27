@@ -28,6 +28,11 @@ If you are a Beacon implementer, then, you don't need to clone the Framework rep
 
 <figure markdown>
 
+<!--     datasets o-- runs : 1..n
+    datasets o-- analyses : 1..n
+    datasets o-- biosamples : 1..n
+    datasets o-- individuals : 1..n
+ -->
 ``` mermaid
 classDiagram
 
@@ -45,10 +50,6 @@ classDiagram
 
     cohorts o-- individuals : 1..n
     datasets o-- genomicVariations : 1..n
-    datasets o-- runs : 1..n
-    datasets o-- analyses : 1..n
-    datasets o-- biosamples : 1..n
-    datasets o-- individuals : 1..n
 
     class genomicVariations{
         analysisId
