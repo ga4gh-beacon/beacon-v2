@@ -2,7 +2,7 @@
 #
 #   Script to convert Beacon v2 Models schemas to Markdown tables
 #
-#   Last Modified: Apr/18/2022
+#   Last Modified: May/05/2022
 #
 #   Version 2.0.0
 #
@@ -479,10 +479,13 @@ sub add_external_links {
     # Note: This is an ad hoc solution to fix errors with deeply-nested data
     my @phx = qw( typedQuantities days weeks Quantity high low);
     my @vrs = qw(_id state type CURIE Location);
+    my @framework = ("ontologyTerm");
     return ( any { ( $_ eq $key ) } @phx )
       ? "[$key](https://phenopacket-schema.readthedocs.io/en/latest/building-blocks.html)"
       : ( any { ( $_ eq $key ) } @vrs )
       ? "[$key](https://vrs.ga4gh.org/en/stable/terms_and_model.html#$key)"
+      : ( any { ( $_ eq $key ) } @framework ) 
+      ? "[$key](https://github.com/ga4gh-beacon/beacon-v2/blob/main/framework/src/common/$key.yaml)" 
       : "[$key]($tmp_str/$key.md)";
 }
 
@@ -646,7 +649,8 @@ sub parse_json_keywords {
         'SystemicVariation'  => ['CopyNumber'],
         'MolecularVariation' => [ 'Allele', 'Haplotype' ],
         'location'           => [ 'CURIE', 'Location' ],
-        'state'              => [ 'SequenceState', 'SequenceExpression' ]
+        'state'              => [ 'SequenceState', 'SequenceExpression' ],
+        'Value'              => [ 'Quantity', 'ontologyTerm' ]
     };
 
     # We'll be checking <oneOf allOf anyOf>
@@ -666,10 +670,7 @@ sub parse_json_keywords {
                 #  my $const = $pointer->get("/$keyword/$property/$count/properties/type/const");
                 #   $tmp_hash->{properties}{$const} = $elements;
                 #} else{
-                my $tmp_term =
-                  (      $pointer->contains("/$keyword/$count/title")
-                      && $pointer->get("/$keyword/$count/title") ne
-                      'Ontology Term' )
+                my $tmp_term = ( $pointer->contains("/$keyword/$count/title") && $pointer->get("/$keyword/$count/title") ne 'Ontology Term' )
                   ? $pointer->get("/$keyword/$count/title")
                   : @{ $terms->{$property} }[$count];
                 $tmp_hash->{properties}{$tmp_term} = $elements if $tmp_term; # Ad-hoc some terms appear duplicated and come empty....
