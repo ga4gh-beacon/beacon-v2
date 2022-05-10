@@ -57,7 +57,7 @@ markdown_extensions:
 nav:
     - Introduction: index.md
     - What is Beacon v2?: what-is-beacon-v2.md  
-    - Documentation Scopes: roles.md
+    # - Documentation Scopes: roles.md
     - Changes: bugs-changes-log.md
     - Beacon Types:
         - Beacon Flavours: beacon-flavours.md

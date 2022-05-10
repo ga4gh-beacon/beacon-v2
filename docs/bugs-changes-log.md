@@ -7,7 +7,6 @@
 <!-- When done => please check & move to some dated item in Changes below-->
 
 * [x] content for [Standards Integration](formats-standards.md) (as noted on page)
-* [ ] re-structuring of [Documentation Scopes](roles.md)
 * [x] re-structuring of [Framework page](framework.md) 
 * [x] re-structuring of [Models page](framework.md)
     - [x] integration with the Schemas pages
@@ -15,9 +14,9 @@
 * [x] delete documentation in framework and model repo READMEs and point here
 * [ ] fix https (probably @mbaudis has to do some registrar configuration...)
 * [x] content for the [Filters page](filters.md)
-* [ ] merging (?) of the [Introduction](index.md) and [Documentation Scopes](roles.md) pages
+* [x] merging (?) of the [Introduction](index.md) and [Documentation Scopes](roles.md) pages
     - clarification, re-structuring, links ...
-* [ ] complete  [Implementations](other-implementations.md)
+* [ ] add more [Implementations](other-implementations.md)
 * [ ] extend [Query documentation](variant-queries.md)
     - [x] expand the table comparing different "variant types"
     - [ ] use content from the variant scouts document
