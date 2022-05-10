@@ -17,6 +17,12 @@ Beacon<span style="color: red; font-weight: 800;"><sup>+</sup></span> forward-lo
 implementation, since 2016 Progenetix has been developing concepts for Beacon protocol extensions
 such as CNV query options or handover data delivery.
 
+#### Technologies
+
+* MongoDB backend
+* [`bycon`](http://github.com/progenetix/bycon/) Python-based full stack API / middleware
+* [`progenetix-web`](http://github.com/progenetix/progenetix-web/) React based front-end (modular for Beacon instances as well as the whole Progenetix UI)
+
 ##### Link: [Documentation page](implementations/org.progenetix.md) for Progenetix REST paths
 
 ### Cafe Variome
