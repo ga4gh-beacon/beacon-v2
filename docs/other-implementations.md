@@ -36,3 +36,13 @@ such as CNV query options or handover data delivery.
 ### Fundacion Progreso y Salud Beacon v2 API
 
 ##### Link: [Fundacion Progreso y Salud Beacon v2 API](https://csvs-beacon.clinbioinfosspa.es/csvs/ga4ghbeacon/v2/api/)
+
+## Tips for New Implementers
+
+Find below are some tips to get you started:
+
+1. Start with a [boolean](beacon-flavours.md) beacon.
+2. List your available [endpoints](framework.md).
+3. Map the data from your DB to the [Models](models.md) {{config.repo_models_icon}}.
+4. Handle the different types of [filters](filters.md) and [request parameters](framework.md).
+5. Build a response following the [Framework](framework.md) {{config.repo_framework_icon}}.
