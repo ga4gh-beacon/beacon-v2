@@ -7,7 +7,8 @@
 <!-- When done => please check & move to some dated item in Changes below-->
 
 * [x] content for [Standards Integration](formats-standards.md) (as noted on page)
-* [x] re-structuring of [Framework page](framework.md) 
+* [x] re-structuring of [Framework page](framework.md)
+    - [ ] add part about necessary files, dependening on installation type (e.g. if not needing to support OpenAPI)
 * [x] re-structuring of [Models page](framework.md)
     - [x] integration with the Schemas pages
     - [x] removal of the individual schemas from the main navigation
@@ -30,7 +31,12 @@
 
 ## Changes
 
-#### 2021-04-21: GA4GH approval notice
+#### 2022-05-11: Retiring ReadTheDocs configuration & more
+
+* removed ReadTheDocs configuration files
+* added some "how to implement" instructions
+
+#### 2022-04-21: GA4GH approval notice
 
 #### 2022-04-18: More documentation updates
 
