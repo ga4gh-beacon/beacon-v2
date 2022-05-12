@@ -6,27 +6,16 @@
 
 <!-- When done => please check & move to some dated item in Changes below-->
 
-* [x] content for [Standards Integration](formats-standards.md) (as noted on page)
 * [x] re-structuring of [Framework page](framework.md)
     - [ ] add part about necessary files, dependening on installation type (e.g. if not needing to support OpenAPI)
-* [x] re-structuring of [Models page](framework.md)
-    - [x] integration with the Schemas pages
-    - [x] removal of the individual schemas from the main navigation
-* [x] delete documentation in framework and model repo READMEs and point here
 * [ ] fix https (probably @mbaudis has to do some registrar configuration...)
-* [x] content for the [Filters page](filters.md)
-* [x] merging (?) of the [Introduction](index.md) and [Documentation Scopes](roles.md) pages
-    - clarification, re-structuring, links ...
 * [ ] add more [Implementations](other-implementations.md)
 * [ ] extend [Query documentation](variant-queries.md)
     - [x] expand the table comparing different "variant types"
-    - [ ] use content from the variant scouts document
+    - [ ] use more content from the variant scouts document
 
 ### Repositories
 
-* [x] name and title change
-    - adjusting all the links accordingly
-* [x] BUG: fix transfer of examples
 * [ ] retiring of framework and model repos
 
 ## Changes
@@ -38,29 +27,29 @@
 
 #### 2022-04-21: GA4GH approval notice
 
-#### 2022-04-18: More documentation updates
+#### 2022-04-18: Documentation updates
 
 * Shuffled small fragments to facilitate comprehension.
 
-#### 2022-04-17: More documentation updates
+#### 2022-04-17: Documentation updates
 
 * Updated default schemas tables according to the newest changes.
 * Moved `filters.md` from section _Beacon Components_ to _Implement..._.
 * Dismissed pages w/o content (`_rest-api.md` and `_tips-for-implementers.md`).
 * Dismissed link to RTD version (deprecated).
 
-#### 2022-04-01: More documentation updates
+#### 2022-04-01: Documentation updates
 
 * Partial update of Default schemas Tables (still work in progress)
 * Updated `bin` files that parse JSON schemas
 
-#### 2022-03-30: More documentation updates
+#### 2022-03-30: Documentation updates
 
 * Updated diagram in [Models](models.md#Introduction) page.
 * Removal of some outdated text, e.g. reference to TEMPLATE model (for now)
 * continuous updates from upstream
 
-#### 2022-03-28: More documentation updates
+#### 2022-03-28: Documentation updates
 
 * added content to the [Standards](formats-standards.md) page (VRS, Phenopackets, coordinates)
 * [Queries](variant-queries.md) page now with comparison table for (some) variant type terms
