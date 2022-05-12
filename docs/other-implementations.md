@@ -39,7 +39,7 @@ such as CNV query options or handover data delivery.
 
 ## Tips for New Implementers
 
-Find below are some tips to get you started:
+Find below some tips to get you started:
 
 1. Start with a [boolean](beacon-flavours.md) beacon.
 2. List your available [endpoints](framework.md).
