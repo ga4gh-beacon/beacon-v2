@@ -57,7 +57,6 @@ markdown_extensions:
 nav:
     - Introduction: index.md
     - What is Beacon v2?: what-is-beacon-v2.md  
-    # - Documentation Scopes: roles.md
     - Changes: bugs-changes-log.md
     - Beacon Types:
         - Beacon Flavours: beacon-flavours.md
@@ -65,7 +64,6 @@ nav:
         - Networks: networks.md
     - 'Implement & Deploy a Beacon':
         - Implementations Options: implementations-options.md
-#        - Tips for Implementers: _tips-for-implementers.md
         - Standards Integration: formats-standards.md
         - Filters: filters.md
         - Beacon Implementations:
@@ -84,8 +82,8 @@ nav:
                - Individuals: schemas-md/individuals_defaultSchema.md
                - Runs: schemas-md/runs_defaultSchema.md    
            - Terms List: schemas-md/beacon_terms.md
-#        - REST API: _rest-api.md
     - Querying Beacons:
+        - REST API: rest-api.md
         - Genomic Queries: variant-queries.md
         - Filters in Queries: filter-queries.md
     - External Links:

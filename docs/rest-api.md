@@ -4,7 +4,7 @@ While the full power of the Beacon API can be unlocked through the use of struct
 queries using JSON serialization ("POST" requests), the majority of common queries can
 be implemented through standard query URLs with parameters (GET queries).
 
-## Example Beacon API URLs
+## Beacon API URL structure
 
 Beacon REST paths in general follow the format
 
@@ -22,11 +22,21 @@ A typical example would e.g. the request to retrieve all genomic variants associ
 
     The endpoind paths available for a given Beacon instance are defined in
     `__APIroot__/beaconMap/` [Github](https://github.com/ga4gh-beacon/beacon-v2/blob/main/models/src/beacon-v2-default-model/beaconMap.yaml)
+
+### `POST` requests
+
+In `POST` requests queries and metadata are defined in JSON objects as specified
+in the model supported by the Beacon instance. For more information see
+
+* the [requests](/framework/#the-requests) documentation
+* the [models](/models)
+
+### `GET` queries
+
+By default the Beacon model supports a limited set of query parameters, most notably
+such addressing genomic variations. Examples can be found in the [Genomic Queries](/variant-queries)
+documentation and in the requests section of the default model.
   
-### Typical Endpoint Patterns
-
-==(TBD)==
-
 ### List parameters in `GET` queries
 
 Several of the common query parameters have a multiple value option, _i.e._ are
