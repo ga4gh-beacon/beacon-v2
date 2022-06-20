@@ -68,17 +68,17 @@ definitions:
         $ref: '#/definitions/Skip'
       limit:
         $ref: '#/definitions/Limit'
-      current_page:
+      currentPage:
         description: >-
           Token of the returned page. To be used only in the response to allow
           the client to check if the returned page is the one requested.
         $ref: '#/definitions/PageToken'
-      next_page:
+      nextPage:
         description: >-
           Token of the next page. Used to navigate forward. If empty, it is
           assumed that no more pages are available
         $ref: '#/definitions/PageToken'
-      previous_page:
+      previousPage:
         description: >-
           Token of the previous page. Used to navigate backwards. If empty, it
           is assumed that the current page is the first one.

@@ -170,18 +170,18 @@
         "Pagination": {
             "description": "Pagination to apply or that has been applied on the results.",
             "properties": {
-                "current_page": {
+                "currentPage": {
                     "$ref": "#/definitions/PageToken",
                     "description": "Token of the returned page. To be used only in the response to allow the client to check if the returned page is the one requested."
                 },
                 "limit": {
                     "$ref": "#/definitions/Limit"
                 },
-                "next_page": {
+                "nextPage": {
                     "$ref": "#/definitions/PageToken",
                     "description": "Token of the next page. Used to navigate forward. If empty, it is assumed that no more pages are available"
                 },
-                "previous_page": {
+                "previousPage": {
                     "$ref": "#/definitions/PageToken",
                     "description": "Token of the previous page. Used to navigate backwards. If empty, it is assumed that the current page is the first one."
                 },
