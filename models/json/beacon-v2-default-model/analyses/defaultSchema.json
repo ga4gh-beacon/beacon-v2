@@ -40,19 +40,21 @@
         "info": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Info"
         },
-        "pipelineName": {
-            "description": "Analysis pipeline and version if a standardized pipeline was used",
+        "pipelineInfo": {
+            "$ref": "../common/externalReference.json",
+            "description": "Public or local pipeline identifier with version, as well as link and notes",
             "examples": [
-                "Pipeline-panel-0001-v1"
-            ],
-            "type": "string"
-        },
-        "pipelineRef": {
-            "description": "Link to Analysis pipeline resource",
-            "examples": [
-                "https://doi.org/10.48511/workflowhub.workflow.111.1"
-            ],
-            "type": "string"
+                {
+                    "id": "Pipeline-panel-0001-v1",
+                    "notes": "Higly customized workflow. Please contact us at dev/null.",
+                    "reference": "https://doi.org/10.48511/workflowhub.workflow.111.1"
+                },
+                {
+                    "id": "aroma.affymetrix",
+                    "notes": "The aroma.affymetrix package is an R package for analyzing small to extremely large Affymetrix data sets.",
+                    "reference": "http://www.aroma-project.org"
+                }
+            ]
         },
         "runId": {
             "description": "Run identifier (external accession or internal ID).",
