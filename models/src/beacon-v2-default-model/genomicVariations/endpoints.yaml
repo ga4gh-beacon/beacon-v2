@@ -270,7 +270,7 @@ components:
         type: string
       example: BRAF
     aminoacidChange:
-      name: aminoacidchange
+      name: aminoacidChange
       in: query
       schema:
         type: string
