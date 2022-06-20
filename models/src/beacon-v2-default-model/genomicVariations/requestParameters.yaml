@@ -39,9 +39,10 @@ g_variant:
       minItems: 1
       maxItems: 2
     end:
-      description: "Precise or bracketing the end of the variants of interest:\n*\
-        \ (0-based, exclusive) - see `start`\n* for bracket queries, provide 2 values\
-        \ (e.g. [111,222])."
+      description: >-
+        Precise or bracketing the end of the variants of interest:
+        * (0-based, exclusive) - see `start`
+        * for bracket queries, provide 2 values (e.g. [111,222])."
       type: array
       items:
         type: integer
@@ -54,47 +55,57 @@ g_variant:
     alternateBases:
       $ref: ./requestParametersComponents.json#/definitions/AlternateBases
     variantType:
-      description: "The `variantType` is used to query variants which are not defined\n\
-        through a sequence of one or more bases using the `alternateBases`\nparameter.\
-        \ Examples here are e.g. structural variants:\n* DUP\n  - increased allelic\
-        \ count of material from the genomic region\n  between `start` and `end` positions\n\
-        \  - no assumption about the placement of the additional sequences is\n  being\
-        \ made (i.e. no _in situ_ requirement as tandem duplications)\n* DEL: deletion\
-        \ of sequence following `start`\n* BND: breakend, i.e. termination of the\
-        \ allele at position\n      `start` or in the `startMin` => `startMax` interval,\
-        \ or fusion\n      of the sequence to distant partner\nEither `alternateBases`\
-        \ or `variantType` is required, with the\nexception of range queries (single\
-        \ `start` and `end` parameters)."
+      description: >-
+        The `variantType` is used to query variants which are not defined through
+        a sequence of one or more bases using the `alternateBases` parameter.
+        Examples here are e.g. structural variants:
+        * DUP
+          - increased allelic count of material from the genomic region between
+            `start` and `end` positions
+          - no assumption about the placement of the additional sequences is being
+            made (i.e. no _in situ_ requirement as tandem duplications)
+        * DEL: deletion of sequence following `start`
+        * BND: breakend, i.e. termination of the allele at position `start` or in
+          the `startMin` => `startMax` interval, or fusion of the sequence to distant
+          partner
+        Either `alternateBases` or `variantType` is required, with the exception
+        of range queries (single\ `start` and `end` parameters).
       type: string
     variantMinLength:
-      description: Minimum length in bases of a genomic variant. This is an optional
-        parameter without prescribed use. While a length is commonly available for
-        structural variants such as copy number variations, it is recommended that
-        length based queries should also be supported for variants with indicated
-        referenceBases and alternateBases, to enable length-specific wildcard queries.
+      description: >-
+        * Minimum length in bases of a genomic variant
+        * This is an optional parameter without prescribed use. While a length is
+          commonly available for structural variants such as copy number variations,
+          it is recommended that length based queries should also be supported for
+          variants with indicated referenceBases and alternateBases, to enable
+          length-specific wildcard queries.
       type: integer
       format: int64
       minimum: 0
     variantMaxLength:
-      description: Maximum length in bases of a genomic variant. This is an optional
-        parameter without prescribed use. While a length is commonly available for
-        structural variants such as copy number variations, it is recommended that
-        length based queries should also be supported for variants with indicated
-        referenceBases and alternateBases, to enable length-specific wildcard queries.
+      description: >-
+        * Maximum length in bases of a genomic variant.
+        * This is an optional parameter without prescribed use. While a length is
+          commonly available for structural variants such as copy number variations,
+          it is recommended that length based queries should also be supported for
+          variants with indicated referenceBases and alternateBases, to enable
+          length-specific wildcard queries.
       type: integer
       format: int64
       minimum: 1
     mateName:
       $ref: ./requestParametersComponents.json#/definitions/RefSeqId
     geneId:
-      description: Gene identifier, it is strongly suggested to use a symbol following
-        the HGNC (https://www.genenames.org) nomenclature.
+      description: >-
+        * A gene identifier
+        * It is strongly suggested to use a symbol following
+          the HGNC (https://www.genenames.org) nomenclature.
       type: string
       examples:
         - BRAF
         - SCN5A
     aminoacidChange:
-      description: 'Aminoacid alteration of interest. Format 1 letter '
+      description: Aminoacid alteration of interest. Format 1 letter
       type: string
       examples:
         - V600E
