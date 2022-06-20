@@ -11,7 +11,7 @@
             "aminoacidChange": {
                 "example": "V600E",
                 "in": "query",
-                "name": "aminoacidchange",
+                "name": "aminoacidChange",
                 "schema": {
                     "type": "string"
                 }
