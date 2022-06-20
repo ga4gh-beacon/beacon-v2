@@ -7,23 +7,30 @@ g_variant:
     referenceName:
       $ref: ./requestParametersComponents.json#/definitions/RefSeqId
     start:
-      description: "Precise or fuzzy start coordinate position(s), allele locus\n\
-        (0-based, inclusive).\n* `start` only:\n  - for single positions, e.g. the\
-        \ start of a specified sequence\n  alteration where the size is given through\
-        \ the specified\n  `alternateBases`\n  - typical use are queries for SNV and\
-        \ small InDels\n  - the use of `start` without an `end` parameter requires\
-        \ the use\n  of `alternateBases`\n\n* `start` and `end`:\n  - for searching\
-        \ any variant falling fully or partially within the\n  range between `start`\
-        \ and `end` (a.k.a. \"range query\")\n  - additional use of `variantType`\
-        \ OR `alternateBases` can limit the\n  scope of the query\n  - by convention,\
-        \ partial overlaps of variants with the indicated\n  genomic range are accepted;\
-        \ for specific overlap requirements the\n  4-parammeter \"Bracket Queries\"\
-        \ should be employed\n* use of 2 values in both `start` and `end` for constructing\
-        \ a\n\"Bracket Query\":\n  - can be used to match any contiguous genomic interval,\
-        \ e.g. for\n  querying imprecise positions\n    * identifying all structural\
-        \ variants starting between `start[0]`\n    and `start[1]`, and ending between\
-        \ `end[0]` <-> `end[1]`\n    * single or double sided precise matches can\
-        \ be achieved by\n    setting `start[1]=start[0]+1` and `end[1]=end[0]+1`"
+      description: >-
+        Precise or fuzzy start coordinate position(s), allele locus
+        (0-based, inclusive).
+        * `start` only:
+          - for single positions, e.g. the start of a specified sequence
+            alteration where the size is given through the specified `alternateBases`
+          - typical use are queries for SNV and small InDels
+          - the use of `start` without an `end` parameter requires the use of
+            `alternateBases`
+        * `start` and `end`:
+          - for searching any variant falling fully or partially within the range
+            between `start` and `end` (a.k.a. "range query")
+          - additional use of `variantType` OR `alternateBases` can limit the
+            scope of the query
+          - by convention, partial overlaps of variants with the indicated genomic
+            range are accepted; for specific overlap requirements the 4-parameter
+            "Bracket Queries" should be employed
+        * 2 values in both `start` and `end` for constructing a "Bracket Query":
+          - can be used to match any contiguous genomic interval, e.g. for querying
+            imprecise positions
+          - identifies all structural variants starting between `start[0]` and `start[1]`,
+            and ending between `end[0]` <-> `end[1]`
+          - single or double sided precise matches can be achieved by setting
+            `start[1]=start[0]+1` and `end[1]=end[0]+1`
       type: array
       items:
         type: integer
