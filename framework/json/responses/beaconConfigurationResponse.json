@@ -4,11 +4,11 @@
     "description": "Information about the Beacon. Aimed to Beacon clients like web pages or Beacon networks.",
     "properties": {
         "meta": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/sections/beaconInformationalResponseMeta.json",
+            "$ref": "./sections/beaconInformationalResponseMeta.json",
             "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
         },
         "response": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/configuration/beaconConfigurationSchema.json",
+            "$ref": "../configuration/beaconConfigurationSchema.json",
             "description": "Returning the Beacon configuration."
         }
     },

@@ -6,10 +6,10 @@ properties:
   meta:
     description: Information about the response that could be relevant for the Beacon
       client in order to interpret the results.
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/sections/beaconInformationalResponseMeta.json
+    $ref: ./sections/beaconInformationalResponseMeta.json
   response:
     description: Returning the Beacon Map.
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/configuration/beaconMapSchema.json
+    $ref: ../configuration/beaconMapSchema.json
 required:
   - meta
   - response

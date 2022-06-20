@@ -37,7 +37,8 @@ definitions:
         example: Aplasia/Hypoplasia of the middle ear
   Resource:
     type: object
-    description: Description of an ontology resource defined externally to this beacon
+    description: >-
+      Description of an ontology resource defined externally to this beacon
       implementation, such as MeSH or EFO, based on the phenopackets resource object
       (https://phenopacket-schema.readthedocs.io/en/latest/resource.html)
     required:
