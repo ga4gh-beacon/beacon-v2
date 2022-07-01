@@ -39,6 +39,17 @@
             "example": "org.example.beacon.v2",
             "type": "string"
         },
+        "CURIE": {
+            "description": "A CURIE identifier, e.g. as `id` for an ontology term.",
+            "examples": [
+                "ga4gh:GA.01234abcde",
+                "DUO:0000004",
+                "orcid:0000-0003-3463-0775",
+                "PMID:15254584"
+            ],
+            "pattern": "^\\w[^:]+:.+$",
+            "type": "string"
+        },
         "Exists": {
             "description": "Indicator of whether any record was observed in any of the collections queried. This should be non-null.",
             "examples": [
