@@ -14,11 +14,14 @@
     - [x] expand the table comparing different "variant types"
     - [ ] use more content from the variant scouts document
 
-### Repositories
-
-* [ ] retiring of framework and model repos
-
 ## Changes
+
+#### 2022-06-20: Retiring of `beacon-framework-v2` and `beacon-v2-Models` repos
+
+* all issues and PRs were either resolved or transferred to this repository
+* [x] repos were clearly labeled as `archived` w/ pointers to this one here and
+archived (_i.e._ set to read only)
+* also archiving of the `implementations-v2` repository (part of documentation)
 
 #### 2022-05-11: Retiring ReadTheDocs configuration & more
 

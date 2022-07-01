@@ -2,7 +2,7 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "definitions": {
         "AlternateBases": {
-            "description": "Alternate bases for this variant (starting from `start`).\n* Accepted values: [ACGTN]*.\n* N is a wildcard, that denotes the position of any base, and can be\nused as a standalone base of any type or within a partially known\nsequence. As example, a query of `ANNT` the Ns can take take any form of\n[ACGT] and will match `ANNT`, `ACNT`, `ACCT`, `ACGT` ... and so forth.\n* an *empty value* is used in the case of deletions with the maximally\ntrimmed, deleted sequence being indicated in `ReferenceBases`\n* Categorical variant queries, e.g. such *not* being represented through\nsequence & position, make use of the `variantType` parameter.\n* either `alternateBases` or `variantType` is required.",
+            "description": "Alternate bases for this variant (starting from `start`). * Accepted values: `[ACGTN]*` * N is a wildcard, that denotes the position of any base,\n  and can be used as a standalone base of any type or within a partially known\n  sequence. As example, a query of `ANNT` the Ns can take take any form of [ACGT]\n  and will match `ANNT`, `ACNT`, `ACCT`, `ACGT` ... and so forth.\n* an *empty value* is used in the case of deletions with the maximally trimmed,\n  deleted sequence being indicated in `ReferenceBases`\n* Categorical variant queries, e.g. such *not* being represented through\n  sequence & position, make use of the `variantType` parameter.\n* either `alternateBases` or `variantType` is required.",
             "pattern": "^([ACGTUNRYSWKMBDHV\\-\\.]*)$",
             "type": "string"
         },
@@ -25,10 +25,10 @@
             "type": "string"
         },
         "ReferenceBases": {
-            "description": "Reference bases for this variant (starting from `start`). * Accepted values: [ACGTN]*. * N is a wildcard, that denotes the position of any base, and can be used as a standalone base of any type or within a partially known sequence. As example, a query of `ANNT` the Ns can take take any form of [ACGT] and will match `ANNT`, `ACNT`, `ACCT`, `ACGT` ... and so forth. * an *empty value* is used in the case of insertions with the maximally trimmed, inserted sequence being indicated in `AlternateBases`",
+            "description": "Reference bases for this variant (starting from `start`). * Accepted values: `[ACGTN]*` * N is a wildcard, that denotes the position of any base,\n  and can be used as a standalone base of any type or within a partially known\n  sequence. As example, a query of `ANNT` the Ns can take take any form of [ACGT]\n  and will match `ANNT`, `ACNT`, `ACCT`, `ACGT` ... and so forth.\n* an *empty value* is used in the case of insertions with the maximally trimmed, inserted\n  sequence being indicated in `AlternateBases`",
             "pattern": "^([ACGTUNRYSWKMBDHV\\-\\.]*)$",
             "type": "string"
         }
     },
-    "description": "Component definitions used in 'requestParameters.json'.\nThe purpose of this file is to separate components from actual parameters to avoid confusion."
+    "description": "Component definitions used in 'requestParameters.json'. The purpose of this file is to separate components from actual parameters to avoid confusion."
 }

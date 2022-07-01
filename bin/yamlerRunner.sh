@@ -2,16 +2,17 @@ BASEDIR=$(dirname $0)
 UNITYPATH=$BASEDIR/..
 
 # initial conversion from separate schemas
-BEACONMODELPATH=$BASEDIR/../../beacon-v2-Models/BEACON-V2-Model
-BEACONFRAMEWORKPATH=$BASEDIR/../../beacon-framework-v2
+# DEPRECATED
+# BEACONMODELPATH=$BASEDIR/../../beacon-v2-Models/BEACON-V2-Model
+# BEACONFRAMEWORKPATH=$BASEDIR/../../beacon-framework-v2
 
 BEACONMODELNAME=beacon-v2-default-model
 
-for UPSTREAM in $BEACONMODELPATH $BEACONFRAMEWORKPATH
-do
-	echo "pulling $UPSTREAM"
-	git -C $UPSTREAM pull
-done
+# for UPSTREAM in $BEACONMODELPATH $BEACONFRAMEWORKPATH
+# do
+# 	echo "pulling $UPSTREAM"
+# 	git -C $UPSTREAM pull
+# done
 
 for KIND in src json
 do
@@ -19,8 +20,8 @@ do
 	mkdir -p $UNITYPATH/framework/$KIND	
 done
 
-$BASEDIR/beaconYamler.py -i $BEACONMODELPATH -t json -x yaml -o $UNITYPATH/models/src/$BEACONMODELNAME
-$BASEDIR/beaconYamler.py -i $BEACONFRAMEWORKPATH -t json -x yaml -o $UNITYPATH/framework/src
+# $BASEDIR/beaconYamler.py -i $BEACONMODELPATH -t json -x yaml -o $UNITYPATH/models/src/$BEACONMODELNAME
+# $BASEDIR/beaconYamler.py -i $BEACONFRAMEWORKPATH -t json -x yaml -o $UNITYPATH/framework/src
 
 # recurring conversion from the source files to the exported versions
 $BASEDIR/beaconYamler.py -i $UNITYPATH/models/src/$BEACONMODELNAME -t yaml -x json -o $UNITYPATH/models/json/$BEACONMODELNAME

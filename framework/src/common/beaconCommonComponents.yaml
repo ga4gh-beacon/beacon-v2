@@ -1,9 +1,10 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Beacon Common Components
-description: "Definition of relatively simple components used in different points\
-  \ of the Beacon specification, both in requests and responses, therefore not associated\
-  \ exclusively with one or the other.\n If a component is complex a separated schema\
-  \ is provided."
+description: >-
+  Definition of relatively simple components used in different points of the
+  Beacon specification, both in requests and responses, therefore not associated
+  exclusively with one or the other.
+  Separate schema documents are provided for complex components.
 type: object
 definitions:
   $schema:
@@ -13,16 +14,16 @@ definitions:
     description: Refers to the JSON Schema which describes the set of valid attributes
       for this particular document type. This attribute is mostly used in schemas
       that should be tested in Beacon implementations.
+  ApiVersion:
+    description: an API version.
+    type: string
+    example: v2.0
   BeaconId:
     description: the Id of a Beacon. Usually a reversed domain string, but any URI
       is acceptable. The purpose of this attribute is, in the context of a Beacon
       network, to disambiguate responses coming from different Beacons.
     type: string
     example: org.example.beacon.v2
-  ApiVersion:
-    description: an API version.
-    type: string
-    example: v2.0
   BeaconError:
     description: Beacon-specific error.
     type: object
@@ -39,6 +40,15 @@ definitions:
         type: string
         examples:
           - the provided parameters are incomplete. 'xyz' is missing.
+  CURIE:
+    pattern: ^\w[^:]+:.+$
+    type: string
+    description: A CURIE identifier, e.g. as `id` for an ontology term.
+    examples:
+      - ga4gh:GA.01234abcde
+      - DUO:0000004
+      - orcid:0000-0003-3463-0775
+      - PMID:15254584
   ListOfSchemas:
     description: Set of schemas to be used in the response to a request.
     type: array
@@ -67,28 +77,33 @@ definitions:
         $ref: '#/definitions/Skip'
       limit:
         $ref: '#/definitions/Limit'
-      current_page:
-        description: Token of the returned page. To be used only in the response to
-          allow the client to check if the returned page is the one requested.
+      currentPage:
+        description: >-
+          Token of the returned page. To be used only in the response to allow
+          the client to check if the returned page is the one requested.
         $ref: '#/definitions/PageToken'
-      next_page:
-        description: Token of the next page. Used to navigate forward. If empty, it
-          is assumed that no more pages are available
+      nextPage:
+        description: >-
+          Token of the next page. Used to navigate forward. If empty, it is
+          assumed that no more pages are available
         $ref: '#/definitions/PageToken'
-      previous_page:
-        description: Token of the previous page. Used to navigate backwards. If empty,
-          it is assumed that the current page is the first one.
+      previousPage:
+        description: >-
+          Token of the previous page. Used to navigate backwards. If empty, it
+          is assumed that the current page is the first one.
         $ref: '#/definitions/PageToken'
   Skip:
-    description: "In the request: number of pages to skip.\n In the response: number\
-      \ of pages that has been skipped."
+    description: >-
+      * In the request: number of pages to skip
+      * In the response: number of pages that has been skipped
     type: integer
     minimum: 0
     default: 0
     example: 0
   Limit:
-    description: "Size of the page.\n\nUse `0` to return all the results or the maximum\
-      \ allowed by the Beacon, if there is any."
+    description: >-
+      Size of the page.
+      Use `0` to return all the results or the maximum allowed by the Beacon, if there is any.
     type: integer
     minimum: 0
     default: 10
@@ -100,15 +115,17 @@ definitions:
     type: string
     example: ab0sc&fe1dd
   Granularity:
-    description: "Granularity or level of detail of the response. - `boolean`: returns\
-      \ 'true/false' responses.\n\n - `count`: adds the total number of positive results\
-      \ found.\n\n - `aggregated`: returns summary, aggregated or distribution like\
-      \ responses.\n\n. - `record`: returns details for every row. The cases where\
-      \ a Beacon prefers to return records with less, not all attributes, different\
-      \ strategies have been considered, e.g.: keep non-mandatory attributes empty,\
-      \ or Beacon to provide a minimal record definition, but these strategies still\
-      \ need to be tested in real world cases and hence no design decision has been\
-      \ taken yet."
+    description: >-
+      Granularity or level of detail of the response:
+
+      * `boolean`: returns true/false' responses
+      * `count`: adds the total number of positive results found
+      * `aggregated`: returns summary, aggregated or distribution like responses
+      * `record`: returns details for every row. In cases where a Beacon prefers
+        to return records with fewer than allattributes, different strategies have
+        to be considered w/o adding them to the current design, e.g.:
+          - keeping non-mandatory attributes empty
+          - Beacon to provide a minimal record definition
     type: string
     enum:
       - boolean
@@ -117,24 +134,30 @@ definitions:
       - record
     default: boolean
   TestMode:
-    description: Used for indicating that a request or response is done in a test
-      context. Purposed for compliance testing. It DOES NOT mean that the Beacon instance
-      is a test instance, but that this specific request-response cycle is a testing
-      one. When 'true' the Beacon instance MUST respond the request but it SHOULD
-      use fake or non-sensitive data or content as what is being evaluated is the
+    description: >-
+      Used for indicating that a request or response is done in a test context
+      e.g. for compliance testing i.e. to evaluate the acceptance/understanding
+      of a request and the structure of the returned response by the Beacon
+      instance.
+      A TRUE `testMode` parameter DOES NOT require that the Beacon instance is
+      a test instance, but that this specific request-response cycle is a testing
+      one. When `true` the Beacon instance MUST respond the request but it SHOULD
+      use virtual or non-sensitive data. Here, what is being evaluated is the
       acceptance/understanding of a request and the structure of the returned response
       by the Beacon instance.
     type: boolean
     default: false
   NonFilteredQueriesAllowed:
-    description: Switch that declares if this Beacon instance, for a given entry type,
+    description: >-
+      Switch that declares if this Beacon instance, for a given entry type,
       admits queries that does not include any element that restrict returning all
       the results, like filters, parameters, ids, etc. The default value is 'true'
       for backward compatibility and for clarity in the request-response dialog.
     type: boolean
     default: true
   IncludeResultsetResponses:
-    description: Indicator of whether responses from every Resultset should be included
+    description: >-
+      Indicator of whether responses from every Resultset should be included
       in the response to this request or just the ones with positive, negative results
       or no details at all. If null (not specified), the default value of 'HIT' is
       assumed. This parameter allows for returning boolean/counting results although
@@ -152,7 +175,8 @@ definitions:
       - MISS
       - NONE
   Filters:
-    description: Ontology based filters. CURIE syntax is encouraged to be used.
+    description: >-
+      Ontology based filters. A CURIE syntax is encouraged to be used.
     type: array
     items:
       type: string
@@ -173,11 +197,14 @@ definitions:
     examples:
       - 123
   Info:
-    description: Placeholder to allow the Beacon to return any additional information
-      that is necessary or could be of interest in relation to the query or the entry
-      returned. It is recommended to encapsulate additional informations in this attribute
-      instead of directly adding attributes at the same level than the others in order
-      to avoid collision in the names of attributes in future versions of the specification.
+    description: >-
+      Placeholder to allow the Beacon to return any additional information that
+      is necessary or could be of interest in relation to the query or the entry
+      returned.
+      It is recommended to encapsulate additional informations in this attribute
+      instead of directly adding attributes at the same level than the others in
+      order to avoid collision in the names of attributes in future versions of
+      the specification.
     type: object
   ListOfHandovers:
     description: Set of handovers to be added in one section the response.
@@ -187,10 +214,18 @@ definitions:
       $ref: '#/definitions/Handover'
   Handover:
     type: object
-    description: 'A handover is a typed link for attaching actionable links to results,
-      non purely informational, requests. The goal of the handovers is to list the
-      different actions available, e.g.: a link to a request access page, or to a
-      temporarily saved detailed response, which can include a temporary token.'
+    description: >-
+      A handover is a typed link for attaching actionable links to results,
+      non purely informational, requests. The goal of the handovers is to list
+      the different actions available, e.g.:
+
+      * a link to a request access page
+      * linking to a file for download, e.g. a VCF file
+
+      Another common scenario is to provide a fast summary response (e.g.
+      BeconCountResponse) and to provide access to different endpoints for the
+      entities matched by the query using temporary access tokens in the handover
+      URLs.
     required:
       - handoverType
       - url
@@ -205,24 +240,17 @@ definitions:
       url:
         type: string
         format: uri
-        description: "URL endpoint to where the handover process could progress (in\
-          \ RFC\n3986 format)."
+        description: >-
+          URL endpoint to where the handover process could progress, in
+          RFC3986 format
         example: https://api.mygenomeservice.org/Handover/9dcc48d7-fc88-11e8-9110-b0c592dbf8c0/
   HandoverType:
-    type: object
-    required:
-      - id
-    description: "Handover type, as an Ontology_term object with CURIE syntax for\
-      \ the\n`id` value."
-    properties:
-      id:
-        type: string
-        description: Use `CUSTOM` for the `id` when no ontology is available.
-        default: CUSTOM
-        example: EFO:0004157
-      label:
-        type: string
-        description: This would be the "preferred Label" in the case of an ontology
-          term.
-        default:
-        example: BAM format
+    description: >-
+      Handover type, as an Ontology_term object with CURIE syntax for the `id` value.
+      Use `CUSTOM` for the `id` when no ontology is available.
+    $ref: ./ontologyTerm.json
+    examples:
+      - id: EFO:0004157
+        label: BAM format
+      - id: CUSTOM
+        label: download genomic variants in .pgxseg file format

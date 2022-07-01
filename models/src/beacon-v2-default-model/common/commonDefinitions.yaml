@@ -7,7 +7,7 @@ definitions:
     description: 'Sex of the individual. Recommended values from NCIT General Qualifier
       (NCIT:C27993): "unknown" (not assessed or not available) - NCIT:C17998; "female"
       - NCIT:C16576;  "male" - NCIT:C20197'
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ../../../../framework/json/common/ontologyTerm.json
     examples:
       - id: NCIT:C16576
         label: female
@@ -16,14 +16,21 @@ definitions:
       - id: NCIT:C1799
         label: unknown
   KaryotypicSex:
-    description: 'The chromosomal sex of an individual represented from a selection
+    description: >-
+      The chromosomal sex of an individual represented from a selection
       of options. The values correspond to the ordinal values in the Phenopackets
-      schema where: 0 - UNKNOWN_KARYOTYPE (Untyped or inconclusive karyotyping); 1
-      - XX (Female); 2 - XY (Male); 3 - XO (Single X chromosome only); 4 - XXY (Two
-      X and one Y chromosome); 5 - XXX (Three X chromosomes); 6 - XXYY (Two X chromosomes
-      and two Y chromosomes); 7 - XXXY (Three X chromosomes and one Y chromosome);
-      8 - XXXX (Four X chromosomes); 9 - XYY (One X and two Y chromosomes); 10 - OTHER_KARYOTYPE
-      (None of the above types)'
+      schema where:
+      * 0 - UNKNOWN_KARYOTYPE (Untyped or inconclusive karyotyping)
+      * 1 - XX (Female)
+      * 2 - XY (Male)
+      * 3 - XO (Single X chromosome only)
+      * 4 - XXY (Two X and one Y chromosome)
+      * 5 - XXX (Three X chromosomes)
+      * 6 - XXYY (Two X chromosomes and two Y chromosomes)
+      * 7 - XXXY (Three X chromosomes and one Y chromosome)
+      * 8 - XXXX (Four X chromosomes)
+      * 9 - XYY (One X and two Y chromosomes)
+      * 10 - OTHER_KARYOTYPE (None of the above types)
     $comments: Compares to https://github.com/phenopackets/phenopacket-schema/blob/master/docs/karyotypicsex.rst
     type: string
     enum:
@@ -52,7 +59,7 @@ definitions:
       (Latin American). A geographic ancestral origin category that is assigned to
       a population group based mainly on physical characteristics that are thought
       to be distinct and inherent. [ NCI ]
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ../../../../framework/json/common/ontologyTerm.json
     examples:
       - id: NCIT:C42331
         label: African
@@ -72,7 +79,7 @@ definitions:
     description: Country or region of origin of the individual (birthplace or residence
       place regardless of ethnic origin). Value from GAZ Geographic Location ontology
       (GAZ:00000448), e.g. GAZ:00002459 (United States of America).
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ../../../../framework/json/common/ontologyTerm.json
     examples:
       - id: GAZ:00002955
         label: Slovenia
@@ -86,7 +93,7 @@ definitions:
     description: 'Severity as applicable to phenotype or disease observed. Recommended
       are values from Human Phenotype Ontology (HP:0012824), e.g `mild`. The intensity
       or degree of a manifestation. Source: Phenopackets v2'
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ../../../../framework/json/common/ontologyTerm.json
     examples:
       - id: HP:0012828
         label: Severe
@@ -101,7 +108,7 @@ definitions:
   Unit:
     description: The kind of unit. Recommended from NCIT Unit of Category ontology
       term (NCIT:C42568) descendants
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ../../../../framework/json/common/ontologyTerm.json
     examples:
       - id: NCIT:C70575
         label: Roentgen
