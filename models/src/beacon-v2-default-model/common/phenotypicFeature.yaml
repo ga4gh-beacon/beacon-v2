@@ -15,20 +15,23 @@ properties:
       - id: HP:0012469
         label: Infantile spasms
   excluded:
-    description: (from Phenopackets v.2) Flag to indicate whether the disease was
-      observed or not. Default is ‘false’, in other words the disease was observed.
-      Therefore it is only required in cases to indicate that the disease was looked
-      for, but found to be absent. More formally, this modifier indicates the logical
-      negation of the OntologyClass used in the 'featureType' field. CAUTION It is
-      imperative to check this field for correct interpretation of the disease!
+    description: >-
+      Flag to indicate whether the phenotypic feature was observed or not. Default
+      is ‘false’, in other words the phenotype was observed. Therefore it is only
+      used in cases where the phenotype was looked for but found to be absent.
+      More formally, this modifier indicates the logical negation of the OntologyClass
+      used in the `featureType` field.
+      CAUTION: It is imperative to check this field for correct interpretation of the phenotype!
+      Source: Phenopackets v2
     type: boolean
     default: false
   modifiers:
-    description: 'For instance one or more terms from HPO Clinical Modifier (HP:0012823).
+    description: >-
       This subontology is designed to provide terms to characterize and specify the
       phenotypic abnormalities defined in the Phenotypic abnormality subontology,
-      with respect to severity, laterality, age of onset, and other aspects. [ HPO:probinson
-      ] '
+      with respect to severity, laterality, age of onset, and other aspects.
+      Example use here would be one or more terms from HPO Clinical Modifier (HP:0012823).
+      Source: Phenopackets v2
     type: array
     items:
       $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
