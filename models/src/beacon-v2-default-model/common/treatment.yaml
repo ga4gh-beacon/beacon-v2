@@ -9,7 +9,7 @@ properties:
   treatmentCode:
     description: Code of treatment. Value from NCIT or any relevant ontology. Compares
       to `agent` in Phenopackets v2
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ./ontologyTerm.json
     examples:
       - id: NCIT:C287
         label: Aspirin
@@ -18,7 +18,7 @@ properties:
   routeOfAdministration:
     description: Route of treatment. Value from NCIT Route of Administration tree
       (NCIT:C38114).
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ./ontologyTerm.json
     examples:
       - id: NCIT:C38304
         label: Topical

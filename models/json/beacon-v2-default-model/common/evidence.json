@@ -4,7 +4,7 @@
     "description": "Definition of an evidence class. Provenance: GA4GH Phenopackets v2 `Evidence`",
     "properties": {
         "evidenceCode": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
+            "$ref": "./ontologyTerm.json",
             "description": "An ontology class that represents the evidence type",
             "example": {
                 "id": "ECO:0006017",

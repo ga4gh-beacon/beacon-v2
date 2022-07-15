@@ -17,7 +17,7 @@
             "type": "string"
         },
         "exposureCode": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
+            "$ref": "./ontologyTerm.json",
             "description": "Exposure ID. Value from Environment Exposure Ontology.",
             "examples": [
                 {

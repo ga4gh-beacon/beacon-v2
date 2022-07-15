@@ -3,11 +3,28 @@ title: Common Definitions
 description: Definitions for concepts used in several entry types, but that having
   only one property are not complex enough to require a full independent schema document.
 definitions:
+  CURIE:
+    pattern: ^\w[^:]+:.+$
+    type: string
+    description: A CURIE identifier, e.g. as `id` for an ontology term.
+    examples:
+      - ga4gh:GA.01234abcde
+      - DUO:0000004
+      - orcid:0000-0003-3463-0775
+      - PMID:15254584
+  Info:
+    description: >-
+      Placeholder to allow the addition of additional structured information.
+      It is recommended to encapsulate additional informations in this attribute
+      instead of directly adding attributes at the same level than the others in
+      order to avoid collision in the names of attributes in future versions of
+      the specification.
+    type: object
   Sex:
     description: 'Sex of the individual. Recommended values from NCIT General Qualifier
       (NCIT:C27993): "unknown" (not assessed or not available) - NCIT:C17998; "female"
       - NCIT:C16576;  "male" - NCIT:C20197'
-    $ref: ../../../../framework/json/common/ontologyTerm.json
+    $ref: ./ontologyTerm.json
     examples:
       - id: NCIT:C16576
         label: female
@@ -59,7 +76,7 @@ definitions:
       (Latin American). A geographic ancestral origin category that is assigned to
       a population group based mainly on physical characteristics that are thought
       to be distinct and inherent. [ NCI ]
-    $ref: ../../../../framework/json/common/ontologyTerm.json
+    $ref: ./ontologyTerm.json
     examples:
       - id: NCIT:C42331
         label: African
@@ -79,7 +96,7 @@ definitions:
     description: Country or region of origin of the individual (birthplace or residence
       place regardless of ethnic origin). Value from GAZ Geographic Location ontology
       (GAZ:00000448), e.g. GAZ:00002459 (United States of America).
-    $ref: ../../../../framework/json/common/ontologyTerm.json
+    $ref: ./ontologyTerm.json
     examples:
       - id: GAZ:00002955
         label: Slovenia
@@ -93,7 +110,7 @@ definitions:
     description: 'Severity as applicable to phenotype or disease observed. Recommended
       are values from Human Phenotype Ontology (HP:0012824), e.g `mild`. The intensity
       or degree of a manifestation. Source: Phenopackets v2'
-    $ref: ../../../../framework/json/common/ontologyTerm.json
+    $ref: ./ontologyTerm.json
     examples:
       - id: HP:0012828
         label: Severe
@@ -108,7 +125,7 @@ definitions:
   Unit:
     description: The kind of unit. Recommended from NCIT Unit of Category ontology
       term (NCIT:C42568) descendants
-    $ref: ../../../../framework/json/common/ontologyTerm.json
+    $ref: ./ontologyTerm.json
     examples:
       - id: NCIT:C70575
         label: Roentgen

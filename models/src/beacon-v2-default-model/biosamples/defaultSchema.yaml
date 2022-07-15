@@ -24,7 +24,7 @@ properties:
     description: Ontology value from Experimental Factor Ontology (EFO) Material Entity
       term (BFO:0000040). Classification of the sample in abnormal sample (EFO:0009655)
       or reference sample (EFO:0009654).
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ../common/ontologyTerm.json
     examples:
       - id: EFO:0009654
         label: reference sample
@@ -55,7 +55,7 @@ properties:
     description: Category of sample origin. Value from Ontology for Biomedical Investigations
       (OBI) material entity (BFO:0000040) ontology, e.g. 'specimen from organism'
       (OBI:0001479),'xenograft' (OBI:0100058), 'cell culture' (OBI:0001876)
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ../common/ontologyTerm.json
     examples:
       - id: OBI:0001479
         label: specimen from organism
@@ -70,7 +70,7 @@ properties:
       (OBI) or Cell Line Ontology (CLO), e.g. 'cerebellar vermis' (UBERON:0004720),
       'HEK-293T cell' (BTO:0002181), 'nasopharyngeal swab specimen' (OBI:0002606),
       'cerebrospinal fluid specimen' (OBI:0002502).
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ../common/ontologyTerm.json
     examples:
       - id: UBERON:0000474
         label: female reproductive system
@@ -94,7 +94,7 @@ properties:
     description: Tumor progression category indicating primary, metastatic or recurrent
       progression. Ontology value from Neoplasm by Special Category ontology (NCIT:C7062),
       e.g. NCIT:C84509 (Primary Malignant Neoplasm).
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ../common/ontologyTerm.json
     examples:
       - id: NCIT:C84509
         label: Primary Malignant Neoplasm
@@ -103,14 +103,14 @@ properties:
   tumorGrade:
     description: Term representing the tumor grade. Child term of NCIT:C28076 (Disease
       Grade Qualifier) or equivalent.
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ../common/ontologyTerm.json
     examples:
       - id: NCIT:C28080
         label: Grade 3a
   pathologicalStage:
     description: Pathological stage, if applicable, preferably as subclass of NCIT:C28108
       - Disease Stage Qualifier. RECOMMENDED.
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ../common/ontologyTerm.json
     examples:
       - id: NCIT:C27977
         label: Stage IIIA
@@ -119,7 +119,7 @@ properties:
       of NCIT:C48698 - Cancer TNM Finding Category (NCIT:C48698). RECOMMENDED.
     type: array
     items:
-      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+      $ref: ../common/ontologyTerm.json
     examples:
       - id: NCIT:C48725
         label: T2a Stage Finding
@@ -130,7 +130,7 @@ properties:
   histologicalDiagnosis:
     description: Disease diagnosis that was inferred from the histological examination.
       RECOMMENDED.
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ../common/ontologyTerm.json
     examples:
       - id: NCIT:C3778
         label: Serous Cystadenocarcinoma
@@ -138,7 +138,7 @@ properties:
     description: Clinically relevant biomarkers. RECOMMENDED.
     type: array
     items:
-      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+      $ref: ../common/ontologyTerm.json
   phenotypicFeatures:
     description: List of phenotypic abnormalities of the sample. RECOMMENDED.
     type: array
@@ -151,16 +151,16 @@ properties:
       $ref: ../common/measurement.json
   sampleProcessing:
     description: Status of how the specimen was processed,e.g. a child term of EFO:0009091.
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ../common/ontologyTerm.json
     examples:
       - id: EFO:0009129
         label: mechanical dissociation
   sampleStorage:
     description: Status of how the specimen was stored.
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ../common/ontologyTerm.json
     example: {}
   info:
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Info
+    $ref: ../common/beaconCommonComponents.json#/definitions/Info
 required:
   - id
   - biosampleStatus

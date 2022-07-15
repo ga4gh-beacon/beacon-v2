@@ -5,7 +5,7 @@ type: object
 properties:
   evidenceCode:
     description: An ontology class that represents the evidence type
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ./ontologyTerm.json
     example:
       id: ECO:0006017
       label: author statement from published clinical study used in manual assertion

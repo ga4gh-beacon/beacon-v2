@@ -19,7 +19,7 @@ properties:
         end: '1967-11-18T12:00:00+01'
   scheduleFrequency:
     description: How often doses are administered per day (or other indicated duration)
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ./ontologyTerm.json
     examples:
       - id: NCIT:C64496
         label: Twice Daily
