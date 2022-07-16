@@ -6,7 +6,7 @@ type: object
 properties:
   exposureCode:
     description: Exposure ID. Value from Environment Exposure Ontology.
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ./ontologyTerm.json
     examples:
       - id: CHEBI:46661
         label: asbestos

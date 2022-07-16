@@ -11,4 +11,4 @@ oneOf:
   - $ref: ./gestationalAge.json
   - $ref: ./commonDefinitions.json#/definitions/Timestamp
   - $ref: ./timeInterval.json
-  - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+  - $ref: ./ontologyTerm.json

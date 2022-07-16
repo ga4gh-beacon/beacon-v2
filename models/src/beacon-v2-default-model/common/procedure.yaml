@@ -8,7 +8,7 @@ properties:
     description: Clinical procedure performed with recommended values from Medical
       Action Ontology (MAXO) 'Medical action' term tree (MAXO:0000001). Compares to
       Phenopackets v2 `Procedure.code`
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ./ontologyTerm.json
     examples:
       - id: MAXO:0001175
         label: liver transplantation
@@ -19,7 +19,7 @@ properties:
   bodySite:
     description: Specific body site where the procedure was performed. Recommended
       valuee from Uber-anatomy ontology (UBERON)
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    $ref: ./ontologyTerm.json
     examples:
       - id: UBERON:0003403
         label: Skin of forearm

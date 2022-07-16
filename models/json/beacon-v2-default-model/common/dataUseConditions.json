@@ -8,7 +8,7 @@
                     "description": "Data Use Ontology codes and additional information associated with a data object (e.g. sample, dataset)."
                 },
                 {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
+                    "$ref": "./ontologyTerm.json"
                 },
                 {
                     "properties": {
@@ -23,7 +23,7 @@
                                 }
                             ],
                             "items": {
-                                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
+                                "$ref": "./ontologyTerm.json"
                             },
                             "type": "array"
                         },

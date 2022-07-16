@@ -26,7 +26,7 @@
             "type": "string"
         },
         "info": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Info"
+            "$ref": "../common/beaconCommonComponents.json#/definitions/Info"
         },
         "libraryLayout": {
             "description": "Ontology value for the library layout e.g \"PAIRED\", \"SINGLE\" #todo add Ontology name?",
@@ -45,7 +45,7 @@
             "type": "string"
         },
         "librarySource": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
+            "$ref": "../common/ontologyTerm.json",
             "description": "Ontology value for the source of the sequencing or hybridization library, e.g \"genomic source\", \"transcriptomic source\"",
             "examples": [
                 {
@@ -75,7 +75,7 @@
             "type": "string"
         },
         "platformModel": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
+            "$ref": "../common/ontologyTerm.json",
             "description": "Ontology value for experimental platform or methodology used. For sequencing platforms the use of \"OBI:0400103 - DNA sequencer\" is suggested.",
             "examples": [
                 {

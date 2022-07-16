@@ -67,7 +67,7 @@
                     "type": "string"
                 },
                 "role": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
+                    "$ref": "./ontologyTerm.json",
                     "description": "Pedigree role, defined as relationship to proband. Value from Family Member term (NCIT:C41256), e.g. \"proband\" (NCIT:C64435),\"identical twin\" (NCIT:C73429), \"mother\" (NCIT:C25189).",
                     "examples": [
                         {
