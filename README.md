@@ -13,8 +13,15 @@ This repository is a unified repository representing the different parts of the 
 As with other schema projects, here we separate between the schema source files (in `src`; JSON-Schema written in YAML) and the generated versions for referencing. The current setup allows already the direct referencing of the generated JSON schemas. Examples:
 
 * `ontologyTerm`:
-    - YAML (source): <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/common/ontologyTerm.yaml>
+    - YAML (source): 
+        * edit: <https://github.com/ga4gh-beacon/beacon-v2/blob/main/framework/src/common/ontologyTerm.yaml>
+        * raw: <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/common/ontologyTerm.yaml>
     - JSON: <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json>
+* `biosamples/defaultSchema`
+    - YAML (source): 
+        * edit: <https://github.com/ga4gh-beacon/beacon-v2/blob/main/models/src/beacon-v2-default-model/biosamples/defaultSchema.yaml>
+        * raw: <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/src/beacon-v2-default-model/biosamples/defaultSchema.yaml>
+    - JSON: <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/biosamples/defaultSchema.yaml>
 * `beaconRequestBody`:
     - YAML (source): <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/requests/beaconRequestBody.yaml>
     - JSON: <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json>
