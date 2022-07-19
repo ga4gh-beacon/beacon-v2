@@ -5,7 +5,7 @@ type: object
 properties:
   unit:
     description: The kind of unit.
-    $ref: ./commonDefinitions.json#/definitions/Unit
+    $ref: ./commonDefinitions.yaml#/definitions/Unit
     examples:
       - id: NCIT:C49670
         label: Millimeter of Mercury

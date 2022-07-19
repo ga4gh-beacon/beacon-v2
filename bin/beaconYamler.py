@@ -97,6 +97,9 @@ def _yaml2json(f_n, in_path, out_path, config):
     _file_conversion_message(config, in_file, out_file)
     i_d = _file_read_and_clean(in_file, config)
 
+    c = re.compile(r'(\$ref[\"\']?:\s+[^\s]+\w)\.yaml')
+    i_d = c.sub('\\1.json', i_d)
+
     try:
         s = yaml.load( i_d )
     except Exception as e:

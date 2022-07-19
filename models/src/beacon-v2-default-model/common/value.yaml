@@ -3,5 +3,5 @@ title: Value
 description: 'Definition of a value class. Provenance: GA4GH Phenopackets v2 `Value`'
 type: object
 oneOf:
-  - $ref: ./quantity.json
+  - $ref: ./quantity.yaml
   - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json

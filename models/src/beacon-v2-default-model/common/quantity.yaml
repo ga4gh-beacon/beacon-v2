@@ -4,13 +4,13 @@ description: 'Definition of a quantity class. Provenance: GA4GH Phenopackets v2 
 type: object
 properties:
   unit:
-    $ref: ./commonDefinitions.json#/definitions/Unit
+    $ref: ./commonDefinitions.yaml#/definitions/Unit
   value:
     description: The value of the quantity in the units
     type: number
   referenceRange:
     description: The normal range for the value
-    $ref: ./referenceRange.json
+    $ref: ./referenceRange.yaml
     example: {}
 required:
   - unit
