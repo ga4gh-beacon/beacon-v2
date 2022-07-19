@@ -10,33 +10,33 @@ properties:
   apiVersion:
     description: API version expected by the client to be supported by the server
       and used in the response format.
-    $ref: ../../common/beaconCommonComponents.json#/definitions/ApiVersion
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/ApiVersion
   requestedSchemas:
     description: Set of schemas to be used in the response to a request.
-    $ref: ../../common/beaconCommonComponents.json#/definitions/ListOfSchemas
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/ListOfSchemas
     minItems: 0
     $comment: "TO DO: Add the format attribute as a uri.\n2. minItems:0 is used to\
       \ confirm that an empty array is acceptable here."
   filters:
     description: Ontology based filters. CURIE syntax is encouraged to be used.
-    $ref: ../../common/beaconCommonComponents.json#/definitions/Filters
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/Filters
   requestParameters:
     description: Dictionary of request parameters received in the RequestBody
-    $ref: ../../requests/requestParameters.json
+    $ref: ../../requests/requestParameters.yaml
   includeResultsetResponses:
-    $ref: ../../common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/IncludeResultsetResponses
   pagination:
     description: Pagination to apply on the results.
-    $ref: ../../common/beaconCommonComponents.json#/definitions/Pagination
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/Pagination
   requestedGranularity:
     description: Requested granularity. Targeted Beacon could respond or not with
       the requested granularity. E.g. record level granularity could be requested,
       but the Beacon could respond only with boolean or count results.
-    $ref: ../../common/beaconCommonComponents.json#/definitions/Granularity
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/Granularity
   testMode:
     description: Used for indicating that a request was received in a test context.
       Purposed for compliance testing.
-    $ref: ../../common/beaconCommonComponents.json#/definitions/TestMode
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/TestMode
 required:
   - apiVersion
   - requestedSchemas

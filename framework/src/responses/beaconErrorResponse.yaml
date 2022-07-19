@@ -5,10 +5,10 @@ properties:
   meta:
     description: Information about the response that could be relevant for the Beacon
       client in order to interpret the results.
-    $ref: ./sections/beaconResponseMeta.json
+    $ref: ./sections/beaconResponseMeta.yaml
   error:
     description: Returning an error.
-    $ref: ../common/beaconCommonComponents.json#/definitions/BeaconError
+    $ref: ../common/beaconCommonComponents.yaml#/definitions/BeaconError
 required:
   - meta
   - error

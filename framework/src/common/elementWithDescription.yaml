@@ -3,7 +3,7 @@ title: Basic Element including a description
 description: Definition of the basic element extended with a description.
 type: object
 allOf:
-  - $ref: ./basicElement.json
+  - $ref: ./basicElement.yaml
   - type: object
     properties:
       description:

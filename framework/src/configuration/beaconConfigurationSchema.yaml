@@ -5,7 +5,7 @@ description: Files complaint with this schema are the configuration ones. The de
 type: object
 properties:
   $schema:
-    $ref: ../common/beaconCommonComponents.json#/definitions/$schema
+    $ref: ../common/beaconCommonComponents.yaml#/definitions/$schema
   maturityAttributes:
     description: Declares the level of maturity of the Beacon instance.
     type: object
@@ -31,7 +31,7 @@ properties:
       defaultGranularity:
         description: Default granularity. Some responses could return higher detail,
           but this would be the granularity by default.
-        $ref: ../common/beaconCommonComponents.json#/definitions/Granularity
+        $ref: ../common/beaconCommonComponents.yaml#/definitions/Granularity
       securityLevels:
         description: All access levels supported by the Beacon. Any combination is
           valid, as every option would apply to different parts of the Beacon.
@@ -52,7 +52,7 @@ definitions:
     type: object
     additionalProperties:
       type: object
-      $ref: ./entryTypeDefinition.json
+      $ref: ./entryTypeDefinition.yaml
     minProperties: 1
 required:
   - $schema
