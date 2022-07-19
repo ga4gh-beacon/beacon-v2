@@ -122,7 +122,7 @@ definitions:
           (e.g. dbSNP, ClinVar, ClinGen, COSMIC), as `externalReferences` with CURIE(s).
         type: array
         items:
-          $ref: ../common/externalReference.json
+          $ref: ../common/externalReference.yaml
         examples:
           -   - id: dbSNP:rs587780345
                 reference: https://www.ncbi.nlm.nih.gov/snp/rs587780345

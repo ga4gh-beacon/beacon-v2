@@ -6,9 +6,9 @@ type: object
 $comments: If using an ontology class the use of NCIT Age Group ontology term (NCIT:C20587)
   descendants is recommended.
 oneOf:
-  - $ref: ./age.json
-  - $ref: ./ageRange.json
-  - $ref: ./gestationalAge.json
-  - $ref: ./commonDefinitions.json#/definitions/Timestamp
-  - $ref: ./timeInterval.json
+  - $ref: ./age.yaml
+  - $ref: ./ageRange.yaml
+  - $ref: ./gestationalAge.yaml
+  - $ref: ./commonDefinitions.yaml#/definitions/Timestamp
+  - $ref: ./timeInterval.yaml
   - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json

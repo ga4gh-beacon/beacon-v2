@@ -3,12 +3,8 @@ replace_vals:
     replaceValue: 'https://json-schema.org/draft/2020-12/schema'
     add: True
 replace_text:
-  - from: https://raw.githubusercontent.com/ga4gh-beacon/beacon-framework-v2/main/
-    to: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/
-  - from: /beacon-framework-v2/responses/
-    to: /beacon-v2/framework/json/responses/
-  - from: /beacon-framework-v2/common/
-    to: /beacon-v2/framework/json/common/
+  - from: ___some_matched_text___
+    to: ___some_transformed_text___
 
 supported_types:
   - json

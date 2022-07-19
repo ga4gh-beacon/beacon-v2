@@ -25,13 +25,13 @@ properties:
       - id: NCIT:C78373
         label: Dietary
   ageAtOnset:
-    $ref: ./age.json
+    $ref: ./age.yaml
   doseIntervals:
     type: array
     items:
-      $ref: ./doseInterval.json
+      $ref: ./doseInterval.yaml
   cumulativeDose:
-    $ref: ./quantity.json
+    $ref: ./quantity.yaml
 required:
   - treatmentCode
 additionalProperties: true
