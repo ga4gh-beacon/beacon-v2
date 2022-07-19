@@ -21,7 +21,7 @@ definitions:
           label: Systolic Blood Pressure
       quantity:
         description: Quantity denoting the outcome of the measurement
-        $ref: ./quantity.json
+        $ref: ./quantity.yaml
         example:
           quentity:
             unit:

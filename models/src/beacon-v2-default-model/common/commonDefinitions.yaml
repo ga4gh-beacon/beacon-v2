@@ -7,7 +7,7 @@ definitions:
     description: 'Sex of the individual. Recommended values from NCIT General Qualifier
       (NCIT:C27993): "unknown" (not assessed or not available) - NCIT:C17998; "female"
       - NCIT:C16576;  "male" - NCIT:C20197'
-    $ref: ../../../../framework/json/common/ontologyTerm.json
+    $ref: ../../../../framework/json/common/ontologyTerm.yaml
     examples:
       - id: NCIT:C16576
         label: female
@@ -59,7 +59,7 @@ definitions:
       (Latin American). A geographic ancestral origin category that is assigned to
       a population group based mainly on physical characteristics that are thought
       to be distinct and inherent. [ NCI ]
-    $ref: ../../../../framework/json/common/ontologyTerm.json
+    $ref: ../../../../framework/json/common/ontologyTerm.yaml
     examples:
       - id: NCIT:C42331
         label: African
@@ -79,7 +79,7 @@ definitions:
     description: Country or region of origin of the individual (birthplace or residence
       place regardless of ethnic origin). Value from GAZ Geographic Location ontology
       (GAZ:00000448), e.g. GAZ:00002459 (United States of America).
-    $ref: ../../../../framework/json/common/ontologyTerm.json
+    $ref: ../../../../framework/json/common/ontologyTerm.yaml
     examples:
       - id: GAZ:00002955
         label: Slovenia
@@ -93,7 +93,7 @@ definitions:
     description: 'Severity as applicable to phenotype or disease observed. Recommended
       are values from Human Phenotype Ontology (HP:0012824), e.g `mild`. The intensity
       or degree of a manifestation. Source: Phenopackets v2'
-    $ref: ../../../../framework/json/common/ontologyTerm.json
+    $ref: ../../../../framework/json/common/ontologyTerm.yaml
     examples:
       - id: HP:0012828
         label: Severe
@@ -108,7 +108,7 @@ definitions:
   Unit:
     description: The kind of unit. Recommended from NCIT Unit of Category ontology
       term (NCIT:C42568) descendants
-    $ref: ../../../../framework/json/common/ontologyTerm.json
+    $ref: ../../../../framework/json/common/ontologyTerm.yaml
     examples:
       - id: NCIT:C70575
         label: Roentgen

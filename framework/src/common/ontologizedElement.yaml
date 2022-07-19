@@ -4,11 +4,11 @@ description: Definition of the basic element which includes a description and a 
   defined by an ontology.
 type: object
 allOf:
-  - $ref: ./elementWithDescription.json
+  - $ref: ./elementWithDescription.yaml
   - type: object
     required:
       - ontologyTermForThisType
     properties:
       ontologyTermForThisType:
-        $ref: ./ontologyTerm.json
+        $ref: ./ontologyTerm.yaml
 additionalProperties: true

@@ -19,12 +19,12 @@ properties:
     examples:
       - This dataset provides examples of the actual data in this Beacon instance.
   createDateTime:
-    $ref: ../common/commonDefinitions.json#/definitions/Timestamp
+    $ref: ../common/commonDefinitions.yaml#/definitions/Timestamp
     description: The time the dataset was created (ISO 8601 format)
     examples:
       - '2017-01-17T20:33:40Z'
   updateDateTime:
-    $ref: ../common/commonDefinitions.json#/definitions/Timestamp
+    $ref: ../common/commonDefinitions.yaml#/definitions/Timestamp
     description: The time the dataset was updated in (ISO 8601 format)
     examples:
       - '2017-01-17T20:33:40Z'
@@ -43,7 +43,7 @@ properties:
     $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Info
   dataUseConditions:
     description: Data use conditions applying to this dataset.
-    $ref: ../common/dataUseConditions.json
+    $ref: ../common/dataUseConditions.yaml
 required:
   - id
   - name

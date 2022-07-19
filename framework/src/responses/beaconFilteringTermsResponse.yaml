@@ -5,10 +5,10 @@ properties:
   meta:
     description: Information about the response that could be relevant for the Beacon
       client in order to interpret the results.
-    $ref: ./sections/beaconInformationalResponseMeta.json
+    $ref: ./sections/beaconInformationalResponseMeta.yaml
   response:
     description: Actual list of filtering terms.
-    $ref: ./sections/beaconFilteringTermsResults.json
+    $ref: ./sections/beaconFilteringTermsResults.yaml
 required:
   - meta
   - response

@@ -9,11 +9,11 @@ description: 'This element represents a block of time in which the dosage of a m
 type: object
 properties:
   quantity:
-    $ref: ./quantity.json
+    $ref: ./quantity.yaml
   interval:
     description: The specific interval over which the dosage was administered in the
       indicated quantity.
-    $ref: ./timeInterval.json
+    $ref: ./timeInterval.yaml
     examples:
       - start: '1967-11-11T07:30:00+01'
         end: '1967-11-18T12:00:00+01'

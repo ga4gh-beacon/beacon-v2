@@ -5,10 +5,10 @@ properties:
   meta:
     description: Information about the response that could be relevant for the Beacon
       client in order to interpret the results.
-    $ref: ./sections/beaconResponseMeta.json
+    $ref: ./sections/beaconResponseMeta.yaml
   responseSummary:
     description: Response summary, including Boolean and optionally results count.
-    $ref: ./sections/beaconSummaryResponseSection.json
+    $ref: ./sections/beaconSummaryResponseSection.yaml
   response:
     description: Returning the Beacon Collections list, filtered or unfiltered.
     type: object
@@ -24,11 +24,11 @@ properties:
   info:
     description: Additional details that could be of interest. Provided to clearly
       enclose any attribute that is not part of the Beacon specification.
-    $ref: ../common/beaconCommonComponents.json#/definitions/Info
+    $ref: ../common/beaconCommonComponents.yaml#/definitions/Info
   beaconHandovers:
     description: List of handovers that apply to the whole response, not to any resultset
       or result in particular.
-    $ref: ../common/beaconCommonComponents.json#/definitions/ListOfHandovers
+    $ref: ../common/beaconCommonComponents.yaml#/definitions/ListOfHandovers
 required:
   - meta
   - responseSummary

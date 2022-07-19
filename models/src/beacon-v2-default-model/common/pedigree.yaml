@@ -8,7 +8,7 @@ properties:
     type: string
     example: Pedigree1001
   disease:
-    $ref: ../common/disease.json
+    $ref: ../common/disease.yaml
   numSubjects:
     description: Total number of subjects in pedigree.
     type: integer

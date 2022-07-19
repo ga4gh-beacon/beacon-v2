@@ -13,7 +13,7 @@ $comment: 'TO DO: The tagged parts should reference to `common/ontologizedElemen
   should not affect the resulting schema.'
 properties:
   $schema:
-    $ref: ../common/beaconCommonComponents.json#/definitions/$schema
+    $ref: ../common/beaconCommonComponents.yaml#/definitions/$schema
   id:
     $comments: ++++++ THIS IS THE START OF THE ontologized element ++++++
     type: string
@@ -25,7 +25,7 @@ properties:
     type: string
     description: A textual description for the element.
   ontologyTermForThisType:
-    $ref: ../common/ontologyTerm.json
+    $ref: ../common/ontologyTerm.yaml
     $comments: ++++++ THIS IS THE END OF THE ontologized element ++++++
   partOfSpecification:
     description: This is label to group together entry types that are part of the
@@ -34,13 +34,13 @@ properties:
     example: Beacon v2.0
   defaultSchema:
     description: Description of the default schema used for this concept.
-    $ref: ../common/referenceToAnSchema.json
+    $ref: ../common/referenceToAnSchema.yaml
   additionallySupportedSchemas:
     description: List of additional schemas that could be used for this concept in
       this instance of Beacon.
     type: array
     items:
-      $ref: ../common/referenceToAnSchema.json
+      $ref: ../common/referenceToAnSchema.yaml
   aCollectionOf:
     description: If the entry type is a collection of other entry types, (e.g. a Dataset
       is a collection of Records), then this attribute must list the entry types that
@@ -52,7 +52,7 @@ properties:
       at once).
     includedConcepts:
       type: array
-      $ref: ../common/basicElement.json
+      $ref: ../common/basicElement.yaml
   filteringTerms:
     description: Reference to the file with the list of filtering terms that could
       be used to filter this concept in this instance of Beacon. The referenced file
@@ -62,7 +62,7 @@ properties:
     $comment: "TO DO: Double-check the proper way of referencing a path or relative\
       \ path. 'format: uri' is throwing validation errors for relative file paths"
   nonFilteredQueriesAllowed:
-    $ref: ../common/beaconCommonComponents.json#/definitions/NonFilteredQueriesAllowed
+    $ref: ../common/beaconCommonComponents.yaml#/definitions/NonFilteredQueriesAllowed
 required:
   - id
   - name

@@ -189,35 +189,35 @@ definitions:
           Geographic location(s) in cohort inclusion criteria
         type: array
         items:
-          $ref: ../common/commonDefinitions.json#/definitions/GeographicLocation
+          $ref: ../common/commonDefinitions.yaml#/definitions/GeographicLocation
       genders:
         description: >-
           Gender(s) in cohort inclusion criteria
         type: array
         items:
-          $ref: ../common/commonDefinitions.json#/definitions/Sex
+          $ref: ../common/commonDefinitions.yaml#/definitions/Sex
       ethnicities:
         description: >-
           Ethnias in cohort inclusion criteria
         type: array
         items:
-          $ref: ../common/commonDefinitions.json#/definitions/Ethnicity
+          $ref: ../common/commonDefinitions.yaml#/definitions/Ethnicity
       diseaseConditions:
         description: >-
           Diseases in cohort inclusion criteria
         type: array
         items:
-          $ref: ../common/disease.json
+          $ref: ../common/disease.yaml
       phenotypicConditions:
         description: >-
           Phenotypic condition(s) in cohort inclusion criteria
         type: array
         items:
-          $ref: ../common/phenotypicFeature.json
+          $ref: ../common/phenotypicFeature.yaml
       ageRange:
         description: >-
           Individual age range in cohort inclusion criteria
-        $ref: ../common/ageRange.json
+        $ref: ../common/ageRange.yaml
   DataTypesArray:
     description: >-
       Type of information. Preferably values from Genomics Cohorts Knowledge

@@ -248,7 +248,7 @@ definitions:
     description: >-
       Handover type, as an Ontology_term object with CURIE syntax for the `id` value.
       Use `CUSTOM` for the `id` when no ontology is available.
-    $ref: ./ontologyTerm.json
+    $ref: ./ontologyTerm.yaml
     examples:
       - id: EFO:0004157
         label: BAM format

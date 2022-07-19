@@ -4,12 +4,12 @@ type: object
 properties:
   beaconId:
     description: Identifier of the beacon, as defined in `Beacon`.
-    $ref: ../../common/beaconCommonComponents.json#/definitions/BeaconId
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/BeaconId
   apiVersion:
     description: Version of the API.
-    $ref: ../../common/beaconCommonComponents.json#/definitions/ApiVersion
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/ApiVersion
   returnedSchemas:
-    $ref: ../../common/beaconCommonComponents.json#/definitions/ListOfSchemas
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/ListOfSchemas
 $comment: 'TO REVIEW: the required properties below results in a warning in the example.'
 required:
   - beaconId

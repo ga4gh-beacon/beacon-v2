@@ -14,12 +14,12 @@ properties:
   measurementValue:
     description: The result of the measurement
     oneOf:
-      - $ref: ./value.json
-      - $ref: ./complexValue.json
+      - $ref: ./value.yaml
+      - $ref: ./complexValue.yaml
   observationMoment:
     description: Moment in time at which measurement was performed. RECOMMENDED. Renamed
       compared to GA4GH Phenopackets v2 `Measurement.time_observed`
-    $ref: ./timeElement.json
+    $ref: ./timeElement.yaml
     example:
       age:
         iso8601duration: P53Y8M
@@ -29,7 +29,7 @@ properties:
     format: date
   procedure:
     description: Clinical procedure performed to acquire the sample used for the measurement
-    $ref: ./procedure.json
+    $ref: ./procedure.yaml
     example:
       code:
         id: NCIT:C5189

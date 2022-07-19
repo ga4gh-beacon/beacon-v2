@@ -3,7 +3,7 @@ title: An annotated URL address or a file reference
 description: Definition of an annotated URL address or a file reference.
 type: object
 allOf:
-  - $ref: ./elementWithDescription.json
+  - $ref: ./elementWithDescription.yaml
   - type: object
     properties:
       referenceToSchemaDefinition:

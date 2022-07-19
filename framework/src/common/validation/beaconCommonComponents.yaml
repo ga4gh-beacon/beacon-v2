@@ -7,31 +7,31 @@ properties:
     description: Added here to allow the example to comply with the 'additionalProperties:true'
       restriction.
   beaconId:
-    $ref: ../beaconCommonComponents.json#/definitions/BeaconId
+    $ref: ../beaconCommonComponents.yaml#/definitions/BeaconId
   apiVersion:
-    $ref: ../beaconCommonComponents.json#/definitions/ApiVersion
+    $ref: ../beaconCommonComponents.yaml#/definitions/ApiVersion
   beaconError:
-    $ref: ../beaconCommonComponents.json#/definitions/BeaconError
+    $ref: ../beaconCommonComponents.yaml#/definitions/BeaconError
   listOfSchemas:
-    $ref: ../beaconCommonComponents.json#/definitions/ListOfSchemas
+    $ref: ../beaconCommonComponents.yaml#/definitions/ListOfSchemas
   schemasPerEntity:
-    $ref: ../beaconCommonComponents.json#/definitions/SchemasPerEntity
+    $ref: ../beaconCommonComponents.yaml#/definitions/SchemasPerEntity
   pagination:
-    $ref: ../beaconCommonComponents.json#/definitions/Pagination
+    $ref: ../beaconCommonComponents.yaml#/definitions/Pagination
   includeResultsetResponses:
-    $ref: ../beaconCommonComponents.json#/definitions/IncludeResultsetResponses
+    $ref: ../beaconCommonComponents.yaml#/definitions/IncludeResultsetResponses
   filters:
-    $ref: ../beaconCommonComponents.json#/definitions/Filters
+    $ref: ../beaconCommonComponents.yaml#/definitions/Filters
   exists:
-    $ref: ../beaconCommonComponents.json#/definitions/Exists
+    $ref: ../beaconCommonComponents.yaml#/definitions/Exists
   numTotalResults:
-    $ref: ../beaconCommonComponents.json#/definitions/NumTotalResults
+    $ref: ../beaconCommonComponents.yaml#/definitions/NumTotalResults
   info:
-    $ref: ../beaconCommonComponents.json#/definitions/Info
+    $ref: ../beaconCommonComponents.yaml#/definitions/Info
   handover:
-    $ref: ../beaconCommonComponents.json#/definitions/Handover
+    $ref: ../beaconCommonComponents.yaml#/definitions/Handover
   handoverType:
-    $ref: ../beaconCommonComponents.json#/definitions/HandoverType
+    $ref: ../beaconCommonComponents.yaml#/definitions/HandoverType
   listOfHandovers:
-    $ref: ../beaconCommonComponents.json#/definitions/ListOfHandovers
+    $ref: ../beaconCommonComponents.yaml#/definitions/ListOfHandovers
 additionalProperties: false

@@ -5,33 +5,33 @@ description: Schema for the Beacon request. It is named `RequestBody` to keep th
 type: object
 properties:
   $schema:
-    $ref: ../common/beaconCommonComponents.json#/definitions/$schema
+    $ref: ../common/beaconCommonComponents.yaml#/definitions/$schema
   meta:
     description: Information that is relevant to build the response.
-    $ref: ./beaconRequestMeta.json
+    $ref: ./beaconRequestMeta.yaml
   query:
     description: Parameters to limit the list of returned results.
     type: object
     properties:
       requestParameters:
         description: TBD
-        $ref: ./requestParameters.json
+        $ref: ./requestParameters.yaml
       filters:
         description: Ontology based filters. Using CURIE syntax is encouraged.
-        $ref: ./filteringTerms.json
+        $ref: ./filteringTerms.yaml
       includeResultsetResponses:
-        $ref: ../common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses
+        $ref: ../common/beaconCommonComponents.yaml#/definitions/IncludeResultsetResponses
       pagination:
         description: Pagination to apply on the results.
-        $ref: ../common/beaconCommonComponents.json#/definitions/Pagination
+        $ref: ../common/beaconCommonComponents.yaml#/definitions/Pagination
       requestedGranularity:
         description: Requested granularity. Targeted Beacon could respond or not with
           the requested granularity. E.g. record level granularity could be requested,
           but the Beacon could respond only with boolean or count results.
-        $ref: ../common/beaconCommonComponents.json#/definitions/Granularity
+        $ref: ../common/beaconCommonComponents.yaml#/definitions/Granularity
       testMode:
         description: Used for indicating that a request or response is done in a test
           context. Purposed for compliance testing.
-        $ref: ../common/beaconCommonComponents.json#/definitions/TestMode
+        $ref: ../common/beaconCommonComponents.yaml#/definitions/TestMode
 required:
   - meta

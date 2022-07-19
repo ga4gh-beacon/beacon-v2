@@ -6,10 +6,10 @@ properties:
   meta:
     description: Information about the response that could be relevant for the Beacon
       client in order to interpret the results.
-    $ref: ./sections/beaconInformationalResponseMeta.json
+    $ref: ./sections/beaconInformationalResponseMeta.yaml
   response:
     description: Metadata describing a Beacon instance.
-    $ref: ./sections/beaconInfoResults.json
+    $ref: ./sections/beaconInfoResults.yaml
 required:
   - meta
   - response

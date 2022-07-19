@@ -18,7 +18,7 @@ properties:
       - id: OMIM:164400
         label: Spinocerebellar ataxia 1
   ageOfOnset:
-    $ref: ./timeElement.json
+    $ref: ./timeElement.yaml
     examples:
       - ageGroup:
           id: NCIT:C49685
@@ -44,7 +44,7 @@ properties:
       - id: OGMS:0000106
         label: remission
   severity:
-    $ref: ./commonDefinitions.json#/definitions/SeverityLevel
+    $ref: ./commonDefinitions.yaml#/definitions/SeverityLevel
     examples:
       - id: HP:0012828
         label: Severe

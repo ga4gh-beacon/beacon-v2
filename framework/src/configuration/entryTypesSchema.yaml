@@ -12,7 +12,7 @@ definitions:
       instance.
     additionalProperties:
       type: object
-      $ref: ./entryTypeDefinition.json
+      $ref: ./entryTypeDefinition.yaml
     minProperties: 1
 required:
   - entryTypes
