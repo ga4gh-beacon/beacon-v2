@@ -4,10 +4,11 @@ description: A cohort available in the beacon.
 type: object
 properties:
   cohortType:
-    description: Cohort type by its definition. If a cohort is declared ´study-defined´
-      or ´beacon-defined´ criteria are to be entered in cohort_inclusion_criteria;
-      if a cohort is declared ‘user-defined' cohort_inclusion_criteria could be automatically
-      populated from the parameters used to perform the query.
+    description: >-
+      Cohort type by its definition. If a cohort is declared `study-defined`
+      or `beacon-defined` criteria are to be entered `in cohort_inclusion_criteria`;
+      if a cohort is declared `user-defined` `cohort_inclusion_criteria` could be
+      automatically populated from the parameters used to perform the query.
     type: string
     enum:
       - study-defined
@@ -15,7 +16,8 @@ properties:
       - user-defined
     default: beacon-defined
   cohortDesign:
-    description: Cohort type by its design. A plan specification comprised of protocols
+    description: >-
+      Cohort type by its design. A plan specification comprised of protocols
       (which may specify how and what kinds of data will be gathered) that are executed
       as part of an investigation and is realized during a study design execution.
       Value from Ontologized MIABIS (OMIABIS) Study design ontology term tree (OBI:0500000).
@@ -28,15 +30,17 @@ properties:
       - id: OMIABIS:0001024
         label: twin study design
   id:
-    description: Cohort identifier. For ´study-defined´ or ´beacon-defined´cohorts
-      this field is set by the implementer. For ´user-defined´ this unique identifier
+    description: >-
+      Cohort identifier. For `study-defined` or `beacon-defined` cohorts
+      this field is set by the implementer. For `user-defined` this unique identifier
       could be generated upon the query that defined the cohort, but could be later
       edited by the user.
     type: string
     examples:
       - cohort-T2D-2010
   name:
-    description: Name of the cohort. For ´user-defined´ this field could be generated
+    description: >-
+      Name of the cohort. For `user-defined` this field could be generated
       upon the query, e.g. a value that is a concatenationor some representation of
       the user query.
     type: string
@@ -44,18 +48,21 @@ properties:
       - Wellcome Trust Case Control Consortium
       - GCAT Genomes for Life
   inclusionCriteria:
-    description: Inclusion criteria used for defining the cohort. It is assumed that
+    description: >-
+      Inclusion criteria used for defining the cohort. It is assumed that
       all cohort participants will match such criteria.
     type: object
     $ref: '#/definitions/CohortCriteria'
   exclusionCriteria:
-    description: Exclusion criteria used for defining the cohort. It is assumed that
+    description: >-
+      Exclusion criteria used for defining the cohort. It is assumed that
       NONE of the cohort participants will match such criteria.
     type: object
     $ref: '#/definitions/CohortCriteria'
   cohortSize:
-    description: Count of unique Individuals in cohort (individuals meeting criteria
-      for ´user-defined´ cohorts). If not previously known, it could be calculated
+    description: >-
+      Count of unique Individuals in cohort (individuals meeting criteria
+      for `user-defined` cohorts). If not previously known, it could be calculated
       by counting the individuals in the cohort.
     type: integer
     examples:
@@ -90,13 +97,14 @@ definitions:
           - '2019-04-23T09:11:13Z'
           - '2017-01-17T20:33:40Z'
       eventTimeline:
-        description: Aggregated information of dates of visit/diagnostic/inclusion
-          in study obtained from individual level info in database. Will coincide
-          with collection event date for multi-time
+        description: >-
+          Aggregated information of dates of visit | diagnostic | inclusion
+          in study obtained from individual level info of the cohort members.
         type: object
         properties:
           start:
-            description: earliest date of visit
+            description: >-
+              Earliest date of visit or collection timeline
             type: string
             format: datetime
             examples:
@@ -104,7 +112,8 @@ definitions:
               - '2019-04-23T09:11:13Z'
               - '2017-01-17T20:33:40Z'
           end:
-            description: latest date of visit
+            description: >-
+              Latest date of visit or collection timeline
             type: string
             format: datetime
             examples:
@@ -112,7 +121,8 @@ definitions:
               - '2019-04-23T09:11:13Z'
               - '2017-01-17T20:33:40Z'
       eventSize:
-        description: Count of individuals in cohort at data point (for ´user-defined´
+        description: >-
+          Count of individuals in cohort at data point (for ´user-defined´
           cohorts, this is individuals meeting criteria) obtained from individual
           level info in database.
         type: integer
@@ -120,82 +130,97 @@ definitions:
           - 1543
           - 42
       eventCases:
-        description: count of cases
+        description: number of cases
         type: integer
         examples:
           - 543
           - 20
       eventControls:
-        description: count of controls
+        description: number of controls
         type: integer
         examples:
           - 1000
           - 22
       eventLocations:
-        description: Aggregated information of geographic location obtained from individual
-          level info in database.
+        description: >-
+          Aggregated information of geographic location obtained from individual
+          level info of the cohort members
         $ref: '#/definitions/DataAvailabilityAndDistribution'
       eventGenders:
-        description: Aggregated information of gender(s) obtained from individual
-          level info in the database.
+        description: >-
+          Aggregated information of gender(s) obtained from individual
+          level info of the cohort members
         $ref: '#/definitions/DataAvailabilityAndDistribution'
       eventEthnicities:
-        description: Aggregated information of ethnicity obtained from individual
-          level info in database.
+        description: >-
+          Aggregated information of ethnicity obtained from individual
+          level info of the cohort members
         $ref: '#/definitions/DataAvailabilityAndDistribution'
       eventAgeRange:
-        description: Individual age range, obtained from individual level info in
-          database.
+        description: >-
+          Individual age range, obtained from individual level info of the
+          cohort members
         $ref: '#/definitions/DataAvailabilityAndDistribution'
       eventDiseases:
-        description: Aggregated information of disease/condition(s) obtained from
-          individual level info in the database.
+        description: >-
+          Aggregated information of disease/condition(s) obtained from
+          individual level info of the cohort members
         $ref: '#/definitions/DataAvailabilityAndDistribution'
       eventPhenotypes:
-        description: Aggregated information of phenotype(s) obtained from individual
-          level info in the database.
+        description: >-
+          Aggregated information of phenotype(s) obtained from individual
+          level info of the cohort members
         $ref: '#/definitions/DataAvailabilityAndDistribution'
       eventDataTypes:
-        description: Aggregated data type information available for each cohort data
-          type as declared in cohortDataTypes, and obtained from individual level
-          info.
+        description: >-
+          Aggregated data type information available for each cohort data
+          type as declared in `cohortDataTypes`, and obtained from individual
+          level info of the cohort members
         type: object
         $ref: '#/definitions/DataAvailabilityAndDistribution'
   CohortCriteria:
-    description: Criteria used for defining the cohort. It is assumed that all cohort
+    description: >-
+      Criteria used for defining the cohort. It is assumed that all cohort
       participants will match or NOT match such criteria.
     type: object
     properties:
       locations:
-        description: Geographic location(s) in cohort inclusion criteria
+        description: >-
+          Geographic location(s) in cohort inclusion criteria
         type: array
         items:
           $ref: ../common/commonDefinitions.json#/definitions/GeographicLocation
       genders:
-        description: Gender(s) in cohort inclusion criteria
+        description: >-
+          Gender(s) in cohort inclusion criteria
         type: array
         items:
           $ref: ../common/commonDefinitions.json#/definitions/Sex
       ethnicities:
-        description: Ethnias in cohort inclusion criteria
+        description: >-
+          Ethnias in cohort inclusion criteria
         type: array
         items:
           $ref: ../common/commonDefinitions.json#/definitions/Ethnicity
       diseaseConditions:
-        description: Diseases in cohort inclusion criteria
+        description: >-
+          Diseases in cohort inclusion criteria
         type: array
         items:
           $ref: ../common/disease.json
       phenotypicConditions:
-        description: Phenotypic condition(s) in cohort inclusion criteria
+        description: >-
+          Phenotypic condition(s) in cohort inclusion criteria
         type: array
         items:
           $ref: ../common/phenotypicFeature.json
       ageRange:
-        description: Individual age range in cohort inclusion criteria
+        description: >-
+          Individual age range in cohort inclusion criteria
         $ref: ../common/ageRange.json
   DataTypesArray:
-    description: Type of information. Preferably values from Genomics Cohorts Knowledge
+    description: >-
+      Type of information. Preferably values from Genomics Cohorts Knowledge
       Ontology (GeCKO) or others when GeCKO is not applicable.
     type: array
     items:
@@ -208,18 +233,21 @@ definitions:
       - id: OMIABIS:0000060
         label: survey data
   DataAvailabilityAndDistribution:
-    description: Aggregated information of geographic location obtained from individual
-      level info in database.
+    description: >-
+      Aggregated information obtained from individual level info of the cohort
+      members
     type: object
     properties:
       availability:
         description: data availability
         type: boolean
       availabilityCount:
-        description: count of individuals with data available
+        description: >-
+          Count of individuals with data available
         type: integer
       distribution:
-        description: List of categories and results or counts for each category.
+        description: >-
+          List of categories and results or counts for each category.
         type: object
         properties: {}
         additionalProperties:

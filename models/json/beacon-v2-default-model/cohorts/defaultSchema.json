@@ -53,10 +53,10 @@
             "properties": {
                 "eventAgeRange": {
                     "$ref": "#/definitions/DataAvailabilityAndDistribution",
-                    "description": "Individual age range, obtained from individual level info in database."
+                    "description": "Individual age range, obtained from individual level info of the cohort members"
                 },
                 "eventCases": {
-                    "description": "count of cases",
+                    "description": "number of cases",
                     "examples": [
                         543,
                         20
@@ -64,7 +64,7 @@
                     "type": "integer"
                 },
                 "eventControls": {
-                    "description": "count of controls",
+                    "description": "number of controls",
                     "examples": [
                         1000,
                         22
@@ -73,7 +73,7 @@
                 },
                 "eventDataTypes": {
                     "$ref": "#/definitions/DataAvailabilityAndDistribution",
-                    "description": "Aggregated data type information available for each cohort data type as declared in cohortDataTypes, and obtained from individual level info.",
+                    "description": "Aggregated data type information available for each cohort data type as declared in `cohortDataTypes`, and obtained from individual level info of the cohort members",
                     "type": "object"
                 },
                 "eventDate": {
@@ -88,19 +88,19 @@
                 },
                 "eventDiseases": {
                     "$ref": "#/definitions/DataAvailabilityAndDistribution",
-                    "description": "Aggregated information of disease/condition(s) obtained from individual level info in the database."
+                    "description": "Aggregated information of disease/condition(s) obtained from individual level info of the cohort members"
                 },
                 "eventEthnicities": {
                     "$ref": "#/definitions/DataAvailabilityAndDistribution",
-                    "description": "Aggregated information of ethnicity obtained from individual level info in database."
+                    "description": "Aggregated information of ethnicity obtained from individual level info of the cohort members"
                 },
                 "eventGenders": {
                     "$ref": "#/definitions/DataAvailabilityAndDistribution",
-                    "description": "Aggregated information of gender(s) obtained from individual level info in the database."
+                    "description": "Aggregated information of gender(s) obtained from individual level info of the cohort members"
                 },
                 "eventLocations": {
                     "$ref": "#/definitions/DataAvailabilityAndDistribution",
-                    "description": "Aggregated information of geographic location obtained from individual level info in database."
+                    "description": "Aggregated information of geographic location obtained from individual level info of the cohort members"
                 },
                 "eventNum": {
                     "description": "cardinality of the collection event / data point in a series",
@@ -114,7 +114,7 @@
                 },
                 "eventPhenotypes": {
                     "$ref": "#/definitions/DataAvailabilityAndDistribution",
-                    "description": "Aggregated information of phenotype(s) obtained from individual level info in the database."
+                    "description": "Aggregated information of phenotype(s) obtained from individual level info of the cohort members"
                 },
                 "eventSize": {
                     "description": "Count of individuals in cohort at data point (for \u00b4user-defined\u00b4 cohorts, this is individuals meeting criteria) obtained from individual level info in database.",
@@ -125,10 +125,10 @@
                     "type": "integer"
                 },
                 "eventTimeline": {
-                    "description": "Aggregated information of dates of visit/diagnostic/inclusion in study obtained from individual level info in database. Will coincide with collection event date for multi-time",
+                    "description": "Aggregated information of dates of visit | diagnostic | inclusion in study obtained from individual level info of the cohort members.",
                     "properties": {
                         "end": {
-                            "description": "latest date of visit",
+                            "description": "Latest date of visit or collection timeline",
                             "examples": [
                                 "2018-10-01T13:23:45Z",
                                 "2019-04-23T09:11:13Z",
@@ -138,7 +138,7 @@
                             "type": "string"
                         },
                         "start": {
-                            "description": "earliest date of visit",
+                            "description": "Earliest date of visit or collection timeline",
                             "examples": [
                                 "2018-10-01T13:23:45Z",
                                 "2019-04-23T09:11:13Z",
@@ -154,14 +154,14 @@
             "type": "object"
         },
         "DataAvailabilityAndDistribution": {
-            "description": "Aggregated information of geographic location obtained from individual level info in database.",
+            "description": "Aggregated information obtained from individual level info of the cohort members",
             "properties": {
                 "availability": {
                     "description": "data availability",
                     "type": "boolean"
                 },
                 "availabilityCount": {
-                    "description": "count of individuals with data available",
+                    "description": "Count of individuals with data available",
                     "type": "integer"
                 },
                 "distribution": {
@@ -232,7 +232,7 @@
             ]
         },
         "cohortSize": {
-            "description": "Count of unique Individuals in cohort (individuals meeting criteria for \u00b4user-defined\u00b4 cohorts). If not previously known, it could be calculated by counting the individuals in the cohort.",
+            "description": "Count of unique Individuals in cohort (individuals meeting criteria for `user-defined` cohorts). If not previously known, it could be calculated by counting the individuals in the cohort.",
             "examples": [
                 14765,
                 20000
@@ -241,7 +241,7 @@
         },
         "cohortType": {
             "default": "beacon-defined",
-            "description": "Cohort type by its definition. If a cohort is declared \u00b4study-defined\u00b4 or \u00b4beacon-defined\u00b4 criteria are to be entered in cohort_inclusion_criteria; if a cohort is declared \u2018user-defined' cohort_inclusion_criteria could be automatically populated from the parameters used to perform the query.",
+            "description": "Cohort type by its definition. If a cohort is declared `study-defined` or `beacon-defined` criteria are to be entered `in cohort_inclusion_criteria`; if a cohort is declared `user-defined` `cohort_inclusion_criteria` could be automatically populated from the parameters used to perform the query.",
             "enum": [
                 "study-defined",
                 "beacon-defined",
@@ -262,7 +262,7 @@
             "type": "object"
         },
         "id": {
-            "description": "Cohort identifier. For \u00b4study-defined\u00b4 or \u00b4beacon-defined\u00b4cohorts this field is set by the implementer. For \u00b4user-defined\u00b4 this unique identifier could be generated upon the query that defined the cohort, but could be later edited by the user.",
+            "description": "Cohort identifier. For `study-defined` or `beacon-defined` cohorts this field is set by the implementer. For `user-defined` this unique identifier could be generated upon the query that defined the cohort, but could be later edited by the user.",
             "examples": [
                 "cohort-T2D-2010"
             ],
@@ -274,7 +274,7 @@
             "type": "object"
         },
         "name": {
-            "description": "Name of the cohort. For \u00b4user-defined\u00b4 this field could be generated upon the query, e.g. a value that is a concatenationor some representation of the user query.",
+            "description": "Name of the cohort. For `user-defined` this field could be generated upon the query, e.g. a value that is a concatenationor some representation of the user query.",
             "examples": [
                 "Wellcome Trust Case Control Consortium",
                 "GCAT Genomes for Life"
