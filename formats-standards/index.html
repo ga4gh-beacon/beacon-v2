@@ -1,0 +1,1502 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for Beacon v2">
+      
+      
+        <meta name="author" content="Manuel Rueda, Michael Baudis, Laureen Fromont & Beacon Developers">
+      
+      
+      <link rel="icon" href="../img/ga4gh_circle.ico">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Standards Integration - Beacon v2 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/theme_overrides.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-formats-and-standards" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Beacon v2 Documentation" class="md-header__button md-logo" aria-label="Beacon v2 Documentation" data-md-component="logo">
+      
+  <img src="../img/GA-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Beacon v2 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Standards Integration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ga4gh-beacon/beacon-v2" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    beacon-v2
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Beacon v2 Documentation" class="md-nav__button md-logo" aria-label="Beacon v2 Documentation" data-md-component="logo">
+      
+  <img src="../img/GA-logo.png" alt="logo">
+
+    </a>
+    Beacon v2 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ga4gh-beacon/beacon-v2" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    beacon-v2
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../what-is-beacon-v2/" class="md-nav__link">
+        What is Beacon v2?
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bugs-changes-log/" class="md-nav__link">
+        Changes
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Beacon Types
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Beacon Types" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Beacon Types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../beacon-flavours/" class="md-nav__link">
+        Beacon Flavours
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../networks/" class="md-nav__link">
+        Networks
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Implement & Deploy a Beacon
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Implement & Deploy a Beacon" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Implement & Deploy a Beacon
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../implementations-options/" class="md-nav__link">
+        Implementations Options
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Standards Integration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Standards Integration
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-formats-and-standards" class="md-nav__link">
+    Data Formats and Standards
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Formats and Standards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coding-and-naming-conventions" class="md-nav__link">
+    Coding and naming conventions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schema-language-and-conventions" class="md-nav__link">
+    Schema Language and Conventions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genome-coordinates" class="md-nav__link">
+    Genome Coordinates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dates-and-times" class="md-nav__link">
+    Dates and Times
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-external-standards" class="md-nav__link">
+    Integration with External Standards
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with External Standards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variant-representation-standard-vrs" class="md-nav__link">
+    Variant Representation Standard (VRS)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phenopackets" class="md-nav__link">
+    Phenopackets
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filters/" class="md-nav__link">
+        Filters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_4">
+          Beacon Implementations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Beacon Implementations" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Beacon Implementations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://b2ri-documentation.readthedocs.io/en/latest/" class="md-nav__link">
+        Reference Implementation &#8599;
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../other-implementations/" class="md-nav__link">
+        Others
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Beacon Components
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Beacon Components" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Beacon Components
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../framework/" class="md-nav__link">
+        Framework
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" type="checkbox" id="__nav_6_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2">
+          Models
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Models" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2_2" type="checkbox" id="__nav_6_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2_2">
+          Default Schemas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Default Schemas" data-md-level="3">
+        <label class="md-nav__title" for="__nav_6_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Default Schemas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/analyses_defaultSchema/" class="md-nav__link">
+        Analyses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/biosamples_defaultSchema/" class="md-nav__link">
+        Biosamples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/cohorts_defaultSchema/" class="md-nav__link">
+        Cohorts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/datasets_defaultSchema/" class="md-nav__link">
+        Datasets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/genomicVariations_defaultSchema/" class="md-nav__link">
+        Genomic Variations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/individuals_defaultSchema/" class="md-nav__link">
+        Individuals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/runs_defaultSchema/" class="md-nav__link">
+        Runs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/beacon_terms/" class="md-nav__link">
+        Terms List
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Querying Beacons
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Querying Beacons" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Querying Beacons
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rest-api/" class="md-nav__link">
+        REST API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variant-queries/" class="md-nav__link">
+        Genomic Queries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filter-queries/" class="md-nav__link">
+        Filters in Queries
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          External Links
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="External Links" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          External Links
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="http://beacon-project.io" class="md-nav__link">
+        Beacon Project &#8599;
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/ga4gh-beacon/" class="md-nav__link">
+        Github Repositories &#8599;
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../citation/" class="md-nav__link">
+        Citation
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/ga4gh-beacon/beacon-v2/edit/main/docs/formats-standards.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="formats-standards-and-integrations">Formats, Standards and Integrations<a class="headerlink" href="#formats-standards-and-integrations" title="Permanent link">&para;</a></h1>
+<h2 id="data-formats-and-standards">Data Formats and Standards<a class="headerlink" href="#data-formats-and-standards" title="Permanent link">&para;</a></h2>
+<h3 id="coding-and-naming-conventions">Coding and naming conventions<a class="headerlink" href="#coding-and-naming-conventions" title="Permanent link">&para;</a></h3>
+<p>For historical reasons, in the names of entities, parameters and URLs we are following these conventions:</p>
+<ul>
+<li>Entity names: <code>PascalCase</code> </li>
+<li>parameters: <code>camelCase</code> </li>
+<li>URI path elements: <code>snake_case</code> </li>
+</ul>
+<p>The only exception is: <code>service-info</code> which is a required GA4GH standard and has a different word separation convention.</p>
+<h3 id="schema-language-and-conventions">Schema Language and Conventions<a class="headerlink" href="#schema-language-and-conventions" title="Permanent link">&para;</a></h3>
+<p>The <strong>Beacon v2 API</strong> follows <a href="https://spec.openapis.org/oas/v3.0.2">OpenAPI 3.0.2</a> specification for the <a href="https://github.com/ga4gh-beacon/beacon-v2/blob/main/framework/src/endpoints.yaml">endpoints</a>, in conjuntion with JSON Schema (<a href="https://json-schema.org/draft/2020-12/schema">2020-12</a>) to define the <a href="../framework/">Framework</a>  <a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/framework/src"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span></a> and the <a href="../models/">Models</a>  <a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span></a> components. The specification uses JSON <a href="https://json-spec.readthedocs.io/reference.html">references</a> ($ref) to reference internal (e.g., definitions) or external concepts/terms (e.g., <a href="https://vrs.ga4gh.org/en/latest/terms_and_model.html">VRS</a>).</p>
+<p>The Beacon v2 specification is written in <a href="https://yaml.org">YAML</a>. The original files are located under <code>src</code> directory (see below). For technical purposes, we also provide a <strong>copy</strong> of the original YAML in JSON format (see <code>json</code> directory below). Changes in the specification must be performed in the YAML version.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Framework</label><label for="__tabbed_1_2">Models</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<pre><code>framework
+|-- json
+|   |-- common
+|   |   |-- examples
+|   |   `-- validation
+|   |-- configuration
+|   |   `-- examples
+|   |-- requests
+|   |   |-- examples-fullDocuments
+|   |   |-- examples-sections
+|   |   `-- validation
+|   `-- responses
+|       |-- examples-fullDocuments
+|       |-- examples-sections
+|       `-- sections
+`-- src
+    |-- common
+    |   |-- examples
+    |   `-- validation
+    |-- configuration
+    |   `-- examples
+    |-- requests
+    |   |-- examples-fullDocuments
+    |   |-- examples-sections
+    |   `-- validation
+    `-- responses
+        |-- examples-fullDocuments
+        |-- examples-sections
+        `-- sections
+</code></pre>
+</div>
+<div class="tabbed-block">
+<pre><code>models
+|-- json
+|   `-- beacon-v2-default-model
+|       |-- analyses
+|       |   `-- examples
+|       |-- biosamples
+|       |   `-- examples
+|       |-- cohorts
+|       |   `-- examples
+|       |-- common
+|       |-- datasets
+|       |   `-- examples
+|       |-- genomicVariations
+|       |   `-- examples
+|       |-- individuals
+|       |   `-- examples
+|       `-- runs
+|           `-- examples
+`-- src
+    `-- beacon-v2-default-model
+        |-- analyses
+        |   `-- examples
+        |-- biosamples
+        |   `-- examples
+        |-- cohorts
+        |   `-- examples
+        |-- common
+        |-- datasets
+        |   `-- examples
+        |-- genomicVariations
+        |   `-- examples
+        |-- individuals
+        |   `-- examples
+        `-- runs
+            `-- examples
+</code></pre>
+</div>
+</div>
+</div>
+<h3 id="genome-coordinates">Genome Coordinates<a class="headerlink" href="#genome-coordinates" title="Permanent link">&para;</a></h3>
+<div class="admonition attention">
+<p class="admonition-title">GA4GH Genome Coordinate Use Recommendation<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+<ul>
+<li>We recommends the use of <strong>"0-start, half-open"</strong> (interbase) coordinate system in all systems</li>
+<li><strong>"1-start, fully-closed"</strong> should be used when displaying coordinates through a GUI or report</li>
+</ul>
+</div>
+<h3 id="dates-and-times">Dates and Times<a class="headerlink" href="#dates-and-times" title="Permanent link">&para;</a></h3>
+<p><a href="https://xkcd.com/1179/" target="_blank"><img src="https://imgs.xkcd.com/comics/iso_8601.png"  align="right" style="margin 20px 0px 30px 20px; width: 200px; clear:none;" /></a></p>
+<p>Date and time formats are specified as <a href="https://www.w3.org/TR/NOTE-datetime">ISO8601</a>
+compatible strings, both for time points as well as for durations. Some of the ISO8601
+compatible formats have not (yet) been used in the Beacon v2 default model.</p>
+<h4 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h4>
+<ul>
+<li>time stamp in milliseconds in YYYY-MM-DDTHH:MM:SS.SSS<ul>
+<li><em>2015-02-10T00:03:42.123Z</em><ul>
+<li>schema specification in JSON Schema is <code>"type": "string", format": "date-time"</code></li>
+<li>Timepoints with millisecond granularity are typical use cases for timing computer generated entries, e.g. the time of a record's update ("updateTime").</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>age in years and months in PnYnM<ul>
+<li><em>P43Y08M</em></li>
+</ul>
+</li>
+</ul>
+<h5 id="link-w3c-iso8601">LINK: W3C <a href="https://www.w3.org/TR/NOTE-datetime">ISO8601</a><a class="headerlink" href="#link-w3c-iso8601" title="Permanent link">&para;</a></h5>
+<h5 id="link-iso8601-documentation-at-ga4gh-schemablocks">LINK: ISO8601 documentation at <a href="https://schemablocks.org/standards/dates-times.html">GA4GH SchemaBlocks</a><a class="headerlink" href="#link-iso8601-documentation-at-ga4gh-schemablocks" title="Permanent link">&para;</a></h5>
+<h2 id="integration-with-external-standards">Integration with External Standards<a class="headerlink" href="#integration-with-external-standards" title="Permanent link">&para;</a></h2>
+<p>The development of the Beacon v2 framework and default model closely follows
+and widely adopts concepts and schemas from approved GA4GH products such as
+Phenopackets and the Variant Representation Standard (VRS).</p>
+<h3 id="variant-representation-standard-vrs">Variant Representation Standard (VRS)<a class="headerlink" href="#variant-representation-standard-vrs" title="Permanent link">&para;</a></h3>
+<p>The GA4GH Variant Representation Standard (VRS) constitutes the reference one should use
+when implementing representations of genomic variations. The <a href="https://vrs.ga4gh.org/en/stable/releases/1.2.html">current version 1.2</a>
+has been approved and covers a set of use cases and requirements, especially with respect
+to genomic (including cytogenetic or feature based) locations. However, it is not yet
+suitable for a number of practical use cases, especially the representation of some structural variations.</p>
+<p>The Beacon v2 default model for <code>GenomicVariation</code> makes use of the VRS standard to represent
+the <code>variation</code> part, <em>i.e.</em> the location and sequence or copy number changes of the
+genomic variation. While a "legacy" alternative is still allowed this one too has been adjusted
+to make use of the VRS <code>Location</code> format.</p>
+<h4 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h4>
+<p>The examples are for different forma of the <code>location</code> property inside a <code>genomicVariation</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Beacon v2 VRS Allele</label><label for="__tabbed_2_2">Beacon v2 VRS CNV</label><label for="__tabbed_2_3">Beacon v2 legacy SNV</label><label for="__tabbed_2_4">Beacon v2 legacy CNV</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;variation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allele&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;state&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;sequence&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;G&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LiteralSequenceExpression&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SequenceLocation&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;sequence_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;refseq:NC_000017.11&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SequenceInterval&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Number&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7577120</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Number&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7577121</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;variation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RelativeCopyNumber&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;relative_copy_class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;partial loss&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SequenceLocation&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;sequence_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;refseq:NC_000018.10&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Number&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23029501</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Number&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">62947165</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;variation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;variantType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SNP&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;referenceBases&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;alternateBases&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;G&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SequenceLocation&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;sequence_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;refseq:NC_000017.11&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SequenceInterval&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Number&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7577120</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Number&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7577121</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;variation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;variantType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DEL&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SequenceLocation&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;sequence_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;refseq:NC_000018.10&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Number&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23029501</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Number&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">62947165</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h5 id="link-vrs-documentation">LINK: <a href="https://vrs.ga4gh.org/en/stable/">VRS Documentation</a><a class="headerlink" href="#link-vrs-documentation" title="Permanent link">&para;</a></h5>
+<h3 id="phenopackets">Phenopackets<a class="headerlink" href="#phenopackets" title="Permanent link">&para;</a></h3>
+<p>In the Beacon v2 default data model, many schemas are either directly compatible to
+<a href="https://phenopacket-schema.readthedocs.io/en/latest/building-blocks.html">Phenopackets v2 building blocks</a>
+or at least reflect them but with some adjustments. While the Beacon v2 default model's schemas do not <em>per se</em> have to reflect
+PXF schemas, we target an as-close-as-possible alignment to promote/leverage GA4GH-wide
+standardization.</p>
+<h4 id="top-level-differences">Top-level differences<a class="headerlink" href="#top-level-differences" title="Permanent link">&para;</a></h4>
+<p>The Phenopackets model is centered around the <code>Phenopacket</code>, which is the collector
+and integrator of all sub-schemas (with the addition of the external <code>Family</code> and
+<code>Cohort</code> schemas). While <code>Phenopacket</code> usually describes information related to a
+<code>subject</code> -  which is defined in an <code>Individual</code> - and the top level elements in
+<code>Phenopacket</code> relate to a specific <code>proband</code> (<code>measurements</code> as "Measurements performed
+in the proband"), the phenopacket itself does not explicitely <em>represent</em> an individual.</p>
+<p>In contrast, the Beacon v2 default model uses a hierarchy in which biosamples
+reference individuals directly (if existing). For most purposes one can equate Beacon's
+<code>Individual</code> with a merge of Phenopacket's core <code>Phenopacket</code> and <code>Individual</code> parameters.</p>
+<h4 id="building-block-comparisons-beacon-v2-pxf-v2">Building block comparisons: Beacon v2 <code>==</code> PXF v2<a class="headerlink" href="#building-block-comparisons-beacon-v2-pxf-v2" title="Permanent link">&para;</a></h4>
+<h5 id="age"><code>Age</code><a class="headerlink" href="#age" title="Permanent link">&para;</a></h5>
+<ul>
+<li><a href="https://phenopacket-schema.readthedocs.io/en/latest/age.html">PXF Age</a></li>
+<li><a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/age.yaml">Beacon v2 Age</a></li>
+</ul>
+<h5 id="agerange"><code>AgeRange</code><a class="headerlink" href="#agerange" title="Permanent link">&para;</a></h5>
+<ul>
+<li><a href="https://phenopacket-schema.readthedocs.io/en/latest/age.html#agerange">PXF AgeRange</a></li>
+<li><a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/ageRange.yaml">Beacon v2 AgeRange</a></li>
+</ul>
+<h5 id="evidence"><code>Evidence</code><a class="headerlink" href="#evidence" title="Permanent link">&para;</a></h5>
+<ul>
+<li><a href="https://phenopacket-schema.readthedocs.io/en/latest/evidence.html">PXF Evidence</a></li>
+<li><a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/evidence.yaml">Beacon v2 Evidence</a></li>
+</ul>
+<h5 id="karyotypicsex"><code>KaryotypicSex</code><a class="headerlink" href="#karyotypicsex" title="Permanent link">&para;</a></h5>
+<ul>
+<li><a href="https://github.com/phenopackets/phenopacket-schema/blob/master/docs/karyotypicsex.rst">PXF</a></li>
+<li><a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/commonDefinitions.yaml">Beacon</a></li>
+</ul>
+<h5 id="referencerange"><code>ReferenceRange</code><a class="headerlink" href="#referencerange" title="Permanent link">&para;</a></h5>
+<ul>
+<li><a href="https://phenopacket-schema.readthedocs.io/en/latest/reference-range.html">PXF ReferenceRange</a></li>
+<li><a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/referenceRange.yaml">Beacon v2 ReferenceRange</a></li>
+</ul>
+<p>While <code>unit</code> in Beacon points to a <code>Unit</code> definition, this is itself an <code>OntologyTerm</code> i.e. structurally the same.</p>
+<h5 id="value"><code>Value</code><a class="headerlink" href="#value" title="Permanent link">&para;</a></h5>
+<ul>
+<li><a href="https://phenopacket-schema.readthedocs.io/en/latest/value.html">PXF Value</a></li>
+<li><a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/value.yaml">Beacon v2 Value</a></li>
+</ul>
+<h4 id="beacon-v2-pxf-v2-eg-renamed-or-additional-parameters">Beacon v2 <code>=~</code> PXF v2 (e.g. renamed or additional parameters)<a class="headerlink" href="#beacon-v2-pxf-v2-eg-renamed-or-additional-parameters" title="Permanent link">&para;</a></h4>
+<h5 id="complexvalue"><code>ComplexValue</code><a class="headerlink" href="#complexvalue" title="Permanent link">&para;</a></h5>
+<ul>
+<li><a href="https://phenopacket-schema.readthedocs.io/en/latest/complex-value.html">PXF ComplexValue</a></li>
+<li><a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/complexValue.yaml">Beacon v2 ComplexValue</a></li>
+</ul>
+<p>Renamed <code>ComplexValue.TypedQuantity.quantityType</code> compared to GA4GH Phenopackets v2 <code>ComplexValue.TypedQuantity.type</code> due to problematic use of <code>type</code> as parameter</p>
+<h5 id="externalreference"><code>ExternalReference</code><a class="headerlink" href="#externalreference" title="Permanent link">&para;</a></h5>
+<ul>
+<li><a href="https://phenopacket-schema.readthedocs.io/en/latest/externalreference.html">PXF ExternalReference</a></li>
+<li><a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/externalReference.yaml">Beacon v2 ExternalReference</a></li>
+</ul>
+<p>Renamed <code>ExternalReference.notes</code> compared to GA4GH Phenopackets v2 <code>ExternalReference.description</code> due to problematic use of <code>description</code> as parameter</p>
+<h5 id="measurement"><code>Measurement</code><a class="headerlink" href="#measurement" title="Permanent link">&para;</a></h5>
+<ul>
+<li><a href="https://phenopacket-schema.readthedocs.io/en/latest/measurement.html">PXF Measurement</a></li>
+<li><a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/measurement.yaml">Beacon v2 Measurement</a></li>
+</ul>
+<p>Added <code>notes</code> and <code>date</code>.</p>
+<h5 id="phenotypicfeature"><code>PhenotypicFeature</code><a class="headerlink" href="#phenotypicfeature" title="Permanent link">&para;</a></h5>
+<ul>
+<li><a href="https://phenopacket-schema.readthedocs.io/en/latest/phenotype.html">PXF PhenotypicFeature</a></li>
+<li><a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/phenotypicFeature.yaml">Beacon v2 PhenotypicFeature</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Beacon</th>
+<th>Phenopackets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>featureType</code></td>
+<td><code>type</code></td>
+</tr>
+<tr>
+<td><code>severity</code>  (re-used definition reflecting an ontology term)</td>
+<td><code>severity</code> (ontology class)</td>
+</tr>
+<tr>
+<td><code>notes</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="procedure"><code>Procedure</code><a class="headerlink" href="#procedure" title="Permanent link">&para;</a></h5>
+<ul>
+<li><a href="https://phenopacket-schema.readthedocs.io/en/latest/procedure.html">PXF Procedure</a></li>
+<li><a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/procedure.yaml">Beacon v2 Procedure</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Beacon</th>
+<th>Phenopackets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>procedureCode</code></td>
+<td><code>code</code></td>
+</tr>
+<tr>
+<td><code>ageAtProcedure</code>  (TimeElement)</td>
+<td><code>performed</code> (<code>TimeElement</code>)</td>
+</tr>
+<tr>
+<td><code>dateOfProcedure</code>  (ISO date)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="timeelement"><code>TimeElement</code><a class="headerlink" href="#timeelement" title="Permanent link">&para;</a></h5>
+<ul>
+<li><a href="https://phenopacket-schema.readthedocs.io/en/latest/time-element.html">PXF TimeElement</a></li>
+<li><a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/timeElement.yaml">Beacon v2 TimeElement</a></li>
+</ul>
+<p>The specific parameters have been aligned w/ minimal differences in naming or use of general parameters.</p>
+<table>
+<thead>
+<tr>
+<th>Beacon</th>
+<th>Phenopackets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ontologyTerm</code></td>
+<td><code>ontology_class</code></td>
+</tr>
+<tr>
+<td><code>age</code></td>
+<td><code>age</code> (<code>Age</code>)</td>
+</tr>
+<tr>
+<td><code>ageRange</code></td>
+<td><code>age_range</code> (<code>AgeRange</code>)</td>
+</tr>
+<tr>
+<td><code>gestationalAge</code></td>
+<td><code>gestational_age</code> (<code>GestationalAge</code>)</td>
+</tr>
+<tr>
+<td><code>...Timestamp</code></td>
+<td><code>timestamp</code> (<code>TimeStamp</code>)</td>
+</tr>
+<tr>
+<td><code>timeInterval</code></td>
+<td><code>interval</code> (<code>TimeInterval</code>)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="treatment"><code>Treatment</code><a class="headerlink" href="#treatment" title="Permanent link">&para;</a></h5>
+<ul>
+<li><a href="https://phenopacket-schema.readthedocs.io/en/latest/treatment.html">PXF Treatment</a></li>
+<li><a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/treatment.yaml">Beacon v2 Treatment</a></li>
+</ul>
+<p>Beacon still has an <code>ageOfOnset</code> parameter (?). Also, PXF <code>agent</code> has been renamed to a more general <code>treatmentCode</code>.</p>
+<h4 id="beacon-v2-pxf-v2-eg-multiplecomplex-differences">Beacon v2 <code>~</code> PXF v2 (e.g. multiple/complex differences)<a class="headerlink" href="#beacon-v2-pxf-v2-eg-multiplecomplex-differences" title="Permanent link">&para;</a></h4>
+<h5 id="disease"><code>Disease</code><a class="headerlink" href="#disease" title="Permanent link">&para;</a></h5>
+<h5 id="pedigree"><code>Pedigree</code><a class="headerlink" href="#pedigree" title="Permanent link">&para;</a></h5>
+<p>While the Beacon &amp; Phenopackets schemas for "pedigree" representation are not aligned, they may become superseded by the <a href="https://github.com/GA4GH-Pedigree-Standard/pedigree">GA4GH pedigree standard</a> currenty under development.</p>
+<h5 id="sex"><code>Sex</code><a class="headerlink" href="#sex" title="Permanent link">&para;</a></h5>
+<p>Beacon directly uses the (IMO preferable) <a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/commonDefinitions.yaml">representation through an ontology term</a>, while PXF uses an <a href="https://phenopacket-schema.readthedocs.io/en/latest/sex.html">ordinal mapping</a></p>
+<h5 id="link-phenopackets-documentation">LINK: <a href="https://phenopacket-schema.readthedocs.io/en/latest/index.html">Phenopackets Documentation</a><a class="headerlink" href="#link-phenopackets-documentation" title="Permanent link">&para;</a></h5>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Source: <a href="https://github.com/@andrewyatz/">@andrewyatz</a> at <a href="http://schemablocks.org/standards/genome-coordinates.html">SchemaBlocks {S}[B]</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+              
+            </article>
+            
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../implementations-options/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Implementations Options" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Implementations Options
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../filters/" class="md-footer__link md-footer__link--next" aria-label="Next: Filters" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Filters
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; Copyright 2021-2022, Beacon v2 Documentation Contributors
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/genomebeacons" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/ga4gh-beacon" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "search.highlight", "search.share", "navigation.instant", "navigation.tracking", "navigation.sections", "toc.integrate"], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>
