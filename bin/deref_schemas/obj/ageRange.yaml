@@ -1,0 +1,27 @@
+---
+ageRange:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  description: Individual age range in cohort inclusion criteria
+  properties:
+    end:
+      $schema: https://json-schema.org/draft/2020-12/schema
+      description: Represents age as an ISO8601 duration (e.g., P59Y).
+      properties:
+        iso8601duration:
+          description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+          example: P32Y6M1D
+          type: string
+      title: Age
+      type: object
+    start:
+      $schema: https://json-schema.org/draft/2020-12/schema
+      description: Represents age as an ISO8601 duration (e.g., P18Y).
+      properties:
+        iso8601duration:
+          description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+          example: P32Y6M1D
+          type: string
+      title: Age
+      type: object
+  title: AgeRange
+  type: object

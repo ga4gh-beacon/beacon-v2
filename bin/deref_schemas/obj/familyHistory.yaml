@@ -1,0 +1,7 @@
+---
+familyHistory:
+  description: Boolean indicating determined or self-reported presence of family history
+    of the disease.
+  examples:
+  - 1
+  type: boolean

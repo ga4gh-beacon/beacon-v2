@@ -1,3 +1,3 @@
 |Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| doseIntervals | NA | array | [interval](./interval.md), [quantity](./quantity.md), [scheduleFrequency](./scheduleFrequency.md) | NA | NA|
+| doseIntervals | This element represents a block of time in which the dosage of a medication was constant. For example, to represent a period of 30 mg twice a day for an interval of 10 days, we would use a Quantity element to represent the individual 30 mg dose, and OntologyClass element to represent twice a day, and an Interval element to represent the 10-day interval. Provenance: Phenopackets v2 | array | [interval](./interval.md), [quantity](./quantity.md), [scheduleFrequency](./scheduleFrequency.md) | NA | NA|

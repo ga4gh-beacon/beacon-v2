@@ -1,0 +1,36 @@
+---
+genders:
+  description: Gender(s) in cohort inclusion criteria
+  items:
+    $schema: https://json-schema.org/draft/2020-12/schema
+    additionalProperties: 1
+    description: 'Sex of the individual. Recommended values from NCIT General Qualifier
+      (NCIT:C27993): "unknown" (not assessed or not available) - NCIT:C17998; "female"
+      - NCIT:C16576;  "male" - NCIT:C20197'
+    examples:
+    - id: NCIT:C16576
+      label: female
+    - id: NCIT:C20197
+      label: male
+    - id: NCIT:C1799
+      label: unknown
+    properties:
+      id:
+        description: A CURIE identifier, e.g. as `id` for an ontology term.
+        examples:
+        - ga4gh:GA.01234abcde
+        - DUO:0000004
+        - orcid:0000-0003-3463-0775
+        - PMID:15254584
+        pattern: ^\w[^:]+:.+$
+        type: string
+      label:
+        description: The text that describes the term. By default it could be the
+          preferred text of the term, but is it acceptable to customize it for a clearer
+          description and understanding of the term in an specific context.
+        type: string
+    required:
+    - id
+    title: Ontology Term
+    type: object
+  type: array

@@ -1,3 +1,3 @@
 |Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| pedigrees | NA | array | [disease](./disease.md), [id](./id.md), [members](./members.md), [numSubjects](./numSubjects.md) | NA | NA|
+| pedigrees | Pedigree studies in which the individual is part of. | array | [disease](./disease.md), [id](./id.md), [members](./members.md), [numSubjects](./numSubjects.md) | NA | NA|

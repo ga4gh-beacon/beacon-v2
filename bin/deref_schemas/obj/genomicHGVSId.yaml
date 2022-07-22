@@ -1,0 +1,6 @@
+---
+genomicHGVSId:
+  description: HGVSId descriptor.
+  examples:
+  - NC_000017.11:g.43057063G>A
+  type: string

@@ -1,0 +1,7 @@
+---
+analysisDate:
+  description: Date at which analysis was performed.
+  examples:
+  - 2021-10-17
+  format: date
+  type: string

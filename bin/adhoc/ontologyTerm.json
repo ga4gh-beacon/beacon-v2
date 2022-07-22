@@ -1,0 +1,18 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "properties": {
+        "id": {
+            "$ref": "./beaconCommonComponents.json#/definitions/CURIE"
+        },
+        "label": {
+            "description": "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context.",
+            "type": "string"
+        }
+    },
+    "required": [
+        "id"
+    ],
+    "title": "Ontology Term",
+    "type": "object"
+}

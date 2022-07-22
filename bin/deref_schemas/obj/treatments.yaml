@@ -1,0 +1,351 @@
+---
+treatments:
+  items:
+    $comments: Compares to https://github.com/phenopackets/phenopacket-schema/blob/master/docs/treatment.rst,
+      with modifications.
+    $schema: https://json-schema.org/draft/2020-12/schema
+    additionalProperties: 1
+    description: Treatment(s) prescribed/administered, defined by treatment ID, date
+      and age of onset, dose, schedule and duration.
+    properties:
+      ageAtOnset:
+        $schema: https://json-schema.org/draft/2020-12/schema
+        description: 'Age value definition. Provenance: GA4GH Phenopackets v2 `Age`'
+        properties:
+          iso8601duration:
+            description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+            example: P32Y6M1D
+            type: string
+        title: Age
+        type: object
+      cumulativeDose:
+        $schema: https://json-schema.org/draft/2020-12/schema
+        additionalProperties: 1
+        description: 'Definition of a quantity class. Provenance: GA4GH Phenopackets
+          v2 `Quantity`'
+        properties:
+          referenceRange:
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: 1
+            description: The normal range for the value
+            example: {}
+            properties:
+              high:
+                description: Upper range end of normal
+                examples:
+                - 135
+                type: number
+              low:
+                description: Lower range end of normal
+                examples:
+                - 85
+                type: number
+              unit:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                additionalProperties: 1
+                description: The kind of unit.
+                examples:
+                - id: NCIT:C49670
+                  label: Millimeter of Mercury
+                properties:
+                  id:
+                    description: A CURIE identifier, e.g. as `id` for an ontology
+                      term.
+                    examples:
+                    - ga4gh:GA.01234abcde
+                    - DUO:0000004
+                    - orcid:0000-0003-3463-0775
+                    - PMID:15254584
+                    pattern: ^\w[^:]+:.+$
+                    type: string
+                  label:
+                    description: The text that describes the term. By default it could
+                      be the preferred text of the term, but is it acceptable to customize
+                      it for a clearer description and understanding of the term in
+                      an specific context.
+                    type: string
+                required:
+                - id
+                title: Ontology Term
+                type: object
+            required:
+            - unit
+            - low
+            - high
+            title: ReferenceRange
+            type: object
+          unit:
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: 1
+            description: The kind of unit. Recommended from NCIT Unit of Category
+              ontology term (NCIT:C42568) descendants
+            examples:
+            - id: NCIT:C70575
+              label: Roentgen
+            - id: NCIT:C28252
+              label: Kilogram
+            - id: NCIT:C28253
+              label: Milligram
+            properties:
+              id:
+                description: A CURIE identifier, e.g. as `id` for an ontology term.
+                examples:
+                - ga4gh:GA.01234abcde
+                - DUO:0000004
+                - orcid:0000-0003-3463-0775
+                - PMID:15254584
+                pattern: ^\w[^:]+:.+$
+                type: string
+              label:
+                description: The text that describes the term. By default it could
+                  be the preferred text of the term, but is it acceptable to customize
+                  it for a clearer description and understanding of the term in an
+                  specific context.
+                type: string
+            required:
+            - id
+            title: Ontology Term
+            type: object
+          value:
+            description: The value of the quantity in the units
+            type: number
+        required:
+        - unit
+        - value
+        title: Quantity
+        type: object
+      doseIntervals:
+        items:
+          $comments: From https://github.com/phenopackets/phenopacket-schema/blob/v2/docs/dose-interval.rst
+          $schema: https://json-schema.org/draft/2020-12/schema
+          additionalProperties: 2
+          description: 'This element represents a block of time in which the dosage
+            of a medication was constant. For example, to represent a period of 30
+            mg twice a day for an interval of 10 days, we would use a Quantity element
+            to represent the individual 30 mg dose, and OntologyClass element to represent
+            twice a day, and an Interval element to represent the 10-day interval.
+            Provenance: Phenopackets v2'
+          properties:
+            interval:
+              $comments: From https://github.com/phenopackets/phenopacket-schema/blob/v2/docs/time-interval.rst
+              $schema: https://json-schema.org/draft/2020-12/schema
+              additionalProperties: 2
+              description: Time interval with start and end defined as ISO8601 time
+                stamps.
+              examples:
+              - end: 1967-11-18T12:00:00+01
+                start: 1967-11-11T07:30:00+01
+              properties:
+                end:
+                  description: Time in date-time ISO8601 string format.
+                  examples:
+                  - 1999-08-05T17:21:00+01:00
+                  - 2002-09-21T02:37:00-08:00
+                  format: date-time
+                  type: string
+                start:
+                  description: Time in date-time ISO8601 string format.
+                  examples:
+                  - 1999-08-05T17:21:00+01:00
+                  - 2002-09-21T02:37:00-08:00
+                  format: date-time
+                  type: string
+              required:
+              - start
+              - end
+              title: TimeInterval
+              type: object
+            quantity:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              additionalProperties: 1
+              description: 'Definition of a quantity class. Provenance: GA4GH Phenopackets
+                v2 `Quantity`'
+              properties:
+                referenceRange:
+                  $schema: https://json-schema.org/draft/2020-12/schema
+                  additionalProperties: 1
+                  description: The normal range for the value
+                  example: {}
+                  properties:
+                    high:
+                      description: Upper range end of normal
+                      examples:
+                      - 135
+                      type: number
+                    low:
+                      description: Lower range end of normal
+                      examples:
+                      - 85
+                      type: number
+                    unit:
+                      $schema: https://json-schema.org/draft/2020-12/schema
+                      additionalProperties: 1
+                      description: The kind of unit.
+                      examples:
+                      - id: NCIT:C49670
+                        label: Millimeter of Mercury
+                      properties:
+                        id:
+                          description: A CURIE identifier, e.g. as `id` for an ontology
+                            term.
+                          examples:
+                          - ga4gh:GA.01234abcde
+                          - DUO:0000004
+                          - orcid:0000-0003-3463-0775
+                          - PMID:15254584
+                          pattern: ^\w[^:]+:.+$
+                          type: string
+                        label:
+                          description: The text that describes the term. By default
+                            it could be the preferred text of the term, but is it
+                            acceptable to customize it for a clearer description and
+                            understanding of the term in an specific context.
+                          type: string
+                      required:
+                      - id
+                      title: Ontology Term
+                      type: object
+                  required:
+                  - unit
+                  - low
+                  - high
+                  title: ReferenceRange
+                  type: object
+                unit:
+                  $schema: https://json-schema.org/draft/2020-12/schema
+                  additionalProperties: 1
+                  description: The kind of unit. Recommended from NCIT Unit of Category
+                    ontology term (NCIT:C42568) descendants
+                  examples:
+                  - id: NCIT:C70575
+                    label: Roentgen
+                  - id: NCIT:C28252
+                    label: Kilogram
+                  - id: NCIT:C28253
+                    label: Milligram
+                  properties:
+                    id:
+                      description: A CURIE identifier, e.g. as `id` for an ontology
+                        term.
+                      examples:
+                      - ga4gh:GA.01234abcde
+                      - DUO:0000004
+                      - orcid:0000-0003-3463-0775
+                      - PMID:15254584
+                      pattern: ^\w[^:]+:.+$
+                      type: string
+                    label:
+                      description: The text that describes the term. By default it
+                        could be the preferred text of the term, but is it acceptable
+                        to customize it for a clearer description and understanding
+                        of the term in an specific context.
+                      type: string
+                  required:
+                  - id
+                  title: Ontology Term
+                  type: object
+                value:
+                  description: The value of the quantity in the units
+                  type: number
+              required:
+              - unit
+              - value
+              title: Quantity
+              type: object
+            scheduleFrequency:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              additionalProperties: 1
+              description: Definition of an ontology term.
+              examples:
+              - id: NCIT:C64496
+                label: Twice Daily
+              properties:
+                id:
+                  description: A CURIE identifier, e.g. as `id` for an ontology term.
+                  examples:
+                  - ga4gh:GA.01234abcde
+                  - DUO:0000004
+                  - orcid:0000-0003-3463-0775
+                  - PMID:15254584
+                  pattern: ^\w[^:]+:.+$
+                  type: string
+                label:
+                  description: The text that describes the term. By default it could
+                    be the preferred text of the term, but is it acceptable to customize
+                    it for a clearer description and understanding of the term in
+                    an specific context.
+                  type: string
+              required:
+              - id
+              title: Ontology Term
+              type: object
+          required:
+          - quantity
+          - interval
+          - scheduleFrequency
+          title: DoseInterval
+          type: object
+        type: array
+      routeOfAdministration:
+        $schema: https://json-schema.org/draft/2020-12/schema
+        additionalProperties: 1
+        description: Definition of an ontology term.
+        examples:
+        - id: NCIT:C38304
+          label: Topical
+        - id: NCIT:C78373
+          label: Dietary
+        properties:
+          id:
+            description: A CURIE identifier, e.g. as `id` for an ontology term.
+            examples:
+            - ga4gh:GA.01234abcde
+            - DUO:0000004
+            - orcid:0000-0003-3463-0775
+            - PMID:15254584
+            pattern: ^\w[^:]+:.+$
+            type: string
+          label:
+            description: The text that describes the term. By default it could be
+              the preferred text of the term, but is it acceptable to customize it
+              for a clearer description and understanding of the term in an specific
+              context.
+            type: string
+        required:
+        - id
+        title: Ontology Term
+        type: object
+      treatmentCode:
+        $schema: https://json-schema.org/draft/2020-12/schema
+        additionalProperties: 1
+        description: Definition of an ontology term.
+        examples:
+        - id: NCIT:C287
+          label: Aspirin
+        - id: NCIT:C62078
+          label: Tamoxifen
+        properties:
+          id:
+            description: A CURIE identifier, e.g. as `id` for an ontology term.
+            examples:
+            - ga4gh:GA.01234abcde
+            - DUO:0000004
+            - orcid:0000-0003-3463-0775
+            - PMID:15254584
+            pattern: ^\w[^:]+:.+$
+            type: string
+          label:
+            description: The text that describes the term. By default it could be
+              the preferred text of the term, but is it acceptable to customize it
+              for a clearer description and understanding of the term in an specific
+              context.
+            type: string
+        required:
+        - id
+        title: Ontology Term
+        type: object
+    required:
+    - treatmentCode
+    title: Treatment
+    type: object
+  type: array

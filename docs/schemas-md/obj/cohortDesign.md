@@ -1,3 +1,3 @@
 |Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| cohortDesign | Definition of an ontology term. | object | [id](./id.md), [label](./label.md) | NA | NA|
+| cohortDesign | Cohort type by its design. A plan specification comprised of protocols (which may specify how and what kinds of data will be gathered) that are executed as part of an investigation and is realized during a study design execution. Value from Ontologized MIABIS (OMIABIS) Study design ontology term tree (OBI:0500000). | object | [id](./id.md), [label](./label.md) | `[{"id": "OMIABIS:0001017", "label": "case control study design"}, {"id": "OMIABIS:0001019", "label": "longitudinal study design"}, {"id": "OMIABIS:0001024", "label": "twin study design"}]` | NA|

@@ -1,0 +1,19 @@
+---
+karyotypicSex:
+  $comments: Compares to https://github.com/phenopackets/phenopacket-schema/blob/master/docs/karyotypicsex.rst
+  default: UNKNOWN_KARYOTYPE
+  description: The chromosomal sex of an individual represented from a selection of
+    options.
+  enum:
+  - UNKNOWN_KARYOTYPE
+  - XX
+  - XY
+  - XO
+  - XXY
+  - XXX
+  - XXYY
+  - XXXY
+  - XXXX
+  - XYY
+  - OTHER_KARYOTYPE
+  type: string

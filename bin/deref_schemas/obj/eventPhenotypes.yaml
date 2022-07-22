@@ -1,0 +1,24 @@
+---
+eventPhenotypes:
+  description: Aggregated information of phenotype(s) obtained from individual level
+    info of the cohort members
+  properties:
+    availability:
+      description: data availability
+      type: boolean
+    availabilityCount:
+      description: Count of individuals with data available
+      type: integer
+    distribution:
+      additionalProperties:
+        type: object
+      description: List of categories and results or counts for each category.
+      examples:
+      - genders:
+          female: 51
+          male: 50
+      properties: {}
+      type: object
+  required:
+  - availability
+  type: object

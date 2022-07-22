@@ -1,0 +1,32 @@
+---
+platformModel:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  additionalProperties: 1
+  description: Ontology value for experimental platform or methodology used. For sequencing
+    platforms the use of "OBI:0400103 - DNA sequencer" is suggested.
+  examples:
+  - id: OBI:0002048
+    label: Illumina HiSeq 3000
+  - id: OBI:0002750
+    label: Oxford Nanopore MinION
+  - id: EFO:0010938
+    label: large-insert clone DNA microarray
+  properties:
+    id:
+      description: A CURIE identifier, e.g. as `id` for an ontology term.
+      examples:
+      - ga4gh:GA.01234abcde
+      - DUO:0000004
+      - orcid:0000-0003-3463-0775
+      - PMID:15254584
+      pattern: ^\w[^:]+:.+$
+      type: string
+    label:
+      description: The text that describes the term. By default it could be the preferred
+        text of the term, but is it acceptable to customize it for a clearer description
+        and understanding of the term in an specific context.
+      type: string
+  required:
+  - id
+  title: Ontology Term
+  type: object

@@ -1,3 +1,3 @@
 |Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| biosampleStatus | Definition of an ontology term. | object | [id](./id.md), [label](./label.md) | NA | NA|
+| biosampleStatus | Ontology value from Experimental Factor Ontology (EFO) Material Entity term (BFO:0000040). Classification of the sample in abnormal sample (EFO:0009655) or reference sample (EFO:0009654). | object | [id](./id.md), [label](./label.md) | `[{"id": "EFO:0009654", "label": "reference sample"}, {"id": "EFO:0009655", "label": "abnormal sample"}, {"id": "EFO:0009656", "label": "neoplastic sample"}, {"id": "EFO:0010941", "label": "metastasis sample"}, {"id": "EFO:0010942", "label": "primary tumor sample"}, {"id": "EFO:0010943", "label": "recurrent tumor sample"}]` | NA|

@@ -1,0 +1,10 @@
+---
+proteinHGVSIds:
+  description: List of HGVSId descriptor(s) at protein level (for protein-altering
+    variants).
+  examples:
+  - - NP_009225.1:p.Glu1817Ter
+  - - LRG 199p1:p.Val25Gly (preferred)
+  items:
+    type: string
+  type: array

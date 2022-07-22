@@ -1,0 +1,91 @@
+---
+members:
+  description: 'List of members of the pedigree. If the current pedigree definition
+    is attached to the proband, it contains the whole list of pedigree members, including
+    the proband. If the definition is attached to an individual different than the
+    proband, it only contains two entries: one that describes that member, e.g. the
+    proband mother or father, and one that points to the proband.'
+  items:
+    examples:
+    - membersInProband:
+      - affected: 1
+        memberId: Ind0012122
+        role:
+          id: NCIT:C64435
+          label: Proband
+      - affected: 2
+        memberId: Pedigree1001-m2
+        role:
+          id: NCIT:C96580
+          label: Biological Mother
+      - affected: 1
+        memberId: Pedigree1001-m3
+        role:
+          id: NCIT:C96572
+          label: Biological Father
+    - membersInMother:
+      - affected: 2
+        memberId: Ind0028989
+        role:
+          id: NCIT:C96580
+          label: Biological Mother
+      - affected: 1
+        memberId: Ind0012122
+        role:
+          id: NCIT:C64435
+          label: Proband
+    properties:
+      affected:
+        description: Is the individual affected by the disease in the pedigree?
+        type: boolean
+      memberId:
+        description: Identifier of the individual. The individual could be part of
+          the same Beacon datasets or not, in which case the information here is meant
+          to complete the pedigree. If the individual is also in the dataset use that
+          Individual ID. If it is not the in the dataset, use a non-collading ID,
+          e.g. concatenating the Pedigree ID with a local ID, similarly to the example
+          'Pedigree1001-m1'.
+        examples:
+        - Pedigree1001-m1
+        - Ind0012122
+        type: string
+      role:
+        $schema: https://json-schema.org/draft/2020-12/schema
+        additionalProperties: 1
+        description: Definition of an ontology term.
+        examples:
+        - id: NCIT:C64435
+          label: Proband
+        - id: NCIT:C96580
+          label: Biological Mother
+        - id: NCIT:C96572
+          label: Biological Father
+        - id: NCIT:C165848
+          label: Identical Twin Brother
+        properties:
+          id:
+            description: A CURIE identifier, e.g. as `id` for an ontology term.
+            examples:
+            - ga4gh:GA.01234abcde
+            - DUO:0000004
+            - orcid:0000-0003-3463-0775
+            - PMID:15254584
+            pattern: ^\w[^:]+:.+$
+            type: string
+          label:
+            description: The text that describes the term. By default it could be
+              the preferred text of the term, but is it acceptable to customize it
+              for a clearer description and understanding of the term in an specific
+              context.
+            type: string
+        required:
+        - id
+        title: Ontology Term
+        type: object
+    required:
+    - memberId
+    - role
+    - affected
+    type: object
+  minItems: 1
+  type: array

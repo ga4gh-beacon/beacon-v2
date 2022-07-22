@@ -44,19 +44,17 @@ In the Beacon context, _mbaudis_ has developed a nice framework for [schemablock
 
 All of the above lead to the creation of this tool, which was written in [Perl](https://www.perl.org) language.
 
-## ADDENDUM: How to update Documentation
+## ADDENDUM: How to update the Documentation
 
 There are several steps that need to be peformed to update the documentation:
 
-    1 - Install C<jsonref>.
+    1 - Install C<nodejs>.
 
-       $ sudo pip3 install jsonref #  Python 2 => sudo pip install jsonref
+       $ sudo apt install nodejs
 
-       The reason for installing this tool is that we need it to convert JSON files with JSON references ($ref) to JSON files with no references (i.e., all references will be embeded in the file).
+       The reason for installing JS is that we need it to convert JSON files with JSON references ($ref) to JSON files with no references (i.e., all references will be embeded in the file).
 
-    2 - Modify the two variables 'mod_dir' and 'fw_dir' inside transform_json2md.sh according to the Models and Framework directories.
-
-    4 - Now run the script:
+    2 - Now run the script:
      
       $ # cd bin # skip this step if you are already at bin directory
 
@@ -66,20 +64,14 @@ There are several steps that need to be peformed to update the documentation:
 
       $ git add docs/schemas-md
 
-    5 - Finally you need to push beacon-v2 repo to GitHub.
+    3 - Finally you need to push beacon-v2 repo to GitHub.
 
-    6 - Documentation will get automatically updated via GitHub actions.
+    4 - Documentation will get automatically updated via GitHub actions.
 
 # HOW TO RUN BEACON\_YAML2MD
 
 The script is written in Perl and runs on Linux (tested on Debian-based distribution). Perl 5 is installed by default on Linux, 
-but you might need to manually install the below CPAN module(s).
-
-    * YAML::XS
-    * JSON::XS
-    * Path::Tiny
-    * Mojo::JSON::Pointer
-    * List::MoreUtils
+but you might need to install some CPAN module(s).
 
 First we install cpanminus (with sudo privileges):
 
@@ -87,7 +79,15 @@ First we install cpanminus (with sudo privileges):
 
 Then the module(s):
 
-    $ cpanm --sudo YAML::XS JSON::XS Path::Tiny Mojo::JSON::Pointer List::MoreUtils
+    $ cpanm --sudo --installdeps .
+
+If you prefer to have the dependencies in a "virtual environment" (i.e., install the CPAN modules in the directory of the application) we recommend using the module `Carton`.
+
+    $ cpanm --sudo Carton
+
+Then, we can install our dependencies:
+
+    $ carton install
 
 The script takes YAMLs as input file and when no arguments is used it will read them from `./deref_schemas/` directory.
 
@@ -96,6 +96,8 @@ The script takes YAMLs as input file and when no arguments is used it will read 
 **Example 1:**
 
     $ ./beacon_yaml2md.pl 
+
+    $ carton exec -- ./beacon_yaml2md.pl # if using Carton
 
 If the script is run directly at `bin/` directory (default) and with no arguments, then it will create contents in:
 

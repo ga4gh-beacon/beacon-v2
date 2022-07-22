@@ -1,0 +1,7 @@
+---
+conditionId:
+  description: Internal identifier of the phenotype or clinical effect.
+  examples:
+  - disease1
+  - phen2234
+  type: string
