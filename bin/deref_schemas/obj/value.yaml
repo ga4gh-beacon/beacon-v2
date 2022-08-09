@@ -1,0 +1,4 @@
+---
+value:
+  description: Quantification of the exposure.
+  type: number

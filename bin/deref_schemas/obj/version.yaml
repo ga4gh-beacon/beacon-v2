@@ -1,0 +1,6 @@
+---
+version:
+  description: version of the source data.
+  examples:
+  - gnomAD v3.1.1
+  type: string

@@ -1,0 +1,8 @@
+---
+aminoacidChanges:
+  description: Lisf of change(s) at aminoacid level for protein affecting variants.
+  examples:
+  - - V304*
+  items:
+    type: string
+  type: array

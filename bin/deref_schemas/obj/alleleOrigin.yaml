@@ -1,0 +1,42 @@
+---
+alleleOrigin:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  additionalProperties: 1
+  description: Ontology value for allele origin of variant in sample from the Variant
+    Origin (SO:0001762). Categories are `somatic variant`, `germline variant`, `maternal
+    variant`, `paternal variant`, `de novo variant`, `pedigree specific variant`,
+    `population specific variant`. Corresponds to Variant Inheritance in FHIR.
+  examples:
+  - id: SO:0001777
+    label: somatic variant
+  - id: SO:0001778
+    label: germline variant
+  - id: SO:0001775
+    label: maternal variant
+  - id: SO:0001776
+    label: paternal variant
+  - id: SO:0001781
+    label: de novo variant
+  - id: SO:0001779
+    label: pedigree specific variant
+  - id: SO:0001780
+    label: population specific variant
+  properties:
+    id:
+      description: A CURIE identifier, e.g. as `id` for an ontology term.
+      examples:
+      - ga4gh:GA.01234abcde
+      - DUO:0000004
+      - orcid:0000-0003-3463-0775
+      - PMID:15254584
+      pattern: ^\w[^:]+:.+$
+      type: string
+    label:
+      description: The text that describes the term. By default it could be the preferred
+        text of the term, but is it acceptable to customize it for a clearer description
+        and understanding of the term in an specific context.
+      type: string
+  required:
+  - id
+  title: Ontology Term
+  type: object

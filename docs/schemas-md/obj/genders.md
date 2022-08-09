@@ -1,3 +1,3 @@
 |Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| genders | Gender(s) in cohort inclusion criteria | array | [id](./id.md), [label](./label.md) | NA | NA|
+| genders | Sex of the individual. Recommended values from NCIT General Qualifier (NCIT:C27993): "unknown" (not assessed or not available) - NCIT:C17998; "female" - NCIT:C16576;  "male" - NCIT:C20197 | array | [id](./id.md), [label](./label.md) | NA | NA|

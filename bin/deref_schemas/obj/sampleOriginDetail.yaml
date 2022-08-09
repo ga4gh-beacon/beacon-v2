@@ -1,0 +1,36 @@
+---
+sampleOriginDetail:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  additionalProperties: 1
+  description: Tissue from which the sample was taken or sample origin matching the
+    category set in 'sampleOriginType'. Value from Uber-anatomy ontology (UBERON)
+    or BRENDA tissue / enzyme source (BTO), Ontology for Biomedical Investigations
+    (OBI) or Cell Line Ontology (CLO), e.g. 'cerebellar vermis' (UBERON:0004720),
+    'HEK-293T cell' (BTO:0002181), 'nasopharyngeal swab specimen' (OBI:0002606), 'cerebrospinal
+    fluid specimen' (OBI:0002502).
+  examples:
+  - id: UBERON:0000474
+    label: female reproductive system
+  - id: BTO:0002181
+    label: HEK-293T cell
+  - id: OBI:0002606
+    label: nasopharyngeal swab specimen
+  properties:
+    id:
+      description: A CURIE identifier, e.g. as `id` for an ontology term.
+      examples:
+      - ga4gh:GA.01234abcde
+      - DUO:0000004
+      - orcid:0000-0003-3463-0775
+      - PMID:15254584
+      pattern: ^\w[^:]+:.+$
+      type: string
+    label:
+      description: The text that describes the term. By default it could be the preferred
+        text of the term, but is it acceptable to customize it for a clearer description
+        and understanding of the term in an specific context.
+      type: string
+  required:
+  - id
+  title: Ontology Term
+  type: object

@@ -1,0 +1,7 @@
+---
+eventCases:
+  description: number of cases
+  examples:
+  - 543
+  - 20
+  type: integer

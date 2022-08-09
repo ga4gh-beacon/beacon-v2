@@ -1,3 +1,3 @@
 |Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| histologicalDiagnosis | Definition of an ontology term. | object | [id](./id.md), [label](./label.md) | NA | NA|
+| histologicalDiagnosis | Disease diagnosis that was inferred from the histological examination. RECOMMENDED. | object | [id](./id.md), [label](./label.md) | `[{"id": "NCIT:C3778", "label": "Serous Cystadenocarcinoma"}]` | NA|

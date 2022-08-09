@@ -1,0 +1,35 @@
+---
+geographicOrigin:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  additionalProperties: 1
+  description: Individual's country or region of origin (birthplace or residence place
+    regardless of ethnic origin). Value from GAZ Geographic Location ontology (GAZ:00000448),
+    e.g. GAZ:00002459 (United States of America).
+  examples:
+  - id: GAZ:00002955
+    label: Slovenia
+  - id: GAZ:00002459
+    label: United States of America
+  - id: GAZ:00316959
+    label: Municipality of El Masnou
+  - id: GAZ:00000460
+    label: Eurasia
+  properties:
+    id:
+      description: A CURIE identifier, e.g. as `id` for an ontology term.
+      examples:
+      - ga4gh:GA.01234abcde
+      - DUO:0000004
+      - orcid:0000-0003-3463-0775
+      - PMID:15254584
+      pattern: ^\w[^:]+:.+$
+      type: string
+    label:
+      description: The text that describes the term. By default it could be the preferred
+        text of the term, but is it acceptable to customize it for a clearer description
+        and understanding of the term in an specific context.
+      type: string
+  required:
+  - id
+  title: Ontology Term
+  type: object

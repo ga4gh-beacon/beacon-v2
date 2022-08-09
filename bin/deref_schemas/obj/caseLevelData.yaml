@@ -1,0 +1,401 @@
+---
+caseLevelData:
+  description: caseLevelData reports about the variation instances observed in individual
+    analyses.
+  items:
+    description: ''
+    properties:
+      alleleOrigin:
+        $schema: https://json-schema.org/draft/2020-12/schema
+        additionalProperties: 1
+        description: Ontology value for allele origin of variant in sample from the
+          Variant Origin (SO:0001762). Categories are `somatic variant`, `germline
+          variant`, `maternal variant`, `paternal variant`, `de novo variant`, `pedigree
+          specific variant`, `population specific variant`. Corresponds to Variant
+          Inheritance in FHIR.
+        examples:
+        - id: SO:0001777
+          label: somatic variant
+        - id: SO:0001778
+          label: germline variant
+        - id: SO:0001775
+          label: maternal variant
+        - id: SO:0001776
+          label: paternal variant
+        - id: SO:0001781
+          label: de novo variant
+        - id: SO:0001779
+          label: pedigree specific variant
+        - id: SO:0001780
+          label: population specific variant
+        properties:
+          id:
+            description: A CURIE identifier, e.g. as `id` for an ontology term.
+            examples:
+            - ga4gh:GA.01234abcde
+            - DUO:0000004
+            - orcid:0000-0003-3463-0775
+            - PMID:15254584
+            pattern: ^\w[^:]+:.+$
+            type: string
+          label:
+            description: The text that describes the term. By default it could be
+              the preferred text of the term, but is it acceptable to customize it
+              for a clearer description and understanding of the term in an specific
+              context.
+            type: string
+        required:
+        - id
+        title: Ontology Term
+        type: object
+      analysisId:
+        description: Reference to the bioinformatics analysis ID (`analysis.id`)
+        examples:
+        - pgxcs-kftvldsu
+        type: string
+      biosampleId:
+        description: Reference to biosample ID (`biosample.id`)
+        examples:
+        - bs001104
+        type: string
+      clinicalInterpretations:
+        items:
+          description: List of annotated effects on disease or phenotypes.
+          properties:
+            annotatedWith:
+              properties:
+                toolName:
+                  description: Name of the tool.
+                  examples:
+                  - Ensembl Variant Effect Predictor (VEP)
+                  type: string
+                toolReferences:
+                  additionalProperties: 1
+                  description: References to the tool
+                  examples:
+                  - bio.toolsId: https://bio.tools/vep
+                  - url: http://www.ensembl.org/vep
+                  minProperties: 1
+                  properties: {}
+                  type: object
+                version:
+                  description: Version used.
+                  examples:
+                  - rel 104
+                  type: string
+              required:
+              - toolName
+              - version
+              - toolReferences
+              type: object
+            category:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              additionalProperties: 1
+              description: Ontology term for the type of disease, condition, phenotypic
+                measurement, etc.
+              examples:
+              - id: MONDO:0000001
+                label: disease or disorder
+              - id: HP:0000118
+                label: phenotypic abnormality
+              properties:
+                id:
+                  description: A CURIE identifier, e.g. as `id` for an ontology term.
+                  examples:
+                  - ga4gh:GA.01234abcde
+                  - DUO:0000004
+                  - orcid:0000-0003-3463-0775
+                  - PMID:15254584
+                  pattern: ^\w[^:]+:.+$
+                  type: string
+                label:
+                  description: The text that describes the term. By default it could
+                    be the preferred text of the term, but is it acceptable to customize
+                    it for a clearer description and understanding of the term in
+                    an specific context.
+                  type: string
+              required:
+              - id
+              title: Ontology Term
+              type: object
+            clinicalRelevance:
+              description: 'Indication of the clinical relevance of the variant Recommended:
+                A value from the five-tiered classification from the American College
+                of Medical Genetics (ACMG) designed to describe the likelihood that
+                a genomic sequence variant is causative of an inherited disease. (NCIT:C168798).'
+              enum:
+              - benign
+              - likely benign
+              - uncertain significance
+              - likely pathogenic
+              - pathogenic
+              example: pathogenic
+              type: string
+            conditionId:
+              description: Internal identifier of the phenotype or clinical effect.
+              examples:
+              - disease1
+              - phen2234
+              type: string
+            effect:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              additionalProperties: 1
+              description: Ontology term for the phenotypic or clinical effect
+              examples:
+              - id: MONDO:0003582
+                label: hereditary breast ovarian cancer syndrome
+              - id: HP:0000256
+                label: macrocephaly
+              properties:
+                id:
+                  description: A CURIE identifier, e.g. as `id` for an ontology term.
+                  examples:
+                  - ga4gh:GA.01234abcde
+                  - DUO:0000004
+                  - orcid:0000-0003-3463-0775
+                  - PMID:15254584
+                  pattern: ^\w[^:]+:.+$
+                  type: string
+                label:
+                  description: The text that describes the term. By default it could
+                    be the preferred text of the term, but is it acceptable to customize
+                    it for a clearer description and understanding of the term in
+                    an specific context.
+                  type: string
+              required:
+              - id
+              title: Ontology Term
+              type: object
+            evidenceType:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              additionalProperties: 1
+              description: 'Ontology term for the type of evidence supporting variant-disease
+                association Recommended: values from the Evidence & Conclusion Ontology
+                (ECO)'
+              examples:
+              - id: ECO:0000361
+                label: inferential evidence
+              - id: ECO:0000006
+                label: experimental evidence
+              properties:
+                id:
+                  description: A CURIE identifier, e.g. as `id` for an ontology term.
+                  examples:
+                  - ga4gh:GA.01234abcde
+                  - DUO:0000004
+                  - orcid:0000-0003-3463-0775
+                  - PMID:15254584
+                  pattern: ^\w[^:]+:.+$
+                  type: string
+                label:
+                  description: The text that describes the term. By default it could
+                    be the preferred text of the term, but is it acceptable to customize
+                    it for a clearer description and understanding of the term in
+                    an specific context.
+                  type: string
+              required:
+              - id
+              title: Ontology Term
+              type: object
+          required:
+          - conditionId
+          - effect
+          type: object
+        type: array
+      id:
+        description: Internal id of this case level *instance* of the variant. This
+          is an optional housekeeping parameter and should not be confused with the
+          identifier of the variant (`variantInternalId`).
+        examples:
+        - id0001-var101101118
+        type: string
+      individualId:
+        description: Reference to individual ID (`individual.id`)
+        examples:
+        - ind0001
+        type: string
+      phenotypicEffects:
+        items:
+          description: List of annotated effects on disease or phenotypes.
+          properties:
+            annotatedWith:
+              properties:
+                toolName:
+                  description: Name of the tool.
+                  examples:
+                  - Ensembl Variant Effect Predictor (VEP)
+                  type: string
+                toolReferences:
+                  additionalProperties: 1
+                  description: References to the tool
+                  examples:
+                  - bio.toolsId: https://bio.tools/vep
+                  - url: http://www.ensembl.org/vep
+                  minProperties: 1
+                  properties: {}
+                  type: object
+                version:
+                  description: Version used.
+                  examples:
+                  - rel 104
+                  type: string
+              required:
+              - toolName
+              - version
+              - toolReferences
+              type: object
+            category:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              additionalProperties: 1
+              description: Ontology term for the type of disease, condition, phenotypic
+                measurement, etc.
+              examples:
+              - id: MONDO:0000001
+                label: disease or disorder
+              - id: HP:0000118
+                label: phenotypic abnormality
+              properties:
+                id:
+                  description: A CURIE identifier, e.g. as `id` for an ontology term.
+                  examples:
+                  - ga4gh:GA.01234abcde
+                  - DUO:0000004
+                  - orcid:0000-0003-3463-0775
+                  - PMID:15254584
+                  pattern: ^\w[^:]+:.+$
+                  type: string
+                label:
+                  description: The text that describes the term. By default it could
+                    be the preferred text of the term, but is it acceptable to customize
+                    it for a clearer description and understanding of the term in
+                    an specific context.
+                  type: string
+              required:
+              - id
+              title: Ontology Term
+              type: object
+            clinicalRelevance:
+              description: 'Indication of the clinical relevance of the variant Recommended:
+                A value from the five-tiered classification from the American College
+                of Medical Genetics (ACMG) designed to describe the likelihood that
+                a genomic sequence variant is causative of an inherited disease. (NCIT:C168798).'
+              enum:
+              - benign
+              - likely benign
+              - uncertain significance
+              - likely pathogenic
+              - pathogenic
+              example: pathogenic
+              type: string
+            conditionId:
+              description: Internal identifier of the phenotype or clinical effect.
+              examples:
+              - disease1
+              - phen2234
+              type: string
+            effect:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              additionalProperties: 1
+              description: Ontology term for the phenotypic or clinical effect
+              examples:
+              - id: MONDO:0003582
+                label: hereditary breast ovarian cancer syndrome
+              - id: HP:0000256
+                label: macrocephaly
+              properties:
+                id:
+                  description: A CURIE identifier, e.g. as `id` for an ontology term.
+                  examples:
+                  - ga4gh:GA.01234abcde
+                  - DUO:0000004
+                  - orcid:0000-0003-3463-0775
+                  - PMID:15254584
+                  pattern: ^\w[^:]+:.+$
+                  type: string
+                label:
+                  description: The text that describes the term. By default it could
+                    be the preferred text of the term, but is it acceptable to customize
+                    it for a clearer description and understanding of the term in
+                    an specific context.
+                  type: string
+              required:
+              - id
+              title: Ontology Term
+              type: object
+            evidenceType:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              additionalProperties: 1
+              description: 'Ontology term for the type of evidence supporting variant-disease
+                association Recommended: values from the Evidence & Conclusion Ontology
+                (ECO)'
+              examples:
+              - id: ECO:0000361
+                label: inferential evidence
+              - id: ECO:0000006
+                label: experimental evidence
+              properties:
+                id:
+                  description: A CURIE identifier, e.g. as `id` for an ontology term.
+                  examples:
+                  - ga4gh:GA.01234abcde
+                  - DUO:0000004
+                  - orcid:0000-0003-3463-0775
+                  - PMID:15254584
+                  pattern: ^\w[^:]+:.+$
+                  type: string
+                label:
+                  description: The text that describes the term. By default it could
+                    be the preferred text of the term, but is it acceptable to customize
+                    it for a clearer description and understanding of the term in
+                    an specific context.
+                  type: string
+              required:
+              - id
+              title: Ontology Term
+              type: object
+          required:
+          - conditionId
+          - effect
+          type: object
+        type: array
+      runId:
+        description: Reference to the experimental run ID (`run.id`)
+        examples:
+        - SRR10903401
+        type: string
+      zygosity:
+        $schema: https://json-schema.org/draft/2020-12/schema
+        additionalProperties: 1
+        description: Ontology term for zygosity in which variant is present in the
+          sample from the Zygosity Ontology (GENO:0000391) , e.g `heterozygous` (GENO:0000135)
+        examples:
+        - id: GENO:0000135
+          label: heterozygous
+        - id: GENO:0000136
+          label: homozygous
+        - id: GENO:0000604
+          label: hemizygous X-linked
+        properties:
+          id:
+            description: A CURIE identifier, e.g. as `id` for an ontology term.
+            examples:
+            - ga4gh:GA.01234abcde
+            - DUO:0000004
+            - orcid:0000-0003-3463-0775
+            - PMID:15254584
+            pattern: ^\w[^:]+:.+$
+            type: string
+          label:
+            description: The text that describes the term. By default it could be
+              the preferred text of the term, but is it acceptable to customize it
+              for a clearer description and understanding of the term in an specific
+              context.
+            type: string
+        required:
+        - id
+        title: Ontology Term
+        type: object
+    required:
+    - biosampleId
+    type: object
+  type: array

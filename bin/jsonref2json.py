@@ -2,6 +2,39 @@
 #
 #   Script to dereference JSON $ref in Beacon v2 Models schemas
 #
+#    ------------ DEPRECATED ------------
+#   *******************************************************
+#   * JsonRef !!!!!! Warning !!!!!!
+#   * $ref is using siblings "Description"
+#   * but with JSON schema 2020/12 it should be allowed 
+#   * to have parent's "Description"
+#   * https://json-schema.org/draft/2019-09/json-schema-core.html#rfc.section.7.7.1.1
+#   *******************************************************
+# {
+#   "$comment": "version: ga4gh-beacon-cohort-v2.0.0",
+#   "$schema": "https://json-schema.org/draft/2020-12/schema",
+#   "additionalProperties": true,
+#   "definitions": {
+#     "CohortCriteria": {
+#       "description": "THIS IS NOT OK",
+#       "properties": {
+#         "ageRange": {
+#           "description": "Individual age range in cohort inclusion criteria"
+#         }
+#       },
+#       "type": "object"
+#     }
+#   },
+#   "description": "A cohort available in the beacon.",
+#   "properties": {
+#     "inclusionCriteria": {
+#       "description": "THIS IS OK",
+#       "type": "object",
+#       "$ref": "#/definitions/CohortCriteria"
+#     }
+#   }
+# }
+#
 #   Last Modified: Sep/01/2021
 #
 #   Version 2.0.0

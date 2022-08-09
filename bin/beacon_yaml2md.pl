@@ -394,8 +394,11 @@ sub table_content {
                   if $header eq 'example';
 
                 # Slice differentely if $object->{type} eq 'array'
-                $value_header = $object->{items}{properties}
-                  if ( $header eq 'properties' && $object->{type} eq 'array' );
+                if ($object->{type} eq 'array' ) {
+                  for ('description', 'properties'){
+                      $value_header = $object->{items}{$_} if $header eq $_;
+                  }
+                }
 
                 # Now convert data structure to string
                 say "#### $property => $header  ####" if $debug;
@@ -583,10 +586,36 @@ toolReferences:
   type: object
 EOF
 
+## ontologyTerm.yaml is needed due to a bug with jsonref2json.js that overrided "parent" <description> field
+
+   my $str_ontologyTerm = <<EOF;
+---
+additionalProperties: true
+description: Definition of an ontology term.
+properties:
+  id:
+    description: 'A CURIE identifier, e.g. as `id` for an ontology term.'
+    examples:
+      - ga4gh:GA.01234abcde
+      - DUO:0000004
+      - orcid:0000-0003-3463-0775
+      - PMID:15254584
+    pattern: '^\\w[^:]+:.+\$'
+    type: string
+  label:
+    description: 'The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context.'
+    type: string
+required:
+  - id
+title: Ontology Term
+type: object
+EOF
+
     my %yaml = (
         'duoDataUse.yaml'     => $str_duoDataUse,
         'toolName.yaml'       => $str_toolName,
-        'toolReferences.yaml' => $str_toolreferences
+        'toolReferences.yaml' => $str_toolreferences,
+        'ontologyTerm.yaml'   => $str_ontologyTerm
     );
     return $yaml{$file};
 }
@@ -752,19 +781,17 @@ In the Beacon context, I<mbaudis> has developed a nice framework for L<schemablo
 
 All of the above lead to the creation of this tool, which was written in L<Perl|https://www.perl.org> language.
 
-=head2 ADDENDUM: How to update Documentation
+=head2 ADDENDUM: How to update the Documentation
 
 There are several steps that need to be peformed to update the documentation:
 
-   1 - Install C<jsonref>.
+   1 - Install C<nodejs>.
 
-      $ sudo pip3 install jsonref #  Python 2 => sudo pip install jsonref
+      $ sudo apt install nodejs
 
-      The reason for installing this tool is that we need it to convert JSON files with JSON references ($ref) to JSON files with no references (i.e., all references will be embeded in the file).
+      The reason for installing JS is that we need it to convert JSON files with JSON references ($ref) to JSON files with no references (i.e., all references will be embeded in the file).
 
-   2 - Modify the two variables 'mod_dir' and 'fw_dir' inside transform_json2md.sh according to the Models and Framework directories.
-
-   4 - Now run the script:
+   2 - Now run the script:
     
      $ # cd bin # skip this step if you are already at bin directory
 
@@ -774,21 +801,15 @@ There are several steps that need to be peformed to update the documentation:
 
      $ git add docs/schemas-md
 
-   5 - Finally you need to push beacon-v2 repo to GitHub.
+   3 - Finally you need to push beacon-v2 repo to GitHub.
 
-   6 - Documentation will get automatically updated via GitHub actions.
+   4 - Documentation will get automatically updated via GitHub actions.
 
 
 =head1 HOW TO RUN BEACON_YAML2MD
 
 The script is written in Perl and runs on Linux (tested on Debian-based distribution). Perl 5 is installed by default on Linux, 
-but you might need to manually install the below CPAN module(s).
-
-    * YAML::XS
-    * JSON::XS
-    * Path::Tiny
-    * Mojo::JSON::Pointer
-    * List::MoreUtils
+but you might need to install some CPAN module(s).
 
 First we install cpanminus (with sudo privileges):
 
@@ -796,7 +817,15 @@ First we install cpanminus (with sudo privileges):
 
 Then the module(s):
 
-   $ cpanm --sudo YAML::XS JSON::XS Path::Tiny Mojo::JSON::Pointer List::MoreUtils
+   $ cpanm --sudo --installdeps .
+
+If you prefer to have the dependencies in a "virtual environment" (i.e., install the CPAN modules in the directory of the application) we recommend using the module C<Carton>.
+
+   $ cpanm --sudo Carton
+
+Then, we can install our dependencies:
+
+   $ carton install
 
 The script takes YAMLs as input file and when no arguments is used it will read them from C<./deref_schemas/> directory.
 
@@ -805,6 +834,8 @@ B<NB:> We recommend running the script with the provided bash file C<transform_y
 B<Example 1:>
 
    $ ./beacon_yaml2md.pl 
+
+   $ carton exec -- ./beacon_yaml2md.pl # if using Carton
 
 If the script is run directly at C<bin/> directory (default) and with no arguments, then it will create contents in:
 

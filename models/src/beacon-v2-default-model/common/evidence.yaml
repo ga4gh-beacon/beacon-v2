@@ -1,16 +1,19 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Evidence
-description: 'Definition of an evidence class. Provenance: GA4GH Phenopackets v2 `Evidence`'
+description: >-
+  Definition of an evidence class. Provenance: GA4GH Phenopackets v2 `Evidence`
 type: object
 properties:
   evidenceCode:
-    description: An ontology class that represents the evidence type
+    description: >-
+      An ontology class that represents the evidence type
     $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     example:
       id: ECO:0006017
       label: author statement from published clinical study used in manual assertion
   reference:
-    description: Representation of the source of the evidence
+    description: >-
+      Representation of the source of the evidence
     $ref: ./externalReference.yaml
     example:
       id: PMID:30962759

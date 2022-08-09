@@ -1,0 +1,24 @@
+---
+frequencies:
+  items:
+    properties:
+      alleleFrequency:
+        description: Allele frequency between 0 and 1.
+        examples:
+        - 3.186e-05
+        type: number
+      population:
+        description: A name for the population. A population could an ethnic, geographical
+          one or just the `members`of a study.
+        examples:
+        - East Asian
+        - ICGC Chronic Lymphocytic Leukemia-ES
+        - Men
+        - Children
+        type: string
+    required:
+    - population
+    - alleleFrequency
+    type: object
+  minItems: 1
+  type: array

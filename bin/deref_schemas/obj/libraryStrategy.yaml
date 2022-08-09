@@ -1,0 +1,6 @@
+---
+libraryStrategy:
+  description: Library strategy, e.g. "WGS"
+  examples:
+  - WGS
+  type: string

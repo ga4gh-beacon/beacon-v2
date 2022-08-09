@@ -1,0 +1,7 @@
+---
+collectionDate:
+  description: Date of biosample collection in ISO8601 format.
+  examples:
+  - 2021-04-23
+  format: date
+  type: string

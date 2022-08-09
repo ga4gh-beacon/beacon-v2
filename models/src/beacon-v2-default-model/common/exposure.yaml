@@ -1,11 +1,13 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Exposure
-description: Exposures (lifestyle, behavioural exposures) occurred to individual,defined
+description: >-
+  Exposures (lifestyle, behavioural exposures) occurred to individual, defined
   by exposure ID, date and age of onset, dose, and duration.
 type: object
 properties:
   exposureCode:
-    description: Exposure ID. Value from Environment Exposure Ontology.
+    description: >-
+      Exposure ID. Recommended is a value from Environment Exposure Ontology.
     $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     examples:
       - id: CHEBI:46661
@@ -13,16 +15,20 @@ properties:
       - id: ENVO:21001217
         label: X-ray radiation
   value:
-    description: Quantification of the exposure.
+    description: >-
+      Quantification of the exposure.
     type: number
   unit:
-    description: Unit of the exposure. Recommended from NCIT Unit of Category ontology
+    description: >-
+      Unit of the exposure. Recommended from NCIT Unit of Category ontology
       term (NCIT:C42568) descendants.
     $ref: ../common/commonDefinitions.yaml#/definitions/Unit
   duration:
-    description: Exposure duration in ISO8601 format
+    description: >-
+      Exposure duration in ISO8601 format
     type: string
-    example: P32Y6M1D
+    examples:
+      - P2Y6M1D
   date:
     description: Date of the exposure in ISO8601 format.
     type: string

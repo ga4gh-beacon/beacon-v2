@@ -6,10 +6,10 @@
 | [info](./obj/info.md) | Placeholder to allow the Beacon to return any additional information that is necessary or could be of interest in relation to the query or the entry returned. It is recommended to encapsulate additional informations in this attribute instead of directly adding attributes at the same level than the others in order to avoid collision in the names of attributes in future versions of the specification. | object | NA | NA | NA|
 | [libraryLayout](./obj/libraryLayout.md) | Ontology value for the library layout e.g "PAIRED", "SINGLE" #todo add Ontology name? | string | NA | NA | PAIRED, SINGLE|
 | [librarySelection](./obj/librarySelection.md) | Selection method for library preparation, e.g "RANDOM", "RT-PCR" | string | NA | RANDOM, RT-PCR | NA|
-| [librarySource](./obj/librarySource.md) | Definition of an ontology term. | object | [id](./obj/id.md), [label](./obj/label.md) | NA | NA|
+| [librarySource](./obj/librarySource.md) | Ontology value for the source of the sequencing or hybridization library, e.g "genomic source", "transcriptomic source" | object | [id](./obj/id.md), [label](./obj/label.md) | `[{"id": "GENEPIO:0001966", "label": "genomic source"}, {"id": "GENEPIO:0001965", "label": "metagenomic source"}]` | NA|
 | [libraryStrategy](./obj/libraryStrategy.md) | Library strategy, e.g. "WGS" | string | NA | WGS | NA|
 | [platform](./obj/platform.md) | General platform technology label. It SHOULD be a subset of the platformModel and used only for query convenience, e.g. "return everything sequenced with Illimuna", where the specific model is not relevant | string | NA | Illumina, Oxford Nanopore, Affymetrix | NA|
-| [platformModel](./obj/platformModel.md) | Definition of an ontology term. | object | [id](./obj/id.md), [label](./obj/label.md) | NA | NA|
+| [platformModel](./obj/platformModel.md) | Ontology value for experimental platform or methodology used. For sequencing platforms the use of "OBI:0400103 - DNA sequencer" is suggested. | object | [id](./obj/id.md), [label](./obj/label.md) | `[{"id": "OBI:0002048", "label": "Illumina HiSeq 3000"}, {"id": "OBI:0002750", "label": "Oxford Nanopore MinION"}, {"id": "EFO:0010938", "label": "large-insert clone DNA microarray"}]` | NA|
 | [runDate](./obj/runDate.md) | Date at which the experiment was performed. | string | NA | 2021-10-18 | NA|
 
 ## Examples

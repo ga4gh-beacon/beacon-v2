@@ -1,0 +1,5 @@
+---
+duration:
+  description: Exposure duration in ISO8601 format
+  example: P32Y6M1D
+  type: string

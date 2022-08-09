@@ -1,0 +1,8 @@
+---
+libraryLayout:
+  description: 'Ontology value for the library layout e.g "PAIRED", "SINGLE" #todo
+    add Ontology name?'
+  enum:
+  - PAIRED
+  - SINGLE
+  type: string
