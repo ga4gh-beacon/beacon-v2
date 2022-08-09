@@ -3,11 +3,13 @@ description: Beacon response that includes details about the collections in this
 type: object
 properties:
   meta:
-    description: Information about the response that could be relevant for the Beacon
+    description: >-
+      Information about the response that could be relevant for the Beacon
       client in order to interpret the results.
     $ref: ./sections/beaconResponseMeta.json
   responseSummary:
-    description: Response summary, including Boolean and optionally results count.
+    description: >-
+      Response summary, including Boolean and optionally results count.
     $ref: ./sections/beaconSummaryResponseSection.json
   response:
     description: Returning the Beacon Collections list, filtered or unfiltered.
@@ -22,7 +24,8 @@ properties:
       - collections
     additionalProperties: true
   info:
-    description: Additional details that could be of interest. Provided to clearly
+    description: >-
+      Additional details that could be of interest. Provided to clearly
       enclose any attribute that is not part of the Beacon specification.
     $ref: ../common/beaconCommonComponents.json#/definitions/Info
   beaconHandovers:

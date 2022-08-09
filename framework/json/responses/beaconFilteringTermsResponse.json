@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "List of filtering terms response.",
+    "description": "The filtering terms response provides information about available individual filters for a beacon's entry types as well as optional information about the ontologies the filters belong to.",
     "properties": {
         "meta": {
             "$ref": "./sections/beaconInformationalResponseMeta.json",
@@ -9,7 +9,7 @@
         },
         "response": {
             "$ref": "./sections/beaconFilteringTermsResults.json",
-            "description": "Actual list of filtering terms."
+            "description": "A list of available filtering terms and resources they are defined in."
         }
     },
     "required": [
