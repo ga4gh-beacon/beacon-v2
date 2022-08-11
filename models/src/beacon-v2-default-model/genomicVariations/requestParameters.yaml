@@ -1,117 +1,131 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-g_variant:
-  type: object
-  properties:
-    assemblyId:
-      $ref: ./requestParametersComponents.yaml#/definitions/Assembly
-    referenceName:
-      $ref: ./requestParametersComponents.yaml#/definitions/RefSeqId
-    start:
-      description: >-
-        Precise or fuzzy start coordinate position(s), allele locus
-        (0-based, inclusive).
-        * `start` only:
-          - for single positions, e.g. the start of a specified sequence
-            alteration where the size is given through the specified `alternateBases`
-          - typical use are queries for SNV and small InDels
-          - the use of `start` without an `end` parameter requires the use of
-            `alternateBases`
-        * `start` and `end`:
-          - for searching any variant falling fully or partially within the range
-            between `start` and `end` (a.k.a. "range query")
-          - additional use of `variantType` OR `alternateBases` can limit the
-            scope of the query
-          - by convention, partial overlaps of variants with the indicated genomic
-            range are accepted; for specific overlap requirements the 4-parameter
-            "Bracket Queries" should be employed
-        * 2 values in both `start` and `end` for constructing a "Bracket Query":
-          - can be used to match any contiguous genomic interval, e.g. for querying
-            imprecise positions
-          - identifies all structural variants starting between `start[0]` and `start[1]`,
-            and ending between `end[0]` <-> `end[1]`
-          - single or double sided precise matches can be achieved by setting
-            `start[1]=start[0]+1` and `end[1]=end[0]+1`
-      type: array
-      items:
+title: Genomic Variations Request Parameters
+description: >-
+  TBD
+type: object
+properties:
+  datasets:
+    description: >-
+      TBD - datasets query object needs definition here
+    type: object
+  filters:
+    description: >-
+      TBD - filter query objects need the correct $ref here
+    type: array
+    items: object
+  g_variant:
+    type: object
+    properties:
+      assemblyId:
+        $ref: ./requestParametersComponents.yaml#/definitions/Assembly
+      referenceName:
+        $ref: ./requestParametersComponents.yaml#/definitions/RefSeqId
+      start:
+        description: >-
+          Precise or fuzzy start coordinate position(s), allele locus
+          (0-based, inclusive).
+          * `start` only:
+            - for single positions, e.g. the start of a specified sequence
+              alteration where the size is given through the specified `alternateBases`
+            - typical use are queries for SNV and small InDels
+            - the use of `start` without an `end` parameter requires the use of
+              `alternateBases`
+          * `start` and `end`:
+            - for searching any variant falling fully or partially within the range
+              between `start` and `end` (a.k.a. "range query")
+            - additional use of `variantType` OR `alternateBases` can limit the
+              scope of the query
+            - by convention, partial overlaps of variants with the indicated genomic
+              range are accepted; for specific overlap requirements the 4-parameter
+              "Bracket Queries" should be employed
+          * 2 values in both `start` and `end` for constructing a "Bracket Query":
+            - can be used to match any contiguous genomic interval, e.g. for querying
+              imprecise positions
+            - identifies all structural variants starting between `start[0]` and `start[1]`,
+              and ending between `end[0]` <-> `end[1]`
+            - single or double sided precise matches can be achieved by setting
+              `start[1]=start[0]+1` and `end[1]=end[0]+1`
+        type: array
+        items:
+          type: integer
+          format: int64
+          minimum: 0
+        minItems: 1
+        maxItems: 2
+      end:
+        description: >-
+          Precise or bracketing the end of the variants of interest:
+          * (0-based, exclusive) - see `start`
+          * for bracket queries, provide 2 values (e.g. [111,222])."
+        type: array
+        items:
+          type: integer
+          format: int64
+          minimum: 1
+        minItems: 0
+        maxItems: 2
+      referenceBases:
+        $ref: ./requestParametersComponents.yaml#/definitions/ReferenceBases
+      alternateBases:
+        $ref: ./requestParametersComponents.yaml#/definitions/AlternateBases
+      variantType:
+        description: >-
+          The `variantType` is used to query variants which are not defined through
+          a sequence of one or more bases using the `alternateBases` parameter.
+          Examples here are e.g. structural variants:
+          * DUP
+            - increased allelic count of material from the genomic region between
+              `start` and `end` positions
+            - no assumption about the placement of the additional sequences is being
+              made (i.e. no _in situ_ requirement as tandem duplications)
+          * DEL: deletion of sequence following `start`
+          * BND: breakend, i.e. termination of the allele at position `start` or in
+            the `startMin` => `startMax` interval, or fusion of the sequence to distant
+            partner
+          Either `alternateBases` or `variantType` is required, with the exception
+          of range queries (single\ `start` and `end` parameters).
+        type: string
+      variantMinLength:
+        description: >-
+          * Minimum length in bases of a genomic variant
+          * This is an optional parameter without prescribed use. While a length is
+            commonly available for structural variants such as copy number variations,
+            it is recommended that length based queries should also be supported for
+            variants with indicated referenceBases and alternateBases, to enable
+            length-specific wildcard queries.
         type: integer
         format: int64
         minimum: 0
-      minItems: 1
-      maxItems: 2
-    end:
-      description: >-
-        Precise or bracketing the end of the variants of interest:
-        * (0-based, exclusive) - see `start`
-        * for bracket queries, provide 2 values (e.g. [111,222])."
-      type: array
-      items:
+      variantMaxLength:
+        description: >-
+          * Maximum length in bases of a genomic variant.
+          * This is an optional parameter without prescribed use. While a length is
+            commonly available for structural variants such as copy number variations,
+            it is recommended that length based queries should also be supported for
+            variants with indicated referenceBases and alternateBases, to enable
+            length-specific wildcard queries.
         type: integer
         format: int64
         minimum: 1
-      minItems: 0
-      maxItems: 2
-    referenceBases:
-      $ref: ./requestParametersComponents.yaml#/definitions/ReferenceBases
-    alternateBases:
-      $ref: ./requestParametersComponents.yaml#/definitions/AlternateBases
-    variantType:
-      description: >-
-        The `variantType` is used to query variants which are not defined through
-        a sequence of one or more bases using the `alternateBases` parameter.
-        Examples here are e.g. structural variants:
-        * DUP
-          - increased allelic count of material from the genomic region between
-            `start` and `end` positions
-          - no assumption about the placement of the additional sequences is being
-            made (i.e. no _in situ_ requirement as tandem duplications)
-        * DEL: deletion of sequence following `start`
-        * BND: breakend, i.e. termination of the allele at position `start` or in
-          the `startMin` => `startMax` interval, or fusion of the sequence to distant
-          partner
-        Either `alternateBases` or `variantType` is required, with the exception
-        of range queries (single\ `start` and `end` parameters).
-      type: string
-    variantMinLength:
-      description: >-
-        * Minimum length in bases of a genomic variant
-        * This is an optional parameter without prescribed use. While a length is
-          commonly available for structural variants such as copy number variations,
-          it is recommended that length based queries should also be supported for
-          variants with indicated referenceBases and alternateBases, to enable
-          length-specific wildcard queries.
-      type: integer
-      format: int64
-      minimum: 0
-    variantMaxLength:
-      description: >-
-        * Maximum length in bases of a genomic variant.
-        * This is an optional parameter without prescribed use. While a length is
-          commonly available for structural variants such as copy number variations,
-          it is recommended that length based queries should also be supported for
-          variants with indicated referenceBases and alternateBases, to enable
-          length-specific wildcard queries.
-      type: integer
-      format: int64
-      minimum: 1
-    mateName:
-      $ref: ./requestParametersComponents.yaml#/definitions/RefSeqId
-    geneId:
-      description: >-
-        * A gene identifier
-        * It is strongly suggested to use a symbol following
-          the HGNC (https://www.genenames.org) nomenclature.
-      type: string
-      examples:
-        - BRAF
-        - SCN5A
-    aminoacidChange:
-      description: Aminoacid alteration of interest. Format 1 letter
-      type: string
-      examples:
-        - V600E
-        - M734V
-    genomicAlleleShortForm:
-      description: HGVSId descriptor
-      type: string
-      examples:
-        - NM_004006.2:c.4375C>T
+      mateName:
+        $ref: ./requestParametersComponents.yaml#/definitions/RefSeqId
+      geneId:
+        description: >-
+          * A gene identifier
+          * It is strongly suggested to use a symbol following
+            the HGNC (https://www.genenames.org) nomenclature.
+        type: string
+        examples:
+          - BRAF
+          - SCN5A
+      aminoacidChange:
+        description: Aminoacid alteration of interest. Format 1 letter
+        type: string
+        examples:
+          - V600E
+          - M734V
+      genomicAlleleShortForm:
+        description: HGVSId descriptor
+        type: string
+        examples:
+          - NM_004006.2:c.4375C>T
