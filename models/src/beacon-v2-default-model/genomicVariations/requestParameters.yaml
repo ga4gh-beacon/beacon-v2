@@ -1,18 +1,10 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Genomic Variations Request Parameters
 description: >-
-  TBD
+  The request parameters schemas define the parameters used in query
+  documents against a given entity. 
 type: object
 properties:
-  datasets:
-    description: >-
-      TBD - datasets query object needs definition here
-    type: object
-  filters:
-    description: >-
-      TBD - filter query objects need the correct $ref here
-    type: array
-    items: object
   g_variant:
     type: object
     properties:
