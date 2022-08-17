@@ -145,7 +145,7 @@ parameters.
 	                "referenceName": "NC_000017.11",
 	                "start": [ 7572837 ],
 	                "end": [ 7578641 ]
-		    }
+		    	}
 	        }
 	    },
 	    "requestedGranularity": "record",
