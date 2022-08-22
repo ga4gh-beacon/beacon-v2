@@ -4,19 +4,19 @@
     "properties": {
         "apiVersion": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/ApiVersion",
-            "description": "Version of the API."
+            "description": "Version of the Beacon API."
         },
         "beaconId": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/BeaconId",
-            "description": "Identifier of the beacon, as defined in `Beacon`."
+            "description": "Identifier of the beacon instance."
         },
         "receivedRequestSummary": {
             "$ref": "./beaconReceivedRequestSummary.json",
-            "description": "Section of the response that summarize the request received as it has been interpreted by teh Beacon server."
+            "description": "Section of the response that summarize the request received as it has been interpreted by the Beacon server."
         },
         "returnedGranularity": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/Granularity",
-            "description": "Requested granularity. Targeted Beacon could respond or not with the requested granularity. E.g. record level granularity could be requested, but the Beacon could respond only with boolean or count results."
+            "description": "Granularity of the Beacon response. Targeted Beacon could respond or not with the requested granularity. E.g. record level granularity could be requested, but the Beacon could respond only with boolean or count results."
         },
         "returnedSchemas": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/ListOfSchemas"

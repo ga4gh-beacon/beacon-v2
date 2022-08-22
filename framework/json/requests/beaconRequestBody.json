@@ -29,11 +29,11 @@
                 },
                 "requestedGranularity": {
                     "$ref": "../common/beaconCommonComponents.json#/definitions/Granularity",
-                    "description": "Requested granularity of the response. Beacons do not have to respond with the requested granularity, e.g. may respond with count results although record level granularity had been requested but indicate the granularity of the response in the response's metadata."
+                    "description": "Requested granularity for the response. Beacons do not have to respond with the requested granularity, e.g. may respond with count results although record level granularity had been requested but indicate the granularity of the response in the response's metadata."
                 },
                 "testMode": {
                     "$ref": "../common/beaconCommonComponents.json#/definitions/TestMode",
-                    "description": "Used for indicating that a request or response is done in a test context. Necessary for compliance testing, e.g. to have an assessment of responses w/o the need to use specific query values generating a positive response from a tested Beacon. Responses to _testMode_ requests should use synthetic or other privacy preserving data."
+                    "description": "Used for indicating that a request or response is done in a test context."
                 }
             },
             "type": "object"
