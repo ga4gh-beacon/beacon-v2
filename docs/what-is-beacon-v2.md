@@ -19,6 +19,7 @@ The current version of the protocol is **v2** and introduces new features which 
 Beacon v2 consists of two components, the **_Framework_** and the **_Models_**. 
 
 The [Framework](framework.md) {{config.repo_framework_icon}} contains the format for the requests and responses, whereas the [Models](models.md) {{config.repo_models_icon}} define the [structure](https://json-schema.org/specification-links.html#2020-12) of the biological data response. The overall function of these components is to provide the instructions to design a **REST API** (REpresentational State Transfer Application Programming Interface) with **OpenAPI** Specification (OAS). The [OAS](https://swagger.io/resources/open-api)  defines a standard, language-agnostic interface that is used by software developers to implement [REST APIs](https://en.wikipedia.org/wiki/Overview_of_RESTful_API_Description_Languages). 
+
 !!! Attention "Framework interdependency, releases and alternative models"
 
     In principle, this dual system allows for different Models (in other domains outside of the Beacon v2 realm, e.g. "Imaging Beacon" to be built using the same Framework. However, in the current context of Beacon v2, we consider the two elements interdependent and likely to be updated together for subsequent major versions (e.g. from v2 to v3).

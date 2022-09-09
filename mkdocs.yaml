@@ -85,7 +85,7 @@ nav:
     - Querying Beacons:
         - REST API: rest-api.md
         - Genomic Queries: variant-queries.md
-        - Filters in Queries: filter-queries.md
+        - Filters in Queries: /filters/#using-filters-in-queries
     - External Links:
         - Beacon Project &#8599;: http://beacon-project.io
         - Github Repositories &#8599;: https://github.com/ga4gh-beacon/
