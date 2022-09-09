@@ -6,12 +6,14 @@
             "$ref": "./timeElement.json",
             "examples": [
                 {
-                    "age": {
-                        "iso8601duration": "P32Y6M1D"
-                    },
                     "ageGroup": {
                         "id": "NCIT:C49685",
                         "label": "Adult 18-65 Years Old"
+                    }
+                },
+                {
+                    "age": {
+                        "iso8601duration": "P32Y6M1D"
                     }
                 },
                 {
