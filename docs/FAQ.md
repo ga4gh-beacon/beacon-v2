@@ -1,6 +1,6 @@
 # Frequently Asked Questions
 
-??? Note "Is it `Beacon` or `beacon`?"
+??? faq "Is it `Beacon` or `beacon`?"
 
     The uppercase `Beacon` is used to label API, framework or protocol and their
     components - while lower case `beacons` are instances of these, _i.e._ individual
