@@ -1,3 +1,3 @@
 |Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| sampleOriginDetail | Definition of an ontology term. | object | [id](./id.md), [label](./label.md) | NA | NA|
+| sampleOriginDetail | Tissue from which the sample was taken or sample origin matching the category set in 'sampleOriginType'. Value from Uber-anatomy ontology (UBERON) or BRENDA tissue / enzyme source (BTO), Ontology for Biomedical Investigations (OBI) or Cell Line Ontology (CLO), e.g. 'cerebellar vermis' (UBERON:0004720), 'HEK-293T cell' (BTO:0002181), 'nasopharyngeal swab specimen' (OBI:0002606), 'cerebrospinal fluid specimen' (OBI:0002502). | object | [id](./id.md), [label](./label.md) | `[{"id": "UBERON:0000474", "label": "female reproductive system"}, {"id": "BTO:0002181", "label": "HEK-293T cell"}, {"id": "OBI:0002606", "label": "nasopharyngeal swab specimen"}]` | NA|

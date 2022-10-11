@@ -2,7 +2,7 @@
 #
 #   Script to convert Beacon v2 Models to Markdown
 #
-#   Last Modified: Apr/02/2022
+#   Last Modified: Jul/20/2022
 #
 #   Version 2.0.0
 #
@@ -24,11 +24,11 @@
 #   If this program helps you in your research, please cite.
 
 set -eu
-mod_dir=/media/mrueda/4TB/CRG_EGA/Project_Beacon/readthedocs/beacon-v2/models/json/beacon-v2-default-model
-fw_dir=/media/mrueda/4TB/CRG_EGA/Project_Beacon/readthedocs/beacon-v2/framework/json
-fw_url=https://raw.githubusercontent.com/ga4gh-beacon/beacon-framework-v2/main
+mod_dir=../models/json/beacon-v2-default-model
+fwk_dir=../framework/json
+adhoc_url='https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/bin/adhoc'
 out_dir=./deref_schemas
-jsonref=./jsonref2json.py
+jsonref='node ./jsonref2json.js'
 yaml2md=./beacon_yaml2md.pl
 yaml2json='perl -MYAML -MJSON -0777 -wnl -e'
 
@@ -41,15 +41,13 @@ Fixing errors in JSON
 
 EOT
 
-# Miscellanea errors in 'properties'
-# N/A
-# Errors in <genomicVariations>
-# N/A
+# For mysteriorous reasons ontologyTerm.json (within CURIE) only works (jsonref2json.js) with $ref: url
+sed -i "s#\./beaconCommonComponents.json\#/definitions/CURIE#$adhoc_url/beaconCommonComponents.json\#/definitions/CURIE#" $fwk_dir/common/ontologyTerm.json
 
 cat<<EOT
-============================
-Transforming Schemas to YAML
-============================
+====================================
+Dereferencing and converting to JSON
+====================================
 
 EOT
 
@@ -58,23 +56,27 @@ for schema in analyses biosamples cohorts datasets genomicVariations individuals
 do
  mkdir -p $out_dir/$schema
 
- # Problem: Original JSON files use JSON references ($ref) and this COMPLICATES A LOT the markdown creation
+ # Problem: Beacon v2 schemas use JSON references ($ref) and this COMPLICATES A LOT the markdown creation
  # Solution: Dereference JSON Pointers
  #  Options found (08/31/21):
- #   A: NodeJS => https://apitools.dev/json-schema-ref-parser/docs
- #   B: Python => https://pypi.org/project/jsonref/#description   <======== CHOSEN
+ #   A: NodeJS => https://apitools.dev/json-schema-ref-parser/docs <======== CHOSEN
+ #   B: Python => https://pypi.org/project/jsonref/#description 
+ #      NB1: It does not work with $ref: url
+ #      NB2: <jsonref> needs FULL_PATH for external files (file:)
+ #      The Python one displays siblings $ref (e.g.,"Description") in parents 
+ #      
  # NB: Dereferencing performed only at the schema-level
- # jsonref needs FULL_PATH for external files (file:)
- echo "Fixing relative paths in JSON $schema ..."
- sed -e "s#$fw_url#file:$fw_dir#" \
-     -e "s#\.\./common#file:$mod_dir/common#" $mod_dir/$schema/defaultSchema.json > $out_dir/$schema/defaultSchema.mod.json
+ echo "Fixing relative paths in YAML $schema ..."
+ sed -e "s#\.\./common#../../$mod_dir\/common#" \
+     -e "s#https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json#$adhoc_url/ontologyTerm.json#" $mod_dir/$schema/defaultSchema.json > $out_dir/$schema/defaultSchema.mod.json
 
- echo "Dereferencing \$ref in JSON $schema ..."
+ echo "Dereferencing \$ref in YAML $schema ..."
  $jsonref $out_dir/$schema/defaultSchema.mod.json > $out_dir/$schema/defaultSchema.json
  rm $out_dir/$schema/defaultSchema.mod.json
 
  echo "Transforming $schema JSON to YAML ..."
  $yaml2json 'print YAML::Dump(decode_json($_))' $out_dir/$schema/defaultSchema.json  | perl -pe 's/ \*(\d+)$/ $1/' >  $out_dir/$schema/defaultSchema.yaml
+
  echo "---"
 done
 

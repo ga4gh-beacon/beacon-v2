@@ -1,0 +1,7 @@
+---
+runDate:
+  description: Date at which the experiment was performed.
+  examples:
+  - 2021-10-18
+  format: date
+  type: string

@@ -1,0 +1,30 @@
+---
+librarySource:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  additionalProperties: 1
+  description: Ontology value for the source of the sequencing or hybridization library,
+    e.g "genomic source", "transcriptomic source"
+  examples:
+  - id: GENEPIO:0001966
+    label: genomic source
+  - id: GENEPIO:0001965
+    label: metagenomic source
+  properties:
+    id:
+      description: A CURIE identifier, e.g. as `id` for an ontology term.
+      examples:
+      - ga4gh:GA.01234abcde
+      - DUO:0000004
+      - orcid:0000-0003-3463-0775
+      - PMID:15254584
+      pattern: ^\w[^:]+:.+$
+      type: string
+    label:
+      description: The text that describes the term. By default it could be the preferred
+        text of the term, but is it acceptable to customize it for a clearer description
+        and understanding of the term in an specific context.
+      type: string
+  required:
+  - id
+  title: Ontology Term
+  type: object

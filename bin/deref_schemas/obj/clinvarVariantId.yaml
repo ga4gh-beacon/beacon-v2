@@ -1,0 +1,9 @@
+---
+clinvarVariantId:
+  description: ClinVar variant id. Other id values used by ClinVar can be added to
+    `variantAlternativeIds`
+  examples:
+  - clinvar:12345
+  - 9325
+  pattern: ^(clinvar:)?\d+$
+  type: string

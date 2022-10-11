@@ -1,0 +1,42 @@
+---
+ethnicity:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  additionalProperties: 1
+  description: 'Ethnic background of the individual. Value from NCIT Race (NCIT:C17049)
+    ontology term descendants, e.g. NCIT:C126531 (Latin American). A geographic ancestral
+    origin category that is assigned to a population group based mainly on physical
+    characteristics that are thought to be distinct and inherent. [ NCI ] '
+  examples:
+  - id: NCIT:C42331
+    label: African
+  - id: NCIT:C41260
+    label: Asian
+  - id: NCIT:C126535
+    label: Australian
+  - id: NCIT:C43851
+    label: European
+  - id: NCIT:C77812
+    label: North American
+  - id: NCIT:C126531
+    label: Latin American
+  - id: NCIT:C104495
+    label: Other race
+  properties:
+    id:
+      description: A CURIE identifier, e.g. as `id` for an ontology term.
+      examples:
+      - ga4gh:GA.01234abcde
+      - DUO:0000004
+      - orcid:0000-0003-3463-0775
+      - PMID:15254584
+      pattern: ^\w[^:]+:.+$
+      type: string
+    label:
+      description: The text that describes the term. By default it could be the preferred
+        text of the term, but is it acceptable to customize it for a clearer description
+        and understanding of the term in an specific context.
+      type: string
+  required:
+  - id
+  title: Ontology Term
+  type: object

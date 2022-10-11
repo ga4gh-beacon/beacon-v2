@@ -1,0 +1,11 @@
+---
+ageAtOnset:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  description: 'Age value definition. Provenance: GA4GH Phenopackets v2 `Age`'
+  properties:
+    iso8601duration:
+      description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+      example: P32Y6M1D
+      type: string
+  title: Age
+  type: object

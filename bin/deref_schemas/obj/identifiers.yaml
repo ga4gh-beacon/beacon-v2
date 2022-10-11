@@ -1,0 +1,71 @@
+---
+identifiers:
+  properties:
+    clinvarVariantId:
+      description: ClinVar variant id. Other id values used by ClinVar can be added
+        to `variantAlternativeIds`
+      examples:
+      - clinvar:12345
+      - 9325
+      pattern: ^(clinvar:)?\d+$
+      type: string
+    genomicHGVSId:
+      description: HGVSId descriptor.
+      examples:
+      - NC_000017.11:g.43057063G>A
+      type: string
+    proteinHGVSIds:
+      description: List of HGVSId descriptor(s) at protein level (for protein-altering
+        variants).
+      examples:
+      - - NP_009225.1:p.Glu1817Ter
+      - - LRG 199p1:p.Val25Gly (preferred)
+      items:
+        type: string
+      type: array
+    transcriptHGVSIds:
+      description: List of HGVSId descriptor(s) at transcript level.
+      examples:
+      - - NC 000023.10(NM004006.2):c.357+1G
+      items:
+        type: string
+      type: array
+    variantAlternativeIds:
+      description: List of cross-referencing ID(s), for the variant in other databases
+        (e.g. dbSNP, ClinVar, ClinGen, COSMIC), as `externalReferences` with CURIE(s).
+      examples:
+      - - id: dbSNP:rs587780345
+          notes: dbSNP id
+          reference: https://www.ncbi.nlm.nih.gov/snp/rs587780345
+        - id: ClinGen:CA152954
+          notes: ClinGen Allele Registry id
+          reference: http://reg.clinicalgenome.org/redmine/projects/registry/genboree_registry/by_caid?caid=CA152954
+        - id: UniProtKB:P35557#VAR_003699
+          reference: https://www.uniprot.org/uniprot/P35557#VAR_003699
+      - - id: OMIM:164757.0001
+          reference: https://www.omim.org/entry/164757#0001
+      items:
+        $schema: https://json-schema.org/draft/2020-12/schema
+        additionalProperties: 1
+        description: 'Definition of an external reference class. Provenance: GA4GH
+          Phenopackets v2 `ExternalReference`'
+        properties:
+          id:
+            description: An application specific identifier. RECOMMENDED.
+            example: PMID:34054918
+            type: string
+          notes:
+            description: An optional text descriptor. Renamed compared to GA4GH Phenopackets
+              v2 `ExternalReference.description`
+            example: Signatures of Discriminative Copy Number Aberrations in 31 Cancer
+              Subtypes
+            type: string
+          reference:
+            description: A url.
+            example: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8155688/
+            type: string
+        required: []
+        title: ExternalReference
+        type: object
+      type: array
+  type: object

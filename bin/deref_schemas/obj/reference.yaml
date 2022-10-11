@@ -1,0 +1,25 @@
+---
+reference:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  additionalProperties: 1
+  description: Representation of the source of the evidence
+  example:
+    id: PMID:30962759
+    label: Recurrent Erythema Nodosum in a Child with a SHOC2 Gene Mutation
+  properties:
+    id:
+      description: An application specific identifier. RECOMMENDED.
+      example: PMID:34054918
+      type: string
+    notes:
+      description: An optional text descriptor. Renamed compared to GA4GH Phenopackets
+        v2 `ExternalReference.description`
+      example: Signatures of Discriminative Copy Number Aberrations in 31 Cancer Subtypes
+      type: string
+    reference:
+      description: A url.
+      example: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8155688/
+      type: string
+  required: []
+  title: ExternalReference
+  type: object

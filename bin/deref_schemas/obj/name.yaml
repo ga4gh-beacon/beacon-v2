@@ -1,0 +1,6 @@
+---
+name:
+  description: Name of the dataset
+  examples:
+  - Dataset with synthetic data
+  type: string

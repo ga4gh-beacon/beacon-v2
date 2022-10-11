@@ -1,0 +1,279 @@
+---
+Complex Value:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  definitions:
+    TypedQuantity:
+      properties:
+        quantity:
+          $schema: https://json-schema.org/draft/2020-12/schema
+          additionalProperties: 1
+          description: 'Definition of a quantity class. Provenance: GA4GH Phenopackets
+            v2 `Quantity`'
+          example:
+            quentity:
+              unit:
+                id: NCIT:C49670
+                label: Millimeter of Mercury
+          properties:
+            referenceRange:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              additionalProperties: 1
+              description: The normal range for the value
+              example: {}
+              properties:
+                high:
+                  description: Upper range end of normal
+                  examples:
+                  - 135
+                  type: number
+                low:
+                  description: Lower range end of normal
+                  examples:
+                  - 85
+                  type: number
+                unit:
+                  $schema: https://json-schema.org/draft/2020-12/schema
+                  additionalProperties: 1
+                  description: The kind of unit.
+                  examples:
+                  - id: NCIT:C49670
+                    label: Millimeter of Mercury
+                  properties:
+                    id:
+                      description: A CURIE identifier, e.g. as `id` for an ontology
+                        term.
+                      examples:
+                      - ga4gh:GA.01234abcde
+                      - DUO:0000004
+                      - orcid:0000-0003-3463-0775
+                      - PMID:15254584
+                      pattern: ^\w[^:]+:.+$
+                      type: string
+                    label:
+                      description: The text that describes the term. By default it
+                        could be the preferred text of the term, but is it acceptable
+                        to customize it for a clearer description and understanding
+                        of the term in an specific context.
+                      type: string
+                  required:
+                  - id
+                  title: Ontology Term
+                  type: object
+              required:
+              - unit
+              - low
+              - high
+              title: ReferenceRange
+              type: object
+            unit:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              additionalProperties: 1
+              description: The kind of unit. Recommended from NCIT Unit of Category
+                ontology term (NCIT:C42568) descendants
+              examples:
+              - id: NCIT:C70575
+                label: Roentgen
+              - id: NCIT:C28252
+                label: Kilogram
+              - id: NCIT:C28253
+                label: Milligram
+              properties:
+                id:
+                  description: A CURIE identifier, e.g. as `id` for an ontology term.
+                  examples:
+                  - ga4gh:GA.01234abcde
+                  - DUO:0000004
+                  - orcid:0000-0003-3463-0775
+                  - PMID:15254584
+                  pattern: ^\w[^:]+:.+$
+                  type: string
+                label:
+                  description: The text that describes the term. By default it could
+                    be the preferred text of the term, but is it acceptable to customize
+                    it for a clearer description and understanding of the term in
+                    an specific context.
+                  type: string
+              required:
+              - id
+              title: Ontology Term
+              type: object
+            value:
+              description: The value of the quantity in the units
+              type: number
+          required:
+          - unit
+          - value
+          title: Quantity
+          type: object
+        quantityType:
+          $schema: https://json-schema.org/draft/2020-12/schema
+          additionalProperties: 1
+          description: Definition of an ontology term.
+          example:
+            id: NCIT:C25298
+            label: Systolic Blood Pressure
+          properties:
+            id:
+              description: A CURIE identifier, e.g. as `id` for an ontology term.
+              examples:
+              - ga4gh:GA.01234abcde
+              - DUO:0000004
+              - orcid:0000-0003-3463-0775
+              - PMID:15254584
+              pattern: ^\w[^:]+:.+$
+              type: string
+            label:
+              description: The text that describes the term. By default it could be
+                the preferred text of the term, but is it acceptable to customize
+                it for a clearer description and understanding of the term in an specific
+                context.
+              type: string
+          required:
+          - id
+          title: Ontology Term
+          type: object
+      required:
+      - quantityType
+      - quantity
+  description: 'Definition of a complex value class. Provenance: GA4GH Phenopackets
+    v2 `TypedQuantity`'
+  properties:
+    typedQuantities:
+      description: List of quantities required to fully describe the complex value
+      items:
+        properties:
+          quantity:
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: 1
+            description: 'Definition of a quantity class. Provenance: GA4GH Phenopackets
+              v2 `Quantity`'
+            example:
+              quentity:
+                unit:
+                  id: NCIT:C49670
+                  label: Millimeter of Mercury
+            properties:
+              referenceRange:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                additionalProperties: 1
+                description: The normal range for the value
+                example: {}
+                properties:
+                  high:
+                    description: Upper range end of normal
+                    examples:
+                    - 135
+                    type: number
+                  low:
+                    description: Lower range end of normal
+                    examples:
+                    - 85
+                    type: number
+                  unit:
+                    $schema: https://json-schema.org/draft/2020-12/schema
+                    additionalProperties: 1
+                    description: The kind of unit.
+                    examples:
+                    - id: NCIT:C49670
+                      label: Millimeter of Mercury
+                    properties:
+                      id:
+                        description: A CURIE identifier, e.g. as `id` for an ontology
+                          term.
+                        examples:
+                        - ga4gh:GA.01234abcde
+                        - DUO:0000004
+                        - orcid:0000-0003-3463-0775
+                        - PMID:15254584
+                        pattern: ^\w[^:]+:.+$
+                        type: string
+                      label:
+                        description: The text that describes the term. By default
+                          it could be the preferred text of the term, but is it acceptable
+                          to customize it for a clearer description and understanding
+                          of the term in an specific context.
+                        type: string
+                    required:
+                    - id
+                    title: Ontology Term
+                    type: object
+                required:
+                - unit
+                - low
+                - high
+                title: ReferenceRange
+                type: object
+              unit:
+                $schema: https://json-schema.org/draft/2020-12/schema
+                additionalProperties: 1
+                description: The kind of unit. Recommended from NCIT Unit of Category
+                  ontology term (NCIT:C42568) descendants
+                examples:
+                - id: NCIT:C70575
+                  label: Roentgen
+                - id: NCIT:C28252
+                  label: Kilogram
+                - id: NCIT:C28253
+                  label: Milligram
+                properties:
+                  id:
+                    description: A CURIE identifier, e.g. as `id` for an ontology
+                      term.
+                    examples:
+                    - ga4gh:GA.01234abcde
+                    - DUO:0000004
+                    - orcid:0000-0003-3463-0775
+                    - PMID:15254584
+                    pattern: ^\w[^:]+:.+$
+                    type: string
+                  label:
+                    description: The text that describes the term. By default it could
+                      be the preferred text of the term, but is it acceptable to customize
+                      it for a clearer description and understanding of the term in
+                      an specific context.
+                    type: string
+                required:
+                - id
+                title: Ontology Term
+                type: object
+              value:
+                description: The value of the quantity in the units
+                type: number
+            required:
+            - unit
+            - value
+            title: Quantity
+            type: object
+          quantityType:
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: 1
+            description: Definition of an ontology term.
+            example:
+              id: NCIT:C25298
+              label: Systolic Blood Pressure
+            properties:
+              id:
+                description: A CURIE identifier, e.g. as `id` for an ontology term.
+                examples:
+                - ga4gh:GA.01234abcde
+                - DUO:0000004
+                - orcid:0000-0003-3463-0775
+                - PMID:15254584
+                pattern: ^\w[^:]+:.+$
+                type: string
+              label:
+                description: The text that describes the term. By default it could
+                  be the preferred text of the term, but is it acceptable to customize
+                  it for a clearer description and understanding of the term in an
+                  specific context.
+                type: string
+            required:
+            - id
+            title: Ontology Term
+            type: object
+        required:
+        - quantityType
+        - quantity
+      type: array
+  title: Complex Value
+  type: object

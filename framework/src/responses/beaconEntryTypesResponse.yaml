@@ -1,13 +1,16 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 type: object
-description: Response including a list of Entry types definitions.
+description: >-
+  Response including a list of Entry types definitions.
 properties:
   meta:
-    description: Information about the response that could be relevant for the Beacon
+    description: >-
+      Information about the response that could be relevant for the Beacon
       client in order to interpret the results.
     $ref: ./sections/beaconInformationalResponseMeta.yaml
   response:
-    description: Returning the Beacon Entry Types.
+    description: >-
+      Returning the Beacon Entry Types.
     $ref: ../configuration/entryTypesSchema.yaml
 required:
   - meta

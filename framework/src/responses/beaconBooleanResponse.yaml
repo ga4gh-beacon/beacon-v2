@@ -1,23 +1,29 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-description: Complete definition for a minimal response that does *only* a `boolean`
+description: >-
+  Complete definition for a minimal response that provides *only* a `Boolean`
   exists true|false answer.
 type: object
-required:
-  - meta
-  - responseSummary
 properties:
   meta:
-    description: Information about the response that could be relevant for the Beacon
+    description: >-
+      Information about the response that could be relevant for the Beacon
       client in order to interpret the results.
     $ref: ./sections/beaconResponseMeta.yaml
   responseSummary:
-    description: Boolean (true/false) response section.
+    description: >-
+      Boolean (true/false) response section.
     $ref: ./sections/beaconBooleanResponseSection.yaml
   info:
-    description: Additional details that could be of interest. Provided to clearly
+    description: >-
+      Additional details that could be of interest. Provided to clearly
       enclose any attribute that is not part of the Beacon specification.
     $ref: ../common/beaconCommonComponents.yaml#/definitions/Info
   beaconHandovers:
-    description: List of handovers that apply to the whole response, not to any resultset
+    description: >-
+      List of handovers that apply to the whole response, not to any resultset
       or result in particular.
+
     $ref: ../common/beaconCommonComponents.yaml#/definitions/ListOfHandovers
+required:
+  - meta
+  - responseSummary

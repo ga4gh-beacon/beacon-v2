@@ -1,3 +1,3 @@
 |Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| ethnicity | Definition of an ontology term. | object | [id](./id.md), [label](./label.md) | NA | NA|
+| ethnicity | Ethnic background of the individual. Value from NCIT Race (NCIT:C17049) ontology term descendants, e.g. NCIT:C126531 (Latin American). A geographic ancestral origin category that is assigned to a population group based mainly on physical characteristics that are thought to be distinct and inherent. [ NCI ]  | object | [id](./id.md), [label](./label.md) | `[{"id": "NCIT:C42331", "label": "African"}, {"id": "NCIT:C41260", "label": "Asian"}, {"id": "NCIT:C126535", "label": "Australian"}, {"id": "NCIT:C43851", "label": "European"}, {"id": "NCIT:C77812", "label": "North American"}, {"id": "NCIT:C126531", "label": "Latin American"}, {"id": "NCIT:C104495", "label": "Other race"}]` | NA|

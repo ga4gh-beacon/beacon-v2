@@ -55,9 +55,12 @@ markdown_extensions:
               format: !!python/name:mermaid2.fence_mermaid   
 
 nav:
-    - Introduction: index.md
-    - What is Beacon v2?: what-is-beacon-v2.md  
-    - Changes: bugs-changes-log.md
+    - Introduction: 
+        - General Introduction: index.md
+        - What is Beacon v2?: what-is-beacon-v2.md  
+        - FAQ: FAQ.md
+        - Citation: citation.md
+        - Changes: bugs-changes-log.md
     - Beacon Types:
         - Beacon Flavours: beacon-flavours.md
         - Security: security.md
@@ -85,12 +88,11 @@ nav:
     - Querying Beacons:
         - REST API: rest-api.md
         - Genomic Queries: variant-queries.md
-        - Filters in Queries: filter-queries.md
+        - Filters in Queries: /filters/#using-filters-in-queries
     - External Links:
         - Beacon Project &#8599;: http://beacon-project.io
         - Github Repositories &#8599;: https://github.com/ga4gh-beacon/
     # - Download PDF: pdf/beacon.pdf
-    - Citation: citation.md
 
 theme:
     name: material

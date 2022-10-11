@@ -1,0 +1,8 @@
+---
+transcriptHGVSIds:
+  description: List of HGVSId descriptor(s) at transcript level.
+  examples:
+  - - NC 000023.10(NM004006.2):c.357+1G
+  items:
+    type: string
+  type: array

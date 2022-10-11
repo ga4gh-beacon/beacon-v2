@@ -1,0 +1,8 @@
+---
+geneIds:
+  examples:
+  - - ACE2
+  - - BRCA1
+  items:
+    type: string
+  type: array

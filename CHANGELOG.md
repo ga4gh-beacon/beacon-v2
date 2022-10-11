@@ -7,15 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.0.0] - 2022-03-13
 ### Added
+
+ * List parameters in `GET` queries
+ * Added `FAQ.md`page to `docs`
 
 ### Changed
 
+ * Updated `docs`:
+    - `filters.md`
+    - `variant-queries.md`
+    - `bugs-changes-log.md` 
+    - `ComplexValue.md`
+    - `README.md`
+    - Added missing descriptions to models properties (see issue #42)
+
+ * Updated `framework`:
+
+   - `commonDefinitions.{json,yaml}`
+   - Moved `CURIE` to `beaconCommonComponents`
+   - Created entity `FilteringTerm` (see Issue #31)
+   - Improved descriptions
+
+ * Updated `models`:
+
 ### Fixed
+
+ * Fixed `POST`queries for `g_variant` (w/ examples)
 
 ### Deprecated
 
 ### Removed
 
 ### Security
+
+## [2.0.0] - 2022-06-21
+
+Beacon v2 specification stable version (approved on 2022-04-21 as an official GA4GH standard).

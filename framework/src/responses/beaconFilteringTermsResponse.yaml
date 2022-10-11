@@ -1,13 +1,18 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 type: object
-description: List of filtering terms response.
+description: >-
+  The filtering terms response provides information about available
+  individual filters for a beacon's entry types as well as optional
+  information about the ontologies the filters belong to.
 properties:
   meta:
-    description: Information about the response that could be relevant for the Beacon
+    description: >-
+      Information about the response that could be relevant for the Beacon
       client in order to interpret the results.
     $ref: ./sections/beaconInformationalResponseMeta.yaml
   response:
-    description: Actual list of filtering terms.
+    description: >-
+      A list of available filtering terms and resources they are defined in.
     $ref: ./sections/beaconFilteringTermsResults.yaml
 required:
   - meta

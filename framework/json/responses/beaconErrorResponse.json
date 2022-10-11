@@ -5,7 +5,7 @@
     "properties": {
         "error": {
             "$ref": "../common/beaconCommonComponents.json#/definitions/BeaconError",
-            "description": "Returning an error."
+            "description": "Error response"
         },
         "meta": {
             "$ref": "./sections/beaconResponseMeta.json",

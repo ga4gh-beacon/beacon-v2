@@ -23,7 +23,7 @@ properties:
       - ageGroup:
           id: NCIT:C49685
           label: Adult 18-65 Years Old
-        age:
+      - age:
           iso8601duration: P32Y6M1D
       - ageRange:
           start:

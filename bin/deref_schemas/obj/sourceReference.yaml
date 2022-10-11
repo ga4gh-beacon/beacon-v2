@@ -1,0 +1,7 @@
+---
+sourceReference:
+  description: A reference to further documentation or details.
+  examples:
+  - https://gnomad.broadinstitute.org/
+  - https://ega-archive.org/
+  type: string

@@ -1,3 +1,3 @@
 |Term | Description | Type | Properties | Example | Enum|
 | ---| ---| ---| ---| ---| --- |
-| alleleOrigin | Definition of an ontology term. | object | [id](./id.md), [label](./label.md) | NA | NA|
+| alleleOrigin | Ontology value for allele origin of variant in sample from the Variant Origin (SO:0001762). Categories are `somatic variant`, `germline variant`, `maternal variant`, `paternal variant`, `de novo variant`, `pedigree specific variant`, `population specific variant`. Corresponds to Variant Inheritance in FHIR. | object | [id](./id.md), [label](./label.md) | `[{"id": "SO:0001777", "label": "somatic variant"}, {"id": "SO:0001778", "label": "germline variant"}, {"id": "SO:0001775", "label": "maternal variant"}, {"id": "SO:0001776", "label": "paternal variant"}, {"id": "SO:0001781", "label": "de novo variant"}, {"id": "SO:0001779", "label": "pedigree specific variant"}, {"id": "SO:0001780", "label": "population specific variant"}]` | NA|

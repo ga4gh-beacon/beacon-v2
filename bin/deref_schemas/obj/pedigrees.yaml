@@ -1,0 +1,454 @@
+---
+pedigrees:
+  items:
+    $schema: https://json-schema.org/draft/2020-12/schema
+    additionalProperties: 1
+    definitions:
+      pedigreeMember:
+        examples:
+        - membersInProband:
+          - affected: 1
+            memberId: Ind0012122
+            role:
+              id: NCIT:C64435
+              label: Proband
+          - affected: 2
+            memberId: Pedigree1001-m2
+            role:
+              id: NCIT:C96580
+              label: Biological Mother
+          - affected: 1
+            memberId: Pedigree1001-m3
+            role:
+              id: NCIT:C96572
+              label: Biological Father
+        - membersInMother:
+          - affected: 2
+            memberId: Ind0028989
+            role:
+              id: NCIT:C96580
+              label: Biological Mother
+          - affected: 1
+            memberId: Ind0012122
+            role:
+              id: NCIT:C64435
+              label: Proband
+        properties:
+          affected:
+            description: Is the individual affected by the disease in the pedigree?
+            type: boolean
+          memberId:
+            description: Identifier of the individual. The individual could be part
+              of the same Beacon datasets or not, in which case the information here
+              is meant to complete the pedigree. If the individual is also in the
+              dataset use that Individual ID. If it is not the in the dataset, use
+              a non-collading ID, e.g. concatenating the Pedigree ID with a local
+              ID, similarly to the example 'Pedigree1001-m1'.
+            examples:
+            - Pedigree1001-m1
+            - Ind0012122
+            type: string
+          role:
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: 1
+            description: Definition of an ontology term.
+            examples:
+            - id: NCIT:C64435
+              label: Proband
+            - id: NCIT:C96580
+              label: Biological Mother
+            - id: NCIT:C96572
+              label: Biological Father
+            - id: NCIT:C165848
+              label: Identical Twin Brother
+            properties:
+              id:
+                description: A CURIE identifier, e.g. as `id` for an ontology term.
+                examples:
+                - ga4gh:GA.01234abcde
+                - DUO:0000004
+                - orcid:0000-0003-3463-0775
+                - PMID:15254584
+                pattern: ^\w[^:]+:.+$
+                type: string
+              label:
+                description: The text that describes the term. By default it could
+                  be the preferred text of the term, but is it acceptable to customize
+                  it for a clearer description and understanding of the term in an
+                  specific context.
+                type: string
+            required:
+            - id
+            title: Ontology Term
+            type: object
+        required:
+        - memberId
+        - role
+        - affected
+        type: object
+    description: Pedigree studies in which the individual is part of.
+    properties:
+      disease:
+        $schema: https://json-schema.org/draft/2020-12/schema
+        description: Diseases diagnosed e.g. to an individual, defined by diseaseID,
+          age of onset, stage, level of severity, outcome and the presence of family
+          history. Similarities to GA4GH Phenopackets v2 `Disease`
+        properties:
+          ageOfOnset:
+            $comments: If using an ontology class the use of NCIT Age Group ontology
+              term (NCIT:C20587) descendants is recommended.
+            $schema: https://json-schema.org/draft/2020-12/schema
+            description: Definition of a wrapper for various time descriptors. This
+              follows the Phenopackets structure https://github.com/phenopackets/phenopacket-schema/blob/v2/docs/time-element.rst
+            examples:
+            - age:
+                iso8601duration: P32Y6M1D
+              ageGroup:
+                id: NCIT:C49685
+                label: Adult 18-65 Years Old
+            - ageRange:
+                end:
+                  iso8601duration: P59Y
+                start:
+                  iso8601duration: P18Y
+            - age:
+                iso8601duration: P2M4D
+            oneOf:
+            - $schema: https://json-schema.org/draft/2020-12/schema
+              description: 'Age value definition. Provenance: GA4GH Phenopackets v2
+                `Age`'
+              properties:
+                iso8601duration:
+                  description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+                  example: P32Y6M1D
+                  type: string
+              title: Age
+              type: object
+            - $schema: https://json-schema.org/draft/2020-12/schema
+              description: 'Age range definition. Provenance: GA4GH Phenopackets v2
+                `AgeRange`'
+              properties:
+                end:
+                  $schema: https://json-schema.org/draft/2020-12/schema
+                  description: 'Age value definition. Provenance: GA4GH Phenopackets
+                    v2 `Age`'
+                  properties:
+                    iso8601duration:
+                      description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+                      example: P32Y6M1D
+                      type: string
+                  title: Age
+                  type: object
+                start:
+                  $schema: https://json-schema.org/draft/2020-12/schema
+                  description: 'Age value definition. Provenance: GA4GH Phenopackets
+                    v2 `Age`'
+                  properties:
+                    iso8601duration:
+                      description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+                      example: P32Y6M1D
+                      type: string
+                  title: Age
+                  type: object
+              title: AgeRange
+              type: object
+            - $comments: From https://github.com/phenopackets/phenopacket-schema/blob/v2/docs/gestational-age.rst
+              $schema: https://json-schema.org/draft/2020-12/schema
+              description: 'Gestational age (or menstrual age) is the time elapsed
+                between the first day of the last normal menstrual period and the
+                day of delivery. The first day of the last menstrual period occurs
+                approximately 2 weeks before ovulation and approximately 3 weeks before
+                implantation of the blastocyst. Because most women know when their
+                last period began but not when ovulation occurred, this definition
+                traditionally has been used when estimating the expected date of delivery.
+                In contrast, chronological age (or postnatal age) is the time elapsed
+                after birth. Provenance: Phenopackets v2'
+              properties:
+                days:
+                  description: Days beyond the completed weeks, if available.
+                  examples:
+                  - 2
+                  - 4
+                  type: integer
+                weeks:
+                  description: Completed weeks of gestation according to the above
+                    definition.
+                  examples:
+                  - 4
+                  - 33
+                  type: integer
+              required:
+              - weeks
+              title: GestationalAge
+              type: object
+            - description: Time in date-time ISO8601 string format.
+              examples:
+              - 1999-08-05T17:21:00+01:00
+              - 2002-09-21T02:37:00-08:00
+              format: date-time
+              type: string
+            - $comments: From https://github.com/phenopackets/phenopacket-schema/blob/v2/docs/time-interval.rst
+              $schema: https://json-schema.org/draft/2020-12/schema
+              additionalProperties: 2
+              description: Time interval with start and end defined as ISO8601 time
+                stamps.
+              properties:
+                end:
+                  description: Time in date-time ISO8601 string format.
+                  examples:
+                  - 1999-08-05T17:21:00+01:00
+                  - 2002-09-21T02:37:00-08:00
+                  format: date-time
+                  type: string
+                start:
+                  description: Time in date-time ISO8601 string format.
+                  examples:
+                  - 1999-08-05T17:21:00+01:00
+                  - 2002-09-21T02:37:00-08:00
+                  format: date-time
+                  type: string
+              required:
+              - start
+              - end
+              title: TimeInterval
+              type: object
+            - $schema: https://json-schema.org/draft/2020-12/schema
+              additionalProperties: 1
+              description: Definition of an ontology term.
+              properties:
+                id:
+                  description: A CURIE identifier, e.g. as `id` for an ontology term.
+                  examples:
+                  - ga4gh:GA.01234abcde
+                  - DUO:0000004
+                  - orcid:0000-0003-3463-0775
+                  - PMID:15254584
+                  pattern: ^\w[^:]+:.+$
+                  type: string
+                label:
+                  description: The text that describes the term. By default it could
+                    be the preferred text of the term, but is it acceptable to customize
+                    it for a clearer description and understanding of the term in
+                    an specific context.
+                  type: string
+              required:
+              - id
+              title: Ontology Term
+              type: object
+            title: TimeElement
+            type: object
+          diseaseCode:
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: 1
+            description: Definition of an ontology term.
+            examples:
+            - id: HP:0004789
+              label: lactose intolerance
+            - id: ICD10CM:E73
+              label: lactose intolerance
+            - id: OMIM:164400
+              label: Spinocerebellar ataxia 1
+            properties:
+              id:
+                description: A CURIE identifier, e.g. as `id` for an ontology term.
+                examples:
+                - ga4gh:GA.01234abcde
+                - DUO:0000004
+                - orcid:0000-0003-3463-0775
+                - PMID:15254584
+                pattern: ^\w[^:]+:.+$
+                type: string
+              label:
+                description: The text that describes the term. By default it could
+                  be the preferred text of the term, but is it acceptable to customize
+                  it for a clearer description and understanding of the term in an
+                  specific context.
+                type: string
+            required:
+            - id
+            title: Ontology Term
+            type: object
+          familyHistory:
+            description: Boolean indicating determined or self-reported presence of
+              family history of the disease.
+            examples:
+            - 1
+            type: boolean
+          notes:
+            description: Unstructured text to describe additional properties of this
+              disease instance.
+            examples:
+            - Some free text
+            type: string
+          severity:
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: 1
+            description: 'Severity as applicable to phenotype or disease observed.
+              Recommended are values from Human Phenotype Ontology (HP:0012824), e.g
+              `mild`. The intensity or degree of a manifestation. Source: Phenopackets
+              v2'
+            examples:
+            - id: HP:0012828
+              label: Severe
+            - id: HP:0012826
+              label: Moderate
+            properties:
+              id:
+                description: A CURIE identifier, e.g. as `id` for an ontology term.
+                examples:
+                - ga4gh:GA.01234abcde
+                - DUO:0000004
+                - orcid:0000-0003-3463-0775
+                - PMID:15254584
+                pattern: ^\w[^:]+:.+$
+                type: string
+              label:
+                description: The text that describes the term. By default it could
+                  be the preferred text of the term, but is it acceptable to customize
+                  it for a clearer description and understanding of the term in an
+                  specific context.
+                type: string
+            required:
+            - id
+            title: Ontology Term
+            type: object
+          stage:
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: 1
+            description: Definition of an ontology term.
+            examples:
+            - id: OGMS:0000119
+              label: acute onset
+            - id: OGMS:0000117
+              label: asymptomatic
+            - id: OGMS:0000106
+              label: remission
+            properties:
+              id:
+                description: A CURIE identifier, e.g. as `id` for an ontology term.
+                examples:
+                - ga4gh:GA.01234abcde
+                - DUO:0000004
+                - orcid:0000-0003-3463-0775
+                - PMID:15254584
+                pattern: ^\w[^:]+:.+$
+                type: string
+              label:
+                description: The text that describes the term. By default it could
+                  be the preferred text of the term, but is it acceptable to customize
+                  it for a clearer description and understanding of the term in an
+                  specific context.
+                type: string
+            required:
+            - id
+            title: Ontology Term
+            type: object
+        required:
+        - diseaseCode
+        title: Disease
+        type: object
+      id:
+        description: Pedigree identifier.
+        example: Pedigree1001
+        type: string
+      members:
+        description: 'List of members of the pedigree. If the current pedigree definition
+          is attached to the proband, it contains the whole list of pedigree members,
+          including the proband. If the definition is attached to an individual different
+          than the proband, it only contains two entries: one that describes that
+          member, e.g. the proband mother or father, and one that points to the proband.'
+        items:
+          examples:
+          - membersInProband:
+            - affected: 1
+              memberId: Ind0012122
+              role:
+                id: NCIT:C64435
+                label: Proband
+            - affected: 2
+              memberId: Pedigree1001-m2
+              role:
+                id: NCIT:C96580
+                label: Biological Mother
+            - affected: 1
+              memberId: Pedigree1001-m3
+              role:
+                id: NCIT:C96572
+                label: Biological Father
+          - membersInMother:
+            - affected: 2
+              memberId: Ind0028989
+              role:
+                id: NCIT:C96580
+                label: Biological Mother
+            - affected: 1
+              memberId: Ind0012122
+              role:
+                id: NCIT:C64435
+                label: Proband
+          properties:
+            affected:
+              description: Is the individual affected by the disease in the pedigree?
+              type: boolean
+            memberId:
+              description: Identifier of the individual. The individual could be part
+                of the same Beacon datasets or not, in which case the information
+                here is meant to complete the pedigree. If the individual is also
+                in the dataset use that Individual ID. If it is not the in the dataset,
+                use a non-collading ID, e.g. concatenating the Pedigree ID with a
+                local ID, similarly to the example 'Pedigree1001-m1'.
+              examples:
+              - Pedigree1001-m1
+              - Ind0012122
+              type: string
+            role:
+              $schema: https://json-schema.org/draft/2020-12/schema
+              additionalProperties: 1
+              description: Definition of an ontology term.
+              examples:
+              - id: NCIT:C64435
+                label: Proband
+              - id: NCIT:C96580
+                label: Biological Mother
+              - id: NCIT:C96572
+                label: Biological Father
+              - id: NCIT:C165848
+                label: Identical Twin Brother
+              properties:
+                id:
+                  description: A CURIE identifier, e.g. as `id` for an ontology term.
+                  examples:
+                  - ga4gh:GA.01234abcde
+                  - DUO:0000004
+                  - orcid:0000-0003-3463-0775
+                  - PMID:15254584
+                  pattern: ^\w[^:]+:.+$
+                  type: string
+                label:
+                  description: The text that describes the term. By default it could
+                    be the preferred text of the term, but is it acceptable to customize
+                    it for a clearer description and understanding of the term in
+                    an specific context.
+                  type: string
+              required:
+              - id
+              title: Ontology Term
+              type: object
+          required:
+          - memberId
+          - role
+          - affected
+          type: object
+        minItems: 1
+        type: array
+      numSubjects:
+        description: Total number of subjects in pedigree.
+        example: 10
+        type: integer
+    required:
+    - id
+    - disease
+    - members
+    title: Pedigree
+    type: object
+  type: array

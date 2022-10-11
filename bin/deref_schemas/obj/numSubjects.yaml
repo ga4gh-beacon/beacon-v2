@@ -1,0 +1,5 @@
+---
+numSubjects:
+  description: Total number of subjects in pedigree.
+  example: 10
+  type: integer

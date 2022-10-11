@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Exposures (lifestyle, behavioural exposures) occurred to individual,defined by exposure ID, date and age of onset, dose, and duration.",
+    "description": "Exposures (lifestyle, behavioural exposures) occurred to individual, defined by exposure ID, date and age of onset, dose, and duration.",
     "properties": {
         "ageAtExposure": {
             "$ref": "../common/age.json"
@@ -13,12 +13,14 @@
         },
         "duration": {
             "description": "Exposure duration in ISO8601 format",
-            "example": "P32Y6M1D",
+            "examples": [
+                "P2Y6M1D"
+            ],
             "type": "string"
         },
         "exposureCode": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
-            "description": "Exposure ID. Value from Environment Exposure Ontology.",
+            "description": "Exposure ID. Recommended is a value from Environment Exposure Ontology.",
             "examples": [
                 {
                     "id": "CHEBI:46661",

@@ -49,10 +49,12 @@ in the _EIF4A1_ eukaryotic translation initiation factor 4A1.
 	    },
 	    "query": {
 	        "requestParameters": {
-	            "referenceName": "NC_000017.11",
-	            "start": [7577120],
-	            "referenceBases": "G",
-	            "alternateBases": "A"
+	        	"g_variant": {
+	                "referenceName": "NC_000017.11",
+	                "start": [7577120],
+	                "referenceBases": "G",
+	                "alternateBases": "A"
+		    	}
 	        }
 	    },
 	    "requestedGranularity": "record",
@@ -139,9 +141,11 @@ parameters.
 	    },
 	    "query": {
 	        "requestParameters": {
-	            "referenceName": "NC_000017.11",
-	            "start": [ 7572837 ],
-	            "end": [ 7578641 ]
+	            "g_variant":
+	                "referenceName": "NC_000017.11",
+	                "start": [ 7572837 ],
+	                "end": [ 7578641 ]
+		    	}
 	        }
 	    },
 	    "requestedGranularity": "record",
@@ -249,10 +253,12 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 	    },
 	    "query": {
 	        "requestParameters": {
-	            "referenceName": "NC_000017.11",
-	            "start": [ 5000000, 7676592 ],
-	            "end": [ 7669607, 10000000 ],
-	            "variantType": "DEL"
+	        	"g_variant": {
+	                "referenceName": "NC_000017.11",
+	                "start": [ 5000000, 7676592 ],
+	                "end": [ 7669607, 10000000 ],
+	                "variantType": "DEL"
+		    	}
 	        }
 	    },
 	    "requestedGranularity": "record",
@@ -306,7 +312,7 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 	?aminoacidChange=V600E
 	```
 
-	==to be complete==
+	==to be completed==
 
 ## `variantType` Parameter Interpretation
 

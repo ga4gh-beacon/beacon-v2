@@ -1,0 +1,32 @@
+---
+zygosity:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  additionalProperties: 1
+  description: Ontology term for zygosity in which variant is present in the sample
+    from the Zygosity Ontology (GENO:0000391) , e.g `heterozygous` (GENO:0000135)
+  examples:
+  - id: GENO:0000135
+    label: heterozygous
+  - id: GENO:0000136
+    label: homozygous
+  - id: GENO:0000604
+    label: hemizygous X-linked
+  properties:
+    id:
+      description: A CURIE identifier, e.g. as `id` for an ontology term.
+      examples:
+      - ga4gh:GA.01234abcde
+      - DUO:0000004
+      - orcid:0000-0003-3463-0775
+      - PMID:15254584
+      pattern: ^\w[^:]+:.+$
+      type: string
+    label:
+      description: The text that describes the term. By default it could be the preferred
+        text of the term, but is it acceptable to customize it for a clearer description
+        and understanding of the term in an specific context.
+      type: string
+  required:
+  - id
+  title: Ontology Term
+  type: object

@@ -1,0 +1,98 @@
+---
+exposures:
+  items:
+    $schema: https://json-schema.org/draft/2020-12/schema
+    additionalProperties: 1
+    description: Exposures (lifestyle, behavioural exposures) occurred to individual,defined
+      by exposure ID, date and age of onset, dose, and duration.
+    properties:
+      ageAtExposure:
+        $schema: https://json-schema.org/draft/2020-12/schema
+        description: 'Age value definition. Provenance: GA4GH Phenopackets v2 `Age`'
+        properties:
+          iso8601duration:
+            description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
+            example: P32Y6M1D
+            type: string
+        title: Age
+        type: object
+      date:
+        description: Date of the exposure in ISO8601 format.
+        format: date
+        type: string
+      duration:
+        description: Exposure duration in ISO8601 format
+        example: P32Y6M1D
+        type: string
+      exposureCode:
+        $schema: https://json-schema.org/draft/2020-12/schema
+        additionalProperties: 1
+        description: Definition of an ontology term.
+        examples:
+        - id: CHEBI:46661
+          label: asbestos
+        - id: ENVO:21001217
+          label: X-ray radiation
+        properties:
+          id:
+            description: A CURIE identifier, e.g. as `id` for an ontology term.
+            examples:
+            - ga4gh:GA.01234abcde
+            - DUO:0000004
+            - orcid:0000-0003-3463-0775
+            - PMID:15254584
+            pattern: ^\w[^:]+:.+$
+            type: string
+          label:
+            description: The text that describes the term. By default it could be
+              the preferred text of the term, but is it acceptable to customize it
+              for a clearer description and understanding of the term in an specific
+              context.
+            type: string
+        required:
+        - id
+        title: Ontology Term
+        type: object
+      unit:
+        $schema: https://json-schema.org/draft/2020-12/schema
+        additionalProperties: 1
+        description: Unit of the exposure. Recommended from NCIT Unit of Category
+          ontology term (NCIT:C42568) descendants.
+        examples:
+        - id: NCIT:C70575
+          label: Roentgen
+        - id: NCIT:C28252
+          label: Kilogram
+        - id: NCIT:C28253
+          label: Milligram
+        properties:
+          id:
+            description: A CURIE identifier, e.g. as `id` for an ontology term.
+            examples:
+            - ga4gh:GA.01234abcde
+            - DUO:0000004
+            - orcid:0000-0003-3463-0775
+            - PMID:15254584
+            pattern: ^\w[^:]+:.+$
+            type: string
+          label:
+            description: The text that describes the term. By default it could be
+              the preferred text of the term, but is it acceptable to customize it
+              for a clearer description and understanding of the term in an specific
+              context.
+            type: string
+        required:
+        - id
+        title: Ontology Term
+        type: object
+      value:
+        description: Quantification of the exposure.
+        type: number
+    required:
+    - exposureCode
+    - ageAtExposure
+    - unit
+    - duration
+    title: Exposure
+    type: object
+  type: array
