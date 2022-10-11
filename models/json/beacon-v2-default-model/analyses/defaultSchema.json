@@ -1,5 +1,5 @@
 {
-    "$comment": "version: ga4gh-beacon-biosample-v2.0.0",
+    "$comment": "version: ga4gh-beacon-analysis-v2.0.0",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
     "description": "Schema for a sequencing bioinformatics analysis.",

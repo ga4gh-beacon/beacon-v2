@@ -1,6 +1,6 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Experimental run
-$comment: 'version: ga4gh-beacon-biosample-v2.0.0'
+$comment: 'version: ga4gh-beacon-run-v2.0.0'
 description: Schema for the experimental run (e.g. sequencing run, array processing...)
   leading to the raw data for the (computational) analysis.
 type: object
