@@ -1,10 +1,10 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Total number of results section.",
+    "description": "Payload definition for the \"count\" response.",
     "properties": {
         "exists": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/Exists",
-            "description": "Indicator of whether any entry was observed. This should be non-null, unless there was an error, in which case an error response is expected instead of this one."
+            "description": "Indicator of whether any entry was observed. This should be non-null, unless there was an error, in which case a `beaconErrorResponse` is expected instead of this one."
         },
         "numTotalResults": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/NumTotalResults",

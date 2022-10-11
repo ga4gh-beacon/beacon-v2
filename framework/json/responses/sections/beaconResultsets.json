@@ -25,7 +25,7 @@
                     "type": "array"
                 },
                 "resultsCount": {
-                    "description": "Number of results in this Resulset.",
+                    "description": "Number of results in this Resultset.",
                     "type": "integer"
                 },
                 "resultsHandovers": {

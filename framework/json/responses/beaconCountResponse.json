@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Complete definition for a Response that does not include record level details and just `boolean` or `count` responses.",
+    "description": "Complete definition for a response that does not include record level details but provides `Boolean` and `count` information.",
     "properties": {
         "beaconHandovers": {
             "$ref": "../common/beaconCommonComponents.json#/definitions/ListOfHandovers",

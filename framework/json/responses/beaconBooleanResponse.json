@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Complete definition for a minimal response that does *only* a `boolean` exists true|false answer.",
+    "description": "Complete definition for a minimal response that provides *only* a `Boolean` exists true|false answer.",
     "properties": {
         "beaconHandovers": {
             "$ref": "../common/beaconCommonComponents.json#/definitions/ListOfHandovers",

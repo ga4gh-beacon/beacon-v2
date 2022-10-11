@@ -1,10 +1,8 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-description: Complete definition for a minimal response that does *only* a `boolean`
+description: >-
+  Complete definition for a minimal response that provides *only* a `Boolean`
   exists true|false answer.
 type: object
-required:
-  - meta
-  - responseSummary
 properties:
   meta:
     description: >-
@@ -25,3 +23,6 @@ properties:
       List of handovers that apply to the whole response, not to any resultset
       or result in particular.
     $ref: ../common/beaconCommonComponents.json#/definitions/ListOfHandovers
+required:
+  - meta
+  - responseSummary

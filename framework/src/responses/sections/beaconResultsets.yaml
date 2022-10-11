@@ -28,7 +28,7 @@ definitions:
       exists:
         type: boolean
       resultsCount:
-        description: Number of results in this Resulset.
+        description: Number of results in this Resultset.
         type: integer
       resultsHandovers:
         description: List of handovers that apply to this resultset, not to the whole
