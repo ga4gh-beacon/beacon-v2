@@ -6,42 +6,41 @@ description: >-
 type: object
 properties:
   $schema:
-    $ref: ../common/beaconCommonComponents.json#/definitions/$schema
+    $ref: ../common/beaconCommonComponents.yaml#/definitions/$schema
   meta:
     description: >-
       Information relevant for building the response.
-    $ref: ./beaconRequestMeta.json
+    $ref: ./beaconRequestMeta.yaml
   query:
     description: >-
       Parameters to limit the list of returned results.
     type: object
     properties:
-      requestParameters:
         description: >-
           Parameters used for the entry type specific query elements.
-        $ref: ./requestParameters.json
+        $ref: ./requestParameters.yaml
       filters:
         description: >-
           Ontology based filters. Using CURIE syntax is encouraged.
-        $ref: ./filteringTerms.json
+        $ref: ./filteringTerms.yaml
       includeResultsetResponses:
-        $ref: ../common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses
+        $ref: ../common/beaconCommonComponents.yaml#/definitions/IncludeResultsetResponses
       pagination:
         description: >-
           Pagination parameters applied to response documents, in case of record
           level granularity.
-        $ref: ../common/beaconCommonComponents.json#/definitions/Pagination
+        $ref: ../common/beaconCommonComponents.yaml#/definitions/Pagination
       requestedGranularity:
         description: >-
           Requested granularity for the response. Beacons do not have to respond
           with the requested granularity, e.g. may respond with count results
           although record level granularity had been requested but indicate the
           granularity of the response in the response's metadata.
-        $ref: ../common/beaconCommonComponents.json#/definitions/Granularity
+        $ref: ../common/beaconCommonComponents.yaml#/definitions/Granularity
       testMode:
         description: >-
           Used for indicating that a request or response is done in a test
           context.
-        $ref: ../common/beaconCommonComponents.json#/definitions/TestMode
+        $ref: ../common/beaconCommonComponents.yaml#/definitions/TestMode
 required:
   - meta

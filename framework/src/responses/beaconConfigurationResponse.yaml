@@ -8,11 +8,11 @@ properties:
     description: >-
       Information about the response that could be relevant for the Beacon
       client in order to interpret the results.
-    $ref: ./sections/beaconInformationalResponseMeta.json
+    $ref: ./sections/beaconInformationalResponseMeta.yaml
   response:
     description: >-
       Returning the Beacon configuration.
-    $ref: ../configuration/beaconConfigurationSchema.json
+    $ref: ../configuration/beaconConfigurationSchema.yaml
 required:
   - meta
   - response

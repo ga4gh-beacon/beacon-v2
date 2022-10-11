@@ -4,7 +4,7 @@ description: Sets of results to be returned as query response.
 type: object
 properties:
   $schema:
-    $ref: ../../common/beaconCommonComponents.json#/definitions/$schema
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/$schema
   resultSets:
     type: array
     items:
@@ -33,7 +33,7 @@ definitions:
       resultsHandovers:
         description: List of handovers that apply to this resultset, not to the whole
           Beacon or to a result in particular.
-        $ref: ../../common/beaconCommonComponents.json#/definitions/ListOfHandovers
+        $ref: ../../common/beaconCommonComponents.yaml#/definitions/ListOfHandovers
       info:
         description: Additional details that could be of interest about the Resultset.
           Provided to clearly enclose any attribute that is not part of the Beacon
