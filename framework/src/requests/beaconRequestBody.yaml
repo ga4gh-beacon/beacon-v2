@@ -12,10 +12,14 @@ properties:
       Information relevant for building the response.
     $ref: ./beaconRequestMeta.yaml
   query:
+    $ref: '#/definitions/BeaconQuery'
+definitions:
+  BeaconQuery:
     description: >-
       Parameters to limit the list of returned results.
     type: object
     properties:
+      requestParameters:
         description: >-
           Parameters used for the entry type specific query elements.
         $ref: ./requestParameters.yaml
@@ -42,5 +46,6 @@ properties:
           Used for indicating that a request or response is done in a test
           context.
         $ref: ../common/beaconCommonComponents.yaml#/definitions/TestMode
+
 required:
   - meta

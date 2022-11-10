@@ -1,15 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for the Beacon request. It is named `RequestBody` to keep the same nomenclature used by OpenAPI v3, but it actually contains the definition of the whole HTTP POST request payload.",
-    "properties": {
-        "$schema": {
-            "$ref": "../common/beaconCommonComponents.json#/definitions/$schema"
-        },
-        "meta": {
-            "$ref": "./beaconRequestMeta.json",
-            "description": "Information relevant for building the response."
-        },
-        "query": {
+    "definitions": {
+        "BeaconQuery": {
             "description": "Parameters to limit the list of returned results.",
             "properties": {
                 "filters": {
@@ -37,6 +29,19 @@
                 }
             },
             "type": "object"
+        }
+    },
+    "description": "Schema for the Beacon request. It is named `RequestBody` to keep the same nomenclature used by OpenAPI v3, but it actually contains the definition of the whole HTTP POST request payload.",
+    "properties": {
+        "$schema": {
+            "$ref": "../common/beaconCommonComponents.json#/definitions/$schema"
+        },
+        "meta": {
+            "$ref": "./beaconRequestMeta.json",
+            "description": "Information relevant for building the response."
+        },
+        "query": {
+            "$ref": "#/definitions/BeaconQuery"
         }
     },
     "required": [
