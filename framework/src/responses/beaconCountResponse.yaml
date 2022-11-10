@@ -23,6 +23,11 @@ properties:
       List of handovers that apply to the whole response, not to any resultset
       or result in particular.
     $ref: ../common/beaconCommonComponents.yaml#/definitions/ListOfHandovers
+  responseSets:
+    description: >-
+      Responses for individual endpoints, e.g. separate Beacons in a network.
+    $ref: ./sections/beaconCountSets.yaml
 required:
   - meta
   - responseSummary
+additionalProperties: true

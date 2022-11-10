@@ -1,0 +1,55 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "definitions": {
+        "BooleanSetInstance": {
+            "additionalProperties": false,
+            "properties": {
+                "exists": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "id of the set",
+                    "example": "datasetA",
+                    "type": "string"
+                },
+                "info": {
+                    "description": "Additional details that could be of interest about the Resultset. Provided to clearly enclose any attribute that is not part of the Beacon specification.",
+                    "type": "object"
+                },
+                "resultsHandovers": {
+                    "$ref": "../../common/beaconCommonComponents.json#/definitions/ListOfHandovers",
+                    "description": "List of handovers that apply to this resultset, not to the whole Beacon or to a result in particular."
+                },
+                "setType": {
+                    "default": "dataset",
+                    "description": "Entry type of resultSet. It SHOULD MATCH an entry type declared as collection in the Beacon configuration.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "setType",
+                "exists"
+            ]
+        }
+    },
+    "description": "Sets of Boolean results to be returned as query response.",
+    "properties": {
+        "$schema": {
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/$schema"
+        },
+        "booleanSets": {
+            "items": {
+                "$ref": "#/definitions/BooleanSetInstance"
+            },
+            "minItems": 0,
+            "type": "array"
+        }
+    },
+    "required": [
+        "booleanSets"
+    ],
+    "title": "Beacon BooleanSets",
+    "type": "object"
+}

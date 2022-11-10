@@ -1,0 +1,43 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Beacon BooleanSets
+description: Sets of Boolean results to be returned as query response.
+type: object
+properties:
+  $schema:
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/$schema
+  booleanSets:
+    type: array
+    items:
+      $ref: '#/definitions/BooleanSetInstance'
+    minItems: 0
+required:
+  - booleanSets
+additionalProperties: false
+definitions:
+  BooleanSetInstance:
+    properties:
+      id:
+        description: id of the set
+        type: string
+        example: datasetA
+      setType:
+        description: Entry type of resultSet. It SHOULD MATCH an entry type declared
+          as collection in the Beacon configuration.
+        type: string
+        default: dataset
+      exists:
+        type: boolean
+      resultsHandovers:
+        description: List of handovers that apply to this resultset, not to the whole
+          Beacon or to a result in particular.
+        $ref: ../../common/beaconCommonComponents.yaml#/definitions/ListOfHandovers
+      info:
+        description: Additional details that could be of interest about the Resultset.
+          Provided to clearly enclose any attribute that is not part of the Beacon
+          specification.
+        type: object
+    required:
+      - id
+      - setType
+      - exists
+    additionalProperties: false

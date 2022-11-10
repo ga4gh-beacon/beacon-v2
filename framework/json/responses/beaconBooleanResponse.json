@@ -1,5 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
     "description": "Complete definition for a minimal response that provides *only* a `Boolean` exists true|false answer.",
     "properties": {
         "beaconHandovers": {
@@ -13,6 +14,10 @@
         "meta": {
             "$ref": "./sections/beaconResponseMeta.json",
             "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
+        },
+        "responseSets": {
+            "$ref": "./sections/beaconBooleanSets.json",
+            "description": "Responses for individual endpoints, e.g. separate Beacons in a network."
         },
         "responseSummary": {
             "$ref": "./sections/beaconBooleanResponseSection.json",
