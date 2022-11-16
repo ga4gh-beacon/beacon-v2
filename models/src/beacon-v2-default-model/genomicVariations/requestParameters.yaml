@@ -65,11 +65,12 @@ g_variant:
           - no assumption about the placement of the additional sequences is being
             made (i.e. no _in situ_ requirement as tandem duplications)
         * DEL: deletion of sequence following `start`
-        * BND: breakend, i.e. termination of the allele at position `start` or in
-          the `startMin` => `startMax` interval, or fusion of the sequence to distant
-          partner
+        The Beacon model is not prescriptive with regard to the values allowed
+        for `variantType` with use of extended types (such as from `EFO:0030063`)
+        being possible. However, a support for the basic CNV types above - where
+        represented in the data - is recommended.
         Either `alternateBases` or `variantType` is required, with the exception
-        of range queries (single\ `start` and `end` parameters).
+        of range queries (single `start` and `end` parameters).
       type: string
     variantMinLength:
       description: >-

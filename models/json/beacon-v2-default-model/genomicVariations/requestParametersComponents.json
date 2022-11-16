@@ -16,10 +16,10 @@
             "type": "string"
         },
         "RefSeqId": {
-            "description": "Reference sequence id for genomic reference sequence in which variant coordinates are given, e.g. \"NC_000009\" for human chromosome 9. Preferably the RefSeqId, alternatively, names, synonymous or aliases e.g. \"Chr9\" could be used.",
+            "description": "Reference sequence id for genomic reference sequence in which variant coordinates are given, e.g. \"NC_000009.12\" for human chromosome 9 in the GRCh38 assembly. The use of the assembly specific RefSeqId is recommended although alternatively names, synonymous or aliases e.g. \"chr9\" could be used in conjunction with an `Assembly` parameter.",
             "example": [
-                "NC_000009",
-                "Chr9",
+                "NC_000009.12",
+                "chr9",
                 "NC_012920.1"
             ],
             "type": "string"
@@ -30,5 +30,5 @@
             "type": "string"
         }
     },
-    "description": "Component definitions used in 'requestParameters.json'. The purpose of this file is to separate components from actual parameters to avoid confusion."
+    "description": "Component definitions used in `requestParameters`."
 }

@@ -1,11 +1,10 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 description: >-
-  Component definitions used in 'requestParameters.json'.
-  The purpose of this file is to separate components from actual parameters to
-  avoid confusion.
+  Component definitions used in `requestParameters`.
 definitions:
   Assembly:
-    description: Genomic assembly accession and version as RefSqeq assembly accession
+    description: >-
+      Genomic assembly accession and version as RefSqeq assembly accession
       (e.g. "GCF_000001405.39") or a versioned assembly name or synonym such as UCSC
       Genome Browser assembly (e.g. "hg38") or Genome Reference Consortium Human (e.g.
       "GRCh38.p13") names.
@@ -15,13 +14,16 @@ definitions:
       - hg38
       - GRCh38.p13
   RefSeqId:
-    description: Reference sequence id for genomic reference sequence in which variant
-      coordinates are given, e.g. "NC_000009" for human chromosome 9. Preferably the
-      RefSeqId, alternatively, names, synonymous or aliases e.g. "Chr9" could be used.
+    description: >-
+      Reference sequence id for genomic reference sequence in which variant
+      coordinates are given, e.g. "NC_000009.12" for human chromosome 9 in the
+      GRCh38 assembly. The use of the assembly specific RefSeqId is recommended
+      although alternatively names, synonymous or aliases e.g. "chr9" could be
+      used in conjunction with an `Assembly` parameter.
     type: string
     example:
-      - NC_000009
-      - Chr9
+      - NC_000009.12
+      - chr9
       - NC_012920.1
   ReferenceBases:
     description: >-
