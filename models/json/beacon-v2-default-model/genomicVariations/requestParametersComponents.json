@@ -16,9 +16,9 @@
             "type": "string"
         },
         "RefSeqId": {
-            "description": "Reference sequence id for genomic reference sequence in which variant coordinates are given, e.g. \"NC_000009.12\" for human chromosome 9 in the GRCh38 assembly. The use of the assembly specific RefSeqId is recommended although alternatively names, synonymous or aliases e.g. \"chr9\" could be used in conjunction with an `Assembly` parameter.",
+            "description": "Reference sequence id for genomic reference sequence in which variant coordinates are given, e.g. \"refseq:NC_000009.12\" for human chromosome 9 in the GRCh38 assembly. The use of the assembly specific RefSeqId is recommended although alternatively names, synonymous or aliases e.g. \"chr9\" could be used in conjunction with an `Assembly` parameter.",
             "example": [
-                "NC_000009.12",
+                "refseq:NC_000009.12",
                 "chr9",
                 "NC_012920.1"
             ],

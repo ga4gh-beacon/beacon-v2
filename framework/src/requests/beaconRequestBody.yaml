@@ -46,6 +46,5 @@ definitions:
           Used for indicating that a request or response is done in a test
           context.
         $ref: ../common/beaconCommonComponents.yaml#/definitions/TestMode
-
 required:
   - meta
