@@ -5,6 +5,8 @@
     The uppercase `Beacon` is used to label API, framework or protocol and their
     components - while lower case `beacons` are instances of these, _i.e._ individual
     resources using the protocol.
+    
+    ##### last change 2022-10-01 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
 
 ??? faq "What types of genomic variants are supported in Beacon queries?"
 
