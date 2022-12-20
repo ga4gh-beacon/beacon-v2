@@ -41,9 +41,7 @@
             "required": [
                 "id",
                 "setType",
-                "exists",
-                "resultsCount",
-                "results"
+                "exists"
             ]
         }
     },

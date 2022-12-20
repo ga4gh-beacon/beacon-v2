@@ -48,6 +48,4 @@ definitions:
       - id
       - setType
       - exists
-      - resultsCount
-      - results
     additionalProperties: true
