@@ -1,5 +1,13 @@
 # Frequently Asked Questions
 
+??? faq "Do I need (to understand) the Beacon model to launch a simple beacon?"
+
+    No - the [Beacon Framework](/framework) describes the overall structure of the API requests, responses, parameters etc. One can implement e.g. a Boolean beacon (_cf._ the
+    original protocol) without any use of the model, just by providing a well-formed
+    JSON response upon a request [very similar to the (pre-)v1 allele request](/variant-queries/#beacon-sequence-queries).
+ 
+    ##### last change 2022-12-21 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
+
 ??? faq "Is it `Beacon` or `beacon`?"
 
     The uppercase `Beacon` is used to label API, framework or protocol and their
