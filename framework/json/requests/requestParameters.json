@@ -3,10 +3,10 @@
     "additionalProperties": {
         "type": "object"
     },
-    "description": "The schema below is suited for a dictionary 'key':'object', which is the case of the parameter definitions.",
+    "description": "The schema below is a placeholder for a dictionary 'key':'object'. The individual definitions depend on the model (e.g. beacon-v2-default-model) and entity (e.g. `genomicVariant`).",
     "properties": {
         "$schema": {
-            "description": "Added here to allow proper validation of the documents.",
+            "description": "Added here to allow proper validation of the documents w/o providing specific values.",
             "type": "string"
         }
     },

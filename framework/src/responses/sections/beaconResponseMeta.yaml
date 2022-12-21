@@ -1,5 +1,6 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-description: Information about the response that could be relevant for the Beacon
+description: >-
+  Information about the response that could be relevant for the Beacon
   client in order to interpret the results.
 type: object
 properties:
@@ -8,6 +9,11 @@ properties:
   apiVersion:
     $ref: ../../common/beaconCommonComponents.yaml#/definitions/ApiVersion
   returnedSchemas:
+    description: >-
+      The `returnedSchemas` parameter indicates that the request has been interpreted
+      for the indicated entity. This helps to disambiguate between negative responses
+      due to e.g. no hit on a well understood request and failures to interpret or
+      answer the request due to a missing entity. 
     $ref: ../../common/beaconCommonComponents.yaml#/definitions/ListOfSchemas
   returnedGranularity:
     description: >-

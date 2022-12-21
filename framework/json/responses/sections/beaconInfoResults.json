@@ -22,11 +22,8 @@
                     "type": "string"
                 },
                 "info": {
-                    "description": "Additional unspecified metadata about the host Organization.",
-                    "example": {
-                        "additionalInfoKey": "additionalInfoValue"
-                    },
-                    "type": "object"
+                    "$ref": "../../common/beaconCommonComponents.json#/definitions/Info",
+                    "description": "Additional unspecified metadata about the host Organization."
                 },
                 "logoUrl": {
                     "description": "URL to the logo (PNG/JPG/SVG format) of the organization (RFC 3986 format).",
@@ -52,17 +49,20 @@
     "properties": {
         "alternativeUrl": {
             "description": "Alternative URL to the API, e.g. a restricted version of this Beacon (RFC 3986 format).",
-            "example": "http://example.org/wiki/Main_Page",
+            "examples": [
+                "http://example.org/beacon/authenticated"
+            ],
             "type": "string"
         },
         "apiVersion": {
-            "description": "Version of the API provided by the Beacon.",
-            "example": "v2.0",
-            "type": "string"
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/ApiVersion"
         },
         "createDateTime": {
-            "description": "The time the Beacon was created (ISO 8601 format).",
-            "example": "2012-07-19 or 2017-01-17T20:33:40Z",
+            "description": "The date/time the Beacon was created (ISO 8601 format).",
+            "examples": [
+                "2014-07-19",
+                "2017-01-17 20:33:40"
+            ],
             "type": "string"
         },
         "description": {
@@ -77,24 +77,17 @@
                 "dev",
                 "staging"
             ],
-            "example": "dev",
+            "examples": [
+                "dev"
+            ],
             "type": "string"
         },
         "id": {
-            "description": "Unique identifier of the Beacon. Use reverse domain name notation.",
-            "example": "org.ga4gh.Beacon",
-            "type": "string"
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/BeaconId"
         },
         "info": {
-            "description": "Additional unspecified metadata about the Beacon service.",
-            "example": {
-                "additionalInfoKey1": "additionalInfoValue1",
-                "additionalInfoKey2": [
-                    "additionalInfoValue2",
-                    "additionalInfoValue3"
-                ]
-            },
-            "type": "object"
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/Info",
+            "description": "Additional unspecified metadata about the Beacon service."
         },
         "name": {
             "description": "Name of the Beacon.",
@@ -105,13 +98,15 @@
         },
         "updateDateTime": {
             "description": "The time the Beacon was updated in (ISO 8601 format).",
-            "example": "2012-07-19 or 2017-01-17T20:33:40Z",
+            "examples": [
+                "2014-07-19",
+                "2017-01-17 20:33:40"
+            ],
             "type": "string"
         },
         "version": {
-            "description": "Version of the Beacon.",
-            "example": "v0.1",
-            "type": "string"
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/ApiVersion",
+            "description": "TODO: This is a legacy use / duplication?"
         },
         "welcomeUrl": {
             "description": "URL to the welcome page for this Beacon (RFC 3986 format).",

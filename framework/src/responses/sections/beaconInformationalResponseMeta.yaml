@@ -1,12 +1,11 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-description: Meta information about the response.
+description: >-
+  Meta information about the response.
 type: object
 properties:
   beaconId:
-    description: Identifier of the beacon, as defined in `Beacon`.
     $ref: ../../common/beaconCommonComponents.yaml#/definitions/BeaconId
   apiVersion:
-    description: Version of the API.
     $ref: ../../common/beaconCommonComponents.yaml#/definitions/ApiVersion
   returnedSchemas:
     $ref: ../../common/beaconCommonComponents.yaml#/definitions/ListOfSchemas
