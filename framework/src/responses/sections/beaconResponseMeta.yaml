@@ -1,5 +1,6 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-description: Information about the response that could be relevant for the Beacon
+description: >-
+  Information about the response that could be relevant for the Beacon
   client in order to interpret the results.
 type: object
 properties:
