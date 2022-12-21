@@ -13,6 +13,8 @@ properties:
     $ref: ../../common/beaconCommonComponents.yaml#/definitions/ApiVersion
   returnedSchemas:
     $ref: ../../common/beaconCommonComponents.yaml#/definitions/ListOfSchemas
+  isAggregator:
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/IsAggregator
   returnedGranularity:
     description: >-
       Granularity of the Beacon response. Targeted Beacon could respond or not with

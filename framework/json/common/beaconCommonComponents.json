@@ -138,6 +138,11 @@
             "description": "Placeholder to allow the Beacon to return any additional information that is necessary or could be of interest in relation to the query or the entry returned. It is recommended to encapsulate additional informations in this attribute instead of directly adding attributes at the same level than the others in order to avoid collision in the names of attributes in future versions of the specification.",
             "type": "object"
         },
+        "IsAggregator": {
+            "default": false,
+            "description": "Optional flag to indicate if this beacon aggregates data from several beacon instances.",
+            "type": "boolean"
+        },
         "Limit": {
             "default": 10,
             "description": "Size of the page. Use `0` to return all the results or the maximum allowed by the Beacon, if there is any.",

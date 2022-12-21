@@ -24,6 +24,12 @@ definitions:
       network, to disambiguate responses coming from different Beacons.
     type: string
     example: org.example.beacon.v2
+  IsAggregator:
+    description: >-
+      Optional flag to indicate if this beacon aggregates data from several
+      beacon instances.
+    type: boolean
+    default: false
   BeaconError:
     description: Beacon-specific error.
     type: object

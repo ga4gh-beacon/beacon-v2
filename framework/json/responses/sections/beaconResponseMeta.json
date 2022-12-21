@@ -10,6 +10,9 @@
             "$ref": "../../common/beaconCommonComponents.json#/definitions/BeaconId",
             "description": "Identifier of the beacon instance."
         },
+        "isAggregator": {
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/IsAggregator"
+        },
         "receivedRequestSummary": {
             "$ref": "./beaconReceivedRequestSummary.json",
             "description": "Section of the response that summarize the request received as it has been interpreted by the Beacon server."
