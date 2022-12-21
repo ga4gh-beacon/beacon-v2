@@ -8,6 +8,8 @@ properties:
   apiVersion:
     description: Version of the API.
     $ref: ../../common/beaconCommonComponents.yaml#/definitions/ApiVersion
+  isAggregator:
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/IsAggregator
   returnedSchemas:
     $ref: ../../common/beaconCommonComponents.yaml#/definitions/ListOfSchemas
 $comment: 'TO REVIEW: the required properties below results in a warning in the example.'

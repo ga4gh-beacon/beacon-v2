@@ -12,6 +12,9 @@
             "$ref": "../../common/beaconCommonComponents.json#/definitions/BeaconId",
             "description": "Identifier of the beacon, as defined in `Beacon`."
         },
+        "isAggregator": {
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/IsAggregator"
+        },
         "returnedSchemas": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/ListOfSchemas"
         }
