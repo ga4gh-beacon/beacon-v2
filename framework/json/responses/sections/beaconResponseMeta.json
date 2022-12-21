@@ -3,27 +3,23 @@
     "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results.",
     "properties": {
         "apiVersion": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/ApiVersion",
-            "description": "Version of the Beacon API."
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/ApiVersion"
         },
         "beaconId": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/BeaconId",
-            "description": "Identifier of the beacon instance."
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/BeaconId"
         },
         "receivedRequestSummary": {
-            "$ref": "./beaconReceivedRequestSummary.json",
-            "description": "Section of the response that summarize the request received as it has been interpreted by the Beacon server."
+            "$ref": "./beaconReceivedRequestSummary.json"
         },
         "returnedGranularity": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/Granularity",
-            "description": "Granularity of the Beacon response. Targeted Beacon could respond or not with the requested granularity. E.g. record level granularity could be requested, but the Beacon could respond only with boolean or count results."
+            "description": "Granularity of the Beacon response which may differ from the requested one. For details see the prototype definition."
         },
         "returnedSchemas": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/ListOfSchemas"
         },
         "testMode": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/TestMode",
-            "description": "Used for indicating that a response is returned in a test context. Purposed for compliance testing. Information returned could be fake."
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/TestMode"
         }
     },
     "required": [
