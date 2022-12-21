@@ -20,6 +20,11 @@ definitions:
         description: id of the resultset
         type: string
         example: datasetA
+      sourceBeaconId:
+        description: >-
+          Optional identifier of the beacon this resultSet was collected from,
+          especially for use in beacon aggregators.
+        $ref: ../../common/beaconCommonComponents.yaml#/definitions/BeaconId
       setType:
         description: Entry type of resultSet. It SHOULD MATCH an entry type declared
           as collection in the Beacon configuration.
