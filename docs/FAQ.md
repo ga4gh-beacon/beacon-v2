@@ -6,25 +6,34 @@
     original protocol) without any use of the model, just by providing a well-formed
     JSON response upon a request [very similar to the (pre-)v1 allele request](/variant-queries/#beacon-sequence-queries).
 
+
+    ##### Minimal Example Request
+
+    This example is for a minimal SNV-type variant query.
+
+    ```
+    /beacon/g_variants/?referenceName=refseq:NC_000017.11&start=7577120&referenceBases=G&alternateBases=A
+    ```
+
+    ##### Example Boolean Response
+
+    In this minimal response to the query above the beacon indicates that its default
+    response is Boolean and that it could interpreted it against the `genomicVariant` entity and in the context of the same Beacon version.
+
+    In principle one could launch a Beacon instance using the example response document as a template
+    in whatever server environment one has at hand. However, a proper Beacon v2
+    installation also has to provide informational endpoints (`/info`, `/map` ...)
+    to allow it's integration through [aggregators](/networks/).
+
     ```json
     {
       "meta": {
         "apiVersion": "v2.0.0",
         "beaconId": "org.progenetix.beacon",
-        "createDateTime": "2015-11-13 00:00:00",
         "receivedRequestSummary": {
           "apiVersion": "v2.0.0",
-          "datasetIds": [
-            "progenetix"
-          ],
-          "filters": [],
-          "includeResultsetResponses": "HIT",
           "pagination": {
             "limit": 2000,
-            "range": [
-              0,
-              2
-            ],
             "skip": 0
           },
           "requestedGranularity": "boolean",
@@ -34,9 +43,8 @@
               "schema": "https://progenetix.org/services/schemas/genomicVariant/"
             }
           ],
-          "variantPars": {
+          "requestParameters": {
             "alternateBases": "A",
-            "assemblyId": "GRCh38",
             "referenceBases": "G",
             "referenceName": "refseq:NC_000017.11",
             "start": [
@@ -50,8 +58,7 @@
             "entityType": "genomicVariant",
             "schema": "https://progenetix.org/services/schemas/genomicVariant/"
           }
-        ],
-        "updateDateTime": "2022-04-12 08:45:00"
+        ]
       },
       "responseSummary": {
         "exists": true
@@ -59,7 +66,7 @@
     }
     ```
  
-    ##### last change 2022-12-21 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
+    ##### last change 2022-12-22 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
 
 ??? faq "Is it `Beacon` or `beacon`?"
 
