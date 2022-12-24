@@ -23,32 +23,28 @@ The Beacon v2 specification is written in [YAML](https://yaml.org). The original
         framework
         |-- json
         |   |-- common
-        |   |   |-- examples
-        |   |   `-- validation
+        |   |   `-- examples
         |   |-- configuration
         |   |   `-- examples
         |   |-- requests
         |   |   |-- examples-fullDocuments
-        |   |   |-- examples-sections
-        |   |   `-- validation
+        |   |   `-- examples-sections
         |   `-- responses
+        |       |-- sections
         |       |-- examples-fullDocuments
-        |       |-- examples-sections
-        |       `-- sections
+        |       `-- examples-sections
         `-- src
             |-- common
-            |   |-- examples
-            |   `-- validation
+            |   `-- examples
             |-- configuration
             |   `-- examples
             |-- requests
             |   |-- examples-fullDocuments
-            |   |-- examples-sections
-            |   `-- validation
+            |   `-- examples-sections
             `-- responses
+                |-- sections
                 |-- examples-fullDocuments
-                |-- examples-sections
-                `-- sections
+                `-- examples-sections
 
 === "Models"
 
