@@ -18,7 +18,7 @@ Let's say that you have your data organized and structured in a database (e.g. [
 
  * [European Genome-Phenome Archive Beacon](https://ga4gh-approval-beacon.ega-archive.org/api/info)
  * [Cafe Variome](https://beaconv2.cafevariome.org/form)
- * [Progenetix Beacon+](https://progenetix.org/beaconplus-instances/beaconplus)
+ * [`bycon` Python stack](http://bycon.progenetix.org) driving full featured v2 under the [Progenetix](https://progenetix.org) resource
  * [Fundacion Progreso y Salud Beacon v2 API](https://csvs-beacon.clinbioinfosspa.es/csvs/ga4ghbeacon/v2/api/)
  * [CNAG Beacon v2 API](https://playground.rd-connect.eu/beacon2/api)
 
