@@ -340,13 +340,14 @@ values to underlying genomic variations had not been precisely defined.
 
 | Beacon | [VCF](https://samtools.github.io/hts-specs/) | SO | [EFO](http://www.ebi.ac.uk/efo/EFO_0030063) | [VRS](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) | Notes   |
 | -------|-----|----|-----|-----|---------|
-| `DUP`    | `DUP`<br/>`SVCLAIM=D`[^1] | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain | [`EFO:0030070`](http://www.ebi.ac.uk/efo/EFO_0030070) copy&nbsp;number&nbsp;gain | [`low-level gain`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) (implicit) | a sequence alteration whereby the copy number of a given genomic region is greater than the reference sequence |
-| `DUP`    | `DUP`<br/>`SVCLAIM=D`[^1] | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain |[`EFO:0030071`](http://www.ebi.ac.uk/efo/EFO_0030071) low-level copy number gain | [`low-level gain`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) |  |
-| `DUP`    | `DUP`<br/>`SVCLAIM=D`[^1] | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain |[`EFO:0030072`](http://www.ebi.ac.uk/efo/EFO_0030072) high-level copy number gain | [`high-level gain`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber)  | commonly but not consistently used for >=5 copies on a bi-allelic genome region |
-| `DUP`    | `DUP`<br/>`SVCLAIM=D`[^1] | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain |[`EFO:0030073`](http://www.ebi.ac.uk/efo/EFO_0030073) focal genome amplification | [`high-level gain`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber)  | commonly but not consistently used for >=5 copies on a bi-allelic genome region, of limited size (operationally max. 1-5Mb) |
-| `DEL`    | `DEL`<br/>`SVCLAIM=D`[^1] | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | [`EFO:0030067`](http://www.ebi.ac.uk/efo/EFO_0030067) copy number loss | [`partial loss`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) (implicit) | a sequence alteration whereby the copy number of a given genomic region is smaller than the reference sequence | 
-| `DEL`    | `DEL`<br/>`SVCLAIM=D`[^1] | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | [`EFO:0030068`](http://www.ebi.ac.uk/efo/EFO_0030068) low-level copy number loss | [`partial loss`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) | |
-| `DEL`    | `DEL`<br/>`SVCLAIM=D`[^1] | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | [`EFO:0030069`](http://www.ebi.ac.uk/efo/EFO_0030069) complete genomic deletion | [`complete loss`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) | complete genomic deletion (e.g. homozygous deletion on a bi-allelic genome region) |
+| `DUP`[^1]    | `DUP`<br/>`SVCLAIM=D`[^2] | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain | [`EFO:0030070`](http://www.ebi.ac.uk/efo/EFO_0030070) copy&nbsp;number&nbsp;gain | [`low-level gain`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) (implicit) | a sequence alteration whereby the copy number of a given genomic region is greater than the reference sequence |
+| `DUP`[^1]    | `DUP`<br/>`SVCLAIM=D`[^2] | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain |[`EFO:0030071`](http://www.ebi.ac.uk/efo/EFO_0030071) low-level copy number gain | [`low-level gain`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) |  |
+| `DUP`[^1]    | `DUP`<br/>`SVCLAIM=D`[^2] | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain |[`EFO:0030072`](http://www.ebi.ac.uk/efo/EFO_0030072) high-level copy number gain | [`high-level gain`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber)  | commonly but not consistently used for >=5 copies on a bi-allelic genome region |
+| `DUP`[^1]    | `DUP`<br/>`SVCLAIM=D`[^2] | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain |[`EFO:0030073`](http://www.ebi.ac.uk/efo/EFO_0030073) focal genome amplification | [`high-level gain`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber)  | commonly but not consistently used for >=5 copies on a bi-allelic genome region, of limited size (operationally max. 1-5Mb) |
+| `DEL`[^1]    | `DEL`<br/>`SVCLAIM=D`[^2] | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | [`EFO:0030067`](http://www.ebi.ac.uk/efo/EFO_0030067) copy number loss | [`partial loss`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) (implicit) | a sequence alteration whereby the copy number of a given genomic region is smaller than the reference sequence | 
+| `DEL`[^1]    | `DEL`<br/>`SVCLAIM=D`[^2] | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | [`EFO:0030068`](http://www.ebi.ac.uk/efo/EFO_0030068) low-level copy number loss | [`partial loss`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) | |
+| `DEL`[^1]    | `DEL`<br/>`SVCLAIM=D`[^2] | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | [`EFO:0030069`](http://www.ebi.ac.uk/efo/EFO_0030069) complete genomic deletion | [`complete loss`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) | complete genomic deletion (e.g. homozygous deletion on a bi-allelic genome region) |
+
 
 ## Query Parameter Change Log
 
@@ -377,6 +378,12 @@ recommended for query forms
 	and `alternateBases`
 
 
-[^1]: VCFv4.4 introduces an `SVCLAIM` field to disambiguate between _in situ_ events (such as
+[^1]: While the use of VCF derived (`DUP`, `DEL`) values had been introduced with
+beacon v1, usage of these terms has always been a _recommendation_ rather than an integral part
+of the API. We now encourage the support of more specific terms (particularly EFO)
+by Beacon developers. As example, the Progentix Beacon API uses EFO terms but
+provides an internal term expansion for legacy `DUP`, `DEL` support.
+[^2]: VCFv4.4 introduces an `SVCLAIM` field to disambiguate between _in situ_ events (such as
 tandem duplications; known _adjacency_/ _break junction_: `SVCLAIM=J`) and events where e.g. only the
 change in _abundance_ / _read depth_ (`SVCLAIM=D`) has been determined. Both **J** and **D** flags can be combined.
+
