@@ -36,7 +36,7 @@ Let's say that you have a solution to organize your data but you don't have the 
 
 Let's say that you have your data _somewhat_ structured (you may have Excel files, PDFs, VCFs... or maybe a SQL database, or an [EHR](https://en.wikipedia.org/wiki/Electronic_health_record) solution with phenoclinic information). 
 
-You want to "beaconize" your data to be part of a larger ecosystem, but you're unsure where to start, and/or don't want to invest a lot of resources because you are still unsure if the whole thing will pay off. Well, you're a not alone! Most centers are in this situation. For that reason at [CRG](https://www.crg.eu) we developed the **Beacon v2 Reference Implementation**.
+You want to "beaconize" your data to be part of a larger ecosystem, but you're unsure where to start, and/or don't want to invest a lot of resources because you are still unsure if the whole thing will pay off. Well, you're a not alone! Most centers are in this situation. For that reason at [CRG](https://www.crg.eu) we developed the [**Beacon v2 Reference Implementation**](https://b2ri-documentation.readthedocs.io).
 
 !!! Important
-    People that download and install _B2RI_ are named **Beacon v2 deployers**.
+    People that download and install _B2RI_ or another pre-packaged solution are named **Beacon v2 deployers**.
