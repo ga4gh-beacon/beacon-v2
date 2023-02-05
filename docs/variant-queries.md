@@ -381,7 +381,7 @@ recommended for query forms
 [^1]: While the use of VCF derived (`DUP`, `DEL`) values had been introduced with
 beacon v1, usage of these terms has always been a _recommendation_ rather than an integral part
 of the API. We now encourage the support of more specific terms (particularly EFO)
-by Beacon developers. As example, the Progentix Beacon API uses EFO terms but
+by Beacon developers. As example, the Progentix Beacon API [uses EFO terms](http://progenetix.org/search/) but
 provides an internal term expansion for legacy `DUP`, `DEL` support.
 [^2]: VCFv4.4 introduces an `SVCLAIM` field to disambiguate between _in situ_ events (such as
 tandem duplications; known _adjacency_/ _break junction_: `SVCLAIM=J`) and events where e.g. only the
