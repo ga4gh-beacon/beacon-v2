@@ -41,6 +41,8 @@ definitions:
     description: >-
       Alternate bases for this variant (starting from `start`).
       * Accepted values: `[ACGTN]*`
+      * The current specification supports allelic variants, **not** genotype queries
+        (i.e. multiple co-occurring alleles).
       * N is a wildcard, that denotes the position of any base,
         and can be used as a standalone base of any type or within a partially known
         sequence. As example, a query of `ANNT` the Ns can take take any form of [ACGT]
@@ -49,6 +51,5 @@ definitions:
         deleted sequence being indicated in `ReferenceBases`
       * Categorical variant queries, e.g. such *not* being represented through
         sequence & position, make use of the `variantType` parameter.
-      * either `alternateBases` or `variantType` is required.
     type: string
     pattern: ^([ACGTUNRYSWKMBDHV\-\.]*)$

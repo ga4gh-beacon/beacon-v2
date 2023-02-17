@@ -67,11 +67,14 @@ g_variant:
         * DEL: deletion of sequence following `start`
         The Beacon model is not prescriptive with regard to the values allowed
         for `variantType` with use of extended types (such as from `EFO:0030063`)
-        being possible. However, a support for the basic CNV types above - where
+        being permitted. However, a support for the basic CNV types above - where
         represented in the data - is recommended.
-        Either `alternateBases` or `variantType` is required, with the exception
-        of range queries (single `start` and `end` parameters).
       type: string
+      examples:
+        - EFO:0030070
+        - DUP
+        - DEL
+        - EFO:0030069
     variantMinLength:
       description: >-
         * Minimum length in bases of a genomic variant
