@@ -555,17 +555,18 @@
             "$ref": "#/definitions/VariantLevelData"
         },
         "variation": {
-            "oneOf": [
-                {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/MolecularVariation"
-                },
-                {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/SystemicVariation"
-                },
-                {
-                    "$ref": "#/definitions/LegacyVariation"
-                }
-            ]
+            "type": "array",
+            "description": "An array of variations, starting with the reference allele and then the alternate alleles. Alleles can be referenced by their index in the array."
+            "items": {
+                "oneOf": [
+                    {
+                        "$ref": "https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/MolecularVariation"
+                    },
+                    {
+                        "$ref": "https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/SystemicVariation"
+                    }
+                ]
+            }
         }
     },
     "required": [
