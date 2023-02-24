@@ -100,6 +100,14 @@
                             "label": "homozygous"
                         },
                         {
+                            "id": "GENO:0000458",
+                            "label": "simple heterozygous"
+                        },
+                        {
+                            "id": "GENO:0000402",
+                            "label": "compound heterozygous"
+                        },
+                        {
                             "id": "GENO:0000604",
                             "label": "hemizygous X-linked"
                         }
