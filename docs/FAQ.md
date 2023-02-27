@@ -98,7 +98,7 @@
     ##### last change 2022-12-14 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
 
 
-??? faq "How can I handle haplotype queries & representation in Beacon v2?"
+??? faq "How can I handle haplotype queries & representation in Beacon v2?"<a id="haplotypes"> </a>"
 
     #### Queries
 
