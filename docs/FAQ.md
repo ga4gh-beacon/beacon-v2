@@ -97,3 +97,34 @@
 
     ##### last change 2022-12-14 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
 
+
+??? faq "How can I handle haplotype queries & representation in Beacon v2?"
+
+    #### Queries
+
+    The Beacon framework currently (_v2.0_ and earlier) considers genomic
+    variants to be _allelic_ and does not support the query for multiple alleles
+    or "haplotype shorthand expressions" (e.g. `C,T`).
+
+    **Workarounds** In case of a specific need for haplotype queries implementers
+    of a given beacon with control of its data content in principle can extend their
+    query model to support shorthand haploype expressions, as long as they support
+    the standard format, too. However, such an approach may be superseeded or in conflict
+    with future direct protocol support.
+
+    An approach in line with the current protocol would be to query for one allelic
+    variant with a record-level `genomicVariation` response, and then query the
+    retrieved variants individually by their `id` in combination with the second
+    allele.
+
+    #### Variant representation
+
+    As with queries the Beacon "legacy" format does not support haplotype representation
+    but would represent each allelic variation separately. The same is true for the
+    VRSified variant representation which for v2.0 corresponds to VRS v1.2.
+    However, draft versions of the VRS standard (will) address haplotype and genotype
+    representations and will be adopted by Beacon v2.n after reaching a release state.
+
+
+
+
