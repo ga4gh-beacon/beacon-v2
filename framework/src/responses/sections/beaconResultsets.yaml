@@ -44,6 +44,9 @@ definitions:
         items:
           type: object
         minItems: 0
+      beaconId:
+        description: The Id of a Beacon that generated this result.
+        ref: ../../common/beaconCommonComponents.yaml#/definitions/BeaconId
     required:
       - id
       - setType
