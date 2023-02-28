@@ -36,6 +36,10 @@
                     "default": "dataset",
                     "description": "Entry type of resultSet. It SHOULD MATCH an entry type declared as collection in the Beacon configuration.",
                     "type": "string"
+                },
+                "beaconId": {
+                    "$ref": "../../common/beaconCommonComponents.json#/definitions/BeaconId",
+                    "description": "The Id of a Beacon that generated this result."
                 }
             },
             "required": [
