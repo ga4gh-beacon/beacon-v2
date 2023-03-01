@@ -1,6 +1,7 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Pedigree
-description: Pedigree studies in which the individual is part of.
+description: >-
+  Pedigree studies in which the individual is part of.
 type: object
 properties:
   id:
@@ -15,11 +16,12 @@ properties:
     example: 10
   members:
     type: array
-    description: 'List of members of the pedigree. If the current pedigree definition
+    description: >-
+      List of members of the pedigree. If the current pedigree definition
       is attached to the proband, it contains the whole list of pedigree members,
       including the proband. If the definition is attached to an individual different
       than the proband, it only contains two entries: one that describes that member,
-      e.g. the proband mother or father, and one that points to the proband.'
+      e.g. the proband mother or father, and one that points to the proband.
     items:
       $ref: '#/definitions/pedigreeMember'
     minItems: 1
@@ -28,7 +30,8 @@ definitions:
     type: object
     properties:
       memberId:
-        description: Identifier of the individual. The individual could be part of
+        description: >-
+          Identifier of the individual. The individual could be part of
           the same Beacon datasets or not, in which case the information here is meant
           to complete the pedigree. If the individual is also in the dataset use that
           Individual ID. If it is not the in the dataset, use a non-collading ID,
@@ -39,9 +42,9 @@ definitions:
           - Pedigree1001-m1
           - Ind0012122
       role:
-        description: Pedigree role, defined as relationship to proband. Value from
-          Family Member term (NCIT:C41256), e.g. "proband" (NCIT:C64435),"identical
-          twin" (NCIT:C73429), "mother" (NCIT:C25189).
+        description: >-
+          Pedigree role, defined as relationship to proband with a recommended
+          value from `Family Member` (NCIT:C41256)
         $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
         examples:
           - id: NCIT:C64435

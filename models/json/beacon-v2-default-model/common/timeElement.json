@@ -1,7 +1,7 @@
 {
     "$comments": "If using an ontology class the use of NCIT Age Group ontology term (NCIT:C20587) descendants is recommended.",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Definition of a wrapper for various time descriptors. This follows the Phenopackets structure https://github.com/phenopackets/phenopacket-schema/blob/v2/docs/time-element.rst",
+    "description": "Definition of a wrapper for various time descriptors. This follows the Phenopackets `TimeElement` structure",
     "oneOf": [
         {
             "$ref": "./age.json"

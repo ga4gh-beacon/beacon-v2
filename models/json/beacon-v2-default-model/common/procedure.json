@@ -2,10 +2,6 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Class describing a clinical procedure or intervention. Provenance: GA4GH Phenopackets v2 `Procedure`",
     "properties": {
-        "ageAtProcedure": {
-            "$ref": "./timeElement.json",
-            "description": "Compares to Phenopackets v2 `Procedure.performed`"
-        },
         "bodySite": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
             "description": "Specific body site where the procedure was performed. Recommended valuee from Uber-anatomy ontology (UBERON)",
@@ -20,15 +16,9 @@
                 }
             ]
         },
-        "dateOfProcedure": {
-            "description": "Date of procedure, in ISO8601 format",
-            "example": "2010-07-10",
-            "format": "date",
-            "type": "string"
-        },
-        "procedureCode": {
+        "code": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
-            "description": "Clinical procedure performed with recommended values from Medical Action Ontology (MAXO) 'Medical action' term tree (MAXO:0000001). Compares to Phenopackets v2 `Procedure.code`",
+            "description": "Clinical procedure performed with recommended values from Medical Action Ontology (MAXO) `Medical action` term tree (MAXO:0000001).",
             "examples": [
                 {
                     "id": "MAXO:0001175",
@@ -43,10 +33,20 @@
                     "label": "needle biopsy"
                 }
             ]
+        },
+        "dateOfProcedure": {
+            "description": "Date of procedure, in ISO8601 format",
+            "example": "2010-07-10",
+            "format": "date",
+            "type": "string"
+        },
+        "performed": {
+            "$ref": "./timeElement.json",
+            "description": "Compares to Phenopackets v2 `Procedure.performed`"
         }
     },
     "required": [
-        "procedureCode"
+        "code"
     ],
     "title": "Procedure",
     "type": "object"

@@ -6,10 +6,12 @@ properties:
   unit:
     $ref: ./commonDefinitions.yaml#/definitions/Unit
   value:
-    description: The value of the quantity in the units
+    description: >-
+      The value of the quantity in the units
     type: number
   referenceRange:
-    description: The normal range for the value
+    description: >-
+      The normal range for the value
     $ref: ./referenceRange.yaml
     example: {}
 required:

@@ -104,7 +104,7 @@
         },
         "Sex": {
             "$ref": "../../../../framework/json/common/ontologyTerm.json",
-            "description": "Sex of the individual. Recommended values from NCIT General Qualifier (NCIT:C27993): \"unknown\" (not assessed or not available) - NCIT:C17998; \"female\" - NCIT:C16576;  \"male\" - NCIT:C20197",
+            "description": "Sex of the individual. Recommended values from NCIT General Qualifier (NCIT:C27993): \"unknown\" (not assessed or not available) - NCIT:C17998; \"female\" - NCIT:C16576;  \"male\" - NCIT:C20197'",
             "examples": [
                 {
                     "id": "NCIT:C16576",
@@ -131,7 +131,7 @@
         },
         "Unit": {
             "$ref": "../../../../framework/json/common/ontologyTerm.json",
-            "description": "The kind of unit. Recommended from NCIT Unit of Category ontology term (NCIT:C42568) descendants",
+            "description": "The kind of unit. Recommended from NCIT Unit of Category ontology term (NCIT:C42568) descendants.",
             "examples": [
                 {
                     "id": "NCIT:C70575",

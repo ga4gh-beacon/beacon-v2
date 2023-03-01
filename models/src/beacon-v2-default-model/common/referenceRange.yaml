@@ -4,18 +4,21 @@ description: Definition of a range class.
 type: object
 properties:
   unit:
-    description: The kind of unit.
+    description: >-
+      The kind of unit.
     $ref: ./commonDefinitions.yaml#/definitions/Unit
     examples:
       - id: NCIT:C49670
         label: Millimeter of Mercury
   low:
-    description: Lower range end of normal
+    description: >-
+      Lower range end of normal
     type: number
     examples:
       - 85
   high:
-    description: Upper range end of normal
+    description: >-
+      Upper range end of normal
     type: number
     examples:
       - 135

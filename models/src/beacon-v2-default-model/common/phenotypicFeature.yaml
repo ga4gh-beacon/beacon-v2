@@ -4,7 +4,8 @@ description: Used to describe a phenotype that characterizes the subject or bios
 type: object
 properties:
   featureType:
-    description: Term denoting the phenotypic feature, preferably using a value from
+    description: >-
+      Term denoting the phenotypic feature, preferably using a value from
       Human Phenotype Ontology (HPO)
     $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     examples:
@@ -17,7 +18,7 @@ properties:
   excluded:
     description: >-
       Flag to indicate whether the phenotypic feature was observed or not. Default
-      is ‘false’, in other words the phenotype was observed. Therefore it is only
+      is `false`, in other words the phenotype was observed. Therefore it is only
       used in cases where the phenotype was looked for but found to be absent.
       More formally, this modifier indicates the logical negation of the OntologyClass
       used in the `featureType` field.
@@ -57,7 +58,8 @@ properties:
       - id: HP:0012826
         label: Moderate
   notes:
-    description: Unstructured text to describe additional properties of this phenotypic
+    description: >-
+      Unstructured text to describe additional properties of this phenotypic
       feature.
     type: string
     example: Some free text

@@ -3,18 +3,18 @@
     "additionalProperties": true,
     "description": "Definition of an external reference class. Provenance: GA4GH Phenopackets v2 `ExternalReference`",
     "properties": {
-        "id": {
-            "description": "An application specific identifier. RECOMMENDED.",
-            "example": "PMID:34054918",
-            "type": "string"
-        },
-        "notes": {
-            "description": "An optional text descriptor. Renamed compared to GA4GH Phenopackets v2 `ExternalReference.description`",
+        "description": {
+            "description": "An optional text descriptor.",
             "example": "Signatures of Discriminative Copy Number Aberrations in 31 Cancer Subtypes",
             "type": "string"
         },
+        "id": {
+            "description": "An application specific identifier. Highly recommended.",
+            "example": "PMID:34054918",
+            "type": "string"
+        },
         "reference": {
-            "description": "A url.",
+            "description": "A URL.",
             "example": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8155688/",
             "type": "string"
         }

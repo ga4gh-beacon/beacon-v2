@@ -4,7 +4,8 @@ description: Definitions for concepts used in several entry types, but that havi
   only one property are not complex enough to require a full independent schema document.
 definitions:
   Sex:
-    description: 'Sex of the individual. Recommended values from NCIT General Qualifier
+    description: >-
+      Sex of the individual. Recommended values from NCIT General Qualifier
       (NCIT:C27993): "unknown" (not assessed or not available) - NCIT:C17998; "female"
       - NCIT:C16576;  "male" - NCIT:C20197'
     $ref: ../../../../framework/json/common/ontologyTerm.yaml
@@ -54,7 +55,8 @@ definitions:
       - '1999-08-05T17:21:00+01:00'
       - '2002-09-21T02:37:00-08:00'
   Ethnicity:
-    description: Ethnic background of the individual. Recommended is the use of a
+    description: >-
+      Ethnic background of the individual. Recommended is the use of a
       value from NCIT Race (NCIT:C17049) ontology term descendants, e.g. NCIT:C126531
       (Latin American). A geographic ancestral origin category that is assigned to
       a population group based mainly on physical characteristics that are thought
@@ -76,7 +78,8 @@ definitions:
       - id: NCIT:C104495
         label: Other race
   GeographicLocation:
-    description: Country or region of origin of the individual (birthplace or residence
+    description: >-
+      Country or region of origin of the individual (birthplace or residence
       place regardless of ethnic origin). Value from GAZ Geographic Location ontology
       (GAZ:00000448), e.g. GAZ:00002459 (United States of America).
     $ref: ../../../../framework/json/common/ontologyTerm.yaml
@@ -90,9 +93,11 @@ definitions:
       - id: GAZ:00000460
         label: Eurasia
   SeverityLevel:
-    description: 'Severity as applicable to phenotype or disease observed. Recommended
+    description: >-
+      Severity as applicable to phenotype or disease observed. Recommended
       are values from Human Phenotype Ontology (HP:0012824), e.g `mild`. The intensity
-      or degree of a manifestation. Source: Phenopackets v2'
+      or degree of a manifestation.
+      Source: Phenopackets v2
     $ref: ../../../../framework/json/common/ontologyTerm.yaml
     examples:
       - id: HP:0012828
@@ -106,8 +111,9 @@ definitions:
       - id: HP:0012827
         label: Borderline
   Unit:
-    description: The kind of unit. Recommended from NCIT Unit of Category ontology
-      term (NCIT:C42568) descendants
+    description: >-
+      The kind of unit. Recommended from NCIT Unit of Category ontology
+      term (NCIT:C42568) descendants.
     $ref: ../../../../framework/json/common/ontologyTerm.yaml
     examples:
       - id: NCIT:C70575

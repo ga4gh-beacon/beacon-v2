@@ -18,7 +18,7 @@
         },
         "routeOfAdministration": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
-            "description": "Route of treatment. Value from NCIT Route of Administration tree (NCIT:C38114).",
+            "description": "Route of treatment. Value from NCIT Route of Administration tree (NCIT:C38114) recommended.",
             "examples": [
                 {
                     "id": "NCIT:C38304",
@@ -32,7 +32,7 @@
         },
         "treatmentCode": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
-            "description": "Code of treatment. Value from NCIT or any relevant ontology. Compares to `agent` in Phenopackets v2",
+            "description": "Code of treatment with a value from NCIT or any relevant ontology. Compares to `agent` in Phenopackets v2",
             "examples": [
                 {
                     "id": "NCIT:C287",

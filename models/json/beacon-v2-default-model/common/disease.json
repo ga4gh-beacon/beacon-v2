@@ -33,21 +33,21 @@
                 }
             ]
         },
-        "diseaseCode": {
+        "diseaseStage": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
-            "description": "Disease identifier. Value from disease ontologies such as HPO, OMIM, Orphanet, MONDO, e.g. lactose intolerance (HP:0004789, ICD10CM:E73). Provenance: GA4GH Phenopackets v2 `Disease.term`",
+            "description": "Ontology term from Ontology for General Medical Science (OGMS) recommended, e.g. acute onset (OGMS:0000119). Provenance: GA4GH Phenopackets v2",
             "examples": [
                 {
-                    "id": "HP:0004789",
-                    "label": "lactose intolerance"
+                    "id": "OGMS:0000119",
+                    "label": "acute onset"
                 },
                 {
-                    "id": "ICD10CM:E73",
-                    "label": "lactose intolerance"
+                    "id": "OGMS:0000117",
+                    "label": "asymptomatic"
                 },
                 {
-                    "id": "OMIM:164400",
-                    "label": "Spinocerebellar ataxia 1"
+                    "id": "OGMS:0000106",
+                    "label": "remission"
                 }
             ]
         },
@@ -78,27 +78,27 @@
                 }
             ]
         },
-        "stage": {
+        "term": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
-            "description": "Ontology term from Ontology for General Medical Science (OGMS), e.g. acute onset (OGMS:0000119). Provenance: GA4GH Phenopackets v2 `Disease.disease_stage`",
+            "description": "Disease identifier. Value from disease ontologies such as HPO, OMIM, Orphanet, MONDO, e.g. lactose intolerance (HP:0004789, ICD10CM:E73). Provenance: Phenopackets v2",
             "examples": [
                 {
-                    "id": "OGMS:0000119",
-                    "label": "acute onset"
+                    "id": "HP:0004789",
+                    "label": "lactose intolerance"
                 },
                 {
-                    "id": "OGMS:0000117",
-                    "label": "asymptomatic"
+                    "id": "ICD10CM:E73",
+                    "label": "lactose intolerance"
                 },
                 {
-                    "id": "OGMS:0000106",
-                    "label": "remission"
+                    "id": "OMIM:164400",
+                    "label": "Spinocerebellar ataxia 1"
                 }
             ]
         }
     },
     "required": [
-        "diseaseCode"
+        "term"
     ],
     "title": "Disease",
     "type": "object"

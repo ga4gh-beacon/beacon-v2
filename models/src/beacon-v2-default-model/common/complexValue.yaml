@@ -12,15 +12,17 @@ properties:
 definitions:
   TypedQuantity:
     properties:
-      quantityType:
-        description: OntologyClass to describe the type of the measurement. Renamed
-          compared to GA4GH Phenopackets v2 `ComplexValue.TypedQuantity.type`
+      type:
+        description: >-
+          OntologyClass to describe the type of the measurement.
+          Source: Phenopackets v2
         $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
         example:
           id: NCIT:C25298
           label: Systolic Blood Pressure
       quantity:
-        description: Quantity denoting the outcome of the measurement
+        description: >-
+          Quantity denoting the outcome of the measurement
         $ref: ./quantity.yaml
         example:
           quentity:
@@ -28,5 +30,5 @@ definitions:
               id: NCIT:C49670
               label: Millimeter of Mercury
     required:
-      - quantityType
+      - type
       - quantity

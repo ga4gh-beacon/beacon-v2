@@ -1,6 +1,8 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Value
-description: 'Definition of a value class. Provenance: GA4GH Phenopackets v2 `Value`'
+description: >-
+  Definition of a value class.
+  Provenance: Phenopackets v2
 type: object
 oneOf:
   - $ref: ./quantity.yaml

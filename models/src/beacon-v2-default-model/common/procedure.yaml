@@ -4,10 +4,10 @@ description: 'Class describing a clinical procedure or intervention. Provenance:
   Phenopackets v2 `Procedure`'
 type: object
 properties:
-  procedureCode:
-    description: Clinical procedure performed with recommended values from Medical
-      Action Ontology (MAXO) 'Medical action' term tree (MAXO:0000001). Compares to
-      Phenopackets v2 `Procedure.code`
+  code:
+    description: >-
+      Clinical procedure performed with recommended values from Medical
+      Action Ontology (MAXO) `Medical action` term tree (MAXO:0000001).
     $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     examples:
       - id: MAXO:0001175
@@ -30,8 +30,8 @@ properties:
     type: string
     format: date
     example: '2010-07-10'
-  ageAtProcedure:
+  performed:
     description: Compares to Phenopackets v2 `Procedure.performed`
     $ref: ./timeElement.yaml
 required:
-  - procedureCode
+  - code

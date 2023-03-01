@@ -1,14 +1,22 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Age range definition. Provenance: GA4GH Phenopackets v2 `AgeRange`",
+    "description": "Age range definition. Provenance: Phenopackets v2",
     "properties": {
         "end": {
             "$ref": "./age.json",
-            "description": "Represents age as an ISO8601 duration (e.g., P59Y)."
+            "description": "Age represented as an ISO8601 duration.",
+            "examples": [
+                "P49Y",
+                "P12M"
+            ]
         },
         "start": {
             "$ref": "./age.json",
-            "description": "Represents age as an ISO8601 duration (e.g., P18Y)."
+            "description": "Age represented as an ISO8601 duration.",
+            "examples": [
+                "P18Y",
+                "P55Y4M3D"
+            ]
         }
     },
     "title": "AgeRange",

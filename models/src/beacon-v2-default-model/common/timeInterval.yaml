@@ -1,8 +1,9 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: TimeInterval
-description: Time interval with start and end defined as ISO8601 time stamps.
+description: >-
+  Time interval with start and end defined as ISO8601 time stamps.
+  Source: Phenopackets v2
 type: object
-$comments: From https://github.com/phenopackets/phenopacket-schema/blob/v2/docs/time-interval.rst
 properties:
   start:
     $ref: ./commonDefinitions.yaml#/definitions/Timestamp

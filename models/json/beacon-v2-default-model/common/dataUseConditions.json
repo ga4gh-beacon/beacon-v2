@@ -5,9 +5,6 @@
         "DUODataUse": {
             "allOf": [
                 {
-                    "description": "Data Use Ontology codes and additional information associated with a data object (e.g. sample, dataset)."
-                },
-                {
                     "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
                 },
                 {
@@ -40,6 +37,7 @@
                     "type": "object"
                 }
             ],
+            "description": "Data Use Ontology codes and additional information associated with a data object (e.g. sample, dataset).",
             "examples": [
                 {
                     "id": "DUO:0000007",
