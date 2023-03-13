@@ -8,9 +8,11 @@ With growing interest from the community in the implementation of the Beacon pro
 into resources and workflows, the major 2.0 release in 2022 introduced a large range of
 [new features](what-is-beacon-v2.md) which were considered important by the community.
 
-With the release of Beacon v2 implementations of v1 and earlier are not longer supported.
-Deployers of Beacon instances or networks are advised to migrate to v2 of the
-standard. Here the functionality of Beacon v1 [can be easily implemented in v2](/FAQ/#v1-emulation). 
+!!! Warn "Move to Beacon v2"
+
+    With the release of Beacon v2 implementations of v1 and earlier are not longer supported.
+    Deployers of Beacon instances or networks are advised to migrate to v2 of the
+    standard. The functionality of Beacon v1 [can be easily implemented in v2](/FAQ/#v1-emulation). 
 
 <figure markdown>
   ![Beacon v2 Cartoon](img/Beacon-Networks-v2-graphics/Beacon-Networks-v2-graphics-Michael.003.png){ width="750" }
