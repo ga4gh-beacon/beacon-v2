@@ -1,7 +1,7 @@
 site_name: Beacon v2 Documentation
 site_description: 'Documentation for Beacon v2'
-site_author: 'Manuel Rueda, Michael Baudis, Laureen Fromont & Beacon Developers'
-copyright: '&copy; Copyright 2021-2022, Beacon v2 Documentation Contributors'
+site_author: 'Michael Baudis, Manuel Rueda, Laureen Fromont & Beacon Developers'
+copyright: '&copy; Copyright 2021-2023, Beacon v2 Documentation Contributors'
 repo_name: 'beacon-v2'
 repo_url: https://github.com/ga4gh-beacon/beacon-v2
 edit_uri: edit/main/docs/
@@ -59,12 +59,11 @@ nav:
         - General Introduction: index.md
         - What is Beacon v2?: what-is-beacon-v2.md  
         - FAQ: FAQ.md
-        - Citation: citation.md
         - Changes: bugs-changes-log.md
-    - Beacon Types:
-        - Beacon Flavours: beacon-flavours.md
-        - Security: security.md
-        - Networks: networks.md
+    - Querying Beacons:
+        - REST API: rest-api.md
+        - Genomic Queries: variant-queries.md
+        - Filters in Queries: /filters/#using-filters-in-queries
     - 'Implement & Deploy a Beacon':
         - Implementations Options: implementations-options.md
         - Standards Integration: formats-standards.md
@@ -72,6 +71,10 @@ nav:
         - Beacon Implementations:
             - Reference Implementation &#8599;: https://b2ri-documentation.readthedocs.io/en/latest/
             - Others: other-implementations.md
+    - Beacon Types:
+        - Beacon Flavours: beacon-flavours.md
+        - Security: security.md
+        - Networks: networks.md
     - Beacon Components:
         - Framework: framework.md         
         - Models: 
@@ -85,10 +88,6 @@ nav:
                - Individuals: schemas-md/individuals_defaultSchema.md
                - Runs: schemas-md/runs_defaultSchema.md    
            - Terms List: schemas-md/beacon_terms.md
-    - Querying Beacons:
-        - REST API: rest-api.md
-        - Genomic Queries: variant-queries.md
-        - Filters in Queries: /filters/#using-filters-in-queries
     - External Links:
         - Beacon Project &#8599;: http://beacon-project.io
         - Github Repositories &#8599;: https://github.com/ga4gh-beacon/
