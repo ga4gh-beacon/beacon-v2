@@ -1,6 +1,6 @@
 # Welcome to the Beacon v2 Documentation
 
-!!! Note "A SDtandard of the Global Alliance for Genomics and Health GA4GH"
+!!! Note "A Standard of the Global Alliance for Genomics and Health GA4GH"
 
         On [2022-04-21](formats-standards/#dates-and-times) Beacon v2 has been approved as an official [GA4GH standard](https://www.ga4gh.org/) through the GA4GH steering committee.
 
@@ -19,7 +19,9 @@ into resources and workflows, the major 2.0 release in 2022 introduced a large r
   <figcaption>Beacon v2 specification</figcaption>
 </figure>
 
-The core documentation (i.e. this document) can be found on [here](http://docs.genomebeacons.org).
+The core documentation (i.e. this document) can be found on [here](http://docs.genomebeacons.org). Additional
+information about the Beacon project - including news, events, publications - is available
+through the website [beacon-project.io](http://beacon-project.io).
 
 ## Informations for Different Types of Beacon Users
 
