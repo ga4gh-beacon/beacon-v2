@@ -2,7 +2,7 @@ name: mk-beacon-docs
 on:
   push:
     branches:
-      - website-docs
+      - main
 jobs:
   deploy:
     runs-on: ubuntu-latest
