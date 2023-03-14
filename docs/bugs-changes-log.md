@@ -16,6 +16,11 @@
 
 ## Changes
 
+#### 2023-03-14: New `website-docs` branch
+
+To protect the code branches we are using now a separate ``website-docs`` branch in `beacon-v2` for documentation
+website updates. Please make sure all documentation edits happen there!
+
 #### 2022-06-20: Retiring of `beacon-framework-v2` and `beacon-v2-Models` repos
 
 * all issues and PRs were either resolved or transferred to this repository
