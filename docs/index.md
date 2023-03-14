@@ -1,6 +1,6 @@
 # Welcome to the Beacon v2 Documentation
 
-!!! Note "Approved GA4GH Standard"
+!!! Note "A SDtandard of the Global Alliance for Genomics and Health GA4GH"
 
         On [2022-04-21](formats-standards/#dates-and-times) Beacon v2 has been approved as an official [GA4GH standard](https://www.ga4gh.org/) through the GA4GH steering committee.
 
