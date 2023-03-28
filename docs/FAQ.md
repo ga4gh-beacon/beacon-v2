@@ -1,10 +1,17 @@
 # Frequently Asked Questions
 
-??? faq "Do I need (to understand) the Beacon model to launch a simple beacon?"
+!!! Note "Citation"
 
-    No - the [Beacon Framework](/framework) describes the overall structure of the API requests, responses, parameters etc. One can implement e.g. a Boolean beacon (_cf._ the
+    **Beacon v2 and Beacon Networks: a "lingua franca" for federated data discovery in biomedical genomics, and beyond.**
+    Jordi Rambla, Michael Baudis, Tim Beck, Lauren A. Fromont, Arcadi Navarro, Manuel Rueda, Gary Saunders, Babita Singh, J.Dylan Spalding, Juha Tornroos,  Claudia Vasallo, Colin D.Veal, Anthony J.Brookes.  _Human Mutation_ (2022) [DOI](https://doi.org/10.1002/humu.24369).
+
+??? faq "How do I emulate Beacon v1 while supporting the v2 protocol?<a id="v1-emulation"> </a>" 
+
+    The [Beacon Framework](/framework) describes the overall structure of the API
+    requests, responses, parameters etc. One can implement e.g. a Boolean beacon (_cf._ the
     original protocol) without any use of the model, just by providing a well-formed
     JSON response upon a request [very similar to the (pre-)v1 allele request](/variant-queries/#beacon-sequence-queries).
+
 
     ##### Minimal Example Request
 
@@ -65,7 +72,7 @@
     }
     ```
  
-    ##### last change 2022-12-22 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
+    ##### last change 2023-02-17 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
 
 ??? faq "Is it `Beacon` or `beacon`?"
 
@@ -94,4 +101,35 @@
     for copy number variations.
 
     ##### last change 2022-12-14 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
+
+
+??? faq "How can I handle haplotype queries & representation in Beacon v2?"<a id="haplotypes"> </a>"
+
+    #### Queries
+
+    The Beacon framework currently (_v2.0_ and earlier) considers genomic
+    variants to be _allelic_ and does not support the query for multiple alleles
+    or "haplotype shorthand expressions" (e.g. `C,T`).
+
+    **Workarounds** In case of a specific need for haplotype queries implementers
+    of a given beacon with control of its data content in principle can extend their
+    query model to support shorthand haploype expressions, as long as they support
+    the standard format, too. However, such an approach may be superseeded or in conflict
+    with future direct protocol support.
+
+    An approach in line with the current protocol would be to query for one allelic
+    variant with a record-level `genomicVariation` response, and then query the
+    retrieved variants individually by their `id` in combination with the second
+    allele.
+
+    #### Variant representation
+
+    As with queries the Beacon "legacy" format does not support haplotype representation
+    but would represent each allelic variation separately. The same is true for the
+    VRSified variant representation which for v2.0 corresponds to VRS v1.2.
+    However, draft versions of the VRS standard (will) address haplotype and genotype
+    representations and will be adopted by Beacon v2.n after reaching a release state.
+
+
+
 

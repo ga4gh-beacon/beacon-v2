@@ -39,7 +39,7 @@ There is a set of tools in [`/bin`](./bin/) to facilitate the conversion. ATM, a
 ## Directory structure
 
 ```
-|-docs          TBD; will contain the source for the Readthedocs documentation
+|-docs          Contain the source (Markdown) for the mkdocs generated documentation
 |
 |- framework
 |   |

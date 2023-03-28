@@ -4,7 +4,15 @@
 
         On [2022-04-21](formats-standards/#dates-and-times) Beacon v2 has been approved as an official [GA4GH standard](https://www.ga4gh.org/) through the GA4GH steering committee.
 
-With growing interest from the community in the implementation of the Beacon protocol into resources and workflows, the major 2.0 release scheduled for Spring 2022 will introduce [new features](what-is-beacon-v2.md) which were considered important by the community.
+With growing interest from the community in the implementation of the Beacon protocol
+into resources and workflows, the major 2.0 release in 2022 introduced a large range of
+[new features](what-is-beacon-v2.md) which were considered important by the community.
+
+!!! Warn "Move to Beacon v2"
+
+    With the release of Beacon v2 implementations of v1 and earlier are not longer supported.
+    Deployers of Beacon instances or networks are advised to migrate to v2 of the
+    standard. The functionality of Beacon v1 [can be easily implemented in v2](/FAQ/#v1-emulation). 
 
 <figure markdown>
   ![Beacon v2 Cartoon](img/Beacon-Networks-v2-graphics/Beacon-Networks-v2-graphics-Michael.003.png){ width="750" }
@@ -39,7 +47,6 @@ benefit from some insights into the general capabilities of the underlying proto
         * Alternative Schemas [Link](models.md)
 
 <!--        * [OpenAPI](https://www.openapis.org) -->
-
 
 ### Deployers and Implementers
 
