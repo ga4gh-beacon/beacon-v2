@@ -17,7 +17,7 @@
         },
         "response": {
             "$ref": "./sections/beaconResultsets.json",
-            "description": "Response for queries that recovers any result."
+            "description": "Responses by resultset, e.g. separate datasets."
         },
         "responseSummary": {
             "$ref": "./sections/beaconSummaryResponseSection.json",

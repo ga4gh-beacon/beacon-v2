@@ -1,6 +1,6 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Beacon ResultSet
-description: Sets of results to be returned as query response.
+description: Sets of detail-level results to be returned as query response.
 type: object
 properties:
   $schema:
@@ -21,7 +21,7 @@ definitions:
         type: string
         example: datasetA
       setType:
-        description: Entry type of resultSet. It SHOULD MATCH an entry type declared
+        description: Entry type of resultSet. It SHOULD MATCH an entry type declared 
           as collection in the Beacon configuration.
         type: string
         default: dataset

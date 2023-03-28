@@ -1,18 +1,18 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-title: Beacon BooleanSets
+title: Beacon BooleanSet
 description: Sets of Boolean results to be returned as query response.
 type: object
 properties:
   $schema:
     $ref: ../../common/beaconCommonComponents.yaml#/definitions/$schema
-  booleanSets:
+  resultSets:
     type: array
     items:
       $ref: '#/definitions/BooleanSetInstance'
     minItems: 0
 required:
-  - booleanSets
-additionalProperties: false
+  - resultSets
+additionalProperties: true
 definitions:
   BooleanSetInstance:
     properties:
@@ -40,4 +40,4 @@ definitions:
       - id
       - setType
       - exists
-    additionalProperties: false
+    additionalProperties: true

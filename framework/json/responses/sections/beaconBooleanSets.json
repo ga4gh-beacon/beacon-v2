@@ -35,21 +35,21 @@
         }
     },
     "description": "Sets of Boolean results to be returned as query response.",
-    "properties": {
-        "$schema": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/$schema"
-        },
-        "booleanSets": {
-            "items": {
-                "$ref": "#/definitions/BooleanSetInstance"
-            },
-            "minItems": 0,
-            "type": "array"
-        }
+  "properties": {
+    "$schema": {
+      "$ref": "../../common/beaconCommonComponents.json#/definitions/$schema"
     },
-    "required": [
-        "booleanSets"
-    ],
+    "resultSets": {
+      "items": {
+        "$ref": "#/definitions/BooleanSetInstance"
+      },
+      "minItems": 0,
+      "type": "array"
+    }
+  },
+  "required": [
+    "resultSets"
+  ],
     "title": "Beacon BooleanSets",
     "type": "object"
 }

@@ -1,9 +1,9 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": false,
+    "additionalProperties": true,
     "definitions": {
         "CountSetInstance": {
-            "additionalProperties": false,
+            "additionalProperties": true,
             "properties": {
                 "exists": {
                     "type": "boolean"
@@ -44,7 +44,7 @@
         "$schema": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/$schema"
         },
-        "booleanSets": {
+        "resultSets": {
             "items": {
                 "$ref": "#/definitions/CountSetInstance"
             },
@@ -53,7 +53,7 @@
         }
     },
     "required": [
-        "booleanSets"
+      "resultSets"
     ],
     "title": "Beacon CountSets",
     "type": "object"

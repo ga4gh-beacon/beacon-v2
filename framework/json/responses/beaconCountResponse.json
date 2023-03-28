@@ -15,9 +15,9 @@
             "$ref": "./sections/beaconResponseMeta.json",
             "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
         },
-        "responseSets": {
+        "response": {
             "$ref": "./sections/beaconCountSets.json",
-            "description": "Responses for individual endpoints, e.g. separate Beacons in a network."
+            "description": "Responses by resultset, e.g. separate datasets."
         },
         "responseSummary": {
             "$ref": "./sections/beaconCountResponseSection.json",

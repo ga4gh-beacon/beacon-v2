@@ -47,7 +47,7 @@
             ]
         }
     },
-    "description": "Sets of results to be returned as query response.",
+    "description": "Sets of detail-level results to be returned as query response.",
     "properties": {
         "$schema": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/$schema"

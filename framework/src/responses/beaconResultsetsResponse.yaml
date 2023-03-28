@@ -23,7 +23,7 @@ properties:
     $ref: ../common/beaconCommonComponents.yaml#/definitions/ListOfHandovers
   response:
     description: >-
-      Response for queries that recovers any result.
+      Responses by resultset, e.g. separate datasets.
     $ref: ./sections/beaconResultsets.yaml
 required:
   - meta

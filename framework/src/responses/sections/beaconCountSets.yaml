@@ -1,18 +1,18 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Beacon CountSets
-description: Sets of Boolean results to be returned as query response.
+description: Sets of Count results to be returned as query response.
 type: object
 properties:
   $schema:
     $ref: ../../common/beaconCommonComponents.yaml#/definitions/$schema
-  booleanSets:
+  resultSets:
     type: array
     items:
       $ref: '#/definitions/CountSetInstance'
     minItems: 0
 required:
-  - booleanSets
-additionalProperties: false
+  - resultSets
+additionalProperties: true
 definitions:
   CountSetInstance:
     properties:
@@ -44,4 +44,4 @@ definitions:
       - setType
       - exists
       - resultsCount
-    additionalProperties: false
+    additionalProperties: true
