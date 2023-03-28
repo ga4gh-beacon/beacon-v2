@@ -5,12 +5,10 @@
     "description": "Meta information about the response.",
     "properties": {
         "apiVersion": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/ApiVersion",
-            "description": "Version of the API."
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/ApiVersion"
         },
         "beaconId": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/BeaconId",
-            "description": "Identifier of the beacon, as defined in `Beacon`."
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/BeaconId"
         },
         "returnedSchemas": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/ListOfSchemas"

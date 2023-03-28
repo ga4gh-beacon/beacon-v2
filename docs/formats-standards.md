@@ -14,41 +14,37 @@ The only exception is: `service-info` which is a required GA4GH standard and has
 
 ### Schema Language and Conventions
 
-The **Beacon v2 API** follows [OpenAPI 3.0.2](https://spec.openapis.org/oas/v3.0.2) specification for the [endpoints](https://github.com/ga4gh-beacon/beacon-v2/blob/main/framework/src/endpoints.yaml), in conjuntion with JSON Schema ([2020-12]( https://json-schema.org/draft/2020-12/schema)) to define the [Framework](framework.md) {{config.repo_framework_icon}} and the [Models](models.md) {{config.repo_models_icon}} components. The specification uses JSON [references](https://json-spec.readthedocs.io/reference.html) ($ref) to reference internal (e.g., definitions) or external concepts/terms (e.g., [VRS](https://vrs.ga4gh.org/en/latest/terms_and_model.html)).
+The **Beacon v2 API** follows [OpenAPI 3.0.2](https://spec.openapis.org/oas/v3.0.2) specification for the [endpoints](https://github.com/ga4gh-beacon/beacon-v2/blob/main/framework/src/endpoints.yaml), in conjuntion with JSON Schema ([2020-12]( https://json-schema.org/draft/2020-12/schema)) to define the [Framework](framework.md) {{config.repo_framework_icon}} and the [Models](models.md) {{config.repo_models_icon}} components. The specification uses JSON [references](https://json-spec.readthedocs.io/reference.html) (`$ref`) to reference internal (e.g., definitions) or external concepts/terms (e.g., [VRS](https://vrs.ga4gh.org/en/latest/terms_and_model.html)).
 
-The Beacon v2 specification is written in [YAML](https://yaml.org). The original files are located under `src` directory (see below). For technical purposes, we also provide a **copy** of the original YAML in JSON format (see `json` directory below). Changes in the specification must be performed in the YAML version.
+The Beacon v2 specification is written in [YAML](https://yaml.org). The original files are located under `src` directory (see below). For technical purposes, we also provide a **copy** of the original YAML in JSON format (see `json` directory below). Changes in the specification must be performed in the YAML version and are then rewritten to the JSON version.
 
 === "Framework"
 
         framework
         |-- json
         |   |-- common
-        |   |   |-- examples
-        |   |   `-- validation
+        |   |   `-- examples
         |   |-- configuration
         |   |   `-- examples
         |   |-- requests
         |   |   |-- examples-fullDocuments
-        |   |   |-- examples-sections
-        |   |   `-- validation
+        |   |   `-- examples-sections
         |   `-- responses
+        |       |-- sections
         |       |-- examples-fullDocuments
-        |       |-- examples-sections
-        |       `-- sections
+        |       `-- examples-sections
         `-- src
             |-- common
-            |   |-- examples
-            |   `-- validation
+            |   `-- examples
             |-- configuration
             |   `-- examples
             |-- requests
             |   |-- examples-fullDocuments
-            |   |-- examples-sections
-            |   `-- validation
+            |   `-- examples-sections
             `-- responses
+                |-- sections
                 |-- examples-fullDocuments
-                |-- examples-sections
-                `-- sections
+                `-- examples-sections
 
 === "Models"
 

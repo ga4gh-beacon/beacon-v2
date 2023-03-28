@@ -7,8 +7,11 @@
             "type": "string"
         },
         "ApiVersion": {
-            "description": "an API version.",
-            "example": "v2.0",
+            "description": "Version of API, e.g. in request or response. Beacon uses a Github-style, \"v\"-prefixed semantic versioning format.",
+            "examples": [
+                "v2.0.1",
+                "v0.3"
+            ],
             "type": "string"
         },
         "BeaconError": {
@@ -24,7 +27,7 @@
                 },
                 "errorMessage": {
                     "examples": [
-                        "the provided parameters are incomplete. 'xyz' is missing."
+                        "The provided parameters are incomplete: `start` is missing."
                     ],
                     "type": "string"
                 }
@@ -35,12 +38,15 @@
             "type": "object"
         },
         "BeaconId": {
-            "description": "the Id of a Beacon. Usually a reversed domain string, but any URI is acceptable. The purpose of this attribute is, in the context of a Beacon network, to disambiguate responses coming from different Beacons.",
-            "example": "org.example.beacon.v2",
+            "description": "The Id of a Beacon. Usually a reversed domain string, but any URI is acceptable. The purpose of this attribute is, in the context of a Beacon network, to disambiguate responses coming from different Beacons.",
+            "examples": [
+                "org.example.beacon.v2",
+                "org.progenetix.beacon"
+            ],
             "type": "string"
         },
         "CURIE": {
-            "description": "A CURIE identifier, e.g. as `id` for an ontology term.",
+            "description": "Definition of an identifier in the CURIE `prefix:local-part` format which is the default type of e.g. ontology term `id` values (used e.g. for filters or external identifiers).",
             "examples": [
                 "ga4gh:GA.01234abcde",
                 "DUO:0000004",
@@ -70,7 +76,7 @@
         },
         "Granularity": {
             "default": "boolean",
-            "description": "Granularity or level of detail of the response:\n* `boolean`: returns true/false' responses * `count`: adds the total number of positive results found * `aggregated`: returns summary, aggregated or distribution like responses * `record`: returns details for every row. In cases where a Beacon prefers\n  to return records with fewer than allattributes, different strategies have\n  to be considered w/o adding them to the current design, e.g.:\n    - keeping non-mandatory attributes empty\n    - Beacon to provide a minimal record definition",
+            "description": "Level of detail of the response:\n* `boolean`: returns true/false' responses * `count`: adds the total number of positive results found * `aggregated`: returns summary, aggregated or distribution like responses * `record`: returns details for every row. In cases where a Beacon prefers to return records with fewer than allattributes, different strategies have to be considered w/o adding them to the current design, e.g.:\n    - keeping non-mandatory attributes empty\n    - Beacon to provide a minimal record definition",
             "enum": [
                 "boolean",
                 "count",
@@ -166,7 +172,7 @@
             "type": "boolean"
         },
         "NumTotalResults": {
-            "description": "Total number of results. NOT the number of results returned in this batch, but the total obtained by the query.",
+            "description": "Total number of results. NOT the number of results returned in this batch (after pagination) but the total obtained by the query.",
             "examples": [
                 123
             ],
@@ -174,7 +180,7 @@
             "type": "integer"
         },
         "PageToken": {
-            "description": "A hash or similar that allows the server to use it as a cursor over a query. It could be or not a readable value, like a word or a key. E.g. it could be an encrypted value of primary keys to navigate next and previous page.",
+            "description": "A hash or similar that allows the server to retrieve a \"page\", e.g. (a subset of) a query response.",
             "example": "ab0sc&fe1dd",
             "type": "string"
         },
@@ -206,7 +212,7 @@
             "description": "Schema to be used for the requested entry type in the response.",
             "properties": {
                 "entityType": {
-                    "$comment": "TO REVIEW: Should that refer to a concept d? or would that include an undesired dependency to the configuration?",
+                    "$comment": "TO REVIEW: Should that refer to a concept definition? Or would that include an undesired dependency to the configuration?",
                     "example": "Individual",
                     "type": "string"
                 },

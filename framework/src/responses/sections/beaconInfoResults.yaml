@@ -1,5 +1,6 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-description: Metadata describing a Beacon instance.
+description: >-
+  Metadata describing a Beacon instance.
 type: object
 required:
   - id
@@ -9,16 +10,13 @@ required:
   - organization
 properties:
   id:
-    type: string
-    description: Unique identifier of the Beacon. Use reverse domain name notation.
-    example: org.ga4gh.Beacon
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/BeaconId
   name:
     type: string
-    description: Name of the Beacon.
+    description: >-
+      Name of the Beacon.
   apiVersion:
-    type: string
-    description: Version of the API provided by the Beacon.
-    example: v2.0
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/ApiVersion
   environment:
     type: string
     description: "Environment the service is running in. Use this to distinguish\n\
@@ -28,44 +26,52 @@ properties:
       - test
       - dev
       - staging
-    example: dev
+    examples: 
+      - dev
   organization:
     $ref: '#/definitions/BeaconOrganization'
   description:
     type: string
-    description: Description of the Beacon.
+    description: >-
+      Description of the Beacon.
   version:
-    type: string
-    description: Version of the Beacon.
-    example: v0.1
+    description: >-
+      TODO: This is a legacy use / duplication?
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/ApiVersion
   welcomeUrl:
     type: string
-    description: URL to the welcome page for this Beacon (RFC 3986 format).
+    description: >-
+      URL to the welcome page for this Beacon (RFC 3986 format).
     example: http://example.org/wiki/Main_Page
   alternativeUrl:
     type: string
-    description: Alternative URL to the API, e.g. a restricted version of this Beacon
+    description: >-
+      Alternative URL to the API, e.g. a restricted version of this Beacon
       (RFC 3986 format).
-    example: http://example.org/wiki/Main_Page
+    examples:
+      - http://example.org/beacon/authenticated
   createDateTime:
     type: string
-    description: The time the Beacon was created (ISO 8601 format).
-    example: 2012-07-19 or 2017-01-17T20:33:40Z
+    description: >-
+      The date/time the Beacon was created (ISO 8601 format).
+    examples:
+      - 2014-07-19
+      - 2017-01-17T20:33:40Z
   updateDateTime:
     type: string
-    description: The time the Beacon was updated in (ISO 8601 format).
-    example: 2012-07-19 or 2017-01-17T20:33:40Z
+    description: >-
+      The time the Beacon was updated in (ISO 8601 format).
+    examples:
+      - 2014-07-19
+      - 2017-01-17T20:33:40Z
   info:
-    description: Additional unspecified metadata about the Beacon service.
-    type: object
-    example:
-      additionalInfoKey1: additionalInfoValue1
-      additionalInfoKey2:
-        - additionalInfoValue2
-        - additionalInfoValue3
+    description: >-
+      Additional unspecified metadata about the Beacon service.
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/Info
 definitions:
   BeaconOrganization:
-    description: Organization owning the Beacon.
+    description: >-
+      Organization owning the Beacon.
     type: object
     required:
       - id
@@ -73,30 +79,35 @@ definitions:
     properties:
       id:
         type: string
-        description: Unique identifier of the organization.
+        description: >-
+          Unique identifier of the organization.
       name:
         type: string
-        description: Name of the organization.
+        description: >-
+          Name of the organization.
       description:
         type: string
-        description: Description of the organization.
+        description: >-
+          Description of the organization.
       address:
         type: string
-        description: Address of the organization.
+        description: >-
+          Address of the organization.
       welcomeUrl:
         type: string
-        description: URL of the website of the organization (RFC 3986 format).
+        description: >-
+          URL of the website of the organization (RFC 3986 format).
       contactUrl:
         type: string
-        description: URL with the contact for the Beacon operator/maintainer, e.g.
+        description: >-
+          URL with the contact for the Beacon operator/maintainer, e.g.
           link to a contact form (RFC 3986 format) or an email (RFC 2368 format).
       logoUrl:
         type: string
-        description: URL to the logo (PNG/JPG/SVG format) of the organization (RFC
+        description: >-
+          URL to the logo (PNG/JPG/SVG format) of the organization (RFC
           3986 format).
       info:
         description: Additional unspecified metadata about the host Organization.
-        type: object
-        example:
-          additionalInfoKey: additionalInfoValue
+        $ref: ../../common/beaconCommonComponents.yaml#/definitions/Info
 additionalProperties: true

@@ -1,14 +1,11 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 type: object
-description: An unsuccessful operation.
+description: >-
+  An unsuccessful operation.
 properties:
   meta:
-    description: >-
-      Information about the response that could be relevant for the Beacon
-      client in order to interpret the results.
     $ref: ./sections/beaconResponseMeta.yaml
   error:
-    description: Error response
     $ref: ../common/beaconCommonComponents.yaml#/definitions/BeaconError
 required:
   - meta

@@ -11,21 +11,30 @@ definitions:
     type: string
     $comment: 'TO REVIEW: adding a `format` or `regex` attribute that validates correctly
       against a file path (relative).'
-    description: Refers to the JSON Schema which describes the set of valid attributes
+    description: >-
+      Refers to the JSON Schema which describes the set of valid attributes
       for this particular document type. This attribute is mostly used in schemas
       that should be tested in Beacon implementations.
   ApiVersion:
-    description: an API version.
+    description: >-
+      Version of API, e.g. in request or response. Beacon uses a Github-style,
+      "v"-prefixed semantic versioning format.
     type: string
-    example: v2.0
+    examples:
+      - v2.0.1
+      - v0.3
   BeaconId:
-    description: the Id of a Beacon. Usually a reversed domain string, but any URI
+    description: >-
+      The Id of a Beacon. Usually a reversed domain string, but any URI
       is acceptable. The purpose of this attribute is, in the context of a Beacon
       network, to disambiguate responses coming from different Beacons.
     type: string
-    example: org.example.beacon.v2
+    examples:
+      - org.example.beacon.v2
+      - org.progenetix.beacon
   BeaconError:
-    description: Beacon-specific error.
+    description: >-
+      Beacon-specific error.
     type: object
     required:
       - errorCode
@@ -35,34 +44,41 @@ definitions:
         format: int32
         examples:
           - '404'
-        description: Entry not found
+        description: >-
+          Entry not found
       errorMessage:
         type: string
         examples:
-          - the provided parameters are incomplete. 'xyz' is missing.
+          - 'The provided parameters are incomplete: `start` is missing.'
   CURIE:
     pattern: ^\w[^:]+:.+$
     type: string
-    description: A CURIE identifier, e.g. as `id` for an ontology term.
+    description: >-
+      Definition of an identifier in the CURIE `prefix:local-part` format which
+      is the default type of e.g. ontology term `id` values (used e.g. for filters
+      or external identifiers).
     examples:
       - ga4gh:GA.01234abcde
       - DUO:0000004
       - orcid:0000-0003-3463-0775
       - PMID:15254584
   ListOfSchemas:
-    description: Set of schemas to be used in the response to a request.
+    description: >-
+      Set of schemas to be used in the response to a request.
     type: array
     items:
       $ref: '#/definitions/SchemasPerEntity'
   SchemasPerEntity:
-    description: Schema to be used for the requested entry type in the response.
+    description: >-
+      Schema to be used for the requested entry type in the response.
     type: object
     properties:
       entityType:
         type: string
         example: Individual
-        $comment: 'TO REVIEW: Should that refer to a concept d? or would that include
-          an undesired dependency to the configuration?'
+        $comment: >-
+          TO REVIEW: Should that refer to a concept definition? Or would that include
+          an undesired dependency to the configuration?
       schema:
         type: string
         examples:
@@ -70,7 +86,8 @@ definitions:
           - https://www.example.org/schemas/ga4gh-beacon-dataset-v2.0.0.json
         $comment: "TO DO: Add the correct format as 'uri' or 'regex'"
   Pagination:
-    description: Pagination to apply or that has been applied on the results.
+    description: >-
+      Pagination to apply or that has been applied on the results.
     type: object
     properties:
       skip:
@@ -109,21 +126,21 @@ definitions:
     default: 10
     example: 10
   PageToken:
-    description: A hash or similar that allows the server to use it as a cursor over
-      a query. It could be or not a readable value, like a word or a key. E.g. it
-      could be an encrypted value of primary keys to navigate next and previous page.
+    description: >-
+      A hash or similar that allows the server to retrieve a "page", e.g.
+      (a subset of) a query response.
     type: string
     example: ab0sc&fe1dd
   Granularity:
     description: >-
-      Granularity or level of detail of the response:
+      Level of detail of the response:
 
       * `boolean`: returns true/false' responses
       * `count`: adds the total number of positive results found
       * `aggregated`: returns summary, aggregated or distribution like responses
       * `record`: returns details for every row. In cases where a Beacon prefers
-        to return records with fewer than allattributes, different strategies have
-        to be considered w/o adding them to the current design, e.g.:
+      to return records with fewer than allattributes, different strategies have
+      to be considered w/o adding them to the current design, e.g.:
           - keeping non-mandatory attributes empty
           - Beacon to provide a minimal record definition
     type: string
@@ -190,8 +207,9 @@ definitions:
     examples:
       - true
   NumTotalResults:
-    description: Total number of results. NOT the number of results returned in this
-      batch, but the total obtained by the query.
+    description: >-
+      Total number of results. NOT the number of results returned in this
+      batch (after pagination) but the total obtained by the query.
     type: integer
     minimum: 0
     examples:
@@ -234,7 +252,8 @@ definitions:
         $ref: '#/definitions/HandoverType'
       note:
         type: string
-        description: An optional text including considerations on the handover link
+        description: >-
+          An optional text including considerations on the handover link
           provided.
         example: This handover link provides access to a summarized VCF.
       url:
