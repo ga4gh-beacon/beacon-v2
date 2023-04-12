@@ -23,7 +23,7 @@ definitions:
         description: Quantity denoting the outcome of the measurement
         $ref: ./quantity.yaml
         example:
-          quentity:
+          quantity:
             unit:
               id: NCIT:C49670
               label: Millimeter of Mercury

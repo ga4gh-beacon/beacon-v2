@@ -6,7 +6,7 @@
         "beaconId": "string",
         "returnedSchemas": [
             {
-                "entityType": "info",
+                "entryType": "info",
                 "schema": "beacon-info-v2.0.0"
             }
         ]

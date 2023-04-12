@@ -4,7 +4,7 @@
         "apiVersion": "2.0",
         "requestedSchemas": [
             {
-                "entityType": "EntryTypeA",
+                "entryType": "EntryTypeA",
                 "schema": "entry-typeA-schema-v0.1"
             }
         ]

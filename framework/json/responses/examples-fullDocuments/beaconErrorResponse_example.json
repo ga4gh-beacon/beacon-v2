@@ -19,7 +19,7 @@
             },
             "requestParameters": [
                 {
-                    "entity": "individual",
+                    "entryType": "individual",
                     "parameters": [
                         {
                             "id": "123"
@@ -32,7 +32,7 @@
             ],
             "requestedSchemas": [
                 {
-                    "entityType": "Individual",
+                    "entryType": "Individual",
                     "schema": "ga4gh-phenopacket-individual-v0.1"
                 }
             ]

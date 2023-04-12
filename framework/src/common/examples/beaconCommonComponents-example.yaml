@@ -5,12 +5,12 @@ beaconError:
   errorCode: 404
   errorMessage: the provided parameters are incomplete. 'xyz' is missing.
 listOfSchemas:
-  - entityType: EntryTypeA
+  - entryType: EntryTypeA
     schema: entry-typeA-schema-v0.1
-  - entityType: EntryTypeB
+  - entryType: EntryTypeB
     schema: entry-typeB-schema-v1.0
-schemasPerEntity:
-  entityType: Individual
+SchemasPerEntryType:
+  entryType: Individual
   schema: ga4gh-phenopacket-individual-v0.1
 pagination:
   skip: 0

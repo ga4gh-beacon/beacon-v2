@@ -5,10 +5,10 @@ meta:
   receivedRequestSummary:
     apiVersion: v2.0
     requestedSchemas:
-      - entityType: Individual
+      - entryType: Individual
         schema: ga4gh-phenopacket-individual-v0.1
     requestParameters:
-      - entity: individual
+      - entryType: individual
         parameters:
           - id: '123'
           - position: '1234556'

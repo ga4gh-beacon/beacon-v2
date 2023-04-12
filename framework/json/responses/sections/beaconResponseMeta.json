@@ -17,7 +17,7 @@
         },
         "returnedSchemas": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/ListOfSchemas",
-            "description": "The `returnedSchemas` parameter indicates that the request has been interpreted for the indicated entity. This helps to disambiguate between negative responses due to e.g. no hit on a well understood request and failures to interpret or answer the request due to a missing entity. "
+            "description": "The `returnedSchemas` parameter indicates that the request has been interpreted for the indicated entry type. This helps to disambiguate between negative responses due to e.g. no hit on a well understood request and failures to interpret or answer the request due to a missing entry type. "
         },
         "testMode": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/TestMode"

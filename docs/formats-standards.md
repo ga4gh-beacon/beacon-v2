@@ -6,7 +6,7 @@
 
 For historical reasons, in the names of entities, parameters and URLs we are following these conventions:
 
-* Entity names: `PascalCase` 
+* Entry Type names: `PascalCase` 
 * parameters: `camelCase` 
 * URI path elements: `snake_case` 
 

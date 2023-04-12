@@ -42,7 +42,7 @@ in the _EIF4A1_ eukaryotic translation initiation factor 4A1.
 	        "apiVersion": "2.0",
 	        "requestedSchemas": [
 	            {
-	                "entityType": "genomicVariation",
+	                "entryType": "genomicVariation",
 	                "schema:": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json"
 	            }
 	        ]
@@ -134,7 +134,7 @@ parameters.
 	        "apiVersion": "2.0",
 	        "requestedSchemas": [
 	            {
-	                "entityType": "genomicVariation",
+	                "entryType": "genomicVariation",
 	                "schema:": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json"
 	            }
 	        ]
@@ -246,7 +246,7 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 	        "apiVersion": "2.0",
 	        "requestedSchemas": [
 	            {
-	                "entityType": "genomicVariation",
+	                "entryType": "genomicVariation",
 	                "schema:": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json"
 	            }
 	        ]

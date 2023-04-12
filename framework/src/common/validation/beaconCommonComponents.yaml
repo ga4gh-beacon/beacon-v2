@@ -14,8 +14,8 @@ properties:
     $ref: ../beaconCommonComponents.yaml#/definitions/BeaconError
   listOfSchemas:
     $ref: ../beaconCommonComponents.yaml#/definitions/ListOfSchemas
-  schemasPerEntity:
-    $ref: ../beaconCommonComponents.yaml#/definitions/SchemasPerEntity
+  SchemasPerEntryType:
+    $ref: ../beaconCommonComponents.yaml#/definitions/SchemasPerEntryType
   pagination:
     $ref: ../beaconCommonComponents.yaml#/definitions/Pagination
   includeResultsetResponses:

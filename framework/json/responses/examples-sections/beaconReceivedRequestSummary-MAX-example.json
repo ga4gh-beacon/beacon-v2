@@ -22,7 +22,7 @@
     "requestedGranularity": "count",
     "requestedSchemas": [
         {
-            "entityType": "Individual",
+            "entryType": "Individual",
             "schema": "ga4gh-phenopacket-individual-v0.1"
         }
     ],

@@ -32,14 +32,14 @@
             },
             "requestedSchemas": [
                 {
-                    "entityType": "EntryTypeB",
+                    "entryType": "EntryTypeB",
                     "schema": "entry-typeB-schema-v1.0"
                 }
             ]
         },
         "returnedSchemas": [
             {
-                "entityType": "EntryTypeB",
+                "entryType": "EntryTypeB",
                 "schema": "entry-typeB-schema-v1.0"
             }
         ]

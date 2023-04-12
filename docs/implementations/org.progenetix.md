@@ -13,10 +13,10 @@ of those to its supported responses and provide the results accordingly; it does
 if the endpoint was `/beacon/biosamples/` or `/beacon/variants/` etc.
 
 Below is an example for the standard test "small deletion CNVs in the CDKN2A locus, in gliomas"
-Progenetix test query, here responding with the matched variants. Exchanging the `entityType`
+Progenetix test query, here responding with the matched variants. Exchanging the `entryType`
 entry to
 
-* `{ "entityType": "biosample", "schema:": "https://progenetix.org/services/schemas/Biosample/"}`
+* `{ "entryType": "biosample", "schema:": "https://progenetix.org/services/schemas/Biosample/"}`
 
 would change this to a biosample response. The example ccan be tested by POSTing this as `application/json`
 to `http://progenetix.org/beacon/variants/` or `http://progenetix.org/beacon/biosamples/`.
@@ -28,7 +28,7 @@ to `http://progenetix.org/beacon/variants/` or `http://progenetix.org/beacon/bio
         "apiVersion": "2.0",
         "requestedSchemas": [
             {
-                "entityType": "genomicVariant",
+                "entryType": "genomicVariant",
                 "schema:": "https://progenetix.org/services/schemas/genomicVariant"
             }
         ]

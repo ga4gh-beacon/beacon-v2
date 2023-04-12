@@ -11,14 +11,14 @@
             },
             "requestedSchemas": [
                 {
-                    "entityType": "dataset",
+                    "entryType": "dataset",
                     "schema": "dataset-schema-v1.0"
                 }
             ]
         },
         "returnedSchemas": [
             {
-                "entityType": "dataset",
+                "entryType": "dataset",
                 "schema": "dataset-schema-v1.0"
             }
         ]

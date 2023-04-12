@@ -45,8 +45,8 @@
         "pagination": {
             "$ref": "../beaconCommonComponents.json#/definitions/Pagination"
         },
-        "schemasPerEntity": {
-            "$ref": "../beaconCommonComponents.json#/definitions/SchemasPerEntity"
+        "SchemasPerEntryType": {
+            "$ref": "../beaconCommonComponents.json#/definitions/SchemasPerEntryType"
         }
     },
     "title": "Schema for validating Beacon Common Components examples",

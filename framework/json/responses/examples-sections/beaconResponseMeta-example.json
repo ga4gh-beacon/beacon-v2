@@ -11,7 +11,7 @@
         "requestedGranularity": "count",
         "requestedSchemas": [
             {
-                "entityType": "EntryTypeB",
+                "entryType": "EntryTypeB",
                 "schema": "entry-typeB-schema-v1.0"
             }
         ],
@@ -20,7 +20,7 @@
     "returnedGranularity": "count",
     "returnedSchemas": [
         {
-            "entityType": "EntryTypeB",
+            "entryType": "EntryTypeB",
             "schema": "entry-typeB-schema-v1.0"
         }
     ]

@@ -162,7 +162,7 @@
         "ListOfSchemas": {
             "description": "Set of schemas to be used in the response to a request.",
             "items": {
-                "$ref": "#/definitions/SchemasPerEntity"
+                "$ref": "#/definitions/SchemasPerEntryType"
             },
             "type": "array"
         },
@@ -208,10 +208,10 @@
             },
             "type": "object"
         },
-        "SchemasPerEntity": {
+        "SchemasPerEntryType": {
             "description": "Schema to be used for the requested entry type in the response.",
             "properties": {
-                "entityType": {
+                "entryType": {
                     "$comment": "TO REVIEW: Should that refer to a concept definition? Or would that include an undesired dependency to the configuration?",
                     "example": "Individual",
                     "type": "string"

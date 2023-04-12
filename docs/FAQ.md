@@ -24,7 +24,7 @@
     ##### Example Boolean Response
 
     In this minimal response to the query above the beacon indicates that its default
-    response is Boolean and that it could interpreted it against the `genomicVariant` entity and in the context of the same Beacon version.
+    response is Boolean and that it could interpreted it against the `genomicVariant` entry type and in the context of the same Beacon version.
 
     In principle one could launch a Beacon instance using the example response document as a template
     in whatever server environment one has at hand. However, a proper Beacon v2
@@ -45,7 +45,7 @@
           "requestedGranularity": "boolean",
           "requestedSchemas": [
             {
-              "entityType": "genomicVariant",
+              "entryType": "genomicVariant",
               "schema": "https://progenetix.org/services/schemas/genomicVariant/"
             }
           ],
@@ -61,7 +61,7 @@
         "returnedGranularity": "boolean",
         "returnedSchemas": [
           {
-            "entityType": "genomicVariant",
+            "entryType": "genomicVariant",
             "schema": "https://progenetix.org/services/schemas/genomicVariant/"
           }
         ]

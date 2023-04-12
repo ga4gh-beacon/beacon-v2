@@ -3,7 +3,7 @@ meta:
   beaconId: string
   apiVersion: string
   returnedSchemas:
-    - entityType: info
+    - entryType: info
       schema: beacon-map-v2.0.0
 response:
   $schema: ../../configuration/entryTypesSchema.json
