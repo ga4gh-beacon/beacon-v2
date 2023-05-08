@@ -56,41 +56,43 @@ markdown_extensions:
 
 nav:
     - Introduction: 
-        - General Introduction: index.md
-        - What is Beacon v2?: what-is-beacon-v2.md  
-        - FAQ: FAQ.md
-        - Changes: bugs-changes-log.md
+        - General Introduction: index
+        - What is Beacon v2?: what-is-beacon-v2
+        - Beacon Flavours: beacon-flavours
+        - Security: security
+        - Networks: networks
+        - FAQ: FAQ
+        - Changes: bugs-changes-log
     - Querying Beacons:
-        - REST API: rest-api.md
-        - Genomic Queries: variant-queries.md
+        - REST API: rest-api
+        - Genomic Queries: variant-queries
         - Filters in Queries: /filters/#using-filters-in-queries
     - 'Implement & Deploy a Beacon':
-        - Implementations Options: implementations-options.md
-        - Standards Integration: formats-standards.md
-        - Filters: filters.md
+        - Implementations Options: implementations-options
+        - Standards Integration: formats-standards
+        - Filters: filters
         - Beacon Implementations:
             - Reference Implementation &#8599;: https://b2ri-documentation.readthedocs.io/en/latest/
-            - Others: other-implementations.md
-    - Beacon Types:
-        - Beacon Flavours: beacon-flavours.md
-        - Security: security.md
-        - Networks: networks.md
+            - Others: other-implementations
     - Beacon Components:
-        - Framework: framework.md         
+        - Framework: framework  
         - Models: 
-           - Introduction: models.md
+           - Introduction: models
            - Default Schemas:
-               - Analyses: schemas-md/analyses_defaultSchema.md
-               - Biosamples: schemas-md/biosamples_defaultSchema.md
-               - Cohorts: schemas-md/cohorts_defaultSchema.md
-               - Datasets: schemas-md/datasets_defaultSchema.md
-               - Genomic Variations: schemas-md/genomicVariations_defaultSchema.md
-               - Individuals: schemas-md/individuals_defaultSchema.md
-               - Runs: schemas-md/runs_defaultSchema.md    
-           - Terms List: schemas-md/beacon_terms.md
+               - Analyses: schemas-md/analyses_defaultSchema
+               - Biosamples: schemas-md/biosamples_defaultSchema
+               - Cohorts: schemas-md/cohorts_defaultSchema
+               - Datasets: schemas-md/datasets_defaultSchema
+               - Genomic Variations: schemas-md/genomicVariations_defaultSchema
+               - Individuals: schemas-md/individuals_defaultSchema
+               - Runs: schemas-md/runs_defaultSchema
+           - Terms List: schemas-md/beacon_terms
+    - Beacon Development:
+        - How to Contribute: contribute
+        - Repository and Branch Organization: code-organization
+        - Github Repositories &#8599;: https://github.com/ga4gh-beacon/
     - External Links:
         - Beacon Project &#8599;: http://beacon-project.io
-        - Github Repositories &#8599;: https://github.com/ga4gh-beacon/
     # - Download PDF: pdf/beacon.pdf
 
 theme:
