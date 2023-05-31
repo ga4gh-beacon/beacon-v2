@@ -114,11 +114,12 @@
     We recommend that all Beacon instances that support age queries support at
     minimum the syntax of `age:<=P65Y` and map such values to the internal datapoint
     most relevant for the resource's context (in most cases probably corresponding
-    to "age at diagnioosis").
+    to "age at diagniosis").
 
     However, different scenarios may be supported (e.g. `EFO_0005056:<=P1Y6M` for
     an "age at death" scenario).
 
+    ##### last change 2023-05-31 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
 
 ??? faq "How can I handle haplotype queries & representation in Beacon v2?"<a id="haplotypes"> </a>"
 
