@@ -171,7 +171,8 @@ POST request example of two Filters using differing relative similarity threshol
 
 A Beacon will query for quantitative properties when the required `operator` and
 numerical `value` parameters are set in the filters request. The `id` parameter
-identifies the field name, the `operator` parameter defines the operator to use,
+identifies the logical scope (with the exact field depending on the internal data
+model at the resource), the `operator` parameter defines the operator to use,
 and the `value` parameter provides the field query value. Equality and relational
 operators (= < >) can be used between field name and field value pairs, and field
 values can be associated with units if applicable.
@@ -201,7 +202,7 @@ age syntax as ISO 8601)
 	]
 	```
 
-We recommend that implementers provide term expansions for equivalent terms,
+We recommend that implementers provide **term expansions** for equivalent terms,
 depending on the context. Also, it is up to the implementers to provide the
 correct tooling for e.g. transformation of input values (e.g. numerical age in
 years and comparator) to the standardized wire format (e.g. ages/durations are
@@ -210,7 +211,7 @@ use (e.g. the ISO values probably will be converted to some numerical format for
 database matches).
 
 
-### Alphanumerical value query (_i.e._ text matches)
+### Text matches
  
 A Beacon will query free-text values within fields when the required `operator`
 and alphanumerical `value` parameters are set in the filters request. Queries can
