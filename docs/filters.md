@@ -28,7 +28,7 @@ A Beacon can support three general types of Filters.
 
 The _/filtering_terms_ endpoint returns a list of all data fields whose values may be subjected to filtering, plus the data type(s) for those fields, and/or the list of extant values for each of those data fields in the current dataset.  In addition, for each bio-ontology used by a Beacon, the endpoint response includes a description of the bio-ontology in [Phenopackets Resource](https://phenopacket-schema.readthedocs.io/en/latest/resource.html) format.
 
-The endpoint's `filterTerms` response identifies the Filter types.
+The endpoint's `filteringTerms` response identifies the Filter types.
 
 Bio-ontology and custom term Filter types contain:
 
@@ -49,7 +49,7 @@ Bio-ontology and custom term Filter types contain:
 		},
 		...
 	],
-	"filterTerms": [
+	"filteringTerms": [
 		{
 			"type": "Human Phenotype Ontology",
 			"id": "HP:0008773",
@@ -67,7 +67,7 @@ Alphanumerical value Filter types contain:
 * `label` = field label (optional) 
 
 ```
-"filterTerms": [
+"filteringTerms": [
 	{
 		"type": "numeric",
 		"id": "PATO:000001",
