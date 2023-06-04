@@ -1,20 +1,28 @@
 # TODO, Bugs & Changes
 
-## TODO
+This page only lists changes w/ regard to the documentation and general organization
+of the Beacon project site(s) as well as with overarching repository organization.
 
-### Documentation
+## TODO
 
 <!-- When done => please check & move to some dated item in Changes below-->
 
 * [x] re-structuring of [Framework page](framework.md)
     - [ ] add part about necessary files, dependening on installation type (e.g. if not needing to support OpenAPI)
-* [ ] fix https (probably @mbaudis has to do some registrar configuration...)
+* [x] fix https (probably @mbaudis has to do some registrar configuration...)
 * [ ] add more [Implementations](other-implementations.md)
 * [ ] extend [Query documentation](variant-queries.md)
     - [x] expand the table comparing different "variant types"
     - [ ] use more content from the variant scouts document
 
-## Changes
+### Changes
+
+#### 2023-06-04: Improved filter documentation & HTTPS
+
+* extended & clarified "filters" documentation
+    - [filter types](/filters/#filter-types) in line with specification
+    - example for pseudo-numerical [value queries](/filters/#pseudo-numerical-value-queries) in `GET` context
+* fixed `HTTPS` issue (by brute-forcing all links on site to `https://`)
 
 #### 2023-03-14: New `website-docs` branch
 

@@ -177,8 +177,9 @@ and the `value` parameter provides the field query value. Equality and relationa
 operators (= < >) can be used between field name and field value pairs, and field
 values can be associated with units if applicable.
 
-##### Example of a Filter for individuals over 70 years of age (age = PATO:0000011,
-age syntax as ISO 8601)
+##### Example of a Filter for individuals over 70 years of age
+
+* age = PATO:0000011, age syntax as ISO 8601
 
 === "GET"
 
