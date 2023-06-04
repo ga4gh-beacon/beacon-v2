@@ -42,10 +42,10 @@ Bio-ontology and custom term Filter types contain:
 		{
 			"id":"hp",
 			"name":"Human Phenotype Ontology",
-			"url":"http://purl.obolibrary.org/obo/hp.owl",
+			"url":"https://purl.obolibrary.org/obo/hp.owl",
 			"version":"27-03-2020",
 			"namespacePrefix":"HP",
-			"iriPrefix":"http://purl.obolibrary.org/obo/HP_"
+			"iriPrefix":"https://purl.obolibrary.org/obo/HP_"
 		},
 		...
 	],

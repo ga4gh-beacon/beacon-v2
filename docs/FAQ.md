@@ -93,10 +93,10 @@
     sequence at this position (necessary e.g. for small deletions).
 
     Beacon v1.1 in principle supported "bracketed" queries and a `variantType` parameter
-    (pointing to the VCF use) - see the [current documentation](http://docs.genomebeacons.org/variant-queries/#beacon-bracket-queries) for details. However, the support & interpretation was - and still is (2022-12-13) -
-    left to implementers. Similar for [Beacon Range Queries](http://docs.genomebeacons.org/variant-queries/#beacon-range-queries).
+    (pointing to the VCF use) - see the [current documentation](https://docs.genomebeacons.org/variant-queries/#beacon-bracket-queries) for details. However, the support & interpretation was - and still is (2022-12-13) -
+    left to implementers. Similar for [Beacon Range Queries](https://docs.genomebeacons.org/variant-queries/#beacon-range-queries).
 
-    However, the [Beacon documentation](http://docs.genomebeacons.org/variant-queries/#varianttype-parameter-interpretation)
+    However, the [Beacon documentation](https://docs.genomebeacons.org/variant-queries/#varianttype-parameter-interpretation)
     provides information about use and expected interpretation of `variantType` values, specifically
     for copy number variations.
 

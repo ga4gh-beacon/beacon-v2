@@ -19,9 +19,9 @@ into resources and workflows, the major 2.0 release in 2022 introduced a large r
   <figcaption>Beacon v2 specification</figcaption>
 </figure>
 
-The core documentation (i.e. this document) can be found on [here](http://docs.genomebeacons.org). Additional
+The core documentation (i.e. this document) can be found on [here](https://docs.genomebeacons.org). Additional
 information about the Beacon project - including news, events, publications - is available
-through the website [beacon-project.io](http://beacon-project.io).
+through the website [beacon-project.io](https://beacon-project.io).
 
 ## Informations for Different Types of Beacon Users
 

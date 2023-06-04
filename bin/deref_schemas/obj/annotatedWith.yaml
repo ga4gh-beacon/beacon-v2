@@ -11,7 +11,7 @@ annotatedWith:
       description: References to the tool
       examples:
       - bio.toolsId: https://bio.tools/vep
-      - url: http://www.ensembl.org/vep
+      - url: https://www.ensembl.org/vep
       minProperties: 1
       properties: {}
       type: object

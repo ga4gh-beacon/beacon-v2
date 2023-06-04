@@ -92,7 +92,7 @@ nav:
         - Repository and Branch Organization: code-organization
         - Github Repositories &#8599;: https://github.com/ga4gh-beacon/
     - External Links:
-        - Beacon Project &#8599;: http://beacon-project.io
+        - Beacon Project &#8599;: https://beacon-project.io
     # - Download PDF: pdf/beacon.pdf
 
 theme:

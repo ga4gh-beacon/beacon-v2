@@ -112,7 +112,7 @@ The `mkdocs-macros-plugin` has been activated, allowing the use of site-wide var
 As of today the new/emerging Beacon v2 documentation is meintained in this repository. We're testing rendered versions (same text/code base) through Github actions ([here](https://beacon-project.io/beacon-v2/)) and [ReadTheDocs](https://beacon-v2-unity.readthedocs.io/en/latest/).
 
 * [x] testing of [ReadTheDocs version](https://beacon-v2-unity.readthedocs.io/) vs. a [`material` themed build](https://beacon-project.io/beacon-v2/)
-* [x] created and linked [docs.genomebeacons.org](http://docs.genomebeacons.org)
+* [x] created and linked [docs.genomebeacons.org](https://docs.genomebeacons.org)
 sub-domain to the Github hosted version of the rendered documentation
 * [x] merging of previous separate documentation repository content from _beacon-v2-schema-documentation_
 in the "unity" repository and archiving of the old one

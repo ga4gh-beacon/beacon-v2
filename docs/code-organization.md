@@ -14,7 +14,7 @@ The `develop` branch is the branch used for development, it reflects the current
 
 ### `website-docs`
 
-This branch is used to maintain the website at <http://docs.genomebeacons.org>. The relevant files consists of anything under `/docs` as well as the configuration file (`/mkdocs.yaml`) and the workflow file for processing the pages under `/.github/workflows/mk-beacon-docs.yaml`.
+This branch is used to maintain the website at <https://docs.genomebeacons.org>. The relevant files consists of anything under `/docs` as well as the configuration file (`/mkdocs.yaml`) and the workflow file for processing the pages under `/.github/workflows/mk-beacon-docs.yaml`.
 
 Changes to the Markdown files in the `/docs` directory (and its children) will initiate the processing of the workflow file; updating of the website than may take some minutes.
 
