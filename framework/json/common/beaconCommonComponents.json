@@ -111,15 +111,19 @@
         },
         "HandoverType": {
             "$ref": "./ontologyTerm.json",
-            "description": "Handover type, as an Ontology_term object with CURIE syntax for the `id` value. Use `CUSTOM` for the `id` when no ontology is available.",
+            "description": "Handover type, as an Ontology_term object with CURIE syntax for the `id` value. Use \"CUSTOM:123455\" CURIE-style `id` when no ontology is available.",
             "examples": [
                 {
-                    "id": "EFO:0004157",
-                    "label": "BAM format"
+                    "id": "EDAM:2572",
+                    "label": "BAM"
                 },
                 {
-                    "id": "CUSTOM",
-                    "label": "download genomic variants in .pgxseg file format"
+                    "id": "EDAM:3016",
+                    "label": "VCF"
+                },
+                {
+                    "id": "CUSTOM:pgxseg",
+                    "label": "genomic variants in .pgxseg file format"
                 }
             ]
         },
