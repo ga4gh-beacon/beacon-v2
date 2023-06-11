@@ -9,13 +9,23 @@ of the Beacon project site(s) as well as with overarching repository organizatio
 
 * [x] re-structuring of [Framework page](framework.md)
     - [ ] add part about necessary files, dependening on installation type (e.g. if not needing to support OpenAPI)
-* [x] fix https (probably @mbaudis has to do some registrar configuration...)
 * [ ] add more [Implementations](other-implementations.md)
 * [ ] extend [Query documentation](variant-queries.md)
     - [x] expand the table comparing different "variant types"
     - [ ] use more content from the variant scouts document
 
 ### Changes
+
+#### 2023-06-12: Restructured and extended documentation
+
+* new separation of navigation areas into "Introducing Beacon", "Using Beacons",
+  "Creating Beacons" and "Beacon Development", with subtopics such as "Data Discovery",
+  "Data Delivery" ...
+* combined "what-is-beacon-v2" into rewritten index page
+* new pages for "Data Delivery": [Biosamples, Variants...](/records/) and
+  [Data Handovers](/handovers/) - so far limited content
+
+###### @mbaudis
 
 #### 2023-06-04: Improved filter documentation & HTTPS
 
@@ -24,10 +34,14 @@ of the Beacon project site(s) as well as with overarching repository organizatio
     - example for pseudo-numerical [value queries](/filters/#pseudo-numerical-value-queries) in `GET` context
 * fixed `HTTPS` issue (by brute-forcing all links on site to `https://`)
 
+###### @mbaudis
+
 #### 2023-03-14: New `website-docs` branch
 
 To protect the code branches we are using now a separate ``website-docs`` branch in `beacon-v2` for documentation
 website updates. Please make sure all documentation edits happen there!
+
+###### @mbaudis
 
 #### 2022-06-20: Retiring of `beacon-framework-v2` and `beacon-v2-Models` repos
 

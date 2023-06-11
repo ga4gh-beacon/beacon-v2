@@ -1,7 +1,7 @@
 # Beacon "Flavours"
 
 !!! Note "About UI"
-    Most of the information that you will find here is related to the [Beacon v2 specification](./what-is-beacon-v2.md). For that reason, the examples are shown as REST API requests/responses in the form of [JSON](https://www.json.org/json-en.html). If you are only interested in using beacon with a **graphical interface** please visit the [implementations](implementations-options.md) page.
+    Most of the information that you will find here is related to the [Beacon v2 specification](/). For that reason, the examples are shown as REST API requests/responses in the form of [JSON](https://www.json.org/json-en.html). If you are only interested in using beacon with a **graphical interface** please visit the [implementations](implementations-options.md) page.
 
 While the original Beacon v1 only provided Boolean (_i.e._ **YES/NO**) responses
 on queries for the existence of specific genomic variants, Beacon v2 is a flexible

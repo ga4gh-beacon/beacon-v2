@@ -72,7 +72,7 @@
     }
     ```
  
-    ##### last change 2023-02-17 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
+    ###### last change 2023-02-17 @mbaudis
 
 ??? faq "Is it `Beacon` or `beacon`?"
 
@@ -80,7 +80,7 @@
     components - while lower case `beacons` are instances of these, _i.e._ individual
     resources using the protocol.
     
-    ##### last change 2022-10-01 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
+    ###### last change 2022-10-01 by @mbaudis
 
 ??? faq "What types of genomic variants are supported in Beacon queries?"
 
@@ -100,7 +100,7 @@
     provides information about use and expected interpretation of `variantType` values, specifically
     for copy number variations.
 
-    ##### last change 2022-12-14 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
+    ###### last change 2022-12-14 @mbaudis
 
 
 ??? faq "How can I add e.g. an age limit to a query for a disease?"
@@ -119,9 +119,9 @@
     However, different scenarios may be supported (e.g. `EFO_0005056:<=P1Y6M` for
     an "age at death" scenario).
 
-    ##### last change 2023-05-31 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
+    ###### last change 2023-05-31 by @mbaudis
 
-??? faq "How can I handle haplotype queries & representation in Beacon v2?"<a id="haplotypes"> </a>"
+??? faq "How can I handle haplotype queries & representation in Beacon v2?<a id="haplotypes"> </a>"
 
     #### Queries
 
