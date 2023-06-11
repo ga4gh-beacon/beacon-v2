@@ -56,17 +56,19 @@ markdown_extensions:
 
 nav:
     - Introduction: 
-        - General Introduction: index
-        - What is Beacon v2?: what-is-beacon-v2
-        - Beacon Flavours: beacon-flavours
+        - Introducing Beacon: /
+        - Beacon Types: beacon-flavours
         - Security: security
         - Networks: networks
         - FAQ: FAQ
         - Changes: bugs-changes-log
-    - Querying Beacons:
-        - REST API: rest-api
+    - Data Discovery:
         - Genomic Queries: variant-queries
         - Phenotypes and More...: /filters/#using-filters-in-queries
+    - Data Delivery:
+        - Biosamples, Variants...: records
+        - Data Handovers: handovers
+        - REST API: rest-api
     - 'Implement & Deploy a Beacon':
         - Implementations Options: implementations-options
         - Standards Integration: formats-standards
