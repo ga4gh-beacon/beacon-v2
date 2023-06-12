@@ -19,7 +19,7 @@ nav:
             - Security: security
             - Beacon Networks: networks
         - FAQ: FAQ
-        - Changes: bugs-changes-log
+        - Changes: changes-todo
         - Beacon News &#8599;: https://beacon-project.io/news/
     - Using Beacons:
         - Data Discovery:

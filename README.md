@@ -30,7 +30,7 @@ There is a set of tools in [`/bin`](./bin/) to facilitate the conversion. ATM, a
 
 ### Changes
 
-* change notes with respect to the repository & documentation are now in [docs.genomebeacons.org](https://docs.genomebeacons.org/bugs-changes-log/)
+* change notes with respect to the repository & documentation are now in [docs.genomebeacons.org](https://docs.genomebeacons.org/changes-todo/)
 * NOTE: on 2022-06-20 the previous development repositories have been archived:
     - ARCHIVE - [beacon-framework-v2](https://github.com/ga4gh-beacon/beacon-framework-v2)
     - ARCHIVE - [beacon-v2-Models](https://github.com/ga4gh-beacon/beacon-v2-Models)
