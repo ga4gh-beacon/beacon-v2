@@ -32,7 +32,7 @@ and the default schemas documented from there.
     Also, the sample contains fields which are **not** defined in the default
     schema (such as  `icdoMorphology`...); but although the use of custom fields is discouraged to
     enhance interoperability, the use of `additionalProperties` is allowed so the
-    data itself is schema conform. 
+    data itself remains schema conform. 
 
     ```
     {
@@ -63,14 +63,14 @@ and the default schemas documented from there.
             "resultsCount": 1,
             "results": [
               {
-                "id": "pgxbs-kftva5c9",
-                "individualId": "pgxind-kftx25hb",
-                "notes": "Mantle cell lymphoma",
+                "id": "pgxbs-kftvi9i0",
+                "individualId": "pgxind-kftvi9i0",
+                "notes": "Primary Tumor",
                 "biosampleStatus": {
                   "id": "EFO:0009656",
                   "label": "neoplastic sample"
                 },
-                "collectionMoment": "P66Y",
+                "collectionMoment": "P44Y1M24D",
                 "sampleOriginType": {
                   "id": "OBI:0001479",
                   "label": "specimen from organism"
@@ -81,29 +81,41 @@ and the default schemas documented from there.
                 },
                 "externalReferences": [
                   {
-                    "id": "geo:GSE13331",
-                    "reference": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE13331"
+                    "id": "pgx:TCGA.933b9daf-a5bf-46cf-92b6-5ddd8279919c",
+                    "label": "TCGA case_id"
+                  },
+                  {
+                    "id": "pgx:TCGA.TCGA-76-6663",
+                    "label": "TCGA submitter_id"
+                  },
+                  {
+                    "id": "pgx:TCGA.005cb7ce-5050-43aa-85ff-cd56ed830535",
+                    "label": "TCGA sample_id"
+                  },
+                  {
+                    "id": "pgx:TCGA.GBM",
+                    "label": "TCGA GBM project"
                   }
                 ],
                 "histologicalDiagnosis": {
-                  "id": "NCIT:C4337",
-                  "label": "Mantle Cell Lymphoma"
+                  "id": "NCIT:C3058",
+                  "label": "Glioblastoma"
                 },
                 "icdoMorphology": {
-                  "id": "pgx:icdom-96733",
-                  "label": "Mantle cell lymphoma"
+                  "id": "pgx:icdom-94403",
+                  "label": "Glioblastoma, NOS"
                 },
                 "icdoTopography": {
-                  "id": "pgx:icdot-C77.9",
-                  "label": "Lymph node, NOS"
+                  "id": "pgx:icdot-C71.9",
+                  "label": "Brain, NOS"
                 },
                 "pathologicalStage": {
                   "id": "NCIT:C92207",
                   "label": "Stage Unknown"
                 },
                 "sampleOriginDetail": {
-                  "id": "UBERON:0000029",
-                  "label": "lymph node"
+                  "id": "UBERON:0000955",
+                  "label": "brain"
                 },
                 "updated": "2020-09-10 17:44:04.888000"
               }
