@@ -5,11 +5,11 @@
         "AlphanumericFilter": {
             "description": "Filter results based on operators and values applied to alphanumeric fields.",
             "properties": {
-                "id": {
-                    "description": "Field identfier to be queried.",
-                    "example": "age",
-                    "type": "string"
-                },
+              "id": {
+                "description": "Field identfier to be queried.",
+                "example": "ageOfOnset",
+                "type": "string"
+              },
                 "operator": {
                     "default": "=",
                     "description": "Defines how the value relates to the field `id`.",
@@ -26,7 +26,7 @@
                 },
                 "scope": {
                     "description": "The entry type to which the filter applies",
-                    "example": "biosamples",
+                    "example": "individuals",
                     "type": "string"
                 },
                 "value": {
@@ -50,11 +50,11 @@
                     "example": "demographic.ethnicity:asian",
                     "type": "string"
                 },
-                "scope": {
-                    "description": "The entry type to which the filter applies",
-                    "example": "biosamples",
-                    "type": "string"
-                }
+              "scope": {
+                "description": "The entry type to which the filter applies",
+                "example": "individuals",
+                "type": "string"
+              }
             },
             "required": [
                 "id"

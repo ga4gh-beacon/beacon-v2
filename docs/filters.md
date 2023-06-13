@@ -41,30 +41,13 @@ Bio-ontology and custom term Filter types contain:
 	],
 	"filterTerms": [
 		{
-			"type": "Human Phenotype Ontology",
+			"type": "ontologyTerm",
 			"id": "HP:0008773",
 			"label": "neoplasm of the lung"
 		},
 		...
 	]
 }
-```
-
-Numerical value Filter types contain:
-
-* `type` = data type as 'numeric' (required) 
-* `id` = field id (required) 
-* `label` = field label (optional) 
-
-```
-"filterTerms": [
-	{
-		"type": "numeric",
-		"id": "PATO:000001",
-		"label": "age"
-	},
-	...
-]
 ```
 
 Alphanumerical value Filter types contain:
@@ -77,12 +60,13 @@ Alphanumerical value Filter types contain:
 "filterTerms": [
 	{
 		"type": "alphanumeric",
-		"id": "HP:0032443",
-		"label": "past medical history"
+		"id": "PATO:0000011",
+		"label": "age"
 	},
 	...
 ]
 ```
+
 
 ## Using Filters in Queries
 
