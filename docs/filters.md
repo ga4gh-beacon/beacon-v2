@@ -4,21 +4,31 @@ _Filters_ represent a powerful addition to the Beacon query API. They are rules 
 
 !!! Important "Using Filters"
 
-	Please see [Using Filters in Queries](/filters/#using-filters-in-queries) for more information on how to use filters in Beacon requests.
+	Please see [Using Filters in Queries](/filters/#using-filters-in-queries) for
+	more information on how to use filters in Beacon requests.
 
 ## Filter types
-A Beacon can support four types of Filters.
 
-1. **Bio-ontology terms** for biomedical data or procedural metadata that are contained in public repositories such as the EMBL-EBI [Ontology Lookup Service](https://www.ebi.ac.uk/ols/index) or the NCBO [BioPortal](https://bioportal.bioontology.org/).  Bio-ontology terms are identified using the full term/class identifier as CURIE, e.g. “HP:0100526”.
-2. **Custom terms** for biomedical or metadata terms that are locally defined by a Beacon (e.g. not corresponding to known bio-ontology terms).  Custom terms must contain unique identifiers that are used in Beacon requests.
-3. **Numerical values** include integer, decimal and float data types.
-4. **Alphanumerical values** include alphabetic letters and special characters with or without numbers.
+A Beacon can support three general types of Filters.
+
+1. **Bio-ontology terms and public identifiers** for biomedical data, procedural
+   metadata or prefixed identifiers listed in public repositories such as the EMBL-EBI
+   [Ontology Lookup Service](https://www.ebi.ac.uk/ols/index), the NCBO [BioPortal](https://bioportal.bioontology.org/)
+   or PubMed. `OntologyFilters` are identified using the full term/class identifier
+   as CURIE, e.g. “HP:0100526”.
+2. **Numerical and alphanumerical values** including an indicator for their logical
+   scope - preferably as a CURIE (e.g. `HP:0032443` _Past medical history_), a
+   comparator and a numerical, pseudo-numerical (e.g. ISO8601 period) or string
+   value
+3. **Custom terms** for biomedical or metadata terms that are locally defined by
+   a Beacon (e.g. not corresponding to known bio-ontology terms). Custom terms must
+   contain unique identifiers that are used in Beacon requests (e.g. local prefixes.
 
 ## _/filtering_terms_  informational endpoint
 
 The _/filtering_terms_ endpoint returns a list of all data fields whose values may be subjected to filtering, plus the data type(s) for those fields, and/or the list of extant values for each of those data fields in the current dataset.  In addition, for each bio-ontology used by a Beacon, the endpoint response includes a description of the bio-ontology in [Phenopackets Resource](https://phenopacket-schema.readthedocs.io/en/latest/resource.html) format.
 
-The endpoint's `filterTerms` response identifies the Filter types.
+The endpoint's `filteringTerms` response identifies the Filter types.
 
 Bio-ontology and custom term Filter types contain:
 
@@ -32,14 +42,14 @@ Bio-ontology and custom term Filter types contain:
 		{
 			"id":"hp",
 			"name":"Human Phenotype Ontology",
-			"url":"http://purl.obolibrary.org/obo/hp.owl",
+			"url":"https://purl.obolibrary.org/obo/hp.owl",
 			"version":"27-03-2020",
 			"namespacePrefix":"HP",
-			"iriPrefix":"http://purl.obolibrary.org/obo/HP_"
+			"iriPrefix":"https://purl.obolibrary.org/obo/HP_"
 		},
 		...
 	],
-	"filterTerms": [
+	"filteringTerms": [
 		{
 			"type": "ontologyTerm",
 			"id": "HP:0008773",
@@ -57,7 +67,12 @@ Alphanumerical value Filter types contain:
 * `label` = field label (optional) 
 
 ```
-"filterTerms": [
+"filteringTerms": [
+	{
+		"type": "numeric",
+		"id": "PATO:000001",
+		"label": "age"
+	},
 	{
 		"type": "alphanumeric",
 		"id": "PATO:0000011",
@@ -78,7 +93,14 @@ For all query types, the logical `AND` is implied between Filters. The Filter `i
 	In this case general filter defaults apply (e.g. `{ "includeDescendantTerms": true }`). Generally,
 	use of filters other than CURIE values for filter ids is discouraged.
 
-### Simple CURIE based filters query
+### CURIE based filters query
+
+!!! note "Hierarchical term expansion"
+
+    It is recomended that the use of terms from hierarchical ontologies/classicfications
+    uses an internal term expansion mechanism - _i.e._ records with parameters containing
+    a child term are matched when the parent term is being queried.
+    This default behaviour can be modoiified (see below).
 
 The following query retrieves (or filters retrieved...) data matching the diagnosis of
 Papillary Renal Cell Carcinoma (NCIT:C6975) from a publication identified through its PubMed id (22824167):
@@ -103,7 +125,7 @@ Papillary Renal Cell Carcinoma (NCIT:C6975) from a publication identified throug
 	```
 
 
-### Hierarchical ontology query
+### Modified hierarchical ontology query
 
 A Beacon will query for entities associated with the submitted bio-ontology term(s), and by default, all descendent terms.
 The optional `includeDescendantTerms` parameter can be set to either `true` or `false`. The default and assumed value
@@ -146,26 +168,59 @@ POST request example of two Filters using differing relative similarity threshol
 ]
 ```
 
-### Numerical value query
+### (Pseudo-)numerical value queries
 
-A Beacon will query for quantitative properties when the required `operator` and numerical `value` parameters are set in the filters request. 
-The `id` parameter identifies the field name, the `operator` parameter defines the operator to use, and the `value` parameter provides the field query value. Equality and relational operators (= < >) can be used between field name and field value pairs, and field values can be associated with units if applicable.
+A Beacon will query for quantitative properties when the required `operator` and
+numerical `value` parameters are set in the filters request. The `id` parameter
+identifies the logical scope (with the exact field depending on the internal data
+model at the resource), the `operator` parameter defines the operator to use,
+and the `value` parameter provides the field query value. Equality and relational
+operators (= < >) can be used between field name and field value pairs, and field
+values can be associated with units if applicable.
 
-POST request example of a Filter for individuals over 70 years of age (age = PATO:0000011, age syntax as ISO 8601):
+##### Example of a Filter for individuals over 70 years of age
 
-```json
-"filters": [
-	{
-		"id": "PATO:0000011",
-		"operator": ">",
-		"value": "P70Y"
-	}
-]
-```
+* age = PATO:0000011, age syntax as ISO 8601
 
-### Alphanumerical value query
+=== "GET"
+
+    * `filters=age:>P70Y`
+        - intuitive use but w/o clear scoping (age... when?)
+    * `filters=PATO_0000011:>P70Y` ("age")
+        - using a term for expressing the age quality of the ISO8601 duration
+        - computationally more robust but w/o additional quality (age... when?)
+    * `filters=EFO_0004847:>P70Y` ("age at onset")
+        - specific for an "onset" scope of the age value
+
+=== "POST"
+
+	```json
+	"filters": [
+		{
+			"id": "PATO:0000011",
+			"operator": ">",
+			"value": "P70Y"
+		}
+	]
+	```
+
+We recommend that implementers provide **term expansions** for equivalent terms,
+depending on the context. Also, it is up to the implementers to provide the
+correct tooling for e.g. transformation of input values (e.g. numerical age in
+years and comparator) to the standardized wire format (e.g. ages/durations are
+**always** transmitted as ISO8601 periods) as well as the correct deparsing and
+use (e.g. the ISO values probably will be converted to some numerical format for
+database matches).
+
+
+### Text matches
  
-A Beacon will query free-text values within fields when the required `operator` and alphanumerical `value` parameters are set in the filters request. Queries can be for exact alphanumerical values, used to exclude alphanumerical values, or employ wildcards to match patterns within alphanumerical values.  In all query classes, the `id` parameter identifies the field name, the `operator` parameter defines the operator to use, and the `value` parameter provides the field query value.
+A Beacon will query free-text values within fields when the required `operator`
+and alphanumerical `value` parameters are set in the filters request. Queries can
+be for exact alphanumerical values, used to exclude alphanumerical values, or employ
+wildcards to match patterns within alphanumerical values.  In all query classes,
+the `id` parameter identifies the field name, the `operator` parameter defines the
+operator to use, and the `value` parameter provides the field query value.
 
 #### 'EXACT' value query
 
@@ -203,14 +258,20 @@ POST request example to filter medical history free-text for any reference to ca
 
 The `operator` parameter is set to the logical not (!) operator.  The `value` parameter should not be present in field value.  The wildcard character can be used if required.
 
-POST request example to filter medical history free-text for records that do not include the query string:
+##### Example to filter medical history free-text for records that do not include the query string
 
-```json
-"filters": [
-	{
-		"id": "HP:0032443",
-		"operator": "!",
-		"value": "unknown medical history"
-	}
-]
-```
+=== "GET"
+
+    `filters=HP_0032443:!unknown+medical+history`
+
+=== "POST"
+
+	```json
+	"filters": [
+		{
+			"id": "HP:0032443",
+			"operator": "!",
+			"value": "unknown medical history"
+		}
+	]
+	```
