@@ -33,9 +33,11 @@ such as CNV query options or handover data delivery.
 
 ##### Link: [CNAG Beacon v2 API](https://playground.rd-connect.eu/beacon2/api)
 
+<!--
 ### Fundacion Progreso y Salud Beacon v2 API
 
 ##### Link: [Fundacion Progreso y Salud Beacon v2 API](https://csvs-beacon.clinbioinfosspa.es/csvs/ga4ghbeacon/v2/api/)
+-->
 
 ## Tips for New Implementers
 
