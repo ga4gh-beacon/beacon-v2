@@ -69,11 +69,6 @@ Alphanumerical value Filter types contain:
 ```
 "filteringTerms": [
 	{
-		"type": "numeric",
-		"id": "PATO:000001",
-		"label": "age"
-	},
-	{
 		"type": "alphanumeric",
 		"id": "PATO:0000011",
 		"label": "age"
@@ -81,7 +76,6 @@ Alphanumerical value Filter types contain:
 	...
 ]
 ```
-
 
 ## Using Filters in Queries
 
