@@ -36,7 +36,7 @@ Bio-ontology and custom term Filter types contain:
 * `id` = term id (required) 
 * `label` = term label (optional)
 
-```
+```json
 "response":{
 	"resources":[
 		{
@@ -66,7 +66,7 @@ Alphanumerical value Filter types contain:
 * `id` = field id (required) 
 * `label` = field label (optional) 
 
-```
+```json
 "filteringTerms": [
 	{
 		"type": "alphanumeric",
@@ -87,7 +87,7 @@ For all query types, the logical `AND` is implied between Filters. The Filter `i
 	In this case general filter defaults apply (e.g. `{ "includeDescendantTerms": true }`). Generally,
 	use of filters other than CURIE values for filter ids is discouraged.
 
-### CURIE based filters query
+### CURIE based filters query (type "OntologyFilters")
 
 !!! note "Hierarchical term expansion"
 
@@ -119,7 +119,7 @@ Papillary Renal Cell Carcinoma (NCIT:C6975) from a publication identified throug
 	```
 
 
-### Modified hierarchical ontology query
+#### Modified hierarchical ontology query
 
 A Beacon will query for entities associated with the submitted bio-ontology term(s), and by default, all descendent terms.
 The optional `includeDescendantTerms` parameter can be set to either `true` or `false`. The default and assumed value
@@ -143,7 +143,7 @@ Request example of two filters, where one filter excludes matches with descenden
 	```
 
 
-### Semantic similarity query
+#### Semantic similarity query
 
 A Beacon will query for entities that are associated with bio-ontology terms that are similar to the submitted terms.  The Beacon API is agnostic to the semantic similarity model implemented by a Beacon and how a Beacon applies the relative thresholds of similarity.  A semantic similarity query request contains the required `similarity` parameter with a value set to define the relative threshold level of `high`, `medium` or `low`.
 
@@ -162,7 +162,7 @@ POST request example of two Filters using differing relative similarity threshol
 ]
 ```
 
-### (Pseudo-)numerical value queries
+### Alphanumerical value queries
 
 A Beacon will query for quantitative properties when the required `operator` and
 numerical `value` parameters are set in the filters request. The `id` parameter
@@ -171,6 +171,8 @@ model at the resource), the `operator` parameter defines the operator to use,
 and the `value` parameter provides the field query value. Equality and relational
 operators (= < >) can be used between field name and field value pairs, and field
 values can be associated with units if applicable.
+
+#### (Pseudo-)numerical value queries
 
 ##### Example of a Filter for individuals over 70 years of age
 
@@ -207,7 +209,7 @@ use (e.g. the ISO values probably will be converted to some numerical format for
 database matches).
 
 
-### Text matches
+#### Text matches
  
 A Beacon will query free-text values within fields when the required `operator`
 and alphanumerical `value` parameters are set in the filters request. Queries can
@@ -216,7 +218,7 @@ wildcards to match patterns within alphanumerical values.  In all query classes,
 the `id` parameter identifies the field name, the `operator` parameter defines the
 operator to use, and the `value` parameter provides the field query value.
 
-#### 'EXACT' value query
+##### 'EXACT' value query
 
 The `operator` parameter is set to the equality (=) operator.
 
@@ -248,11 +250,9 @@ POST request example to filter medical history free-text for any reference to ca
 ]
 ```
 
-#### 'NOT' value query
+##### 'NOT' value query
 
-The `operator` parameter is set to the logical not (!) operator.  The `value` parameter should not be present in field value.  The wildcard character can be used if required.
-
-##### Example to filter medical history free-text for records that do not include the query string
+The `operator` parameter is set to the logical not (!) operator.  The `value` parameter should not be present in field value.  The wildcard character can be used if required. The following example shows how to filter medical history free-text for records that do not include the query string:
 
 === "GET"
 
