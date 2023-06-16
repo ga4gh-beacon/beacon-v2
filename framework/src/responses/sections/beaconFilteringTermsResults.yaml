@@ -28,8 +28,7 @@ definitions:
           - custom
           - alphanumeric
           - ontology
-        example: 
-          - alphanumeric
+        example: alphanumeric
       id:
         description: >-
           The field id in the case of numeric or alphanumeric fields, or
