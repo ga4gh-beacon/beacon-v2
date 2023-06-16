@@ -9,6 +9,9 @@ properties:
     type: array
     items:
       $ref: '#/definitions/TypedQuantity'
+  required:
+    - typedQuantities
+
 definitions:
   TypedQuantity:
     properties:
@@ -27,5 +30,3 @@ definitions:
             unit:
               id: NCIT:C49670
               label: Millimeter of Mercury
-    required:
-      - typedQuantities
