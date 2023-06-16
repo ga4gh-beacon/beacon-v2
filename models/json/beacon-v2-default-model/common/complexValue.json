@@ -23,7 +23,11 @@
                         "label": "Systolic Blood Pressure"
                     }
                 }
-            }
+            },
+            "required": [
+                "quantityType",
+                "quantity"
+            ]
         }
     },
     "description": "Definition of a complex value class. Provenance: GA4GH Phenopackets v2 `TypedQuantity`",
