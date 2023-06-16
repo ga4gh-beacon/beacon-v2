@@ -24,10 +24,7 @@
                     }
                 }
             },
-            "required": [
-                "quantityType",
-                "quantity"
-            ]
+            "required": [ "typedQuantities" ]
         }
     },
     "description": "Definition of a complex value class. Provenance: GA4GH Phenopackets v2 `TypedQuantity`",
