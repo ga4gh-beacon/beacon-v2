@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Definition of an element or entity, to describe each type of entity included in a beacon. The `id` attribute is the key that should be used in other parts of the data model to allow Beacon clients to identify the different parts (e.g. endpoints, filteringTerms, request parameters, etc.) that relvant for an entity.",
+    "description": "Definition of an element or entity, to describe each type of entity included in a beacon. The `id` attribute is the key that should be used in other parts of the data model to allow Beacon clients to identify the different parts (e.g. endpoints, filtering terms, request parameters, etc.) that are relvant for an entity.",
     "properties": {
         "$schema": {
             "$ref": "../common/beaconCommonComponents.json#/definitions/$schema"
@@ -34,7 +34,7 @@
             "type": "string"
         },
         "id": {
-            "description": "A (unique) identifier of the element.",
+            "description": "A unique identifier of the element.",
             "examples": [
                 "biosample",
                 "individual",
@@ -50,7 +50,17 @@
             "$ref": "../common/beaconCommonComponents.json#/definitions/NonFilteredQueriesAllowed"
         },
         "ontologyTermForThisType": {
-            "$ref": "../common/ontologyTerm.json"
+            "$ref": "../common/ontologyTerm.json",
+            "examples": [
+                {
+                    "id": "EFO:0000542",
+                    "label": "individual"
+                },
+                {
+                    "id": "OBI:0000747",
+                    "label": "material sample"
+                }
+            ]
         },
         "partOfSpecification": {
             "description": "This is label to group together entry types that are part of the same specification.",
@@ -61,7 +71,6 @@
     "required": [
         "id",
         "name",
-        "ontologyTermForThisType",
         "partOfSpecification",
         "defaultSchema"
     ],
