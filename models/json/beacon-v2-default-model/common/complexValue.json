@@ -38,7 +38,8 @@
                 "$ref": "#/definitions/TypedQuantity"
             },
             "type": "array"
-        }
+        },
+        "required": [ "typedQuantities" ]
     },
     "title": "Complex Value",
     "type": "object"
