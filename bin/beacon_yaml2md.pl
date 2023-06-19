@@ -582,7 +582,7 @@ toolReferences:
   description: References to the tool
   examples:
     - bio.toolsId: https://bio.tools/vep
-    - url: http://www.ensembl.org/vep
+    - url: https://www.ensembl.org/vep
   type: object
 EOF
 
@@ -769,11 +769,11 @@ YAMLs schemas. Each time the original MS Word document was edited, someone had t
 
 This script inverts the process, i.e., B<it enforces modifying the schema specification directly at the YAML/JSON level>.
 
-Editing the schemas directly at the YAML/JSON level has two advantages, the first is that because we follow L<OpenAPI|https://swagger.io/specification/> specification (along with JSON schema), I<a priori> we could use L<SWAGGER UI|https://swagger.io/docs/open-source-tools/swagger-ui/usage/installation>. The second is that the YAML/JSON files can be converted to Markdown tables in order to create L<Markdown based documentation|http://docs.genomebeacons.org> documentation. This script B<transforms YAML/JSON to Markdown tables>, including their nested objects B<up to a third degree of hierarchy>.
+Editing the schemas directly at the YAML/JSON level has two advantages, the first is that because we follow L<OpenAPI|https://swagger.io/specification/> specification (along with JSON schema), I<a priori> we could use L<SWAGGER UI|https://swagger.io/docs/open-source-tools/swagger-ui/usage/installation>. The second is that the YAML/JSON files can be converted to Markdown tables in order to create L<Markdown based documentation|https://docs.genomebeacons.org> documentation. This script B<transforms YAML/JSON to Markdown tables>, including their nested objects B<up to a third degree of hierarchy>.
 
-The B<Markdown> format can be directly rendered as tables at the GitHub repository, and it can be used with L<MkDocs|https://www.mkdocs.org/> to create L<HTML|http://docs.genomebeacons.org> documentation. 
+The B<Markdown> format can be directly rendered as tables at the GitHub repository, and it can be used with L<MkDocs|https://www.mkdocs.org/> to create L<HTML|https://docs.genomebeacons.org> documentation. 
 
-Everytime a C<git push> is performed to the L<repo|https://github.com/ga4gh-beacon/beacon-v2> the documentation at L<Github Pages|http://docs.genomebeacons.org> gets updated. Note that only content under directory C<docs/> will make it to L<Github Pages|http://docs.genomebeacons.org>.
+Everytime a C<git push> is performed to the L<repo|https://github.com/ga4gh-beacon/beacon-v2> the documentation at L<Github Pages|https://docs.genomebeacons.org> gets updated. Note that only content under directory C<docs/> will make it to L<Github Pages|https://docs.genomebeacons.org>.
 
 Before creating this tool, the author made an exhaustive search on what had been dveloped by the I<community> to automatically convert YAML/JSON to Markdown tables and found that there were many ways to go from YAML/JSON to HTML (e.g., CPAN, Python, Node.js), but not much from YAML/JSON to Markdown. Obviously, even in the case we had found something, some major tweaking will be needed in order to display things the way we want.
 

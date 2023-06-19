@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  * Updated `docs`:
     - `filters.md`
     - `variant-queries.md`
-    - `bugs-changes-log.md` 
+    - `changes-todo.md` 
     - `ComplexValue.md`
     - `README.md`
     - Added missing descriptions to models properties (see issue #42)
