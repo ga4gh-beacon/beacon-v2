@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Definition of an element or entry type, to describe each type of entry type included in a beacon. The `id` attribute is the key that should be used in other parts of the data model to allow Beacon clients to identify the different parts (e.g. endpoints, filtering terms, request parameters, etc.) that are relvant for an entry type.",
+    "description": "Definition of an element or scope of the element, to describe each type of entry type included in a beacon. The `id` attribute is the key that should be used in other parts of the data model to allow Beacon clients to identify the different parts (e.g. endpoints, filtering terms, request parameters, etc.) that are relvant for an entry type.",
     "properties": {
         "$schema": {
             "$ref": "../common/beaconCommonComponents.json#/definitions/$schema"
