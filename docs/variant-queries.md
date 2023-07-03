@@ -208,6 +208,12 @@ differing in their exact base extents.
     Bracket queries require the use of **two** `start` and `end` parameters, in contrast
     to _Range Queries_.
 
+!!! Attention "List Parameters in GET Requests"
+
+	Since the direct interpretation of list parameters in queries is not supported by
+	some server environments (e.g. PHP, GO…), list parameters such as `start` and `end`
+	should be provided as **comma-concatenated** strings when using them in GET requests.
+
 
 #### Example: CNV Query - _TP53_ Deletion Query by Coordinates
 
@@ -229,12 +235,6 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 
 	* `datasetIds=__some-dataset-ids__`
 	* `filters` ...
-
-	!!! Attention "List Parameters in GET Requests"
-
-		Since the direct interpretation of list parameters in queries is not supported by
-		some server environments (e.g. PHP, GO…), list parameters such as `start` and `end`
-		should be provided as **comma-concatenated** strings when using them in GET requests.
 
 
 === "Beacon v2 POST"

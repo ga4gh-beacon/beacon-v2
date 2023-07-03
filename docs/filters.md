@@ -87,6 +87,12 @@ For all query types, the logical `AND` is implied between Filters. The Filter `i
 	In this case general filter defaults apply (e.g. `{ "includeDescendantTerms": true }`). Generally,
 	use of filters other than CURIE values for filter ids is discouraged.
 
+!!! Attention "List Parameters in GET Requests"
+
+	Since the direct interpretation of list parameters in queries is not supported by
+	some server environments (e.g. PHP, GO…), list parameters such as `start` and `end`
+	should be provided as **comma-concatenated** strings when using them in GET requests.
+
 ### CURIE based filters query (type "OntologyFilters")
 
 !!! note "Hierarchical term expansion"
