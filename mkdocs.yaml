@@ -64,7 +64,7 @@ plugins:
   #      author: Beacon API Development Team
   #      output_path: pdf/beacon.pdf
   - macros
-  # - mermaid2
+  - mermaid2
 
 markdown_extensions:
     - toc:
