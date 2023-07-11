@@ -32,14 +32,16 @@
     },
     "description": "Definition of a complex value class. Provenance: GA4GH Phenopackets v2 `TypedQuantity`",
     "properties": {
+        "required": [
+            "typedQuantities"
+        ],
         "typedQuantities": {
             "description": "List of quantities required to fully describe the complex value",
             "items": {
                 "$ref": "#/definitions/TypedQuantity"
             },
             "type": "array"
-        },
-        "required": [ "typedQuantities" ]
+        }
     },
     "title": "Complex Value",
     "type": "object"

@@ -1,48 +1,54 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-title: ''
-description: "Definition of an element or entry type including the Beacon v2 required\
-  \ and suggested attributes. This schema purpose is to  describe each type of entities\
-  \ included in a Beacon, hence Beacon clients could have some metadata about such\
-  \ entities.\n\nThe `id` attribute is the key that should be used in other parts\
-  \ of the Beacon Model to allow Beacon clients to identify the different parts (e.g.\
-  \ endpoints, filteringTerms, request parameters, etc.) that fully describe an entry\
-  \ type."
+title: EntryType Definitions
+description: >-
+  Definition of an element or entry type including the Beacon v2 required and
+  suggested attributes. This schema purpose is to  describe each type of entry
+  types included in a Beacon, hence Beacon clients could have some metadata about
+  such entry types.
+  The `id` attribute is the key that should be used in other parts of the Beacon
+  model to allow Beacon clients to identify the different parts (e.g. endpoints,
+  filteringTerms, request parameters, etc.) that fully describe an entry type.
 type: object
-$comment: 'TO DO: The tagged parts should reference to `common/ontologizedElement.json`.
-  But that configuration fails to validate. Further investigation is required, but
-  should not affect the resulting schema.'
+$comment: >-
+  TO DO: The id ... parts could reference to `common/ontologizedElement...`.
 properties:
   $schema:
     $ref: ../common/beaconCommonComponents.yaml#/definitions/$schema
   id:
-    $comments: ++++++ THIS IS THE START OF THE ontologized element ++++++
+    description: >-
+      A (unique) identifier of the element.
     type: string
-    description: A (unique) identifier of the element.
   name:
+    description: >-
+      A distinctive name for the element.
     type: string
-    description: A distinctive name for the element.
   description:
+    description: >-
+      A textual description for the element.
     type: string
-    description: A textual description for the element.
   ontologyTermForThisType:
     $ref: ../common/ontologyTerm.yaml
-    $comments: ++++++ THIS IS THE END OF THE ontologized element ++++++
   partOfSpecification:
-    description: This is label to group together entry types that are part of the
+    description: >-
+      This is label to group together entry types that are part of the
       same specification.
     type: string
-    example: Beacon v2.0
+    examples:
+      - Beacon v2.0
   defaultSchema:
-    description: Description of the default schema used for this concept.
+    description: >-
+      Description of the default schema used for this concept.
     $ref: ../common/referenceToAnSchema.yaml
   additionallySupportedSchemas:
-    description: List of additional schemas that could be used for this concept in
+    description: >-
+      List of additional schemas that could be used for this concept in
       this instance of Beacon.
     type: array
     items:
       $ref: ../common/referenceToAnSchema.yaml
   aCollectionOf:
-    description: If the entry type is a collection of other entry types, (e.g. a Dataset
+    description: >-
+      If the entry type is a collection of other entry types, (e.g. a Dataset
       is a collection of Records), then this attribute must list the entry types that
       could be included. One collection type could be defined as included more than
       one entry type (e.g. a Dataset could include Individuals or Genomic Variants),
@@ -54,13 +60,12 @@ properties:
       type: array
       $ref: ../common/basicElement.yaml
   filteringTerms:
-    description: Reference to the file with the list of filtering terms that could
+    description: >-
+      Reference to the file with the list of filtering terms that could
       be used to filter this concept in this instance of Beacon. The referenced file
       could be used to populate the `filteringTerms`endpoint. Having it independently
       should allow for updating the list of accepted filtering terms when it is necessary.
     type: string
-    $comment: "TO DO: Double-check the proper way of referencing a path or relative\
-      \ path. 'format: uri' is throwing validation errors for relative file paths"
   nonFilteredQueriesAllowed:
     $ref: ../common/beaconCommonComponents.yaml#/definitions/NonFilteredQueriesAllowed
 required:

@@ -1,8 +1,8 @@
 {
-    "$comment": "TO DO: The tagged parts should reference to `common/ontologizedElement.json`. But that configuration fails to validate. Further investigation is required, but should not affect the resulting schema.",
+    "$comment": "TO DO: The id ... parts could reference to `common/ontologizedElement...`.",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Definition of an element or entry type including the Beacon v2 required and suggested attributes. This schema purpose is to  describe each type of entities included in a Beacon, hence Beacon clients could have some metadata about such entities.\n\nThe `id` attribute is the key that should be used in other parts of the Beacon Model to allow Beacon clients to identify the different parts (e.g. endpoints, filteringTerms, request parameters, etc.) that fully describe an entry type.",
+    "description": "Definition of an element or entry type including the Beacon v2 required and suggested attributes. This schema purpose is to  describe each type of entry types included in a Beacon, hence Beacon clients could have some metadata about such entry types. The `id` attribute is the key that should be used in other parts of the Beacon model to allow Beacon clients to identify the different parts (e.g. endpoints, filteringTerms, request parameters, etc.) that fully describe an entry type.",
     "properties": {
         "$schema": {
             "$ref": "../common/beaconCommonComponents.json#/definitions/$schema"
@@ -30,12 +30,10 @@
             "type": "string"
         },
         "filteringTerms": {
-            "$comment": "TO DO: Double-check the proper way of referencing a path or relative path. 'format: uri' is throwing validation errors for relative file paths",
             "description": "Reference to the file with the list of filtering terms that could be used to filter this concept in this instance of Beacon. The referenced file could be used to populate the `filteringTerms`endpoint. Having it independently should allow for updating the list of accepted filtering terms when it is necessary.",
             "type": "string"
         },
         "id": {
-            "$comments": "++++++ THIS IS THE START OF THE ontologized element ++++++",
             "description": "A (unique) identifier of the element.",
             "type": "string"
         },
@@ -47,12 +45,13 @@
             "$ref": "../common/beaconCommonComponents.json#/definitions/NonFilteredQueriesAllowed"
         },
         "ontologyTermForThisType": {
-            "$comments": "++++++ THIS IS THE END OF THE ontologized element ++++++",
             "$ref": "../common/ontologyTerm.json"
         },
         "partOfSpecification": {
             "description": "This is label to group together entry types that are part of the same specification.",
-            "example": "Beacon v2.0",
+            "examples": [
+                "Beacon v2.0"
+            ],
             "type": "string"
         }
     },
@@ -63,6 +62,6 @@
         "partOfSpecification",
         "defaultSchema"
     ],
-    "title": "",
+    "title": "EntryType Definitions",
     "type": "object"
 }
