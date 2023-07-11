@@ -67,12 +67,12 @@ Contains the Json schema files that describe the Beacon configuration, its conte
 
 Contains the following Json schemas:
 
-* **beaconRequestBody.json:** Schema for the whole Beacon request. It is named `RequestBody` to keep the same nomenclature used by OpenAPI v3, but it actually contains the definition of the whole HTTP POST request payload.
-* **beaconRequestMeta.json:** Meta section of the Beacon request. It includes request context details relevant for the Beacon server when processing the request, like the Beacon API version used to format the request or the schemas expected for the entry types in the response.
-* **filteringTerms.json:** defines the schema for the filters included in the request.
-* **requestParameters.json** defines the, very free, schema of the parameters included in the request.
-* **examples-fullDocuments folder:** includes examples of "actual" requests. The example labelled with `MIN` in the name shows the minimal required attributes for the request to be compliant. The example labelled with `MAX` in the name includes a richer case with all the sections filled in.
-* **examples-sections folder:** includes examples of "actual" sections of the requests. It is included to allow specification designers and Beacon implementers to check the compliance with a single section instead of having to implement a whole request. Such way, We aim to facilitate an "incremental" implementation of an instance.
+* `beaconRequestBody.json:` Schema for the whole Beacon request. It is named `RequestBody` to keep the same nomenclature used by OpenAPI v3, but it actually contains the definition of the whole HTTP POST request payload.
+* `beaconRequestMeta.json:` Meta section of the Beacon request. It includes request context details relevant for the Beacon server when processing the request, like the Beacon API version used to format the request or the schemas expected for the entry types in the response.
+* `filteringTerms.json:` defines the schema for the filters included in the request.
+* `requestParameters.json` defines the, very free, schema of the parameters included in the request.
+* `examples-fullDocuments` folder: includes examples of "actual" requests. The example labelled with `MIN` in the name shows the minimal required attributes for the request to be compliant. The example labelled with `MAX` in the name includes a richer case with all the sections filled in.
+* `examples-sections` folder: includes examples of "actual" sections of the requests. It is included to allow specification designers and Beacon implementers to check the compliance with a single section instead of having to implement a whole request. Such way, We aim to facilitate an "incremental" implementation of an instance.
 
 #### Differences between FilteringTerms and RequestParameters
 Both, the filters (*filteringTerms*) and the parameters (*requestParameters*), are used to refine the query. The availability of two mechanisms to refine the queries could sound initially confusing, but that separation is  taylored to facilitate the interpretation of the request by the Beacon server.
@@ -91,7 +91,13 @@ The Beacon concept includes several types of responses: some informative or info
 
 #### Informational responses
 
-A Beacon is able to return information, details, about itself. Many of the schema responses included in the `responses` folder have a 1-to-1 relationship with the corresponding configuration documents and their equivalent root endpoints, e.g. the `beaconEntryTypeResponse.json` is the schema of a response that wraps the `beaconConfiguration.json` document, and is then used as the payload of the `/entry_types` root endpoint. Schematically:
+A Beacon is able to return information, details, about itself. Many of the schema
+responses included in the `responses` folder have a 1-to-1 relationship with the
+corresponding configuration documents and their equivalent root endpoints, e.g.
+the `beaconEntryTypeResponse.json` is the schema of a response that wraps the
+`beaconConfiguration.json` document, and is then used as the payload of the
+`/entry_types` root endpoint. Schematically:
+
 * *configuration/an_schema.json*: describes the schema of the configuration file itself.
 * *responses/an_schema_response.json*: describes the format of the response that returns these configuration information.
 * *root/endpoints.json*: describes the API endpoints to be called and parameters to be used to retrieve such responses.
