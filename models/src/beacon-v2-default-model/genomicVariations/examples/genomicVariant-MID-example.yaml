@@ -54,6 +54,12 @@ variantLevelData:
         id: MONDO:0011369
         label: hypercholesterolemia, autosomal dominant, 3
       clinicalRelevance: uncertain significance
+  pathogenicityPredictions:
+    - annotatedWith:
+        version: v1.6
+        toolName: Combined Annotation-Dependent Depletion (CADD)
+      effect:
+        id: phred_score:0.381
 frequencyInPopulations:
   - source: gnomaD Genomes
     sourceReference: https://gnomad.broadinstitute.org/
