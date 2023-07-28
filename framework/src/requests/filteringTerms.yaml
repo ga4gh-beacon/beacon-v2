@@ -11,21 +11,38 @@ items:
   $ref: '#/definitions/FilteringTerm'
 definitions:
   FilteringTerm:
-    anyOf:
-      - $ref: '#/definitions/OntologyFilter'
-      - $ref: '#/definitions/AlphanumericFilter'
-      - $ref: '#/definitions/CustomFilter'  
-  OntologyFilter:
-    type: object
-    description: Filter results to include records that contain a specific ontology
-      term.
-    required:
-      - id
     properties:
       id:
         type: string
         description: Term ID to be queried, using CURIE syntax where possible.
-        example: HP:0002664
+        examples: 
+          - HP:0002664
+      scope:
+        type: string
+        description: The entry type to which the filter applies
+        examples:
+          - biosamples
+      logic:
+        type: string
+        description: Logical operator ('AND', 'OR') applied to the filter. Fo compatibility no property means 'AND' operator. The sequence of filters with a same logical operator implies grouping ('A' and 'B' or 'C' or 'D' == 'A' and ('B' or 'C' or 'D'))
+        examples:
+          - '|'
+        enum:
+          - '&'
+          - '|'
+
+        default: '&'
+    anyOf:
+      - $ref: '#/definitions/OntologyFilter'
+      - $ref: '#/definitions/AlphanumericFilter'
+      - $ref: '#/definitions/CustomFilter'  
+    required:
+      - id
+  OntologyFilter:
+    type: object
+    description: Filter results to include records that contain a specific ontology
+      term.
+    properties:
       includeDescendantTerms:
         type: boolean
         default: true
@@ -43,23 +60,14 @@ definitions:
           exactly, but do match to a certain degree of similarity. The Beacon defines
           the semantic similarity model implemented and how to apply the thresholds
           of 'high', 'medium' and 'low' similarity.
-      scope:
-        type: string
-        description: The entry type to which the filter applies
-        example: biosamples
   AlphanumericFilter:
     description: Filter results based on operators and values applied to alphanumeric
       fields.
     type: object
     required:
-      - id
       - operator
       - value
     properties:
-      id:
-        type: string
-        description: Field identfier to be queried.
-        example: age
       operator:
         type: string
         enum:
@@ -78,23 +86,7 @@ definitions:
           contain wildcard characters (%) to denote any number of unknown characters.  Values
           can be assocatied with units if applicable.
         example: P70Y
-      scope:
-        type: string
-        description: The entry type to which the filter applies
-        example: biosamples
   CustomFilter:
     type: object
     description: Filter results to include records that contain a custom term defined
       by this Beacon.
-    required:
-      - id
-    properties:
-      id:
-        type: string
-        description: Custom filter terms should contain a unique identifier.
-        example: demographic.ethnicity:asian
-      scope:
-        type: string
-        description: The entry type to which the filter applies
-        example: biosamples
-additionalProperties: true

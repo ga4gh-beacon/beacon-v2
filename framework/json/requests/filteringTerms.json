@@ -5,14 +5,10 @@
         "AlphanumericFilter": {
             "description": "Filter results based on operators and values applied to alphanumeric fields.",
             "properties": {
-                "id": {
-                    "description": "Field identfier to be queried.",
-                    "example": "age",
-                    "type": "string"
-                },
                 "operator": {
-                    "default": "=",
                     "description": "Defines how the value relates to the field `id`.",
+                    "examples": [ ">" ],
+                    "type": "string",
                     "enum": [
                         "=",
                         "<",
@@ -21,22 +17,15 @@
                         ">=",
                         "<="
                     ],
-                    "example": ">",
-                    "type": "string"
-                },
-                "scope": {
-                    "description": "The entry type to which the filter applies",
-                    "example": "biosamples",
-                    "type": "string"
+                    "default": "="
                 },
                 "value": {
                     "description": "Alphanumeric search term to be used within the query which can contain wildcard characters (%) to denote any number of unknown characters.  Values can be assocatied with units if applicable.",
-                    "example": "P70Y",
+                    "examples": [ "P70Y" ],
                     "type": "string"
                 }
             },
             "required": [
-                "id",
                 "operator",
                 "value"
             ],
@@ -44,24 +33,28 @@
         },
         "CustomFilter": {
             "description": "Filter results to include records that contain a custom term defined by this Beacon.",
+            "type": "object"
+        },
+        "FilteringTerm": {
             "properties": {
                 "id": {
-                    "description": "Custom filter terms should contain a unique identifier.",
-                    "example": "demographic.ethnicity:asian",
+                    "description": "Term ID to be queried, using CURIE syntax where possible.",
+                    "examples": [ "HP:0002664" ],
                     "type": "string"
                 },
                 "scope": {
                     "description": "The entry type to which the filter applies",
-                    "example": "biosamples",
+                    "examples": [ "biosamples" ],
                     "type": "string"
+                },
+                "logic": {
+                    "description": "Logical operator ('AND', 'OR') applied to the filter. Fo compatibility no property means 'AND' operator. The sequence of filters with a same logical operator implies grouping ('A' and 'B' or 'C' or 'D' == 'A' and ('B' or 'C' or 'D'))",
+                    "examples": [ "|" ],
+                    "type": "string",
+                    "enum": ["&", "|"],
+                    "default": "&"
                 }
             },
-            "required": [
-                "id"
-            ],
-            "type": "object"
-        },
-        "FilteringTerm": {
             "anyOf": [
                 {
                     "$ref": "#/definitions/OntologyFilter"
@@ -72,41 +65,31 @@
                 {
                     "$ref": "#/definitions/CustomFilter"
                 }
-            ]
+            ],
+            "required": [
+                "id"
+            ],
         },
         "OntologyFilter": {
             "description": "Filter results to include records that contain a specific ontology term.",
             "properties": {
-                "id": {
-                    "description": "Term ID to be queried, using CURIE syntax where possible.",
-                    "example": "HP:0002664",
-                    "type": "string"
-                },
                 "includeDescendantTerms": {
-                    "default": true,
                     "description": "Define if the Beacon should implement the ontology hierarchy, thus query the descendant terms of `id`.",
-                    "type": "boolean"
-                },
-                "scope": {
-                    "description": "The entry type to which the filter applies",
-                    "example": "biosamples",
-                    "type": "string"
+                    "type": "boolean",
+                    "default": true
                 },
                 "similarity": {
-                    "default": "exact",
                     "description": "Allow the Beacon to return results which do not match the filter exactly, but do match to a certain degree of similarity. The Beacon defines the semantic similarity model implemented and how to apply the thresholds of 'high', 'medium' and 'low' similarity.",
+                    "type": "string",
                     "enum": [
                         "exact",
                         "high",
                         "medium",
                         "low"
                     ],
-                    "type": "string"
+                    "default": "exact"
                 }
             },
-            "required": [
-                "id"
-            ],
             "type": "object"
         }
     },
