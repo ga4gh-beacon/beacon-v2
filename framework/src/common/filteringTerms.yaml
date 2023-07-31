@@ -11,28 +11,22 @@ items:
   $ref: '#/definitions/FilteringTerm'
 definitions:
   FilteringTerm:
-    properties:
-      id:
-        type: string
-        description: Term ID to be queried, using CURIE syntax where possible.
-        examples: 
-          - HP:0002664
-      scope:
-        type: string
-        description: The entry type to which the filter applies
-        examples:
-          - biosamples
     anyOf:
       - $ref: '#/definitions/OntologyFilter'
       - $ref: '#/definitions/AlphanumericFilter'
       - $ref: '#/definitions/CustomFilter'  
-    required:
-      - id
   OntologyFilter:
     type: object
     description: Filter results to include records that contain a specific ontology
       term.
+    required:
+      - id
     properties:
+      id:
+        type: string
+        description: Term ID to be queried, using CURIE syntax where possible.
+        examples:
+          - HP:0002664
       includeDescendantTerms:
         type: boolean
         default: true
@@ -50,14 +44,25 @@ definitions:
           exactly, but do match to a certain degree of similarity. The Beacon defines
           the semantic similarity model implemented and how to apply the thresholds
           of 'high', 'medium' and 'low' similarity.
+      scope:
+        type: string
+        description: The entry type to which the filter applies
+        examples:
+          - biosamples
   AlphanumericFilter:
     description: Filter results based on operators and values applied to alphanumeric
       fields.
     type: object
     required:
+      - id
       - operator
       - value
     properties:
+      id:
+        type: string
+        description: Field identfier to be queried.
+        examples:
+          - ageOfOnset
       operator:
         type: string
         enum:
@@ -69,14 +74,34 @@ definitions:
           - <=
         description: Defines how the value relates to the field `id`.
         default: '='
-        example: '>'
+        examples:
+          - '>'
       value:
         type: string
-        description: Alphanumeric search term to be used within the query which can
+        description: >-
+          Alphanumeric search term to be used within the query which can
           contain wildcard characters (%) to denote any number of unknown characters.  Values
           can be assocatied with units if applicable.
         example: P70Y
+      scope:
+        type: string
+        description: The entry type to which the filter applies
+        examples:
+          - individuals
   CustomFilter:
     type: object
     description: Filter results to include records that contain a custom term defined
       by this Beacon.
+    required:
+      - id
+    properties:
+      id:
+        type: string
+        description: Custom filter terms should contain a unique identifier.
+        example: demographic.ethnicity:asian
+      scope:
+        type: string
+        description: The entry type to which the filter applies
+        examples:
+          - individuals
+additionalProperties: true
