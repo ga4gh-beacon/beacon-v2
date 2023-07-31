@@ -1,15 +1,39 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": true,
     "definitions": {
+        "FilteringTerm": {
+            "title": "Filtering Term Element",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "Custom filter terms should contain a unique identifier.",
+                    "examples": [ "demographic.ethnicity:asian" ],
+                    "type": "string"
+                },
+                "scope": {
+                    "description": "The entry type to which the filter applies",
+                    "examples": [ "biosamples" ],
+                    "type": "string"
+                }
+            },
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/OntologyFilter"
+                },
+                {
+                    "$ref": "#/definitions/AlphanumericFilter"
+                },
+                {
+                    "$ref": "#/definitions/CustomFilter"
+                }
+            ],
+            "required": [
+                "id"
+            ]
+        },
         "AlphanumericFilter": {
             "description": "Filter results based on operators and values applied to alphanumeric fields.",
             "properties": {
-                "id": {
-                    "description": "Field identfier to be queried.",
-                    "example": "age",
-                    "type": "string"
-                },
                 "operator": {
                     "default": "=",
                     "description": "Defines how the value relates to the field `id`.",
@@ -21,22 +45,16 @@
                         ">=",
                         "<="
                     ],
-                    "example": ">",
-                    "type": "string"
-                },
-                "scope": {
-                    "description": "The entry type to which the filter applies",
-                    "example": "biosamples",
+                    "examples": [ ">" ],
                     "type": "string"
                 },
                 "value": {
                     "description": "Alphanumeric search term to be used within the query which can contain wildcard characters (%) to denote any number of unknown characters.  Values can be assocatied with units if applicable.",
-                    "example": "P70Y",
+                    "examples": [ "P70Y" ],
                     "type": "string"
                 }
             },
             "required": [
-                "id",
                 "operator",
                 "value"
             ],
@@ -44,53 +62,15 @@
         },
         "CustomFilter": {
             "description": "Filter results to include records that contain a custom term defined by this Beacon.",
-            "properties": {
-                "id": {
-                    "description": "Custom filter terms should contain a unique identifier.",
-                    "example": "demographic.ethnicity:asian",
-                    "type": "string"
-                },
-                "scope": {
-                    "description": "The entry type to which the filter applies",
-                    "example": "biosamples",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id"
-            ],
             "type": "object"
-        },
-        "FilteringTerm": {
-            "anyOf": [
-                {
-                    "$ref": "#/definitions/OntologyFilter"
-                },
-                {
-                    "$ref": "#/definitions/AlphanumericFilter"
-                },
-                {
-                    "$ref": "#/definitions/CustomFilter"
-                }
-            ]
         },
         "OntologyFilter": {
             "description": "Filter results to include records that contain a specific ontology term.",
             "properties": {
-                "id": {
-                    "description": "Term ID to be queried, using CURIE syntax where possible.",
-                    "example": "HP:0002664",
-                    "type": "string"
-                },
                 "includeDescendantTerms": {
                     "default": true,
                     "description": "Define if the Beacon should implement the ontology hierarchy, thus query the descendant terms of `id`.",
                     "type": "boolean"
-                },
-                "scope": {
-                    "description": "The entry type to which the filter applies",
-                    "example": "biosamples",
-                    "type": "string"
                 },
                 "similarity": {
                     "default": "exact",
@@ -104,16 +84,13 @@
                     "type": "string"
                 }
             },
-            "required": [
-                "id"
-            ],
             "type": "object"
         }
     },
     "description": "Filtering terms are the main means to select subsets of records from a Beacon response. While the name implies the application to a generated response, in practice implementations may apply them at the query stage. Note: In the processing of Beacon v2.0 requests multiple filters are assumed to be chained by the logical AND operator.",
+    "title": "Filtering Term Element",
+    "type": "array",
     "items": {
         "$ref": "#/definitions/FilteringTerm"
-    },
-    "title": "Filtering Term Element",
-    "type": "array"
+    }
 }
