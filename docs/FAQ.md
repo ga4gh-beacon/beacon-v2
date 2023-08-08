@@ -149,9 +149,7 @@
     representations and will be adopted by Beacon v2.n after reaching a release state.
 
 
-?? faq "Does the Beacon protocol support Boolean expressions?<a id="boolean-logic"> </a>"
-
-!!! Note "Boolean Logic Between Filtering Terms"
+??? faq "Does the Beacon protocol support Boolean expressions?<a id="boolean-logic"> </a>"
 
     No (...but). Beacon queries as of v2 always assume a logical **AND** between query parameters
     and individual filters, _i.e._ all conditions have to be met. There is currently
