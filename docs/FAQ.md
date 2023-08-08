@@ -149,7 +149,7 @@
     representations and will be adopted by Beacon v2.n after reaching a release state.
 
 
-?? faq "Does the Beacon protocol support Boolean expressions?"
+?? faq "Does the Beacon protocol support Boolean expressions?<a id="boolean-logic"> </a>"
 
 !!! Note "Boolean Logic Between Filtering Terms"
 
