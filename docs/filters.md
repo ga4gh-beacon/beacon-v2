@@ -79,12 +79,11 @@ Alphanumerical value Filter types contain:
 
 ## Using Filters in Queries
 
-The Filter `id` is required for all query types. For all query types, the logical
-**AND** is _implied_ between Filters. 
+The Filter `id` is required for all query types.
 
 !!! Note "Boolean Logic Between Filtering Terms"
 
-	Beacon queries as of v2 always assume a logical **AND** between query parameters
+	Beacon queries as of v2 always omply a logical **AND** between query parameters
 	and individual filters, _i.e._ all conditions have to be met. There is currently
 	no support for Boolean expressions.
 
