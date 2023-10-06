@@ -8,6 +8,9 @@
             "type": "string"
         }
     },
+    "required": [
+        "iso8601duration"
+    ],
     "title": "Age",
     "type": "object"
 }
