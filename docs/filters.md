@@ -72,8 +72,7 @@ Alphanumerical value Filter types contain:
 		"type": "alphanumeric",
 		"id": "PATO:0000011",
 		"label": "age"
-	},
-	...
+	}
 ]
 ```
 
