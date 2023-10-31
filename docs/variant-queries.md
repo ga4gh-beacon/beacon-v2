@@ -186,6 +186,36 @@ a positional translation is being applied.
 	?geneId=EIF4A1&variantMaxLength=1000000&variantType=DEL
 	```
 
+=== "Beacon v2 POST for `geneId` (deletion CNV)"
+
+	```
+	{
+	    "$schema":"https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json",
+	    "meta": {
+	        "apiVersion": "2.0",
+	        "requestedSchemas": [
+	            {
+	                "entityType": "genomicVariation",
+	                "schema:": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json"
+	            }
+	        ]
+	    },
+	    "query": {
+	        "requestParameters": {
+	            "g_variant":
+	                "geneId": "EIF4A1",
+	                "variantType": "EFO:0030067"
+		    	}
+	        }
+	    },
+	    "requestedGranularity": "record",
+	    "pagination": {
+	        "skip": 0,
+	        "limit": 5
+	    }
+	}
+	```
+
 
 ## Beacon _Bracket Queries_
 
@@ -292,27 +322,27 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 
 ## Genomic Allele Query (Short Form)
 
-==TBD==
+When available variants can be identified through their genomic HGVS short form.
 
 === "Beacon v2 GET"
 
 	```
-	?allele=NM_004006.2:c.4375C>T
+	?genomicAlleleShortForm=NM_004006.2:c.4375C>T
 	```
 
-	==to be completed==
 
 ## Aminoacid Change Query
 
-==TBD==
+Annotated variants can potentiallyqueried using the single amino acid replacement
+format. The `aminoacidChange` parameter may be combined with e.g. a `geneId` to increase
+specificity
 
 === "Beacon v2 GET"
 
 	```
-	?aminoacidChange=V600E
+	?aminoacidChange=V600E&geneId=BRAF
 	```
 
-	==to be completed==
 
 ## `variantType` Parameter Interpretation
 
