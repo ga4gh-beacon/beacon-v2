@@ -170,7 +170,10 @@ parameters.
 _GeneId Queries_ are in essence a variation of _Range Queries_ in which the coordinates
 are replaced by the [HGNC](https://www.genenames.org) gene symbol. It is left to the
 implementation if the matching is done on variants annotated for the gene symbol or if
-a positional translation is being applied. 
+a positional translation is being applied.
+
+![Beacon Gene Query Schema](img/BeaconGeneQuery-graphics.png)
+
 
 #### Parameters
 
