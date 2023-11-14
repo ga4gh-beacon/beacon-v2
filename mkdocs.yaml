@@ -22,9 +22,8 @@ nav:
         - Changes: changes-todo
         - Beacon News &#8599;: https://beacon-project.io/news/
     - Using Beacons:
-        - Data Discovery:
-            - Genomic Queries: variant-queries
-            - Phenotypes and More...: /filters/#using-filters-in-queries
+        - Genomic Queries: variant-queries
+        - Phenotypes and More...: /filters/#using-filters-in-queries
         - Data Delivery:
             - Biosamples, Variants...: records
             - Data Handovers: handovers
