@@ -23,7 +23,7 @@ properties:
   filters:
     description: >-
       Filters as submitted in the request.
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/Filters
+    $ref: ../../common/filteringTerms.yaml
   requestParameters:
     description: >-
       Dictionary of request parameters received in the `RequestBody` or as part

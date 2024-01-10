@@ -7,7 +7,7 @@
             "description": "API version expected by the client to be supported by the server and used in the response format."
         },
         "filters": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/Filters",
+            "$ref": "../../common/filteringTerms.json",
             "description": "Filters as submitted in the request."
         },
         "includeResultsetResponses": {

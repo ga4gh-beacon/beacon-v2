@@ -25,7 +25,8 @@ definitions:
       id:
         type: string
         description: Term ID to be queried, using CURIE syntax where possible.
-        example: HP:0002664
+        examples:
+          - HP:0002664
       includeDescendantTerms:
         type: boolean
         default: true
@@ -46,7 +47,8 @@ definitions:
       scope:
         type: string
         description: The entry type to which the filter applies
-        example: biosamples
+        examples:
+          - biosamples
   AlphanumericFilter:
     description: Filter results based on operators and values applied to alphanumeric
       fields.
@@ -59,7 +61,8 @@ definitions:
       id:
         type: string
         description: Field identfier to be queried.
-        example: age
+        examples:
+          - ageOfOnset
       operator:
         type: string
         enum:
@@ -71,17 +74,20 @@ definitions:
           - <=
         description: Defines how the value relates to the field `id`.
         default: '='
-        example: '>'
+        examples:
+          - '>'
       value:
         type: string
-        description: Alphanumeric search term to be used within the query which can
+        description: >-
+          Alphanumeric search term to be used within the query which can
           contain wildcard characters (%) to denote any number of unknown characters.  Values
           can be assocatied with units if applicable.
         example: P70Y
       scope:
         type: string
         description: The entry type to which the filter applies
-        example: biosamples
+        examples:
+          - individuals
   CustomFilter:
     type: object
     description: Filter results to include records that contain a custom term defined
@@ -96,5 +102,6 @@ definitions:
       scope:
         type: string
         description: The entry type to which the filter applies
-        example: biosamples
+        examples:
+          - individuals
 additionalProperties: true

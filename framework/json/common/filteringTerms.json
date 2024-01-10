@@ -7,7 +7,7 @@
             "properties": {
                 "id": {
                     "description": "Field identfier to be queried.",
-                    "example": "age",
+                    "example": "ageOfOnset",
                     "type": "string"
                 },
                 "operator": {
@@ -21,17 +21,17 @@
                         ">=",
                         "<="
                     ],
-                    "example": ">",
+                    "examples": [ ">" ],
                     "type": "string"
                 },
                 "scope": {
                     "description": "The entry type to which the filter applies",
-                    "example": "biosamples",
+                    "example": "individuals",
                     "type": "string"
                 },
                 "value": {
                     "description": "Alphanumeric search term to be used within the query which can contain wildcard characters (%) to denote any number of unknown characters.  Values can be assocatied with units if applicable.",
-                    "example": "P70Y",
+                    "examples": [ "P70Y" ],
                     "type": "string"
                 }
             },
@@ -52,7 +52,7 @@
                 },
                 "scope": {
                     "description": "The entry type to which the filter applies",
-                    "example": "biosamples",
+                    "example": "individuals",
                     "type": "string"
                 }
             },
@@ -89,7 +89,7 @@
                 },
                 "scope": {
                     "description": "The entry type to which the filter applies",
-                    "example": "biosamples",
+                    "examples": [ "biosamples" ],
                     "type": "string"
                 },
                 "similarity": {
@@ -114,6 +114,6 @@
     "items": {
         "$ref": "#/definitions/FilteringTerm"
     },
-    "title": "Filtering Term Element",
+    "title": "Filtering Terms Array",
     "type": "array"
 }

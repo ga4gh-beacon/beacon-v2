@@ -17,8 +17,8 @@ definitions:
     description: >-
       Entities can be filtered using this term.
     required:
-      - type
       - id
+      - type
     properties:
       type:
         type: string

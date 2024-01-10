@@ -5,7 +5,7 @@
             "description": "Parameters to limit the list of returned results.",
             "properties": {
                 "filters": {
-                    "$ref": "./filteringTerms.json",
+                    "$ref": "../common/filteringTerms.json",
                     "description": "Ontology based filters. Using CURIE syntax is encouraged."
                 },
                 "includeResultsetResponses": {
