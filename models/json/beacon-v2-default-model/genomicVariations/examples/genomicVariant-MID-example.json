@@ -95,6 +95,17 @@
                     "label": "hypercholesterolemia, autosomal dominant, 3"
                 }
             }
+        ],
+        "pathogenicityPredictions": [
+            {
+                "annotatedWith": {
+                    "toolName": "Combined Annotation-Dependent Depletion (CADD)",
+                    "version": "v1.6"
+                },
+                "effect": {
+                    "id": "phred_score:0.381"
+                }
+            }
         ]
     },
     "variation": {
