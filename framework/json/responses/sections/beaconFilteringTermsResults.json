@@ -28,6 +28,16 @@
                         "alphanumeric"
                     ],
                     "type": "string"
+                },
+                "scopes": {
+                    "description": "Entry types this filter may be applied to.",
+                    "examples": [
+                        "[\"individual\", \"biosample\"]"
+                    ],
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "required": [
