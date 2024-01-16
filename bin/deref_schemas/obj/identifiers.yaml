@@ -39,7 +39,7 @@ identifiers:
           reference: https://www.ncbi.nlm.nih.gov/snp/rs587780345
         - id: ClinGen:CA152954
           notes: ClinGen Allele Registry id
-          reference: http://reg.clinicalgenome.org/redmine/projects/registry/genboree_registry/by_caid?caid=CA152954
+          reference: https://reg.clinicalgenome.org/redmine/projects/registry/genboree_registry/by_caid?caid=CA152954
         - id: UniProtKB:P35557#VAR_003699
           reference: https://www.uniprot.org/uniprot/P35557#VAR_003699
       - - id: OMIM:164757.0001

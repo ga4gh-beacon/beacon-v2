@@ -47,7 +47,7 @@
         "description": "A Beacon is a web service for data discovery and sharing that can be queried for information about entry types defined by a Model.",
         "license": {
             "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
         },
         "title": "GA4GH Beacon API Specification",
         "version": "2.0.0"

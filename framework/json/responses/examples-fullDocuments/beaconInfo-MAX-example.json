@@ -12,7 +12,7 @@
         ]
     },
     "response": {
-        "alternativeUrl": "http://example.org/wiki/Main_Page",
+        "alternativeUrl": "https://example.org/wiki/Main_Page",
         "apiVersion": "v0.3",
         "createDateTime": "2012-07-19 or 2017-01-17T20:33:40Z",
         "description": "string",
@@ -38,6 +38,6 @@
         },
         "updateDateTime": "2012-07-19 or 2017-01-17T20:33:40Z",
         "version": "v0.1",
-        "welcomeUrl": "http://example.org/wiki/Main_Page"
+        "welcomeUrl": "https://example.org/wiki/Main_Page"
     }
 }

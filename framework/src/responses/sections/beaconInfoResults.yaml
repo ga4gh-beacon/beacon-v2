@@ -42,14 +42,14 @@ properties:
     type: string
     description: >-
       URL to the welcome page for this Beacon (RFC 3986 format).
-    example: http://example.org/wiki/Main_Page
+    example: https://example.org/wiki/Main_Page
   alternativeUrl:
     type: string
     description: >-
       Alternative URL to the API, e.g. a restricted version of this Beacon
       (RFC 3986 format).
     examples:
-      - http://example.org/beacon/authenticated
+      - https://example.org/beacon/authenticated
   createDateTime:
     type: string
     description: >-

@@ -376,5 +376,5 @@ Beacon directly uses the (IMO preferable) [representation through an ontology te
 
 ##### LINK: [Phenopackets Documentation](https://phenopacket-schema.readthedocs.io/en/latest/index.html)
 
-[^1]: Source: [@andrewyatz](https://github.com/@andrewyatz/) at [SchemaBlocks {S}[B]](http://schemablocks.org/standards/genome-coordinates.html)
+[^1]: Source: [@andrewyatz](https://github.com/@andrewyatz/) at [SchemaBlocks {S}[B]](https://schemablocks.org/standards/genome-coordinates.html)
 

@@ -5,15 +5,9 @@ type: object
 properties:
   entryTypes:
     description: List of entry types.
-    $ref: '#/definitions/EntryTypes'
-definitions:
-  EntryTypes:
-    description: This is a dictionary of the entry types implemented in this Beacon
-      instance.
-    additionalProperties:
-      type: object
+    type: array
+    items:
       $ref: ./entryTypeDefinition.yaml
-    minProperties: 1
 required:
   - entryTypes
 additionalProperties: true

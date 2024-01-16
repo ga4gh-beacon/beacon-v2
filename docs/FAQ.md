@@ -72,7 +72,7 @@
     }
     ```
  
-    ##### last change 2023-02-17 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
+    ###### last change 2023-02-17 @mbaudis
 
 ??? faq "Is it `Beacon` or `beacon`?"
 
@@ -80,7 +80,7 @@
     components - while lower case `beacons` are instances of these, _i.e._ individual
     resources using the protocol.
     
-    ##### last change 2022-10-01 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
+    ###### last change 2022-10-01 by @mbaudis
 
 ??? faq "What types of genomic variants are supported in Beacon queries?"
 
@@ -93,17 +93,35 @@
     sequence at this position (necessary e.g. for small deletions).
 
     Beacon v1.1 in principle supported "bracketed" queries and a `variantType` parameter
-    (pointing to the VCF use) - see the [current documentation](http://docs.genomebeacons.org/variant-queries/#beacon-bracket-queries) for details. However, the support & interpretation was - and still is (2022-12-13) -
-    left to implementers. Similar for [Beacon Range Queries](http://docs.genomebeacons.org/variant-queries/#beacon-range-queries).
+    (pointing to the VCF use) - see the [current documentation](https://docs.genomebeacons.org/variant-queries/#beacon-bracket-queries) for details. However, the support & interpretation was - and still is (2022-12-13) -
+    left to implementers. Similar for [Beacon Range Queries](https://docs.genomebeacons.org/variant-queries/#beacon-range-queries).
 
-    However, the [Beacon documentation](http://docs.genomebeacons.org/variant-queries/#varianttype-parameter-interpretation)
+    However, the [Beacon documentation](https://docs.genomebeacons.org/variant-queries/#varianttype-parameter-interpretation)
     provides information about use and expected interpretation of `variantType` values, specifically
     for copy number variations.
 
-    ##### last change 2022-12-14 by Michael Baudis [:fontawesome-brands-github:](https://github.com/mbaudis)
+    ###### last change 2022-12-14 @mbaudis
 
 
-??? faq "How can I handle haplotype queries & representation in Beacon v2?"<a id="haplotypes"> </a>"
+??? faq "How can I add e.g. an age limit to a query for a disease?"
+
+    Ages are queried as [ISO8601 durations](https://genomestandards.org/standards/dates-times/#durations)
+    such as `P65Y` (_i.e._ 65 years) with a comparator (`=`, `<=`, `>` ...). However,
+    the value needs an indication of _what_ the duration refers to and resources
+    may provide different ways to indicate this (as then shown in their `/filtering_terms`)
+    endpoint).
+
+    We recommend that all Beacon instances that support age queries support at
+    minimum the syntax of `age:<=P65Y` and map such values to the internal datapoint
+    most relevant for the resource's context (in most cases probably corresponding
+    to "age at diagniosis").
+
+    However, different scenarios may be supported (e.g. `EFO_0005056:<=P1Y6M` for
+    an "age at death" scenario).
+
+    ###### last change 2023-05-31 by @mbaudis
+
+??? faq "How can I handle haplotype queries & representation in Beacon v2?<a id="haplotypes"> </a>"
 
     #### Queries
 
