@@ -31,10 +31,10 @@
         "resources": [
             {
                 "id": "hp",
-                "iriPrefix": "http://purl.obolibrary.org/obo/HP_",
+                "iriPrefix": "https://purl.obolibrary.org/obo/HP_",
                 "name": "Human Phenotype Ontology",
                 "namespacePrefix": "HP",
-                "url": "http://purl.obolibrary.org/obo/hp.owl",
+                "url": "https://purl.obolibrary.org/obo/hp.owl",
                 "version": "27-03-2020"
             }
         ]

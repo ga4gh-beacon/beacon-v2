@@ -23,7 +23,7 @@ A **beacon instance** is just an implementation of a Beacon Model that follows t
     - especially for networked beacons - it does not prescribe how data should be organised in individual
     instances or what schemas should be used for local storage. 
 
-If you are a Beacon implementer, then, you don't need to clone the Framework repo, you only need to **copy** (*or clone*) the Beacon Model and modify it to your specific case. You will find plenty of references to the Framework in the Model copy, and you will use the Json schemas there to validate that both the structure of your requests and responses are compliant with the Beacon Framework. The Framewrok is not used to check the schema in the responses payload (e.g. the actual details of a biosample of a cohort). The schemas for that are included in the Model that you should have copied.
+If you are a Beacon implementer, then, you don't need to clone the Framework repo, you only need to **copy** (*or clone*) the Beacon Model and modify it to your specific case. You will find plenty of references to the Framework in the Model copy, and you will use the Json schemas there to validate that both the structure of your requests and responses are compliant with the Beacon Framework. The Framework is not used to check the schema in the responses payload (e.g. the actual details of a biosample of a cohort). The schemas for that are included in the Model that you should have copied.
 
 
 <figure markdown>
@@ -48,7 +48,7 @@ classDiagram
     individuals <.. analyses : 1..n
     individuals <.. runs : 1..n
 
-    cohorts o-- individuals : 1..n
+    cohorts o-- individuals : m..n
     datasets o-- genomicVariations : 1..n
 
     class genomicVariations{
@@ -123,7 +123,7 @@ classDiagram
 
 The above entities are defined as follows;
 
-  * Collections (**Datasets** and **Cohorts**): groupings of variants or individuals that share something in common: e.g., who belong to the same repository (datasets) or study population (cohorts).
+  * Collections (**Datasets** and **Cohorts**): groupings of variants or individuals that share something in common: e.g., who belong to the same repository (datasets) or study populations (cohorts).
   * **Genomic variations**: unique genomic alterations, e.g., position in a genome, sequence alterations, type, etc.
   * **Individuals**: either patients or healthy controls whose details (including phenotypic and clinical) are stored in the repository.
   * **Biosamples**: samples taken from individuals, including details of procedures, dates and times.
