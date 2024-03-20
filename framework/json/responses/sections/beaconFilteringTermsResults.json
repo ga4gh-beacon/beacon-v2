@@ -30,7 +30,7 @@
                     "type": "string"
                 },
                 "scopes": {
-                    "description": "Entry types this filter may be applied to.",
+                    "description": "Entry types affected by this filter.",
                     "examples": [
                         "[\"individual\", \"biosample\"]"
                     ],
