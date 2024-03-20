@@ -32,7 +32,8 @@
                 "scopes": {
                     "description": "Entry types affected by this filter.",
                     "examples": [
-                        "[\"individual\", \"biosample\"]"
+                        ["individual", "biosample", "analysis", "run", "genomicVariation"], 
+                        ["biosample"]
                     ],
                     "type": "array",
                     "items": {
