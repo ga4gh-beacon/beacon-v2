@@ -28,7 +28,7 @@ paths:
         - GET Endpoints
       responses:
         '200':
-          $ref: '#/components/responses/CollectionsResponse'
+          $ref: '#/components/responses/ResultsOKResponse'
         default:
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
@@ -44,7 +44,7 @@ paths:
         required: true
       responses:
         '200':
-          $ref: '#/components/responses/CollectionsResponse'
+          $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
@@ -240,15 +240,6 @@ components:
   responses:
     ResultsOKResponse:
       description: Successful operation.
-      content:
-        application/json:
-          schema:
-            oneOf:
-              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconBooleanResponse.json
-              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCountResponse.json
-              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconResultsetsResponse.json
-    CollectionsResponse:
-      description: Successful collection list operation.
       content:
         application/json:
           schema:
