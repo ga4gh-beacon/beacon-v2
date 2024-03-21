@@ -21,12 +21,14 @@
                     ],
                     "type": "string"
                 },
-                "type": {
-                    "description": "Either \"custom\", \"alphanumeric\" or ontology/terminology full name. TODO: An ontology ... with a registered prefix does not need a full name so one may better use CURIE to indicate that the resource can be retrieved from the id. This also will allow to provide an enum here.",
-                    "examples": [
-                        "Human Phenotype Ontology",
-                        "alphanumeric"
+                "type":{
+                    "description": "Either \"custom\", \"alphanumeric\" or \"ontology\" .",
+                    "enum": [
+                        "custom",
+                        "alphanumeric",
+                        "ontology"
                     ],
+                    "example": "alphanumeric",
                     "type": "string"
                 },
                 "scopes": {
