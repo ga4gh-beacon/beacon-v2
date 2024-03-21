@@ -60,7 +60,7 @@
                 "iriPrefix": {
                     "description": "The full Internationalized Resource Identifier (IRI) prefix",
                     "examples": [
-                        "http://purl.obolibrary.org/obo/HP_"
+                        "https://purl.obolibrary.org/obo/HP_"
                     ],
                     "type": "string"
                 },
@@ -81,7 +81,7 @@
                 "url": {
                     "description": "Uniform Resource Locator of the resource",
                     "examples": [
-                        "http://purl.obolibrary.org/obo/hp.owl"
+                        "https://purl.obolibrary.org/obo/hp.owl"
                     ],
                     "type": "string"
                 },

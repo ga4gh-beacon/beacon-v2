@@ -7,3 +7,5 @@ properties:
     description: Represents age as a ISO8601 duration (e.g., P40Y10M05D).
     type: string
     example: P32Y6M1D
+required:
+  - iso8601duration

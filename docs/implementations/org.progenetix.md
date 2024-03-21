@@ -2,7 +2,7 @@
 <h2>Progenetix & Beacon<span style="color: red; font-weight: 800;"><sup>+</sup></span></h2>
 
 The Beacon+ implementation - developed in the Python & MongoDB based [`bycon` project](https://github.com/progenetix/bycon/) -
-implements an expanding set of Beacon v2 paths for the [Progenetix](http://progenetix.org)
+implements an expanding set of Beacon v2 paths for the [Progenetix](https://progenetix.org)
 resource :flag_ch:.
 
 ### Scoped responses from query object
@@ -19,7 +19,7 @@ entry to
 * `{ "entityType": "biosample", "schema:": "https://progenetix.org/services/schemas/Biosample/"}`
 
 would change this to a biosample response. The example ccan be tested by POSTing this as `application/json`
-to `http://progenetix.org/beacon/variants/` or `http://progenetix.org/beacon/biosamples/`.
+to `https://progenetix.org/beacon/variants/` or `https://progenetix.org/beacon/biosamples/`.
 
 ```json
 {
@@ -80,18 +80,18 @@ The root path provides the standard `BeaconInfoResponse`.
 
 ##### `/biosamples/{id}/`
 
-* [/biosamples/pgxbs-kftva5c9](http://progenetix.org/beacon/biosamples/pgxbs-kftva5c9)
+* [/biosamples/pgxbs-kftva5c9](https://progenetix.org/beacon/biosamples/pgxbs-kftva5c9)
   - retrieval of a single biosample
 
 ##### `/biosamples/?testMode=true`
 
-* [/biosamples?testMode=true](http://progenetix.org/beacon/biosamples?testMode=true)
+* [/biosamples?testMode=true](https://progenetix.org/beacon/biosamples?testMode=true)
   - retrieval of some random samples
   - for testing API responses
 
 ##### `/biosamples/{id}/g_variants`
 
-* [/biosamples/pgxbs-kftva5c9/g_variants/](http://progenetix.org/beacon/biosamples/pgxbs-kftva5c9/g_variants/)
+* [/biosamples/pgxbs-kftva5c9/g_variants/](https://progenetix.org/beacon/biosamples/pgxbs-kftva5c9/g_variants/)
   - retrieval of all variants from a single biosample
 
 ----
@@ -117,19 +117,19 @@ e.g. linking to genomic variation data.
 
 ##### `/individuals/{id}`
 
-* [/individuals/pgxind-kftx25hb/](http://progenetix.org/beacon/individuals/pgxind-kftx25hb/)
+* [/individuals/pgxind-kftx25hb/](https://progenetix.org/beacon/individuals/pgxind-kftx25hb/)
   - retrieval of a single individual
 
 ##### `/individuals/?testMode=true`
 
-* [/individuals?testMode=true](http://progenetix.org/beacon/individuals?testMode=true)
+* [/individuals?testMode=true](https://progenetix.org/beacon/individuals?testMode=true)
   - retrieval of some random individuals
   - for testing API responses
 
 ##### `/individuals/{id}/g_variants`
 
-* [/individuals/pgxind-kftx25hb/g_variants/](http://progenetix.org/beacon/individuals/pgxind-kftx25hb/g_variants)
-* [/individuals/pgxind-kftx25hb/genomicVariations/](http://progenetix.org/beacon/individuals/pgxind-kftx25hb/genomicVariations/)
+* [/individuals/pgxind-kftx25hb/g_variants/](https://progenetix.org/beacon/individuals/pgxind-kftx25hb/g_variants)
+* [/individuals/pgxind-kftx25hb/genomicVariations/](https://progenetix.org/beacon/individuals/pgxind-kftx25hb/genomicVariations/)
   - retrieval of all variants from a single individual
 
 ----
@@ -145,22 +145,22 @@ the local `variants` collection.
 
 ##### `/g_variants?testMode=true`
 
-* [/g_variants?testMode=true](http://progenetix.org/beacon/g_variants?testMode=true)
+* [/g_variants?testMode=true](https://progenetix.org/beacon/g_variants?testMode=true)
   - retrieval of some random variants
   - for testing API responses
 
 ##### `/g_variants` + query
 
-* [/variants/?assemblyId=GRCh38&referenceName=17&variantType=DEL&filterLogic=AND&start=7500000&start=7676592&end=7669607&end=7800000](http://progenetix.org/beacon/variants/?assemblyId=GRCh38&referenceName=17&variantType=DEL&filterLogic=AND&start=7500000&start=7676592&end=7669607&end=7800000)
+* [/variants/?assemblyId=GRCh38&referenceName=17&variantType=DEL&filterLogic=AND&start=7500000&start=7676592&end=7669607&end=7800000](https://progenetix.org/beacon/variants/?assemblyId=GRCh38&referenceName=17&variantType=DEL&filterLogic=AND&start=7500000&start=7676592&end=7669607&end=7800000)
   - This is an example for a Beacon "Bracket Query" which will return focal deletions in the TP53 locus (by position).
 
 ##### `/g_variants/{id}`
 
-* [/g_variants/pgxvar-5f5a35586b8c1d6d377b77f6](http://progenetix.org/beacon/g_variants/pgxvar-5f5a35586b8c1d6d377b77f6)
+* [/g_variants/pgxvar-5f5a35586b8c1d6d377b77f6](https://progenetix.org/beacon/g_variants/pgxvar-5f5a35586b8c1d6d377b77f6)
 
 ##### `/g_variants/{id}/biosamples`
 
-* [/g_variants/pgxvar-5f5a35586b8c1d6d377b77f6/biosamples](http://progenetix.org/beacon/g_variants/pgxvar-5f5a35586b8c1d6d377b77f6/biosamples)
+* [/g_variants/pgxvar-5f5a35586b8c1d6d377b77f6/biosamples](https://progenetix.org/beacon/g_variants/pgxvar-5f5a35586b8c1d6d377b77f6/biosamples)
 
 ----
 
@@ -175,7 +175,7 @@ CNV statistics or binned genome calls.
 
 ##### `/analyses?testMode=true`
 
-* [/analyses/?testMode=true](http://progenetix.org/beacon/analyses?testMode=true)
+* [/analyses/?testMode=true](https://progenetix.org/beacon/analyses?testMode=true)
   - retrieval of some random analyses
   - for testing API responses
 
