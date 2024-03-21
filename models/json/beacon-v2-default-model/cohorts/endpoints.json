@@ -50,26 +50,6 @@
             }
         },
         "responses": {
-            "CollectionsResponse": {
-                "content": {
-                    "application/json": {
-                        "schema": {
-                            "oneOf": [
-                                {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconBooleanResponse.json"
-                                },
-                                {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCountResponse.json"
-                                },
-                                {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCollectionsResponse.json"
-                                }
-                            ]
-                        }
-                    }
-                },
-                "description": "Successful collection list operation."
-            },
             "ResultsOKResponse": {
                 "content": {
                     "application/json": {
@@ -82,7 +62,7 @@
                                     "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCountResponse.json"
                                 },
                                 {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconResultsetsResponse.json"
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCollectionsResponse.json"
                                 }
                             ]
                         }
@@ -126,7 +106,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/CollectionsResponse"
+                        "$ref": "#/components/responses/ResultsOKResponse"
                     },
                     "default": {
                         "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
@@ -151,7 +131,7 @@
                 },
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/CollectionsResponse"
+                        "$ref": "#/components/responses/ResultsOKResponse"
                     },
                     "default": {
                         "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",

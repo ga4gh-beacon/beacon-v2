@@ -28,7 +28,7 @@ paths:
         - GET Endpoints
       responses:
         '200':
-          $ref: '#/components/responses/CollectionsResponse'
+          $ref: '#/components/responses/ResultsOKResponse'
         default:
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
@@ -44,7 +44,7 @@ paths:
         required: true
       responses:
         '200':
-          $ref: '#/components/responses/CollectionsResponse'
+          $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
@@ -172,21 +172,13 @@ components:
             oneOf:
               - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconBooleanResponse.json
               - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCountResponse.json
-              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconResultsetsResponse.json
-    CollectionsResponse:
-      description: Successful collection list operation.
-      content:
-        application/json:
-          schema:
-            oneOf:
-              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconBooleanResponse.json
-              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCountResponse.json
               - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCollectionsResponse.json
   parameters:
     requestedSchema:
       name: requestedSchema
-      description: Schema to be used to format the `result` field in the response.
-        The response will use Beacon format.
+      description: >-
+        Schema to be used to format the `result` field in the response.
+        The response will use the Beacon format.
       in: query
       required: false
       schema:
@@ -216,4 +208,5 @@ components:
         items:
           type: string
         examples:
-          -   - OMIABIS:0001017
+          - 
+            - OMIABIS:0001017
