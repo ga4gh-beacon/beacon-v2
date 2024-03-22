@@ -96,7 +96,7 @@ paths:
         - GET Endpoints
       responses:
         '200':
-          $ref: '#/components/responses/ResultsOKResponse'
+          $ref: '#/components/responses/ResultsetsResponse'
         default:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
@@ -114,7 +114,7 @@ paths:
         required: true
       responses:
         '200':
-          $ref: '#/components/responses/ResultsOKResponse'
+          $ref: '#/components/responses/ResultsetsResponse'
         default:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
@@ -164,8 +164,8 @@ paths:
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
 components:
   responses:
-    ResultsOKResponse:
-      description: Successful operation.
+    CollectionsResponse:
+      description: Successful operation for a collections request.
       content:
         application/json:
           schema:
@@ -173,6 +173,15 @@ components:
               - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconBooleanResponse.json
               - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCountResponse.json
               - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCollectionsResponse.json
+    ResultsetsResponse:
+      description: Successful operation for an individuals request.
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconBooleanResponse.json
+              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCountResponse.json
+              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconResultsetsResponse.json
   parameters:
     requestedSchema:
       name: requestedSchema
