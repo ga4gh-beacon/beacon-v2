@@ -48,7 +48,7 @@
             }
         },
         "responses": {
-            "ResultsOKResponse": {
+            "CollectionsResponse": {
                 "content": {
                     "application/json": {
                         "schema": {
@@ -66,7 +66,27 @@
                         }
                     }
                 },
-                "description": "Successful operation."
+                "description": "Successful collection operation."
+            },
+            "ResultsetsResponse": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "oneOf": [
+                                {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconBooleanResponse.json"
+                                },
+                                {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCountResponse.json"
+                                },
+                                {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconResultsetsResponse.json"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "description": "Successful resultsets operation."
             }
         }
     },
@@ -104,7 +124,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/ResultsOKResponse"
+                        "$ref": "#/components/responses/CollectionsResponse"
                     },
                     "default": {
                         "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
@@ -129,7 +149,7 @@
                 },
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/ResultsOKResponse"
+                        "$ref": "#/components/responses/CollectionsResponse"
                     },
                     "default": {
                         "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
@@ -152,7 +172,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/ResultsOKResponse"
+                        "$ref": "#/components/responses/CollectionsResponse"
                     },
                     "default": {
                         "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
@@ -183,7 +203,7 @@
                 },
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/ResultsOKResponse"
+                        "$ref": "#/components/responses/CollectionsResponse"
                     },
                     "default": {
                         "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
@@ -212,7 +232,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/ResultsOKResponse"
+                        "$ref": "#/components/responses/ResultsetsResponse"
                     },
                     "default": {
                         "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
@@ -243,7 +263,7 @@
                 },
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/ResultsOKResponse"
+                        "$ref": "#/components/responses/ResultsetsResponse"
                     },
                     "default": {
                         "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
@@ -343,7 +363,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/ResultsOKResponse"
+                        "$ref": "#/components/responses/ResultsetsResponse"
                     },
                     "default": {
                         "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
@@ -374,7 +394,7 @@
                 },
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/ResultsOKResponse"
+                        "$ref": "#/components/responses/ResultsetsResponse"
                     },
                     "default": {
                         "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
@@ -403,7 +423,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/ResultsOKResponse"
+                        "$ref": "#/components/responses/ResultsetsResponse"
                     },
                     "default": {
                         "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
@@ -434,7 +454,7 @@
                 },
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/ResultsOKResponse"
+                        "$ref": "#/components/responses/ResultsetsResponse"
                     },
                     "default": {
                         "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
