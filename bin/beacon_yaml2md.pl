@@ -2,11 +2,11 @@
 #
 #   Script to convert Beacon v2 Models schemas to Markdown tables
 #
-#   Last Modified: May/05/2022
+#   Last Modified: Mar/26/2024
 #
 #   Version 2.0.0
 #
-#   Copyright (C) 2021-2022 Manuel Rueda (manuel.rueda@crg.eu)
+#   Copyright (C) 2021-2024 Manuel Rueda (manuel.rueda@cnag.eu)
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -236,6 +236,10 @@ sub yaml2md_obj {
         # We parse $yaml to get paths and more...
         my ( $base, $dir, $ext ) = fileparse( $yaml, '.yaml' );
         $ext =~ s/\.yaml/.md/;
+
+        # Ad hoc fix for two files that have same namex except for uc/lc
+        # AgeRange == ageRange  and Value == value on MacOS cwAPFS (Case insensitive)
+        $base = $base . '_PXF' if ( $base eq 'AgeRange' || $base eq 'Value' );
         my $file = catfile( $mo_dir, $base . $ext );    # Note -> $base.$ext
         write_file( $file, $out_str );
 
@@ -278,11 +282,11 @@ sub yaml_slicer {
     # one YAML file for each property and then re-use code from the 'main' schema
 
     ##########################################
-    # **** Note about VRS / PHX adoption *** #
+    # **** Note about VRS / PXF adoption *** #
     ##########################################
 
     # The adoption of those standards had technical implications. The script expects objects to have
-    #  <key> for the object and then <properties>. VRS/PHX follow JSON schemas that include /oneOf allOf anyOf/
+    #  <key> for the object and then <properties>. VRS/PXF follow JSON schemas that include /oneOf allOf anyOf/
     # plus other complex intructions such as <if:> <else:>.
     # This becomes a real challenge with $ref as, for instance, in <g_v.variation> we can not find the key for
     # 'MolecularVariation', 'SystemicVariation', 'LegacyVariation'
@@ -352,7 +356,7 @@ sub yaml_slicer {
 sub table_content {
 
     my ( $yaml_properties, $ra_properties, $headers, $obj, $link ) = @_;
-    my @lc_headers = map { lc } @$headers; # Copy array uc to avoid modifying original $ref
+    my @lc_headers = map { lc } @$headers;    # Copy array uc to avoid modifying original $ref
     my $out_str    = '';
 
     #---------------------------------------------------------|
@@ -394,10 +398,10 @@ sub table_content {
                   if $header eq 'example';
 
                 # Slice differentely if $object->{type} eq 'array'
-                if ($object->{type} eq 'array' ) {
-                  for ('description', 'properties'){
-                      $value_header = $object->{items}{$_} if $header eq $_;
-                  }
+                if ( $object->{type} eq 'array' ) {
+                    for ( 'description', 'properties' ) {
+                        $value_header = $object->{items}{$_} if $header eq $_;
+                    }
                 }
 
                 # Now convert data structure to string
@@ -454,7 +458,7 @@ sub ref2str {
 
         # string or undef
         else {
-            $out_str = defined $data->[0] ? join ', ', @$data : 'NA'; # Note ', ' to allow HTML column rendering
+            $out_str = defined $data->[0] ? join ', ', @$data : 'NA';    # Note ', ' to allow HTML column rendering
         }
     }
     elsif ( ref $data eq 'HASH' ) {
@@ -480,15 +484,20 @@ sub add_external_links {
     my ( $tmp_str, $key ) = @_;
 
     # Note: This is an ad hoc solution to fix errors with deeply-nested data
-    my @phx = qw( typedQuantities days weeks Quantity high low);
-    my @vrs = qw(_id state type CURIE Location);
+    my @pxf       = qw( typedQuantities days weeks Quantity high low);
+    my @vrs       = qw(_id state type CURIE Location);
     my @framework = ("ontologyTerm");
-    return ( any { ( $_ eq $key ) } @phx )
+
+    return ( any { ( $_ eq $key ) } @pxf )
       ? "[$key](https://phenopacket-schema.readthedocs.io/en/latest/building-blocks.html)"
       : ( any { ( $_ eq $key ) } @vrs )
       ? "[$key](https://vrs.ga4gh.org/en/stable/terms_and_model.html#$key)"
-      : ( any { ( $_ eq $key ) } @framework ) 
-      ? "[$key](https://github.com/ga4gh-beacon/beacon-v2/blob/main/framework/src/common/$key.yaml)" 
+      : ( any { ( $_ eq $key ) } @framework )
+      ? "[$key](https://github.com/ga4gh-beacon/beacon-v2/blob/main/framework/src/common/$key.yaml)"
+
+      # NB: Ad hoc solution for properties having equal name (lc)
+      : ( $key eq 'AgeRange' || $key eq 'Value' )
+      ? "[$key]($tmp_str/${key}_PXF.md)"
       : "[$key]($tmp_str/$key.md)";
 }
 
@@ -588,7 +597,7 @@ EOF
 
 ## ontologyTerm.yaml is needed due to a bug with jsonref2json.js that overrided "parent" <description> field
 
-   my $str_ontologyTerm = <<EOF;
+    my $str_ontologyTerm = <<EOF;
 ---
 additionalProperties: true
 description: Definition of an ontology term.
@@ -676,10 +685,10 @@ sub parse_json_keywords {
         'variation' =>
           [ 'MolecularVariation', 'SystemicVariation', 'LegacyVariation' ],
         'SystemicVariation'  => ['CopyNumber'],
-        'MolecularVariation' => [ 'Allele', 'Haplotype' ],
-        'location'           => [ 'CURIE', 'Location' ],
+        'MolecularVariation' => [ 'Allele',        'Haplotype' ],
+        'location'           => [ 'CURIE',         'Location' ],
         'state'              => [ 'SequenceState', 'SequenceExpression' ],
-        'Value'              => [ 'Quantity', 'ontologyTerm' ]
+        'Value'              => [ 'Quantity',      'ontologyTerm' ]
     };
 
     # We'll be checking <oneOf allOf anyOf>
@@ -699,14 +708,17 @@ sub parse_json_keywords {
                 #  my $const = $pointer->get("/$keyword/$property/$count/properties/type/const");
                 #   $tmp_hash->{properties}{$const} = $elements;
                 #} else{
-                my $tmp_term = ( $pointer->contains("/$keyword/$count/title") && $pointer->get("/$keyword/$count/title") ne 'Ontology Term' )
+                my $tmp_term =
+                  (      $pointer->contains("/$keyword/$count/title")
+                      && $pointer->get("/$keyword/$count/title") ne
+                      'Ontology Term' )
                   ? $pointer->get("/$keyword/$count/title")
                   : @{ $terms->{$property} }[$count];
-                $tmp_hash->{properties}{$tmp_term} = $elements if $tmp_term; # Ad-hoc some terms appear duplicated and come empty....
-                                                                             #}
+                $tmp_hash->{properties}{$tmp_term} = $elements if $tmp_term;   # Ad-hoc some terms appear duplicated and come empty....
+                                                                               #}
                 $count++;
             }
-            $data = $tmp_hash;    # Adding new reference
+            $data = $tmp_hash;                                                 # Adding new reference
         }
     }
     return $data;
@@ -872,7 +884,7 @@ I<NB:> The script was built to work with the Beacon v2 Model schemas and the aut
 
 I<NB:> The decission to take YAMLs (and not JSON) as an input is deliberate and made by the author.
 
-I<NB:> The script only processes the C<Terms> nested B<up to 3 degrees of hierarchy>. Before Adoption of VRS/PHX that limit was OK.
+I<NB:> The script only processes the C<Terms> nested B<up to 3 degrees of hierarchy>. Before Adoption of VRS/PXF that limit was OK.
 
 I<NB:> The script also includes the Beacon v2 Models examples from L<beacon-v2 repo|https://github.com/ga4gh-beacon/beacon-v2> in JSON format.
 
