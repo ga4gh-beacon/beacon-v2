@@ -2,11 +2,11 @@
 #
 #   Script to convert Beacon v2 Models to Markdown
 #
-#   Last Modified: Jul/20/2022
+#   Last Modified: Mar/26/2022
 #
 #   Version 2.0.0
 #
-#   Copyright (C) 2021-2022 Manuel Rueda (manuel.rueda@crg.eu)
+#   Copyright (C) 2021-2024 Manuel Rueda (manuel.rueda@cnag.eu)
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -26,11 +26,12 @@
 set -eu
 mod_dir=../models/json/beacon-v2-default-model
 fwk_dir=../framework/json
-adhoc_url='https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/bin/adhoc'
+#adhoc_url='https://raw.githubusercontent.com/g4gh-beacon/beacon-v2/main/bin/adhoc'
+adhoc_url='https://raw.githubusercontent.com/mrueda/beacon-v2/main/bin/adhoc'
 out_dir=./deref_schemas
 jsonref='node ./jsonref2json.js'
 yaml2md=./beacon_yaml2md.pl
-yaml2json='perl -MYAML -MJSON -0777 -wnl -e'
+yaml2json='perl -MYAML::XS -MJSON::XS -0777 -wnl -e'
 
 mkdir -p $out_dir/obj
 
@@ -75,7 +76,7 @@ do
  rm $out_dir/$schema/defaultSchema.mod.json
 
  echo "Transforming $schema JSON to YAML ..."
- $yaml2json 'print YAML::Dump(decode_json($_))' $out_dir/$schema/defaultSchema.json  | perl -pe 's/ \*(\d+)$/ $1/' >  $out_dir/$schema/defaultSchema.yaml
+ $yaml2json 'print YAML::XS::Dump(decode_json($_))' $out_dir/$schema/defaultSchema.json  | perl -pe 's/ \*(\d+)$/ $1/' >  $out_dir/$schema/defaultSchema.yaml
 
  echo "---"
 done
