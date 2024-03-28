@@ -21,6 +21,11 @@
         },
         "testMode": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/TestMode"
+        },
+        "warnings": {
+            "description": "A list of \"warnings\", _i.e._ messages from the beacon about potential problems such as request parameters that could not be parsed or the reasons for a mismatch between request and response granularity.",
+            "items": "string",
+            "type": "array"
         }
     },
     "required": [
