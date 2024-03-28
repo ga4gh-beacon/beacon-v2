@@ -34,7 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
  * Fixed `POST`queries for `g_variant` (w/ examples)
- * Removed 'json' references inside the yaml version (PR [#43] (https://github.com/ga4gh-beacon/beacon-v2/pull/43))
+ * Removed 'json' references inside the yaml version (PR [#43](https://github.com/ga4gh-beacon/beacon-v2/pull/43))
+ * added missing `type: object` to `ResultsetInstance` (PR [#82](https://github.com/ga4gh-beacon/beacon-v2/pull/82))
 
 ### Deprecated
 
