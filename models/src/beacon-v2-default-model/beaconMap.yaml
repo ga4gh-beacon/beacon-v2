@@ -16,10 +16,10 @@ endpointSets:
       individual:
         returnedEntryType: individual
         url: https://exampleBeacons.org/datasets/{id}/individuals
-      runs:
+      run:
         returnedEntryType: run
         url: https://exampleBeacons.org/datasets/{id}/runs
-      analyses:
+      analysis:
         returnedEntryType: analysis
         url: https://exampleBeacons.org/datasets/{id}/analyses
   cohort:
@@ -38,10 +38,10 @@ endpointSets:
       biosample:
         returnedEntryType: biosample
         url: https://exampleBeacons.org/cohorts/{id}/biosamples
-      runs:
+      run:
         returnedEntryType: run
         url: https://exampleBeacons.org/cohorts/{id}/runs
-      analyses:
+      analysis:
         returnedEntryType: analysis
         url: https://exampleBeacons.org/cohorts/{id}/analyses
   genomicVariant:
@@ -56,10 +56,10 @@ endpointSets:
       individual:
         returnedEntryType: individual
         url: https://exampleBeacons.org/g_variants/{id}/individuals
-      runs:
+      run:
         returnedEntryType: run
         url: https://exampleBeacons.org/g_variants/{id}/runs
-      analyses:
+      analysis:
         returnedEntryType: analysis
         url: https://exampleBeacons.org/g_variants/{id}/analyses
   individual:
@@ -75,10 +75,10 @@ endpointSets:
       biosample:
         returnedEntryType: biosample
         url: https://exampleBeacons.org/individuals/{id}/biosamples
-      runs:
+      run:
         returnedEntryType: run
         url: https://exampleBeacons.org/individuals/{id}/runs
-      analyses:
+      analysis:
         returnedEntryType: analysis
         url: https://exampleBeacons.org/individuals/{id}/analyses
   biosample:
