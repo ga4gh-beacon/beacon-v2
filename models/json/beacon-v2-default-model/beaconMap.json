@@ -35,7 +35,7 @@
         },
         "cohort": {
             "endpoints": {
-                "analyses": {
+                "analysis": {
                     "returnedEntryType": "analysis",
                     "url": "https://exampleBeacons.org/cohorts/{id}/analyses"
                 },
@@ -51,7 +51,7 @@
                     "returnedEntryType": "individual",
                     "url": "https://exampleBeacons.org/cohorts/{id}/individuals"
                 },
-                "runs": {
+                "run": {
                     "returnedEntryType": "run",
                     "url": "https://exampleBeacons.org/cohorts/{id}/runs"
                 }
@@ -64,7 +64,7 @@
         },
         "dataset": {
             "endpoints": {
-                "analyses": {
+                "analysis": {
                     "returnedEntryType": "analysis",
                     "url": "https://exampleBeacons.org/datasets/{id}/analyses"
                 },
@@ -80,7 +80,7 @@
                     "returnedEntryType": "individual",
                     "url": "https://exampleBeacons.org/datasets/{id}/individuals"
                 },
-                "runs": {
+                "run": {
                     "returnedEntryType": "run",
                     "url": "https://exampleBeacons.org/datasets/{id}/runs"
                 }
@@ -93,7 +93,7 @@
         },
         "genomicVariant": {
             "endpoints": {
-                "analyses": {
+                "analysis": {
                     "returnedEntryType": "analysis",
                     "url": "https://exampleBeacons.org/g_variants/{id}/analyses"
                 },
@@ -105,7 +105,7 @@
                     "returnedEntryType": "individual",
                     "url": "https://exampleBeacons.org/g_variants/{id}/individuals"
                 },
-                "runs": {
+                "run": {
                     "returnedEntryType": "run",
                     "url": "https://exampleBeacons.org/g_variants/{id}/runs"
                 }
@@ -117,7 +117,7 @@
         },
         "individual": {
             "endpoints": {
-                "analyses": {
+                "analysis": {
                     "returnedEntryType": "analysis",
                     "url": "https://exampleBeacons.org/individuals/{id}/analyses"
                 },
@@ -129,7 +129,7 @@
                     "returnedEntryType": "genomicVariant",
                     "url": "https://exampleBeacons.org/individuals/{id}/g_variants"
                 },
-                "runs": {
+                "run": {
                     "returnedEntryType": "run",
                     "url": "https://exampleBeacons.org/individuals/{id}/runs"
                 }
