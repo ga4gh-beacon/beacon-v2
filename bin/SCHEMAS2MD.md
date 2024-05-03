@@ -132,7 +132,7 @@ _NB:_ The script was built to work with the Beacon v2 Model schemas and the auth
 
 _NB:_ The decission to take YAMLs (and not JSON) as an input is deliberate and made by the author.
 
-_NB:_ The script only processes the `Terms` nested **up to 3 degrees of hierarchy**. Before Adoption of VRS/PHX that limit was OK.
+_NB:_ The script only processes the `Terms` nested **up to 3 degrees of hierarchy**. Before Adoption of VRS/PXF that limit was OK.
 
 _NB:_ The script also includes the Beacon v2 Models examples from [beacon-v2 repo](https://github.com/ga4gh-beacon/beacon-v2) in JSON format.
 
