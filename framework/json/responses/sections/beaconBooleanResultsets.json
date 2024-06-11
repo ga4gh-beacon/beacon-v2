@@ -1,0 +1,55 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "definitions": {
+        "BooleanResultsetInstance": {
+            "additionalProperties": true,
+            "properties": {
+                "exists": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "id of the BooleanResultset",
+                    "example": "datasetA",
+                    "type": "string"
+                },
+                "info": {
+                    "description": "Additional details that could be of interest about the BooleanResultset. Provided to clearly enclose any attribute that is not part of the Beacon specification.",
+                    "type": "object"
+                },
+                "resultsHandovers": {
+                    "$ref": "../../common/beaconCommonComponents.json#/definitions/ListOfHandovers",
+                    "description": "List of handovers that apply to this BooleanResultset, not to the whole Beacon or to a result in particular."
+                },
+                "setType": {
+                    "default": "dataset",
+                    "description": "Entry type of BooleanResultset. It SHOULD MATCH an entry type declared as collection in the Beacon configuration.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "setType",
+                "exists"
+            ]
+        }
+    },
+    "description": "Sets of results to be returned as query response.",
+    "properties": {
+        "$schema": {
+            "$ref": "../../common/beaconCommonComponents.json#/definitions/$schema"
+        },
+        "resultSets": {
+            "items": {
+                "$ref": "#/definitions/BooleanResultsetInstance"
+            },
+            "minItems": 0,
+            "type": "array"
+        }
+    },
+    "required": [
+        "resultSets"
+    ],
+    "title": "Beacon BooleanResultset",
+    "type": "object"
+}
