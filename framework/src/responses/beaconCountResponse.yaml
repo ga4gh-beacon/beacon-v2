@@ -23,6 +23,11 @@ properties:
       List of handovers that apply to the whole response, not to any resultset
       or result in particular.
     $ref: ../common/beaconCommonComponents.yaml#/definitions/ListOfHandovers
+  response:
+    description: >-
+      Response for queries that recovers any result.
+    $ref: ./sections/beaconBooleanResultsets.yaml
 required:
   - meta
   - responseSummary
+  - response

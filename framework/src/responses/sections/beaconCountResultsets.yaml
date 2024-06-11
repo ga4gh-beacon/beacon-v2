@@ -1,0 +1,47 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Beacon CountResultSet
+description: Sets of results to be returned as query response.
+type: object
+properties:
+  $schema:
+    $ref: ../../common/beaconCommonComponents.yaml#/definitions/$schema
+  resultSets:
+    type: array
+    items:
+      $ref: '#/definitions/CountResultsetInstance'
+    minItems: 0
+required:
+  - resultSets
+additionalProperties: true
+definitions:
+  CountResultsetInstance:
+    properties:
+      id:
+        description: id of the Countresultset
+        type: string
+        example: datasetA
+      setType:
+        description: Entry type of CountresultSet. It SHOULD MATCH an entry type declared
+          as collection in the Beacon configuration.
+        type: string
+        default: dataset
+      exists:
+        type: boolean
+      resultsCount:
+        description: Number of results in this CountResultset.
+        type: integer
+      resultsHandovers:
+        description: List of handovers that apply to this Countresultset, not to the whole
+          Beacon or to a result in particular.
+        $ref: ../../common/beaconCommonComponents.yaml#/definitions/ListOfHandovers
+      info:
+        description: Additional details that could be of interest about the CountResultset.
+          Provided to clearly enclose any attribute that is not part of the Beacon
+          specification.
+        type: object
+    required:
+      - id
+      - setType
+      - exists
+      - resultsCount
+    additionalProperties: true
