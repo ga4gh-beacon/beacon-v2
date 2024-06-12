@@ -24,6 +24,13 @@ properties:
     $ref: ../../common/beaconCommonComponents.yaml#/definitions/TestMode
   receivedRequestSummary:
     $ref: ./beaconReceivedRequestSummary.yaml
+  warnings:
+    description: >-
+      A list of "warnings", _i.e._ messages from the beacon about potential
+      problems such as request parameters that could not be parsed or the reasons
+      for a mismatch between request and response granularity.
+    type: array
+    items: string
 required:
   - beaconId
   - apiVersion
