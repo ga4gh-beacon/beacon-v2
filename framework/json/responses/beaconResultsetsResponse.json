@@ -16,20 +16,8 @@
             "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
         },
         "response": {
-            "oneOf": [
-                {
-                    "$ref": "./sections/beaconResultsets.json",
-                    "description": "Response for queries that recovers any result."
-                },
-                {
-                    "$ref": "./sections/beaconCountResultsets.json",
-                    "description": "Response for queries that recovers any result."
-                },
-                {
-                    "$ref": "./sections/beaconBooleanResultsets.json",
-                    "description": "Response for queries that recovers any result."
-                }
-            ]
+            "$ref": "./sections/beaconResultsets.json",
+            "description": "Response for queries that recovers any result."
         },
         "responseSummary": {
             "$ref": "./sections/beaconSummaryResponseSection.json",
