@@ -67,12 +67,12 @@ Contains the Json schema files that describe the Beacon configuration, its conte
 
 Contains the following Json schemas:
 
-* **beaconRequestBody.json:** Schema for the whole Beacon request. It is named `RequestBody` to keep the same nomenclature used by OpenAPI v3, but it actually contains the definition of the whole HTTP POST request payload.
-* **beaconRequestMeta.json:** Meta section of the Beacon request. It includes request context details relevant for the Beacon server when processing the request, like the Beacon API version used to format the request or the schemas expected for the entry types in the response.
-* **filteringTerms.json:** defines the schema for the filters included in the request.
-* **requestParameters.json** defines the, very free, schema of the parameters included in the request.
-* **examples-fullDocuments folder:** includes examples of "actual" requests. The example labelled with `MIN` in the name shows the minimal required attributes for the request to be compliant. The example labelled with `MAX` in the name includes a richer case with all the sections filled in.
-* **examples-sections folder:** includes examples of "actual" sections of the requests. It is included to allow specification designers and Beacon implementers to check the compliance with a single section instead of having to implement a whole request. Such way, We aim to facilitate an "incremental" implementation of an instance.
+* `beaconRequestBody.json:` Schema for the whole Beacon request. It is named `RequestBody` to keep the same nomenclature used by OpenAPI v3, but it actually contains the definition of the whole HTTP POST request payload.
+* `beaconRequestMeta.json:` Meta section of the Beacon request. It includes request context details relevant for the Beacon server when processing the request, like the Beacon API version used to format the request or the schemas expected for the entry types in the response.
+* `filteringTerms.json:` defines the schema for the filters included in the request.
+* `requestParameters.json` defines the, very free, schema of the parameters included in the request.
+* `examples-fullDocuments` folder: includes examples of "actual" requests. The example labelled with `MIN` in the name shows the minimal required attributes for the request to be compliant. The example labelled with `MAX` in the name includes a richer case with all the sections filled in.
+* `examples-sections` folder: includes examples of "actual" sections of the requests. It is included to allow specification designers and Beacon implementers to check the compliance with a single section instead of having to implement a whole request. Such way, We aim to facilitate an "incremental" implementation of an instance.
 
 #### Differences between FilteringTerms and RequestParameters
 Both, the filters (*filteringTerms*) and the parameters (*requestParameters*), are used to refine the query. The availability of two mechanisms to refine the queries could sound initially confusing, but that separation is  taylored to facilitate the interpretation of the request by the Beacon server.
@@ -86,34 +86,63 @@ An unrestricted query like `/datasets` should return the list of all datasets in
 * anything else would probably be a request parameter.
 
 ### The Responses
+
 The Beacon concept includes several types of responses: some informative or informational and some with actual data payloads, and the error one. 
 
-#### The Informational responses
-A Beacon is able to return information, details, about itself. Many of the schema responses included in the `responses` folder have a 1-to-1 relationship with the corresponding configuration documents and their equivalent root endpoints, e.g. the `beaconEntryTypeResponse.json` is the schema of a response that wraps the `beaconConfiguration.json` document, and is then used as the payload of the `/entry_types` root endpoint. Schematically:
+#### Informational responses
+
+A Beacon is able to return information, details, about itself. Many of the schema
+responses included in the `responses` folder have a 1-to-1 relationship with the
+corresponding configuration documents and their equivalent root endpoints, e.g.
+the `beaconEntryTypeResponse.json` is the schema of a response that wraps the
+`beaconConfiguration.json` document, and is then used as the payload of the
+`/entry_types` root endpoint. Schematically:
+
 * *configuration/an_schema.json*: describes the schema of the configuration file itself.
 * *responses/an_schema_response.json*: describes the format of the response that returns these configuration information.
 * *root/endpoints.json*: describes the API endpoints to be called and parameters to be used to retrieve such responses.
 
 The following schemas refer to informational responses: *beaconConfigurationResponse*, *beaconEntryTypeResponse*, *beaconFilteringTermsResponse*, ând *beaconMapResponse*.
  
-#### The results responses
+#### Data Responses
+
 A Beacon could return responses at different granularity levels:
 
-* **boolean response:** only returns `exists: true` ('Yes') or `exists: false` ('No') to a given query.
-* **count response:** returns `Yes`/`No` and the number of matching results.
-* **resultset response:** returns `Yes`/`No`, the number of matching results and details of them per every collection (e.g. every dataset or cohort) and, if granted, details on every record that matches the query.
+* **boolean**: only returns `exists: true` ('Yes') or `exists: false` ('No') to a given query.
+* **count**: returns `Yes`/`No` and the number of matching results.
+* **record** returns `Yes`/`No`, the number of matching results and all documents
+  corresponding to the requested entities. Documents are wrapped in "result set"
+  objects for every collection (e.g. every dataset or cohort). Even for _record_
+  level responses each beacon can control the details of data exposed in record
+  besides the minimal requirements of the entry type's schema.
 
 Each of these granularity levels has an equivalent response schema: 
 
 * **boolean**: `beaconBooleanResponse`
 * **count**: `beaconCountResponse`
-* **resultset** (with or w/o record details): `beaconResultSetsResponse`
+* **record**: `beaconResultSetsResponse`
 
 An additional schema, *beaconCollectionsResponse*, describes such responses that returns details about the collections in a Beacon, but not the collection content themselves. Otherwise said, the response describes a dataset, but not returns the contents of any dataset.
 
-### The common components
+### Common Components
 
-Some elements are transerval to the Framework and to any model, e.g. the schema for describing an ontology term or the reference to an external schema (like the reference to GA4GH Phenopackets or GA4GH Service Info schemas). 
+Some elements are transerval to the Framework and to any model, e.g. the schema
+for describing an ontology term or the reference to an external schema (like the
+reference to GA4GH Phenopackets or GA4GH Service Info schemas).
+
+#### Pagination - `skip` and `limit`
+
+Record level responses potentially may return **many** (_i.e._ thousands and beyond)
+documents which usually would be "paginated", _i.e._ split into may chunks ("pages").
+Beacon handles _pagination_ through the `skip` and `limit` parameters as part of the
+request:
+
+* `limit` in the request tells the server the maximum number of records that should
+  be returned in a single response (_i.e._ the "page size")
+* `skip` indicates how many of those pages should be skipped over when delivering
+  the results
+
+Therefore, `skip: 2` and `limit: 8` will return records 17-24 (if those exist).
 
 ### Testing the compliance of an implementation with *testMode*
 
@@ -136,12 +165,11 @@ Except when testing, most of the Beacon queries are expected to be answered by '
     * **defaultGranularity:** Default granularity of the responses. Some responses could return higher detail, but this would be the granularity by default.
     * **securityLevels:** All access levels supported by the Beacon. Any combination is valid, as every option would apply to different parts of the Beacon. Available options are:
 
-Granularity|Description
+Granularity | Description
 -----------|-----------
-`boolean`|returns 'true/false' responses.
-`count`|adds the total number of positive results found.
-`aggregated`|returns summary, aggregated or distribution like responses per collection. 
-`record`|returns details for every row. 
+`boolean` | returns 'true/false' responses.
+`count` | adds the total number of positive results found.
+`record` | returns details for every row. 
 
 For those cases where a Beacon prefers to return records with less, not all, attributes, different strategies have been considered, e.g.: keep non-mandatory attributes empty, or Beacon to provide a minimal record definition, but these strategies still need to be tested in real world cases and hence no design decision has been taken yet.
   

@@ -72,20 +72,31 @@ Alphanumerical value Filter types contain:
 		"type": "alphanumeric",
 		"id": "PATO:0000011",
 		"label": "age"
-	},
-	...
+	}
 ]
 ```
 
 ## Using Filters in Queries
 
-For all query types, the logical `AND` is implied between Filters. The Filter `id` is required for all query types.
+The Filter `id` is required for all query types.
+
+!!! Note "Boolean Logic Between Filtering Terms"
+
+	Beacon queries as of v2 always omply a logical **AND** between query parameters
+	and individual filters, _i.e._ all conditions have to be met. There is currently
+	no support for Boolean expressions.
 
 !!! Note "Filters in `GET` Requests"
 
 	`GET` requests use a `filters` parameter for one or more (comma-separated) filter `id` values.
 	In this case general filter defaults apply (e.g. `{ "includeDescendantTerms": true }`). Generally,
 	use of filters other than CURIE values for filter ids is discouraged.
+
+!!! Attention "List Parameters in GET Requests"
+
+	Since the direct interpretation of list parameters in queries is not supported by
+	some server environments (e.g. PHP, GO…), list parameters such as `start` and `end`
+	should be provided as **comma-concatenated** strings when using them in GET requests.
 
 ### CURIE based filters query (type "OntologyFilters")
 
