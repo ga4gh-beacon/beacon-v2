@@ -149,5 +149,16 @@
     representations and will be adopted by Beacon v2.n after reaching a release state.
 
 
+??? faq "Does the Beacon protocol support Boolean expressions?<a id="boolean-logic"> </a>"
+
+    No (...but). Beacon queries as of v2 always assume a logical **AND** between query parameters
+    and individual filters, _i.e._ all conditions have to be met. There is currently
+    no support for Boolean expressions.
+    However, a logical exception is the use of multiple filters for the same parameter which
+    a Beacon implementation should treat as a logical **OR** since they otherwise
+    would fail in most instances. E.g. the query using `NCIT:C3493` and `NCIT:C2926`
+    (mapped against `biosample.histological_diagnosis.id`) would match both
+    _Lung Non-Small Cell Carcinoma_ (NCIT:C2926) and _Lung Squamous Cell Carcinoma_
+    (NCIT:C3493) which are exclusive diagnoses. 
 
 

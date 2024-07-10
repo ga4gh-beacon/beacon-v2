@@ -22,9 +22,8 @@ nav:
         - Changes: changes-todo
         - Beacon News &#8599;: https://beacon-project.io/news/
     - Using Beacons:
-        - Data Discovery:
-            - Genomic Queries: variant-queries
-            - Phenotypes and More...: /filters/#using-filters-in-queries
+        - Genomic Queries: variant-queries
+        - Phenotypes and More...: /filters/#using-filters-in-queries
         - Data Delivery:
             - Biosamples, Variants...: records
             - Data Handovers: handovers
@@ -64,7 +63,7 @@ plugins:
   #      author: Beacon API Development Team
   #      output_path: pdf/beacon.pdf
   - macros
-  # - mermaid2
+  - mermaid2
 
 markdown_extensions:
     - toc:
@@ -116,13 +115,11 @@ theme:
         - navigation.instant
         - navigation.tracking
         - navigation.sections
-        - toc.integrate
+        # - toc.integrate
 
 # Options
 extra:
   social:
-    - icon: fontawesome/brands/twitter 
-      link: https://twitter.com/genomebeacons
     - icon: fontawesome/brands/github 
       link: https://github.com/ga4gh-beacon
 
