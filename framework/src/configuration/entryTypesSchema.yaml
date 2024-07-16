@@ -1,6 +1,6 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: List of Entry Types schema
-description: Schema for the Enrty Types list.
+description: Schema for the Entry Types list.
 type: object
 properties:
   entryTypes:

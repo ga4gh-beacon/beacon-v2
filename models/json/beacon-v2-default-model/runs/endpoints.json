@@ -309,7 +309,7 @@
             ],
             "post": {
                 "description": "Get the genomic variants list from one run, identified by its (unique) 'id'",
-                "operationId": "potOneRunGenomicVariants",
+                "operationId": "postOneRunGenomicVariants",
                 "requestBody": {
                     "content": {
                         "application/json": {

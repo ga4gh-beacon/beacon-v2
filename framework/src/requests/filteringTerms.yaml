@@ -58,7 +58,7 @@ definitions:
     properties:
       id:
         type: string
-        description: Field identfier to be queried.
+        description: Field identifier to be queried.
         example: ageOfOnset
       operator:
         type: string
@@ -76,8 +76,8 @@ definitions:
         type: string
         description: >-
           Alphanumeric search term to be used within the query which can
-          contain wildcard characters (%) to denote any number of unknown characters.  Values
-          can be assocatied with units if applicable.
+          contain wildcard characters (%) to denote any number of unknown characters. Values
+          can be associated with units if applicable.
         example: P70Y
       scope:
         type: string

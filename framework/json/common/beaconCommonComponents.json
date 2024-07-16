@@ -86,7 +86,7 @@
             "type": "string"
         },
         "Handover": {
-            "description": "A handover is a typed link for attaching actionable links to results, non purely informational, requests. The goal of the handovers is to list the different actions available, e.g.:\n* a link to a request access page * linking to a file for download, e.g. a VCF file\nAnother common scenario is to provide a fast summary response (e.g. BeconCountResponse) and to provide access to different endpoints for the entities matched by the query using temporary access tokens in the handover URLs.",
+            "description": "A handover is a typed link for attaching actionable links to results, non purely informational, requests. The goal of the handovers is to list the different actions available, e.g.:\n* a link to a request access page * linking to a file for download, e.g. a VCF file\nAnother common scenario is to provide a fast summary response (e.g. BeaconCountResponse) and to provide access to different endpoints for the entities matched by the query using temporary access tokens in the handover URLs.",
             "properties": {
                 "handoverType": {
                     "$ref": "#/definitions/HandoverType"

@@ -6,7 +6,7 @@
             "description": "Filter results based on operators and values applied to alphanumeric fields.",
             "properties": {
                 "id": {
-                    "description": "Field identfier to be queried.",
+                    "description": "Field identifier to be queried.",
                     "example": "ageOfOnset",
                     "type": "string"
                 },
@@ -30,7 +30,7 @@
                     "type": "string"
                 },
                 "value": {
-                    "description": "Alphanumeric search term to be used within the query which can contain wildcard characters (%) to denote any number of unknown characters.  Values can be assocatied with units if applicable.",
+                    "description": "Alphanumeric search term to be used within the query which can contain wildcard characters (%) to denote any number of unknown characters. Values can be associated with units if applicable.",
                     "example": "P70Y",
                     "type": "string"
                 }
