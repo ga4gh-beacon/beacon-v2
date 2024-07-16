@@ -1,13 +1,13 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Beacon Map
-description: Map of a Beacon, its entry types and endpoints. It isconceptually similar
+description: Map of a Beacon, its entry types and endpoints. It is conceptually similar
   to a website sitemap.
 type: object
 properties:
   $schema:
     $ref: ../common/beaconCommonComponents.yaml#/definitions/$schema
   endpointSets:
-    description: List of enpoints included in this Beacon instance. This is list is
+    description: List of endpoints included in this Beacon instance. This is list is
       meant to inform Beacon clients, e.g. a Beacon Network, about the available endpoints,
       it is not used to generate any automatic list, but could be used for Beacon
       validation purposes.

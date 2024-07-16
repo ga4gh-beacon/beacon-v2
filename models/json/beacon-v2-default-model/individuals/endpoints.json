@@ -152,7 +152,7 @@
         "/individuals/filtering_terms": {
             "get": {
                 "description": "Get the list of filtering terms that could be used with individuals.",
-                "operationId": "getIndivualsFilteringTerms",
+                "operationId": "getIndividualsFilteringTerms",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/skip"
@@ -359,7 +359,7 @@
             ],
             "post": {
                 "description": "Get the genomic variants list from one individual, identified by its (unique) 'id'",
-                "operationId": "potOneIndividualGenomicVariants",
+                "operationId": "postOneIndividualGenomicVariants",
                 "requestBody": {
                     "content": {
                         "application/json": {

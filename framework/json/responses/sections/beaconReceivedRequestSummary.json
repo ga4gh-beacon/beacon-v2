@@ -23,7 +23,7 @@
         },
         "requestedGranularity": {
             "$ref": "../../common/beaconCommonComponents.json#/definitions/Granularity",
-            "description": "Requested granularity for the response which may differe from the response's actual granularity."
+            "description": "Requested granularity for the response which may differ from the response's actual granularity."
         },
         "requestedSchemas": {
             "$comment": "TODO: Add the format attribute as a uri.",

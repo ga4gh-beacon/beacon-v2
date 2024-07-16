@@ -11,7 +11,7 @@
             "minProperties": 1
         }
     },
-    "description": "Schema for the Enrty Types list.",
+    "description": "Schema for the Entry Types list.",
     "properties": {
         "entryTypes": {
             "$ref": "#/definitions/EntryTypes",

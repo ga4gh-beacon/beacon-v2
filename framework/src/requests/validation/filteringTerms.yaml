@@ -1,7 +1,7 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Filtering Term Element
 description: Rules for selecting records based upon the field values those records
-  contain. Filters are seperated by the logical AND operator.
+  contain. Filters are separated by the logical AND operator.
 properties:
   $schema:
     type: string
@@ -54,7 +54,7 @@ definitions:
     properties:
       id:
         type: string
-        description: Field identfier to be queried.
+        description: Field identifier to be queried.
         example: age
       operator:
         type: string
@@ -71,8 +71,8 @@ definitions:
       value:
         type: string
         description: Alphanumeric search term to be used within the query which can
-          contain wildcard characters (%) to denote any number of unknown characters.  Values
-          can be assocatied with units if applicable.
+          contain wildcard characters (%) to denote any number of unknown characters. Values
+          can be associated with units if applicable.
         example: P70Y
   CustomFilter:
     type: object

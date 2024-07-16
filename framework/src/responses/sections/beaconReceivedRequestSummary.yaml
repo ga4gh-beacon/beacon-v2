@@ -37,7 +37,7 @@ properties:
     $ref: ../../common/beaconCommonComponents.yaml#/definitions/Pagination
   requestedGranularity:
     description: >-
-      Requested granularity for the response which may differe from the
+      Requested granularity for the response which may differ from the
       response's actual granularity.
     $ref: ../../common/beaconCommonComponents.yaml#/definitions/Granularity
   testMode:

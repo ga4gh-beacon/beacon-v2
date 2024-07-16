@@ -4,7 +4,7 @@ info:
   version: 2.0.0
   title: GA4GH Beacon API Specification
   description: A Beacon is a web service for genetic data sharing that can be queried
-    for  information about variants, individuals, biosamples, and other entities.
+    for information about variants, individuals, biosamples, and other entities.
   contact:
     email: beacon@ga4gh.org
   license:
@@ -132,7 +132,7 @@ components:
   parameters:
     requestedSchema:
       name: requestedSchema
-      description: Schema to be used to format the `result` field in the resposne.
+      description: Schema to be used to format the `result` field in the response.
         The response will use Beacon format.
       in: query
       required: false
