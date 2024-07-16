@@ -80,7 +80,6 @@
             "enum": [
                 "boolean",
                 "count",
-                "aggregated",
                 "record"
             ],
             "type": "string"
