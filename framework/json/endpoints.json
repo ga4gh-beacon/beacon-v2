@@ -136,7 +136,14 @@
                 "operationId": "getFilteringTerms",
                 "responses": {
                     "200": {
-                        "$ref": "./responses/beaconFilteringTermsResponse.json"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./responses/beaconFilteringTermsResponse.json"
+                                }
+                            }
+                        },
+                        "description": "Successful operation."
                     },
                     "default": {
                         "$ref": "./responses/beaconErrorResponse.json",
