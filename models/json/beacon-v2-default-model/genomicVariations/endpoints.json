@@ -46,18 +46,26 @@
                 }
             },
             "filters": {
+                "examples": {
+                    "example1": {
+                        "value": [
+                            "EFO:0009655"
+                        ]
+                    },
+                    "example2": {
+                        "value": [
+                            "NCIT:C48725"
+                        ]
+                    },
+                    "example3": {
+                        "value": [
+                            "NCIT:C28080"
+                        ]
+                    }
+                },
                 "in": "query",
                 "name": "filters",
                 "schema": {
-                    "examples": [
-                        [
-                            "EFO:0009655"
-                        ],
-                        [
-                            "NCIT:C48725",
-                            "NCIT:C28080"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },

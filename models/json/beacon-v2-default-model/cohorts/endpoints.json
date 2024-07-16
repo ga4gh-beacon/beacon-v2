@@ -10,14 +10,16 @@
                 }
             },
             "filters": {
+                "examples": {
+                    "example1": {
+                        "value": [
+                            "OMIABIS:0001017"
+                        ]
+                    }
+                },
                 "in": "query",
                 "name": "filters",
                 "schema": {
-                    "examples": [
-                        [
-                            "OMIABIS:0001017"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },

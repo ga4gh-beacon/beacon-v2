@@ -289,5 +289,7 @@ components:
         type: array
         items:
           type: string
-        examples:
-          - DUO:0000007
+      examples:
+        example1:
+          value:
+            - DUO:0000007

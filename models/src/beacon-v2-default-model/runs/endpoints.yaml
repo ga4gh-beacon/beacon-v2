@@ -208,5 +208,7 @@ components:
         type: array
         items:
           type: string
-        examples:
-          -   - OBI:0002048
+      examples:
+        example1:
+          value:
+            - OBI:0002048
