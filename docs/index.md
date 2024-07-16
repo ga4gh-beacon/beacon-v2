@@ -5,7 +5,7 @@ discovery of genomic (and phenoclinic) data in biomedical research and clinical 
 Beacon facilitates the discovery of genomic variants and biomedical
 data in single or distributed resources with the goal to empower _federated_ data
 models - _i.e._ the discovery (and potential retrieval) of data from different
-orgnisational and geographic locations.
+organisational and geographic locations.
 
 <figure markdown>
 ![Beacon v2 Cartoon](img/Beacon-Networks-v2-graphics/Beacon-Networks-v2-graphics-Michael.003.png){: style="width: 600px; margin-top: -30px; margin-bottom: -30px;" }

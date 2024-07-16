@@ -170,7 +170,10 @@ parameters.
 _GeneId Queries_ are in essence a variation of _Range Queries_ in which the coordinates
 are replaced by the [HGNC](https://www.genenames.org) gene symbol. It is left to the
 implementation if the matching is done on variants annotated for the gene symbol or if
-a positional translation is being applied. 
+a positional translation is being applied.
+
+![Beacon Gene Query Schema](img/BeaconGeneQuery-graphics.png)
+
 
 #### Parameters
 
@@ -184,6 +187,36 @@ a positional translation is being applied.
 
 	```
 	?geneId=EIF4A1&variantMaxLength=1000000&variantType=DEL
+	```
+
+=== "Beacon v2 POST for `geneId` (deletion CNV)"
+
+	```
+	{
+	    "$schema":"https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json",
+	    "meta": {
+	        "apiVersion": "2.0",
+	        "requestedSchemas": [
+	            {
+	                "entityType": "genomicVariation",
+	                "schema:": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json"
+	            }
+	        ]
+	    },
+	    "query": {
+	        "requestParameters": {
+	            "g_variant":
+	                "geneId": "EIF4A1",
+	                "variantType": "EFO:0030067"
+		    	}
+	        }
+	    },
+	    "requestedGranularity": "record",
+	    "pagination": {
+	        "skip": 0,
+	        "limit": 5
+	    }
+	}
 	```
 
 
@@ -208,6 +241,12 @@ differing in their exact base extents.
     Bracket queries require the use of **two** `start` and `end` parameters, in contrast
     to _Range Queries_.
 
+!!! Attention "List Parameters in GET Requests"
+
+	Since the direct interpretation of list parameters in queries is not supported by
+	some server environments (e.g. PHP, GO…), list parameters such as `start` and `end`
+	should be provided as **comma-concatenated** strings when using them in GET requests.
+
 
 #### Example: CNV Query - _TP53_ Deletion Query by Coordinates
 
@@ -229,12 +268,6 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 
 	* `datasetIds=__some-dataset-ids__`
 	* `filters` ...
-
-	!!! Attention "List Parameters in GET Requests"
-
-		Since the direct interpretation of list parameters in queries is not supported by
-		some server environments (e.g. PHP, GO…), list parameters such as `start` and `end`
-		should be provided as **comma-concatenated** strings when using them in GET requests.
 
 
 === "Beacon v2 POST"
@@ -292,27 +325,27 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 
 ## Genomic Allele Query (Short Form)
 
-==TBD==
+When available variants can be identified through their genomic HGVS short form.
 
 === "Beacon v2 GET"
 
 	```
-	?allele=NM_004006.2:c.4375C>T
+	?genomicAlleleShortForm=NM_004006.2:c.4375C>T
 	```
 
-	==to be completed==
 
 ## Aminoacid Change Query
 
-==TBD==
+Annotated variants can potentiallyqueried using the single amino acid replacement
+format. The `aminoacidChange` parameter may be combined with e.g. a `geneId` to increase
+specificity
 
 === "Beacon v2 GET"
 
 	```
-	?aminoacidChange=V600E
+	?aminoacidChange=V600E&geneId=BRAF
 	```
 
-	==to be completed==
 
 ## `variantType` Parameter Interpretation
 
