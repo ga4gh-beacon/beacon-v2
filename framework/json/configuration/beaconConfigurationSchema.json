@@ -43,11 +43,11 @@
                     "description": "Default granularity. Some responses could return higher detail, but this would be the granularity by default."
                 },
                 "securityLevels": {
+                    "default": [
+                        "CONTROLLED"
+                    ],
                     "description": "All access levels supported by the Beacon. Any combination is valid, as every option would apply to different parts of the Beacon.",
                     "items": {
-                        "default": [
-                            "CONTROLLED"
-                        ],
                         "enum": [
                             "PUBLIC",
                             "REGISTERED",
