@@ -123,7 +123,7 @@
                 ]
             },
             "post": {
-                "description": "Get a list of example entries",
+                "description": "Get a Beacon response for individuals",
                 "operationId": "postIndividualsRequest",
                 "requestBody": {
                     "content": {
@@ -238,7 +238,7 @@
                 }
             ],
             "post": {
-                "description": "Get details about one Individual, identified by its (unique) 'id'",
+                "description": "Get details about one individual, identified by its (unique) 'id'",
                 "operationId": "postOneIndividual",
                 "requestBody": {
                     "content": {
@@ -266,7 +266,7 @@
         },
         "/individuals/{id}/biosamples": {
             "get": {
-                "description": "Get the biosamples list from one individual, identified by its (unique) 'id'",
+                "description": "Get a *biosamples* response for one individual, identified by its (unique) 'id'",
                 "operationId": "getOneIndividualBiosamples",
                 "parameters": [
                     {
@@ -298,7 +298,7 @@
                 }
             ],
             "post": {
-                "description": "Get the biosamples list from one individual, identified by its (unique) 'id'",
+                "description": "Get a *biosamples* response for one individual, identified by its (unique) 'id'",
                 "operationId": "postOneIndividualBiosamples",
                 "requestBody": {
                     "content": {
@@ -326,7 +326,7 @@
         },
         "/individuals/{id}/g_variants": {
             "get": {
-                "description": "Get the genomic variants list from one individual, identified by its (unique) 'id'",
+                "description": "Get a *genomic variations* response for one individual, identified by its (unique) 'id'",
                 "operationId": "getOneIndividualGenomicVariants",
                 "parameters": [
                     {
@@ -358,7 +358,7 @@
                 }
             ],
             "post": {
-                "description": "Get the genomic variants list from one individual, identified by its (unique) 'id'",
+                "description": "Get a *genomic variations* response for one individual, identified by its (unique) 'id'",
                 "operationId": "potOneIndividualGenomicVariants",
                 "requestBody": {
                     "content": {
