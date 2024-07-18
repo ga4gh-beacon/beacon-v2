@@ -32,7 +32,7 @@ There is a set of tools in [`/bin`](./bin/) to facilitate the conversion. ATM, a
 
 ## 2.1.0
 
-*To be released September, 30, 2024*
+*Released, July, 19, 2024*
 
 * Relocated TypedQuantity required to proper level of the schema for complexValue
 * Added end and start entities for ageRange and iso8601duration for age
