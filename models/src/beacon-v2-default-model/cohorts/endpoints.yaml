@@ -22,7 +22,7 @@ paths:
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/filters'
-      description: Get a list of cohorts
+      description: Get a Beacon *cohorts* response
       operationId: getCohorts
       tags:
         - GET Endpoints
@@ -32,7 +32,7 @@ paths:
         default:
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get a list of cohorts
+      description: Get a Beacon *cohorts* response
       operationId: postCohortsRequest
       tags:
         - POST Endpoints
@@ -89,7 +89,8 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the individuals from one cohort, identified by its (unique)
+      description: >-
+        Get an *individuals* response for one cohort, identified by its (unique)
         'id'
       operationId: getOneCohortIndividuals
       tags:
@@ -101,7 +102,8 @@ paths:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the individuals from one cohort, identified by its (unique)
+      description: >-
+        Get an *individuals* response for one cohort, identified by its (unique)
         'id'
       operationId: postOneCohortEntries
       tags:
@@ -125,8 +127,9 @@ paths:
       parameters:
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the list of filtering terms that could be used with a given
-        cohort, identified by its (unique) 'id'
+      description: >-
+        Get a response about the *filtering terms* that could be used with a
+        given cohort, identified by its (unique) 'id'
       operationId: getOneCohortFilteringTerms
       tags:
         - GET Endpoints
@@ -141,8 +144,9 @@ paths:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the list of filtering terms that could be used with a given
-        cohort, identified by its (unique) 'id'
+      description: >-
+        Get a response about the *filtering terms* that could be used with a
+        given cohort, identified by its (unique) 'id'
       operationId: postOneCohortFilteringTerms
       tags:
         - POST Endpoints

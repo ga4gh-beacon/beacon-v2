@@ -107,7 +107,7 @@
     "paths": {
         "/runs": {
             "get": {
-                "description": "Get a list of sequencing runs",
+                "description": "Get a Beacon response for experimental runs",
                 "operationId": "getRuns",
                 "parameters": [
                     {
@@ -139,7 +139,7 @@
                 ]
             },
             "post": {
-                "description": "Get a list of sequencing runs",
+                "description": "Get a Beacon response for experimental runs",
                 "operationId": "postRunsRequest",
                 "requestBody": {
                     "content": {
@@ -167,7 +167,7 @@
         },
         "/runs/{id}": {
             "get": {
-                "description": "Get details about one sequencing run, identified by its (unique) 'id'",
+                "description": "Get details about one experimental run, identified by its (unique) 'id'",
                 "operationId": "getOneRun",
                 "responses": {
                     "200": {
@@ -188,7 +188,7 @@
                 }
             ],
             "post": {
-                "description": "Get details about one Run, identified by its (unique) 'id'",
+                "description": "Get details about one experimental run, identified by its (unique) 'id'",
                 "operationId": "postOneRun",
                 "requestBody": {
                     "content": {
@@ -216,7 +216,7 @@
         },
         "/runs/{id}/analyses": {
             "get": {
-                "description": "Get the analysis list from one sequencing run, identified by its (unique) 'id'",
+                "description": "Get a *analyses* response for one experimental run, identified by its (unique) 'id'",
                 "operationId": "getOneRunAnalysis",
                 "parameters": [
                     {
@@ -248,7 +248,7 @@
                 }
             ],
             "post": {
-                "description": "Get the analysis list from one sequencing run, identified by its (unique) 'id'",
+                "description": "Get a *analyses* response for one experimental run, identified by its (unique) 'id'",
                 "operationId": "postOneRunAnalysis",
                 "requestBody": {
                     "content": {
@@ -276,8 +276,8 @@
         },
         "/runs/{id}/g_variants": {
             "get": {
-                "description": "Get the genomic variants list from one run, identified by its (unique) 'id'",
-                "operationId": "getOneRunGenomicVariants",
+                "description": "Get a *genomic variations* response for one experimental run, identified by its (unique) 'id'",
+                "operationId": "getOneRunGenomicVariations",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/requestedSchema"
@@ -308,8 +308,8 @@
                 }
             ],
             "post": {
-                "description": "Get the genomic variants list from one run, identified by its (unique) 'id'",
-                "operationId": "potOneRunGenomicVariants",
+                "description": "Get a *genomic variations* response for one experimental run, identified by its (unique) 'id'",
+                "operationId": "potOneRunGenomicVariations",
                 "requestBody": {
                     "content": {
                         "application/json": {

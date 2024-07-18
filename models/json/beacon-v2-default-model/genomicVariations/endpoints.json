@@ -193,8 +193,8 @@
     "paths": {
         "/g_variants": {
             "get": {
-                "description": "Get a list of example entries",
-                "operationId": "getExampleEntries",
+                "description": "Get a Beacon response for genomic variations",
+                "operationId": "getGenomicVariations",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/requestedSchema"
@@ -258,8 +258,8 @@
                 ]
             },
             "post": {
-                "description": "Get a list of example entries",
-                "operationId": "postExampleEntriesRequest",
+                "description": "Get a Beacon response for genomic variations",
+                "operationId": "postGenomicVariationsRequest",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -335,8 +335,8 @@
         },
         "/g_variants/{id}/biosamples": {
             "get": {
-                "description": "Get the biosamples list from one genomic variant, identified by its (unique) 'id'",
-                "operationId": "getOneGenomicVariantBiosamples",
+                "description": "Get a *biosamples* response from one genomic variant, identified by its (unique) 'id'",
+                "operationId": "getOneGenomicVariationBiosamples",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/requestedSchema"
@@ -367,8 +367,8 @@
                 }
             ],
             "post": {
-                "description": "Get the biosamples list from one genomic variant, identified by its (unique) 'id'",
-                "operationId": "postOneGenomicVariantBiosamples",
+                "description": "Get a *biosamples* response from one genomic variant, identified by its (unique) 'id'",
+                "operationId": "postOneGenomicVariationBiosamples",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -395,8 +395,8 @@
         },
         "/g_variants/{id}/individuals": {
             "get": {
-                "description": "Get the individuals list from one genomic variant, identified by its (unique) 'id'",
-                "operationId": "getOneGenomicVariantIndividuals",
+                "description": "Get an *individuals* response from one genomic variant, identified by its (unique) 'id'",
+                "operationId": "getOneGenomicVariationIndividuals",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/requestedSchema"
@@ -427,8 +427,8 @@
                 }
             ],
             "post": {
-                "description": "Get the biosamples list from one genomic variant, identified by its (unique) 'id'",
-                "operationId": "postOneGenomicVariantIndividuals",
+                "description": "Get an *individuals* response from one genomic variant, identified by its (unique) 'id'",
+                "operationId": "postOneGenomicVariationIndividuals",
                 "requestBody": {
                     "content": {
                         "application/json": {
