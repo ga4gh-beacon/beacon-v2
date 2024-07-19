@@ -41,8 +41,8 @@ properties:
             - PUBLIC
             - REGISTERED
             - CONTROLLED
-          default:
-            - CONTROLLED
+        default:
+          - CONTROLLED
   entryTypes:
     $ref: '#/definitions/EntryTypes'
 definitions:
