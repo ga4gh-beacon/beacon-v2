@@ -116,7 +116,11 @@ paths:
         - Informational endpoints
       responses:
         '200':
-          $ref: ./responses/beaconFilteringTermsResponse.yaml
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: ./responses/beaconFilteringTermsResponse.yaml
         default:
           description: An unsuccessful operation.
           $ref: ./responses/beaconErrorResponse.yaml
