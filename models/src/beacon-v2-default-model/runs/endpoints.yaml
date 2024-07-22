@@ -43,7 +43,10 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /runs/{id}:
     parameters:
       - $ref: '#/components/parameters/entryId'
@@ -58,7 +61,10 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
       description: Get details about one Run, identified by its (unique) 'id'
       operationId: postOneRun
@@ -75,7 +81,10 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /runs/{id}/g_variants:
     parameters:
       - $ref: '#/components/parameters/entryId'
@@ -94,7 +103,10 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
       description: Get the genomic variants list from one run, identified by its (unique)
         'id'
@@ -112,7 +124,10 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /runs/{id}/analyses:
     parameters:
       - $ref: '#/components/parameters/entryId'
@@ -131,7 +146,10 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
       description: Get the analysis list from one sequencing run, identified by its
         (unique) 'id'
@@ -149,7 +167,10 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
 components:
   responses:
     ResultsOKResponse:
