@@ -4,7 +4,7 @@
     "description": "An unsuccessful operation.",
     "properties": {
         "error": {
-            "$ref": "../common/beaconCommonComponents.json#/definitions/BeaconError"
+            "$ref": "../common/beaconCommonComponents.json#/$defs/BeaconError"
         },
         "meta": {
             "$ref": "./sections/beaconResponseMeta.json"

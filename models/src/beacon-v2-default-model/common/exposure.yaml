@@ -22,7 +22,7 @@ properties:
     description: >-
       Unit of the exposure. Recommended from NCIT Unit of Category ontology
       term (NCIT:C42568) descendants.
-    $ref: ../common/commonDefinitions.yaml#/definitions/Unit
+    $ref: ../common/commonDefinitions.yaml#/$defs/Unit
   duration:
     description: >-
       Exposure duration in ISO8601 format
