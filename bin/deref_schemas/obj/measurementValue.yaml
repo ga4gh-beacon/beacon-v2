@@ -3,7 +3,7 @@ measurementValue:
   properties:
     Complex Value:
       $schema: https://json-schema.org/draft/2020-12/schema
-      definitions:
+      $defs:
         TypedQuantity:
           properties:
             quantity:

@@ -1,6 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "definitions": {
+    "$defs": {
         "ServiceType": {
             "description": "Type of a GA4GH service",
             "properties": {
@@ -28,6 +27,7 @@
             "type": "object"
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "A way for a service to describe basic metadata concerning a service alongside a set of capabilities and/or limitations of the service. More information on [GitHub](https://github.com/ga4gh-discovery/ga4gh-service-info/).",
     "properties": {
         "contactUrl": {
@@ -90,7 +90,7 @@
             "type": "object"
         },
         "type": {
-            "$ref": "#/definitions/ServiceType"
+            "$ref": "#/$defs/ServiceType"
         },
         "updatedAt": {
             "description": "Timestamp describing when the service was last updated (RFC 3339 format)",

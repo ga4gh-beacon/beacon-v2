@@ -21,9 +21,9 @@ properties:
       than the proband, it only contains two entries: one that describes that member,
       e.g. the proband mother or father, and one that points to the proband.'
     items:
-      $ref: '#/definitions/pedigreeMember'
+      $ref: '#/$defs/pedigreeMember'
     minItems: 1
-definitions:
+$defs:
   pedigreeMember:
     type: object
     properties:

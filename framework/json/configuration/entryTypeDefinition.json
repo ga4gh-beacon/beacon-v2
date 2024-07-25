@@ -5,7 +5,7 @@
     "description": "Definition of an element or entry type including the Beacon v2 required and suggested attributes. This schema purpose is to  describe each type of entities included in a Beacon, hence Beacon clients could have some metadata about such entities.\n\nThe `id` attribute is the key that should be used in other parts of the Beacon Model to allow Beacon clients to identify the different parts (e.g. endpoints, filteringTerms, request parameters, etc.) that fully describe an entry type.",
     "properties": {
         "$schema": {
-            "$ref": "../common/beaconCommonComponents.json#/definitions/$schema"
+            "$ref": "../common/beaconCommonComponents.json#/$defs/$schema"
         },
         "aCollectionOf": {
             "description": "If the entry type is a collection of other entry types, (e.g. a Dataset is a collection of Records), then this attribute must list the entry types that could be included. One collection type could be defined as included more than one entry type (e.g. a Dataset could include Individuals or Genomic Variants), in such cases the entries are alternative, meaning that a given instance of this entry type could be of only one of the types (e.g. a given Dataset contains Individuals, while another Dataset could contain Genomic Variants, but not both at once).",
@@ -44,7 +44,7 @@
             "type": "string"
         },
         "nonFilteredQueriesAllowed": {
-            "$ref": "../common/beaconCommonComponents.json#/definitions/NonFilteredQueriesAllowed"
+            "$ref": "../common/beaconCommonComponents.json#/$defs/NonFilteredQueriesAllowed"
         },
         "ontologyTermForThisType": {
             "$comments": "++++++ THIS IS THE END OF THE ontologized element ++++++",

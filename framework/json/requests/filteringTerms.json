@@ -1,7 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": true,
-    "definitions": {
+    "$defs": {
         "AlphanumericFilter": {
             "description": "Filter results based on operators and values applied to alphanumeric fields.",
             "properties": {
@@ -64,13 +62,13 @@
         "FilteringTerm": {
             "anyOf": [
                 {
-                    "$ref": "#/definitions/OntologyFilter"
+                    "$ref": "#/$defs/OntologyFilter"
                 },
                 {
-                    "$ref": "#/definitions/AlphanumericFilter"
+                    "$ref": "#/$defs/AlphanumericFilter"
                 },
                 {
-                    "$ref": "#/definitions/CustomFilter"
+                    "$ref": "#/$defs/CustomFilter"
                 }
             ]
         },
@@ -110,9 +108,11 @@
             "type": "object"
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
     "description": "Filtering terms are the main means to select subsets of records from a Beacon response. While the name implies the application to a generated response, in practice implementations may apply them at the query stage. Note: In the processing of Beacon v2.0 requests multiple filters are assumed to be chained by the logical AND operator.",
     "items": {
-        "$ref": "#/definitions/FilteringTerm"
+        "$ref": "#/$defs/FilteringTerm"
     },
     "title": "Filtering Term Element",
     "type": "array"

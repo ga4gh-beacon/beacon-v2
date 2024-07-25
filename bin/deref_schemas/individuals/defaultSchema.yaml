@@ -739,7 +739,7 @@ properties:
               title: Value
               type: object
             - $schema: https://json-schema.org/draft/2020-12/schema
-              definitions:
+              $defs:
                 TypedQuantity:
                   properties:
                     quantity:
@@ -1299,7 +1299,7 @@ properties:
     items:
       $schema: https://json-schema.org/draft/2020-12/schema
       additionalProperties: 1
-      definitions:
+      $defs:
         pedigreeMember:
           examples:
             - membersInProband:
@@ -1696,7 +1696,7 @@ properties:
   phenotypicFeatures:
     items:
       $schema: https://json-schema.org/draft/2020-12/schema
-      definitions: {}
+      $defs: {}
       description: Used to describe a phenotype that characterizes the subject or biosample.
       properties:
         evidence:

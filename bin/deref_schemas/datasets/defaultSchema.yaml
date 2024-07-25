@@ -13,7 +13,7 @@ properties:
   dataUseConditions:
     $schema: https://json-schema.org/draft/2020-12/schema
     additionalProperties: 1
-    definitions:
+    $defs:
       DUODataUse:
         allOf:
           - description: 'Data Use Ontology codes and additional information associated with a data object (e.g. sample, dataset).'

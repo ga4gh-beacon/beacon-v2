@@ -13,7 +13,7 @@ $comment: 'TO DO: The tagged parts should reference to `common/ontologizedElemen
   should not affect the resulting schema.'
 properties:
   $schema:
-    $ref: ../common/beaconCommonComponents.yaml#/definitions/$schema
+    $ref: ../common/beaconCommonComponents.yaml#/$defs/$schema
   id:
     $comments: ++++++ THIS IS THE START OF THE ontologized element ++++++
     type: string
@@ -62,7 +62,7 @@ properties:
     $comment: "TO DO: Double-check the proper way of referencing a path or relative\
       \ path. 'format: uri' is throwing validation errors for relative file paths"
   nonFilteredQueriesAllowed:
-    $ref: ../common/beaconCommonComponents.yaml#/definitions/NonFilteredQueriesAllowed
+    $ref: ../common/beaconCommonComponents.yaml#/$defs/NonFilteredQueriesAllowed
 required:
   - id
   - name

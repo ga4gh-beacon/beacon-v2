@@ -4,13 +4,13 @@ description: Meta section of the Beacon request. It includes request context det
 type: object
 properties:
   $schema:
-    $ref: ../common/beaconCommonComponents.yaml#/definitions/$schema
+    $ref: ../common/beaconCommonComponents.yaml#/$defs/$schema
   apiVersion:
     description: API version expected by the client to be supported by the server
       and used in the response format.
-    $ref: ../common/beaconCommonComponents.yaml#/definitions/ApiVersion
+    $ref: ../common/beaconCommonComponents.yaml#/$defs/ApiVersion
   requestedSchemas:
     description: Set of schemas to be used in the response.
-    $ref: ../common/beaconCommonComponents.yaml#/definitions/ListOfSchemas
+    $ref: ../common/beaconCommonComponents.yaml#/$defs/ListOfSchemas
 required:
   - apiVersion

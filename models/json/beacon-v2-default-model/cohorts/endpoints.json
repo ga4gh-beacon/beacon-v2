@@ -28,7 +28,7 @@
                 "in": "query",
                 "name": "limit",
                 "schema": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Limit"
+                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Limit"
                 }
             },
             "requestedSchema": {
@@ -45,7 +45,7 @@
                 "in": "query",
                 "name": "skip",
                 "schema": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Skip"
+                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Skip"
                 }
             }
         },

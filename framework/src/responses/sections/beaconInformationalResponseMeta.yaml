@@ -4,11 +4,11 @@ description: >-
 type: object
 properties:
   beaconId:
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/BeaconId
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/BeaconId
   apiVersion:
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/ApiVersion
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/ApiVersion
   returnedSchemas:
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/ListOfSchemas
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/ListOfSchemas
 $comment: 'TO REVIEW: the required properties below results in a warning in the example.'
 required:
   - beaconId

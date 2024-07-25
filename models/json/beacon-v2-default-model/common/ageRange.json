@@ -12,8 +12,8 @@
         }
     },
     "required": [
-        "end",
-        "start"
+        "start",
+        "end"
     ],
     "title": "AgeRange",
     "type": "object"

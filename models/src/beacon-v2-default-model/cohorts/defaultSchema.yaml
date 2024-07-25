@@ -52,13 +52,13 @@ properties:
       Inclusion criteria used for defining the cohort. It is assumed that
       all cohort participants will match such criteria.
     type: object
-    $ref: '#/definitions/CohortCriteria'
+    $ref: '#/$defs/CohortCriteria'
   exclusionCriteria:
     description: >-
       Exclusion criteria used for defining the cohort. It is assumed that
       NONE of the cohort participants will match such criteria.
     type: object
-    $ref: '#/definitions/CohortCriteria'
+    $ref: '#/$defs/CohortCriteria'
   cohortSize:
     description: >-
       Count of unique Individuals in cohort (individuals meeting criteria
@@ -69,13 +69,13 @@ properties:
       - 14765
       - 20000
   cohortDataTypes:
-    $ref: '#/definitions/DataTypesArray'
+    $ref: '#/$defs/DataTypesArray'
   collectionEvents:
     description: TBD
     type: array
     items:
-      $ref: '#/definitions/CollectionEvent'
-definitions:
+      $ref: '#/$defs/CollectionEvent'
+$defs:
   CollectionEvent:
     description: TBD
     type: object
@@ -145,39 +145,39 @@ definitions:
         description: >-
           Aggregated information of geographic location obtained from individual
           level info of the cohort members
-        $ref: '#/definitions/DataAvailabilityAndDistribution'
+        $ref: '#/$defs/DataAvailabilityAndDistribution'
       eventGenders:
         description: >-
           Aggregated information of gender(s) obtained from individual
           level info of the cohort members
-        $ref: '#/definitions/DataAvailabilityAndDistribution'
+        $ref: '#/$defs/DataAvailabilityAndDistribution'
       eventEthnicities:
         description: >-
           Aggregated information of ethnicity obtained from individual
           level info of the cohort members
-        $ref: '#/definitions/DataAvailabilityAndDistribution'
+        $ref: '#/$defs/DataAvailabilityAndDistribution'
       eventAgeRange:
         description: >-
           Individual age range, obtained from individual level info of the
           cohort members
-        $ref: '#/definitions/DataAvailabilityAndDistribution'
+        $ref: '#/$defs/DataAvailabilityAndDistribution'
       eventDiseases:
         description: >-
           Aggregated information of disease/condition(s) obtained from
           individual level info of the cohort members
-        $ref: '#/definitions/DataAvailabilityAndDistribution'
+        $ref: '#/$defs/DataAvailabilityAndDistribution'
       eventPhenotypes:
         description: >-
           Aggregated information of phenotype(s) obtained from individual
           level info of the cohort members
-        $ref: '#/definitions/DataAvailabilityAndDistribution'
+        $ref: '#/$defs/DataAvailabilityAndDistribution'
       eventDataTypes:
         description: >-
           Aggregated data type information available for each cohort data
           type as declared in `cohortDataTypes`, and obtained from individual
           level info of the cohort members
         type: object
-        $ref: '#/definitions/DataAvailabilityAndDistribution'
+        $ref: '#/$defs/DataAvailabilityAndDistribution'
   CohortCriteria:
     description: >-
       Criteria used for defining the cohort. It is assumed that all cohort
@@ -189,19 +189,19 @@ definitions:
           Geographic location(s) in cohort inclusion criteria
         type: array
         items:
-          $ref: ../common/commonDefinitions.yaml#/definitions/GeographicLocation
+          $ref: ../common/commonDefinitions.yaml#/$defs/GeographicLocation
       genders:
         description: >-
           Gender(s) in cohort inclusion criteria
         type: array
         items:
-          $ref: ../common/commonDefinitions.yaml#/definitions/Sex
+          $ref: ../common/commonDefinitions.yaml#/$defs/Sex
       ethnicities:
         description: >-
           Ethnias in cohort inclusion criteria
         type: array
         items:
-          $ref: ../common/commonDefinitions.yaml#/definitions/Ethnicity
+          $ref: ../common/commonDefinitions.yaml#/$defs/Ethnicity
       diseaseConditions:
         description: >-
           Diseases in cohort inclusion criteria

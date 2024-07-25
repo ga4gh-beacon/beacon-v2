@@ -4,16 +4,16 @@ description: Sets of results to be returned as query response.
 type: object
 properties:
   $schema:
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/$schema
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/$schema
   resultSets:
     type: array
     items:
-      $ref: '#/definitions/ResultsetInstance'
+      $ref: '#/$defs/ResultsetInstance'
     minItems: 0
 required:
   - resultSets
 additionalProperties: true
-definitions:
+$defs:
   ResultsetInstance:
     type: object
     properties:
@@ -34,7 +34,7 @@ definitions:
       resultsHandovers:
         description: List of handovers that apply to this resultset, not to the whole
           Beacon or to a result in particular.
-        $ref: ../../common/beaconCommonComponents.yaml#/definitions/ListOfHandovers
+        $ref: ../../common/beaconCommonComponents.yaml#/$defs/ListOfHandovers
       info:
         description: Additional details that could be of interest about the Resultset.
           Provided to clearly enclose any attribute that is not part of the Beacon

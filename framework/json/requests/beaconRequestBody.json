@@ -1,6 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "definitions": {
+    "$defs": {
         "BeaconQuery": {
             "description": "Parameters to limit the list of returned results.",
             "properties": {
@@ -9,10 +8,10 @@
                     "description": "Ontology based filters. Using CURIE syntax is encouraged."
                 },
                 "includeResultsetResponses": {
-                    "$ref": "../common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses"
+                    "$ref": "../common/beaconCommonComponents.json#/$defs/IncludeResultsetResponses"
                 },
                 "pagination": {
-                    "$ref": "../common/beaconCommonComponents.json#/definitions/Pagination",
+                    "$ref": "../common/beaconCommonComponents.json#/$defs/Pagination",
                     "description": "Pagination parameters applied to response documents, in case of record level granularity."
                 },
                 "requestParameters": {
@@ -20,28 +19,29 @@
                     "description": "Parameters used for the entry type specific query elements."
                 },
                 "requestedGranularity": {
-                    "$ref": "../common/beaconCommonComponents.json#/definitions/Granularity",
+                    "$ref": "../common/beaconCommonComponents.json#/$defs/Granularity",
                     "description": "Requested granularity for the response. Beacons do not have to respond with the requested granularity, e.g. may respond with count results although record level granularity had been requested but indicate the granularity of the response in the response's metadata."
                 },
                 "testMode": {
-                    "$ref": "../common/beaconCommonComponents.json#/definitions/TestMode",
+                    "$ref": "../common/beaconCommonComponents.json#/$defs/TestMode",
                     "description": "Used for indicating that a request or response is done in a test context."
                 }
             },
             "type": "object"
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Schema for the Beacon request. It is named `RequestBody` to keep the same nomenclature used by OpenAPI v3, but it actually contains the definition of the whole HTTP POST request payload.",
     "properties": {
         "$schema": {
-            "$ref": "../common/beaconCommonComponents.json#/definitions/$schema"
+            "$ref": "../common/beaconCommonComponents.json#/$defs/$schema"
         },
         "meta": {
             "$ref": "./beaconRequestMeta.json",
             "description": "Information relevant for building the response."
         },
         "query": {
-            "$ref": "#/definitions/BeaconQuery"
+            "$ref": "#/$defs/BeaconQuery"
         }
     },
     "required": [

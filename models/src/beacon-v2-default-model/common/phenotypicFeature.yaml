@@ -50,7 +50,7 @@ properties:
     description: The evidence for an assertion of the observation of a type. RECOMMENDED.
     $ref: ./evidence.yaml
   severity:
-    $ref: ./commonDefinitions.yaml#/definitions/SeverityLevel
+    $ref: ./commonDefinitions.yaml#/$defs/SeverityLevel
     examples:
       - id: HP:0012828
         label: Severe
@@ -61,6 +61,6 @@ properties:
       feature.
     type: string
     example: Some free text
-definitions: {}
+$defs: {}
 required:
   - featureType

@@ -11,39 +11,39 @@ properties:
     description: >-
       API version expected by the client to be supported by the server
       and used in the response format.
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/ApiVersion
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/ApiVersion
   requestedSchemas:
     description: >-
       Set of schemas to be used in the response to a request.
       `minItems: 0` is used to confirm that an empty array is acceptable here.
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/ListOfSchemas
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/ListOfSchemas
     minItems: 0
     $comment: >-
       TODO: Add the format attribute as a uri.
   filters:
     description: >-
       Filters as submitted in the request.
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/Filters
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/Filters
   requestParameters:
     description: >-
       Dictionary of request parameters received in the `RequestBody` or as part
       of a GET request.
     $ref: ../../requests/requestParameters.yaml
   includeResultsetResponses:
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/IncludeResultsetResponses
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/IncludeResultsetResponses
   pagination:
     description: >-
       Pagination as requested for the results.
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/Pagination
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/Pagination
   requestedGranularity:
     description: >-
       Requested granularity for the response which may differe from the
       response's actual granularity.
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/Granularity
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/Granularity
   testMode:
     description: >-
       Used for indicating that a request was received in a test context.
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/TestMode
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/TestMode
 required:
   - apiVersion
   - requestedSchemas

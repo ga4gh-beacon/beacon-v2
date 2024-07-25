@@ -5,4 +5,4 @@ required:
   - exists
 properties:
   exists:
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/Exists
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/Exists

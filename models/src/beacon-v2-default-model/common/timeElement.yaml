@@ -9,6 +9,6 @@ oneOf:
   - $ref: ./age.yaml
   - $ref: ./ageRange.yaml
   - $ref: ./gestationalAge.yaml
-  - $ref: ./commonDefinitions.yaml#/definitions/Timestamp
+  - $ref: ./commonDefinitions.yaml#/$defs/Timestamp
   - $ref: ./timeInterval.yaml
   - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json

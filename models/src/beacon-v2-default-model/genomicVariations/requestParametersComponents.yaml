@@ -1,7 +1,7 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 description: >-
   Component definitions used in `requestParameters`.
-definitions:
+$defs:
   Assembly:
     description: >-
       Genomic assembly accession and version as RefSqeq assembly accession

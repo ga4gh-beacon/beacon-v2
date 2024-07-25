@@ -1,7 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": true,
-    "definitions": {
+    "$defs": {
         "FilterTerm": {
             "properties": {
                 "ftType": {
@@ -47,12 +45,14 @@
             "type": "object"
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
     "description": "Schema for the Filtering Terms list related to the hosting entry type. It is kept separated to allow updating it independently.",
     "properties": {
         "filteringTerms": {
             "description": "List of filtering terms that could be used to filter this concept in this instance of Beacon.",
             "items": {
-                "$ref": "#/definitions/FilterTerm"
+                "$ref": "#/$defs/FilterTerm"
             },
             "minItems": 0,
             "type": "array"

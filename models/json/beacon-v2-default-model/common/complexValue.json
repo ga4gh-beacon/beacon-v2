@@ -1,6 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "definitions": {
+    "$defs": {
         "TypedQuantity": {
             "properties": {
                 "quantity": {
@@ -30,17 +29,20 @@
             ]
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Definition of a complex value class. Provenance: GA4GH Phenopackets v2 `TypedQuantity`",
     "properties": {
         "typedQuantities": {
             "description": "List of quantities required to fully describe the complex value",
             "items": {
-                "$ref": "#/definitions/TypedQuantity"
+                "$ref": "#/$defs/TypedQuantity"
             },
             "type": "array"
         }
     },
-    "required": [ "typedQuantities" ],
+    "required": [
+        "typedQuantities"
+    ],
     "title": "Complex Value",
     "type": "object"
 }

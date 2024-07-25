@@ -1,6 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "definitions": {
+    "$defs": {
         "AlternateBases": {
             "description": "Alternate bases for this variant (starting from `start`). * Accepted values: `[ACGTN]*` * The current specification supports allelic variants, **not** genotype queries\n  (i.e. multiple co-occurring alleles).\n* N is a wildcard, that denotes the position of any base,\n  and can be used as a standalone base of any type or within a partially known\n  sequence. As example, a query of `ANNT` the Ns can take take any form of [ACGT]\n  and will match `ANNT`, `ACNT`, `ACCT`, `ACGT` ... and so forth.\n* an *empty value* is used in the case of deletions with the maximally trimmed,\n  deleted sequence being indicated in `ReferenceBases`\n* Categorical variant queries, e.g. such *not* being represented through\n  sequence & position, make use of the `variantType` parameter.",
             "pattern": "^([ACGTUNRYSWKMBDHV\\-\\.]*)$",
@@ -30,5 +29,6 @@
             "type": "string"
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Component definitions used in `requestParameters`."
 }
