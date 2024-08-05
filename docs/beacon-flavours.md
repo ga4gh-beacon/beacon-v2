@@ -36,7 +36,7 @@ handle extended options depending on the user's authentication status.
 	```json
 	{
 	  "meta": {
-	    "apiVersion": "v2.1.0",
+	    "apiVersion": "v2.0.0",
 	    "__other_meta_parameters__": "..."
 	    "receivedRequestSummary": {
 	      "requestedGranularity": "boolean",
