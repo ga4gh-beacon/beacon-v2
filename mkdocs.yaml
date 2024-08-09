@@ -20,7 +20,7 @@ nav:
             - Beacon Networks: networks
         - FAQ: FAQ
         - Changes: changes-todo
-        - Beacon News &#8599;: https://beacon-project.io/news/
+        - Beacon News &#8599;: https://genomebeacons.org/news/
     - Using Beacons:
         - Genomic Queries: variant-queries
         - Phenotypes and More...: /filters/#using-filters-in-queries

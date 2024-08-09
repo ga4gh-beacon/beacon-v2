@@ -8,7 +8,7 @@ This repository is a unified repository representing the different parts of the 
 * [models](models)
 * Beacon v2 Documentation
     - authoritive source already in this repository [`/docs`](docs)
-    - rendered version through [here](https://beacon-project.io/beacon-v2/) (alternative address is [docs.genomebeacons.org](https://docs.genomebeacons.org))
+    - rendered version through [here](https://genomebeacons.org/beacon-v2/) (alternative address is [docs.genomebeacons.org](https://docs.genomebeacons.org))
 
 As with other schema projects, here we separate between the schema source files (in `src`; JSON-Schema written in YAML) and the generated versions for referencing. The current setup allows already the direct referencing of the generated JSON schemas. Examples:
 

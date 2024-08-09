@@ -46,7 +46,7 @@ its implementation to "**beaconize**" genomics datasets and resources as well as
 of the technical details of the Beacon [**framework**](/framework/) and data [**model**](/models/).
 
 Additional information about the Beacon project - including news, events, publications - is available
-through the separate website  at [beacon-project.io](https://beacon-project.io).
+through the separate website  at [genomebeacons.org](https://genomebeacons.org).
 
 !!! Important "Historical Tip"
 
