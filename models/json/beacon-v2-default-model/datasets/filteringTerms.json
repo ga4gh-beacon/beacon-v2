@@ -1,11 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "filteringTerms": [
-        {
-            "ftType": "ontologyTerm",
-            "id": "DUO:0000006",
-            "label": "health or medical or biomedical research",
-            "version": "2021-02-23"
-        }
-    ]
+    "items": {
+        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/sections/beaconFilteringTermsResults.json#/definitions/FilteringTerm"
+    },
+    "type": "array"
 }
