@@ -129,7 +129,7 @@ for novel use cases).
         * Alternative schemas [Link](models.md)
     * Configuration
         * Granularity & security [Link](framework.md)
-    * Verifying [compliance](https://ga4gh-approval-service-registry-demo.ega-archive.org/)
+    * Verifying compliance
 
 
 ### Stakeholder
