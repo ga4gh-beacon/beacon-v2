@@ -5,23 +5,23 @@ description: >-
 type: object
 properties:
   beaconId:
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/BeaconId
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/BeaconId
   apiVersion:
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/ApiVersion
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/ApiVersion
   returnedSchemas:
     description: >-
       The `returnedSchemas` parameter indicates that the request has been interpreted
       for the indicated entity. This helps to disambiguate between negative responses
       due to e.g. no hit on a well understood request and failures to interpret or
       answer the request due to a missing entity. 
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/ListOfSchemas
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/ListOfSchemas
   returnedGranularity:
     description: >-
       Granularity of the Beacon response which may differ from the requested one.
       For details see the prototype definition.
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/Granularity
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/Granularity
   testMode:
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/TestMode
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/TestMode
   receivedRequestSummary:
     $ref: ./beaconReceivedRequestSummary.yaml
 required:
