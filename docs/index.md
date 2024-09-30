@@ -38,7 +38,7 @@ considered important by the community such as:
 
     With the release of Beacon v2 implementations of v1 and earlier are not longer supported.
     Deployers of Beacon instances or networks are advised to migrate to v2 of the
-    standard. The functionality of Beacon v1 [can be easily implemented in v2](/FAQ/#v1-emulation). 
+    standard. The functionality of Beacon v1 [can be easily implemented in v2](https://genomebeacons.org/FAQ/#v1-emulation). 
 
 This website represents information about the Beacon protocol, its use for **data 
 discovery** and **data delivery** but also about ways towards

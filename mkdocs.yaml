@@ -1,7 +1,7 @@
 site_name: Beacon v2 Documentation
 site_description: 'Documentation for Beacon v2'
 site_author: 'Michael Baudis, Manuel Rueda, Laureen Fromont & Beacon Developers'
-copyright: '&copy; Copyright 2021-2023, Beacon v2 Documentation Contributors'
+copyright: '&copy; Copyright 2021-2024, Beacon v2 Documentation Contributors'
 repo_name: 'beacon-v2'
 repo_url: https://github.com/ga4gh-beacon/beacon-v2
 edit_uri: edit/main/docs/
@@ -18,8 +18,8 @@ nav:
             - Beacon Types: beacon-flavours
             - Security: security
             - Beacon Networks: networks
-        - FAQ: FAQ
         - Changes: changes-todo
+        - FAQ &#8599;: https://genomebeacons.org/FAQ/
         - Beacon News &#8599;: https://genomebeacons.org/news/
     - Using Beacons:
         - Genomic Queries: variant-queries

@@ -5,6 +5,23 @@ of the Beacon project site(s) as well as with overarching repository organizatio
 
 ## Changes
 
+### 2024-08-08: [genomebeacons.org](https://genomebeacons.org) now default Beacon domain
+
+We have now migrated towards general use fo the `genomebeacons.org` domain for
+Beacon-related services and documentation. The main addresses are:
+
+* [genomebeacons.org](https://genomebeacons.org) - main site for information, news ...
+* [docs.genomebeacons.org](https://docs.genomebeacons.org) - documentation site for API development and implementations
+
+In due course we will disentangle the current pages and purge the more general Beacon
+information from [docs.genomebeacons.org](https://docs.genomebeacons.org). A start
+has been made with the **F**requently **A**sked **Q**uestions section which is now under
+[genomebeacons.org/FAQ](https://genomebeacons.org/FAQ).
+
+The old domain [beacon-project.io](https://beacon-project.io) still exists but
+is only used for forwarding.
+
+
 ### 2023-06-12: Restructured and extended documentation
 
 * new separation of navigation areas into "Introducing Beacon", "Using Beacons",
