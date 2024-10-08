@@ -2,7 +2,7 @@
 $comment: 'version: ga4gh-beacon-variant-v2.0.0'
 $schema: https://json-schema.org/draft/2020-12/schema
 additionalProperties: &1 !!perl/scalar:JSON::PP::Boolean 1
-definitions:
+$defs:
   CaseLevelVariant:
     description: ''
     properties:

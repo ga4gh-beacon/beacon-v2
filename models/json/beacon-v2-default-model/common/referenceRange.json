@@ -18,7 +18,7 @@
             "type": "number"
         },
         "unit": {
-            "$ref": "./commonDefinitions.json#/definitions/Unit",
+            "$ref": "./commonDefinitions.json#/$defs/Unit",
             "description": "The kind of unit.",
             "examples": [
                 {

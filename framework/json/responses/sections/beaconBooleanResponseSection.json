@@ -3,7 +3,7 @@
     "description": "Boolean (true/false) response section.",
     "properties": {
         "exists": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/Exists"
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/Exists"
         }
     },
     "required": [

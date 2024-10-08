@@ -5,7 +5,7 @@
                 "in": "query",
                 "name": "limit",
                 "schema": {
-                    "$ref": "./common/beaconCommonComponents.json#/definitions/Limit"
+                    "$ref": "./common/beaconCommonComponents.json#/$defs/Limit"
                 }
             },
             "requestedSchema": {
@@ -22,7 +22,7 @@
                 "in": "query",
                 "name": "skip",
                 "schema": {
-                    "$ref": "./common/beaconCommonComponents.json#/definitions/Skip"
+                    "$ref": "./common/beaconCommonComponents.json#/$defs/Skip"
                 }
             }
         },
