@@ -3,9 +3,9 @@ g_variant:
   type: object
   properties:
     assemblyId:
-      $ref: ./requestParametersComponents.yaml#/definitions/Assembly
+      $ref: ./requestParametersComponents.yaml#/$defs/Assembly
     referenceName:
-      $ref: ./requestParametersComponents.yaml#/definitions/RefSeqId
+      $ref: ./requestParametersComponents.yaml#/$defs/RefSeqId
     start:
       description: >-
         Precise or fuzzy start coordinate position(s), allele locus
@@ -51,9 +51,9 @@ g_variant:
       minItems: 1
       maxItems: 2
     referenceBases:
-      $ref: ./requestParametersComponents.yaml#/definitions/ReferenceBases
+      $ref: ./requestParametersComponents.yaml#/$defs/ReferenceBases
     alternateBases:
-      $ref: ./requestParametersComponents.yaml#/definitions/AlternateBases
+      $ref: ./requestParametersComponents.yaml#/$defs/AlternateBases
     variantType:
       description: >-
         The `variantType` is used to query variants which are not defined through
@@ -98,7 +98,7 @@ g_variant:
       format: int64
       minimum: 1
     mateName:
-      $ref: ./requestParametersComponents.yaml#/definitions/RefSeqId
+      $ref: ./requestParametersComponents.yaml#/$defs/RefSeqId
     geneId:
       description: >-
         * A gene identifier

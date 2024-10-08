@@ -6,12 +6,12 @@ properties:
   resources:
     type: array
     items:
-      $ref: '#/definitions/Resource'
+      $ref: '#/$defs/Resource'
   filteringTerms:
     type: array
     items:
-      $ref: '#/definitions/FilteringTerm'
-definitions:
+      $ref: '#/$defs/FilteringTerm'
+$defs:
   FilteringTerm:
     type: object
     description: >-

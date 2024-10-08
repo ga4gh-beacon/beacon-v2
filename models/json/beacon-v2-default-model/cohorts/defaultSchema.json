@@ -1,8 +1,6 @@
 {
     "$comment": "version: ga4gh-beacon-cohort-v2.0.0",
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": true,
-    "definitions": {
+    "$defs": {
         "CohortCriteria": {
             "description": "Criteria used for defining the cohort. It is assumed that all cohort participants will match or NOT match such criteria.",
             "properties": {
@@ -20,21 +18,21 @@
                 "ethnicities": {
                     "description": "Ethnias in cohort inclusion criteria",
                     "items": {
-                        "$ref": "../common/commonDefinitions.json#/definitions/Ethnicity"
+                        "$ref": "../common/commonDefinitions.json#/$defs/Ethnicity"
                     },
                     "type": "array"
                 },
                 "genders": {
                     "description": "Gender(s) in cohort inclusion criteria",
                     "items": {
-                        "$ref": "../common/commonDefinitions.json#/definitions/Sex"
+                        "$ref": "../common/commonDefinitions.json#/$defs/Sex"
                     },
                     "type": "array"
                 },
                 "locations": {
                     "description": "Geographic location(s) in cohort inclusion criteria",
                     "items": {
-                        "$ref": "../common/commonDefinitions.json#/definitions/GeographicLocation"
+                        "$ref": "../common/commonDefinitions.json#/$defs/GeographicLocation"
                     },
                     "type": "array"
                 },
@@ -52,7 +50,7 @@
             "description": "TBD",
             "properties": {
                 "eventAgeRange": {
-                    "$ref": "#/definitions/DataAvailabilityAndDistribution",
+                    "$ref": "#/$defs/DataAvailabilityAndDistribution",
                     "description": "Individual age range, obtained from individual level info of the cohort members"
                 },
                 "eventCases": {
@@ -72,7 +70,7 @@
                     "type": "integer"
                 },
                 "eventDataTypes": {
-                    "$ref": "#/definitions/DataAvailabilityAndDistribution",
+                    "$ref": "#/$defs/DataAvailabilityAndDistribution",
                     "description": "Aggregated data type information available for each cohort data type as declared in `cohortDataTypes`, and obtained from individual level info of the cohort members",
                     "type": "object"
                 },
@@ -87,19 +85,19 @@
                     "type": "string"
                 },
                 "eventDiseases": {
-                    "$ref": "#/definitions/DataAvailabilityAndDistribution",
+                    "$ref": "#/$defs/DataAvailabilityAndDistribution",
                     "description": "Aggregated information of disease/condition(s) obtained from individual level info of the cohort members"
                 },
                 "eventEthnicities": {
-                    "$ref": "#/definitions/DataAvailabilityAndDistribution",
+                    "$ref": "#/$defs/DataAvailabilityAndDistribution",
                     "description": "Aggregated information of ethnicity obtained from individual level info of the cohort members"
                 },
                 "eventGenders": {
-                    "$ref": "#/definitions/DataAvailabilityAndDistribution",
+                    "$ref": "#/$defs/DataAvailabilityAndDistribution",
                     "description": "Aggregated information of gender(s) obtained from individual level info of the cohort members"
                 },
                 "eventLocations": {
-                    "$ref": "#/definitions/DataAvailabilityAndDistribution",
+                    "$ref": "#/$defs/DataAvailabilityAndDistribution",
                     "description": "Aggregated information of geographic location obtained from individual level info of the cohort members"
                 },
                 "eventNum": {
@@ -113,7 +111,7 @@
                     "type": "integer"
                 },
                 "eventPhenotypes": {
-                    "$ref": "#/definitions/DataAvailabilityAndDistribution",
+                    "$ref": "#/$defs/DataAvailabilityAndDistribution",
                     "description": "Aggregated information of phenotype(s) obtained from individual level info of the cohort members"
                 },
                 "eventSize": {
@@ -208,10 +206,12 @@
             "type": "array"
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
     "description": "A cohort available in the beacon.",
     "properties": {
         "cohortDataTypes": {
-            "$ref": "#/definitions/DataTypesArray"
+            "$ref": "#/$defs/DataTypesArray"
         },
         "cohortDesign": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
@@ -252,12 +252,12 @@
         "collectionEvents": {
             "description": "TBD",
             "items": {
-                "$ref": "#/definitions/CollectionEvent"
+                "$ref": "#/$defs/CollectionEvent"
             },
             "type": "array"
         },
         "exclusionCriteria": {
-            "$ref": "#/definitions/CohortCriteria",
+            "$ref": "#/$defs/CohortCriteria",
             "description": "Exclusion criteria used for defining the cohort. It is assumed that NONE of the cohort participants will match such criteria.",
             "type": "object"
         },
@@ -269,7 +269,7 @@
             "type": "string"
         },
         "inclusionCriteria": {
-            "$ref": "#/definitions/CohortCriteria",
+            "$ref": "#/$defs/CohortCriteria",
             "description": "Inclusion criteria used for defining the cohort. It is assumed that all cohort participants will match such criteria.",
             "type": "object"
         },

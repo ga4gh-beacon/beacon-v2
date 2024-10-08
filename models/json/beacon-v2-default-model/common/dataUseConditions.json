@@ -1,7 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": true,
-    "definitions": {
+    "$defs": {
         "DUODataUse": {
             "allOf": [
                 {
@@ -60,11 +58,13 @@
             ]
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
     "description": "Data use conditions",
     "properties": {
         "duoDataUse": {
             "items": {
-                "$ref": "#/definitions/DUODataUse"
+                "$ref": "#/$defs/DUODataUse"
             },
             "minItems": 1,
             "type": "array"
