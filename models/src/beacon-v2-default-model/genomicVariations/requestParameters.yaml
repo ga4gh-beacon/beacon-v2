@@ -16,7 +16,7 @@ g_variant:
           - typical use are queries for SNV and small InDels
           - the use of `start` without an `end` parameter requires the use of
             `alternateBases`
-        * `start` and `end`:
+        * 1 value in both `start` and `end`:
           - for searching any variant falling fully or partially within the range
             between `start` and `end` (a.k.a. "range query")
           - additional use of `variantType` OR `alternateBases` can limit the
@@ -48,7 +48,7 @@ g_variant:
         type: integer
         format: int64
         minimum: 1
-      minItems: 0
+      minItems: 1
       maxItems: 2
     referenceBases:
       $ref: ./requestParametersComponents.yaml#/definitions/ReferenceBases

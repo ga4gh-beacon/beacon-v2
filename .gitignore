@@ -2,4 +2,3 @@ site
 .DS_Store
 models/.DS_Store
 /.vs
-docs/schemas-md

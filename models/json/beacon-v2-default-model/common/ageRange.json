@@ -11,6 +11,10 @@
             "description": "Represents age as an ISO8601 duration (e.g., P18Y)."
         }
     },
+    "required": [
+        "end",
+        "start"
+    ],
     "title": "AgeRange",
     "type": "object"
 }

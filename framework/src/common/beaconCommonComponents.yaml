@@ -137,7 +137,6 @@ definitions:
 
       * `boolean`: returns true/false' responses
       * `count`: adds the total number of positive results found
-      * `aggregated`: returns summary, aggregated or distribution like responses
       * `record`: returns details for every row. In cases where a Beacon prefers
       to return records with fewer than allattributes, different strategies have
       to be considered w/o adding them to the current design, e.g.:
@@ -147,7 +146,6 @@ definitions:
     enum:
       - boolean
       - count
-      - aggregated
       - record
     default: boolean
   TestMode:
@@ -265,11 +263,13 @@ definitions:
         example: https://api.mygenomeservice.org/Handover/9dcc48d7-fc88-11e8-9110-b0c592dbf8c0/
   HandoverType:
     description: >-
-      Handover type, as an Ontology_term object with CURIE syntax for the `id` value.
-      Use `CUSTOM` for the `id` when no ontology is available.
+      Handover type, as an Ontology_term object with CURIE syntax for the `id`
+      value. Use "CUSTOM:123455" CURIE-style `id` when no ontology is available.
     $ref: ./ontologyTerm.yaml
     examples:
-      - id: EFO:0004157
-        label: BAM format
-      - id: CUSTOM
-        label: download genomic variants in .pgxseg file format
+      - id: EDAM:2572
+        label: BAM
+      - id: EDAM:3016
+        label: VCF
+      - id: CUSTOM:pgxseg
+        label: genomic variants in .pgxseg file format
