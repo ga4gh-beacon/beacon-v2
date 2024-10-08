@@ -25,7 +25,7 @@ properties:
       Name of this service. Should be human readable.
     example: My project
   type:
-    $ref: '#/definitions/ServiceType'
+    $ref: '#/$defs/ServiceType'
   description:
     type: string
     description: >-
@@ -91,7 +91,7 @@ properties:
       but other identifiers, such as dates or commit hashes, are also allowed. The
       version should be changed whenever the service is updated.
     example: 1.0.0
-definitions:
+$defs:
   ServiceType:
     description: Type of a GA4GH service
     type: object

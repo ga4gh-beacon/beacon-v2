@@ -12,7 +12,7 @@ properties:
     oneOf:
       - $ref: https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/MolecularVariation
       - $ref: https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/SystemicVariation
-      - $ref: '#/definitions/LegacyVariation'
+      - $ref: '#/$defs/LegacyVariation'
   variantInternalId:
     description: >-
       Reference to the **internal** variant ID. This represents the primary
@@ -27,22 +27,22 @@ properties:
       - var00001
       - v110112
   identifiers:
-    $ref: '#/definitions/Identifiers'
+    $ref: '#/$defs/Identifiers'
   molecularAttributes:
-    $ref: '#/definitions/MolecularAttributes'
+    $ref: '#/$defs/MolecularAttributes'
   caseLevelData:
     type: array
     description: caseLevelData reports about the variation instances observed in individual
       analyses.
     items:
-      $ref: '#/definitions/CaseLevelVariant'
+      $ref: '#/$defs/CaseLevelVariant'
   variantLevelData:
-    $ref: '#/definitions/VariantLevelData'
+    $ref: '#/$defs/VariantLevelData'
   frequencyInPopulations:
     type: array
     items:
-      $ref: '#/definitions/FrequencyInPopulations'
-definitions:
+      $ref: '#/$defs/FrequencyInPopulations'
+$defs:
   LegacyVariation:
     type: object
     required:
@@ -168,7 +168,7 @@ definitions:
         description: List of Genomic feature(s) affected by the variant.
         type: array
         items:
-          $ref: '#/definitions/GenomicFeature'
+          $ref: '#/$defs/GenomicFeature'
       molecularEffects:
         description: >-
           Ontology term that includes describes the class of molecular
@@ -270,7 +270,7 @@ definitions:
           - id: ECO:0000006
             label: experimental evidence
       annotatedWith:
-        $ref: '#/definitions/SoftwareTool'
+        $ref: '#/$defs/SoftwareTool'
     required:
       - conditionId
       - effect
@@ -297,7 +297,7 @@ definitions:
       frequencies:
         type: array
         items:
-          $ref: '#/definitions/PopulationFrequency'
+          $ref: '#/$defs/PopulationFrequency'
         minItems: 1
     required:
       - source
@@ -394,11 +394,11 @@ definitions:
       clinicalInterpretations:
         type: array
         items:
-          $ref: '#/definitions/PhenoClinicEffect'
+          $ref: '#/$defs/PhenoClinicEffect'
       phenotypicEffects:
         type: array
         items:
-          $ref: '#/definitions/PhenoClinicEffect'
+          $ref: '#/$defs/PhenoClinicEffect'
     required:
       - biosampleId
   VariantLevelData:
@@ -407,11 +407,11 @@ definitions:
       clinicalInterpretations:
         type: array
         items:
-          $ref: '#/definitions/PhenoClinicEffect'
+          $ref: '#/$defs/PhenoClinicEffect'
       phenotypicEffects:
         type: array
         items:
-          $ref: '#/definitions/PhenoClinicEffect'
+          $ref: '#/$defs/PhenoClinicEffect'
   SoftwareTool:
     type: object
     properties:
