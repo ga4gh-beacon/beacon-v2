@@ -321,11 +321,6 @@ definitions:
         description: Allele frequency between 0 and 1.
         examples:
           - 3.186e-05
-      allele:
-        type: string
-        description: Specific allele associated with the frequency.
-        examples:
-          - A
     required:
       - population
       - alleleFrequency

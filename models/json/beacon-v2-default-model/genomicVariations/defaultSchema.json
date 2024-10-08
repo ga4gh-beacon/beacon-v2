@@ -441,13 +441,6 @@
         },
         "PopulationFrequency": {
             "properties": {
-                "allele": {
-                    "description": "Specific allele associated with the frequency.",
-                    "examples": [
-                        "A"
-                    ],
-                    "type": "string"
-                },
                 "alleleFrequency": {
                     "description": "Allele frequency between 0 and 1.",
                     "examples": [
