@@ -10,18 +10,26 @@
                 }
             },
             "filters": {
+                "examples": {
+                    "example1": {
+                        "value": [
+                            "NCIT:C3222"
+                        ]
+                    },
+                    "example2": {
+                        "value": [
+                            "NCIT:C4813"
+                        ]
+                    },
+                    "example3": {
+                        "value": [
+                            "OBI:0100058"
+                        ]
+                    }
+                },
                 "in": "query",
                 "name": "filters",
                 "schema": {
-                    "examples": [
-                        [
-                            "NCIT:C3222"
-                        ],
-                        [
-                            "OBI:0100058",
-                            "NCIT:C4813"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },

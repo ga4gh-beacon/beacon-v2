@@ -10,14 +10,16 @@
                 }
             },
             "filters": {
+                "examples": {
+                    "example1": {
+                        "value": [
+                            "NCIT:C20197"
+                        ]
+                    }
+                },
                 "in": "query",
                 "name": "filters",
                 "schema": {
-                    "examples": [
-                        [
-                            "NCIT:C20197"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },

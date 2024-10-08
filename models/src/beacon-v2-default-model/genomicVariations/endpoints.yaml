@@ -282,7 +282,13 @@ components:
         type: array
         items:
           type: string
-        examples:
-          -   - EFO:0009655
-          -   - NCIT:C48725
-              - NCIT:C28080
+      examples:
+        example1:
+          value:
+            - EFO:0009655
+        example2:
+          value:
+            - NCIT:C48725
+        example3:
+          value:
+            - NCIT:C28080

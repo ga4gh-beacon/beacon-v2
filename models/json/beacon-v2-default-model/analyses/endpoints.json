@@ -10,14 +10,16 @@
                 }
             },
             "filters": {
+                "examples": {
+                    "example1": {
+                        "value": [
+                            "variantcaller:GATK4.0"
+                        ]
+                    }
+                },
                 "in": "query",
                 "name": "filters",
                 "schema": {
-                    "examples": [
-                        [
-                            "variantcaller:GATK4.0"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },

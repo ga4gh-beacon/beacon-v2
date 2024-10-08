@@ -10,12 +10,16 @@
                 }
             },
             "filters": {
+                "examples": {
+                    "example1": {
+                        "value": [
+                            "DUO:0000007"
+                        ]
+                    }
+                },
                 "in": "query",
                 "name": "filters",
                 "schema": {
-                    "examples": [
-                        "DUO:0000007"
-                    ],
                     "items": {
                         "type": "string"
                     },

@@ -18,14 +18,16 @@
                 }
             },
             "filters": {
+                "examples": {
+                    "example1": {
+                        "value": [
+                            "OBI:0002048"
+                        ]
+                    }
+                },
                 "in": "query",
                 "name": "filters",
                 "schema": {
-                    "examples": [
-                        [
-                            "OBI:0002048"
-                        ]
-                    ],
                     "items": {
                         "type": "string"
                     },
