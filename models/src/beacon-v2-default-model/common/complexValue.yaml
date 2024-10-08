@@ -9,6 +9,9 @@ properties:
     type: array
     items:
       $ref: '#/definitions/TypedQuantity'
+required:
+  - typedQuantities
+
 definitions:
   TypedQuantity:
     properties:

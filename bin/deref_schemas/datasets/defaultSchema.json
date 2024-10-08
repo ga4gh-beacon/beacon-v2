@@ -247,7 +247,7 @@
         "externalUrl": {
             "description": "URL to an external system providing more dataset information (RFC 3986 format).",
             "examples": [
-                "http://example.org/wiki/Main_Page"
+                "https://example.org/wiki/Main_Page"
             ],
             "type": "string"
         },

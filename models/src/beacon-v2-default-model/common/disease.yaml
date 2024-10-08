@@ -20,18 +20,14 @@ properties:
   ageOfOnset:
     $ref: ./timeElement.yaml
     examples:
-      - ageGroup:
-          id: NCIT:C49685
-          label: Adult 18-65 Years Old
-      - age:
-          iso8601duration: P32Y6M1D
-      - ageRange:
-          start:
-            iso8601duration: P18Y
-          end:
-            iso8601duration: P59Y
-      - age:
-          iso8601duration: P2M4D
+      - id: NCIT:C49685
+        label: Adult 18-65 Years Old
+      - iso8601duration: P32Y6M1D
+      - start:
+          iso8601duration: P18Y
+        end:
+          iso8601duration: P59Y
+      - iso8601duration: P2M4D
   stage:
     description: 'Ontology term from Ontology for General Medical Science (OGMS),
       e.g. acute onset (OGMS:0000119). Provenance: GA4GH Phenopackets v2 `Disease.disease_stage`'

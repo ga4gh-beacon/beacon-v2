@@ -9,3 +9,6 @@ properties:
   end:
     description: Represents age as an ISO8601 duration (e.g., P59Y).
     $ref: ./age.yaml
+required:
+  - start
+  - end
