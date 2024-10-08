@@ -30,6 +30,13 @@ There is a set of tools in [`/bin`](./bin/) to facilitate the conversion. ATM, a
 
 ### Changelog
 
+## 2.1.1
+
+*Released, October, 8, 2024*
+
+* Changed uri for uri-template in Endpoint.singleEntryUrl
+
+
 ## 2.1.0
 
 *Released, July, 19, 2024*
