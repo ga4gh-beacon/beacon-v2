@@ -24,7 +24,10 @@ paths:
           $ref: '#/components/responses/infoOKResponse'
         default:
           description: An unsuccessful operation.
-          $ref: ./responses/beaconErrorResponse.yaml
+          content:
+            application/json:
+              schema:
+                $ref: ./responses/beaconErrorResponse.yaml
   /info:
     parameters:
       - $ref: '#/components/parameters/requestedSchema'
@@ -38,7 +41,10 @@ paths:
           $ref: '#/components/responses/infoOKResponse'
         default:
           description: An unsuccessful operation.
-          $ref: ./responses/beaconErrorResponse.yaml
+          content:
+            application/json:
+              schema:
+                $ref: ./responses/beaconErrorResponse.yaml
   /service-info:
     get:
       description: Get information about the beacon using GA4GH ServiceInfo format
@@ -68,7 +74,10 @@ paths:
                 $ref: ./responses/beaconConfigurationResponse.yaml
         default:
           description: An unsuccessful operation.
-          $ref: ./responses/beaconErrorResponse.yaml
+          content:
+            application/json:
+              schema:
+                $ref: ./responses/beaconErrorResponse.yaml
   /map:
     get:
       description: TBD
@@ -86,7 +95,10 @@ paths:
                 $ref: ./responses/beaconMapResponse.yaml
         default:
           description: An unsuccessful operation.
-          $ref: ./responses/beaconErrorResponse.yaml
+          content:
+            application/json:
+              schema:
+                $ref: ./responses/beaconErrorResponse.yaml
   /entry_types:
     get:
       description: TBD
@@ -104,7 +116,10 @@ paths:
                 $ref: ./responses/beaconEntryTypesResponse.yaml
         default:
           description: An unsuccessful operation.
-          $ref: ./responses/beaconErrorResponse.yaml
+          content:
+            application/json:
+              schema:
+                $ref: ./responses/beaconErrorResponse.yaml
   /filtering_terms:
     parameters:
       - $ref: '#/components/parameters/skip'
@@ -119,7 +134,10 @@ paths:
           $ref: ./responses/beaconFilteringTermsResponse.yaml
         default:
           description: An unsuccessful operation.
-          $ref: ./responses/beaconErrorResponse.yaml
+          content:
+            application/json:
+              schema:
+                $ref: ./responses/beaconErrorResponse.yaml
 components:
   responses:
     infoOKResponse:
