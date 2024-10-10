@@ -1,2 +1,4 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-filteringTerms: []
+type: array
+items:
+  $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/sections/beaconFilteringTermsResults.json#/definitions/FilteringTerm
