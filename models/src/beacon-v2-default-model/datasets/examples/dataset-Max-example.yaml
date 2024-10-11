@@ -5,7 +5,7 @@ description: This dataset provides examples of the actual data in this Beacon in
 createDateTime: '2017-01-17T20:33:40Z'
 updateDateTime: '2017-01-17T20:33:40Z'
 version: v1.1
-externalUrl: http://example.org/wiki/Main_Page
+externalUrl: https://example.org/wiki/Main_Page
 dataUseConditions:
   duoDataUse:
     - id: DUO:0000007

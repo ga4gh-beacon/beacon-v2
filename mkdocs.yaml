@@ -9,6 +9,52 @@ edit_uri: edit/main/docs/
 repo_framework_icon: " [:fontawesome-brands-github:](https://github.com/ga4gh-beacon/beacon-v2/tree/main/framework/src)"
 repo_models_icon: " [:fontawesome-brands-github:](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src)"
 
+#<----------------------------- Navigation ----------------------------------->#
+
+nav:
+    - Introducing Beacon: 
+        - Overview:
+            - About Beacon: /
+            - Beacon Types: beacon-flavours
+            - Security: security
+            - Beacon Networks: networks
+        - FAQ: FAQ
+        - Changes: changes-todo
+        - Beacon News &#8599;: https://beacon-project.io/news/
+    - Using Beacons:
+        - Genomic Queries: variant-queries
+        - Phenotypes and More...: /filters/#using-filters-in-queries
+        - Data Delivery:
+            - Biosamples, Variants...: records
+            - Data Handovers: handovers
+            - REST API: rest-api
+    - 'Creating Beacons':
+        - Implementations Options: implementations-options
+        - Implementation Examples:
+            - Reference Implementation &#8599;: https://b2ri-documentation.readthedocs.io/en/latest/
+            - Others: other-implementations
+        - Standards Integration: formats-standards
+        - Filters: filters
+        - Beacon Components:
+            - Framework: framework  
+            - Beacon Data Model: models
+            - Default Schemas:
+               - Analyses: schemas-md/analyses_defaultSchema
+               - Biosamples: schemas-md/biosamples_defaultSchema
+               - Cohorts: schemas-md/cohorts_defaultSchema
+               - Datasets: schemas-md/datasets_defaultSchema
+               - Genomic Variations: schemas-md/genomicVariations_defaultSchema
+               - Individuals: schemas-md/individuals_defaultSchema
+               - Runs: schemas-md/runs_defaultSchema
+            - Terms List: schemas-md/beacon_terms
+    - Beacon Development:
+        - How to Contribute: contribute
+        - Repository and Branch Organization: code-organization
+        - Github Repositories &#8599;: https://github.com/ga4gh-beacon/
+    # - Download PDF: pdf/beacon.pdf
+
+#<--------------------------- / Navigation ----------------------------------->#
+
 extra_css: [css/theme_overrides.css]
 
 plugins:
@@ -54,45 +100,6 @@ markdown_extensions:
               class: mermaid
               format: !!python/name:mermaid2.fence_mermaid   
 
-nav:
-    - Introduction: 
-        - General Introduction: index.md
-        - What is Beacon v2?: what-is-beacon-v2.md  
-        - FAQ: FAQ.md
-        - Changes: bugs-changes-log.md
-    - Querying Beacons:
-        - REST API: rest-api.md
-        - Genomic Queries: variant-queries.md
-        - Filters in Queries: /filters/#using-filters-in-queries
-    - 'Implement & Deploy a Beacon':
-        - Implementations Options: implementations-options.md
-        - Standards Integration: formats-standards.md
-        - Filters: filters.md
-        - Beacon Implementations:
-            - Reference Implementation &#8599;: https://b2ri-documentation.readthedocs.io/en/latest/
-            - Others: other-implementations.md
-    - Beacon Types:
-        - Beacon Flavours: beacon-flavours.md
-        - Security: security.md
-        - Networks: networks.md
-    - Beacon Components:
-        - Framework: framework.md         
-        - Models: 
-           - Introduction: models.md
-           - Default Schemas:
-               - Analyses: schemas-md/analyses_defaultSchema.md
-               - Biosamples: schemas-md/biosamples_defaultSchema.md
-               - Cohorts: schemas-md/cohorts_defaultSchema.md
-               - Datasets: schemas-md/datasets_defaultSchema.md
-               - Genomic Variations: schemas-md/genomicVariations_defaultSchema.md
-               - Individuals: schemas-md/individuals_defaultSchema.md
-               - Runs: schemas-md/runs_defaultSchema.md    
-           - Terms List: schemas-md/beacon_terms.md
-    - External Links:
-        - Beacon Project &#8599;: http://beacon-project.io
-        - Github Repositories &#8599;: https://github.com/ga4gh-beacon/
-    # - Download PDF: pdf/beacon.pdf
-
 theme:
     name: material
     palette:
@@ -108,13 +115,11 @@ theme:
         - navigation.instant
         - navigation.tracking
         - navigation.sections
-        - toc.integrate
+        # - toc.integrate
 
 # Options
 extra:
   social:
-    - icon: fontawesome/brands/twitter 
-      link: https://twitter.com/genomebeacons
     - icon: fontawesome/brands/github 
       link: https://github.com/ga4gh-beacon
 

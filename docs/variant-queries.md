@@ -170,7 +170,10 @@ parameters.
 _GeneId Queries_ are in essence a variation of _Range Queries_ in which the coordinates
 are replaced by the [HGNC](https://www.genenames.org) gene symbol. It is left to the
 implementation if the matching is done on variants annotated for the gene symbol or if
-a positional translation is being applied. 
+a positional translation is being applied.
+
+![Beacon Gene Query Schema](img/BeaconGeneQuery-graphics.png)
+
 
 #### Parameters
 
@@ -184,6 +187,36 @@ a positional translation is being applied.
 
 	```
 	?geneId=EIF4A1&variantMaxLength=1000000&variantType=DEL
+	```
+
+=== "Beacon v2 POST for `geneId` (deletion CNV)"
+
+	```
+	{
+	    "$schema":"https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json",
+	    "meta": {
+	        "apiVersion": "2.0",
+	        "requestedSchemas": [
+	            {
+	                "entityType": "genomicVariation",
+	                "schema:": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json"
+	            }
+	        ]
+	    },
+	    "query": {
+	        "requestParameters": {
+	            "g_variant":
+	                "geneId": "EIF4A1",
+	                "variantType": "EFO:0030067"
+		    	}
+	        }
+	    },
+	    "requestedGranularity": "record",
+	    "pagination": {
+	        "skip": 0,
+	        "limit": 5
+	    }
+	}
 	```
 
 
@@ -208,6 +241,12 @@ differing in their exact base extents.
     Bracket queries require the use of **two** `start` and `end` parameters, in contrast
     to _Range Queries_.
 
+!!! Attention "List Parameters in GET Requests"
+
+	Since the direct interpretation of list parameters in queries is not supported by
+	some server environments (e.g. PHP, GO…), list parameters such as `start` and `end`
+	should be provided as **comma-concatenated** strings when using them in GET requests.
+
 
 #### Example: CNV Query - _TP53_ Deletion Query by Coordinates
 
@@ -229,12 +268,6 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 
 	* `datasetIds=__some-dataset-ids__`
 	* `filters` ...
-
-	!!! Attention "List Parameters in GET Requests"
-
-		Since the direct interpretation of list parameters in queries is not supported by
-		some server environments (e.g. PHP, GO…), list parameters such as `start` and `end`
-		should be provided as **comma-concatenated** strings when using them in GET requests.
 
 
 === "Beacon v2 POST"
@@ -292,27 +325,27 @@ larger than approx. 5Mb (operational definitions of focality vary between 1 and 
 
 ## Genomic Allele Query (Short Form)
 
-==TBD==
+When available variants can be identified through their genomic HGVS short form.
 
 === "Beacon v2 GET"
 
 	```
-	?allele=NM_004006.2:c.4375C>T
+	?genomicAlleleShortForm=NM_004006.2:c.4375C>T
 	```
 
-	==to be completed==
 
 ## Aminoacid Change Query
 
-==TBD==
+Annotated variants can potentiallyqueried using the single amino acid replacement
+format. The `aminoacidChange` parameter may be combined with e.g. a `geneId` to increase
+specificity
 
 === "Beacon v2 GET"
 
 	```
-	?aminoacidChange=V600E
+	?aminoacidChange=V600E&geneId=BRAF
 	```
 
-	==to be completed==
 
 ## `variantType` Parameter Interpretation
 
@@ -336,18 +369,25 @@ values to underlying genomic variations had not been precisely defined.
 	Experimental Factor Ontology or the GA4GH Variant Representation Standard VRS
 	(which ligns with the main EFO terms).
 
-### Term Use Comparison
 
-| Beacon&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| [VCF](https://samtools.github.io/hts-specs/) | SO | [EFO](http://www.ebi.ac.uk/efo/EFO_0030063) | [VRS](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) | Notes   |
-| -------|-----|----|-----|-----|---------|
-| `DUP`[^1] or<br/>[`EFO:0030070`](http://www.ebi.ac.uk/efo/EFO_0030070)    | `DUP`<br/>`SVCLAIM=D`[^2] | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain | [`EFO:0030070`](http://www.ebi.ac.uk/efo/EFO_0030070) copy&nbsp;number&nbsp;gain | [`low-level gain`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) (implicit) | a sequence alteration whereby the copy number of a given genomic region is greater than the reference sequence |
-| `DUP`[^1] or<br/>[`EFO:0030071`](http://www.ebi.ac.uk/efo/EFO_0030071)    | `DUP`<br/>`SVCLAIM=D`[^2] | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain |[`EFO:0030071`](http://www.ebi.ac.uk/efo/EFO_0030071) low-level copy number gain | [`low-level gain`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) |  |
-| `DUP`[^1] or<br/>[`EFO:0030072`](http://www.ebi.ac.uk/efo/EFO_0030072)    | `DUP`<br/>`SVCLAIM=D`[^2] | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain |[`EFO:0030072`](http://www.ebi.ac.uk/efo/EFO_0030072) high-level copy number gain | [`high-level gain`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber)  | commonly but not consistently used for >=5 copies on a bi-allelic genome region |
-| `DUP`[^1] or<br/>[`EFO:0030073`](http://www.ebi.ac.uk/efo/EFO_0030073)    | `DUP`<br/>`SVCLAIM=D`[^2] | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain |[`EFO:0030073`](http://www.ebi.ac.uk/efo/EFO_0030073) focal genome amplification | [`high-level gain`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber)  | commonly but not consistently used for >=5 copies on a bi-allelic genome region, of limited size (operationally max. 1-5Mb) |
-| `DEL`[^1] or<br/>[`EFO:0030067`](http://www.ebi.ac.uk/efo/EFO_0030067)    | `DEL`<br/>`SVCLAIM=D`[^2] | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | [`EFO:0030067`](http://www.ebi.ac.uk/efo/EFO_0030067) copy number loss | [`partial loss`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) (implicit) | a sequence alteration whereby the copy number of a given genomic region is smaller than the reference sequence | 
-| `DEL`[^1] or<br/>[`EFO:0030068`](http://www.ebi.ac.uk/efo/EFO_0030068)    | `DEL`<br/>`SVCLAIM=D`[^2] | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | [`EFO:0030068`](http://www.ebi.ac.uk/efo/EFO_0030068) low-level copy number loss | [`partial loss`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) | |
-| `DEL`[^1] or<br/>[`EFO:0030069`](http://www.ebi.ac.uk/efo/EFO_0030069)    | `DEL`<br/>`SVCLAIM=D`[^2] | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | [`EFO:0030069`](http://www.ebi.ac.uk/efo/EFO_0030069) complete genomic deletion | [`complete loss`](https://vrs.ga4gh.org/en/latest/terms_and_model.html#relativecopynumber) | complete genomic deletion (e.g. homozygous deletion on a bi-allelic genome region) |
+## CNV Term Use Comparison in Computational (File/Schema) Formats
 
+This table is maintained in parallel with the [hCNV community documentation](https://cnvar.org/resources/CNV-annotation-standards/#cnv-term-use-comparison-in-computational-fileschema-formats).
+
+| [EFO](http://www.ebi.ac.uk/efo/EFO_0030063) | Beacon | [VCF](https://samtools.github.io/hts-specs/) | SO       | GA4GH [VRS](https://vrs.ga4gh.org/en/latest/terms_and_model.html#copynumberchange)[^1] | Notes |
+| ------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| <nobr>[`EFO:0030070`](http://www.ebi.ac.uk/efo/EFO_0030070)</nobr> copy number gain | `DUP`[^2] or<br/><nobr>[`EFO:0030070`](http://www.ebi.ac.uk/efo/EFO_0030070)</nobr> | `DUP`<br/><nobr>`SVCLAIM=D`[^3]</nobr> | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain | <nobr>[`EFO:0030070`](http://www.ebi.ac.uk/efo/EFO_0030070) gain  | a sequence alteration whereby the copy number of a given genomic region is greater than the reference sequence |
+| [`EFO:0030071`](http://www.ebi.ac.uk/efo/EFO_0030071) low-level copy number gain| `DUP`[^2] or<br/><nobr>[`EFO:0030071`](http://www.ebi.ac.uk/efo/EFO_0030071)</nobr> | `DUP`<br/><nobr>`SVCLAIM=D`[^3]</nobr> | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain   | <nobr>[`EFO:0030071`](http://www.ebi.ac.uk/efo/EFO_0030071)</nobr> low-level gain |                                                                                                                             |
+| [`EFO:0030072`](http://www.ebi.ac.uk/efo/EFO_0030072) high-level copy number gain | `DUP`[^2] or<br/><nobr>[`EFO:0030072`](http://www.ebi.ac.uk/efo/EFO_0030072)</nobr> | `DUP`<br/><nobr>`SVCLAIM=D`[^3]</nobr> | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain | <nobr>[`EFO:0030072`](http://www.ebi.ac.uk/efo/EFO_0030072)</nobr> high-level gain | commonly but not consistently used for >=5 copies on a bi-allelic genome region                                             |
+| [`EFO:0030073`](http://www.ebi.ac.uk/efo/EFO_0030073) focal genome amplification  | `DUP`[^2] or<br/><nobr>[`EFO:0030073`](http://www.ebi.ac.uk/efo/EFO_0030073)</nobr> | `DUP`<br/><nobr>`SVCLAIM=D`[^3]</nobr> | [`SO:0001742`](http://www.sequenceontology.org/browser/current_release/term/SO:0001742) copy_number_gain | <nobr>[`EFO:0030072`](http://www.ebi.ac.uk/efo/EFO_0030072)</nobr> high-level gain[^4]  | commonly but not consistently used for >=5 copies on a bi-allelic genome region, of limited size (operationally max. 1-5Mb) |
+| [`EFO:0030067`](http://www.ebi.ac.uk/efo/EFO_0030067) copy number loss            | `DEL`[^2] or<br/><nobr>[`EFO:0030067`](http://www.ebi.ac.uk/efo/EFO_0030067)</nobr> | `DEL`<br/><nobr>`SVCLAIM=D`[^3]</nobr> | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | <nobr>[`EFO:0030067`](http://www.ebi.ac.uk/efo/EFO_0030067)</nobr> loss            | a sequence alteration whereby the copy number of a given genomic region is smaller than the reference sequence              |
+| [`EFO:0030068`](http://www.ebi.ac.uk/efo/EFO_0030068) low-level copy number loss  | `DEL`[^2] or<br/><nobr>[`EFO:0030068`](http://www.ebi.ac.uk/efo/EFO_0030068)</nobr> | `DEL`<br/><nobr>`SVCLAIM=D`[^3]</nobr> | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | <nobr>[`EFO:0030068`](http://www.ebi.ac.uk/efo/EFO_0030068)</nobr> low-level loss  |                                                                                                                             |
+| [`EFO:0020073`](http://www.ebi.ac.uk/efo/EFO_0020073) high-level copy number loss  | `DEL`[^2] or<br/><nobr>[`EFO:0020073`](https://github.com/EBISPOT/efo/issues/1941)</nobr> | `DEL`<br/><nobr>`SVCLAIM=D`[^3]</nobr> | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | <nobr>[`EFO:0020073`](https://github.com/EBISPOT/efo/issues/1941)</nobr> high-level loss  | a loss of several copies; also used in cases where a complete genomic deletion cannot be asserted |
+| [`EFO:0030069`](http://www.ebi.ac.uk/efo/EFO_0030069) complete genomic deletion   | `DEL`[^2] or<br/><nobr>[`EFO:0030069`](http://www.ebi.ac.uk/efo/EFO_0030069)</nobr> | `DEL`<br/><nobr>`SVCLAIM=D`[^3]</nobr> | [`SO:0001743`](http://www.sequenceontology.org/browser/current_release/term/SO:0001743) copy_number_loss | <nobr>[`EFO:0030069`](http://www.ebi.ac.uk/efo/EFO_0030069)</nobr> complete genomic loss   | complete genomic deletion (e.g. homozygous deletion on a bi-allelic genome region)                                          |
+
+
+##### Last updated 2023-07-13 to align with 2023-03-22 hCNV documentation (VRS 1.3 adjustment) by @mbaudis
+##### updated 2023-03-20 by @mbaudis (VRS proposal)
 
 ## Query Parameter Change Log
 
@@ -378,12 +418,17 @@ recommended for query forms
 	and `alternateBases`
 
 
-[^1]: While the use of VCF derived (`DUP`, `DEL`) values had been introduced with
+[^1]: The VRS annotations refer to the status from v1.3 (2022) when 
+the new class `CopyNumberChange` ([discussion...](https://github.com/ga4gh/vrs/issues/404#issuecomment-1472599849))
+with the use of the EFO terms.
+[^2]: While the use of VCF derived (`DUP`, `DEL`) values had been introduced with
 beacon v1, usage of these terms has always been a _recommendation_ rather than an integral part
 of the API. We now encourage the support of more specific terms (particularly EFO)
 by Beacon developers. As example, the Progentix Beacon API [uses EFO terms](http://progenetix.org/search/) but
 provides an internal term expansion for legacy `DUP`, `DEL` support.
-[^2]: VCFv4.4 introduces an `SVCLAIM` field to disambiguate between _in situ_ events (such as
+[^3]: VCFv4.4 introduces an `SVCLAIM` field to disambiguate between _in situ_ events (such as
 tandem duplications; known _adjacency_/ _break junction_: `SVCLAIM=J`) and events where e.g. only the
 change in _abundance_ / _read depth_ (`SVCLAIM=D`) has been determined. Both **J** and **D** flags can be combined.
+[^4]: VRS did not adopt the "amplification" term due to possible inconsistencies
+
 

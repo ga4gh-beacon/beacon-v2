@@ -44,7 +44,8 @@
                 "exists",
                 "resultsCount",
                 "results"
-            ]
+            ],
+            "type": "object"
         }
     },
     "description": "Sets of results to be returned as query response.",

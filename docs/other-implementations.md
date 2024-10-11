@@ -20,10 +20,10 @@ such as CNV query options or handover data delivery.
 #### Technologies
 
 * MongoDB backend
-* [`bycon`](http://github.com/progenetix/bycon/) Python-based full stack API / middleware
-* [`progenetix-web`](http://github.com/progenetix/progenetix-web/) React based front-end (modular for Beacon instances as well as the whole Progenetix UI)
+* [`bycon`](https://github.com/progenetix/bycon/) Python-based full stack API / middleware (documentation [here](https://bycon.progenetix.org/))
+* [`progenetix-web`](https://github.com/progenetix/progenetix-web/) React based front-end (modular for Beacon instances as well as the whole Progenetix UI)
 
-##### Link: [Documentation page](implementations/org.progenetix.md) for Progenetix REST paths
+##### Link: [Documentation page](https://docs.progenetix.org/beaconplus/#beacon-v2-path-examples-in-progenetix) for Progenetix REST paths
 
 ### Cafe Variome
 
@@ -33,9 +33,11 @@ such as CNV query options or handover data delivery.
 
 ##### Link: [CNAG Beacon v2 API](https://playground.rd-connect.eu/beacon2/api)
 
+<!--
 ### Fundacion Progreso y Salud Beacon v2 API
 
 ##### Link: [Fundacion Progreso y Salud Beacon v2 API](https://csvs-beacon.clinbioinfosspa.es/csvs/ga4ghbeacon/v2/api/)
+-->
 
 ## Tips for New Implementers
 

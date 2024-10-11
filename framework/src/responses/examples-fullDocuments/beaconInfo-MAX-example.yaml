@@ -21,8 +21,8 @@ response:
     info: {}
   description: string
   version: v0.1
-  welcomeUrl: http://example.org/wiki/Main_Page
-  alternativeUrl: http://example.org/wiki/Main_Page
+  welcomeUrl: https://example.org/wiki/Main_Page
+  alternativeUrl: https://example.org/wiki/Main_Page
   createDateTime: 2012-07-19 or 2017-01-17T20:33:40Z
   updateDateTime: 2012-07-19 or 2017-01-17T20:33:40Z
   info:

@@ -40,6 +40,7 @@
             "type": "array"
         }
     },
+    "required": [ "typedQuantities" ],
     "title": "Complex Value",
     "type": "object"
 }
