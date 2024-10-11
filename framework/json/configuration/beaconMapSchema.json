@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "definitions": {
+    "$defs": {
         "Endpoint": {
             "properties": {
                 "endpoints": {
@@ -14,11 +14,6 @@
                 },
                 "entryType": {
                     "description": "",
-                    "type": "string"
-                },
-                "filteringTermsUrl": {
-                    "description": "Optional. Returns the list of filtering terms that could be applied to this entry type. It is added here for convenience of the Beacon clients, so they don't need to parse the OpenAPI endpoints definition to get that endpoint. Also, in very simple Beacons, that endpoint could be the one of the few implemented, together with \u00b4rootUrl` and \u00b4singleEntryUrl`, in which case the whole map of endpoints is found in the current Map.",
-                    "format": "uri-template",
                     "type": "string"
                 },
                 "openAPIEndpointsDefinition": {
