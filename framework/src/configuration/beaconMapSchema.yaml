@@ -47,15 +47,6 @@ definitions:
           whole map of endpoints is found in the current Map.
         type: string
         format: uri-template
-      filteringTermsUrl:
-        description: Optional. Returns the list of filtering terms that could be applied
-          to this entry type. It is added here for convenience of the Beacon clients,
-          so they don't need to parse the OpenAPI endpoints definition to get that
-          endpoint. Also, in very simple Beacons, that endpoint could be the one of
-          the few implemented, together with ´rootUrl` and ´singleEntryUrl`, in which
-          case the whole map of endpoints is found in the current Map.
-        type: string
-        format: uri-template
       endpoints:
         description: Optional. A list describing additional endpoints implemented
           by this Beacon instance for that entry type. Additional details on the endpoint
