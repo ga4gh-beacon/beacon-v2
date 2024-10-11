@@ -43,7 +43,7 @@ Fixing errors in JSON
 EOT
 
 # For mysteriorous reasons ontologyTerm.json (within CURIE) only works (jsonref2json.js) with $ref: url
-sed -i "s#\./beaconCommonComponents.json\#/definitions/CURIE#$adhoc_url/beaconCommonComponents.json\#/definitions/CURIE#" $fwk_dir/common/ontologyTerm.json
+sed -i "s#\./beaconCommonComponents.json\#/$defs/CURIE#$adhoc_url/beaconCommonComponents.json\#/$defs/CURIE#" $fwk_dir/common/ontologyTerm.json
 
 cat<<EOT
 ====================================

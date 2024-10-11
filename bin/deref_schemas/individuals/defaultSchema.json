@@ -1035,7 +1035,7 @@
                             },
                             {
                                 "$schema": "https://json-schema.org/draft/2020-12/schema",
-                                "definitions": {
+                                "$defs": {
                                     "TypedQuantity": {
                                         "properties": {
                                             "quantity": {
@@ -1812,7 +1812,7 @@
             "items": {
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
                 "additionalProperties": true,
-                "definitions": {
+                "$defs": {
                     "pedigreeMember": {
                         "examples": [
                             {
@@ -2401,7 +2401,7 @@
         "phenotypicFeatures": {
             "items": {
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "definitions": {},
+                "$defs": {},
                 "description": "Used to describe a phenotype that characterizes the subject or biosample.",
                 "properties": {
                     "evidence": {

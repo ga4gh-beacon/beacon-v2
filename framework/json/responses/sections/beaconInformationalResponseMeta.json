@@ -5,13 +5,13 @@
     "description": "Meta information about the response.",
     "properties": {
         "apiVersion": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/ApiVersion"
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/ApiVersion"
         },
         "beaconId": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/BeaconId"
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/BeaconId"
         },
         "returnedSchemas": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/ListOfSchemas"
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/ListOfSchemas"
         }
     },
     "required": [

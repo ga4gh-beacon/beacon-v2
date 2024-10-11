@@ -2,7 +2,7 @@
     "$comment": "version: ga4gh-beacon-variant-v2.0.0",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "definitions": {
+    "$defs": {
         "CaseLevelVariant": {
             "description": "",
             "properties": {
@@ -56,7 +56,7 @@
                 },
                 "clinicalInterpretations": {
                     "items": {
-                        "$ref": "#/definitions/PhenoClinicEffect"
+                        "$ref": "#/$defs/PhenoClinicEffect"
                     },
                     "type": "array"
                 },
@@ -76,7 +76,7 @@
                 },
                 "phenotypicEffects": {
                     "items": {
-                        "$ref": "#/definitions/PhenoClinicEffect"
+                        "$ref": "#/$defs/PhenoClinicEffect"
                     },
                     "type": "array"
                 },
@@ -115,7 +115,7 @@
             "properties": {
                 "frequencies": {
                     "items": {
-                        "$ref": "#/definitions/PopulationFrequency"
+                        "$ref": "#/$defs/PopulationFrequency"
                     },
                     "minItems": 1,
                     "type": "array"
@@ -274,7 +274,7 @@
                     "type": "string"
                 },
                 "location": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh/vrs/main/schema/vrs.json#/definitions/Location"
+                    "$ref": "https://raw.githubusercontent.com/ga4gh/vrs/main/schema/vrs.json#/$defs/Location"
                 },
                 "referenceBases": {
                     "description": "Reference bases for this variant (starting from `start`). * Accepted values: IUPAC codes for nucleotides (e.g. `https://www.bioinformatics.org/sms/iupac.html`). * N is a wildcard, that denotes the position of any base, and can be used\n  as a standalone base of any type or within a partially known sequence.\n* an *empty value* is used in the case of insertions with the maximally\n  trimmed, inserted sequence being indicated in `AlternateBases`.",
@@ -340,7 +340,7 @@
                 "genomicFeatures": {
                     "description": "List of Genomic feature(s) affected by the variant.",
                     "items": {
-                        "$ref": "#/definitions/GenomicFeature"
+                        "$ref": "#/$defs/GenomicFeature"
                     },
                     "type": "array"
                 },
@@ -368,7 +368,7 @@
             "description": "List of annotated effects on disease or phenotypes.",
             "properties": {
                 "annotatedWith": {
-                    "$ref": "#/definitions/SoftwareTool"
+                    "$ref": "#/$defs/SoftwareTool"
                 },
                 "category": {
                     "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
@@ -508,13 +508,13 @@
             "properties": {
                 "clinicalInterpretations": {
                     "items": {
-                        "$ref": "#/definitions/PhenoClinicEffect"
+                        "$ref": "#/$defs/PhenoClinicEffect"
                     },
                     "type": "array"
                 },
                 "phenotypicEffects": {
                     "items": {
-                        "$ref": "#/definitions/PhenoClinicEffect"
+                        "$ref": "#/$defs/PhenoClinicEffect"
                     },
                     "type": "array"
                 }
@@ -527,21 +527,21 @@
         "caseLevelData": {
             "description": "caseLevelData reports about the variation instances observed in individual analyses.",
             "items": {
-                "$ref": "#/definitions/CaseLevelVariant"
+                "$ref": "#/$defs/CaseLevelVariant"
             },
             "type": "array"
         },
         "frequencyInPopulations": {
             "items": {
-                "$ref": "#/definitions/FrequencyInPopulations"
+                "$ref": "#/$defs/FrequencyInPopulations"
             },
             "type": "array"
         },
         "identifiers": {
-            "$ref": "#/definitions/Identifiers"
+            "$ref": "#/$defs/Identifiers"
         },
         "molecularAttributes": {
-            "$ref": "#/definitions/MolecularAttributes"
+            "$ref": "#/$defs/MolecularAttributes"
         },
         "variantInternalId": {
             "description": "Reference to the **internal** variant ID. This represents the primary key/identifier of that variant **inside** a given Beacon instance. Different Beacon instances may use identical id values, referring to unrelated variants. Public identifiers such as the GA4GH Variant Representation Id (VRSid) MUST be returned in the `identifiers` section. A Beacon instance can, of course, use the VRSid as their own internal id but still MUST represent this then in the `identifiers` section.",
@@ -552,18 +552,18 @@
             "type": "string"
         },
         "variantLevelData": {
-            "$ref": "#/definitions/VariantLevelData"
+            "$ref": "#/$defs/VariantLevelData"
         },
         "variation": {
             "oneOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/MolecularVariation"
+                    "$ref": "https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/$defs/MolecularVariation"
                 },
                 {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/SystemicVariation"
+                    "$ref": "https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/$defs/SystemicVariation"
                 },
                 {
-                    "$ref": "#/definitions/LegacyVariation"
+                    "$ref": "#/$defs/LegacyVariation"
                 }
             ]
         }

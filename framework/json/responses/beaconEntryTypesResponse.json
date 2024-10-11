@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Response including a list of Entry types definitions.",
+    "description": "Response including a list of Entry types $defs.",
     "properties": {
         "meta": {
             "$ref": "./sections/beaconInformationalResponseMeta.json",
