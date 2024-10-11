@@ -3,18 +3,18 @@
     "description": "Section of the response that summarize the request received as it has been interpreted by the Beacon server. This summary can help to identify differences between the incoming request and its interpretation or processing, e.g. in the response granularity or pagination. The required properties include those that should be part of every request.",
     "properties": {
         "apiVersion": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/ApiVersion",
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/ApiVersion",
             "description": "API version expected by the client to be supported by the server and used in the response format."
         },
         "filters": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/Filters",
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/Filters",
             "description": "Filters as submitted in the request."
         },
         "includeResultsetResponses": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses"
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/IncludeResultsetResponses"
         },
         "pagination": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/Pagination",
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/Pagination",
             "description": "Pagination as requested for the results."
         },
         "requestParameters": {
@@ -22,17 +22,17 @@
             "description": "Dictionary of request parameters received in the `RequestBody` or as part of a GET request."
         },
         "requestedGranularity": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/Granularity",
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/Granularity",
             "description": "Requested granularity for the response which may differe from the response's actual granularity."
         },
         "requestedSchemas": {
             "$comment": "TODO: Add the format attribute as a uri.",
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/ListOfSchemas",
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/ListOfSchemas",
             "description": "Set of schemas to be used in the response to a request. `minItems: 0` is used to confirm that an empty array is acceptable here.",
             "minItems": 0
         },
         "testMode": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/TestMode",
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/TestMode",
             "description": "Used for indicating that a request was received in a test context."
         }
     },

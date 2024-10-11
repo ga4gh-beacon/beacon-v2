@@ -5,13 +5,13 @@
     "description": "Time interval with start and end defined as ISO8601 time stamps.",
     "properties": {
         "end": {
-            "$ref": "./commonDefinitions.json#/definitions/Timestamp",
+            "$ref": "./commonDefinitions.json#/$defs/Timestamp",
             "examples": [
                 "2022-03-10T15:25:07Z"
             ]
         },
         "start": {
-            "$ref": "./commonDefinitions.json#/definitions/Timestamp",
+            "$ref": "./commonDefinitions.json#/$defs/Timestamp",
             "examples": [
                 "1999-08-05T17:21:00+01:00",
                 "2002-09-21T02:37:00-08:00"

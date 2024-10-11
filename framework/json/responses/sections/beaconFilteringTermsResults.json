@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "definitions": {
+    "$defs": {
         "FilteringTerm": {
             "description": "Entities can be filtered using this term.",
             "properties": {
@@ -103,13 +103,13 @@
     "properties": {
         "filteringTerms": {
             "items": {
-                "$ref": "#/definitions/FilteringTerm"
+                "$ref": "#/$defs/FilteringTerm"
             },
             "type": "array"
         },
         "resources": {
             "items": {
-                "$ref": "#/definitions/Resource"
+                "$ref": "#/$defs/Resource"
             },
             "type": "array"
         }

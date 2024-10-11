@@ -4,7 +4,7 @@
     "description": "Definition of an element or scope of the element, to describe each type of entry type included in a beacon. The `id` attribute is the key that should be used in other parts of the data model to allow Beacon clients to identify the different parts (e.g. endpoints, filtering terms, request parameters, etc.) that are relvant for an entry type.",
     "properties": {
         "$schema": {
-            "$ref": "../common/beaconCommonComponents.json#/definitions/$schema"
+            "$ref": "../common/beaconCommonComponents.json#/$defs/$schema"
         },
         "aCollectionOf": {
             "description": "If the entry type is a collection of other entities, (e.g. a Dataset is a collection of Records), then this attribute must list the entities that can be included. One _collection_ can include more than one entry type  (e.g. a Dataset in teh Beacon cdefault model could include Individuals, Biosamples, GenomicVariations, Analyses amnd Runs). In such cases in each individual response (e.g. `resultSetsResponse` of collections of type \"dataset\") will contain entries of a single entry type (e.g. biosamples) even if a dataset may contain records of multiple types.",
@@ -47,7 +47,7 @@
             "type": "string"
         },
         "nonFilteredQueriesAllowed": {
-            "$ref": "../common/beaconCommonComponents.json#/definitions/NonFilteredQueriesAllowed"
+            "$ref": "../common/beaconCommonComponents.json#/$defs/NonFilteredQueriesAllowed"
         },
         "ontologyTermForThisType": {
             "$ref": "../common/ontologyTerm.json",

@@ -13,7 +13,7 @@
             "$ref": "./gestationalAge.json"
         },
         {
-            "$ref": "./commonDefinitions.json#/definitions/Timestamp"
+            "$ref": "./commonDefinitions.json#/$defs/Timestamp"
         },
         {
             "$ref": "./timeInterval.json"

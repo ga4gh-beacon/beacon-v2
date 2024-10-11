@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "definitions": {
+    "$defs": {
         "FilterTerm": {
             "properties": {
                 "ftType": {
@@ -52,7 +52,7 @@
         "filteringTerms": {
             "description": "List of filtering terms that could be used to filter this concept in this instance of Beacon.",
             "items": {
-                "$ref": "#/definitions/FilterTerm"
+                "$ref": "#/$defs/FilterTerm"
             },
             "minItems": 0,
             "type": "array"

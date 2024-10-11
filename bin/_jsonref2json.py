@@ -14,7 +14,7 @@
 #   "$comment": "version: ga4gh-beacon-cohort-v2.0.0",
 #   "$schema": "https://json-schema.org/draft/2020-12/schema",
 #   "additionalProperties": true,
-#   "definitions": {
+#   "$defs": {
 #     "CohortCriteria": {
 #       "description": "THIS IS NOT OK",
 #       "properties": {
@@ -30,7 +30,7 @@
 #     "inclusionCriteria": {
 #       "description": "THIS IS OK",
 #       "type": "object",
-#       "$ref": "#/definitions/CohortCriteria"
+#       "$ref": "#/$defs/CohortCriteria"
 #     }
 #   }
 # }
