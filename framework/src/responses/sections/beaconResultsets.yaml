@@ -15,6 +15,7 @@ required:
 additionalProperties: true
 definitions:
   ResultsetInstance:
+    type: object
     properties:
       id:
         description: id of the resultset

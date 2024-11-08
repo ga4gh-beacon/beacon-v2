@@ -115,7 +115,7 @@ definitions:
                 reference: https://www.ncbi.nlm.nih.gov/snp/rs587780345
                 notes: dbSNP id
               - id: ClinGen:CA152954
-                reference: http://reg.clinicalgenome.org/redmine/projects/registry/genboree_registry/by_caid?caid=CA152954
+                reference: https://reg.clinicalgenome.org/redmine/projects/registry/genboree_registry/by_caid?caid=CA152954
                 notes: ClinGen Allele Registry id
               - id: UniProtKB:P35557#VAR_003699
                 reference: https://www.uniprot.org/uniprot/P35557#VAR_003699
@@ -441,7 +441,7 @@ definitions:
         additionalProperties: true
         examples:
           - bio.toolsId: https://bio.tools/vep
-          - url: http://www.ensembl.org/vep
+          - url: https://www.ensembl.org/vep
         minProperties: 1
     required:
       - toolName

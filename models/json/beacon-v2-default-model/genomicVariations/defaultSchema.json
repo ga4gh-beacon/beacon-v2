@@ -237,7 +237,7 @@
                             {
                                 "id": "ClinGen:CA152954",
                                 "notes": "ClinGen Allele Registry id",
-                                "reference": "http://reg.clinicalgenome.org/redmine/projects/registry/genboree_registry/by_caid?caid=CA152954"
+                                "reference": "https://reg.clinicalgenome.org/redmine/projects/registry/genboree_registry/by_caid?caid=CA152954"
                             },
                             {
                                 "id": "UniProtKB:P35557#VAR_003699",
@@ -489,7 +489,7 @@
                             "bio.toolsId": "https://bio.tools/vep"
                         },
                         {
-                            "url": "http://www.ensembl.org/vep"
+                            "url": "https://www.ensembl.org/vep"
                         }
                     ],
                     "minProperties": 1,

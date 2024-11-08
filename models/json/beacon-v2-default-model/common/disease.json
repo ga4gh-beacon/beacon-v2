@@ -6,30 +6,22 @@
             "$ref": "./timeElement.json",
             "examples": [
                 {
-                    "ageGroup": {
-                        "id": "NCIT:C49685",
-                        "label": "Adult 18-65 Years Old"
+                    "id": "NCIT:C49685",
+                    "label": "Adult 18-65 Years Old"
+                },
+                {
+                    "iso8601duration": "P32Y6M1D"
+                },
+                {
+                    "end": {
+                        "iso8601duration": "P59Y"
+                    },
+                    "start": {
+                        "iso8601duration": "P18Y"
                     }
                 },
                 {
-                    "age": {
-                        "iso8601duration": "P32Y6M1D"
-                    }
-                },
-                {
-                    "ageRange": {
-                        "end": {
-                            "iso8601duration": "P59Y"
-                        },
-                        "start": {
-                            "iso8601duration": "P18Y"
-                        }
-                    }
-                },
-                {
-                    "age": {
-                        "iso8601duration": "P2M4D"
-                    }
+                    "iso8601duration": "P2M4D"
                 }
             ]
         },
