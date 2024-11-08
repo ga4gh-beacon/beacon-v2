@@ -3,10 +3,10 @@
     "description": "Payload definition for the \"count\" response.",
     "properties": {
         "exists": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/Exists"
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/Exists"
         },
         "numTotalResults": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/NumTotalResults",
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/NumTotalResults",
             "description": "Total number of results."
         }
     },

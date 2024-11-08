@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "definitions": {
+    "$defs": {
         "EntryTypes": {
             "additionalProperties": {
                 "$ref": "./entryTypeDefinition.json",
@@ -15,10 +15,10 @@
     "description": "Files complaint with this schema are the configuration ones. The details returned in `service-info` are mirroring the ones in this configuration file.",
     "properties": {
         "$schema": {
-            "$ref": "../common/beaconCommonComponents.json#/definitions/$schema"
+            "$ref": "../common/beaconCommonComponents.json#/$defs/$schema"
         },
         "entryTypes": {
-            "$ref": "#/definitions/EntryTypes"
+            "$ref": "#/$defs/EntryTypes"
         },
         "maturityAttributes": {
             "description": "Declares the level of maturity of the Beacon instance.",
@@ -39,7 +39,7 @@
             "description": "Configuration of the security aspects of the Beacon. By default, a Beacon that does not declare the configuration settings would return `boolean` (true/false) responses, and only if the user is authenticated and explicitly authorized to access the Beacon resources. Although this is the safest set of settings, it is not recommended unless the Beacon shares very sensitive information. Non sensitive Beacons should preferably opt for a `record` and `PUBLIC` combination.",
             "properties": {
                 "defaultGranularity": {
-                    "$ref": "../common/beaconCommonComponents.json#/definitions/Granularity",
+                    "$ref": "../common/beaconCommonComponents.json#/$defs/Granularity",
                     "description": "Default granularity. Some responses could return higher detail, but this would be the granularity by default."
                 },
                 "securityLevels": {
