@@ -1,8 +1,8 @@
 {
-    "$comment": "TO DO: The tagged parts should reference to `common/ontologizedElement.json`. But that configuration fails to validate. Further investigation is required, but should not affect the resulting schema.",
+    "$comment": "TODO: The tagged parts should reference to `common/ontologizedElement.json`. But that configuration fails to validate. Further investigation is required, but should not affect the resulting schema.'",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Definition of an element or entry type including the Beacon v2 required and suggested attributes. This schema purpose is to  describe each type of entities included in a Beacon, hence Beacon clients could have some metadata about such entities.\n\nThe `id` attribute is the key that should be used in other parts of the Beacon Model to allow Beacon clients to identify the different parts (e.g. endpoints, filteringTerms, request parameters, etc.) that fully describe an entry type.",
+    "description": "Definition of an element or entry type including the Beacon v2 required and suggested attributes. This schema purpose is to  describe each type of entities included in a Beacon, hence Beacon clients could have some metadata about such entities.  \nThe `id` attribute is the key that should be used in other parts of the Beacon Model to allow Beacon clients to identify the different parts (e.g. endpoints, filteringTerms, request parameters, etc.) that fully describe an entry type.",
     "properties": {
         "$schema": {
             "$ref": "../common/beaconCommonComponents.json#/$defs/$schema"
