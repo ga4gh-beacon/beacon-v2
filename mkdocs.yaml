@@ -21,6 +21,8 @@ nav:
         - Changes: changes-todo
         - FAQ &#8599;: https://genomebeacons.org/FAQ/
         - Beacon News &#8599;: https://genomebeacons.org/news/
+        - Help:
+            - How to describe a pedigree: pedigree
     - Using Beacons:
         - Genomic Queries: variant-queries
         - Phenotypes and More...: /filters/#using-filters-in-queries
