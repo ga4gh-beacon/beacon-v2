@@ -3,7 +3,7 @@
 The JSON schema for the pedigree data (*pedigree.json*) defines how members of a pedigree (family tree) are represented. It includes several key components:
 1. **"id"**: A unique identifier for the **pedigree**, which is distinct from a family ID. This is because one individual can be involved in multiple pedigrees related to different diseases.
 <figure>
-<img src="./docs/img/Pedigree-image1.jpg" alt="Example schema"/>
+<img src="/docs/img/Pedigree-image1.jpg" alt="Example schema"/>
 </figure>
 
 *Example: in case a proband (Proband 1) is affected by two diseases segregating in the family, they can be found in two pedigrees related to these different diseases (pedigree drawn here from the Proband 1 perspective showing all family members).*
