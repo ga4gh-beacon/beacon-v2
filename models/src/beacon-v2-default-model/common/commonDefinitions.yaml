@@ -2,7 +2,7 @@ $schema: https://json-schema.org/draft/2020-12/schema
 title: Common Definitions
 description: Definitions for concepts used in several entry types, but that having
   only one property are not complex enough to require a full independent schema document.
-definitions:
+$defs:
   Sex:
     description: 'Sex of the individual. Recommended values from NCIT General Qualifier
       (NCIT:C27993): "unknown" (not assessed or not available) - NCIT:C17998; "female"

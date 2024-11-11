@@ -8,13 +8,13 @@ description: >-
   to be chained by the logical AND operator.
 type: array
 items:
-  $ref: '#/definitions/FilteringTerm'
-definitions:
+  $ref: '#/$defs/FilteringTerm'
+$defs:
   FilteringTerm:
     anyOf:
-      - $ref: '#/definitions/OntologyFilter'
-      - $ref: '#/definitions/AlphanumericFilter'
-      - $ref: '#/definitions/CustomFilter'  
+      - $ref: '#/$defs/OntologyFilter'
+      - $ref: '#/$defs/AlphanumericFilter'
+      - $ref: '#/$defs/CustomFilter'  
   OntologyFilter:
     type: object
     description: Filter results to include records that contain a specific ontology

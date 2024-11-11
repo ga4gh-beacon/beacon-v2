@@ -28,7 +28,7 @@ paths:
         default:
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get a list of example entries
+      description: Get a Beacon response for individuals
       operationId: postIndividualsRequest
       tags:
         - POST Endpoints
@@ -48,7 +48,8 @@ paths:
     parameters:
       - $ref: '#/components/parameters/entryId'
     get:
-      description: Get details about one individual, identified by its (unique) 'id'
+      description: >-
+        Get details about one individual, identified by its (unique) 'id'
       operationId: getOneIndividual
       tags:
         - GET Endpoints
@@ -59,7 +60,8 @@ paths:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get details about one Individual, identified by its (unique) 'id'
+      description: >-
+        Get details about one individual, identified by its (unique) 'id'
       operationId: postOneIndividual
       tags:
         - POST Endpoints
@@ -83,7 +85,8 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the genomic variants list from one individual, identified by
+      description: >-
+        Get a *genomic variations* response for one individual, identified by
         its (unique) 'id'
       operationId: getOneIndividualGenomicVariants
       tags:
@@ -95,7 +98,8 @@ paths:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the genomic variants list from one individual, identified by
+      description: >-
+        Get a *genomic variations* response for one individual, identified by
         its (unique) 'id'
       operationId: potOneIndividualGenomicVariants
       tags:
@@ -120,7 +124,8 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the biosamples list from one individual, identified by its
+      description: >-
+        Get a *biosamples* response for one individual, identified by its
         (unique) 'id'
       operationId: getOneIndividualBiosamples
       tags:
@@ -132,7 +137,8 @@ paths:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the biosamples list from one individual, identified by its
+      description: >-
+        Get a *biosamples* response for one individual, identified by its
         (unique) 'id'
       operationId: postOneIndividualBiosamples
       tags:
@@ -214,14 +220,14 @@ components:
       name: skip
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Skip
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Skip
     limit:
       name: limit
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Limit
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Limit
     includeResultsetResponses:
-      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses
+      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/IncludeResultsetResponses
     entryId:
       name: id
       in: path
