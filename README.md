@@ -33,6 +33,7 @@ There is a set of tools in [`/bin`](./bin/) to facilitate the conversion. ATM, a
 ## 2.1.1
 
 *Released, October, 8, 2024*
+[Beacon-v2.1.1](https://github.com/ga4gh-beacon/beacon-v2/tree/5ea17fbd0d2ba533aa1e85f7271f9a2cc9be6794)
 
 * Changed uri for uri-template in Endpoint.singleEntryUrl
 
@@ -40,6 +41,7 @@ There is a set of tools in [`/bin`](./bin/) to facilitate the conversion. ATM, a
 ## 2.1.0
 
 *Released, July, 19, 2024*
+[Beacon-v2.1.0](https://github.com/ga4gh-beacon/beacon-v2/tree/16862205c79294fae5473f7fa330bf5929b3b120)
 
 * Relocated TypedQuantity required to proper level of the schema for complexValue
 * Added end and start entities for ageRange and iso8601duration for age
@@ -48,6 +50,7 @@ There is a set of tools in [`/bin`](./bin/) to facilitate the conversion. ATM, a
 ## 2.0.1
 
 *Released July, 16, 2024*
+[Beacon-v2.0.1](https://github.com/ga4gh-beacon/beacon-v2/tree/f6f85c445922831bd398552384593206c86287de)
 
 * Replaced ENSGLOSSARY for SO ontology family in documentation examples
 * Moved CURIE to beaconCommonComponents
@@ -58,6 +61,7 @@ There is a set of tools in [`/bin`](./bin/) to facilitate the conversion. ATM, a
 ## 2.0.0
 
 *Released June, 21, 2022*
+[Beacon-v2.0.0](https://github.com/ga4gh-beacon/beacon-v2/tree/d07ef1626321f7428374a4f68d864dfa5e98370f)
 
 * change notes with respect to the repository & documentation are now in [docs.genomebeacons.org](https://docs.genomebeacons.org/changes-todo/)
 * NOTE: on 2022-06-20 the previous development repositories have been archived:
