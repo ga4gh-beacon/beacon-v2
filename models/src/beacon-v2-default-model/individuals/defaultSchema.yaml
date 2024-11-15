@@ -9,9 +9,11 @@ properties:
     type: string
     example: P0001
   sex:
-    description: "Sex of the individual. Value from NCIT General Qualifier (NCIT:C27993):\
-      \ 'unknown' (not assessed or not available) (NCIT:C17998), 'female' (NCIT:C16576),\
-      \ or 'male', (NCIT:C20197)."
+    description: >-
+      Sex of the individual. Value from NCIT General Qualifier `NCIT:C27993`:   
+      * `unknown`: not assessed or not availablel `NCIT:C17998`
+      * `female`: `NCIT:C16576)`
+      * `male`: `NCIT:C20197`
     $ref: ../common/commonDefinitions.yaml#/$defs/Sex
   karyotypicSex:
     description: The chromosomal sex of an individual represented from a selection
@@ -60,7 +62,7 @@ properties:
     items:
       $ref: ../common/exposure.yaml
   info:
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Info
+    $ref: ../common/info.yaml
 required:
   - id
   - sex
