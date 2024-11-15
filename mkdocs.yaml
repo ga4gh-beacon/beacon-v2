@@ -24,6 +24,7 @@ nav:
     - Using Beacons:
         - Genomic Queries: variant-queries
         - Phenotypes and More...: /filters/#using-filters-in-queries
+        - Pedigrees: pedigree
         - Data Delivery:
             - Biosamples, Variants...: records
             - Data Handovers: handovers
