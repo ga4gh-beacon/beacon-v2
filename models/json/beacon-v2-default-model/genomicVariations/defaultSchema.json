@@ -272,7 +272,7 @@
                     "type": "string"
                 },
                 "location": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh/vrs/main/schema/vrs.json#/definitions/Location"
+                    "$ref": "https://w3id.org/ga4gh/schema/vrs/1.2/vrs.json#/definitions/Location"
                 },
                 "referenceBases": {
                     "description": "Reference bases for this variant (starting from `start`). * Accepted values: IUPAC codes for nucleotides (e.g. `https://www.bioinformatics.org/sms/iupac.html`). * N is a wildcard, that denotes the position of any base, and can be used\n  as a standalone base of any type or within a partially known sequence.\n* an *empty value* is used in the case of insertions with the maximally\n  trimmed, inserted sequence being indicated in `AlternateBases`.",
@@ -557,10 +557,10 @@
         "variation": {
             "oneOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/MolecularVariation"
+                    "$ref": "https://w3id.org/ga4gh/schema/vrs/1.2/vrs.json#/definitions/MolecularVariation"
                 },
                 {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/SystemicVariation"
+                    "$ref": "https://w3id.org/ga4gh/schema/vrs/1.2/vrs.json#/definitions/SystemicVariation"
                 },
                 {
                     "$ref": "#/$defs/LegacyVariation"

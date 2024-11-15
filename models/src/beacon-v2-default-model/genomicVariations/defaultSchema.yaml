@@ -10,8 +10,8 @@ required:
 properties:
   variation:
     oneOf:
-      - $ref: https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/MolecularVariation
-      - $ref: https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/SystemicVariation
+      - $ref: https://w3id.org/ga4gh/schema/vrs/1.2/vrs.json#/definitions/MolecularVariation
+      - $ref: https://w3id.org/ga4gh/schema/vrs/1.2/vrs.json#/definitions/SystemicVariation
       - $ref: '#/$defs/LegacyVariation'
   variantInternalId:
     description: >-
@@ -51,7 +51,7 @@ $defs:
       - location
     properties:
       location:
-        $ref: https://raw.githubusercontent.com/ga4gh/vrs/main/schema/vrs.json#/definitions/Location
+        $ref: https://w3id.org/ga4gh/schema/vrs/1.2/vrs.json#/definitions/Location
       variantType:
         description: >-
           The `variantType` declares the nature of the variation in relation
