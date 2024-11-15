@@ -1,0 +1,1980 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for Beacon v2">
+      
+      
+        <meta name="author" content="Michael Baudis, Manuel Rueda, Laureen Fromont & Beacon Developers">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../img/ga4gh_circle.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+    
+    
+      
+        <title>Genomic Variant Queries - Beacon v2 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/theme_overrides.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#beacon-sequence-queries" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Beacon v2 Documentation" class="md-header__button md-logo" aria-label="Beacon v2 Documentation" data-md-component="logo">
+      
+  <img src="../img/GA-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Beacon v2 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Genomic Variant Queries
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ga4gh-beacon/beacon-v2" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+  </div>
+  <div class="md-source__repository">
+    beacon-v2
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Beacon v2 Documentation" class="md-nav__button md-logo" aria-label="Beacon v2 Documentation" data-md-component="logo">
+      
+  <img src="../img/GA-logo.png" alt="logo">
+
+    </a>
+    Beacon v2 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ga4gh-beacon/beacon-v2" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+  </div>
+  <div class="md-source__repository">
+    beacon-v2
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Introducing Beacon
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Introducing Beacon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About Beacon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../beacon-flavours" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Beacon Types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../networks" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Beacon Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changes-todo" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://genomebeacons.org/FAQ/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ &#8599;
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://genomebeacons.org/news/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Beacon News &#8599;
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Using Beacons
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Using Beacons
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Genomic Queries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/filters/#using-filters-in-queries" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phenotypes and More...
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pedigree" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pedigrees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data Delivery
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Data Delivery
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../records" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Biosamples, Variants...
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../handovers" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Handovers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rest-api" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    REST API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Creating Beacons
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Creating Beacons
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../implementations-options" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Implementations Options
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Implementation Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Implementation Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://b2ri-documentation.readthedocs.io/en/latest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference Implementation &#8599;
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../other-implementations" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Others
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../formats-standards" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standards Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filters" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Beacon Components
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Beacon Components
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../framework" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Beacon Data Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_3" id="__nav_3_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Default Schemas
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Default Schemas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/analyses_defaultSchema" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Analyses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/biosamples_defaultSchema" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Biosamples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/cohorts_defaultSchema" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cohorts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/datasets_defaultSchema" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Datasets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/genomicVariations_defaultSchema" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Genomic Variations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/individuals_defaultSchema" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Individuals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/runs_defaultSchema" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Runs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/beacon_terms" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Terms List
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Beacon Development
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Beacon Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribute" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Contribute
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-organization" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repository and Branch Organization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/ga4gh-beacon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Github Repositories &#8599;
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#beacon-sequence-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beacon Sequence Queries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beacon-range-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beacon Range Queries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beacon-geneid-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beacon GeneId Queries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beacon-bracket-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beacon Bracket Queries
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#genomic-allele-query-short-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      Genomic Allele Query (Short Form)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aminoacid-change-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aminoacid Change Query
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#varianttype-parameter-interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      variantType Parameter Interpretation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cnv-term-use-comparison-in-computational-fileschema-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      CNV Term Use Comparison in Computational (File/Schema) Formats
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-parameter-change-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Query Parameter Change Log
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Query Parameter Change Log">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#beacon-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beacon v2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beacon-v1-based-on-v04" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beacon v1 (based on v0.4)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="genomic-variant-queries">Genomic Variant Queries<a class="headerlink" href="#genomic-variant-queries" title="Permanent link">&para;</a></h1>
+<p>For querying of genomic variations Beacon v2 builds on and extends the options provided
+by earlier versions.</p>
+<h2 id="beacon-sequence-queries">Beacon <em>Sequence Queries</em><a class="headerlink" href="#beacon-sequence-queries" title="Permanent link">&para;</a></h2>
+<p><em>Sequence Queries</em> query for the existence of a specified sequence at a given genomic
+position. Such queries correspond to the original Beacon queries and are used to match
+short, precisely defined genomic variants such as SNVs and INDELs.</p>
+<h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>referenceName</code></li>
+<li><code>start</code> (single value)</li>
+<li><code>alternateBases</code></li>
+<li><code>referenceBases</code></li>
+</ul>
+<h4 id="example-eif4a1-single-base-mutation">Example: <em>EIF4A1</em> Single Base Mutation<a class="headerlink" href="#example-eif4a1-single-base-mutation" title="Permanent link">&para;</a></h4>
+<p>This is an example for a single base mutation (<code>G&gt;A</code>) at a specific position (GRCh38 chromosome 17 <code>7577120</code>)
+in the <em>EIF4A1</em> eukaryotic translation initiation factor 4A1.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Beacon v2 GET</label><label for="__tabbed_1_2">Beacon v2 POST</label><label for="__tabbed_1_3">Beacon v1</label><label for="__tabbed_1_4">Beacon v0.3</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>?referenceName=NC_000017.11&amp;start=7577120&amp;referenceBases=G&amp;alternateBases=A
+</code></pre></div>
+<h4 id="optional">Optional<a class="headerlink" href="#optional" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>datasetIds=__some-dataset-ids__</code></li>
+<li><code>filters</code> ...</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>{
+    &quot;$schema&quot;:&quot;beaconRequestBody.json&quot;,
+    &quot;meta&quot;: {
+        &quot;apiVersion&quot;: &quot;2.0&quot;,
+        &quot;requestedSchemas&quot;: [
+            {
+                &quot;entityType&quot;: &quot;genomicVariation&quot;,
+                &quot;schema:&quot;: &quot;https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json&quot;
+            }
+        ]
+    },
+    &quot;query&quot;: {
+        &quot;requestParameters&quot;: {
+            &quot;g_variant&quot;: {
+                &quot;referenceName&quot;: &quot;NC_000017.11&quot;,
+                &quot;start&quot;: [7577120],
+                &quot;referenceBases&quot;: &quot;G&quot;,
+                &quot;alternateBases&quot;: &quot;A&quot;
+            }
+        }
+    },
+    &quot;requestedGranularity&quot;: &quot;record&quot;,
+    &quot;pagination&quot;: {
+        &quot;skip&quot;: 0,
+        &quot;limit&quot;: 5
+    }
+}
+</code></pre></div>
+<p>There are optional parameters [<code>datasetIds</code>, <code>filters</code> ...] and also the option to specify the response type
+(through <code>requestedGranularity</code>) and returned data format (<code>requestedSchemas</code>). Please follow this up in the
+<a href="../framework/">framework documentation</a>.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>?assemblyId=GRCh38&amp;referenceName=17&amp;start=7577120&amp;referenceBases=G&amp;alternateBases=A
+</code></pre></div>
+<h4 id="optional_1">Optional<a class="headerlink" href="#optional_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>datasetIds=__some-dataset-ids__</code></li>
+</ul>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>?ref=GRCh38&amp;chrom=17&amp;pos=7577121&amp;referenceAllele=C&amp;allele=A
+</code></pre></div>
+<h4 id="optional_2">Optional<a class="headerlink" href="#optional_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>beacon=__some-beacon-id__</code></li>
+</ul>
+<p>Before Beacon v0.4 a 1-based coordinate system was being used.</p>
+</div>
+</div>
+</div>
+<h2 id="beacon-range-queries">Beacon <em>Range Queries</em><a class="headerlink" href="#beacon-range-queries" title="Permanent link">&para;</a></h2>
+<p>Beacon <em>Range Queries</em> are supposed to return matches of any variant with at least
+partial overlap of the sequence range specified by <code>reference_name</code>, <code>start</code> and <code>end</code>
+parameters.</p>
+<p><img alt="Beacon Range Query Schema" src="../img/BeaconRangeQuery-graphics.png" /></p>
+<h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>referenceName</code></li>
+<li><code>start</code> (<strong>single</strong> value)</li>
+<li><code>end</code> (<strong>single</strong> value)</li>
+<li>optional<ul>
+<li><code>variantType</code> <strong>OR</strong> <code>alternateBases</code> <strong>OR</strong> <code>aminoacidChange</code></li>
+<li><code>variantMinLength</code></li>
+<li><code>variantMaxLength</code></li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Use of <code>start</code> and <code>end</code></p>
+<p>Range queries require the use of <strong>single</strong> <code>start</code> and <code>end</code> parameters, in contrast
+to <em>Bracket Queries</em>.</p>
+</div>
+<h4 id="example-any-variant-affecting-eif4a1">Example: Any variant affecting <em>EIF4A1</em><a class="headerlink" href="#example-any-variant-affecting-eif4a1" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Beacon v2 GET</label><label for="__tabbed_2_2">Beacon v2 POST</label><label for="__tabbed_2_3">Beacon v1</label><label for="__tabbed_2_4">Beacon v0.3</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>?assemblyId=GRCh38&amp;referenceName=17&amp;start=7572837&amp;end=7578641
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>{
+    &quot;$schema&quot;:&quot;https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json&quot;,
+    &quot;meta&quot;: {
+        &quot;apiVersion&quot;: &quot;2.0&quot;,
+        &quot;requestedSchemas&quot;: [
+            {
+                &quot;entityType&quot;: &quot;genomicVariation&quot;,
+                &quot;schema:&quot;: &quot;https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json&quot;
+            }
+        ]
+    },
+    &quot;query&quot;: {
+        &quot;requestParameters&quot;: {
+            &quot;g_variant&quot;:
+                &quot;referenceName&quot;: &quot;NC_000017.11&quot;,
+                &quot;start&quot;: [ 7572837 ],
+                &quot;end&quot;: [ 7578641 ]
+            }
+        }
+    },
+    &quot;requestedGranularity&quot;: &quot;record&quot;,
+    &quot;pagination&quot;: {
+        &quot;skip&quot;: 0,
+        &quot;limit&quot;: 5
+    }
+}
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Range Queries are new to Beacon v2</p>
+</div>
+<div class="tabbed-block">
+<p>Range Queries are new to Beacon v2</p>
+</div>
+</div>
+</div>
+<h2 id="beacon-geneid-queries">Beacon <em>GeneId Queries</em><a class="headerlink" href="#beacon-geneid-queries" title="Permanent link">&para;</a></h2>
+<p><em>GeneId Queries</em> are in essence a variation of <em>Range Queries</em> in which the coordinates
+are replaced by the <a href="https://www.genenames.org">HGNC</a> gene symbol. It is left to the
+implementation if the matching is done on variants annotated for the gene symbol or if
+a positional translation is being applied.</p>
+<p><img alt="Beacon Gene Query Schema" src="../img/BeaconGeneQuery-graphics.png" /></p>
+<h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>geneId</code></li>
+<li>optional<ul>
+<li><code>variantType</code> <strong>OR</strong> <code>alternateBases</code> <strong>OR</strong> <code>aminoacidChange</code></li>
+<li><code>variantMinLength</code></li>
+<li><code>variantMaxLength</code></li>
+</ul>
+</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Beacon v2 GET for <code>geneId</code> (deletion CNV)</label><label for="__tabbed_3_2">Beacon v2 POST for <code>geneId</code> (deletion CNV)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>?geneId=EIF4A1&amp;variantMaxLength=1000000&amp;variantType=DEL
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>{
+    &quot;$schema&quot;:&quot;https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json&quot;,
+    &quot;meta&quot;: {
+        &quot;apiVersion&quot;: &quot;2.0&quot;,
+        &quot;requestedSchemas&quot;: [
+            {
+                &quot;entityType&quot;: &quot;genomicVariation&quot;,
+                &quot;schema:&quot;: &quot;https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json&quot;
+            }
+        ]
+    },
+    &quot;query&quot;: {
+        &quot;requestParameters&quot;: {
+            &quot;g_variant&quot;:
+                &quot;geneId&quot;: &quot;EIF4A1&quot;,
+                &quot;variantType&quot;: &quot;EFO:0030067&quot;
+            }
+        }
+    },
+    &quot;requestedGranularity&quot;: &quot;record&quot;,
+    &quot;pagination&quot;: {
+        &quot;skip&quot;: 0,
+        &quot;limit&quot;: 5
+    }
+}
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="beacon-bracket-queries">Beacon <em>Bracket Queries</em><a class="headerlink" href="#beacon-bracket-queries" title="Permanent link">&para;</a></h2>
+<p><em>Bracket Queries</em> allow the specification of sequence ranges for both start and end
+positions of a genomic variation. The typical example here is the query for similar
+structural variants - particularly CNVs - affecting a genomic region but potentially
+differing in their exact base extents.</p>
+<p><img alt="Beacon Bracket Query Schema" src="../img/BeaconBracketQuery-limited-match-graphics.png" /></p>
+<h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>referenceName</code></li>
+<li><code>start</code> (min) and <code>start</code> (max) - i.e. 2 start parameters</li>
+<li><code>end</code> (min) and <code>end</code> (max) - i.e. 2 end parameters</li>
+<li><code>variantType</code> (optional)</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Use of <code>start</code> and <code>end</code></p>
+<p>Bracket queries require the use of <strong>two</strong> <code>start</code> and <code>end</code> parameters, in contrast
+to <em>Range Queries</em>.</p>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">List Parameters in GET Requests</p>
+<p>Since the direct interpretation of list parameters in queries is not supported by
+some server environments (e.g. PHP, GO…), list parameters such as <code>start</code> and <code>end</code>
+should be provided as <strong>comma-concatenated</strong> strings when using them in GET requests.</p>
+</div>
+<h4 id="example-cnv-query-tp53-deletion-query-by-coordinates">Example: CNV Query - <em>TP53</em> Deletion Query by Coordinates<a class="headerlink" href="#example-cnv-query-tp53-deletion-query-by-coordinates" title="Permanent link">&para;</a></h4>
+<p>The following example shows a "bracket query" for focal deletions of the <em>TP53</em> gene locus:</p>
+<ul>
+<li>The start of the deletion has to occurr anywhere from approx. 2.5Mb 5' of the CDR start to just before the end of the CDR.</li>
+<li>The end of the matched CNVs has to be anywhere from the start of the gene locus to approx. 2.5Mb 3' of its end.</li>
+</ul>
+<p>This leads to matching of deletion CNVs which have at least some base overlap with the gene locus but are not
+larger than approx. 5Mb (operational definitions of focality vary between 1 and 5Mb).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Beacon v2 GET</label><label for="__tabbed_4_2">Beacon v2 POST</label><label for="__tabbed_4_3">Beacon v1</label><label for="__tabbed_4_4">Beacon v0.3</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>?datasetIds=TEST&amp;referenceName=NC_000017.11&amp;variantType=DEL&amp;start=5000000,7676592&amp;end=7669607,10000000
+</code></pre></div>
+<h4 id="optional_3">Optional<a class="headerlink" href="#optional_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>datasetIds=__some-dataset-ids__</code></li>
+<li><code>filters</code> ...</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="s2">&quot;https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;requestedSchemas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;entityType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;genomicVariation&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;schema:&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/models/json/beacon-v2-default-model/genomicVariations/defaultSchema.json&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;requestParameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;g_variant&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;referenceName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NC_000017.11&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">5000000</span><span class="p">,</span><span class="w"> </span><span class="mi">7676592</span><span class="w"> </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">7669607</span><span class="p">,</span><span class="w"> </span><span class="mi">10000000</span><span class="w"> </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;variantType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DEL&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;requestedGranularity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;record&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;pagination&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;skip&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>There are optional parameters [<code>datasetIds</code>, <code>filters</code> ...] and also the option to specify the response type
+(through <code>requestedGranularity</code>) and returned data format (<code>requestedSchemas</code>). Please follow this up in the
+<a href="../framework/">framework documentation</a>.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>?assemblyId=GRCh38&amp;referenceName=17&amp;variantType=DEL&amp;start=5000000,7676592&amp;end=7669607,10000000
+</code></pre></div>
+<h4 id="optional_4">Optional<a class="headerlink" href="#optional_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>datasetIds=__some-dataset-ids__</code></li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>CNV query options were only implemented with Beacon v0.4, based on Beacon<sup>+</sup> prototyping.</p>
+</div>
+</div>
+</div>
+<h2 id="genomic-allele-query-short-form">Genomic Allele Query (Short Form)<a class="headerlink" href="#genomic-allele-query-short-form" title="Permanent link">&para;</a></h2>
+<p>When available variants can be identified through their genomic HGVS short form.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Beacon v2 GET</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>?genomicAlleleShortForm=NM_004006.2:c.4375C&gt;T
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="aminoacid-change-query">Aminoacid Change Query<a class="headerlink" href="#aminoacid-change-query" title="Permanent link">&para;</a></h2>
+<p>Annotated variants can potentiallyqueried using the single amino acid replacement
+format. The <code>aminoacidChange</code> parameter may be combined with e.g. a <code>geneId</code> to increase
+specificity</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Beacon v2 GET</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>?aminoacidChange=V600E&amp;geneId=BRAF
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="varianttype-parameter-interpretation"><code>variantType</code> Parameter Interpretation<a class="headerlink" href="#varianttype-parameter-interpretation" title="Permanent link">&para;</a></h2>
+<p>The <code>variantType</code> parameter is essential for scoping queries beyond precise sequence
+queries. While versions of Beacon before v2 had demonstrated the use of a few, VCF
+derived values (particularly for CNV queries using <code>DUP</code> or <code>DEL</code>), the relation of these
+values to underlying genomic variations had not been precisely defined.</p>
+<div class="admonition attention">
+<p class="admonition-title">Implementation of <code>variantType</code> in Beacon Instances</p>
+<p>The current Beacon query model does not limit the use of values for <code>variantType</code> since
+at this time no single specification provides unanimous definitions
+of genomic variation categories. </p>
+</div>
+<details class="note">
+<summary>Future <code>variantType</code> parameter use</summary>
+<p>While for legacy reasons and widespread use of VCFs as input source Beacon v2 documents
+the use of VCF-like terms, in principle other variant terms can be used (though with possibly negative
+implications in federated settings). The field of structural genomic variant annotations is rapidly
+developing, with more specific terms now becoming available e.g. through the
+Experimental Factor Ontology or the GA4GH Variant Representation Standard VRS
+(which ligns with the main EFO terms).</p>
+</details>
+<h2 id="cnv-term-use-comparison-in-computational-fileschema-formats">CNV Term Use Comparison in Computational (File/Schema) Formats<a class="headerlink" href="#cnv-term-use-comparison-in-computational-fileschema-formats" title="Permanent link">&para;</a></h2>
+<p>This table is maintained in parallel with the <a href="https://cnvar.org/resources/CNV-annotation-standards/#cnv-term-use-comparison-in-computational-fileschema-formats">hCNV community documentation</a>.</p>
+<table>
+<thead>
+<tr>
+<th><a href="http://www.ebi.ac.uk/efo/EFO_0030063">EFO</a></th>
+<th>Beacon</th>
+<th><a href="https://samtools.github.io/hts-specs/">VCF</a></th>
+<th>SO</th>
+<th>GA4GH <a href="https://vrs.ga4gh.org/en/latest/terms_and_model.html#copynumberchange">VRS</a><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><nobr><a href="http://www.ebi.ac.uk/efo/EFO_0030070"><code>EFO:0030070</code></a></nobr> copy number gain</td>
+<td><code>DUP</code><sup id="fnref8:2"><a class="footnote-ref" href="#fn:2">2</a></sup> or<br/><nobr><a href="http://www.ebi.ac.uk/efo/EFO_0030070"><code>EFO:0030070</code></a></nobr></td>
+<td><code>DUP</code><br/><nobr><code>SVCLAIM=D</code><sup id="fnref8:3"><a class="footnote-ref" href="#fn:3">3</a></sup></nobr></td>
+<td><a href="http://www.sequenceontology.org/browser/current_release/term/SO:0001742"><code>SO:0001742</code></a> copy_number_gain</td>
+<td><nobr><a href="http://www.ebi.ac.uk/efo/EFO_0030070"><code>EFO:0030070</code></a> gain</td>
+<td>a sequence alteration whereby the copy number of a given genomic region is greater than the reference sequence</td>
+</tr>
+<tr>
+<td><a href="http://www.ebi.ac.uk/efo/EFO_0030071"><code>EFO:0030071</code></a> low-level copy number gain</td>
+<td><code>DUP</code><sup id="fnref7:2"><a class="footnote-ref" href="#fn:2">2</a></sup> or<br/><nobr><a href="http://www.ebi.ac.uk/efo/EFO_0030071"><code>EFO:0030071</code></a></nobr></td>
+<td><code>DUP</code><br/><nobr><code>SVCLAIM=D</code><sup id="fnref7:3"><a class="footnote-ref" href="#fn:3">3</a></sup></nobr></td>
+<td><a href="http://www.sequenceontology.org/browser/current_release/term/SO:0001742"><code>SO:0001742</code></a> copy_number_gain</td>
+<td><nobr><a href="http://www.ebi.ac.uk/efo/EFO_0030071"><code>EFO:0030071</code></a></nobr> low-level gain</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.ebi.ac.uk/efo/EFO_0030072"><code>EFO:0030072</code></a> high-level copy number gain</td>
+<td><code>DUP</code><sup id="fnref6:2"><a class="footnote-ref" href="#fn:2">2</a></sup> or<br/><nobr><a href="http://www.ebi.ac.uk/efo/EFO_0030072"><code>EFO:0030072</code></a></nobr></td>
+<td><code>DUP</code><br/><nobr><code>SVCLAIM=D</code><sup id="fnref6:3"><a class="footnote-ref" href="#fn:3">3</a></sup></nobr></td>
+<td><a href="http://www.sequenceontology.org/browser/current_release/term/SO:0001742"><code>SO:0001742</code></a> copy_number_gain</td>
+<td><nobr><a href="http://www.ebi.ac.uk/efo/EFO_0030072"><code>EFO:0030072</code></a></nobr> high-level gain</td>
+<td>commonly but not consistently used for &gt;=5 copies on a bi-allelic genome region</td>
+</tr>
+<tr>
+<td><a href="http://www.ebi.ac.uk/efo/EFO_0030073"><code>EFO:0030073</code></a> focal genome amplification</td>
+<td><code>DUP</code><sup id="fnref5:2"><a class="footnote-ref" href="#fn:2">2</a></sup> or<br/><nobr><a href="http://www.ebi.ac.uk/efo/EFO_0030073"><code>EFO:0030073</code></a></nobr></td>
+<td><code>DUP</code><br/><nobr><code>SVCLAIM=D</code><sup id="fnref5:3"><a class="footnote-ref" href="#fn:3">3</a></sup></nobr></td>
+<td><a href="http://www.sequenceontology.org/browser/current_release/term/SO:0001742"><code>SO:0001742</code></a> copy_number_gain</td>
+<td><nobr><a href="http://www.ebi.ac.uk/efo/EFO_0030072"><code>EFO:0030072</code></a></nobr> high-level gain<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></td>
+<td>commonly but not consistently used for &gt;=5 copies on a bi-allelic genome region, of limited size (operationally max. 1-5Mb)</td>
+</tr>
+<tr>
+<td><a href="http://www.ebi.ac.uk/efo/EFO_0030067"><code>EFO:0030067</code></a> copy number loss</td>
+<td><code>DEL</code><sup id="fnref4:2"><a class="footnote-ref" href="#fn:2">2</a></sup> or<br/><nobr><a href="http://www.ebi.ac.uk/efo/EFO_0030067"><code>EFO:0030067</code></a></nobr></td>
+<td><code>DEL</code><br/><nobr><code>SVCLAIM=D</code><sup id="fnref4:3"><a class="footnote-ref" href="#fn:3">3</a></sup></nobr></td>
+<td><a href="http://www.sequenceontology.org/browser/current_release/term/SO:0001743"><code>SO:0001743</code></a> copy_number_loss</td>
+<td><nobr><a href="http://www.ebi.ac.uk/efo/EFO_0030067"><code>EFO:0030067</code></a></nobr> loss</td>
+<td>a sequence alteration whereby the copy number of a given genomic region is smaller than the reference sequence</td>
+</tr>
+<tr>
+<td><a href="http://www.ebi.ac.uk/efo/EFO_0030068"><code>EFO:0030068</code></a> low-level copy number loss</td>
+<td><code>DEL</code><sup id="fnref3:2"><a class="footnote-ref" href="#fn:2">2</a></sup> or<br/><nobr><a href="http://www.ebi.ac.uk/efo/EFO_0030068"><code>EFO:0030068</code></a></nobr></td>
+<td><code>DEL</code><br/><nobr><code>SVCLAIM=D</code><sup id="fnref3:3"><a class="footnote-ref" href="#fn:3">3</a></sup></nobr></td>
+<td><a href="http://www.sequenceontology.org/browser/current_release/term/SO:0001743"><code>SO:0001743</code></a> copy_number_loss</td>
+<td><nobr><a href="http://www.ebi.ac.uk/efo/EFO_0030068"><code>EFO:0030068</code></a></nobr> low-level loss</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://www.ebi.ac.uk/efo/EFO_0020073"><code>EFO:0020073</code></a> high-level copy number loss</td>
+<td><code>DEL</code><sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup> or<br/><nobr><a href="https://github.com/EBISPOT/efo/issues/1941"><code>EFO:0020073</code></a></nobr></td>
+<td><code>DEL</code><br/><nobr><code>SVCLAIM=D</code><sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup></nobr></td>
+<td><a href="http://www.sequenceontology.org/browser/current_release/term/SO:0001743"><code>SO:0001743</code></a> copy_number_loss</td>
+<td><nobr><a href="https://github.com/EBISPOT/efo/issues/1941"><code>EFO:0020073</code></a></nobr> high-level loss</td>
+<td>a loss of several copies; also used in cases where a complete genomic deletion cannot be asserted</td>
+</tr>
+<tr>
+<td><a href="http://www.ebi.ac.uk/efo/EFO_0030069"><code>EFO:0030069</code></a> complete genomic deletion</td>
+<td><code>DEL</code><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> or<br/><nobr><a href="http://www.ebi.ac.uk/efo/EFO_0030069"><code>EFO:0030069</code></a></nobr></td>
+<td><code>DEL</code><br/><nobr><code>SVCLAIM=D</code><sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></nobr></td>
+<td><a href="http://www.sequenceontology.org/browser/current_release/term/SO:0001743"><code>SO:0001743</code></a> copy_number_loss</td>
+<td><nobr><a href="http://www.ebi.ac.uk/efo/EFO_0030069"><code>EFO:0030069</code></a></nobr> complete genomic loss</td>
+<td>complete genomic deletion (e.g. homozygous deletion on a bi-allelic genome region)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="last-updated-2023-07-13-to-align-with-2023-03-22-hcnv-documentation-vrs-13-adjustment-by-mbaudis">Last updated 2023-07-13 to align with 2023-03-22 hCNV documentation (VRS 1.3 adjustment) by <a class="gh-link gh-mention" href="https://github.com/mbaudis" title="GitHub User: @mbaudis">@mbaudis</a><a class="headerlink" href="#last-updated-2023-07-13-to-align-with-2023-03-22-hcnv-documentation-vrs-13-adjustment-by-mbaudis" title="Permanent link">&para;</a></h5>
+<h5 id="updated-2023-03-20-by-mbaudis-vrs-proposal">updated 2023-03-20 by <a class="gh-link gh-mention" href="https://github.com/mbaudis" title="GitHub User: @mbaudis">@mbaudis</a> (VRS proposal)<a class="headerlink" href="#updated-2023-03-20-by-mbaudis-vrs-proposal" title="Permanent link">&para;</a></h5>
+<h2 id="query-parameter-change-log">Query Parameter Change Log<a class="headerlink" href="#query-parameter-change-log" title="Permanent link">&para;</a></h2>
+<!--TODO: Should this go to a separate Beacon chamges page and be referenced?-->
+
+<h3 id="beacon-v2">Beacon v2<a class="headerlink" href="#beacon-v2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>use of sequence reference id's which obviate the need for a <code>assemblyId</code> parameter</li>
+<li><strong>range queries</strong><ul>
+<li>with specified single start and end parameters a query should match any vatiant
+with partial or complete overlap with this sequence range</li>
+<li>additional parameters (e.g. <code>referenceBases</code>, <code>alternateBases</code>, <code>variantType</code>...)
+may be used to scope the range query</li>
+</ul>
+</li>
+<li>query by <code>aminoacidChange</code></li>
+<li>query by <code>geneId</code></li>
+<li><code>variantMinLength</code>, <code>variantMaxLength</code></li>
+</ul>
+<h3 id="beacon-v1-based-on-v04">Beacon v1 (based on v0.4)<a class="headerlink" href="#beacon-v1-based-on-v04" title="Permanent link">&para;</a></h3>
+<ul>
+<li>switch to <em>0-based interbase</em> coordinates for the API with <em>1-based</em> coordinates
+recommended for query forms<ul>
+<li>this represents the common GA4GH usage and the practice e.g. of the UCSC genome browser</li>
+</ul>
+</li>
+<li>introduction of <em>bracketed queries</em><ul>
+<li>specification of intervals for <code>start</code> and <code>end</code> positions when querying multi-base
+variants allows for "fuzzy" CNV queries</li>
+</ul>
+</li>
+<li>support of a <code>variantType</code> parameter to specify e.g. CNV queries (<code>DUP</code>, <code>DEL</code>)<ul>
+<li><code>variantType</code> is not required for precise queries with specified <code>referenceBases</code>
+and <code>alternateBases</code></li>
+</ul>
+</li>
+</ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>The VRS annotations refer to the status from v1.3 (2022) when 
+the new class <code>CopyNumberChange</code> (<a href="https://github.com/ga4gh/vrs/issues/404#issuecomment-1472599849">discussion...</a>)
+with the use of the EFO terms.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>While the use of VCF derived (<code>DUP</code>, <code>DEL</code>) values had been introduced with
+beacon v1, usage of these terms has always been a <em>recommendation</em> rather than an integral part
+of the API. We now encourage the support of more specific terms (particularly EFO)
+by Beacon developers. As example, the Progentix Beacon API <a href="http://progenetix.org/search/">uses EFO terms</a> but
+provides an internal term expansion for legacy <code>DUP</code>, <code>DEL</code> support.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>VCFv4.4 introduces an <code>SVCLAIM</code> field to disambiguate between <em>in situ</em> events (such as
+tandem duplications; known <em>adjacency</em>/ <em>break junction</em>: <code>SVCLAIM=J</code>) and events where e.g. only the
+change in <em>abundance</em> / <em>read depth</em> (<code>SVCLAIM=D</code>) has been determined. Both <strong>J</strong> and <strong>D</strong> flags can be combined.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>VRS did not adopt the "amplification" term due to possible inconsistencies&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; Copyright 2021-2024, Beacon v2 Documentation Contributors
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ga4gh-beacon" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "search.highlight", "search.share", "navigation.instant", "navigation.tracking", "navigation.sections"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>

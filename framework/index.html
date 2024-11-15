@@ -1,0 +1,1696 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for Beacon v2">
+      
+      
+        <meta name="author" content="Michael Baudis, Manuel Rueda, Laureen Fromont & Beacon Developers">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../img/ga4gh_circle.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+    
+    
+      
+        <title>Beacon v2 Framework - Beacon v2 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/theme_overrides.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Beacon v2 Documentation" class="md-header__button md-logo" aria-label="Beacon v2 Documentation" data-md-component="logo">
+      
+  <img src="../img/GA-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Beacon v2 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Beacon v2 Framework
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ga4gh-beacon/beacon-v2" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+  </div>
+  <div class="md-source__repository">
+    beacon-v2
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Beacon v2 Documentation" class="md-nav__button md-logo" aria-label="Beacon v2 Documentation" data-md-component="logo">
+      
+  <img src="../img/GA-logo.png" alt="logo">
+
+    </a>
+    Beacon v2 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ga4gh-beacon/beacon-v2" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+  </div>
+  <div class="md-source__repository">
+    beacon-v2
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Introducing Beacon
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Introducing Beacon
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About Beacon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../beacon-flavours" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Beacon Types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../networks" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Beacon Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changes-todo" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://genomebeacons.org/FAQ/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ &#8599;
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://genomebeacons.org/news/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Beacon News &#8599;
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Using Beacons
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Using Beacons
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../variant-queries" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Genomic Queries
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/filters/#using-filters-in-queries" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phenotypes and More...
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pedigree" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pedigrees
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data Delivery
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Data Delivery
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../records" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Biosamples, Variants...
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../handovers" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Handovers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rest-api" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    REST API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Creating Beacons
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Creating Beacons
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../implementations-options" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Implementations Options
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Implementation Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Implementation Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://b2ri-documentation.readthedocs.io/en/latest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference Implementation &#8599;
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../other-implementations" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Others
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../formats-standards" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standards Integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filters" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Beacon Components
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Beacon Components
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Beacon Data Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_3" id="__nav_3_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Default Schemas
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Default Schemas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/analyses_defaultSchema" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Analyses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/biosamples_defaultSchema" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Biosamples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/cohorts_defaultSchema" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cohorts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/datasets_defaultSchema" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Datasets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/genomicVariations_defaultSchema" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Genomic Variations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/individuals_defaultSchema" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Individuals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/runs_defaultSchema" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Runs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schemas-md/beacon_terms" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Terms List
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Beacon Development
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Beacon Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contribute" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Contribute
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-organization" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repository and Branch Organization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/ga4gh-beacon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Github Repositories &#8599;
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coding-and-naming-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coding and naming conventions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#folder-structure-in-the-framework-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Folder structure in the framework repo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Folder structure in the framework repo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-root-folder-and-the-beacon-root-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      The root folder and the Beacon root endpoints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Requests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Responses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-the-compliance-of-an-implementation-with-testmode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing the compliance of an implementation with testMode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-beacon-configuration-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Beacon Configuration file
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="beacon-v2-framework">Beacon v2 Framework<a class="headerlink" href="#beacon-v2-framework" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>The GA4GH Beacon specification is composed by two parts:</p>
+<ul>
+<li>the Beacon <a href="./">Framework</a>  <a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/framework/src"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg></span></a></li>
+<li>the Beacon <a href="../models/">Models</a>  <a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg></span></a></li>
+</ul>
+<p>The <strong>Beacon Framework</strong> is the part that describes the overall structure of the API requests, responses, parameters, the common components, etc. It could also be referred in this document as simply the <em>Framework</em>.</p>
+<p>A <strong>Beacon Model</strong> describes the set of concepts included in a Beacon version (e.g. Beacon v2), like <em>individual</em> or <em>biosample</em>. It could also be referred in this document as simply the <em>Model</em>.</p>
+<p>The Framework could be considered the <em>syntax</em> and the Model as the <em>semantics</em>. </p>
+<p>Refer to the <a href="../models/">Models</a>  <a href="https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg></span></a> for further information about the default model and how to use it.</p>
+<p>The Framework doesn't include anything related to specific entities but only the mechanisms for querying them and parsing the responses. 
+The BF is, therefore, independent from/agnostic to any specific Model. It can be leveraged to describe models from other domains like proteomics, imaging, biobanking, etc.</p>
+<p>A <strong>Beacon instance</strong> is just an implementation of a Beacon Model that follows the rules stated by the Beacon Framework.</p>
+<p>If you are a Beacon implementer, then, you don't need to clone this (Framework) repo, you only need to <strong>copy</strong> (<em>or clone</em>) the Beacon Model and modify it to your specific instance. You will find plenty of references to the Framework in the Model copy, and you will use the Json schemas in the Framework to validate that both the structure of your requests and responses are compliant with the Beacon Framework. The <a href="https://github.com/ga4gh-beacon/beacon-verifier">Beacon verifier</a> tool would help in such validation.</p>
+<p>The Framework repo includes the elements that are common to all Beacons:</p>
+<ol>
+<li>The configuration files</li>
+<li>The Json schemas for the requests, the responses, and its respective sections</li>
+<li>The files of every Beacon root</li>
+<li>Examples of all the above (using a fake and simple Model)</li>
+</ol>
+<h3 id="coding-and-naming-conventions">Coding and naming conventions<a class="headerlink" href="#coding-and-naming-conventions" title="Permanent link">&para;</a></h3>
+<p>Please visit the <a href="../formats-standards/">Standards Page</a></p>
+<h2 id="folder-structure-in-the-framework-repo">Folder structure in the framework repo<a class="headerlink" href="#folder-structure-in-the-framework-repo" title="Permanent link">&para;</a></h2>
+<p>The above listed elements are organized in several folders (<em>in alphabetical order</em>):</p>
+<ul>
+<li><strong>common:</strong> Json schemas and examples of the components used in other parts of the specification.</li>
+<li><strong>configuration:</strong> Json schemas and examples for the configuration files that every Beacon MUST implement.</li>
+<li><strong>requests:</strong> Json schemas and examples for the different sections of a request.</li>
+<li><strong>responses:</strong> Json schemas and examples for the different types of responses and response sections.</li>
+<li><strong><em>root</em> folder:</strong> It only includes the definition of the Beacon root endpoints.</li>
+</ul>
+<h3 id="the-root-folder-and-the-beacon-root-endpoints">The <em>root</em> folder and the Beacon root endpoints<a class="headerlink" href="#the-root-folder-and-the-beacon-root-endpoints" title="Permanent link">&para;</a></h3>
+<p>The <em>root</em> folder only contains the endpoints.json document, an OpenAPI 3.0.2 description of the endpoints that every Beacon instance MUST implement.
+The endpoints are:
+* the <em>root</em> (<code>/</code>) and <code>/info</code> that MUST return information (metadata) about the Beacon service and the organization supporting it.
+* the <code>/service-info</code> endpoint that returns the Beacon metadata in the GA4GH Service Info schema.
+* the <code>/configuration</code> endpoint that returns some configuration aspects and the definition of the entry types (e.g. <em>genomic variants</em>, <em>biosamples</em>, <em>cohorts</em>) implemented in that specific Beacon server or instance.
+* the <code>/entry_types</code> endpoints that only return the section of the configuration that describes the entry types in that Beacon.
+* the <code>/map</code> endpoint that returns a map (like a web <em>sitemap</em>) of the different endpoints implemented in that Beacon instance.
+* the <code>/filtering_terms</code> endpoint that returns a list of the filtering terms accepted by that Beacon instance.</p>
+<p>Most of these endpoints simply return the configuration files that are in the Beacon configuration folder. Of course, every Beacon instance would have their particular instance of such documents, including the configuration of such instance.</p>
+<p><em>Note:</em> It could be argued that the Beacon configuration files are different for every Beacon instance and, hence, they should be part of the Model. However, the configuration files MUST be used, exactly with the same schema, by <em>any</em> model, independently if that Beacon follows the Beacon v2 Model or any other. Additionally, these endpoints and configuration files are <em>critical</em> for a Beacon client to be able to understand and use a Beacon instance. Therefore, we have considered it to be an essential part of the Framework and belonging to it.</p>
+<h3 id="the-configuration">The Configuration<a class="headerlink" href="#the-configuration" title="Permanent link">&para;</a></h3>
+<p>Contains the Json schema files that describe the Beacon configuration, its contents are described in the section above, as they have almost a 1-to-1 relationship with such endpoints. Further details about the specific content of each file could be find in the corresponding sections below.</p>
+<h3 id="the-requests">The Requests<a class="headerlink" href="#the-requests" title="Permanent link">&para;</a></h3>
+<p>Contains the following Json schemas:</p>
+<ul>
+<li><code>beaconRequestBody.json:</code> Schema for the whole Beacon request. It is named <code>RequestBody</code> to keep the same nomenclature used by OpenAPI v3, but it actually contains the definition of the whole HTTP POST request payload.</li>
+<li><code>beaconRequestMeta.json:</code> Meta section of the Beacon request. It includes request context details relevant for the Beacon server when processing the request, like the Beacon API version used to format the request or the schemas expected for the entry types in the response.</li>
+<li><code>filteringTerms.json:</code> defines the schema for the filters included in the request.</li>
+<li><code>requestParameters.json</code> defines the, very free, schema of the parameters included in the request.</li>
+<li><code>examples-fullDocuments</code> folder: includes examples of "actual" requests. The example labelled with <code>MIN</code> in the name shows the minimal required attributes for the request to be compliant. The example labelled with <code>MAX</code> in the name includes a richer case with all the sections filled in.</li>
+<li><code>examples-sections</code> folder: includes examples of "actual" sections of the requests. It is included to allow specification designers and Beacon implementers to check the compliance with a single section instead of having to implement a whole request. Such way, We aim to facilitate an "incremental" implementation of an instance.</li>
+</ul>
+<h4 id="differences-between-filteringterms-and-requestparameters">Differences between FilteringTerms and RequestParameters<a class="headerlink" href="#differences-between-filteringterms-and-requestparameters" title="Permanent link">&para;</a></h4>
+<p>Both, the filters (<em>filteringTerms</em>) and the parameters (<em>requestParameters</em>), are used to refine the query. The availability of two mechanisms to refine the queries could sound initially confusing, but that separation is  taylored to facilitate the interpretation of the request by the Beacon server.</p>
+<p>An basic difference is that, in HTTP GET requests, each parameters is named (e.g. 'id', 'skip','limit') while filters go under the same named parameter 'filters'. For HTTP POST requests, the difference relays on paramaters having each one a separate definition (e.g. <code>id</code> is a <code>string</code>, while <code>skip</code> is an <code>integer</code>), while all filters follow the schema described in <code>/requests/filteringTerms.json</code>.</p>
+<p>An unrestricted query like <code>/datasets</code> should return the list of all datasets in a Beacon instance. That query could be refined by adding a generic condition like: "return only datasets which could be used for 'general research'" or "return only the first 10 datasets". The former belong to the filter category, the latter to the parameters. If you are a beacon implementer, a rule of thumb could be:</p>
+<ul>
+<li>anything that requires its own schema would be a request parameter </li>
+<li>anything that could be represented by an ontology term would go into the filters section.</li>
+<li>anything else would probably be a request parameter.</li>
+</ul>
+<h3 id="the-responses">The Responses<a class="headerlink" href="#the-responses" title="Permanent link">&para;</a></h3>
+<p>The Beacon concept includes several types of responses: some informative or informational and some with actual data payloads, and the error one. </p>
+<h4 id="informational-responses">Informational responses<a class="headerlink" href="#informational-responses" title="Permanent link">&para;</a></h4>
+<p>A Beacon is able to return information, details, about itself. Many of the schema
+responses included in the <code>responses</code> folder have a 1-to-1 relationship with the
+corresponding configuration documents and their equivalent root endpoints, e.g.
+the <code>beaconEntryTypeResponse.json</code> is the schema of a response that wraps the
+<code>beaconConfiguration.json</code> document, and is then used as the payload of the
+<code>/entry_types</code> root endpoint. Schematically:</p>
+<ul>
+<li><em>configuration/an_schema.json</em>: describes the schema of the configuration file itself.</li>
+<li><em>responses/an_schema_response.json</em>: describes the format of the response that returns these configuration information.</li>
+<li><em>root/endpoints.json</em>: describes the API endpoints to be called and parameters to be used to retrieve such responses.</li>
+</ul>
+<p>The following schemas refer to informational responses: <em>beaconConfigurationResponse</em>, <em>beaconEntryTypeResponse</em>, <em>beaconFilteringTermsResponse</em>, ând <em>beaconMapResponse</em>.</p>
+<h4 id="data-responses">Data Responses<a class="headerlink" href="#data-responses" title="Permanent link">&para;</a></h4>
+<p>A Beacon could return responses at different granularity levels:</p>
+<ul>
+<li><strong>boolean</strong>: only returns <code>exists: true</code> ('Yes') or <code>exists: false</code> ('No') to a given query.</li>
+<li><strong>count</strong>: returns <code>Yes</code>/<code>No</code> and the number of matching results.</li>
+<li><strong>record</strong> returns <code>Yes</code>/<code>No</code>, the number of matching results and all documents
+  corresponding to the requested entities. Documents are wrapped in "result set"
+  objects for every collection (e.g. every dataset or cohort). Even for <em>record</em>
+  level responses each beacon can control the details of data exposed in record
+  besides the minimal requirements of the entry type's schema.</li>
+</ul>
+<p>Each of these granularity levels has an equivalent response schema: </p>
+<ul>
+<li><strong>boolean</strong>: <code>beaconBooleanResponse</code></li>
+<li><strong>count</strong>: <code>beaconCountResponse</code></li>
+<li><strong>record</strong>: <code>beaconResultSetsResponse</code></li>
+</ul>
+<p>An additional schema, <em>beaconCollectionsResponse</em>, describes such responses that returns details about the collections in a Beacon, but not the collection content themselves. Otherwise said, the response describes a dataset, but not returns the contents of any dataset.</p>
+<h3 id="common-components">Common Components<a class="headerlink" href="#common-components" title="Permanent link">&para;</a></h3>
+<p>Some elements are transerval to the Framework and to any model, e.g. the schema
+for describing an ontology term or the reference to an external schema (like the
+reference to GA4GH Phenopackets or GA4GH Service Info schemas).</p>
+<h4 id="pagination-skip-and-limit">Pagination - <code>skip</code> and <code>limit</code><a class="headerlink" href="#pagination-skip-and-limit" title="Permanent link">&para;</a></h4>
+<p>Record level responses potentially may return <strong>many</strong> (<em>i.e.</em> thousands and beyond)
+documents which usually would be "paginated", <em>i.e.</em> split into may chunks ("pages").
+Beacon handles <em>pagination</em> through the <code>skip</code> and <code>limit</code> parameters as part of the
+request:</p>
+<ul>
+<li><code>limit</code> in the request tells the server the maximum number of records that should
+  be returned in a single response (<em>i.e.</em> the "page size")</li>
+<li><code>skip</code> indicates how many of those pages should be skipped over when delivering
+  the results</li>
+</ul>
+<p>Therefore, <code>skip: 2</code> and <code>limit: 8</code> will return records 17-24 (if those exist).</p>
+<h3 id="testing-the-compliance-of-an-implementation-with-testmode">Testing the compliance of an implementation with <em>testMode</em><a class="headerlink" href="#testing-the-compliance-of-an-implementation-with-testmode" title="Permanent link">&para;</a></h3>
+<p>Given that the flexibility allowed in the implentation of each Beacon instance, and the security restrictions that could apply (e.g. only answering after authentication of the user), a mechanism is required for allowing testing the compliance of a Beacon. A first step in this compliance testing is done by the implementer by checking that received requests are correct and that the generated responses match the provided schemas. However, an external compliance testing is desirable when the Beacon instance plans to be integrated in a network or to engage in dialogs with a diversity of clients. For this second scenario, the <em>testMode</em> parameter was included.</p>
+<p>A Beacon instance could receive a request with the <em>testMode</em> parameter activated (value= <em>true</em>) in which case the Beacon MUST respond, with actual or fake contents, using the response format and skipping any user authentication. The fact that a response has been generated for testing purposes is included in the meta section of the response.</p>
+<h2 id="the-beacon-configuration-file">The Beacon Configuration file<a class="headerlink" href="#the-beacon-configuration-file" title="Permanent link">&para;</a></h2>
+<p>The file <code>/configuration/beaconConfiguration.json</code> defines the schema (in Json schema draft-07) of the Json file that includes core aspects of a Beacon instance configuration.
+The schema includes four sections:</p>
+<ol>
+<li><strong>$schema:</strong> that MUST BE a reference to a schema. In the Models, the instances of that file will point to <em>this file</em>. Having the schema allows verifying that the document is compliant with it.</li>
+<li><strong>maturityAttributes:</strong> Declares the level of maturity of the Beacon instance. Available values are:<ul>
+<li><strong>DEV:</strong> Service potentially unstable, not using real data, which availability and data should not be used in production setups.</li>
+<li><strong>TEST:</strong> The service is expected to be stable, meaning up and available, but does not include real data to be trusted for real world queries.</li>
+<li><strong>PROD:</strong> Service stable, at production level standards, containing actual data.
+Except when testing, most of the Beacon queries are expected to be answered by 'PROD' Beacons.</li>
+</ul>
+</li>
+<li><strong>securityAttributes:</strong> Configuration of the security aspects of the Beacon. By default, a Beacon that does not declare the configuration settings would return <code>boolean</code> (true/false) responses, and only if the user is authenticated and explicitly authorized to access the Beacon resources. Although this is the safest set of settings, it is not recommended unless the Beacon shares very sensitive information. Non sensitive Beacons should preferably opt for a <code>record</code> and <code>PUBLIC</code> combination.<ul>
+<li><strong>defaultGranularity:</strong> Default granularity of the responses. Some responses could return higher detail, but this would be the granularity by default.</li>
+<li><strong>securityLevels:</strong> All access levels supported by the Beacon. Any combination is valid, as every option would apply to different parts of the Beacon. Available options are:</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Granularity</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>boolean</code></td>
+<td>returns 'true/false' responses.</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>adds the total number of positive results found.</td>
+</tr>
+<tr>
+<td><code>record</code></td>
+<td>returns details for every row.</td>
+</tr>
+</tbody>
+</table>
+<p>For those cases where a Beacon prefers to return records with less, not all, attributes, different strategies have been considered, e.g.: keep non-mandatory attributes empty, or Beacon to provide a minimal record definition, but these strategies still need to be tested in real world cases and hence no design decision has been taken yet.</p>
+<table>
+<thead>
+<tr>
+<th>security level</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PUBLIC</code></td>
+<td>Any anonymous user can read the data</td>
+</tr>
+<tr>
+<td><code>REGISTERED</code></td>
+<td>Only known users can read the data</td>
+</tr>
+<tr>
+<td><code>CONTROLLED</code></td>
+<td>Only specificly granted users can read the data</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">&quot;maturityAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;productionStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DEV&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;securityAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;defaultGranularity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;securityLevels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;PUBLIC&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;REGISTERED&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;CONTROLLED&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div>
+<p>The Beacon in the example is in development status, returns boolean answers by default, and has queries available in any of the access levels.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; Copyright 2021-2024, Beacon v2 Documentation Contributors
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/ga4gh-beacon" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "search.highlight", "search.share", "navigation.instant", "navigation.tracking", "navigation.sections"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
