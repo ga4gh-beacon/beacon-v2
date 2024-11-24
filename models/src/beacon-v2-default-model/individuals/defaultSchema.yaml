@@ -12,7 +12,7 @@ properties:
     description: >-
       Sex of the individual. Value from NCIT General Qualifier `NCIT:C27993`:   
       * `unknown`: not assessed or not availablel `NCIT:C17998`
-      * `female`: `NCIT:C16576)`
+      * `female`: `NCIT:C16576`
       * `male`: `NCIT:C20197`
     $ref: ../common/commonDefinitions.yaml#/$defs/Sex
   karyotypicSex:

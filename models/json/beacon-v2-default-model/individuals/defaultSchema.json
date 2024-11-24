@@ -63,7 +63,7 @@
         },
         "sex": {
             "$ref": "../common/commonDefinitions.json#/$defs/Sex",
-            "description": "Sex of the individual. Value from NCIT General Qualifier `NCIT:C27993`:    * `unknown`: not assessed or not availablel `NCIT:C17998` * `female`: `NCIT:C16576)` * `male`: `NCIT:C20197`"
+            "description": "Sex of the individual. Value from NCIT General Qualifier `NCIT:C27993`:    * `unknown`: not assessed or not availablel `NCIT:C17998` * `female`: `NCIT:C16576` * `male`: `NCIT:C20197`"
         },
         "treatments": {
             "items": {
