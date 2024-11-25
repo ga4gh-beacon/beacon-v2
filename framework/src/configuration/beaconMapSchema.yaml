@@ -46,7 +46,7 @@ $defs:
           be the only one implemented, together with ´rootUrl`, in which case the
           whole map of endpoints is found in the current Map.
         type: string
-        format: uri
+        format: uri-template
       filteringTermsUrl:
         description: Optional. Returns the list of filtering terms that could be applied
           to this entry type. It is added here for convenience of the Beacon clients,
@@ -55,7 +55,7 @@ $defs:
           the few implemented, together with ´rootUrl` and ´singleEntryUrl`, in which
           case the whole map of endpoints is found in the current Map.
         type: string
-        format: uri
+        format: uri-template
       endpoints:
         description: Optional. A list describing additional endpoints implemented
           by this Beacon instance for that entry type. Additional details on the endpoint
@@ -74,7 +74,7 @@ $defs:
       url:
         description: Endpoint URL
         type: string
-        format: uri
+        format: uri-template
       returnedEntryType:
         description: Which entry type is returned by querying this endpoint. It MUST
           match one of the entry types defined in the Beacon configuration file (`beaconConfiguration.json`).
