@@ -20,7 +20,7 @@
                     "type": "string"
                 },
                 "info": {
-                    "$ref": "../../common/beaconCommonComponents.json#/$defs/Info",
+                    "$ref": "../../common/info.json",
                     "description": "Additional unspecified metadata about the host Organization."
                 },
                 "logoUrl": {
@@ -86,7 +86,7 @@
             "$ref": "../../common/beaconCommonComponents.json#/$defs/BeaconId"
         },
         "info": {
-            "$ref": "../../common/beaconCommonComponents.json#/$defs/Info",
+            "$ref": "../../common/info.json",
             "description": "Additional unspecified metadata about the Beacon service."
         },
         "name": {
