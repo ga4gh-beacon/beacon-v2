@@ -1,7 +1,5 @@
 {
     "$comment": "version: ga4gh-beacon-cohort-v2.0.0",
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": true,
     "$defs": {
         "CohortCriteria": {
             "description": "Criteria used for defining the cohort. It is assumed that all cohort participants will match or NOT match such criteria.",
@@ -208,6 +206,8 @@
             "type": "array"
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
     "description": "A cohort available in the beacon.",
     "properties": {
         "cohortDataTypes": {

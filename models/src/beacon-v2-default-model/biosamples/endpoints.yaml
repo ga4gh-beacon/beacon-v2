@@ -18,7 +18,7 @@ paths:
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/includeResultsetResponses'
         - $ref: '#/components/parameters/filters'
-      description: Get a list of biosamples
+      description: Get a Beacon response for biosamples
       operationId: getBiosamples
       tags:
         - GET Endpoints
@@ -28,7 +28,7 @@ paths:
         default:
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get a list of biosamples
+      description: Get a Beacon response for biosamples
       operationId: postBiosamplesRequest
       tags:
         - POST Endpoints
@@ -43,12 +43,16 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /biosamples/{id}:
     parameters:
       - $ref: '#/components/parameters/entryId'
     get:
-      description: Get details about one biosample, identified by its (unique) 'id'
+      description: >-
+        Get details about one biosample, identified by its (unique) 'id'
       operationId: getOneBiosample
       tags:
         - GET Endpoints
@@ -57,9 +61,13 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get details about one Biosample, identified by its (unique) 'id'
+      description: >-
+        Get details about one Biosample, identified by its (unique) 'id'
       operationId: postOneBiosample
       tags:
         - POST Endpoints
@@ -74,7 +82,10 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /biosamples/{id}/g_variants:
     parameters:
       - $ref: '#/components/parameters/entryId'
@@ -83,9 +94,10 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the genomic variants list from one biosample, identified by
+      description: >-
+        Get a *genomic variations* response from one biosample, identified by
         its (unique) 'id'
-      operationId: getOneBiosampleGenomicVariants
+      operationId: getOneBiosampleGenomicVariations
       tags:
         - GET Endpoints
       responses:
@@ -93,11 +105,15 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the genomic variants list from one biosample, identified by
+      description: >-
+        Get a *genomic variations* response from one biosample, identified by
         its (unique) 'id'
-      operationId: postOneBiosampleGenomicVariants
+      operationId: postOneBiosampleGenomicVariations
       tags:
         - POST Endpoints
       requestBody:
@@ -111,7 +127,10 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /biosamples/{id}/analyses:
     parameters:
       - $ref: '#/components/parameters/entryId'
@@ -120,9 +139,10 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the analysis list from one biosample, identified by its (unique)
-        'id'
-      operationId: getOneBiosampleAnalysis
+      description: >-
+        Get an *analyses* response from one biosample, identified by its
+        (unique) 'id'
+      operationId: getOneBiosampleAnalyses
       tags:
         - GET Endpoints
       responses:
@@ -130,11 +150,15 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the analysis list from one biosample, identified by its (unique)
-        'id'
-      operationId: postOneBiosampleAnalysis
+      description: >-
+        Get an *analyses* response from one biosample, identified by its
+        (unique) 'id'
+      operationId: postOneBiosampleAnalyses
       tags:
         - POST Endpoints
       requestBody:
@@ -148,7 +172,10 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /biosamples/{id}/runs:
     parameters:
       - $ref: '#/components/parameters/entryId'
@@ -157,8 +184,8 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the runs list from one biosample, identified by its (unique)
-        'id'
+      description: >-
+        Get a *runs* response from one biosample, identified by its (unique) 'id'
       operationId: getOneBiosampleRuns
       tags:
         - GET Endpoints
@@ -171,10 +198,13 @@ paths:
                 $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconResultsetsResponse.json
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the runs list from one biosample, identified by its (unique)
-        'id'
+      description: >-
+        Get a *runs* response from one biosample, identified by its (unique) 'id'
       operationId: postOneBiosampleRuns
       tags:
         - POST Endpoints
@@ -193,7 +223,10 @@ paths:
                 $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconResultsetsResponse.json
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
 components:
   responses:
     ResultsOKResponse:
@@ -219,14 +252,17 @@ components:
       name: skip
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Skip
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Skip
     limit:
       name: limit
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Limit
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Limit
     includeResultsetResponses:
-      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses
+      name: includeResultsetResponses
+      in: query
+      schema:
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses
     entryId:
       name: id
       in: path
@@ -240,7 +276,13 @@ components:
         type: array
         items:
           type: string
-        examples:
-          -   - NCIT:C3222
-          -   - OBI:0100058
-              - NCIT:C4813
+      examples:
+        example1:
+          value:
+            - NCIT:C3222
+        example2:
+          value:
+            - NCIT:C4813
+        example3:
+          value:
+            - OBI:0100058

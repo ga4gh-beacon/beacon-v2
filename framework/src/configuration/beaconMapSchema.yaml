@@ -5,7 +5,7 @@ description: Map of a Beacon, its entry types and endpoints. It isconceptually s
 type: object
 properties:
   $schema:
-    $ref: ../common/beaconCommonComponents.yaml#/definitions/$schema
+    $ref: ../common/beaconCommonComponents.yaml#/$defs/$schema
   endpointSets:
     description: List of enpoints included in this Beacon instance. This is list is
       meant to inform Beacon clients, e.g. a Beacon Network, about the available endpoints,
@@ -13,9 +13,9 @@ properties:
       validation purposes.
     type: object
     additionalProperties:
-      $ref: '#/definitions/Endpoint'
+      $ref: '#/$defs/Endpoint'
     minProperties: 1
-definitions:
+$defs:
   Endpoint:
     type: object
     properties:
@@ -54,7 +54,7 @@ definitions:
           OpenAPI definition referenced in the `openAPIEndpointsDefinition` attribute.
         type: object
         additionalProperties:
-          $ref: '#/definitions/RelatedEndpoint'
+          $ref: '#/$defs/RelatedEndpoint'
         minProperties: 0
     required:
       - entryType

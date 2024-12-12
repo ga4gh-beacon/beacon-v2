@@ -1,5 +1,4 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$defs": {
         "Ethnicity": {
             "$ref": "../../../../framework/json/common/ontologyTerm.json",
@@ -148,6 +147,7 @@
             ]
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Definitions for concepts used in several entry types, but that having only one property are not complex enough to require a full independent schema document.",
     "title": "Common Definitions"
 }

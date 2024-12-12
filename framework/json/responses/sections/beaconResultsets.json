@@ -1,6 +1,4 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": true,
     "$defs": {
         "ResultsetInstance": {
             "additionalProperties": true,
@@ -48,6 +46,8 @@
             "type": "object"
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
     "description": "Sets of results to be returned as query response.",
     "properties": {
         "$schema": {

@@ -1,5 +1,4 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$defs": {
         "TypedQuantity": {
             "properties": {
@@ -30,6 +29,7 @@
             ]
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Definition of a complex value class. Provenance: GA4GH Phenopackets v2 `TypedQuantity`",
     "properties": {
         "typedQuantities": {
@@ -40,7 +40,9 @@
             "type": "array"
         }
     },
-    "required": [ "typedQuantities" ],
+    "required": [
+        "typedQuantities"
+    ],
     "title": "Complex Value",
     "type": "object"
 }

@@ -37,7 +37,7 @@
             "type": "string"
         },
         "info": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Info"
+            "$ref": "../common/info.json"
         },
         "name": {
             "description": "Name of the dataset",

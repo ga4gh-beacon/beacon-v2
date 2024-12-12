@@ -1,6 +1,4 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": true,
     "$defs": {
         "Endpoint": {
             "properties": {
@@ -56,6 +54,8 @@
             "type": "object"
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
     "description": "Map of a Beacon, its entry types and endpoints. It isconceptually similar to a website sitemap.",
     "properties": {
         "$schema": {

@@ -1,6 +1,6 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$defs": {},
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Used to describe a phenotype that characterizes the subject or biosample.",
     "properties": {
         "evidence": {

@@ -1,6 +1,4 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": true,
     "$defs": {
         "EntryTypes": {
             "additionalProperties": {
@@ -12,7 +10,9 @@
             "type": "object"
         }
     },
-    "description": "Files complaint with this schema are the configuration ones. The details returned in `service-info` are mirroring the ones in this configuration file.",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "description": "The Beacon configuration reports several attributes of the beacon instance related to security, maturity and available entry types. Where appropriate the details returned in `service-info` should mirror the ones in this configuration.",
     "properties": {
         "$schema": {
             "$ref": "../common/beaconCommonComponents.json#/$defs/$schema"
@@ -24,7 +24,7 @@
             "description": "Declares the level of maturity of the Beacon instance.",
             "properties": {
                 "productionStatus": {
-                    "description": "`DEV`= 'Service potentially unstable, not real data', which availability and data should not be used in production setups. `TEST`= 'Service stable, not real data'. 'PROD'= 'Service stable, actual data'.",
+                    "description": "* `DEV`: Service potentially unstable, _i.e._ potentially not real data,\n  inconsistent availability; data should not be used in production setups   \n* `TEST`: Service is stable but data should be considered synthetic   * `PROD`: Service stable with real world data  ",
                     "enum": [
                         "DEV",
                         "TEST",
@@ -43,11 +43,11 @@
                     "description": "Default granularity. Some responses could return higher detail, but this would be the granularity by default."
                 },
                 "securityLevels": {
+                    "default": [
+                        "CONTROLLED"
+                    ],
                     "description": "All access levels supported by the Beacon. Any combination is valid, as every option would apply to different parts of the Beacon.",
                     "items": {
-                        "default": [
-                            "CONTROLLED"
-                        ],
                         "enum": [
                             "PUBLIC",
                             "REGISTERED",
