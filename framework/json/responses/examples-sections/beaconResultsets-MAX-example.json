@@ -30,7 +30,7 @@
                     "url": "https://api.mygenomeservice.org/Handover/9dcc48d7-fc88-11e8-9110-b0c592dbf8c0"
                 }
             ],
-            "type": "dataset"
+            "setType": "dataset"
         }
     ]
 }

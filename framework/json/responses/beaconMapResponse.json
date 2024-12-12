@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Information about the Beacon. Aimed to Beacon clients like web pages or Beacon networks.",
+    "description": "A `beaconMapResponse` provides information about the beacon instance such as the different endpoints supported by this implementation of the Beacon API. This response is aimed to allow Beacon clients such as web front ends and Beacon network aggregators to evaluate which access patterns can be implemented against individual beacons.",
     "properties": {
         "meta": {
             "$ref": "./sections/beaconInformationalResponseMeta.json",

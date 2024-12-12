@@ -1,6 +1,6 @@
 {
+    "$defs": {},
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "definitions": {},
     "description": "Used to describe a phenotype that characterizes the subject or biosample.",
     "properties": {
         "evidence": {
@@ -61,7 +61,7 @@
             "description": "Age or time at which the feature resolved or abated."
         },
         "severity": {
-            "$ref": "./commonDefinitions.json#/definitions/SeverityLevel",
+            "$ref": "./commonDefinitions.json#/$defs/SeverityLevel",
             "examples": [
                 {
                     "id": "HP:0012828",

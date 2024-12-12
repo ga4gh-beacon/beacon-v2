@@ -1,6 +1,2 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-filteringTerms:
-  - ftType: alphanumeric
-    id: gene
-  - ftType: alphanumeric
-    id: aminoacidChanges
+filteringTerms: []
