@@ -268,5 +268,7 @@ components:
         type: array
         items:
           type: string
-        examples:
-          -   - NCIT:C20197
+      examples:
+        example1:
+          value:
+            - NCIT:C20197

@@ -240,5 +240,7 @@ components:
         type: array
         items:
           type: string
-        examples:
-          -   - OMIABIS:0001017
+      examples:
+        example1:
+          value:
+            - OMIABIS:0001017

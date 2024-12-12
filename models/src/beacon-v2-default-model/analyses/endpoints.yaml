@@ -183,5 +183,7 @@ components:
         type: array
         items:
           type: string
-        examples:
-          -   - variantcaller:GATK4.0
+      examples:
+        example1:
+          value:
+            - variantcaller:GATK4.0
