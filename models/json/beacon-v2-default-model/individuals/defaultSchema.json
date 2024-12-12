@@ -31,7 +31,7 @@
             "type": "string"
         },
         "info": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Info"
+            "$ref": "../common/info.json"
         },
         "interventionsOrProcedures": {
             "items": {
@@ -63,7 +63,7 @@
         },
         "sex": {
             "$ref": "../common/commonDefinitions.json#/$defs/Sex",
-            "description": "Sex of the individual. Value from NCIT General Qualifier (NCIT:C27993): 'unknown' (not assessed or not available) (NCIT:C17998), 'female' (NCIT:C16576), or 'male', (NCIT:C20197)."
+            "description": "Sex of the individual. Value from NCIT General Qualifier `NCIT:C27993`:    * `unknown`: not assessed or not availablel `NCIT:C17998` * `female`: `NCIT:C16576` * `male`: `NCIT:C20197`"
         },
         "treatments": {
             "items": {
