@@ -4,10 +4,10 @@ description: >-
 type: object
 properties:
   exists:
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/Exists
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/Exists
   numTotalResults:
     description: Total number of results.
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/NumTotalResults
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/NumTotalResults
 required:
   - exists
   - numTotalResults

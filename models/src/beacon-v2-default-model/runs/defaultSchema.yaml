@@ -74,7 +74,7 @@ properties:
       - id: EFO:0010938
         label: large-insert clone DNA microarray
   info:
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Info
+    $ref: ../common/info.yaml
 required:
   - id
   - biosampleId

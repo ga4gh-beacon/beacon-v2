@@ -32,7 +32,7 @@ paths:
         default:
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get a list of datasets
+      description: Get a Beacon *datasets* response
       operationId: postDatasetsRequest
       tags:
         - POST Endpoints
@@ -89,7 +89,8 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the genomic variants list from one dataset, identified by its
+      description: >-
+        Get a *genomic variations* response for one dataset, identified by its
         (unique) 'id'
       operationId: getOneDatasetEntries
       tags:
@@ -101,7 +102,8 @@ paths:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the genomic variants list from one dataset, identified by its
+      description: >-
+        Get a *genomic variations* response for one dataset, identified by its
         (unique) 'id'
       operationId: postOneDatasetEntries
       tags:
@@ -126,7 +128,8 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the biosamples list from one dataset, identified by its (unique)
+      description: >-
+        Get a *biosamples* response for one dataset, identified by its (unique)
         'id'
       operationId: getOneDatasetBiosamples
       tags:
@@ -138,7 +141,8 @@ paths:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the biosamples list from one dataset, identified by its (unique)
+      description: >-
+        Get a *biosamples* response for one dataset, identified by its (unique)
         'id'
       operationId: postOneDatasetBiosamples
       tags:
@@ -163,7 +167,8 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the individuals list from one dataset, identified by its (unique)
+      description: >-
+        Get an *individuals* response for one dataset, identified by its (unique)
         'id'
       operationId: getOneDatasetIndividuals
       tags:
@@ -175,7 +180,8 @@ paths:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the biosamples list from one dataset, identified by its (unique)
+      description: >-
+        Get an *individuals* response for one dataset, identified by its (unique)
         'id'
       operationId: postOneDatasetIndividuals
       tags:
@@ -199,8 +205,9 @@ paths:
       parameters:
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the list of filtering terms that could be used with a given
-        dataset, identified by its (unique) 'id'
+      description: >-
+        Get a response about the *filtering terms* that could be used with a
+        given dataset, identified by its (unique) 'id'
       operationId: getOneDatasetFilteringTerms
       tags:
         - GET Endpoints
@@ -215,8 +222,9 @@ paths:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the list of filtering terms that could be used with a given
-        dataset, identified by its (unique) 'id'
+      description: >-
+        Get a response about the *filtering terms* that could be used with a
+        given dataset, identified by its (unique) 'id'
       operationId: postOneDatasetFilteringTerms
       tags:
         - POST Endpoints
@@ -270,12 +278,12 @@ components:
       name: skip
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Skip
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Skip
     limit:
       name: limit
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Limit
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Limit
     entryId:
       name: id
       in: path

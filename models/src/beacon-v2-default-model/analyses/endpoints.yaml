@@ -18,7 +18,7 @@ paths:
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/includeResultsetResponses'
         - $ref: '#/components/parameters/filters'
-      description: Get a list of bioinformatics analysis
+      description: Get a Beacon response for bioinformatics analyses
       operationId: getAnalyses
       tags:
         - GET Endpoints
@@ -28,7 +28,7 @@ paths:
         default:
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get a list of bioinformatics analysis
+      description: Get a Beacon response for bioinformatics analyses
       operationId: postAnalysesRequest
       tags:
         - POST Endpoints
@@ -52,7 +52,8 @@ paths:
     parameters:
       - $ref: '#/components/parameters/entryId'
     get:
-      description: Get details about one bioinformatics analysis, identified by its
+      description: >-
+        Get details about one bioinformatics analysis, identified by its
         (unique) 'id'
       operationId: getOneAnalysis
       tags:
@@ -64,7 +65,8 @@ paths:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get details about one bioinformatics analysis, identified by its
+      description: >-
+        Get details about one bioinformatics analysis, identified by its
         (unique) 'id'
       operationId: postOneAnalysisRequest
       tags:
@@ -89,9 +91,10 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the list of variants instances for one bioinformatics analysis,
+      description: >-
+        Get a *genomic variations* response for one bioinformatics analysis,
         identified by its (unique) 'id'
-      operationId: getOneAnalysisVariants
+      operationId: getOneAnalysisVariationsRequest
       tags:
         - GET Endpoints
       responses:
@@ -101,9 +104,10 @@ paths:
           description: An unsuccessful operation
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the list of variants instances for one bioinformatics analysis,
+      description: >-
+        Get a *genomic variations* response for one bioinformatics analysis,
         identified by its (unique) 'id'
-      operationId: postOneAnalysisVariantsRequest
+      operationId: postOneAnalysisVariationsRequest
       tags:
         - POST Endpoints
       requestBody:
@@ -143,14 +147,14 @@ components:
       name: skip
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Skip
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Skip
     limit:
       name: limit
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Limit
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Limit
     includeResultsetResponses:
-      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses
+      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/IncludeResultsetResponses
     entryId:
       name: id
       in: path

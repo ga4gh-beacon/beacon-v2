@@ -1,10 +1,10 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "An unsuccessful operation.",
+    "description": "A `beaconErrorResponse` denotes an unsuccessful operation, e.g. due to a missing parameter or an invalid query. The response contains an error object.",
     "properties": {
         "error": {
-            "$ref": "../common/beaconCommonComponents.json#/definitions/BeaconError"
+            "$ref": "../common/beaconCommonComponents.json#/$defs/BeaconError"
         },
         "meta": {
             "$ref": "./sections/beaconResponseMeta.json"
