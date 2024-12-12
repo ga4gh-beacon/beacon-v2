@@ -39,6 +39,24 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "values": {
+                    "description": "Optional list of possible values for alphanumeric filters",
+                    "examples": [
+                        [
+                            "benign",
+                            "likely benign",
+                            "pathogenic"
+                        ],
+                        [
+                            "pathogenic"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "minItems": 1,
+                    "type": "array"
                 }
             },
             "required": [
