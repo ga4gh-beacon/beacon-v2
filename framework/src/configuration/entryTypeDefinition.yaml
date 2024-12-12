@@ -57,14 +57,6 @@ properties:
     includedConcepts:
       type: array
       $ref: ../common/basicElement.yaml
-  filteringTerms:
-    description: >-
-      Reference to the list of filtering terms that could be used to filter records
-      of this entry type in this beacon.
-    type: string
-    $comment: >-
-      TO DO: Evaluate switch this to `url` or a more specific way for allowing
-      URLs and local file paths (is this necessary?).
   nonFilteredQueriesAllowed:
     $ref: ../common/beaconCommonComponents.yaml#/definitions/NonFilteredQueriesAllowed
 required:
