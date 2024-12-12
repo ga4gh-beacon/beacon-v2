@@ -6,14 +6,14 @@ description: >-
 type: object
 properties:
   $schema:
-    $ref: ../common/beaconCommonComponents.yaml#/definitions/$schema
+    $ref: ../common/beaconCommonComponents.yaml#/$defs/$schema
   meta:
     description: >-
       Information relevant for building the response.
     $ref: ./beaconRequestMeta.yaml
   query:
-    $ref: '#/definitions/BeaconQuery'
-definitions:
+    $ref: '#/$defs/BeaconQuery'
+$defs:
   BeaconQuery:
     description: >-
       Parameters to limit the list of returned results.
@@ -28,23 +28,23 @@ definitions:
           Ontology based filters. Using CURIE syntax is encouraged.
         $ref: ./filteringTerms.yaml
       includeResultsetResponses:
-        $ref: ../common/beaconCommonComponents.yaml#/definitions/IncludeResultsetResponses
+        $ref: ../common/beaconCommonComponents.yaml#/$defs/IncludeResultsetResponses
       pagination:
         description: >-
           Pagination parameters applied to response documents, in case of record
           level granularity.
-        $ref: ../common/beaconCommonComponents.yaml#/definitions/Pagination
+        $ref: ../common/beaconCommonComponents.yaml#/$defs/Pagination
       requestedGranularity:
         description: >-
           Requested granularity for the response. Beacons do not have to respond
           with the requested granularity, e.g. may respond with count results
           although record level granularity had been requested but indicate the
           granularity of the response in the response's metadata.
-        $ref: ../common/beaconCommonComponents.yaml#/definitions/Granularity
+        $ref: ../common/beaconCommonComponents.yaml#/$defs/Granularity
       testMode:
         description: >-
           Used for indicating that a request or response is done in a test
           context.
-        $ref: ../common/beaconCommonComponents.yaml#/definitions/TestMode
+        $ref: ../common/beaconCommonComponents.yaml#/$defs/TestMode
 required:
   - meta

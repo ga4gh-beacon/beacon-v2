@@ -9,9 +9,9 @@ properties:
       in this instance of Beacon.
     type: array
     items:
-      $ref: '#/definitions/FilterTerm'
+      $ref: '#/$defs/FilterTerm'
     minItems: 0
-definitions:
+$defs:
   FilterTerm:
     type: object
     properties:

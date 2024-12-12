@@ -40,7 +40,7 @@ properties:
       - id: OGMS:0000106
         label: remission
   severity:
-    $ref: ./commonDefinitions.yaml#/definitions/SeverityLevel
+    $ref: ./commonDefinitions.yaml#/$defs/SeverityLevel
     examples:
       - id: HP:0012828
         label: Severe

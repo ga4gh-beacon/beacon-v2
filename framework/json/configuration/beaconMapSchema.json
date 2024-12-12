@@ -1,12 +1,10 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": true,
-    "definitions": {
+    "$defs": {
         "Endpoint": {
             "properties": {
                 "endpoints": {
                     "additionalProperties": {
-                        "$ref": "#/definitions/RelatedEndpoint"
+                        "$ref": "#/$defs/RelatedEndpoint"
                     },
                     "description": "Optional. A list describing additional endpoints implemented by this Beacon instance for that entry type. Additional details on the endpoint parameters, supported HTTP verbs, etc. could be obtained by parsing the OpenAPI definition referenced in the `openAPIEndpointsDefinition` attribute.",
                     "minProperties": 0,
@@ -61,14 +59,16 @@
             "type": "object"
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
     "description": "Map of a Beacon, its entry types and endpoints. It isconceptually similar to a website sitemap.",
     "properties": {
         "$schema": {
-            "$ref": "../common/beaconCommonComponents.json#/definitions/$schema"
+            "$ref": "../common/beaconCommonComponents.json#/$defs/$schema"
         },
         "endpointSets": {
             "additionalProperties": {
-                "$ref": "#/definitions/Endpoint"
+                "$ref": "#/$defs/Endpoint"
             },
             "description": "List of enpoints included in this Beacon instance. This is list is meant to inform Beacon clients, e.g. a Beacon Network, about the available endpoints, it is not used to generate any automatic list, but could be used for Beacon validation purposes.",
             "minProperties": 1,

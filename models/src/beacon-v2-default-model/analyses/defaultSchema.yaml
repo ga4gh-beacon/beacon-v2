@@ -1,57 +1,70 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-title: Sequencing bioinformatics analysis
+title:  Bioinformatics analysis
 $comment: 'version: ga4gh-beacon-analysis-v2.0.0'
-description: Schema for a sequencing bioinformatics analysis.
+description: >-
+  The `analysis` schema represents a information about the data analysis steps
+  leading to (a set of) genomic variation call(s).
 type: object
 properties:
   id:
-    description: Analysis reference ID (external accession or internal ID)
+    description: >-
+      Analysis id for internal referencing; unique in the dataset.
     type: string
   runId:
-    description: Run identifier (external accession or internal ID).
+    description: >-
+      Local reference to the associated experimental run.
     type: string
     examples:
       - SRR10903401
   biosampleId:
-    description: Reference to the `id` of the biosample this analysis is reporting
-      on.
+    description: >-
+      Local reference to the `id` of the biosample this analysis is reporting on.
     type: string
     examples:
       - S0001
+      - onekgbs-NA07346
   individualId:
-    description: Reference to the `id` of the individual this analysis is reporting
-      on.
+    description: >-
+      Local reference to the `id` of the individual this analysis is reporting on.
     type: string
     examples:
       - P0001
+      - onekgind-NA07346
   analysisDate:
-    description: Date at which analysis was performed.
+    description: >
+      Date at which analysis was performed.
     type: string
     format: date
     examples:
       - '2021-10-17'
   pipelineName:
-    description: Analysis pipeline and version if a standardized pipeline was used
+    description: >-
+      Analysis pipeline and version.
     type: string
     examples:
       - Pipeline-panel-0001-v1
   pipelineRef:
-    description: Link to Analysis pipeline resource
+    description: >-
+      Link to information about or repository of the analysis pipeline.
     type: string
     examples:
       - https://doi.org/10.48511/workflowhub.workflow.111.1
+      - https://doi.org/10.1093/bib/bbad541
   aligner:
-    description: Reference to mapping/alignment software
+    description: >-
+      Name or identifier of the mapping/alignment software/pipeline
     type: string
     examples:
       - bwa-0.7.8
   variantCaller:
-    description: Reference to variant calling software / pipeline
+    description:  >-
+      Name or identifier of the variant calling software/pipeline
     type: string
     examples:
       - GATK4.0
+      - labelSeg
   info:
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Info
+    $ref: ../common/info.yaml
 required:
   - id
   - analysisDate

@@ -1,12 +1,13 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 type: object
 description: >-
-  An unsuccessful operation.
+  A `beaconErrorResponse` denotes an unsuccessful operation, e.g. due to a missing
+  parameter or an invalid query. The response contains an error object.
 properties:
   meta:
     $ref: ./sections/beaconResponseMeta.yaml
   error:
-    $ref: ../common/beaconCommonComponents.yaml#/definitions/BeaconError
+    $ref: ../common/beaconCommonComponents.yaml#/$defs/BeaconError
 required:
   - meta
   - error
