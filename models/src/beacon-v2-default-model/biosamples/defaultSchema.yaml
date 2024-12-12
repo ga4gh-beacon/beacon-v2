@@ -160,7 +160,7 @@ properties:
     $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     example: {}
   info:
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Info
+    $ref: ../common/info.yaml
 required:
   - id
   - biosampleStatus

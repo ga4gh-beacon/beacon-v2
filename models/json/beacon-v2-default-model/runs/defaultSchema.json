@@ -26,7 +26,7 @@
             "type": "string"
         },
         "info": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Info"
+            "$ref": "../common/info.json"
         },
         "libraryLayout": {
             "description": "Ontology value for the library layout e.g \"PAIRED\", \"SINGLE\" #todo add Ontology name?",
