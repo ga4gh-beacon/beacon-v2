@@ -16,7 +16,7 @@
                 },
                 "filteringTermsUrl": {
                     "description": "Optional. Returns the list of filtering terms that could be applied to this entry type. It is added here for convenience of the Beacon clients, so they don't need to parse the OpenAPI endpoints definition to get that endpoint. Also, in very simple Beacons, that endpoint could be the one of the few implemented, together with \u00b4rootUrl` and \u00b4singleEntryUrl`, in which case the whole map of endpoints is found in the current Map.",
-                    "format": "uri",
+                    "format": "uri-template",
                     "type": "string"
                 },
                 "openAPIEndpointsDefinition": {
@@ -30,7 +30,7 @@
                 },
                 "singleEntryUrl": {
                     "description": "Optional, but recommended. Returns only one instance of this entry, identified by an `id`. It is added here for convenience of the Beacon clients, so they don't need to parse the OpenAPI endpoints definition to get that base endpoint. Also, in very simple Beacons, that endpoint could be the only one implemented, together with \u00b4rootUrl`, in which case the whole map of endpoints is found in the current Map.",
-                    "format": "uri",
+                    "format": "uri-template",
                     "type": "string"
                 }
             },
@@ -48,7 +48,7 @@
                 },
                 "url": {
                     "description": "Endpoint URL",
-                    "format": "uri",
+                    "format": "uri-template",
                     "type": "string"
                 }
             },
