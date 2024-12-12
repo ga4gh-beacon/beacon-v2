@@ -357,7 +357,7 @@
                             },
                             {
                                 "$schema": "https://json-schema.org/draft/2020-12/schema",
-                                "definitions": {
+                                "$defs": {
                                     "TypedQuantity": {
                                         "properties": {
                                             "quantity": {
@@ -1479,7 +1479,7 @@
             "description": "List of phenotypic abnormalities of the sample. RECOMMENDED.",
             "items": {
                 "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "definitions": {},
+                "$defs": {},
                 "description": "Used to describe a phenotype that characterizes the subject or biosample.",
                 "properties": {
                     "evidence": {
