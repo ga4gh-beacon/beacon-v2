@@ -31,7 +31,7 @@
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconInfoResponse.json",
+                            "$ref": "../../../framework/json/responses/beaconInfoResponse.json",
                             "description": "Response of a request for information about a Beacon"
                         }
                     }
@@ -92,7 +92,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconConfigurationResponse.json",
+                                    "$ref": "../../../framework/json/responses/beaconConfigurationResponse.json",
                                     "description": "Response of a request for information about a Beacon"
                                 }
                             }
@@ -125,7 +125,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconEntryTypesResponse.json",
+                                    "$ref": "../../../framework/json/responses/beaconEntryTypesResponse.json",
                                     "description": "Response of a request for information about a Beacon"
                                 }
                             }
@@ -226,7 +226,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconMapResponse.json",
+                                    "$ref": "../../../framework/json/responses/beaconMapResponse.json",
                                     "description": "Response of a request for information about a Beacon"
                                 }
                             }
@@ -258,7 +258,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/ga4gh-service-info-1-0-0-schema.json"
+                                    "$ref": "../../../framework/json/responses/ga4gh-service-info-1-0-0-schema.json"
                                 }
                             }
                         },
