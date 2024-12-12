@@ -29,13 +29,13 @@
                 }
             },
             "includeResultsetResponses": {
-                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses"
+                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/IncludeResultsetResponses"
             },
             "limit": {
                 "in": "query",
                 "name": "limit",
                 "schema": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Limit"
+                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Limit"
                 }
             },
             "requestedSchema": {
@@ -52,7 +52,7 @@
                 "in": "query",
                 "name": "skip",
                 "schema": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Skip"
+                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Skip"
                 }
             }
         },
@@ -95,7 +95,7 @@
     "paths": {
         "/biosamples": {
             "get": {
-                "description": "Get a list of biosamples",
+                "description": "Get a Beacon response for biosamples",
                 "operationId": "getBiosamples",
                 "parameters": [
                     {
@@ -127,7 +127,7 @@
                 ]
             },
             "post": {
-                "description": "Get a list of biosamples",
+                "description": "Get a Beacon response for biosamples",
                 "operationId": "postBiosamplesRequest",
                 "requestBody": {
                     "content": {
@@ -222,8 +222,8 @@
         },
         "/biosamples/{id}/analyses": {
             "get": {
-                "description": "Get the analysis list from one biosample, identified by its (unique) 'id'",
-                "operationId": "getOneBiosampleAnalysis",
+                "description": "Get an *analyses* response from one biosample, identified by its (unique) 'id'",
+                "operationId": "getOneBiosampleAnalyses",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/requestedSchema"
@@ -260,8 +260,8 @@
                 }
             ],
             "post": {
-                "description": "Get the analysis list from one biosample, identified by its (unique) 'id'",
-                "operationId": "postOneBiosampleAnalysis",
+                "description": "Get an *analyses* response from one biosample, identified by its (unique) 'id'",
+                "operationId": "postOneBiosampleAnalyses",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -294,8 +294,8 @@
         },
         "/biosamples/{id}/g_variants": {
             "get": {
-                "description": "Get the genomic variants list from one biosample, identified by its (unique) 'id'",
-                "operationId": "getOneBiosampleGenomicVariants",
+                "description": "Get a *genomic variations* response from one biosample, identified by its (unique) 'id'",
+                "operationId": "getOneBiosampleGenomicVariations",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/requestedSchema"
@@ -332,8 +332,8 @@
                 }
             ],
             "post": {
-                "description": "Get the genomic variants list from one biosample, identified by its (unique) 'id'",
-                "operationId": "postOneBiosampleGenomicVariants",
+                "description": "Get a *genomic variations* response from one biosample, identified by its (unique) 'id'",
+                "operationId": "postOneBiosampleGenomicVariations",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -366,7 +366,7 @@
         },
         "/biosamples/{id}/runs": {
             "get": {
-                "description": "Get the runs list from one biosample, identified by its (unique) 'id'",
+                "description": "Get a *runs* response from one biosample, identified by its (unique) 'id'",
                 "operationId": "getOneBiosampleRuns",
                 "parameters": [
                     {
@@ -411,7 +411,7 @@
                 }
             ],
             "post": {
-                "description": "Get the runs list from one biosample, identified by its (unique) 'id'",
+                "description": "Get a *runs* response from one biosample, identified by its (unique) 'id'",
                 "operationId": "postOneBiosampleRuns",
                 "requestBody": {
                     "content": {

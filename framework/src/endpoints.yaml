@@ -161,9 +161,9 @@ components:
       name: skip
       in: query
       schema:
-        $ref: ./common/beaconCommonComponents.yaml#/definitions/Skip
+        $ref: ./common/beaconCommonComponents.yaml#/$defs/Skip
     limit:
       name: limit
       in: query
       schema:
-        $ref: ./common/beaconCommonComponents.yaml#/definitions/Limit
+        $ref: ./common/beaconCommonComponents.yaml#/$defs/Limit

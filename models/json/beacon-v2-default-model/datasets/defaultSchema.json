@@ -5,7 +5,7 @@
     "description": "A dataset available in the beacon",
     "properties": {
         "createDateTime": {
-            "$ref": "../common/commonDefinitions.json#/definitions/Timestamp",
+            "$ref": "../common/commonDefinitions.json#/$defs/Timestamp",
             "description": "The time the dataset was created (ISO 8601 format)",
             "examples": [
                 "2017-01-17T20:33:40Z"
@@ -37,7 +37,7 @@
             "type": "string"
         },
         "info": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Info"
+            "$ref": "../common/info.json"
         },
         "name": {
             "description": "Name of the dataset",
@@ -47,7 +47,7 @@
             "type": "string"
         },
         "updateDateTime": {
-            "$ref": "../common/commonDefinitions.json#/definitions/Timestamp",
+            "$ref": "../common/commonDefinitions.json#/$defs/Timestamp",
             "description": "The time the dataset was updated in (ISO 8601 format)",
             "examples": [
                 "2017-01-17T20:33:40Z"

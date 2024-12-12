@@ -4,7 +4,7 @@ resultSets:
     type: dataset
     exists: false
   - id: datasetB
-    type: dataset
+    setType: dataset
     exists: true
     resultsCount: 2
     resultsHandovers:

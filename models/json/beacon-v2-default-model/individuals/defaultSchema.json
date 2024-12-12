@@ -12,7 +12,7 @@
             "type": "array"
         },
         "ethnicity": {
-            "$ref": "../common/commonDefinitions.json#/definitions/Ethnicity",
+            "$ref": "../common/commonDefinitions.json#/$defs/Ethnicity",
             "description": "Ethnic background of the individual. Value from NCIT Race (NCIT:C17049) ontology term descendants, e.g. NCIT:C126531 (Latin American). A geographic ancestral origin category that is assigned to a population group based mainly on physical characteristics that are thought to be distinct and inherent. [ NCI ] "
         },
         "exposures": {
@@ -22,7 +22,7 @@
             "type": "array"
         },
         "geographicOrigin": {
-            "$ref": "../common/commonDefinitions.json#/definitions/GeographicLocation",
+            "$ref": "../common/commonDefinitions.json#/$defs/GeographicLocation",
             "description": "Individual's country or region of origin (birthplace or residence place regardless of ethnic origin). Value from GAZ Geographic Location ontology (GAZ:00000448), e.g. GAZ:00002459 (United States of America)."
         },
         "id": {
@@ -31,7 +31,7 @@
             "type": "string"
         },
         "info": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Info"
+            "$ref": "../common/info.json"
         },
         "interventionsOrProcedures": {
             "items": {
@@ -40,7 +40,7 @@
             "type": "array"
         },
         "karyotypicSex": {
-            "$ref": "../common/commonDefinitions.json#/definitions/KaryotypicSex",
+            "$ref": "../common/commonDefinitions.json#/$defs/KaryotypicSex",
             "description": "The chromosomal sex of an individual represented from a selection of options."
         },
         "measures": {
@@ -62,8 +62,8 @@
             "type": "array"
         },
         "sex": {
-            "$ref": "../common/commonDefinitions.json#/definitions/Sex",
-            "description": "Sex of the individual. Value from NCIT General Qualifier (NCIT:C27993): 'unknown' (not assessed or not available) (NCIT:C17998), 'female' (NCIT:C16576), or 'male', (NCIT:C20197)."
+            "$ref": "../common/commonDefinitions.json#/$defs/Sex",
+            "description": "Sex of the individual. Value from NCIT General Qualifier `NCIT:C27993`:    * `unknown`: not assessed or not availablel `NCIT:C17998` * `female`: `NCIT:C16576` * `male`: `NCIT:C20197`"
         },
         "treatments": {
             "items": {
