@@ -51,7 +51,7 @@ properties:
     examples:
       - GATK4.0
   info:
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Info
+    $ref: ../common/info.yaml
 required:
   - id
   - analysisDate
