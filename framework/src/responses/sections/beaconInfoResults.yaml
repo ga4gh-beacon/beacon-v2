@@ -67,7 +67,7 @@ properties:
   info:
     description: >-
       Additional unspecified metadata about the Beacon service.
-    $ref: ../../common/beaconCommonComponents.yaml#/$defs/Info
+    $ref: ../../common/info.yaml
 $defs:
   BeaconOrganization:
     description: >-
@@ -109,5 +109,5 @@ $defs:
           3986 format).
       info:
         description: Additional unspecified metadata about the host Organization.
-        $ref: ../../common/beaconCommonComponents.yaml#/$defs/Info
+        $ref: ../../common/info.yaml
 additionalProperties: true
