@@ -9,26 +9,28 @@ properties:
     type: string
     example: P0001
   sex:
-    description: "Sex of the individual. Value from NCIT General Qualifier (NCIT:C27993):\
-      \ 'unknown' (not assessed or not available) (NCIT:C17998), 'female' (NCIT:C16576),\
-      \ or 'male', (NCIT:C20197)."
-    $ref: ../common/commonDefinitions.yaml#/definitions/Sex
+    description: >-
+      Sex of the individual. Value from NCIT General Qualifier `NCIT:C27993`:   
+      * `unknown`: not assessed or not availablel `NCIT:C17998`
+      * `female`: `NCIT:C16576`
+      * `male`: `NCIT:C20197`
+    $ref: ../common/commonDefinitions.yaml#/$defs/Sex
   karyotypicSex:
     description: The chromosomal sex of an individual represented from a selection
       of options.
-    $ref: ../common/commonDefinitions.yaml#/definitions/KaryotypicSex
+    $ref: ../common/commonDefinitions.yaml#/$defs/KaryotypicSex
   ethnicity:
     description: 'Ethnic background of the individual. Value from NCIT Race (NCIT:C17049)
       ontology term descendants, e.g. NCIT:C126531 (Latin American). A geographic
       ancestral origin category that is assigned to a population group based mainly
       on physical characteristics that are thought to be distinct and inherent. [
       NCI ] '
-    $ref: ../common/commonDefinitions.yaml#/definitions/Ethnicity
+    $ref: ../common/commonDefinitions.yaml#/$defs/Ethnicity
   geographicOrigin:
     description: Individual's country or region of origin (birthplace or residence
       place regardless of ethnic origin). Value from GAZ Geographic Location ontology
       (GAZ:00000448), e.g. GAZ:00002459 (United States of America).
-    $ref: ../common/commonDefinitions.yaml#/definitions/GeographicLocation
+    $ref: ../common/commonDefinitions.yaml#/$defs/GeographicLocation
   diseases:
     description: List of disease(s) been diagnosed to the individual, defined by disease
       ontology ID(s), age of onset, stage and the presence of family history.
@@ -60,7 +62,7 @@ properties:
     items:
       $ref: ../common/exposure.yaml
   info:
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Info
+    $ref: ../common/info.yaml
 required:
   - id
   - sex

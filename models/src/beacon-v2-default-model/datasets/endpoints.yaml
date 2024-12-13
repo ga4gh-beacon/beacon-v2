@@ -32,7 +32,7 @@ paths:
         default:
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get a list of datasets
+      description: Get a Beacon *datasets* response
       operationId: postDatasetsRequest
       tags:
         - POST Endpoints
@@ -47,7 +47,10 @@ paths:
           $ref: '#/components/responses/CollectionsResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /datasets/{id}:
     parameters:
       - $ref: '#/components/parameters/entryId'
@@ -63,7 +66,10 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
       description: Get details about one dataset, identified by its (unique) 'id'
       operationId: postOneDataset
@@ -80,7 +86,10 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /datasets/{id}/g_variants:
     parameters:
       - $ref: '#/components/parameters/entryId'
@@ -89,7 +98,8 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the genomic variants list from one dataset, identified by its
+      description: >-
+        Get a *genomic variations* response for one dataset, identified by its
         (unique) 'id'
       operationId: getOneDatasetEntries
       tags:
@@ -99,9 +109,13 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the genomic variants list from one dataset, identified by its
+      description: >-
+        Get a *genomic variations* response for one dataset, identified by its
         (unique) 'id'
       operationId: postOneDatasetEntries
       tags:
@@ -117,7 +131,10 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /datasets/{id}/biosamples:
     parameters:
       - $ref: '#/components/parameters/entryId'
@@ -126,7 +143,8 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the biosamples list from one dataset, identified by its (unique)
+      description: >-
+        Get a *biosamples* response for one dataset, identified by its (unique)
         'id'
       operationId: getOneDatasetBiosamples
       tags:
@@ -136,9 +154,13 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the biosamples list from one dataset, identified by its (unique)
+      description: >-
+        Get a *biosamples* response for one dataset, identified by its (unique)
         'id'
       operationId: postOneDatasetBiosamples
       tags:
@@ -154,7 +176,10 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /datasets/{id}/individuals:
     parameters:
       - $ref: '#/components/parameters/entryId'
@@ -163,7 +188,8 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the individuals list from one dataset, identified by its (unique)
+      description: >-
+        Get an *individuals* response for one dataset, identified by its (unique)
         'id'
       operationId: getOneDatasetIndividuals
       tags:
@@ -173,9 +199,13 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the biosamples list from one dataset, identified by its (unique)
+      description: >-
+        Get an *individuals* response for one dataset, identified by its (unique)
         'id'
       operationId: postOneDatasetIndividuals
       tags:
@@ -191,7 +221,10 @@ paths:
           $ref: '#/components/responses/ResultsOKResponse'
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /datasets/{id}/filtering_terms:
     parameters:
       - $ref: '#/components/parameters/entryId'
@@ -199,8 +232,9 @@ paths:
       parameters:
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: Get the list of filtering terms that could be used with a given
-        dataset, identified by its (unique) 'id'
+      description: >-
+        Get a response about the *filtering terms* that could be used with a
+        given dataset, identified by its (unique) 'id'
       operationId: getOneDatasetFilteringTerms
       tags:
         - GET Endpoints
@@ -213,10 +247,14 @@ paths:
                 $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get the list of filtering terms that could be used with a given
-        dataset, identified by its (unique) 'id'
+      description: >-
+        Get a response about the *filtering terms* that could be used with a
+        given dataset, identified by its (unique) 'id'
       operationId: postOneDatasetFilteringTerms
       tags:
         - POST Endpoints
@@ -235,7 +273,10 @@ paths:
                 $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json
         default:
           description: An unsuccessful operation
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
 components:
   responses:
     ResultsOKResponse:
@@ -270,12 +311,12 @@ components:
       name: skip
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Skip
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Skip
     limit:
       name: limit
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Limit
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Limit
     entryId:
       name: id
       in: path
@@ -289,5 +330,7 @@ components:
         type: array
         items:
           type: string
-        examples:
-          - DUO:0000007
+      examples:
+        example1:
+          value:
+            - DUO:0000007

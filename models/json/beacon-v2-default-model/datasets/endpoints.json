@@ -10,12 +10,16 @@
                 }
             },
             "filters": {
+                "examples": {
+                    "example1": {
+                        "value": [
+                            "DUO:0000007"
+                        ]
+                    }
+                },
                 "in": "query",
                 "name": "filters",
                 "schema": {
-                    "examples": [
-                        "DUO:0000007"
-                    ],
                     "items": {
                         "type": "string"
                     },
@@ -26,7 +30,7 @@
                 "in": "query",
                 "name": "limit",
                 "schema": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Limit"
+                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Limit"
                 }
             },
             "requestedSchema": {
@@ -43,7 +47,7 @@
                 "in": "query",
                 "name": "skip",
                 "schema": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/Skip"
+                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Skip"
                 }
             }
         },
@@ -54,13 +58,13 @@
                         "schema": {
                             "oneOf": [
                                 {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconBooleanResponse.json"
+                                    "$ref": "../../../../framework/json/responses/beaconBooleanResponse.json"
                                 },
                                 {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCountResponse.json"
+                                    "$ref": "../../../../framework/json/responses/beaconCountResponse.json"
                                 },
                                 {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCollectionsResponse.json"
+                                    "$ref": "../../../../framework/json/responses/beaconCollectionsResponse.json"
                                 }
                             ]
                         }
@@ -74,13 +78,13 @@
                         "schema": {
                             "oneOf": [
                                 {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconBooleanResponse.json"
+                                    "$ref": "../../../../framework/json/responses/beaconBooleanResponse.json"
                                 },
                                 {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCountResponse.json"
+                                    "$ref": "../../../../framework/json/responses/beaconCountResponse.json"
                                 },
                                 {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconResultsetsResponse.json"
+                                    "$ref": "../../../../framework/json/responses/beaconResultsetsResponse.json"
                                 }
                             ]
                         }
@@ -127,7 +131,7 @@
                         "$ref": "#/components/responses/CollectionsResponse"
                     },
                     "default": {
-                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                        "$ref": "../../../../framework/json/responses/beaconErrorResponse.json"
                     }
                 },
                 "tags": [
@@ -135,13 +139,13 @@
                 ]
             },
             "post": {
-                "description": "Get a list of datasets",
+                "description": "Get a Beacon *datasets* response",
                 "operationId": "postDatasetsRequest",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json"
+                                "$ref": "../../../../framework/json/requests/beaconRequestBody.json"
                             }
                         }
                     },
@@ -152,7 +156,13 @@
                         "$ref": "#/components/responses/CollectionsResponse"
                     },
                     "default": {
-                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation"
                     }
                 },
@@ -175,7 +185,13 @@
                         "$ref": "#/components/responses/ResultsOKResponse"
                     },
                     "default": {
-                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation"
                     }
                 },
@@ -195,7 +211,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json"
+                                "$ref": "../../../../framework/json/requests/beaconRequestBody.json"
                             }
                         }
                     },
@@ -206,7 +222,13 @@
                         "$ref": "#/components/responses/ResultsOKResponse"
                     },
                     "default": {
-                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation"
                     }
                 },
@@ -217,7 +239,7 @@
         },
         "/datasets/{id}/biosamples": {
             "get": {
-                "description": "Get the biosamples list from one dataset, identified by its (unique) 'id'",
+                "description": "Get a *biosamples* response for one dataset, identified by its (unique) 'id'",
                 "operationId": "getOneDatasetBiosamples",
                 "parameters": [
                     {
@@ -235,7 +257,13 @@
                         "$ref": "#/components/responses/ResultsOKResponse"
                     },
                     "default": {
-                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation"
                     }
                 },
@@ -249,13 +277,13 @@
                 }
             ],
             "post": {
-                "description": "Get the biosamples list from one dataset, identified by its (unique) 'id'",
+                "description": "Get a *biosamples* response for one dataset, identified by its (unique) 'id'",
                 "operationId": "postOneDatasetBiosamples",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json"
+                                "$ref": "../../../../framework/json/requests/beaconRequestBody.json"
                             }
                         }
                     },
@@ -266,7 +294,13 @@
                         "$ref": "#/components/responses/ResultsOKResponse"
                     },
                     "default": {
-                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation"
                     }
                 },
@@ -277,7 +311,7 @@
         },
         "/datasets/{id}/filtering_terms": {
             "get": {
-                "description": "Get the list of filtering terms that could be used with a given dataset, identified by its (unique) 'id'",
+                "description": "Get a response about the *filtering terms* that could be used with a given dataset, identified by its (unique) 'id'",
                 "operationId": "getOneDatasetFilteringTerms",
                 "parameters": [
                     {
@@ -292,14 +326,20 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json"
+                                    "$ref": "../../../../framework/json/responses/beaconFilteringTermsResponse.json"
                                 }
                             }
                         },
                         "description": "Successful operation"
                     },
                     "default": {
-                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation"
                     }
                 },
@@ -313,13 +353,13 @@
                 }
             ],
             "post": {
-                "description": "Get the list of filtering terms that could be used with a given dataset, identified by its (unique) 'id'",
+                "description": "Get a response about the *filtering terms* that could be used with a given dataset, identified by its (unique) 'id'",
                 "operationId": "postOneDatasetFilteringTerms",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json"
+                                "$ref": "../../../../framework/json/requests/beaconRequestBody.json"
                             }
                         }
                     },
@@ -330,14 +370,20 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json"
+                                    "$ref": "../../../../framework/json/responses/beaconFilteringTermsResponse.json"
                                 }
                             }
                         },
                         "description": "Successful operation"
                     },
                     "default": {
-                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation"
                     }
                 },
@@ -348,7 +394,7 @@
         },
         "/datasets/{id}/g_variants": {
             "get": {
-                "description": "Get the genomic variants list from one dataset, identified by its (unique) 'id'",
+                "description": "Get a *genomic variations* response for one dataset, identified by its (unique) 'id'",
                 "operationId": "getOneDatasetEntries",
                 "parameters": [
                     {
@@ -366,7 +412,13 @@
                         "$ref": "#/components/responses/ResultsOKResponse"
                     },
                     "default": {
-                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation"
                     }
                 },
@@ -380,13 +432,13 @@
                 }
             ],
             "post": {
-                "description": "Get the genomic variants list from one dataset, identified by its (unique) 'id'",
+                "description": "Get a *genomic variations* response for one dataset, identified by its (unique) 'id'",
                 "operationId": "postOneDatasetEntries",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json"
+                                "$ref": "../../../../framework/json/requests/beaconRequestBody.json"
                             }
                         }
                     },
@@ -397,7 +449,13 @@
                         "$ref": "#/components/responses/ResultsOKResponse"
                     },
                     "default": {
-                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation"
                     }
                 },
@@ -408,7 +466,7 @@
         },
         "/datasets/{id}/individuals": {
             "get": {
-                "description": "Get the individuals list from one dataset, identified by its (unique) 'id'",
+                "description": "Get an *individuals* response for one dataset, identified by its (unique) 'id'",
                 "operationId": "getOneDatasetIndividuals",
                 "parameters": [
                     {
@@ -426,7 +484,13 @@
                         "$ref": "#/components/responses/ResultsOKResponse"
                     },
                     "default": {
-                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation"
                     }
                 },
@@ -440,13 +504,13 @@
                 }
             ],
             "post": {
-                "description": "Get the biosamples list from one dataset, identified by its (unique) 'id'",
+                "description": "Get an *individuals* response for one dataset, identified by its (unique) 'id'",
                 "operationId": "postOneDatasetIndividuals",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json"
+                                "$ref": "../../../../framework/json/requests/beaconRequestBody.json"
                             }
                         }
                     },
@@ -457,7 +521,13 @@
                         "$ref": "#/components/responses/ResultsOKResponse"
                     },
                     "default": {
-                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation"
                     }
                 },

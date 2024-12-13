@@ -1,7 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": true,
-    "definitions": {
+    "$defs": {
         "FilteringTerm": {
             "description": "Entities can be filtered using this term.",
             "properties": {
@@ -21,6 +19,25 @@
                     ],
                     "type": "string"
                 },
+                "scopes": {
+                    "description": "Entry types affected by this filter.",
+                    "examples": [
+                        [
+                            "individual",
+                            "biosample",
+                            "analysis",
+                            "run",
+                            "genomicVariation"
+                        ],
+                        [
+                            "biosample"
+                        ]
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "type": {
                     "description": "Either \"custom\", \"alphanumeric\" or ontology/terminology full name. TODO: An ontology ... with a registered prefix does not need a full name so one may better use CURIE to indicate that the resource can be retrieved from the id. This also will allow to provide an enum here.",
                     "examples": [
@@ -28,17 +45,6 @@
                         "alphanumeric"
                     ],
                     "type": "string"
-                },
-                "scopes": {
-                    "description": "Entry types affected by this filter.",
-                    "examples": [
-                        ["individual", "biosample", "analysis", "run", "genomicVariation"], 
-                        ["biosample"]
-                    ],
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
                 },
                 "values": {
                     "description": "Optional list of possible values for alphanumeric filters",
@@ -117,17 +123,19 @@
             "type": "object"
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
     "description": "Filtering terms and ontology resources utilised in this Beacon.",
     "properties": {
         "filteringTerms": {
             "items": {
-                "$ref": "#/definitions/FilteringTerm"
+                "$ref": "#/$defs/FilteringTerm"
             },
             "type": "array"
         },
         "resources": {
             "items": {
-                "$ref": "#/definitions/Resource"
+                "$ref": "#/$defs/Resource"
             },
             "type": "array"
         }

@@ -5,7 +5,7 @@
                 "in": "query",
                 "name": "limit",
                 "schema": {
-                    "$ref": "./common/beaconCommonComponents.json#/definitions/Limit"
+                    "$ref": "./common/beaconCommonComponents.json#/$defs/Limit"
                 }
             },
             "requestedSchema": {
@@ -22,7 +22,7 @@
                 "in": "query",
                 "name": "skip",
                 "schema": {
-                    "$ref": "./common/beaconCommonComponents.json#/definitions/Skip"
+                    "$ref": "./common/beaconCommonComponents.json#/$defs/Skip"
                 }
             }
         },
@@ -63,7 +63,13 @@
                         "$ref": "#/components/responses/infoOKResponse"
                     },
                     "default": {
-                        "$ref": "./responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation."
                     }
                 },
@@ -94,7 +100,13 @@
                         "description": "Successful operation."
                     },
                     "default": {
-                        "$ref": "./responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation."
                     }
                 },
@@ -121,7 +133,13 @@
                         "description": "Successful operation."
                     },
                     "default": {
-                        "$ref": "./responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation."
                     }
                 },
@@ -136,10 +154,23 @@
                 "operationId": "getFilteringTerms",
                 "responses": {
                     "200": {
-                        "$ref": "./responses/beaconFilteringTermsResponse.json"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./responses/beaconFilteringTermsResponse.json"
+                                }
+                            }
+                        },
+                        "description": "Successful operation."
                     },
                     "default": {
-                        "$ref": "./responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation."
                     }
                 },
@@ -165,7 +196,13 @@
                         "$ref": "#/components/responses/infoOKResponse"
                     },
                     "default": {
-                        "$ref": "./responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation."
                     }
                 },
@@ -197,7 +234,13 @@
                         "description": "Successful operation."
                     },
                     "default": {
-                        "$ref": "./responses/beaconErrorResponse.json",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
                         "description": "An unsuccessful operation."
                     }
                 },

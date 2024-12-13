@@ -1,6 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "definitions": {
+    "$defs": {
         "$schema": {
             "$comment": "TO REVIEW: adding a `format` or `regex` attribute that validates correctly against a file path (relative).",
             "description": "Refers to the JSON Schema which describes the set of valid attributes for this particular document type. This attribute is mostly used in schemas that should be tested in Beacon implementations.",
@@ -88,7 +87,7 @@
             "description": "A handover is a typed link for attaching actionable links to results, non purely informational, requests. The goal of the handovers is to list the different actions available, e.g.:\n* a link to a request access page * linking to a file for download, e.g. a VCF file\nAnother common scenario is to provide a fast summary response (e.g. BeconCountResponse) and to provide access to different endpoints for the entities matched by the query using temporary access tokens in the handover URLs.",
             "properties": {
                 "handoverType": {
-                    "$ref": "#/definitions/HandoverType"
+                    "$ref": "#/$defs/HandoverType"
                 },
                 "note": {
                     "description": "An optional text including considerations on the handover link provided.",
@@ -143,10 +142,6 @@
             ],
             "type": "string"
         },
-        "Info": {
-            "description": "Placeholder to allow the Beacon to return any additional information that is necessary or could be of interest in relation to the query or the entry returned. It is recommended to encapsulate additional informations in this attribute instead of directly adding attributes at the same level than the others in order to avoid collision in the names of attributes in future versions of the specification.",
-            "type": "object"
-        },
         "Limit": {
             "default": 10,
             "description": "Size of the page. Use `0` to return all the results or the maximum allowed by the Beacon, if there is any.",
@@ -157,7 +152,7 @@
         "ListOfHandovers": {
             "description": "Set of handovers to be added in one section the response.",
             "items": {
-                "$ref": "#/definitions/Handover",
+                "$ref": "#/$defs/Handover",
                 "description": "Requested schema to be used for individuals in the response."
             },
             "type": "array"
@@ -165,7 +160,7 @@
         "ListOfSchemas": {
             "description": "Set of schemas to be used in the response to a request.",
             "items": {
-                "$ref": "#/definitions/SchemasPerEntity"
+                "$ref": "#/$defs/SchemasPerEntity"
             },
             "type": "array"
         },
@@ -191,22 +186,22 @@
             "description": "Pagination to apply or that has been applied on the results.",
             "properties": {
                 "currentPage": {
-                    "$ref": "#/definitions/PageToken",
+                    "$ref": "#/$defs/PageToken",
                     "description": "Token of the returned page. To be used only in the response to allow the client to check if the returned page is the one requested."
                 },
                 "limit": {
-                    "$ref": "#/definitions/Limit"
+                    "$ref": "#/$defs/Limit"
                 },
                 "nextPage": {
-                    "$ref": "#/definitions/PageToken",
+                    "$ref": "#/$defs/PageToken",
                     "description": "Token of the next page. Used to navigate forward. If empty, it is assumed that no more pages are available"
                 },
                 "previousPage": {
-                    "$ref": "#/definitions/PageToken",
+                    "$ref": "#/$defs/PageToken",
                     "description": "Token of the previous page. Used to navigate backwards. If empty, it is assumed that the current page is the first one."
                 },
                 "skip": {
-                    "$ref": "#/definitions/Skip"
+                    "$ref": "#/$defs/Skip"
                 }
             },
             "type": "object"
@@ -243,6 +238,7 @@
             "type": "boolean"
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Definition of relatively simple components used in different points of the Beacon specification, both in requests and responses, therefore not associated exclusively with one or the other. Separate schema documents are provided for complex components.",
     "title": "Beacon Common Components",
     "type": "object"
