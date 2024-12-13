@@ -61,6 +61,20 @@ $defs:
         type: array
         items:
           type: string
+      values:
+        description: >- 
+          Optional list of possible values for alphanumeric filters
+        examples: 
+          - 
+            - benign 
+            - likely benign 
+            - pathogenic 
+          - 
+            - pathogenic
+        type: array
+        items:
+          type: string
+        minItems: 1
   Resource:
     type: object
     description: >-
