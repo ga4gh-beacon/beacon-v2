@@ -257,7 +257,7 @@ components:
       name: includeResultsetResponses
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/IncludeResultsetResponses
     entryId:
       name: id
       in: path
