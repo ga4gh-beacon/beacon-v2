@@ -59,7 +59,7 @@
             ],
             "type": "object"
         },
-        "FilteringTerm": {
+        "FilteringTermInRequest": {
             "anyOf": [
                 {
                     "$ref": "#/$defs/OntologyFilter"
@@ -112,7 +112,7 @@
     "additionalProperties": true,
     "description": "Filtering terms are the main means to select subsets of records from a Beacon response. While the name implies the application to a generated response, in practice implementations may apply them at the query stage. Note: In the processing of Beacon v2.0 requests multiple filters are assumed to be chained by the logical AND operator.",
     "items": {
-        "$ref": "#/$defs/FilteringTerm"
+        "$ref": "#/$defs/FilteringTermInRequest"
     },
     "title": "Filtering Term Element",
     "type": "array"

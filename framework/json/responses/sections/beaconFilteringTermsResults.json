@@ -1,6 +1,6 @@
 {
     "$defs": {
-        "FilteringTerm": {
+        "FilteringTermInResponse": {
             "description": "Entities can be filtered using this term.",
             "properties": {
                 "id": {
@@ -129,7 +129,7 @@
     "properties": {
         "filteringTerms": {
             "items": {
-                "$ref": "#/$defs/FilteringTerm"
+                "$ref": "#/$defs/FilteringTermInResponse"
             },
             "type": "array"
         },
