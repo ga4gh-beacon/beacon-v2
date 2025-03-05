@@ -27,6 +27,10 @@ $defs:
         description: >-
           Ontology based filters. Using CURIE syntax is encouraged.
         $ref: ./filteringTerms.yaml
+      filtersLogic:
+        description: >-
+          Logical query applied to the filters.
+        type: string
       includeResultsetResponses:
         $ref: ../common/beaconCommonComponents.yaml#/$defs/IncludeResultsetResponses
       pagination:
