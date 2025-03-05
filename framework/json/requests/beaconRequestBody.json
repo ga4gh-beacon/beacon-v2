@@ -7,6 +7,10 @@
                     "$ref": "./filteringTerms.json",
                     "description": "Ontology based filters. Using CURIE syntax is encouraged."
                 },
+                "filtersLogic": {
+                    "type": "string",
+                    "description": "Logical query applied to the filters."
+                },
                 "includeResultsetResponses": {
                     "$ref": "../common/beaconCommonComponents.json#/$defs/IncludeResultsetResponses"
                 },
