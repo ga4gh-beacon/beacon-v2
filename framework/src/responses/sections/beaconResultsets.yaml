@@ -41,9 +41,13 @@ $defs:
           specification.
         type: object
       results:
+        $defs:
+          defaultResultsEntryType:
+            $dynamicAnchor: resultsEntryType
+            type: object
         type: array
         items:
-          type: object
+          $dynamicRef: #resultsEntryType
         minItems: 0
     required:
       - id
