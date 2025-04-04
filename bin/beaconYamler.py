@@ -99,6 +99,7 @@ def _yaml2json(f_n, in_path, out_path, config):
 
     c = re.compile(r'(\$ref[\"\']?:\s+[^\s]+\w)\.yaml')
     i_d = c.sub('\\1.json', i_d)
+    i_d = i_d.replace("/src/", "/json/")
 
     try:
         s = yaml.load( i_d )
