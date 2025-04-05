@@ -43,6 +43,19 @@ $defs:
       $ref: "../../../../framework/src/requests/filteringTerms.yaml#/FilteringTerm"
 
   #<--------------------------------------------------------------------------->
+
+  FiltersIds:
+    description: |-
+      This parameter 
+
+      Provenance: Beacon v2
+    versions:
+      - v2+
+    type: array
+    items:
+      type: string
+
+  #<--------------------------------------------------------------------------->
   #<------------------------ Variant Request Parameters ----------------------->
   #<--------------------------------------------------------------------------->
 
@@ -222,6 +235,26 @@ $defs:
 
   #<--------------------------------------------------------------------------->
 
+    SequenceEndPosition:
+      description:
+        The precise end of the sequence indicated by the `sequence` parameter
+        in standard 0 based, fully left normalized format. 
+      versions:
+        - v2.5
+      type: integer
+
+  #<--------------------------------------------------------------------------->
+
+    SequenceStartPosition:
+      description:
+        The precise start of the sequence indicated by the `sequence` parameter
+        in standard 0 based, fully left normalized format.
+      versions:
+        - v2.5
+      type: integer
+
+  #<--------------------------------------------------------------------------->
+
   VariantId:
     description: |-
       * A variant identifier such as a VRSid, ClinVar id, dbSNP rsID or a
@@ -256,6 +289,7 @@ $defs:
       - CopyNumberChange
       - CopyNumberCount
       - DerivativeMolecule
+      - SequenceRepeat
       - Terminus
 
   #<--------------------------------------------------------------------------->

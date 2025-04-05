@@ -1,0 +1,401 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+
+$defs:
+
+################################################################################
+# Beacon v2 status quo
+################################################################################
+
+  g_variant:
+    description: |-
+      This represents the generic collection of variant parameters allowed in
+      Beacon v2 requests.
+    type: object
+    properties:
+      assemblyId:
+        $ref: "./requestParameterComponents.yaml#/$defs/Assembly"
+      referenceName:
+        $ref: "./requestParameterComponents.yaml#/$defs/RefSeqId"
+      referenceBases:
+        $ref: "./requestParameterComponents.yaml#/$defs/ReferenceBases"
+      alternateBases:
+        $ref: "./requestParameterComponents.yaml#/$defs/AlternateBases"
+      variantType:
+        $ref: "./requestParameterComponents.yaml#/$defs/VariantType"
+      start:
+        $ref: "./requestParameterComponents.yaml#/$defs/Start"
+      end:
+        $ref: "./requestParameterComponents.yaml#/$defs/End"
+      geneId:
+        $ref: "./requestParameterComponents.yaml#/$defs/GeneId"
+      aminoacidChange:
+        $ref: "./requestParameterComponents.yaml#/$defs/AminoacidChange"
+      genomicAlleleShortForm:
+        $ref: "./requestParameterComponents.yaml#/$defs/GenomicAlleleShortForm"
+      variantMinLength:
+        $ref: "./requestParameterComponents.yaml#/$defs/VariantMinLength"
+      variantMaxLength:
+        $ref: "./requestParameterComponents.yaml#/$defs/VariantMaxLength"
+    examples:
+      $ref: "../examples/g_variant.yaml#/examples"
+
+################################################################################
+# Beacon v2+ general parameters
+################################################################################
+
+  VQSrequest:
+    description: |-
+      The `VQSrequest` type represents the generic collection of variant parameters
+      supported in Beacon v2+ requests. These include parameters with close alignment
+      to VRS v2 concepts and replacing some Beacon v1/v2 generics with tighter
+      definitions (e.g. `referenceAccession` instead of `referenceName` and `accession`
+      or `copyChange` for a specific subset of former `variantType` values) but also
+      keep some conceptsm beyond VRS scope or specifically geared towards query
+      applications (`geneId`, `sequenceLength`).
+    type: object
+    properties:
+      name:
+        $ref: "./requestParameterComponents.yaml#/$defs/RequestProfileId"
+      referenceAccession:
+        $ref: "./requestParameterComponents.yaml#/$defs/RefgetAccession"
+      startPos:
+        $ref: "./requestParameterComponents.yaml#/$defs/SequenceStart"
+      endPos:
+        $ref: "./requestParameterComponents.yaml#/$defs/SequenceEnd"
+      startRange:
+        $ref: "./requestParameterComponents.yaml#/$defs/Range"
+      endRange:
+        $ref: "./requestParameterComponents.yaml#/$defs/Range"
+      sequence:
+        $ref: "./requestParameterComponents.yaml#/$defs/Sequence"
+      copyChange:
+        $ref: "./requestParameterComponents.yaml#/$defs/CopyChange"
+      adjacencyAccession:
+        $ref: "./requestParameterComponents.yaml#/$defs/AdjacencyAccession"
+      adjacencyRange:
+        $ref: "./requestParameterComponents.yaml#/$defs/Range"
+      repeatSubunitCount:
+        $ref: "./requestParameterComponents.yaml#/$defs/RepeatSubunitCount"
+      repeatSubunitLength:
+        $ref: "./requestParameterComponents.yaml#/$defs/RepeatSubunitLength"
+      geneId:
+        $ref: "./requestParameterComponents.yaml#/$defs/GeneId"
+      aminoacidChange:
+        $ref: "./requestParameterComponents.yaml#/$defs/AminoacidChange"
+      genomicAlleleShortForm:
+        $ref: "./requestParameterComponents.yaml#/$defs/GenomicAlleleShortForm"
+      sequenceLength:
+        $ref: "./requestParameterComponents.yaml#/$defs/SequenceLength"
+      vrsType:
+        $ref: "./requestParameterComponents.yaml#/$defs/VRStype"
+      genomicFeatures:
+        $ref: "./requestParameterComponents.yaml#/$defs/GenomicFeature"
+      phenoClinicEffects:
+        $ref: "./requestParameterComponents.yaml#/$defs/PhenoClinicEffect"
+
+
+  #<--------------------------------------------------------------------------->
+  #<--------------------------------------------------------------------------->
+  # Requests per VRS type
+  #<--------------------------------------------------------------------------->
+  #<--------------------------------------------------------------------------->
+
+  #<----------------------------- Adjacency ----------------------------------->
+
+  VQSadjacencyRequest:
+    description: |-
+      A Beacon v2.n request for sequence adjacency queries, e.g. for
+      the retrieval of chromosomal translocation events or sequence fusions.
+      
+      TODO: In VRS v2 there is an implicit sequence directionality from the use
+      of either start or end parameters for either side of the adjacency. This
+      might be problematic on the query side where in many instances just the
+      approximate position of the (fused) breakpoints maight be of interest.
+
+      This might need additional clarification (e.g. use of `startRange` or
+      `endRange`, `adjacencyStartRange` and `adjecencyEndRange` parameters to
+      indicate direction dependent matching).
+    type: object
+    properties:
+      name:
+        const: VQSadjacencyRequest
+      referenceAccession:
+        $ref: "./requestParameterComponents.yaml#/$defs/RefgetAccession"
+      sequenceRange:
+        $ref: "./requestParameterComponents.yaml#/$defs/Range"
+      adjacencyAccession:
+        $ref: "./requestParameterComponents.yaml#/$defs/AdjacencyAccession"
+      adjacencyRange:
+        $ref: "./requestParameterComponents.yaml#/$defs/Range"
+      vrsType:
+        const: Adjacency
+    required:
+      - name
+      - referenceAccession
+      - sequenceRange
+      - adjacencyAccession
+      - adjacencyRange
+      - vrsType
+
+  #<------------------------------- Allele ------------------------------------>
+
+  VQSalleleRequest:
+    description: |-
+      A Beacon v2.5 sequence query. It is in its scope similar to the Beacon
+      v1/v2 allele requests but replaces the original parameters with VRS v2
+      concepts.
+    type: object
+    properties:
+      name:
+        const: VQSalleleRequest
+      referenceAccession:
+        $ref: "./requestParameterComponents.yaml#/$defs/RefgetAccession"
+      start:
+        $ref: "./requestParameterComponents.yaml#/$defs/SequenceStartPosition"
+      end:
+        $ref: "./requestParameterComponents.yaml#/$defs/SequenceEndPosition"
+      sequence:
+        $ref: "./requestParameterComponents.yaml#/$defs/Sequence"
+      referenceSequence:
+        $ref: "./requestParameterComponents.yaml#/$defs/Sequence"
+      vrsType:
+        const: Allele
+    required:
+      - name
+      - referenceAccession
+      - start
+      - sequence
+
+  #<--------------------------- CisPhasedBlock -------------------------------->
+
+  # TBD #
+
+  #<-------------------------- CopyNumberChange ------------------------------->
+
+  VQScopyChangeRequest:
+    description: |-
+      A typical Beacon v2.n request for copy number variations (CNVs) queries
+      approximate positions for CNV start and end regions through use of the
+      `Range` type. The `copyChange` parameter indicates the relative change in
+      genomic copy number (pls. refer to the class definition.)
+    type: object
+    properties:
+      name:
+        const: VQScopyChangeRequest
+      referenceAccession:
+        $ref: "./requestParameterComponents.yaml#/$defs/RefgetAccession"
+      start:
+        $ref: "./requestParameterComponents.yaml#/$defs/Range"
+      end:
+        $ref: "./requestParameterComponents.yaml#/$defs/Range"
+      copyChange:
+        $ref: "./requestParameterComponents.yaml#/$defs/CopyChange"
+      sequenceLength:
+        $ref: "./requestParameterComponents.yaml#/$defs/SequenceLength"
+      vrsType:
+        const: CopyNumberChange
+    required:
+      - name
+      - referenceAccession
+      - startRange
+      - endRange
+      - copyChange
+
+  #<--------------------------- CopyNumberCount ------------------------------->
+
+  # TBD #
+
+  #<-------------------------- DerivativeMolecule ----------------------------->
+
+  # TBD #
+
+  #<--------------------------- SequenceRepeat -------------------------------->
+
+  VQSsequenceRepeatRequest:
+    description: |-
+      A Beacon v2.n request for sequence repeat queries, e.g. for the
+      retrieval of tandem repeat expansions or other sequence repeat events.
+    type: object
+    properties:
+      name:
+        const: VQSsequenceRepeatRequest
+      referenceAccession:
+        $ref: "./requestParameterComponents.yaml#/$defs/RefgetAccession"
+      sequenceRange:
+        $ref: "./requestParameterComponents.yaml#/$defs/Range"
+      repeatSubunitLength:
+        $ref: "./requestParameterComponents.yaml#/$defs/RepeatSubunitLength"
+      repeatSubunitCount:
+        $ref: "./requestParameterComponents.yaml#/$defs/RepeatSubunitCount"
+      vrsType:
+        const: SequenceRepeat
+    required:
+      - name
+      - referenceAccession
+      - sequenceRange
+      - vrsType
+
+  #<----------------------------- Terminus ------------------------------------>
+
+  VQSterminusRequest:
+    description: |-
+      A Beacon v2.n request for a sequence terminus, _i.e._ the end of a sequence.
+      An example would be the match of chromosomal breakpoints terminating the
+      derived chromosome w/o resulting sequence fusion.
+
+      TODO: As in adjacency requests one could use `startRange` or `endRange`
+      to limit the side of the breakpoint.
+    type: object
+    properties:
+      name:
+        const: VQSterminusRequest
+      referenceAccession:
+        $ref: "./requestParameterComponents.yaml#/$defs/RefgetAccession"
+      sequenceRange:
+        $ref: "./requestParameterComponents.yaml#/$defs/Range"
+      vrsType:
+        const: Terminus
+    required:
+      - name
+      - referenceAccession
+      - sequenceRange
+      - vrsType
+
+  #<--------------------------------------------------------------------------->
+  #<--------------------------------------------------------------------------->
+  # VQS request profiles not directly corresponding to a single VRS class
+  #<--------------------------------------------------------------------------->
+  #<--------------------------------------------------------------------------->
+
+  VQSrangeRequest:
+    description: |-
+      Beacon Range Queries are supposed to return matches of any variant with at
+      least partial overlap of the sequence range specified by `referenceAccession`,
+      and `sequenceRange` parameters. Additional qualifiers such as `copyChange`
+      or length of the affected sequence can be used to further restrict the
+      results.
+
+      ##### TODO
+
+      * Evaluate to split into more basic `RangeRequest` and specialized
+        requests requiring an effect component
+      * Review current VRS v2 and upcoming versions for optoions to express
+        types of variants beyond the `copyChange` parameter
+
+    type: object
+    properties:
+      name:
+        const: VQSrangeRequest
+      referenceAccession:
+        $ref: "./requestParameterComponents.yaml#/$defs/RefSeqId"
+      sequenceRange:
+        $ref: "./requestParameterComponents.yaml#/$defs/Range"
+      sequenceLength:
+        $ref: "./requestParameterComponents.yaml#/$defs/SequenceLength"
+      copyChange:
+        $ref: "./requestParameterComponents.yaml#/$defs/CopyChange"
+      vrsType:
+        $ref: "./requestParameterComponents.yaml#/$defs/VRStype"
+    required:
+      - name
+      - referenceAccession
+      - sequenceRange
+
+  #<--------------------------------------------------------------------------->
+  #<--------------------------------------------------------------------------->
+  # Generic request profiles supported in principle by v2 VQS
+  #<--------------------------------------------------------------------------->
+  #<--------------------------------------------------------------------------->
+
+  variantIdRequest:
+    description: |-
+      A Beacon v2+ request for matching variations by their `variantId`.
+      This request is used to retrieve a specific variant by its identifier.
+    type: object
+    properties:
+      name:
+        const: BV2variantIdRequest
+      variantId:
+        $ref: "./requestParameterComponents.yaml#/$defs/VariantId"
+
+  # <------------------------------------------------------------------------> #
+
+  aminoacidChangeRequest:
+    description: |-
+      A Beacon v2 request for amino acid change queries, e.g. for the
+      retrieval of all variants leading to specific amino acid change. The request
+      may be restricted by additionally providing the gene ID.
+    type: object
+    properties:
+      name:
+        const: aminoacidChangeRequest
+      aminoacidChange:
+        $ref: "./requestParameterComponents.yaml#/$defs/AminoacidChange"
+      geneId:
+        $ref: "./requestParameterComponents.yaml#/$defs/GeneId"
+    required:
+      - aminoacidChange
+
+  # <------------------------------------------------------------------------> #
+
+  genomicAlleleShortFormRequest:
+    type: object
+    properties:
+      genomicAlleleShortForm:
+        $ref: "./requestParameterComponents.yaml#/$defs/GenomicAlleleShortForm"
+
+  # <------------------------------------------------------------------------> #
+
+  VQSgeneIdRequest:
+    description: |-
+      A Beacon v2.5 request for gene queries, e.g. for the retrieval of
+      all variants in a gene or variants restricted by additional parameters
+      such as CNV type (`copyChange`) or length of the affected sequence.
+      TODO: Evaluate to split into more basic `GeneIdRequest` and specialized
+            requests requiring an effect component.
+    type: object
+    properties:
+      name:
+        const: VQSgeneIdRequest
+      geneId:
+        $ref: "./requestParameterComponents.yaml#/$defs/GeneId"
+      copyChange:
+        $ref: "./requestParameterComponents.yaml#/$defs/CopyChange"
+      sequenceLength:
+        $ref: "./requestParameterComponents.yaml#/$defs/SequenceLength"
+      molecularEffect:
+        $ref: "./requestParameterComponents.yaml#/$defs/molecularEffect"
+      clinicalRelevance:
+        $ref: "./requestParameterComponents.yaml#/$defs/clinicalRelevance"
+      vrsType:
+        $ref: "./requestParameterComponents.yaml#/$defs/VRStype"
+    required:
+      - geneId
+
+################################################################################
+# Proposed multi variant request
+################################################################################
+
+  multivarRequest:
+    description: |-
+      This multi variant query is a collection of individual variant queries. It
+      allows to wrap multiple single variant queries - e.g. `g_variant` or VQS
+      requests - into an array with the aim to retrieve entities (`biosamples`,
+      `individuals` ...) having variants matching all conditions (logical `AND`
+      as in v2 `filters`).
+
+      Status: Proposed for evaluation for Beacon v2.5.
+      TODO: Similar to `filters` the addition of boolean logic could be
+      considered for future versions.
+    type: array
+    items:
+      anyOf:
+        - $ref: "#/$defs/g_variant"
+        - $ref: "#/$defs/VQSadjacencyRequest"
+        - $ref: "#/$defs/VQSalleleRequest"
+        - $ref: "#/$defs/VQScopyChangeRequest"
+        # - $ref: "#/$defs/VQScopyCountRequest"
+        - $ref: "#/$defs/VQSsequenceRepeatRequest"
+        - $ref: "#/$defs/VQSterminusRequest"
+        - $ref: "#/$defs/geneIdRequest"
+

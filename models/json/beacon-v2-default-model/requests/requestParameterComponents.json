@@ -77,6 +77,16 @@
                 "v2+"
             ]
         },
+        "FiltersIds": {
+            "description": "This parameter \n\nProvenance: Beacon v2",
+            "items": {
+                "type": "string"
+            },
+            "type": "array",
+            "versions": [
+                "v2+"
+            ]
+        },
         "GeneId": {
             "description": "* A gene identifier\n* It is strongly suggested to use a symbol following\n  the HGNC (https://www.genenames.org) nomenclature.\n\nProvenance: Beacon v2.0",
             "examples": [
@@ -199,6 +209,20 @@
             ]
         },
         "SequenceLength": {
+            "SequenceEndPosition": {
+                "description": "The precise end of the sequence indicated by the `sequence` parameter in standard 0 based, fully left normalized format.",
+                "type": "integer",
+                "versions": [
+                    "v2.5"
+                ]
+            },
+            "SequenceStartPosition": {
+                "description": "The precise start of the sequence indicated by the `sequence` parameter in standard 0 based, fully left normalized format.",
+                "type": "integer",
+                "versions": [
+                    "v2.5"
+                ]
+            },
             "description": "The sequence length when querying the conceptual representation of a\nsequence according to a VRS `ReferenceLengthExpression` class.\n\nAdditionally, the `sequenceLength` parameter can be used to limit the\nlength of matched variants, e.g. by specifying a range of lengths for\n`copyChange` matches.\n\nProvenance: VRS v2",
             "oneOf": [
                 "integer",
@@ -234,6 +258,7 @@
                 "CopyNumberChange",
                 "CopyNumberCount",
                 "DerivativeMolecule",
+                "SequenceRepeat",
                 "Terminus"
             ],
             "type": "string",
