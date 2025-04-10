@@ -388,5 +388,6 @@
             "type": "object"
         }
     },
-    "$schema": "https://json-schema.org/draft/2020-12/schema"
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Beacon request profiles provide a way for Beacon to    \n\n* standardize how variant queries are handled\n* express supported which query options and variant types are supported\n\nThe original Beacon v2 variant queries supported a heterogeneous list of\nparameters, for POST requests wrapped inside the `g_variant` object. However,\nthere was no required control of parameter combinations; this was completely\nleft to the resource developers and had the potential for ambiguities.\n\nFrom v2.5 the Beacon Variant Query Standard VQS supports differeent types of\nrequest profiles:   \n\n* Requests per VRS type, i.e. specifically querying variants corresponding to\n  a given VRS variant class\n* VQS request profiles not directly corresponding to a single VRS class, e.g.\n  range queries with matches over multiple types\n* \"beyond VRS\" profiles which use e.g. identifiers\n* generic `VQSrequest` queries using the updated v2.5 parameters but without\n  (yet) defined request profile; as well as the legacy `g_variant` profile\n  using the v2 parameters (to be deprecated at some point)\n\nAdditionally an experimental `multivarRequest` is provided which allows to\nsend a list of individual variant queries, e.g. to identify individuals or\nbiosamples which have several requested variants."
 }
