@@ -42,6 +42,9 @@ properties:
     type: array
     items:
       $ref: '#/$defs/FrequencyInPopulations'
+  info:
+    $ref: ../common/info.yaml
+
 $defs:
   LegacyVariation:
     type: object
