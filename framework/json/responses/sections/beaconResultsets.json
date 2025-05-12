@@ -18,6 +18,10 @@
                     "$ref": "../../common/beaconCommonComponents.json#/$defs/ListOfHandovers",
                     "description": "List of handover objects that apply to this resultset, not to the whole Beacon or to a result in particular."
                 },
+                "resultsetGranularity": {
+                    "const": "boolean",
+                    "type": "string"
+                },
                 "setType": {
                     "default": "dataset",
                     "description": "Entry type of resultSet. It SHOULD MATCH an entry type declared as collection in the Beacon configuration.",
@@ -27,6 +31,7 @@
             "required": [
                 "id",
                 "setType",
+                "resultsetGranularity",
                 "exists"
             ],
             "type": "object"
@@ -53,6 +58,10 @@
                     "$ref": "../../common/beaconCommonComponents.json#/$defs/ListOfHandovers",
                     "description": "List of handovers that apply to this resultset, not to the whole Beacon or to a result in particular."
                 },
+                "resultsetGranularity": {
+                    "const": "count",
+                    "type": "string"
+                },
                 "setType": {
                     "default": "dataset",
                     "description": "Entry type of resultSet. It SHOULD MATCH an entry type declared as collection in the Beacon configuration.",
@@ -62,6 +71,7 @@
             "required": [
                 "id",
                 "setType",
+                "resultsetGranularity",
                 "exists",
                 "resultsCount"
             ],
@@ -96,6 +106,10 @@
                     "$ref": "../../common/beaconCommonComponents.json#/$defs/ListOfHandovers",
                     "description": "List of handovers that apply to this resultset, not to the whole Beacon or to a result in particular."
                 },
+                "resultsetGranularity": {
+                    "const": "record",
+                    "type": "string"
+                },
                 "setType": {
                     "default": "dataset",
                     "description": "Entry type of resultSet. It SHOULD MATCH an entry type declared as collection in the Beacon configuration.",
@@ -105,6 +119,7 @@
             "required": [
                 "id",
                 "setType",
+                "resultsetGranularity",
                 "exists",
                 "resultsCount",
                 "results"

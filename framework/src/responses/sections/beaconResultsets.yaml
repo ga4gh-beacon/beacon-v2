@@ -34,6 +34,9 @@ $defs:
           as collection in the Beacon configuration.
         type: string
         default: dataset
+      resultsetGranularity:
+        type: string
+        const: boolean      
       exists:
         type: boolean
       resultsHandovers:
@@ -46,6 +49,7 @@ $defs:
     required:
       - id
       - setType
+      - resultsetGranularity
       - exists
     additionalProperties: true
 
@@ -62,6 +66,9 @@ $defs:
           as collection in the Beacon configuration.
         type: string
         default: dataset
+      resultsetGranularity:
+        type: string
+        const: count      
       exists:
         type: boolean
       resultsCount:
@@ -76,6 +83,7 @@ $defs:
     required:
       - id
       - setType
+      - resultsetGranularity
       - exists
       - resultsCount
     additionalProperties: true
@@ -93,6 +101,9 @@ $defs:
           as collection in the Beacon configuration.
         type: string
         default: dataset
+      resultsetGranularity:
+        type: string
+        const: record      
       exists:
         type: boolean
       resultsCount:
@@ -112,6 +123,7 @@ $defs:
     required:
       - id
       - setType
+      - resultsetGranularity
       - exists
       - resultsCount
       - results
