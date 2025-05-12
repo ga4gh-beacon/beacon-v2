@@ -1,6 +1,6 @@
 {
     "$defs": {
-        "ResultsetInstance": {
+        "BooleanResultsetInstance": {
             "additionalProperties": true,
             "properties": {
                 "exists": {
@@ -12,8 +12,74 @@
                     "type": "string"
                 },
                 "info": {
-                    "description": "Additional details that could be of interest about the Resultset. Provided to clearly enclose any attribute that is not part of the Beacon specification.",
-                    "type": "object"
+                    "$ref": "../../common/info.json"
+                },
+                "resultsHandovers": {
+                    "$ref": "../../common/beaconCommonComponents.json#/$defs/ListOfHandovers",
+                    "description": "List of handover objects that apply to this resultset, not to the whole Beacon or to a result in particular."
+                },
+                "setType": {
+                    "default": "dataset",
+                    "description": "Entry type of resultSet. It SHOULD MATCH an entry type declared as collection in the Beacon configuration.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "setType",
+                "exists"
+            ],
+            "type": "object"
+        },
+        "CountResultsetInstance": {
+            "additionalProperties": true,
+            "properties": {
+                "exists": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "id of the resultset",
+                    "example": "datasetA",
+                    "type": "string"
+                },
+                "info": {
+                    "$ref": "../../common/info.json"
+                },
+                "resultsCount": {
+                    "description": "Number of results in this Resultset.",
+                    "type": "integer"
+                },
+                "resultsHandovers": {
+                    "$ref": "../../common/beaconCommonComponents.json#/$defs/ListOfHandovers",
+                    "description": "List of handovers that apply to this resultset, not to the whole Beacon or to a result in particular."
+                },
+                "setType": {
+                    "default": "dataset",
+                    "description": "Entry type of resultSet. It SHOULD MATCH an entry type declared as collection in the Beacon configuration.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "setType",
+                "exists",
+                "resultsCount"
+            ],
+            "type": "object"
+        },
+        "RecordsResultsetInstance": {
+            "additionalProperties": true,
+            "properties": {
+                "exists": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "description": "id of the resultset",
+                    "example": "datasetA",
+                    "type": "string"
+                },
+                "info": {
+                    "$ref": "../../common/info.json"
                 },
                 "results": {
                     "items": {
@@ -55,7 +121,17 @@
         },
         "resultSets": {
             "items": {
-                "$ref": "#/$defs/ResultsetInstance"
+                "oneOf": [
+                    {
+                        "$ref": "#/$defs/BooleanResultsetInstance"
+                    },
+                    {
+                        "$ref": "#/$defs/CountResultsetInstance"
+                    },
+                    {
+                        "$ref": "#/$defs/RecordsResultsetInstance"
+                    }
+                ]
             },
             "minItems": 0,
             "type": "array"

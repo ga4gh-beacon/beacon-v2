@@ -8,13 +8,16 @@ properties:
   resultSets:
     type: array
     items:
-      $ref: '#/$defs/ResultsetInstance'
+      oneOf:
+        - $ref: '#/$defs/BooleanResultsetInstance'
+        - $ref: '#/$defs/CountResultsetInstance'
+        - $ref: '#/$defs/RecordsResultsetInstance'
     minItems: 0
 required:
   - resultSets
 additionalProperties: true
 $defs:
-  ResultsetInstance:
+  BooleanResultsetInstance:
     type: object
     properties:
       id:
@@ -22,7 +25,36 @@ $defs:
         type: string
         example: datasetA
       setType:
-        description: Entry type of resultSet. It SHOULD MATCH an entry type declared
+        description: >-
+          Entry type of resultSet. It SHOULD MATCH an entry type declared
+          as collection in the Beacon configuration.
+        type: string
+        default: dataset
+      exists:
+        type: boolean
+      resultsHandovers:
+        description: >-
+          List of handover objects that apply to this resultset, not to the whole
+          Beacon or to a result in particular.
+        $ref: ../../common/beaconCommonComponents.yaml#/$defs/ListOfHandovers
+      info:
+        $ref: ../../common/info.yaml
+    required:
+      - id
+      - setType
+      - exists
+    additionalProperties: true
+
+  CountResultsetInstance:
+    type: object
+    properties:
+      id:
+        description: id of the resultset
+        type: string
+        example: datasetA
+      setType:
+        description: >-
+          Entry type of resultSet. It SHOULD MATCH an entry type declared
           as collection in the Beacon configuration.
         type: string
         default: dataset
@@ -36,10 +68,38 @@ $defs:
           Beacon or to a result in particular.
         $ref: ../../common/beaconCommonComponents.yaml#/$defs/ListOfHandovers
       info:
-        description: Additional details that could be of interest about the Resultset.
-          Provided to clearly enclose any attribute that is not part of the Beacon
-          specification.
-        type: object
+        $ref: ../../common/info.yaml
+    required:
+      - id
+      - setType
+      - exists
+      - resultsCount
+    additionalProperties: true
+
+  RecordsResultsetInstance:
+    type: object
+    properties:
+      id:
+        description: id of the resultset
+        type: string
+        example: datasetA
+      setType:
+        description: >-
+          Entry type of resultSet. It SHOULD MATCH an entry type declared
+          as collection in the Beacon configuration.
+        type: string
+        default: dataset
+      exists:
+        type: boolean
+      resultsCount:
+        description: Number of results in this Resultset.
+        type: integer
+      resultsHandovers:
+        description: List of handovers that apply to this resultset, not to the whole
+          Beacon or to a result in particular.
+        $ref: ../../common/beaconCommonComponents.yaml#/$defs/ListOfHandovers
+      info:
+        $ref: ../../common/info.yaml
       results:
         type: array
         items:
