@@ -8,15 +8,19 @@ properties:
   resultSets:
     type: array
     items:
-      oneOf:
-        - $ref: '#/$defs/BooleanResultsetInstance'
-        - $ref: '#/$defs/CountResultsetInstance'
-        - $ref: '#/$defs/RecordsResultsetInstance'
+      $ref: '#/$defs/ResultsetInstance'
     minItems: 0
 required:
   - resultSets
 additionalProperties: true
+
 $defs:
+  ResultsetInstance:
+    oneOf:
+      - $ref: '#/$defs/BooleanResultsetInstance'
+      - $ref: '#/$defs/CountResultsetInstance'
+      - $ref: '#/$defs/RecordsResultsetInstance'
+
   BooleanResultsetInstance:
     type: object
     properties:

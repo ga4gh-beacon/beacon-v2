@@ -110,6 +110,19 @@
                 "results"
             ],
             "type": "object"
+        },
+        "ResultsetInstance": {
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/BooleanResultsetInstance"
+                },
+                {
+                    "$ref": "#/$defs/CountResultsetInstance"
+                },
+                {
+                    "$ref": "#/$defs/RecordsResultsetInstance"
+                }
+            ]
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -121,17 +134,7 @@
         },
         "resultSets": {
             "items": {
-                "oneOf": [
-                    {
-                        "$ref": "#/$defs/BooleanResultsetInstance"
-                    },
-                    {
-                        "$ref": "#/$defs/CountResultsetInstance"
-                    },
-                    {
-                        "$ref": "#/$defs/RecordsResultsetInstance"
-                    }
-                ]
+                "$ref": "#/$defs/ResultsetInstance"
             },
             "minItems": 0,
             "type": "array"
