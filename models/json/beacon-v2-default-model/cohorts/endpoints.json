@@ -30,7 +30,7 @@
                 "in": "query",
                 "name": "limit",
                 "schema": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Limit"
+                    "$ref": "../../../../framework/json/common/beaconCommonComponents.json#/$defs/Limit"
                 }
             },
             "requestedSchema": {
@@ -47,7 +47,7 @@
                 "in": "query",
                 "name": "skip",
                 "schema": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Skip"
+                    "$ref": "../../../../framework/json/common/beaconCommonComponents.json#/$defs/Skip"
                 }
             }
         },
@@ -159,7 +159,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                    "$ref": "../../../../framework/json/responses/beaconErrorResponse.json"
                                 }
                             }
                         },
@@ -188,7 +188,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                    "$ref": "../../../../framework/json/responses/beaconErrorResponse.json"
                                 }
                             }
                         },
@@ -225,7 +225,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                    "$ref": "../../../../framework/json/responses/beaconErrorResponse.json"
                                 }
                             }
                         },
@@ -264,7 +264,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                    "$ref": "../../../../framework/json/responses/beaconErrorResponse.json"
                                 }
                             }
                         },
@@ -308,7 +308,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                    "$ref": "../../../../framework/json/responses/beaconErrorResponse.json"
                                 }
                             }
                         },
@@ -343,7 +343,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                    "$ref": "../../../../framework/json/responses/beaconErrorResponse.json"
                                 }
                             }
                         },
@@ -380,7 +380,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                    "$ref": "../../../../framework/json/responses/beaconErrorResponse.json"
                                 }
                             }
                         },
