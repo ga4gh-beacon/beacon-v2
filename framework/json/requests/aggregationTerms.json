@@ -1,0 +1,23 @@
+{
+    "$defs": {
+        "AggregationTerm": {
+            "oneOf": [
+                {
+                    "$ref": "./filteringTerms.json#/$defs/OntologyFilter/properties/id"
+                },
+                {
+                    "$ref": "./filteringTerms.json#/$defs/AlphanumericFilter/properties/id"
+                },
+                {
+                    "$ref": "./filteringTerms.json#/$defs/CustomFilter/properties/id"
+                }
+            ]
+        }
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Terms used to specify fields to return in an aggregate data response.  In practice we use the the \"id\" field from existing filtering terms.",
+    "items": {
+        "$ref": "#/$defs/AggregationTerm"
+    },
+    "type": "array"
+}

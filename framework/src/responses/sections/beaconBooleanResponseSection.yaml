@@ -6,3 +6,6 @@ required:
 properties:
   exists:
     $ref: ../../common/beaconCommonComponents.yaml#/$defs/Exists
+  aggregateResults:
+    # aggregate bools for entire query
+    $ref: ./beaconAggregateResults.yaml

@@ -1,0 +1,13 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+description: >-
+  Terms used to specify fields to return in an aggregate data response. 
+  In practice we use the the "id" field from existing filtering terms.
+type: array
+items:
+  $ref: "#/$defs/AggregationTerm"
+$defs:
+  AggregationTerm:
+    oneOf:
+      - $ref: ./filteringTerms.yaml#/$defs/OntologyFilter/properties/id
+      - $ref: ./filteringTerms.yaml#/$defs/AlphanumericFilter/properties/id
+      - $ref: ./filteringTerms.yaml#/$defs/CustomFilter/properties/id

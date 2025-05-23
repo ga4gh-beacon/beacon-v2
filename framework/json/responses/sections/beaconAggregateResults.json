@@ -1,0 +1,42 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Beacon aggregate results section.",
+    "items": {
+        "$ref": "#/$defs/AggregateResultsInstance"
+    },
+    "minItems": 0,
+    "type": "array",
+    "$defs": {
+        "AggregateResultsInstance": {
+            "description": "Aggregated data from results, with distributions for the aggregation terms given in the request.",
+            "properties": {
+                "description": {
+                    "description": "Description of this aggregation term",
+                    "type": "string"
+                },
+                "distribution": {
+                    "description": "Distribution of results for this aggregation term.",
+                    "example": {
+                        "female": 51,
+                        "male": 50
+                    },
+                    "type": "object"
+                },
+                "id": {
+                    "$ref": "../../requests/aggregationTerms.json#/$defs/AggregationTerm",
+                    "description": "The id of this aggregation term"
+                },
+                "name": {
+                    "description": "Name of this aggregation term",
+                    "example": "Genders",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "distribution"
+            ],
+            "type": "object"
+        }
+    }
+}

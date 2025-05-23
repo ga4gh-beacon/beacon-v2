@@ -8,6 +8,9 @@ properties:
   numTotalResults:
     description: Total number of results.
     $ref: ../../common/beaconCommonComponents.yaml#/$defs/NumTotalResults
+  aggregateResults:
+    # aggregate counts for entire query 
+    $ref: ./beaconAggregateResults.yaml
 required:
   - exists
   - numTotalResults

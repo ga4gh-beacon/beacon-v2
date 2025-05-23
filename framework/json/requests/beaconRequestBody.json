@@ -3,6 +3,10 @@
         "BeaconQuery": {
             "description": "Parameters to limit the list of returned results.",
             "properties": {
+                "aggregationTerms": {
+                    "$ref": "./aggregationTerms.json",
+                    "description": "List of ids of filters to include in an aggregated data response"
+                },
                 "filters": {
                     "$ref": "./filteringTerms.json",
                     "description": "Ontology based filters. Using CURIE syntax is encouraged."

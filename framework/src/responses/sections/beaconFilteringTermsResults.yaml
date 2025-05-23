@@ -75,6 +75,11 @@ $defs:
         items:
           type: string
         minItems: 1
+      aggregatable:
+        description: >-
+          This filter can be used as a category in an aggregated data response
+        type: boolean
+        example: true
   Resource:
     type: object
     description: >-

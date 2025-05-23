@@ -1,0 +1,38 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+# loosely adapted from DataAvailabilityAndDistribution in cohorts schema
+description: Beacon aggregate results section.
+type: array
+minItems: 0
+items:
+  $ref: "#/$defs/AggregateResultsInstance"
+$defs:
+  AggregateResultsInstance:
+    description: >-
+      Aggregated data from results, with distributions for the aggregation terms given in the request.
+    type: object
+    properties:
+      id:
+        $ref: ../../requests/aggregationTerms.yaml#/$defs/AggregationTerm
+        description: >-
+          The id of this aggregation term
+      name:
+        description: >-
+          Name of this aggregation term
+        type: string
+        example: Genders
+      description:
+        description: >-
+          Description of this aggregation term
+        type: string
+      distribution:
+        description: >-
+          Distribution of results for this aggregation term.
+        type: object
+        example:
+          # we generally expect values to be integers, but this is left unrestricted
+          # in principle these could be bools as well
+          male: 50
+          female: 51
+    required:
+      - id
+      - distribution

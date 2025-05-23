@@ -3,6 +3,10 @@
         "ResultsetInstance": {
             "additionalProperties": true,
             "properties": {
+                "aggregateResults": {
+                    "$ref": "./beaconAggregateResults.json",
+                    "description": "Aggregate results for this resultset"
+                },
                 "exists": {
                     "type": "boolean"
                 },
@@ -49,6 +53,10 @@
     "properties": {
         "$schema": {
             "$ref": "../../common/beaconCommonComponents.json#/$defs/$schema"
+        },
+        "aggregateResults": {
+            "$ref": "./beaconAggregateResults.json",
+            "description": "Aggregate results for entire response"
         },
         "resultSets": {
             "items": {
