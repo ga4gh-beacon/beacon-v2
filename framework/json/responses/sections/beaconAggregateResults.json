@@ -10,6 +10,11 @@
         "AggregateResultsInstance": {
             "description": "Aggregated data from results, with distributions for the aggregation terms given in the request.",
             "properties": {
+                "countEntity": {
+                    "description": "The type of entity being counted in the distribution. For fields in beacon models, these are assumed to be the beacon entry type they apply to. Custom entities can also be specified.",
+                    "example": "individual",
+                    "type": "string"
+                },
                 "description": {
                     "description": "Description of this aggregation term",
                     "type": "string"
