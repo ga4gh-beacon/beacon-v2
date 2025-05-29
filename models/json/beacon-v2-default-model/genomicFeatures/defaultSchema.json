@@ -1,0 +1,36 @@
+{
+    "$comment": "version: ga4gh-beacon-feature-v2.1.2",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "description": "Schema for the genomic feature (e.g. gene or transcript...)",
+    "properties": {
+        "id": {
+            "description": "Internal feature ID.",
+            "examples": [
+                "Feature12345"
+            ],
+            "type": "string"
+        },
+        "genomicFeature": {
+            "type": "object",
+            "$ref": "../common/genomicFeature.json"
+        },
+        "info": {
+            "$ref": "../common/info.json"
+        },
+        "matrixIds": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array",
+            "description": "list of matrix ids"
+        }
+    },
+    "required": [
+        "id"
+    ],
+    "title": "Genomic feature",
+    "type": "object"
+}
+
+

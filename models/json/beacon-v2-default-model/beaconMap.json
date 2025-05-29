@@ -23,6 +23,10 @@
                     "returnedEntryType": "genomicVariant",
                     "url": "https://exampleBeacons.org/biosamples/{id}/g_variants"
                 },
+                "matrixLookup": {
+                    "returnedEntryType": "matrix",
+                    "url": "https://exampleBeacons.org/biosamples/{id}/matrices"
+                },
                 "runLookup": {
                     "returnedEntryType": "run",
                     "url": "https://exampleBeacons.org/biosamples/{id}/runs"
@@ -91,6 +95,18 @@
             "rootUrl": "https://exampleBeacons.org/datasets",
             "singleEntryUrl": "https://exampleBeacons.org/datasets/{id}"
         },
+        "featureEndpoints": {
+            "endpoints": {
+                "matrixLookup": {
+                    "returnedEntryType": "matrix",
+                    "url": "https://exampleBeacons.org/features/{id}/matrices"
+                }
+            },
+            "entryType": "feature",
+            "openAPIEndpointsDefinition": "https://exampleBeacons.org/features/endpoints.json",
+            "rootUrl": "https://exampleBeacons.org/features",
+            "singleEntryUrl": "https://exampleBeacons.org/features/{id}"
+        },
         "genomicVariantEndpoints": {
             "endpoints": {
                 "analysisLookup": {
@@ -139,6 +155,22 @@
             "openAPIEndpointsDefinition": "https://exampleBeacons.org/individuals/endpoints.json",
             "rootUrl": "https://exampleBeacons.org/individuals",
             "singleEntryUrl": "https://exampleBeacons.org/individuals/{id}"
+        },
+        "matrixEndpoints": {
+            "endpoints": {
+                "biosampleLookup": {
+                    "returnedEntryType": "feature",
+                    "url": "https://exampleBeacons.org/matrices/{id}/biosamples"
+                },
+                "featureLookup": {
+                    "returnedEntryType": "feature",
+                    "url": "https://exampleBeacons.org/matrices/{id}/features"
+                }
+            },
+            "entryType": "matrix",
+            "openAPIEndpointsDefinition": "https://exampleBeacons.org/matrices/endpoints.json",
+            "rootUrl": "https://exampleBeacons.org/matrices",
+            "singleEntryUrl": "https://exampleBeacons.org/matrices/{id}"
         },
         "runEndpoints": {
             "endpoints": {

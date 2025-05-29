@@ -150,31 +150,13 @@
             "type": "object"
         },
         "GenomicFeature": {
+            "$ref": "../common/genomicFeature.json",
             "description": "Genomic feature(s) related to the variant. NOTE: Although genes could also be referenced using these attributes, they have an independent section to allow direct queries.",
-            "properties": {
-                "featureClass": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
-                    "description": "Ontology term that describes the class of genomic feature affected by the variant. Values from SO (Sequence ontology) are recommended, e.g. `SO:0001623: 5 prime UTR variant`",
-                    "examples": [
-                        {
-                            "id": "SO:0001623",
-                            "label": "5 prime UTR variant"
-                        }
-                    ]
-                },
-                "featureID": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
-                    "description": "Where applicable, ID/accession/name of genomic feature related to the `featureClass`, preferably in CURIE format. If the value is a gene id or name, it points to the gene related to the `featureClass`, e.g. `the 5 prime UTR upstream of TP53`",
-                    "examples": [
-                        {
-                            "id": "HGNC:11998",
-                            "label": "TP53"
-                        }
-                    ]
+            "examples": [
+                {
+                    "id": "HGNC:11998",
+                    "label": "TP53"
                 }
-            },
-            "required": [
-                "featureClass"
             ],
             "type": "object"
         },

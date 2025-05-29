@@ -84,6 +84,13 @@
         "info": {
             "$ref": "../common/info.json"
         },
+        "matrixIds": {
+            "description": "list of matrix ids",
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
         "measurements": {
             "description": "List of measurements of the sample.",
             "items": {

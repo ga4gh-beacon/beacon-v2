@@ -2,7 +2,7 @@ openapi: 3.0.2
 servers: []
 info:
   version: 2.0.0
-  title: GA4GH Beacon API Specification - Biosamples endpoints
+  title: GA4GH Beacon API Specification - Genomic Features Endpoints
   description: TBD
   contact:
     email: beacon@ga4gh.org
@@ -10,7 +10,7 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
 paths:
-  /biosamples:
+  /features:
     get:
       parameters:
         - $ref: '#/components/parameters/requestedSchema'
@@ -18,8 +18,8 @@ paths:
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/includeResultsetResponses'
         - $ref: '#/components/parameters/filters'
-      description: Get a Beacon response for biosamples
-      operationId: getBiosamples
+      description: Get a list of genomic features
+      operationId: getfeatures
       tags:
         - GET Endpoints
       responses:
@@ -28,8 +28,8 @@ paths:
         default:
           $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: Get a Beacon response for biosamples
-      operationId: postBiosamplesRequest
+      description: Get a Beacon response for genomic features
+      operationId: postGenomicFeaturesRequest
       tags:
         - POST Endpoints
       requestBody:
@@ -47,13 +47,13 @@ paths:
             application/json:
               schema:
                 $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-  /biosamples/{id}:
+  /features/{id}:
     parameters:
       - $ref: '#/components/parameters/entryId'
     get:
       description: >-
-        Get details about one biosample, identified by its (unique) 'id'
-      operationId: getOneBiosample
+        Get details about one genomic feature, identified by its (unique) 'id'
+      operationId: getOneFeature
       tags:
         - GET Endpoints
       responses:
@@ -67,8 +67,8 @@ paths:
                 $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
       description: >-
-        Get details about one Biosample, identified by its (unique) 'id'
-      operationId: postOneBiosample
+        Get details about one genomic feature, identified by its (unique) 'id'
+      operationId: postOneFeature
       tags:
         - POST Endpoints
       requestBody:
@@ -86,7 +86,7 @@ paths:
             application/json:
               schema:
                 $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-  /biosamples/{id}/g_variants:
+  /features/{id}/g_variants:
     parameters:
       - $ref: '#/components/parameters/entryId'
     get:
@@ -95,9 +95,9 @@ paths:
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
       description: >-
-        Get a *genomic variations* response from one biosample, identified by
+        Get a *genomic variations* response for one genomic feature, identified by
         its (unique) 'id'
-      operationId: getOneBiosampleGenomicVariations
+      operationId: getOnegenomic featureGenomicVariants
       tags:
         - GET Endpoints
       responses:
@@ -111,9 +111,9 @@ paths:
                 $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
       description: >-
-        Get a *genomic variations* response from one biosample, identified by
+        Get a *genomic variations* response for one genomic feature, identified by
         its (unique) 'id'
-      operationId: postOneBiosampleGenomicVariations
+      operationId: potOnegenomic featureGenomicVariants
       tags:
         - POST Endpoints
       requestBody:
@@ -131,7 +131,7 @@ paths:
             application/json:
               schema:
                 $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-  /biosamples/{id}/analyses:
+  /features/{id}/biosamples:
     parameters:
       - $ref: '#/components/parameters/entryId'
     get:
@@ -140,9 +140,9 @@ paths:
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
       description: >-
-        Get an *analyses* response from one biosample, identified by its
+        Get a *biosamples* response for one genomic feature, identified by its
         (unique) 'id'
-      operationId: getOneBiosampleAnalyses
+      operationId: getOnegenomic featureBiosamples
       tags:
         - GET Endpoints
       responses:
@@ -156,9 +156,9 @@ paths:
                 $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
       description: >-
-        Get an *analyses* response from one biosample, identified by its
+        Get a *biosamples* response for one genomic feature, identified by its
         (unique) 'id'
-      operationId: postOneBiosampleAnalyses
+      operationId: postOneFeatureBiosamples
       tags:
         - POST Endpoints
       requestBody:
@@ -176,17 +176,13 @@ paths:
             application/json:
               schema:
                 $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-  /biosamples/{id}/runs:
-    parameters:
-      - $ref: '#/components/parameters/entryId'
+  /features/filtering_terms:
     get:
       parameters:
-        - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-      description: >-
-        Get a *runs* response from one biosample, identified by its (unique) 'id'
-      operationId: getOneBiosampleRuns
+      description: Get the list of filtering terms that could be used with features.
+      operationId: getIndivualsFilteringTerms
       tags:
         - GET Endpoints
       responses:
@@ -195,7 +191,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconResultsetsResponse.json
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json
         default:
           description: An unsuccessful operation
           content:
@@ -203,9 +199,8 @@ paths:
               schema:
                 $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
     post:
-      description: >-
-        Get a *runs* response from one biosample, identified by its (unique) 'id'
-      operationId: postOneBiosampleRuns
+      description: Get the list of filtering terms that could be used with features.
+      operationId: postfeaturesFilteringTerms
       tags:
         - POST Endpoints
       requestBody:
@@ -220,58 +215,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconResultsetsResponse.json
-        default:
-          description: An unsuccessful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-  /biosamples/{id}/matrices:
-    parameters:
-      - $ref: '#/components/parameters/entryId'
-    get:
-      parameters:
-        - $ref: '#/components/parameters/requestedSchema'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/limit'
-      description: >-
-        Get a *matrices* response from one biosample, identified by its (unique) 'id'
-      operationId: getOneBiosampleMatrices
-      tags:
-        - GET Endpoints
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconResultsetsResponse.json
-        default:
-          description: An unsuccessful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-    post:
-      description: >-
-        Get a *matrices* response from one biosample, identified by its (unique) 'id'
-      operationId: postOneBiosampleMatrices
-      tags:
-        - POST Endpoints
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json
-        required: true
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconResultsetsResponse.json
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json
         default:
           description: An unsuccessful operation
           content:
@@ -330,10 +274,6 @@ components:
       examples:
         example1:
           value:
-            - NCIT:C3222
-        example2:
-          value:
-            - NCIT:C4813
-        example3:
-          value:
-            - OBI:0100058 
+            - NCIT:C20197
+
+          

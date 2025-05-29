@@ -1,0 +1,24 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Genomic feature
+$comment: 'version: ga4gh-beacon-feature-v2.1.2'
+description: Schema for the genomic feature (e.g. gene or transcript...)
+type: object
+properties:
+  id:
+    description: Internal feature ID.
+    type: string
+    examples:
+      - Feature12345
+  genomicFeature:
+    $ref: ../common/genomicFeature.yaml
+    type: object
+  matrixIds:
+    type: "array"
+    items:
+      type: "string"
+    description: "list of matrix ids"
+  info:
+    $ref: ../common/info.yaml
+required:
+  - id
+additionalProperties: true

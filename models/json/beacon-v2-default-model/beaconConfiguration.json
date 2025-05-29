@@ -81,6 +81,23 @@
             },
             "partOfSpecification": "Beacon v2.0.0"
         },
+        "feature": {
+            "additionallySupportedSchemas": [],
+            "defaultSchema": {
+                "id": "ga4gh-beacon-feature-v2.1.2",
+                "name": "Default schema for the genomic features",
+                "referenceToSchemaDefinition": "https://exampleBeacons.org/genomicFeatures/defaultSchema.json",
+                "schemaVersion": "v2.0.0"
+            },
+            "description": "Genomic feature",
+            "id": "feature",
+            "name": "Genomic feature",
+            "ontologyTermForThisType": {
+                "id": "geno:0000481",
+                "label": "Genomic feature"
+            },
+            "partOfSpecification": "Beacon v2.1.2"
+        },
         "genomicVariant": {
             "additionallySupportedSchemas": [],
             "defaultSchema": {
@@ -114,6 +131,23 @@
                 "label": "Person"
             },
             "partOfSpecification": "Beacon v2.0.0"
+        },
+        "matrix": {
+            "additionallySupportedSchemas": [],
+            "defaultSchema": {
+                "id": "ga4gh-beacon-matrix-v2.1.2",
+                "name": "Default schema for the matrix properties",
+                "referenceToSchemaDefinition": "https://exampleBeacons.org/matrices/defaultSchema.json",
+                "schemaVersion": "v2.0.0"
+            },
+            "description": "Matrix of expression data",
+            "id": "matrix",
+            "name": "Matrices",
+            "ontologyTermForThisType": {
+                "id": "edam:2603",
+                "label": "Expression data"
+            },
+            "partOfSpecification": "Beacon v2.1.2"
         },
         "run": {
             "additionallySupportedSchemas": [],

@@ -96,6 +96,9 @@ endpointSets:
       genomicVariantLookup:
         returnedEntryType: genomicVariant
         url: https://exampleBeacons.org/biosamples/{id}/g_variants
+      matrixLookup:
+        returnedEntryType: matrix
+        url: https://exampleBeacons.org/biosamples/{id}/matrices
   runEndpoints:
     entryType: run
     openAPIEndpointsDefinition: https://exampleBeacons.org/runs/endpoints.json
@@ -117,3 +120,25 @@ endpointSets:
       genomicVariantLookup:
         returnedEntryType: genomicVariant
         url: https://exampleBeacons.org/analyses/{id}/g_variants
+  featureEndpoints:
+    entryType: feature
+    openAPIEndpointsDefinition: https://exampleBeacons.org/features/endpoints.json
+    rootUrl: https://exampleBeacons.org/features
+    singleEntryUrl: https://exampleBeacons.org/features/{id}
+    endpoints:
+      matrixLookup:
+        returnedEntryType: matrix
+        url: https://exampleBeacons.org/features/{id}/matrices
+  matrixEndpoints:
+    entryType: matrix
+    openAPIEndpointsDefinition: https://exampleBeacons.org/matrices/endpoints.json
+    rootUrl: https://exampleBeacons.org/matrices
+    singleEntryUrl: https://exampleBeacons.org/matrices/{id}
+    endpoints:
+      featureLookup:
+        returnedEntryType: feature
+        url: https://exampleBeacons.org/matrices/{id}/features
+      biosampleLookup:
+        returnedEntryType: feature
+        url: https://exampleBeacons.org/matrices/{id}/biosamples
+

@@ -161,6 +161,11 @@ properties:
     example: {}
   info:
     $ref: ../common/info.yaml
+  matrixIds:
+    type: "array"
+    items:
+      type: "string"
+    description: "list of matrix ids"
 required:
   - id
   - biosampleStatus
