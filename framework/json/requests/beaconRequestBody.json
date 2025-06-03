@@ -5,7 +5,7 @@
             "properties": {
                 "aggregationTerms": {
                     "$ref": "./aggregationTerms.json",
-                    "description": "List of ids of filters to include in an aggregated data response"
+                    "description": "List of ids of aggregation terms to include in an aggregated data response"
                 },
                 "filters": {
                     "$ref": "./filteringTerms.json",

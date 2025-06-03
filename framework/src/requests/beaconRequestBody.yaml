@@ -29,7 +29,8 @@ $defs:
         $ref: ./filteringTerms.yaml
       aggregationTerms:
         description: >-
-          List of ids of filters to include in an aggregated data response
+          List of ids of aggregation terms to include in an aggregated
+          data response
         $ref: ./aggregationTerms.yaml
       includeResultsetResponses:
         $ref: ../common/beaconCommonComponents.yaml#/$defs/IncludeResultsetResponses

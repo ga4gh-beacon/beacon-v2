@@ -137,15 +137,15 @@ $defs:
 
       * `boolean`: returns true/false' responses
       * `count`: adds the total number of positive results found
-      * `record`: returns details for every row. In cases where a Beacon prefers
-      to return records with fewer than allattributes, different strategies have
-      to be considered w/o adding them to the current design, e.g.:
-          - keeping non-mandatory attributes empty
-          - Beacon to provide a minimal record definition
+      * `aggregation`: returns summary data, e.g. counts per attribute value
+      * `record`: returns matched recors in the schema of the respective response
+        entity
+
     type: string
     enum:
       - boolean
       - count
+      - aggregation
       - record
     default: boolean
   TestMode:

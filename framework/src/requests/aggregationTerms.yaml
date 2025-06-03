@@ -1,7 +1,13 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-description: >-
+description: |-
   Terms used to specify fields to return in an aggregate data response. 
-  In practice we use the the "id" field from existing filtering terms.
+  In practice we use the the "id" field from existing filtering terms but avoid
+  the additional modifiers.
+  The `CustomFilter` format here allows the use of custom aggregation terms beyond
+  terms corresponding to query filters; e.g.
+  * a `survivalGroups` term could aggregate data by survival groups
+  * a `cnvfrequencies` term could envoke a list of objects for gain, loss, ...
+    events per genomic interval in the matched data
 type: array
 items:
   $ref: "#/$defs/AggregationTerm"
