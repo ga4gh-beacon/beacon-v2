@@ -8,6 +8,8 @@ description: |-
   * a `survivalGroups` term could aggregate data by survival groups
   * a `cnvfrequencies` term could envoke a list of objects for gain, loss, ...
     events per genomic interval in the matched data
+  TODO: Change to a generic list of `type: string` parameters and document
+        that they can correspond to `filteringTerm.id` values.
 type: array
 items:
   $ref: "#/$defs/AggregationTerm"

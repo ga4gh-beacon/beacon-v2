@@ -24,13 +24,6 @@ $defs:
         description: >-
           Description of this aggregation term
         type: string
-      countEntity:
-        description: >-
-          The type of entity being counted in the distribution.
-          For fields in beacon models, these are assumed to be the beacon entry type they apply to.
-          Custom entities can also be specified.
-        type: string
-        example: individual
       distribution:
         description: >-
           Distribution of results for this aggregation term.

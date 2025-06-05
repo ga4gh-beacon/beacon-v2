@@ -15,7 +15,7 @@
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Terms used to specify fields to return in an aggregate data response. \nIn practice we use the the \"id\" field from existing filtering terms but avoid\nthe additional modifiers.\nThe `CustomFilter` format here allows the use of custom aggregation terms beyond\nterms corresponding to query filters; e.g.\n* a `survivalGroups` term could aggregate data by survival groups\n* a `cnvfrequencies` term could envoke a list of objects for gain, loss, ...\n  events per genomic interval in the matched data",
+    "description": "Terms used to specify fields to return in an aggregate data response. \nIn practice we use the the \"id\" field from existing filtering terms but avoid\nthe additional modifiers.\nThe `CustomFilter` format here allows the use of custom aggregation terms beyond\nterms corresponding to query filters; e.g.\n* a `survivalGroups` term could aggregate data by survival groups\n* a `cnvfrequencies` term could envoke a list of objects for gain, loss, ...\n  events per genomic interval in the matched data\nTODO: Change to a generic list of `type: string` parameters and document\n      that they can correspond to `filteringTerm.id` values.",
     "items": {
         "$ref": "#/$defs/AggregationTerm"
     },
