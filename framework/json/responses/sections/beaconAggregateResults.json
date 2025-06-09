@@ -3,37 +3,123 @@
         "AggregateResultsInstance": {
             "description": "Aggregated data from results, with distributions for the aggregation terms given in the request.",
             "properties": {
+                "count": {
+                    "description": "Number of observations for this aggregation term.",
+                    "minimum": 0,
+                    "type": "integer"
+                },
                 "description": {
                     "description": "Description of this aggregation term",
                     "type": "string"
                 },
                 "distribution": {
-                    "description": "Distribution of results for this aggregation term.",
-                    "example": {
-                        "female": 51,
-                        "male": 50
-                    },
-                    "type": "object"
+                    "$ref": "#/$defs/Distribution"
+                },
+                "entity": {
+                    "description": "Entity for which the observations were reported. For the Beacon default model this is one of `individual`, `biosample`, `analysis`, `run`, or `genomicVariation`. The values here are not limited to the Beacon defaults to allow modified or alternative data models. Usually this parameter would be omitted, with the default being the  entity for which the Beacon is providing the current results.",
+                    "type": "string"
                 },
                 "id": {
                     "$ref": "../../requests/aggregationTerms.json#/$defs/AggregationTerm",
                     "description": "The id of this aggregation term"
                 },
-                "name": {
-                    "description": "Name of this aggregation term",
+                "label": {
+                    "description": "Label for this aggregation term",
                     "example": "Genders",
                     "type": "string"
                 }
             },
             "required": [
                 "id",
-                "distribution"
+                {
+                    "oneOf": [
+                        "count",
+                        "distribution"
+                    ]
+                }
             ],
+            "type": "object"
+        },
+        "Distribution": {
+            "description": "Distribution of results for this aggregation term. One could use other ways to represent the distribution especially for numeric values (e.g. average, median...).",
+            "properties": {
+                "distincts": {
+                    "description": "Distinct values for the aggregation term in the current response.",
+                    "type": "array"
+                },
+                "items": {
+                    "description": "Instances of values for the aggregation term in the current response.",
+                    "items": {
+                        "$ref": "#/$defs/DistributionItem"
+                    },
+                    "type": "array"
+                },
+                "values": {
+                    "description": "Values for the aggregation term in the current response.",
+                    "type": "array"
+                }
+            },
+            "required": [
+                {
+                    "oneOf": [
+                        "values",
+                        "distincts",
+                        "items"
+                    ]
+                }
+            ],
+            "type": "object"
+        },
+        "DistributionItem": {
+            "description": "Item representing information about the aggregation term. The basic form here would be an `{instance: value}` pair, e.g. `{\"male\": 42}` but more complex objects can be used.",
             "type": "object"
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Beacon aggregate results section.",
+    "examples": [
+        [
+            {
+                "count": 42,
+                "entity": "biosample",
+                "id": "NCIT:C3359",
+                "label": "Rhabdomyosarcoma"
+            },
+            {
+                "count": 7,
+                "entity": "biosample",
+                "id": "NCIT:C3360",
+                "label": "Osteosarcoma"
+            },
+            {
+                "distribution": {
+                    "distincts": [
+                        "P2Y4M",
+                        "P3Y2M",
+                        "P17Y9M"
+                    ]
+                },
+                "entity": "individual",
+                "id": "ageAtDiagnosis",
+                "label": "age at diagnosis"
+            },
+            {
+                "distribution": {
+                    "items": [
+                        {
+                            "male": 13
+                        },
+                        {
+                            "female": 36
+                        }
+                    ]
+                },
+                "entity": "individual",
+                "id": "sex",
+                "label": "genotypic sex"
+            }
+        ]
+    ],
     "items": {
         "$ref": "#/$defs/AggregateResultsInstance"
     },

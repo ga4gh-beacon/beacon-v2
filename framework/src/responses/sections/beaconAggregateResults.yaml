@@ -5,34 +5,105 @@ type: array
 minItems: 0
 items:
   $ref: "#/$defs/AggregateResultsInstance"
+examples:
+  - 
+    - id: NCIT:C3359
+      label: Rhabdomyosarcoma
+      entity: biosample
+      count: 42
+    - id: NCIT:C3360
+      label: Osteosarcoma
+      entity: biosample
+      count: 7
+    - id: ageAtDiagnosis
+      label: age at diagnosis
+      entity: individual
+      distribution:
+        distincts:
+          - P2Y4M
+          - P3Y2M
+          - P17Y9M
+    - id: sex
+      label: genotypic sex
+      entity: individual
+      distribution:
+        items:
+          - male: 13
+          - female: 36
+
 $defs:
   AggregateResultsInstance:
     description: >-
-      Aggregated data from results, with distributions for the aggregation terms given in the request.
+      Aggregated data from results, with distributions for the aggregation terms
+      given in the request.
     type: object
     properties:
       id:
         $ref: ../../requests/aggregationTerms.yaml#/$defs/AggregationTerm
         description: >-
           The id of this aggregation term
-      name:
+      label:
         description: >-
-          Name of this aggregation term
+          Label for this aggregation term
         type: string
         example: Genders
+      entity:
+        description: >-
+          Entity for which the observations were reported. For the Beacon default
+          model this is one of `individual`, `biosample`, `analysis`, `run`, or
+          `genomicVariation`. The values here are not limited to the Beacon
+          defaults to allow modified or alternative data models.
+          Usually this parameter would be omitted, with the default being the 
+          entity for which the Beacon is providing the current results.
+        type: string
       description:
         description: >-
           Description of this aggregation term
         type: string
-      distribution:
+      count:
         description: >-
-          Distribution of results for this aggregation term.
-        type: object
-        example:
-          # we generally expect values to be integers, but this is left unrestricted
-          # in principle these could be bools as well
-          male: 50
-          female: 51
+          Number of observations for this aggregation term.
+        type: integer
+        minimum: 0
+      distribution:
+        $ref: "#/$defs/Distribution"
+
     required:
       - id
-      - distribution
+      - oneOf:
+        - count
+        - distribution
+
+  Distribution:
+    description: >-
+      Distribution of results for this aggregation term. One could use other
+      ways to represent the distribution especially for numeric values (e.g.
+      average, median...).
+    type: object
+    properties:
+      items:
+        description: >-
+          Instances of values for the aggregation term in the current response.
+        type: array
+        items:
+          $ref: "#/$defs/DistributionItem"
+      values:
+        description: >-
+          Values for the aggregation term in the current response.
+        type: array
+      distincts:
+        description: >-
+          Distinct values for the aggregation term in the current response.
+        type: array
+    required:
+      - oneOf:
+        - values
+        - distincts
+        - items
+
+  DistributionItem:
+    description: >-
+      Item representing information about the aggregation term. The basic form
+      here would be an `{instance: value}` pair, e.g. `{"male": 42}` but more
+      complex objects can be used.
+    type: object
