@@ -273,6 +273,9 @@
             "description": "Inclusion criteria used for defining the cohort. It is assumed that all cohort participants will match such criteria.",
             "type": "object"
         },
+        "info": {
+            "$ref": "../common/info.json"
+        },
         "name": {
             "description": "Name of the cohort. For `user-defined` this field could be generated upon the query, e.g. a value that is a concatenationor some representation of the user query.",
             "examples": [

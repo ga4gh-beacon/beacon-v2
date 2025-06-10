@@ -23,5 +23,8 @@
         }
     ],
     "title": "TimeElement",
-    "type": "object"
+    "type": [
+        "object",
+        "string"
+    ]
 }

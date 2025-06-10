@@ -43,7 +43,7 @@
             "$ref": "../common/commonDefinitions.json#/$defs/KaryotypicSex",
             "description": "The chromosomal sex of an individual represented from a selection of options."
         },
-        "measures": {
+        "measurements": {
             "items": {
                 "$ref": "../common/measurement.json"
             },

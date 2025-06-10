@@ -1,0 +1,6 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Placeholder to allow the Beacon models to return additional information. It is recommended to encapsulate additional informations in this attribute instead of directly adding attributes at the schema's root level in order to avoid collision in the names of attributes in future versions of the specification.",
+    "title": "Info",
+    "type": "object"
+}

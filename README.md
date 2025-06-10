@@ -8,7 +8,8 @@ This repository is a unified repository representing the different parts of the 
 * [models](models)
 * Beacon v2 Documentation
     - authoritive source already in this repository [`/docs`](docs)
-    - rendered version through [here](https://beacon-project.io/beacon-v2/) (alternative address is [docs.genomebeacons.org](https://docs.genomebeacons.org))
+    - rendered version through [docs.genomebeacons.org](https://docs.genomebeacons.org)
+    - Please note that edits to the documentation (and document generation) happens on/from the [website-docs](https://github.com/ga4gh-beacon/beacon-v2/tree/website-docs) branch!
 
 As with other schema projects, here we separate between the schema source files (in `src`; JSON-Schema written in YAML) and the generated versions for referencing. The current setup allows already the direct referencing of the generated JSON schemas. Examples:
 

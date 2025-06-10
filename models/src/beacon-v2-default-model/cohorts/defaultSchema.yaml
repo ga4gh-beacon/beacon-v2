@@ -75,6 +75,9 @@ properties:
     type: array
     items:
       $ref: '#/$defs/CollectionEvent'
+  info:
+    $ref: ../common/info.yaml
+
 $defs:
   CollectionEvent:
     description: TBD
