@@ -3,10 +3,6 @@
         "ResultsetInstance": {
             "additionalProperties": true,
             "properties": {
-                "aggregateResults": {
-                    "$ref": "./beaconAggregateResults.json",
-                    "description": "Aggregate results for this resultset"
-                },
                 "exists": {
                     "type": "boolean"
                 },
@@ -37,6 +33,10 @@
                     "default": "dataset",
                     "description": "Entry type of resultSet. It SHOULD MATCH an entry type declared as collection in the Beacon configuration.",
                     "type": "string"
+                },
+                "summaryResults": {
+                    "$ref": "./beaconSummaryResults.json",
+                    "description": "Summary results for this resultset"
                 }
             },
             "required": [
@@ -54,16 +54,16 @@
         "$schema": {
             "$ref": "../../common/beaconCommonComponents.json#/$defs/$schema"
         },
-        "aggregateResults": {
-            "$ref": "./beaconAggregateResults.json",
-            "description": "Aggregate results for entire response"
-        },
         "resultSets": {
             "items": {
                 "$ref": "#/$defs/ResultsetInstance"
             },
             "minItems": 0,
             "type": "array"
+        },
+        "summaryResults": {
+            "$ref": "./beaconSummaryResults.json",
+            "description": "Summary results for the entire response"
         }
     },
     "required": [

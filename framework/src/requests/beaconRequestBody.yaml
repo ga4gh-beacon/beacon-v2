@@ -27,11 +27,11 @@ $defs:
         description: >-
           Ontology based filters. Using CURIE syntax is encouraged.
         $ref: ./filteringTerms.yaml
-      aggregationTerms:
+      summaryTerms:
         description: >-
-          List of ids of aggregation terms to include in an aggregated
+          List of ids of aggregation terms to include in an summary
           data response
-        $ref: ./aggregationTerms.yaml
+        $ref: ./summaryTerms.yaml
       includeResultsetResponses:
         $ref: ../common/beaconCommonComponents.yaml#/$defs/IncludeResultsetResponses
       pagination:

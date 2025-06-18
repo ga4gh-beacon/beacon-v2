@@ -4,7 +4,7 @@
             "description": "Entities can be filtered using this term.",
             "properties": {
                 "aggregatable": {
-                    "description": "This filter can be used as a category in an aggregated data response",
+                    "description": "This filter can be used as a category in a summary data response",
                     "example": true,
                     "type": "boolean"
                 },

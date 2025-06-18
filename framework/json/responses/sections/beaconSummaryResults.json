@@ -1,46 +1,7 @@
 {
     "$defs": {
-        "AggregateResultsInstance": {
-            "description": "Aggregated data from results, with distributions for the aggregation terms given in the request.",
-            "properties": {
-                "count": {
-                    "description": "Number of observations for this aggregation term.",
-                    "minimum": 0,
-                    "type": "integer"
-                },
-                "description": {
-                    "description": "Description of this aggregation term",
-                    "type": "string"
-                },
-                "distribution": {
-                    "$ref": "#/$defs/Distribution"
-                },
-                "entity": {
-                    "description": "Entity for which the observations were reported. For the Beacon default model this is one of `individual`, `biosample`, `analysis`, `run`, or `genomicVariation`. The values here are not limited to the Beacon defaults to allow modified or alternative data models. Usually this parameter would be omitted, with the default being the  entity for which the Beacon is providing the current results.",
-                    "type": "string"
-                },
-                "id": {
-                    "$ref": "../../requests/aggregationTerms.json#/$defs/AggregationTerm",
-                    "description": "The id of this aggregation term"
-                },
-                "label": {
-                    "description": "Label for this aggregation term",
-                    "example": "Genders",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id",
-                {
-                    "oneOf": [
-                        "count",
-                        "distribution"
-                    ]
-                }
-            ],
-            "type": "object"
-        },
         "Distribution": {
+            "additionalItems": true,
             "description": "Distribution of results for this aggregation term. One could use other ways to represent the distribution especially for numeric values (e.g. average, median...).",
             "properties": {
                 "distincts": {
@@ -72,6 +33,47 @@
         },
         "DistributionItem": {
             "description": "Item representing information about the aggregation term. The basic form here would be an `{instance: value}` pair, e.g. `{\"male\": 42}` but more complex objects can be used.",
+            "type": "object"
+        },
+        "SummaryResultsInstance": {
+            "additionalItems": true,
+            "description": "Summary data from results, with distributions for the aggregation terms given in the request.",
+            "properties": {
+                "count": {
+                    "description": "Number of observations for this aggregation term.",
+                    "minimum": 0,
+                    "type": "integer"
+                },
+                "description": {
+                    "description": "Description of this aggregation term",
+                    "type": "string"
+                },
+                "distribution": {
+                    "$ref": "#/$defs/Distribution"
+                },
+                "entity": {
+                    "description": "Entity for which the observations were reported. For the Beacon default model this is one of `individual`, `biosample`, `analysis`, `run`, or `genomicVariation`. The values here are not limited to the Beacon defaults to allow modified or alternative data models. Usually this parameter would be omitted, with the default being the  entity for which the Beacon is providing the current results.",
+                    "type": "string"
+                },
+                "id": {
+                    "$ref": "../../requests/summaryTerms.json#/$defs/AggregationTerm",
+                    "description": "The id of this aggregation term"
+                },
+                "label": {
+                    "description": "Label for this aggregation term",
+                    "example": "Genders",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                {
+                    "oneOf": [
+                        "count",
+                        "distribution"
+                    ]
+                }
+            ],
             "type": "object"
         }
     },
@@ -121,7 +123,7 @@
         ]
     ],
     "items": {
-        "$ref": "#/$defs/AggregateResultsInstance"
+        "$ref": "#/$defs/SummaryResultsInstance"
     },
     "minItems": 0,
     "type": "array"

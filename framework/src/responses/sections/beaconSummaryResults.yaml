@@ -4,7 +4,7 @@ description: Beacon aggregate results section.
 type: array
 minItems: 0
 items:
-  $ref: "#/$defs/AggregateResultsInstance"
+  $ref: "#/$defs/SummaryResultsInstance"
 examples:
   - 
     - id: NCIT:C3359
@@ -32,14 +32,14 @@ examples:
           - female: 36
 
 $defs:
-  AggregateResultsInstance:
+  SummaryResultsInstance:
     description: >-
-      Aggregated data from results, with distributions for the aggregation terms
+      Summary data from results, with distributions for the aggregation terms
       given in the request.
     type: object
     properties:
       id:
-        $ref: ../../requests/aggregationTerms.yaml#/$defs/AggregationTerm
+        $ref: ../../requests/summaryTerms.yaml#/$defs/AggregationTerm
         description: >-
           The id of this aggregation term
       label:
@@ -73,6 +73,7 @@ $defs:
       - oneOf:
         - count
         - distribution
+    additionalItems: True
 
   Distribution:
     description: >-
@@ -100,6 +101,8 @@ $defs:
         - values
         - distincts
         - items
+    additionalItems: True
+
 
   DistributionItem:
     description: >-

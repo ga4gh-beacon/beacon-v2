@@ -10,9 +10,9 @@ properties:
     items:
       $ref: '#/$defs/ResultsetInstance'
     minItems: 0
-  aggregateResults:
-    description: Aggregate results for entire response
-    $ref: ./beaconAggregateResults.yaml
+  summaryResults:
+    description: Summary results for the entire response
+    $ref: ./beaconSummaryResults.yaml
 required:
   - resultSets
 additionalProperties: true
@@ -35,9 +35,9 @@ $defs:
       resultsCount:
         description: Number of results in this Resultset.
         type: integer
-      aggregateResults:
-        description: Aggregate results for this resultset
-        $ref: ./beaconAggregateResults.yaml
+      summaryResults:
+        description: Summary results for this resultset
+        $ref: ./beaconSummaryResults.yaml
       resultsHandovers:
         description: >-
           List of handover objects that apply to this resultset, not to the whole

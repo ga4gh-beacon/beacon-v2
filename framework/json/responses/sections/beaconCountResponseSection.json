@@ -2,15 +2,15 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Payload definition for the \"count\" response.",
     "properties": {
-        "aggregateResults": {
-            "$ref": "./beaconAggregateResults.json"
-        },
         "exists": {
             "$ref": "../../common/beaconCommonComponents.json#/$defs/Exists"
         },
         "numTotalResults": {
             "$ref": "../../common/beaconCommonComponents.json#/$defs/NumTotalResults",
             "description": "Total number of results."
+        },
+        "summaryResults": {
+            "$ref": "./beaconSummaryResults.json"
         }
     },
     "required": [
