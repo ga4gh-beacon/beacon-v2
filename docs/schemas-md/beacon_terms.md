@@ -109,7 +109,7 @@
 * [locations](./obj/locations.md)
 * [measurements](./obj/measurements.md)
 * [measurementValue](./obj/measurementValue.md)
-* [measurements](./obj/measurements.md)
+* [measures](./obj/measures.md)
 * [memberId](./obj/memberId.md)
 * [members](./obj/members.md)
 * [modifiers](./obj/modifiers.md)

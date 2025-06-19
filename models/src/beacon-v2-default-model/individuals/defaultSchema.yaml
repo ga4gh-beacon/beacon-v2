@@ -53,7 +53,7 @@ properties:
     type: array
     items:
       $ref: ../common/procedure.yaml
-  measurements:
+  measures:
     type: array
     items:
       $ref: ../common/measurement.yaml

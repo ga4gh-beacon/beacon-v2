@@ -32,7 +32,7 @@
         "label": "Slovenia"
     },
     "id": "Ind001",
-    "measurements": [
+    "measures": [
         {
             "assayCode": {
                 "id": "LOINC:26515-7",
