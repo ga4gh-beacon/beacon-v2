@@ -5,6 +5,13 @@ of the Beacon project site(s) as well as with overarching repository organizatio
 
 ## Changes
 
+### 2024-12-13: Beacon Version 2.1.1 Released
+
+A new Beacon version was released on Dec 13, 2024. While this is a minor point
+release of the Beacon Standard, _i.e._ does not contain breaking changes compared
+to 2.1.0, it provides a large number of bug fixes and cosmetic improvements such
+as better VRS alignment. Please see the [release notes](https://github.com/ga4gh-beacon/beacon-v2/releases/tag/v2.1.1) for details.
+
 ### 2024-08-08: [genomebeacons.org](https://genomebeacons.org) now default Beacon domain
 
 We have now migrated towards general use fo the `genomebeacons.org` domain for
@@ -21,6 +28,14 @@ has been made with the **F**requently **A**sked **Q**uestions section which is n
 The old domain [beacon-project.io](https://beacon-project.io) still exists but
 is only used for forwarding.
 
+### 2024-07-19: Beacon Version 2.1.0 Released
+
+A new Beacon version was released on July 19, 2024. This is a point release of
+the Beacon Standard and includes following changes:
+
+- Relocated TypedQuantity required to proper level of the schema for complexValue
+- Added end and start entities for ageRange and iso8601duration for age
+- Filtering terms scopes changed from string to array of strings
 
 ### 2023-06-12: Restructured and extended documentation
 

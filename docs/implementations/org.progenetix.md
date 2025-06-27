@@ -1,5 +1,5 @@
 
-<h2>Progenetix & Beacon<span style="color: red; font-weight: 800;"><sup>+</sup></span></h2>
+<h2>Progenetix & Beacon<span style="color: red; font-weight: 800;"><sup>+</sup></span> - driven by [`bycon`](https://bycon.progenetix.org)</h2>
 
 The Beacon+ implementation - developed in the Python & MongoDB based [`bycon` project](https://github.com/progenetix/bycon/) -
 implements an expanding set of Beacon {{config.beacon_major_version}} paths for the [Progenetix](https://progenetix.org)
@@ -187,23 +187,4 @@ CNV statistics or binned genome calls.
 
 <h3>Changes<img align="right" width="160px" src="https://progenetix.org/img/progenetix-logo-black.png"></h3>
 
-* 2022-04-17: removed some non-standard examples (e.g. `variants_in_sample`)
-* 2021-11-02: added `/testMode` example
-* 2021-07-21: added [`/map`](https://progenetix.org/beacon/map) endpoint (incomplete/unser construction)
-* 2021-07-21: added [`/configuration`](https://progenetix.org/beacon/configuration) endpoint (incomplete/unser construction)
-* 2021-07-02: update for [`/filteringTerms`](https://progenetix.org/beacon/filteringTerms) endpoint to v2b4
-* 2021-06-25: updated for `datasets` parameter as object
-* 2021-06-24: Updated response structure conforming to v2b4:
-  - `response_summary`
-  - removal of `response` root element & direct use of `result_sets`
-* 2021-06-24: Updated query structure conforming to v2b4
-  - `entityType` format fixed
-  - `filters` now objects
-* 2021-06-23: New JSON POST example & topic
-* 2021-06-07: Added `variants_interpretations` example
-* 2021-05-29: New `resultSets` response format
-  - no change to front-end or examples here but change of `bycon` backend
-* 2021-05-11: Added `/analyses`
-* 2021-05-02: Added base path for `BeaconInfoResponse`
-* 2021-04-26: First Version
-
+Please see the detailed [`bycon` change tracker](https://bycon.progenetix.org/changes/).
