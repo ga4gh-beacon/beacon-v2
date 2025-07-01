@@ -8,9 +8,9 @@ description: >-
   to be chained by the logical AND operator.
 type: array
 items:
-  $ref: '#/$defs/FilteringTerm'
+  $ref: '#/$defs/FilteringTermInRequest'
 $defs:
-  FilteringTerm:
+  FilteringTermInRequest:
     anyOf:
       - $ref: '#/$defs/OntologyFilter'
       - $ref: '#/$defs/AlphanumericFilter'
