@@ -8,7 +8,8 @@ This repository is a unified repository representing the different parts of the 
 * [models](models)
 * Beacon v2 Documentation
     - authoritive source already in this repository [`/docs`](docs)
-    - rendered version through [here](https://genomebeacons.org/beacon-v2/) (alternative address is [docs.genomebeacons.org](https://docs.genomebeacons.org))
+    - rendered version through [docs.genomebeacons.org](https://docs.genomebeacons.org)
+    - Please note that edits to the documentation (and document generation) happens on/from the [website-docs](https://github.com/ga4gh-beacon/beacon-v2/tree/website-docs) branch!
 
 As with other schema projects, here we separate between the schema source files (in `src`; JSON-Schema written in YAML) and the generated versions for referencing. The current setup allows already the direct referencing of the generated JSON schemas. Examples:
 
@@ -30,13 +31,51 @@ There is a set of tools in [`/bin`](./bin/) to facilitate the conversion. ATM, a
 
 ### Changelog
 
+## 2.2
+
+*Released, July, 1, 2025*
+[Beacon-v2.2](https://github.com/ga4gh-beacon/beacon-v2/tree/81dbe9c0ed693b4e897d81abb1043954bd2e65ba)
+
+* De-restricting Resultset formats
+* filteringTerms scope definition modification
+* Rounding counts for queries with count responses
+
+## 2.1.2
+
+*Released, July, 1, 2025*
+[Beacon-v2.1.2](https://github.com/ga4gh-beacon/beacon-v2/tree/8325ddf65d8bbfc71c235bce4dac98fb2cf0af81)
+
+* Fix incorrect reference in models
+* Removing filtering terms references specific to each entry type
+* Removing ft examples for configuration
+* Delete /configuration/filteringTermsSchema.yaml/json
+* src -> json cosmetics fix
+* Fix for failing timeElement validation
+* Fix complexValue example
+* Schema urgent fixes endpoints all absolute paths
+* Fix date-time format string
+* Changes for issue 156 OpenAPI related
+
 ## 2.1.1
 
-*Released, October, 8, 2024*
-[Beacon-v2.1.1](https://github.com/ga4gh-beacon/beacon-v2/tree/5ea17fbd0d2ba533aa1e85f7271f9a2cc9be6794)
+*Released, December 13, 2024*
+[Beacon-v2.1.1](https://github.com/ga4gh-beacon/beacon-v2/tree/47af89c8fd199d2674e5ca7fb504815ebc145e63)
 
+* Updated links for make beacon compatible with upgraded VRS version 1.3
 * Changed uri for uri-template in Endpoint.singleEntryUrl
-
+* Moved info definition from beaconCommonComponents to an own common info schema
+* Added links to each of the schema version releases in the changelog
+* Improved inline documentation
+* Deleted includedConcepts from aCollectionOf
+* Removed the particular filteringTermsUrl entry related to a particular entry type
+* Moved default outside items object to the same items level
+* Defined content for default property in OpenAPI
+* Created examples for filters in OpenAPI
+* Moved default property in to the lowest level for securityLevels property in OpenAPI
+* Redefined includeResultsetResponses in OpenAPI
+* Defined content for responses in OpenAPI
+* Refactored definitions for $defs
+* Implemented new feature for filteringTerms values
 
 ## 2.1.0
 

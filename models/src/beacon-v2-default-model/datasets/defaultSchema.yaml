@@ -39,11 +39,12 @@ properties:
       3986 format).
     examples:
       - https://example.org/wiki/Main_Page
-  info:
-    $ref: ../common/info.yaml
   dataUseConditions:
     description: Data use conditions applying to this dataset.
     $ref: ../common/dataUseConditions.yaml
+  info:
+    $ref: ../common/info.yaml
+
 required:
   - id
   - name

@@ -3,10 +3,13 @@ description: >-
   Payload definition for the "count" response.
 type: object
 properties:
+  countAdjustedTo:
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/CountAdjustedTo
+  countPrecision:
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/CountPrecision
   exists:
     $ref: ../../common/beaconCommonComponents.yaml#/$defs/Exists
   numTotalResults:
-    description: Total number of results.
     $ref: ../../common/beaconCommonComponents.yaml#/$defs/NumTotalResults
 required:
   - exists
