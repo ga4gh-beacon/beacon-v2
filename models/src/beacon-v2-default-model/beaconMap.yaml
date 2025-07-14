@@ -67,7 +67,6 @@ endpointSets:
     openAPIEndpointsDefinition: https://exampleBeacons.org/individuals/endpoints.json
     rootUrl: https://exampleBeacons.org/individuals
     singleEntryUrl: https://exampleBeacons.org/individuals/{id}
-    filteringTermsUrl: https://exampleBeacons.org/individuals/{id}/filtering_terms
     endpoints:
       genomicVariantLookup:
         returnedEntryType: genomicVariant

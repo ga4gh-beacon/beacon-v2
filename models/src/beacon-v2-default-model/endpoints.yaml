@@ -1,7 +1,7 @@
 openapi: 3.0.2
 servers: []
 info:
-  version: 2.0.0
+  version: 2.2.0
   title: GA4GH Beacon API Specification
   description: A Beacon is a web service for data discovery and sharing that can be
     queried for information about entry types defined by a Model.
