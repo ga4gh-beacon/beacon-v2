@@ -4,35 +4,47 @@ description: Beacon aggregate results section.
 type: array
 minItems: 0
 items:
-  $ref: "#/$defs/SummaryResultsInstance"
+  $ref: "#/$defs/AggregationResultsInstance"
 examples:
   - 
     - id: NCIT:C3359
       label: Rhabdomyosarcoma
       entity: biosample
       count: 42
-    - id: NCIT:C3360
-      label: Osteosarcoma
-      entity: biosample
-      count: 7
-    - id: ageAtDiagnosis
-      label: age at diagnosis
+    - id: ageAtDiagnosis:<=P17Y
+      label: age at diagnosis younger than 18 years
       entity: individual
-      distribution:
-        distincts:
-          - P2Y4M
-          - P3Y2M
-          - P17Y9M
-    - id: sex
-      label: genotypic sex
+      count: 44
+    - id: sex:=female
+      label: female sex at birth
       entity: individual
-      distribution:
-        items:
-          - male: 13
-          - female: 36
+      count: 13
+    - id: cnvstats
+      label: CNV frequencies
+      entity: analysis
+      description: >-
+        CNV frequencies per 1Mb genomic bin
+      report:
+        intervalfrequencies:
+          - id: 1p:000000000-000400000
+            cytobands: 1p36.33
+            no: 1
+            referenceName: chr1
+            start: 0
+            end: 400000
+            gainFrequency: 2.613
+            lossFrequency: 6.188
+          - id: 1p:000400000-001400000
+            cytobands: 1p36.33
+            no: 2
+            referenceName: chr1
+            start: 400000
+            end: 1400000
+            gainFrequency: 3.816
+            lossFrequency: 9.694
 
 $defs:
-  SummaryResultsInstance:
+  AggregationResultsInstance:
     description: >-
       Summary data from results, with distributions for the aggregation terms
       given in the request.
@@ -65,48 +77,19 @@ $defs:
           Number of observations for this aggregation term.
         type: integer
         minimum: 0
-      distribution:
-        $ref: "#/$defs/Distribution"
+      report:
+        $ref: "#/$defs/Report"
 
     required:
       - id
       - oneOf:
         - count
-        - distribution
+        - report
     additionalItems: True
 
-  Distribution:
+  Report:
     description: >-
-      Distribution of results for this aggregation term. One could use other
-      ways to represent the distribution especially for numeric values (e.g.
-      average, median...).
-    type: object
-    properties:
-      items:
-        description: >-
-          Instances of values for the aggregation term in the current response.
-        type: array
-        items:
-          $ref: "#/$defs/DistributionItem"
-      values:
-        description: >-
-          Values for the aggregation term in the current response.
-        type: array
-      distincts:
-        description: >-
-          Distinct values for the aggregation term in the current response.
-        type: array
-    required:
-      - oneOf:
-        - values
-        - distincts
-        - items
-    additionalItems: True
-
-
-  DistributionItem:
-    description: >-
-      Item representing information about the aggregation term. The basic form
-      here would be an `{instance: value}` pair, e.g. `{"male": 42}` but more
-      complex objects can be used.
+      Report for this aggregation term representing a summary of results beyond
+      a count of occurrences in the matched data. The format is left to the
+      implementation but should not expose information about individual records.  
     type: object
