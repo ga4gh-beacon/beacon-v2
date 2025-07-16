@@ -31,7 +31,29 @@ examples:
       label: female sex at birth
       entity: individual
       count: 36
-
+    - id: cnvstats
+      label: CNV frequencies
+      entity: analysis
+      description: >-
+        CNV frequencies per 1Mb genomic bin
+      report:
+        intervalfrequencies:
+          - id: 1p:000000000-000400000
+            cytobands: 1p36.33
+            no: 1
+            referenceName: chr1
+            start: 0
+            end: 400000
+            gainFrequency: 2.613
+            lossFrequency: 6.188
+          - id: 1p:000400000-001400000
+            cytobands: 1p36.33
+            no: 2
+            referenceName: chr1
+            start: 400000
+            end: 1400000
+            gainFrequency: 3.816
+            lossFrequency: 9.694
 
 $defs:
   AggregationResultsInstance:

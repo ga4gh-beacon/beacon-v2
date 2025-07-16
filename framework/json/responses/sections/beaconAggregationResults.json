@@ -85,6 +85,36 @@
                 "entity": "individual",
                 "id": "sex:=male",
                 "label": "female sex at birth"
+            },
+            {
+                "description": "CNV frequencies per 1Mb genomic bin",
+                "entity": "analysis",
+                "id": "cnvstats",
+                "label": "CNV frequencies",
+                "report": {
+                    "intervalfrequencies": [
+                        {
+                            "cytobands": "1p36.33",
+                            "end": 400000,
+                            "gainFrequency": 2.613,
+                            "id": "1p:000000000-000400000",
+                            "lossFrequency": 6.188,
+                            "no": 1,
+                            "referenceName": "chr1",
+                            "start": 0
+                        },
+                        {
+                            "cytobands": "1p36.33",
+                            "end": 1400000,
+                            "gainFrequency": 3.816,
+                            "id": "1p:000400000-001400000",
+                            "lossFrequency": 9.694,
+                            "no": 2,
+                            "referenceName": "chr1",
+                            "start": 400000
+                        }
+                    ]
+                }
             }
         ]
     ],
