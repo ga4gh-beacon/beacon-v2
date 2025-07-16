@@ -1,41 +1,6 @@
 {
     "$defs": {
-        "Distribution": {
-            "additionalItems": true,
-            "description": "Distribution of results for this aggregation term. One could use other ways to represent the distribution especially for numeric values (e.g. average, median...).",
-            "properties": {
-                "distincts": {
-                    "description": "Distinct values for the aggregation term in the current response.",
-                    "type": "array"
-                },
-                "items": {
-                    "description": "Instances of values for the aggregation term in the current response.",
-                    "items": {
-                        "$ref": "#/$defs/DistributionItem"
-                    },
-                    "type": "array"
-                },
-                "values": {
-                    "description": "Values for the aggregation term in the current response.",
-                    "type": "array"
-                }
-            },
-            "required": [
-                {
-                    "oneOf": [
-                        "values",
-                        "distincts",
-                        "items"
-                    ]
-                }
-            ],
-            "type": "object"
-        },
-        "DistributionItem": {
-            "description": "Item representing information about the aggregation term. The basic form here would be an `{instance: value}` pair, e.g. `{\"male\": 42}` but more complex objects can be used.",
-            "type": "object"
-        },
-        "SummaryResultsInstance": {
+        "AggregationResultsInstance": {
             "additionalItems": true,
             "description": "Summary data from results, with distributions for the aggregation terms given in the request.",
             "properties": {
@@ -47,9 +12,6 @@
                 "description": {
                     "description": "Description of this aggregation term",
                     "type": "string"
-                },
-                "distribution": {
-                    "$ref": "#/$defs/Distribution"
                 },
                 "entity": {
                     "description": "Entity for which the observations were reported. For the Beacon default model this is one of `individual`, `biosample`, `analysis`, `run`, or `genomicVariation`. The values here are not limited to the Beacon defaults to allow modified or alternative data models. Usually this parameter would be omitted, with the default being the  entity for which the Beacon is providing the current results.",
@@ -63,6 +25,9 @@
                     "description": "Label for this aggregation term",
                     "example": "Genders",
                     "type": "string"
+                },
+                "report": {
+                    "$ref": "#/$defs/Report"
                 }
             },
             "required": [
@@ -70,10 +35,14 @@
                 {
                     "oneOf": [
                         "count",
-                        "distribution"
+                        "report"
                     ]
                 }
             ],
+            "type": "object"
+        },
+        "Report": {
+            "description": "Report for this aggregation term representing a summary of results beyond a count of occurrences in the matched data. The format is left to the implementation but should not expose information about individual records.  ",
             "type": "object"
         }
     },
@@ -94,36 +63,33 @@
                 "label": "Osteosarcoma"
             },
             {
-                "distribution": {
-                    "distincts": [
-                        "P2Y4M",
-                        "P3Y2M",
-                        "P17Y9M"
-                    ]
-                },
+                "count": 44,
                 "entity": "individual",
-                "id": "ageAtDiagnosis",
-                "label": "age at diagnosis"
+                "id": "ageAtDiagnosis:<=P17Y",
+                "label": "age at diagnosis younger than 18 years"
             },
             {
-                "distribution": {
-                    "items": [
-                        {
-                            "male": 13
-                        },
-                        {
-                            "female": 36
-                        }
-                    ]
-                },
+                "count": 5,
                 "entity": "individual",
-                "id": "sex",
-                "label": "genotypic sex"
+                "id": "ageAtDiagnosis:>=P18Y",
+                "label": "age at diagnosis 18 years and older"
+            },
+            {
+                "count": 13,
+                "entity": "individual",
+                "id": "sex:=female",
+                "label": "female sex at birth"
+            },
+            {
+                "count": 36,
+                "entity": "individual",
+                "id": "sex:=male",
+                "label": "female sex at birth"
             }
         ]
     ],
     "items": {
-        "$ref": "#/$defs/SummaryResultsInstance"
+        "$ref": "#/$defs/AggregationResultsInstance"
     },
     "minItems": 0,
     "type": "array"
