@@ -11,26 +11,14 @@ examples:
       label: Rhabdomyosarcoma
       entity: biosample
       count: 42
-    - id: NCIT:C3360
-      label: Osteosarcoma
-      entity: biosample
-      count: 7
     - id: ageAtDiagnosis:<=P17Y
       label: age at diagnosis younger than 18 years
       entity: individual
       count: 44
-    - id: ageAtDiagnosis:>=P18Y
-      label: age at diagnosis 18 years and older
-      entity: individual
-      count: 5
     - id: sex:=female
       label: female sex at birth
       entity: individual
       count: 13
-    - id: sex:=male
-      label: female sex at birth
-      entity: individual
-      count: 36
     - id: cnvstats
       label: CNV frequencies
       entity: analysis

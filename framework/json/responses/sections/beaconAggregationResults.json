@@ -57,33 +57,15 @@
                 "label": "Rhabdomyosarcoma"
             },
             {
-                "count": 7,
-                "entity": "biosample",
-                "id": "NCIT:C3360",
-                "label": "Osteosarcoma"
-            },
-            {
                 "count": 44,
                 "entity": "individual",
                 "id": "ageAtDiagnosis:<=P17Y",
                 "label": "age at diagnosis younger than 18 years"
             },
             {
-                "count": 5,
-                "entity": "individual",
-                "id": "ageAtDiagnosis:>=P18Y",
-                "label": "age at diagnosis 18 years and older"
-            },
-            {
                 "count": 13,
                 "entity": "individual",
                 "id": "sex:=female",
-                "label": "female sex at birth"
-            },
-            {
-                "count": 36,
-                "entity": "individual",
-                "id": "sex:=male",
                 "label": "female sex at birth"
             },
             {
