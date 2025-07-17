@@ -1,5 +1,4 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-# loosely adapted from DataAvailabilityAndDistribution in cohorts schema
 description: Beacon aggregate results section.
 type: array
 minItems: 0
