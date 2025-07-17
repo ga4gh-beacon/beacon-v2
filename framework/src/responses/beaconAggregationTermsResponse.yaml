@@ -3,6 +3,7 @@ type: object
 description: >-
   The aggregation terms response provides information about available
   individual aggregation options beacon's response.
+maturity: draft
 properties:
   meta:
     $ref: ./sections/beaconInformationalResponseMeta.yaml

@@ -12,6 +12,7 @@
         ],
         "type": "string"
     },
+    "maturity": "draft",
     "title": "Aggregation Terms",
     "type": "array"
 }

@@ -2,6 +2,7 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
     "description": "The aggregation terms response provides information about available individual aggregation options beacon's response.",
+    "maturity": "draft",
     "properties": {
         "meta": {
             "$ref": "./sections/beaconInformationalResponseMeta.json"
