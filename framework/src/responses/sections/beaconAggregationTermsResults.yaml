@@ -1,0 +1,57 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+description: >-
+  Aggregation terms and concepts supported for this Beacon.
+type: array
+items:
+  $ref: '#/$defs/AggregationTermInResponse'
+examples:
+  -
+    - id: NCIT:C3359
+      label: Rhabdomyosarcoma
+      description: count of matched Rhabdomyosarcoma samples 
+      type: count
+      entity: biosample
+    - id: ageAtDiagnosis:<=P17Y
+      description: count of individuals with an age at diagnosis younger than 18 years
+      type: count
+      entity: individual
+    - id: cnvstats
+      description: >-
+        CNV frequencies per 1Mb genomic bin.
+      type: report
+      entity: analysis
+
+$defs:
+  AggregationTermInResponse:
+    type: object
+    description: >-
+      Information about the aggregation performed using this term.
+    required:
+      - id
+    properties:
+      id:
+        description: >-
+          The aggregation term id, either a valued filtering term or a custom
+          value.
+        type: string
+        examples:
+          - NCIT:C8936
+          - ageAtDiagnosis:<=P17Y
+          - cnvstats
+      label:
+        description: >-
+          A short label, e.g. "preferred Label" in the case of an ontology term.
+        type: string
+        examples:
+          - B Lymphoblastic Leukemia/Lymphoma
+          - Rhabdomyosarcoma
+      description:
+        description: >-
+          A description of the aggregation term, e.g. for custom terms.
+      type:
+        type: string
+        enum:
+          - count
+          - report
+
+additionalProperties: true

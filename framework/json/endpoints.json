@@ -83,6 +83,45 @@
                 }
             ]
         },
+        "/aggregation_terms": {
+            "get": {
+                "description": "Get the list of aggregation terms handled by this beacon",
+                "operationId": "getAggregationTerms",
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./responses/beaconAggregationTermsResponse.json"
+                                }
+                            }
+                        },
+                        "description": "Successful operation."
+                    },
+                    "default": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "./responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
+                        "description": "An unsuccessful operation."
+                    }
+                },
+                "tags": [
+                    "Informational endpoints"
+                ]
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/skip"
+                },
+                {
+                    "$ref": "#/components/parameters/limit"
+                }
+            ]
+        },
         "/configuration": {
             "get": {
                 "description": "TBD",

@@ -1,4 +1,5 @@
 $schema: https://json-schema.org/draft/2020-12/schema
+name: Beacon Aggregation Results
 description: Beacon aggregate results section.
 type: array
 minItems: 0
@@ -23,6 +24,7 @@ examples:
       entity: analysis
       description: >-
         CNV frequencies per 1Mb genomic bin
+      schema: https://www.example.org/cnvFrequenciesSchema
       report:
         intervalfrequencies:
           - id: 1p:000000000-000400000
@@ -92,3 +94,8 @@ $defs:
       a count of occurrences in the matched data. The format is left to the
       implementation but should not expose information about individual records.  
     type: object
+    schema:
+      description: >-
+        Optional reference to a schema for this report.
+      type: string
+    additionalItems: True

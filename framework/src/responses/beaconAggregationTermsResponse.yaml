@@ -1,0 +1,14 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+type: object
+description: >-
+  The aggregation terms response provides information about available
+  individual aggregation options beacon's response.
+properties:
+  meta:
+    $ref: ./sections/beaconInformationalResponseMeta.yaml
+  response:
+    $ref: ./sections/beaconAggregationTermsResults.yaml
+required:
+  - meta
+  - response
+additionalProperties: true

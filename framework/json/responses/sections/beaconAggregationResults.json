@@ -42,7 +42,12 @@
             "type": "object"
         },
         "Report": {
+            "additionalItems": true,
             "description": "Report for this aggregation term representing a summary of results beyond a count of occurrences in the matched data. The format is left to the implementation but should not expose information about individual records.  ",
+            "schema": {
+                "description": "Optional reference to a schema for this report.",
+                "type": "string"
+            },
             "type": "object"
         }
     },
@@ -96,7 +101,8 @@
                             "start": 400000
                         }
                     ]
-                }
+                },
+                "schema": "https://www.example.org/cnvFrequenciesSchema"
             }
         ]
     ],
@@ -104,5 +110,6 @@
         "$ref": "#/$defs/AggregationResultsInstance"
     },
     "minItems": 0,
+    "name": "Beacon Aggregation Results",
     "type": "array"
 }

@@ -56,7 +56,7 @@
             "type": "string"
         },
         "CountAdjustedTo": {
-            "description": "For counts with intentional (e.g. due to privacy concerns) or technical derived imprecision this parameter offers an option to declare the range or limits for the true results. \nIf present, CountPrecision states the type of adjustment.",
+            "description": "For counts with intentional (e.g. due to privacy concerns) or technical derived imprecision this parameter offers an option to declare the range or limits for the true results. If present, CountPrecision states the type of adjustment.",
             "examples": [
                 [
                     "1",
@@ -78,8 +78,8 @@
             "type": "array"
         },
         "CountPrecision": {
-            "description": "For counts with intentional (e.g. due to privacy concerns) or technical derived imprecision this parameter offers an option to declare the number's precision. \n If present, CountAdjustedTo provides more details. The 3 possible options are: \n* exact >- A value that is precise. \n* imprecise >-A value that is not guaranteed to be precise.\n* rounded >- A value that has been (floor or ceiling) rounded to a given value.",
             "default": "imprecise",
+            "description": "For counts with intentional (e.g. due to privacy concerns) or technical derived imprecision this parameter offers an option to declare the number's precision. If present, CountAdjustedTo provides more details. The 3 possible options are: - exact >-\n  A value that is precise.\n- imprecise >-\n  A value that is not guaranteed to be precise.\n- rounded >-\n  A value that has been (floor or ceiling) rounded to a given value.",
             "enum": [
                 "exact",
                 "imprecise",
@@ -107,10 +107,11 @@
         },
         "Granularity": {
             "default": "boolean",
-            "description": "Level of detail of the response:\n* `boolean`: returns true/false' responses * `count`: adds the total number of positive results found * `record`: returns matched recors in the schema of the respective response\n  entity",
+            "description": "Level of detail of the response:\n* `boolean`: returns true/false' responses * `count`: adds the total number of positive results found * `aggregated`: returns aggregated results, e.g. counts per filtering term * `record`: returns matched recors in the schema of the respective response\n  entity",
             "enum": [
                 "boolean",
                 "count",
+                "aggregated",
                 "record"
             ],
             "type": "string"
