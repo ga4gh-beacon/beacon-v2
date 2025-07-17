@@ -8,9 +8,9 @@ description: >-
   to be chained by the logical AND operator.
 type: array
 items:
-  $ref: '#/$defs/FilteringTerm'
+  $ref: '#/$defs/FilteringTermInRequest'
 $defs:
-  FilteringTerm:
+  FilteringTermInRequest:
     anyOf:
       - $ref: '#/$defs/OntologyFilter'
       - $ref: '#/$defs/AlphanumericFilter'
@@ -45,10 +45,20 @@ $defs:
           of 'high', 'medium' and 'low' similarity.
       scope:
         type: string
-        description: The entry type to which the filter applies
-        example: biosamples
+        description: |-
+          The entry type in the model to which the filter should be applied. For
+          example, the use of `NCIT:C4013` (Malignant Head and Neck Neoplasm) can
+          w/o specified scope mean both "match cancer samples" or "match individuals"
+          with the disease" which - in the case of individuals - could then lead
+          to matching germline and cancer variants while a scope of `biosamples`
+          would limit the response to variants observed in the cancer tissue.
+          Note: It is good practice to avoid ambiguous terms, _i.e._ use different
+          vocabularies for different entry types.
+        examples:
+          - biosamples
   AlphanumericFilter:
-    description: Filter results based on operators and values applied to alphanumeric
+    description: |-
+      Filter results based on operators and values applied to alphanumeric
       fields.
     type: object
     required:
@@ -81,8 +91,12 @@ $defs:
         example: P70Y
       scope:
         type: string
-        description: The entry type to which the filter applies
-        example: individuals
+        description: |-
+          The entry type in the model to which the filter should be applied. It
+          is good practice to use unanimous `id` values (e.g. `ageAtDiagnosis`
+          instead of `age`) and avoid the use of the `scope` parameter.
+        examples:
+          - individuals
   CustomFilter:
     type: object
     description: Filter results to include records that contain a custom term defined
@@ -96,6 +110,8 @@ $defs:
         example: demographic.ethnicity:asian
       scope:
         type: string
-        description: The entry type to which the filter applies
-        example: individuals
+        description: |-
+          The entry type in the model to which the filter should be applied.
+        examples:
+          - individuals
 additionalProperties: true

@@ -1,4 +1,4 @@
-# Beacon v2 Framework
+# Beacon Framework
 
 ## Introduction
 

@@ -22,11 +22,11 @@ A Beacon can support three general types of Filters.
    value
 3. **Custom terms** for biomedical or metadata terms that are locally defined by
    a Beacon (e.g. not corresponding to known bio-ontology terms). Custom terms must
-   contain unique identifiers that are used in Beacon requests (e.g. local prefixes.
+   contain unique identifiers that are used in Beacon requests (e.g. local prefixes).
 
 ## _/filtering_terms_  informational endpoint
 
-The _/filtering_terms_ endpoint returns a list of all data fields whose values may be subjected to filtering, plus the data type(s) for those fields, and/or the list of extant values for each of those data fields in the current dataset.  In addition, for each bio-ontology used by a Beacon, the endpoint response includes a description of the bio-ontology in [Phenopackets Resource](https://phenopacket-schema.readthedocs.io/en/latest/resource.html) format.
+The _/filtering_terms_ endpoint returns a list of all data fields whose values may be subjected to filtering, plus the data type(s) for those fields, and/or the list of extant values for each of those data fields in the current dataset. In addition, for each bio-ontology used by a Beacon, the endpoint response includes a description of the bio-ontology in [Phenopackets Resource](https://phenopacket-schema.readthedocs.io/en/latest/resource.html) format.
 
 The endpoint's `filteringTerms` response identifies the Filter types.
 
@@ -82,7 +82,7 @@ The Filter `id` is required for all query types.
 
 !!! Note "Boolean Logic Between Filtering Terms"
 
-	Beacon queries as of v2 always omply a logical **AND** between query parameters
+	Beacon queries as of v2 always imply a logical **AND** between query parameters
 	and individual filters, _i.e._ all conditions have to be met. There is currently
 	no support for Boolean expressions.
 
@@ -102,10 +102,10 @@ The Filter `id` is required for all query types.
 
 !!! note "Hierarchical term expansion"
 
-    It is recomended that the use of terms from hierarchical ontologies/classicfications
+    It is recommended that the use of terms from hierarchical ontologies/classifications
     uses an internal term expansion mechanism - _i.e._ records with parameters containing
     a child term are matched when the parent term is being queried.
-    This default behaviour can be modoiified (see below).
+    This default behaviour can be modified (see below).
 
 The following query retrieves (or filters retrieved...) data matching the diagnosis of
 Papillary Renal Cell Carcinoma (NCIT:C6975) from a publication identified through its PubMed id (22824167):
@@ -132,12 +132,12 @@ Papillary Renal Cell Carcinoma (NCIT:C6975) from a publication identified throug
 
 #### Modified hierarchical ontology query
 
-A Beacon will query for entities associated with the submitted bio-ontology term(s), and by default, all descendent terms.
+A Beacon will query for entities associated with the submitted bio-ontology term(s), and by default, all descendant terms.
 The optional `includeDescendantTerms` parameter can be set to either `true` or `false`. The default and assumed value
 of `includeDescendantTerms` is `true`, thus if the parameter is not set, then the use of bio-ontology terms in a Beacon
 request implies that a hierarchical ontology search is requested.
 
-Request example of two filters, where one filter excludes matches with descendent terms:
+Request example of two filters, where one filter excludes matches with descendant terms:
 
 === "POST"
 
@@ -156,7 +156,7 @@ Request example of two filters, where one filter excludes matches with descenden
 
 #### Semantic similarity query
 
-A Beacon will query for entities that are associated with bio-ontology terms that are similar to the submitted terms.  The Beacon API is agnostic to the semantic similarity model implemented by a Beacon and how a Beacon applies the relative thresholds of similarity.  A semantic similarity query request contains the required `similarity` parameter with a value set to define the relative threshold level of `high`, `medium` or `low`.
+A Beacon will query for entities that are associated with bio-ontology terms that are similar to the submitted terms. The Beacon API is agnostic to the semantic similarity model implemented by a Beacon and how a Beacon applies the relative thresholds of similarity. A semantic similarity query request contains the required `similarity` parameter with a value set to define the relative threshold level of `high`, `medium` or `low`.
 
 POST request example of two Filters using differing relative similarity thresholds:
 
@@ -225,7 +225,7 @@ database matches).
 A Beacon will query free-text values within fields when the required `operator`
 and alphanumerical `value` parameters are set in the filters request. Queries can
 be for exact alphanumerical values, used to exclude alphanumerical values, or employ
-wildcards to match patterns within alphanumerical values.  In all query classes,
+wildcards to match patterns within alphanumerical values. In all query classes,
 the `id` parameter identifies the field name, the `operator` parameter defines the
 operator to use, and the `value` parameter provides the field query value.
 
@@ -247,7 +247,7 @@ POST request example of using free-text to filter medical history (past medical 
 
 **'LIKE' value query**
 
-The inclusion of a percent sign (%) wildcard character within the `value` parameter represents zero or more characters within a LIKE style string match.  The wildcard character can lead the query string, end the string, or surround the string.
+The inclusion of a percent sign (%) wildcard character within the `value` parameter represents zero or more characters within a LIKE style string match. The wildcard character can lead the query string, end the string, or surround the string.
 
 POST request example to filter medical history free-text for any reference to cancer:
 
@@ -263,7 +263,7 @@ POST request example to filter medical history free-text for any reference to ca
 
 ##### 'NOT' value query
 
-The `operator` parameter is set to the logical not (!) operator.  The `value` parameter should not be present in field value.  The wildcard character can be used if required. The following example shows how to filter medical history free-text for records that do not include the query string:
+The `operator` parameter is set to the logical not (!) operator. The `value` parameter should not be present in field value. The wildcard character can be used if required. The following example shows how to filter medical history free-text for records that do not include the query string:
 
 === "GET"
 

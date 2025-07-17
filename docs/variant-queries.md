@@ -3,6 +3,11 @@
 For querying of genomic variations Beacon v2 builds on and extends the options provided
 by earlier versions.
 
+## Examples
+
+Please see the [Beacon v2 Request Examples](./requests/requestProfiles_g_variant.md)
+for use case examples.
+
 ## Beacon _Sequence Queries_
 
 _Sequence Queries_ query for the existence of a specified sequence at a given genomic

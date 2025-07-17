@@ -50,6 +50,42 @@ $defs:
         type: string
         examples:
           - 'The provided parameters are incomplete: `start` is missing.'
+  CountAdjustedTo:
+    description: >-
+      For counts with intentional (e.g. due to privacy concerns) or technical
+      derived imprecision this parameter offers an option to declare the range
+      or limits for the true results.
+      If present, CountPrecision states the type of adjustment.
+    examples:
+      - - "1"
+        - "5"
+      - - "<5"
+    type: array
+    minItems: 1
+    maxItems: 2
+    items:
+      type: 
+        - integer
+        - string
+      minimum: 1
+  CountPrecision:
+    description: >-
+      For counts with intentional (e.g. due to privacy concerns) or technical
+      derived imprecision this parameter offers an option to declare the number's precision.
+      If present, CountAdjustedTo provides more details.
+      The 3 possible options are:
+      - exact >-
+        A value that is precise.
+      - imprecise >-
+        A value that is not guaranteed to be precise.
+      - rounded >-
+        A value that has been (floor or ceiling) rounded to a given value.
+    enum:
+      - exact
+      - imprecise
+      - rounded
+    default: imprecise
+    type: string
   CURIE:
     pattern: ^\w[^:]+:.+$
     type: string

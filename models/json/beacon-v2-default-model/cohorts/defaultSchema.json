@@ -81,7 +81,7 @@
                         "2019-04-23T09:11:13Z",
                         "2017-01-17T20:33:40Z"
                     ],
-                    "format": "datetime",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "eventDiseases": {
@@ -132,7 +132,7 @@
                                 "2019-04-23T09:11:13Z",
                                 "2017-01-17T20:33:40Z"
                             ],
-                            "format": "datetime",
+                            "format": "date-time",
                             "type": "string"
                         },
                         "start": {
@@ -142,7 +142,7 @@
                                 "2019-04-23T09:11:13Z",
                                 "2017-01-17T20:33:40Z"
                             ],
-                            "format": "datetime",
+                            "format": "date-time",
                             "type": "string"
                         }
                     },

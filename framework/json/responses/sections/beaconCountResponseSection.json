@@ -2,6 +2,12 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Payload definition for the \"count\" response.",
     "properties": {
+        "countAdjustedTo": {
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/CountAdjustedTo"
+        },
+        "countPrecision": {
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/CountPrecision"
+        },
         "exists": {
             "$ref": "../../common/beaconCommonComponents.json#/$defs/Exists"
         },

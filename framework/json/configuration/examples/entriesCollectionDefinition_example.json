@@ -23,7 +23,6 @@
     },
     "description": "A Dataset is a collection of records, like rows in a database or cards in a cardholder.",
     "endpoint": "/datasets",
-    "filteringTermsReference": "./datasets/filteringTerms.json",
     "id": "dataset",
     "name": "Dataset",
     "ontologyTermForThisType": {

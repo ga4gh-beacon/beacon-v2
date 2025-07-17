@@ -55,6 +55,38 @@
             "pattern": "^\\w[^:]+:.+$",
             "type": "string"
         },
+        "CountAdjustedTo": {
+            "description": "For counts with intentional (e.g. due to privacy concerns) or technical derived imprecision this parameter offers an option to declare the range or limits for the true results. \nIf present, CountPrecision states the type of adjustment.",
+            "examples": [
+                [
+                    "1",
+                    "5"
+                ],
+                [
+                    "<5"
+                ]
+            ],
+            "items": {
+                "minimum": 1,
+                "type": [
+                    "integer",
+                    "string"
+                ]
+            },
+            "maxItems": 2,
+            "minItems": 1,
+            "type": "array"
+        },
+        "CountPrecision": {
+            "description": "For counts with intentional (e.g. due to privacy concerns) or technical derived imprecision this parameter offers an option to declare the number's precision. \n If present, CountAdjustedTo provides more details. The 3 possible options are: \n* exact >- A value that is precise. \n* imprecise >-A value that is not guaranteed to be precise.\n* rounded >- A value that has been (floor or ceiling) rounded to a given value.",
+            "default": "imprecise",
+            "enum": [
+                "exact",
+                "imprecise",
+                "rounded"
+            ],
+            "type": "string"
+        },
         "Exists": {
             "description": "Indicator of whether any record was observed in any of the collections queried. This should be non-null.",
             "examples": [

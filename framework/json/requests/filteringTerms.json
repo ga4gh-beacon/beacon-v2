@@ -1,7 +1,7 @@
 {
     "$defs": {
         "AlphanumericFilter": {
-            "description": "Filter results based on operators and values applied to alphanumeric fields.",
+            "description": "Filter results based on operators and values applied to alphanumeric\nfields.",
             "properties": {
                 "id": {
                     "description": "Field identfier to be queried.",
@@ -23,8 +23,10 @@
                     "type": "string"
                 },
                 "scope": {
-                    "description": "The entry type to which the filter applies",
-                    "example": "individuals",
+                    "description": "The entry type in the model to which the filter should be applied. It\nis good practice to use unanimous `id` values (e.g. `ageAtDiagnosis`\ninstead of `age`) and avoid the use of the `scope` parameter.",
+                    "examples": [
+                        "individuals"
+                    ],
                     "type": "string"
                 },
                 "value": {
@@ -49,8 +51,10 @@
                     "type": "string"
                 },
                 "scope": {
-                    "description": "The entry type to which the filter applies",
-                    "example": "individuals",
+                    "description": "The entry type in the model to which the filter should be applied.",
+                    "examples": [
+                        "individuals"
+                    ],
                     "type": "string"
                 }
             },
@@ -59,7 +63,7 @@
             ],
             "type": "object"
         },
-        "FilteringTerm": {
+        "FilteringTermInRequest": {
             "anyOf": [
                 {
                     "$ref": "#/$defs/OntologyFilter"
@@ -86,8 +90,10 @@
                     "type": "boolean"
                 },
                 "scope": {
-                    "description": "The entry type to which the filter applies",
-                    "example": "biosamples",
+                    "description": "The entry type in the model to which the filter should be applied. For\nexample, the use of `NCIT:C4013` (Malignant Head and Neck Neoplasm) can\nw/o specified scope mean both \"match cancer samples\" or \"match individuals\"\nwith the disease\" which - in the case of individuals - could then lead\nto matching germline and cancer variants while a scope of `biosamples`\nwould limit the response to variants observed in the cancer tissue.\nNote: It is good practice to avoid ambiguous terms, _i.e._ use different\nvocabularies for different entry types.",
+                    "examples": [
+                        "biosamples"
+                    ],
                     "type": "string"
                 },
                 "similarity": {
@@ -112,7 +118,7 @@
     "additionalProperties": true,
     "description": "Filtering terms are the main means to select subsets of records from a Beacon response. While the name implies the application to a generated response, in practice implementations may apply them at the query stage. Note: In the processing of Beacon v2.0 requests multiple filters are assumed to be chained by the logical AND operator.",
     "items": {
-        "$ref": "#/$defs/FilteringTerm"
+        "$ref": "#/$defs/FilteringTermInRequest"
     },
     "title": "Filtering Term Element",
     "type": "array"

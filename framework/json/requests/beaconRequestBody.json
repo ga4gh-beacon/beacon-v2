@@ -8,8 +8,7 @@
                     "description": "List of ids of aggregation terms to include in an summary data response"
                 },
                 "filters": {
-                    "$ref": "./filteringTerms.json",
-                    "description": "Ontology based filters. Using CURIE syntax is encouraged."
+                    "$ref": "./filteringTerms.json"
                 },
                 "includeResultsetResponses": {
                     "$ref": "../common/beaconCommonComponents.json#/$defs/IncludeResultsetResponses"
