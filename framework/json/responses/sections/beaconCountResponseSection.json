@@ -13,6 +13,9 @@
         },
         "numTotalResults": {
             "$ref": "../../common/beaconCommonComponents.json#/$defs/NumTotalResults"
+        },
+        "summaryResults": {
+            "$ref": "./beaconSummaryResults.json"
         }
     },
     "required": [
