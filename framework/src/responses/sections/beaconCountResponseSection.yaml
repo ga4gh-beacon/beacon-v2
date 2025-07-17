@@ -11,9 +11,6 @@ properties:
     $ref: ../../common/beaconCommonComponents.yaml#/$defs/Exists
   numTotalResults:
     $ref: ../../common/beaconCommonComponents.yaml#/$defs/NumTotalResults
-  summaryResults:
-    # aggregate counts for entire query 
-    $ref: ./beaconSummaryResults.yaml
 required:
   - exists
   - numTotalResults

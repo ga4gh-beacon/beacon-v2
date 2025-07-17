@@ -1,0 +1,31 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Complete definition for a minimal response that provides an aggregate Boolean `\"exists\": true` or `\"exists\": false` answer to the query as well as the count of the matched records.\nAdditional information - which should not consist of record-level information - can be provided through `beaconHandovers`.  ",
+    "properties": {
+        "beaconHandovers": {
+            "$ref": "../common/beaconCommonComponents.json#/$defs/ListOfHandovers",
+            "description": "List of handovers that apply to the whole response, not to any resultset or result in particular."
+        },
+        "info": {
+            "$ref": "../common/info.json",
+            "description": "Additional details that could be of interest. Provided to clearly enclose any attribute that is not part of the Beacon specification."
+        },
+        "meta": {
+            "$ref": "./sections/beaconResponseMeta.json",
+            "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
+        },
+        "responseAggregation": {
+            "$ref": "./sections/beaconAggregationResults.json",
+            "description": "Aggregation of results for the overall response from the beacon."
+        },
+        "responseSummary": {
+            "$ref": "./sections/beaconCountResponseSection.json",
+            "description": "Response summary, including Boolean and optionally results count."
+        }
+    },
+    "required": [
+        "meta",
+        "responseSummary"
+    ],
+    "type": "object"
+}

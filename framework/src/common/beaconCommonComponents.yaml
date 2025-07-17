@@ -173,6 +173,7 @@ $defs:
 
       * `boolean`: returns true/false' responses
       * `count`: adds the total number of positive results found
+      * `aggregated`: returns aggregated results, e.g. counts per filtering term
       * `record`: returns matched recors in the schema of the respective response
         entity
 
@@ -180,6 +181,7 @@ $defs:
     enum:
       - boolean
       - count
+      - aggregated
       - record
     default: boolean
   TestMode:

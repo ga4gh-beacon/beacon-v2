@@ -27,6 +27,10 @@
                     "minItems": 0,
                     "type": "array"
                 },
+                "resultsAggregation": {
+                    "$ref": "./beaconAggregationResults.json",
+                    "description": "Aggregation of results for this result set."
+                },
                 "resultsCount": {
                     "description": "Precise or approximate number of results in this Resultset.",
                     "type": "integer"
