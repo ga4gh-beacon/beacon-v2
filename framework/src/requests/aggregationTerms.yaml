@@ -3,10 +3,10 @@ title: Aggregation Terms
 description: |-
   Terms used to specify items to return in an aggregation data response. 
   In practice we use the the `id` field from existing filtering terms and avoid
-  the additional modifiers, but addditionally allows the use of custom summary
+  the additional modifiers, but additionally allows the use of custom summary
   structures beyond aggregaion corresponding to query filters; e.g.
   * a `survivalGroups` term could aggregate data by survival groups
-  * a `cnvfrequencies` term could envoke a list of objects for gain, loss, ...
+  * a `cnvfrequencies` term could invoke a list of objects for gain, loss, ...
     events per genomic interval in the matched data
   Note: Alphanumeric filters usually would be used in form of a full stringified
   expression, e.g. `sexAtBirth:=female` to allow counts on this specific value.

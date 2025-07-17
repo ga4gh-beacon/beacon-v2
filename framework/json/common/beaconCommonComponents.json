@@ -107,7 +107,7 @@
         },
         "Granularity": {
             "default": "boolean",
-            "description": "Level of detail of the response:\n* `boolean`: returns true/false' responses * `count`: adds the total number of positive results found * `aggregated`: returns aggregated results, e.g. counts per filtering term * `record`: returns matched recors in the schema of the respective response\n  entity",
+            "description": "Level of detail of the response:\n* `boolean`: returns true/false' responses * `count`: adds the total number of positive results found * `aggregated`: returns aggregated results, e.g. counts per filtering term * `record`: returns matched records in the schema of the respective response\n  entity",
             "enum": [
                 "boolean",
                 "count",
