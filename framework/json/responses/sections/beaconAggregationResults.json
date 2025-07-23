@@ -74,6 +74,29 @@
                 "label": "female sex at birth"
             },
             {
+                "description": "sex per NCIT cancer code (custom format)",
+                "id": "sexPerDisease",
+                "label": "Sex distribution per cancer type",
+                "record": [
+                    {
+                        "counts": {
+                            "sex:=female": 836,
+                            "sex:=male": 3
+                        },
+                        "id": "NCIT:C4872",
+                        "label": "Breast Carcinoma"
+                    },
+                    {
+                        "counts": {
+                            "sex:=female": 36,
+                            "sex:=male": 81
+                        },
+                        "id": "NCIT:C3513",
+                        "label": "Esophageal Carcinoma"
+                    }
+                ]
+            },
+            {
                 "description": "CNV frequencies per 1Mb genomic bin",
                 "entity": "analysis",
                 "id": "cnvstats",

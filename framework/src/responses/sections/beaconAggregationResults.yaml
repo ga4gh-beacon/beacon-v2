@@ -20,6 +20,20 @@ examples:
       label: female sex at birth
       entity: individual
       count: 13
+    - id: sexPerDisease
+      label: Sex distribution per cancer type
+      description: sex per NCIT cancer code (custom format)
+      record:
+        - id: NCIT:C4872
+          label: Breast Carcinoma
+          counts:
+            sex:=female: 836
+            sex:=male: 3
+        - id: NCIT:C3513
+          label: Esophageal Carcinoma
+          counts:
+            sex:=female: 36
+            sex:=male: 81
     - id: cnvstats
       label: CNV frequencies
       entity: analysis
