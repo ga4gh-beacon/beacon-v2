@@ -65,7 +65,7 @@ These are examples extracted directly from the [GitHub repository](https://githu
 	        "label": "Slovenia"
 	    },
 	    "id": "Ind001",
-	    "measures": [
+	    "measurements": [
 	        {
 	            "assayCode": {
 	                "id": "LOINC:26515-7",
