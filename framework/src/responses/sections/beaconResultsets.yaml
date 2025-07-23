@@ -10,9 +10,6 @@ properties:
     items:
       $ref: '#/$defs/ResultsetInstance'
     minItems: 0
-  summaryResults:
-    description: Summary results for the entire response
-    $ref: ./beaconSummaryResults.yaml
 required:
   - resultSets
 additionalProperties: true

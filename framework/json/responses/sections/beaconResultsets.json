@@ -66,10 +66,6 @@
             },
             "minItems": 0,
             "type": "array"
-        },
-        "summaryResults": {
-            "$ref": "./beaconSummaryResults.json",
-            "description": "Summary results for the entire response"
         }
     },
     "required": [

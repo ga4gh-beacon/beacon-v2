@@ -4,9 +4,6 @@
     "properties": {
         "exists": {
             "$ref": "../../common/beaconCommonComponents.json#/$defs/Exists"
-        },
-        "summaryResults": {
-            "$ref": "./beaconSummaryResults.json"
         }
     },
     "required": [
