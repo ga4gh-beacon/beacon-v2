@@ -1,0 +1,216 @@
+{
+    "$defs": {
+        "AlternateBases": {
+            "$ref": "#/$defs/Sequence",
+            "description": "The bases of a sequence variant at a given position differing from the\nreference sequence, as defined by the `referenceBases` parameter. Please\nsee `refereenceBases` for further information.\nOrigin: VCF derived use in Beacon v0.3 -> v2.1\nStatus: LEGACY",
+            "versions": [
+                "v1",
+                "v2.0",
+                "v2.1"
+            ]
+        },
+        "AminoacidChange": {
+            "description": "Aminoacid alteration of interest in 1 letter format.    \n\nOrigin: Beacon v2.0",
+            "examples": [
+                "V600E",
+                "M734V"
+            ],
+            "type": "string",
+            "versions": [
+                "v2.0",
+                "VQS"
+            ]
+        },
+        "Assembly": {
+            "description": "Genomic assembly accession and version as RefSqeq assembly accession\n(e.g. \"GCF_000001405.39\") or a versioned assembly name or synonym such as UCSC\nGenome Browser assembly (e.g. \"hg38\") or Genome Reference Consortium Human (e.g.\n\"GRCh38.p13\") names.\nDEPRECATION NOTE: The use of a assembly specific sequence identifier obviates\nthis parameter. Not part of VRS v2 aligned model versions.",
+            "example": [
+                "GCF_000001405.39",
+                "hg38",
+                "GRCh38.p13"
+            ],
+            "type": "string",
+            "versions": [
+                "v1",
+                "v2.0",
+                "v2.1"
+            ]
+        },
+        "End": {
+            "description": "##### Notes\n\nSee the `start` parameter for information on the potential replacement\nof this parameter with the VRS based definition.\n\nPrecise or bracketing the end of the variants of interest:\n\n* (0-based, exclusive) - see `start`\n* for bracket queries, provide 2 values (e.g. [111,222]).",
+            "items": {
+                "format": "int64",
+                "minimum": 1,
+                "type": "integer"
+            },
+            "maxItems": 2,
+            "minItems": 1,
+            "type": "array",
+            "versions": [
+                "v2.0",
+                "v2.1"
+            ]
+        },
+        "GeneId": {
+            "description": "* A gene identifier\n* It is strongly suggested to use a symbol following\n  the HGNC (https://www.genenames.org) nomenclature.\n\nOrigin: Beacon v2.0",
+            "examples": [
+                "BRAF",
+                "SCN5A"
+            ],
+            "type": "string",
+            "versions": [
+                "v2.0",
+                "VQS"
+            ]
+        },
+        "GenomicAlleleShortForm": {
+            "description": "HGVSId descriptor\n\nOrigin: Beacon v2.0",
+            "examples": [
+                "NM_004006.2:c.4375C>T"
+            ],
+            "type": "string",
+            "versions": [
+                "v2.0",
+                "VQS"
+            ]
+        },
+        "MateEnd": {
+            "description": "genomic end position of fusion partner breakpoint region\nStatus: DEPRECATED in v2.n (see `mateName`)",
+            "type": "integer",
+            "versions": [
+                "v1.1",
+                "v2.0",
+                "v2.1"
+            ]
+        },
+        "MateName": {
+            "$ref": "#/$defs/RefSeqId",
+            "description": "##### Notes\n\n* while the `mateName` parameter was originally defined for Beacon v1.1\n  it was never properly documented and is not considered a part of the\n  supported Beacon v2.n specification. It is now fully implemented in the\n  VRS v2 based `adjacencyAccession` parameter.\n\nStatus: DEPRECATED in v2.n",
+            "versions": [
+                "v1.1",
+                "v2.0",
+                "v2.1"
+            ]
+        },
+        "MateStart": {
+            "description": "genomic start position of fusion partner breakpoint region\nStatus: DEPRECATED in v2.n (see `mateName`)",
+            "type": "integer",
+            "versions": [
+                "v1.1",
+                "v2.0",
+                "v2.1"
+            ]
+        },
+        "RefSeqId": {
+            "description": "Reference sequence id for genomic reference sequence in which variant\ncoordinates are given, e.g. \"refseq:NC_000009.12\" for human chromosome 9 in the\nGRCh38 assembly. The use of the assembly specific RefSeqId is recommended\nalthough alternatively names, synonymous or aliases e.g. \"chr9\" could be\nused in conjunction with an `Assembly` parameter.\nDEPRECATION NOTE: To be replaced with the `RefgetAccession` from\nVRS v2.",
+            "example": [
+                "refseq:NC_000009.12",
+                "chr9",
+                "NC_012920.1"
+            ],
+            "type": "string",
+            "versions": [
+                "v1",
+                "v2.0",
+                "v2.1"
+            ]
+        },
+        "ReferenceBases": {
+            "$ref": "#/$defs/Sequence",
+            "description": "The reference bases for the variant at the indicated position. It is based\non the VCF concept of having (anchored) reference bases at an indicated\ngenomic location in combination with `alternateBases` to define their\nreplacement. In contrast, standards such as GA4GH VRS only indicate the\n`sequence` observed at a given base position, including the use of an empty\nsequence together with `start` + `end` positions with `end - start > 0`\nto indicate deletions.\nOrigin: VCF derived (optional) use in Beacon v0.3 -> v2.1\nStatus: LEGACY",
+            "versions": [
+                "v1",
+                "v2.0",
+                "v2.1"
+            ]
+        },
+        "RequestProfileId": {
+            "description": "The `requestProfile` parameter here allows beacons to check the type of query\nbeing performed and to compare the provided request parameters for conformity\nwith the expected query profile.\nThe parameter definition here is a placeholder; the definitions of typed queries\nwill use constant values for their `requestProfile` parameter.\n\nOrigin: Beacon v2+",
+            "type": "string",
+            "versions": [
+                "VQS"
+            ]
+        },
+        "Sequence": {
+            "description": "DNA bases.    \n\n* Accepted values: `[ACGTN]*`    \n* N is a wildcard, that denotes the position of any base,\n  and can be used as a standalone base of any type or within a partially known\n  sequence. As example, a query of `ANNT` the Ns can take take any form of [ACGT]\n  and will match `ANNT`, `ACNT`, `ACCT`, `ACGT` ... and so forth.    \n\nOrigin: VRS v1.n\n\nTODO: Review use of base characters.",
+            "type": "string",
+            "versions": [
+                "VQS"
+            ]
+        },
+        "SequenceLength": {
+            "description": "The sequence length when querying the conceptual representation of a\nsequence according to a VRS `ReferenceLengthExpression` class.\n\nAdditionally, the `sequenceLength` parameter can be used to limit the length\nof matched variants, e.g. by specifying a range of lengths for `copyChange`\nmatches.\n\nOrigin: VRS v2",
+            "oneOf": [
+                "integer",
+                {
+                    "$ref": "#/$defs/Range"
+                }
+            ],
+            "versions": [
+                "VQS"
+            ]
+        },
+        "Start": {
+            "description": "NOTE: This parameter will be _potentially_ replaced by the VRS based definition\n      which uses either an integer or a Range (2 integers) in contrast to\n      the use of an array with 1 or 2 integers here. The difference lies in \n      the format of \"1 integer array\" versus \"1 integer\".\nPrecise or fuzzy start coordinate position(s), allele locus\n(0-based, inclusive).\n\n* `start` only:\n  - for single positions, e.g. the start of a specified sequence\n    alteration where the size is given through the specified `alternateBases`\n  - typical use are queries for SNV and small InDels\n  - the use of `start` without an `end` parameter requires the use of\n    `alternateBases`\n* 1 value in both `start` and `end`:\n  - for searching any variant falling fully or partially within the range\n    between `start` and `end` (a.k.a. \"range query\")\n  - additional use of `variantType` OR `alternateBases` can limit the\n    scope of the query\n  - by convention, partial overlaps of variants with the indicated genomic\n    range are accepted; for specific overlap requirements the 4-parameter\n    \"Bracket Queries\" should be employed\n* 2 values in both `start` and `end` for constructing a \"Bracket Query\":\n  - can be used to match any contiguous genomic interval, e.g. for querying\n    imprecise positions\n  - identifies all structural variants starting between `start[0]` and `start[1]`,\n    and ending between `end[0]` <-> `end[1]`\n  - single or double sided precise matches can be achieved by setting\n    `start[1]=start[0]+1` and `end[1]=end[0]+1`",
+            "items": {
+                "format": "int64",
+                "minimum": 0,
+                "type": "integer"
+            },
+            "maxItems": 2,
+            "minItems": 1,
+            "type": "array",
+            "versions": [
+                "v2.0",
+                "v2.1"
+            ]
+        },
+        "VariantId": {
+            "description": "* A variant identifier such as a VRSid, ClinVar id, dbSNP rsID or a\n  COSMIC identifier\n* In the default data model this query parameter corresponds to\n  `identifiers.variantAlternateIds` but potentially can map to other\n  identifiers as well. However, no specific query parameterwas defined\n  in the Beacon v2 default model.\nStatus: PROPOSED FOR BEACON v2.n",
+            "examples": [
+                "ClinGen:CA152954",
+                "dbSNP:rs587780345"
+            ],
+            "type": "string",
+            "versions": [
+                "VQS"
+            ]
+        },
+        "VariantMaxLength": {
+            "description": "* Maximum length in bases of a genomic variant.\n* This is an optional parameter without prescribed use. While a length is\n  commonly available for structural variants such as copy number variations,\n  it is recommended that length based queries should also be supported for\n  variants with indicated referenceBases and alternateBases, to enable\n  length-specific wildcard queries.\n\nStatus: DEPRECATED in v2.n (see `sequenceLength`)\n\nOrigin: Beacon v2.0",
+            "format": "int64",
+            "minimum": 1,
+            "type": "integer",
+            "versions": [
+                "v2.0",
+                "v2.1"
+            ]
+        },
+        "VariantMinLength": {
+            "description": "* Minimum length in bases of a genomic variant\n* This is an optional parameter without prescribed use. While a length is\n  commonly available for structural variants such as copy number variations,\n  it is recommended that length based queries should also be supported for\n  variants with indicated referenceBases and alternateBases, to enable\n  length-specific wildcard queries.\n\nOrigin: Beacon v2.0\n\nStatus: DEPRECATED in v2.n (see `sequenceLength`)",
+            "format": "int64",
+            "minimum": 0,
+            "type": "integer",
+            "versions": [
+                "v2.0",
+                "v2.1"
+            ]
+        },
+        "VariantType": {
+            "description": "The `variantType` is used to query variants which are not defined through\na sequence of one or more bases using the `alternateBases` parameter. This\nVCF derived parameter is being replaced by the more specific VRS derived\nparameters such as `copyChange`.\n(Legacy) Examples here are e.g. structural variants:\n* DUP\n  - increased allelic count of material from the genomic region between\n    `start` and `end` positions\n  - no assumption about the placement of the additional sequences is being\n    made (i.e. no _in situ_ requirement as tandem duplications)\n* DEL: deletion of sequence following `start`\n\nIn contrast to the updated VRS based v2.n parameters such as `copyChange`\nthe Beacon v1.1 -> v2.1 query model is not prescriptive with regard to the\nvalues allowed for `variantType` with use of extended types (e.g. `EFO:0030063`)\nbeing permitted. However, a support for the basic CNV types above - where\nrepresented in the data - is recommended.\nStatus: LEGACY with potential use in v2.n for non-CNV parameters \nNote: The VRS v2 `copyChange` is now a partial and more specific replacement\n      over `variantType` for copy number variations. However, additional\n      concepts so far have not been covered and might warrant use of an\n      additional parameter (`variantClass`?).",
+            "examples": [
+                "EFO:0030070",
+                "DUP",
+                "DEL",
+                "EFO:0030069"
+            ],
+            "type": "string",
+            "versions": [
+                "v1",
+                "v2.0",
+                "v2.1"
+            ]
+        }
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Component definitions for `requestProfiles`. The definition of each parameter as a component allows for reuse across multiple request patterns but also for e.g. easy referencing in OpenAPI endpoints."
+}
