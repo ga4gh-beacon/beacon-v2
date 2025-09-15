@@ -14,7 +14,9 @@
                 }
             },
             "required": [
-                "aminoacidChange"
+                "aminoacidChange",
+                "geneId",
+                "requestProfile"
             ],
             "type": "object"
         },
@@ -43,7 +45,8 @@
             "required": [
                 "referenceName",
                 "start",
-                "alternateBases"
+                "alternateBases",
+                "requestProfile"
             ],
             "type": "object"
         },
@@ -79,7 +82,8 @@
                 "referenceName",
                 "start",
                 "end",
-                "variantType"
+                "variantType",
+                "requestProfile"
             ],
             "type": "object"
         },
@@ -124,11 +128,13 @@
             "required": [
                 "referenceName",
                 "start",
-                "end"
+                "end",
+                "requestProfile"
             ],
             "type": "object"
         },
         "Bv2GenericVariantRequest": {
+            "additionalProperties": false,
             "description": "This represents the generic collection of variant parameters allowed in\nBeacon v2 requests.",
             "examples": {
                 "$ref": "../examples/g_variant.json#/examples"
@@ -190,7 +196,8 @@
                 }
             },
             "required": [
-                "geneId"
+                "geneId",
+                "requestProfile"
             ],
             "type": "object"
         },
@@ -198,8 +205,15 @@
             "properties": {
                 "genomicAlleleShortForm": {
                     "$ref": "./requestParameterComponents.json#/$defs/GenomicAlleleShortForm"
+                },
+                "requestProfile": {
+                    "const": "GenomicAlleleShortFormRequest"
                 }
             },
+            "required": [
+                "genomicAlleleShortForm",
+                "requestProfile"
+            ],
             "type": "object"
         },
         "VariantIdRequest": {
@@ -212,9 +226,14 @@
                     "$ref": "./requestParameterComponents.json#/$defs/VariantId"
                 }
             },
+            "required": [
+                "variantId",
+                "requestProfile"
+            ],
             "type": "object"
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Request profiles allow beacons to\n\n* verify combinations of parameters to fulfill given requirements\n* announce which requests are supported (indirectly or through a FUTURE\n  informational endpoint)\n\nIn case of a missing `requestProfile` parameter a generic request w/o imposed\nlimits on request parameters is assumed with decision about support left to the\nimplementations. ",
     "name": "Request Profiles"
 }

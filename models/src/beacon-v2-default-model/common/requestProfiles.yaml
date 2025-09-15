@@ -1,6 +1,16 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 
 name: Request Profiles
+description: |-
+  Request profiles allow beacons to
+
+  * verify combinations of parameters to fulfill given requirements
+  * announce which requests are supported (indirectly or through a FUTURE
+    informational endpoint)
+
+  In case of a missing `requestProfile` parameter a generic request w/o imposed
+  limits on request parameters is assumed with decision about support left to the
+  implementations. 
 
 $defs:
 
@@ -38,6 +48,7 @@ $defs:
         $ref: "./requestParameterComponents.yaml#/$defs/VariantMinLength"
       variantMaxLength:
         $ref: "./requestParameterComponents.yaml#/$defs/VariantMaxLength"
+    additionalProperties: false
     examples:
       $ref: "../examples/g_variant.yaml#/examples"
 
@@ -55,6 +66,9 @@ $defs:
         const: BV2variantIdRequest
       variantId:
         $ref: "./requestParameterComponents.yaml#/$defs/VariantId"
+    required:
+      - variantId
+      - requestProfile
 
   # <------------------------------------------------------------------------> #
 
@@ -73,14 +87,21 @@ $defs:
         $ref: "./requestParameterComponents.yaml#/$defs/GeneId"
     required:
       - aminoacidChange
+      - geneId
+      - requestProfile
 
   # <------------------------------------------------------------------------> #
 
   GenomicAlleleShortFormRequest:
     type: object
     properties:
+      requestProfile:
+        const: GenomicAlleleShortFormRequest
       genomicAlleleShortForm:
         $ref: "./requestParameterComponents.yaml#/$defs/GenomicAlleleShortForm"
+    required:
+      - genomicAlleleShortForm
+      - requestProfile
 
   # <------------------------------------------------------------------------> #
 
@@ -104,11 +125,9 @@ $defs:
         $ref: "./requestParameterComponents.yaml#/$defs/VariantMaxLength"
     required:
       - geneId
+      - requestProfile
 
-
-################################################################################
-# BV2: Typed Beacon v2 queries 
-################################################################################
+  # <------------------------------------------------------------------------> #
 
   BV2alleleRequest:
     type: object
@@ -133,6 +152,7 @@ $defs:
       - referenceName
       - start
       - alternateBases
+      - requestProfile
 
   # <------------------------------------------------------------------------> #
 
@@ -170,6 +190,7 @@ $defs:
       - start
       - end
       - variantType
+      - requestProfile
 
   # <------------------------------------------------------------------------> #
 
@@ -212,5 +233,6 @@ $defs:
       - referenceName
       - start
       - end
+      - requestProfile
 
 
