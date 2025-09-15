@@ -2,45 +2,151 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Genomic feature(s) related to the variant. NOTE: Although genes could also be referenced using these attributes, they have an independent section to allow direct queries.",
     "properties": {
-        "biologicalFunctions": {
+        "annotationSource": {
+            "description": "Source of the annotation",
             "examples": [
-                [
-                    {
-                        "id": "GO:0004016",
-                        "label": "adenylate cyclase activity"
-                    }
-                ]
+                {
+                    "id": "GO:0004016",
+                    "label": "adenylate cyclase activity"
+                }
             ],
-            "items": {
-                "properties": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/common/ontologyTerm.json"
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "name of the annotation source",
+                    "examples": [
+                        "Ensembl", "Gencode"
+                    ],
+                    "type": "string"
                 },
-                "type": "object"
-            },
-            "type": "array"
+                "version": {
+                    "description": "Version of the annotation source",
+                    "examples": [
+                        "110", "2.0"
+                    ],
+                    "type": "string"
+                }
+            }
         },
-        "featureClass": {
+        "genomicCoordinates": {
+            "description": "Genomic coordinates of the genomic feature",
+            "examples": [
+                {
+                    "start": 100,
+                    "end": 200,
+                    "strand": "+",
+                    "is_0_based": true,
+                    "chromosome": "1"
+                }
+            ],
+            "type": "object",
+            "properties": {
+                "start": {
+                    "description": "Start of the genomic feature",
+                    "examples": [
+                        100
+                    ],
+                    "type": "integer"
+                },
+                "end": {
+                    "description": "End of the genomic feature",
+                    "examples": [
+                        200
+                    ],
+                    "type": "integer"
+                },
+                "strand": {
+                    "description": "Strand of the genomic feature",
+                    "examples": [
+                        "+"
+                    ],
+                    "type": "string",
+                    "enum": ["+", "-"]
+                },
+                "is_0_based": {
+                    "description": "Whether the genomic feature is 0-based",
+                    "examples": [
+                        true
+                    ],
+                    "type": "boolean"
+                },
+                "referenceName": {
+                    "description": "Reference name of the genomic feature",
+                    "examples": [
+                        "1", "X", "Y", "MT"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "start",
+                "end",
+                "strand",
+                "is_0_based",
+                "referenceName"
+            ]
+        },
+        "aliases": {
+            "description": "Aliases of the genomic feature",
+            "examples": [
+                "TP53", "BRCA1"
+            ],
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "ontologyTerms": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/common/ontologyTerm.json",
-            "description": "Ontology term that describes the class of genomic feature affected by the variant. Values from SO (Sequence ontology) are recommended, e.g. `SO:0001623: 5 prime UTR variant`",
+            "description": "Ontology terms of the genomic feature",
             "examples": [
                 {
                     "id": "SO:0001623",
                     "label": "5 prime UTR variant"
+                },
+                {
+                    "id": "GO:0048856",
+                    "label": "anatomical structure development"
                 }
             ]
         },
-        "featureID": {
-            "description": "Where applicable, ID/accession/name of genomic feature related to the `featureClass`, preferably in CURIE format. If the value is a gene id or name, it points to the gene related to the `featureClass`, e.g. `the 5 prime UTR upstream of TP53`",
+        "xrefs": {
+            "description": "Cross-references of the genomic feature. CURIE format is recommended.",
             "examples": [
-                {
-                    "id": "HGNC:11998",
-                    "label": "TP53"
-                }
-            ]
+                "HGNC:11998", "UCSC:uc002ict.4"
+            ],
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "featureID": {
+            "description": "ID/accession/name of genomic feature, preferably in CURIE format",
+            "examples": [
+                "HGNC:11998", "UCSC:uc002ict.4"
+            ],
+            "type": "string"
+        },
+        "parent": {
+            "description": "Parent of the genomic feature",
+            "examples": [
+                "HGNC:11998", "UCSC:uc002ict.4"
+            ],
+            "type": "string"
+        },
+        "children": {
+            "description": "Children of the genomic feature",
+            "examples": [
+                "HGNC:11998", "UCSC:uc002ict.4"
+            ],
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "required": [
-        "featureClass"
+        "featureID"
     ],
     "title": "GenomicFeature",
     "type": "object"
