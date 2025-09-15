@@ -76,22 +76,6 @@ $defs:
       - VQS
     type: string
 
-  SequenceLength:
-    description: |-
-      The sequence length when querying the conceptual representation of a
-      sequence according to a VRS `ReferenceLengthExpression` class.
-
-      Additionally, the `sequenceLength` parameter can be used to limit the length
-      of matched variants, e.g. by specifying a range of lengths for `copyChange`
-      matches.
-
-      Origin: VRS v2
-    versions:
-      - VQS
-    oneOf:
-      - integer
-      - $ref: "#/$defs/Range"
-
   VariantId:
     description: |-
       * A variant identifier such as a VRSid, ClinVar id, dbSNP rsID or a
