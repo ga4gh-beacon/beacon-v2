@@ -2,7 +2,6 @@ $schema: https://json-schema.org/draft/2020-12/schema
 name: Beacon Aggregation Results
 description: Beacon aggregate results section.
 type: array
-maturity: draft
 minItems: 0
 items:
   $ref: "#/$defs/AggregationResultsInstance"

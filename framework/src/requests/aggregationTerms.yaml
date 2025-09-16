@@ -11,7 +11,6 @@ description: |-
   Note: Alphanumeric filters usually would be used in form of a full stringified
   expression, e.g. `sexAtBirth:=female` to allow counts on this specific value.
 type: array
-maturity: draft
 items:
   type: string
   examples:

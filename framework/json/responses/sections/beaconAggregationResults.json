@@ -132,7 +132,6 @@
     "items": {
         "$ref": "#/$defs/AggregationResultsInstance"
     },
-    "maturity": "draft",
     "minItems": 0,
     "name": "Beacon Aggregation Results",
     "type": "array"

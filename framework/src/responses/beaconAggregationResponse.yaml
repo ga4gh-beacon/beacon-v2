@@ -7,7 +7,6 @@ description: >-
   Additional information - which should not consist of record-level information -
   can be provided through `beaconHandovers`.  
 type: object
-maturity: draft
 properties:
   meta:
     description: >-

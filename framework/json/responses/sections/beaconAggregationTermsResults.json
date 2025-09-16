@@ -66,6 +66,5 @@
     "items": {
         "$ref": "#/$defs/AggregationTermInResponse"
     },
-    "maturity": "draft",
     "type": "array"
 }

@@ -4,7 +4,6 @@ description: >-
 type: array
 items:
   $ref: '#/$defs/AggregationTermInResponse'
-maturity: draft
 examples:
   -
     - id: NCIT:C3359
