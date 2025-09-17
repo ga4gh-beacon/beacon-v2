@@ -9,19 +9,34 @@ examples:
   - 
     - id: NCIT:C3359
       label: Rhabdomyosarcoma
-      entity: biosample
+      entryTypeId: biosample
       count: 42
     - id: ageAtDiagnosis:<=P17Y
       label: age at diagnosis younger than 18 years
-      entity: individual
+      entryTypeId: individual
       count: 44
     - id: sex:=female
       label: female sex at birth
-      entity: individual
+      entryTypeId: individual
       count: 13
+    - id: sexAtBirth
+      label: sex at birth
+      entryTypeId: individual
+      distribution:
+        male: 23
+        female: 11
+        unknown: 0
+    - id: biosample.histological_diagnosis.id
+      label: histological diagnosis
+      entryTypeId: biosample
+      distribution:
+        NCIT:C4028: 9
+        NCIT:C4520: 2
+        NCIT:C48596: 23
     - id: sexPerDisease
       label: Sex distribution per cancer type
       description: sex per NCIT cancer code (custom format)
+      entryTypeId: biosample
       report:
         - id: NCIT:C4872
           label: Breast Carcinoma
@@ -35,7 +50,7 @@ examples:
             maleAtBirth: 81
     - id: cnvstats
       label: CNV frequencies
-      entity: analysis
+      entryTypeId: analysis
       description: >-
         CNV frequencies per 1Mb genomic bin
       schema: https://www.example.org/cnvFrequenciesSchema
@@ -63,35 +78,47 @@ $defs:
     description: >-
       Summary data from results, with distributions for the aggregation terms
       given in the request.
+      The model supports three alternative types of content for aggregation result
+      instances:
+
+      * a simple `count` result
+      * a `distribution` for counts of multiple values
+      * a `report` object for unspecified types of structured data, e.g. when there
+        is a need to provide additional attributes
     type: object
     properties:
       id:
         $ref: ../../requests/summaryTerms.yaml#/$defs/AggregationTerm
         description: >-
-          The id of this aggregation term
+          The id of the aggregation term being reported on.
       label:
         description: >-
-          Label for this aggregation term
+          The label of the aggregation term being reported on.
         type: string
-        example: Genders
-      entity:
+        examples:
+          - Genders
+      entryTypeId:
         description: >-
-          Entity for which the observations were reported. For the Beacon default
-          model this is one of `individual`, `biosample`, `analysis`, `run`, or
-          `genomicVariation`. The values here are not limited to the Beacon
-          defaults to allow modified or alternative data models.
-          Usually this parameter would be omitted, with the default being the 
-          entity for which the Beacon is providing the current results.
+          Id of the entry type in the Beacon model for which the observations
+          were reported.
+          For the Beacon default model this is one of `individual`, `biosample`,
+          `analysis`, `run`, or `genomicVariation`.
+          The values here are not limited to the Beacon defaults to allow
+          modified or alternative data models.
+          This parameter would can be omitted, with the default being the id of
+          the entryType for which the Beacon is providing the current results.
         type: string
       description:
         description: >-
-          Description of this aggregation term
+          Description of the aggregation performed for thios term.
         type: string
       count:
         description: >-
           Number of observations for this aggregation term.
         type: integer
         minimum: 0
+      distribution:
+        $ref: "#/$defs/DistributionInstance"
       report:
         $ref: "#/$defs/Report"
 
@@ -99,8 +126,28 @@ $defs:
       - id
       - oneOf:
         - count
+        - distribution
         - report
     additionalItems: True
+
+  DistributionInstance:
+    description: >-
+      A distribution contains one or more values and their observed counts, e.g.
+      when using unvalued aggregation concepts such as e.g. aggregation on the
+      disease types (instead of getting the count for a specific disease) or on
+      sex (instead on separate counts for each option).  
+    type: object
+    additionalProperties:
+      type: integer
+      minProperties: 1
+      minimum: 0
+    examples:
+      - male: 23
+        female: 11
+        unknown: 0
+      - NCIT:C4028: 9
+        NCIT:C4520: 2
+        NCIT:C48596: 23
 
   Report:
     description: >-

@@ -10,16 +10,16 @@ examples:
       label: Rhabdomyosarcoma
       description: count of matched Rhabdomyosarcoma samples 
       type: count
-      entity: biosample
+      entryTypeId: biosample
     - id: ageAtDiagnosis:<=P17Y
       description: count of individuals with an age at diagnosis younger than 18 years
       type: count
-      entity: individual
+      entryTypeId: individual
     - id: cnvstats
       description: >-
         CNV frequencies per 1Mb genomic bin.
       type: report
-      entity: analysis
+      entryTypeId: analysis
 
 $defs:
   AggregationTermInResponse:
@@ -31,12 +31,24 @@ $defs:
     properties:
       id:
         description: >-
-          The aggregation term id, either a valued filtering term or a custom
-          value.
+          The aggregation term id, wich could be a
+
+          * valued filtering term (`ageAtDiagnosis:<=P17Y`, `NCIT:C8936`)
+          * a concept indicated through its attribute's model path (`biosample.histologicalDiagnosis.id`)
+            or corresponding to the `id` of an alphanumeric filter
+          * a custom value
+
+          TODO: In principle those different formats could be bound to specific
+          types:
+          * valued filtering term => `count`
+          * concept => `distribution`
+          * custom => `report`
+
         type: string
         examples:
           - NCIT:C8936
           - ageAtDiagnosis:<=P17Y
+          - individual.diseases.diseaseCode
           - cnvstats
       label:
         description: >-
@@ -48,10 +60,22 @@ $defs:
       description:
         description: >-
           A description of the aggregation term, e.g. for custom terms.
-      type:
+      entryTypeId:
+        description: >-
+          The entry type in the Beacon model on which the data will be aggregated.
         type: string
+        examples:
+          - individual
+          - biosample
+      type:
+        description: >-
+          The type of aggregation object that will be returned for this term.
+          Please see `beaconAggregationResults` for definitions.
+        type: string
+        default: count
         enum:
           - count
+          - distribution
           - report
 
 additionalProperties: true

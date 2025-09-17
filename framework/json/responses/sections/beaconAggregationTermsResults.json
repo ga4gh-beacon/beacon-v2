@@ -6,11 +6,20 @@
                 "description": {
                     "description": "A description of the aggregation term, e.g. for custom terms."
                 },
+                "entryTypeId": {
+                    "description": "The entry type in the Beacon model on which the data will be aggregated.",
+                    "examples": [
+                        "individual",
+                        "biosample"
+                    ],
+                    "type": "string"
+                },
                 "id": {
-                    "description": "The aggregation term id, either a valued filtering term or a custom value.",
+                    "description": "The aggregation term id, wich could be a\n* valued filtering term (`ageAtDiagnosis:<=P17Y`, `NCIT:C8936`) * a concept indicated through its attribute's model path (`biosample.histologicalDiagnosis.id`)\n  or corresponding to the `id` of an alphanumeric filter\n* a custom value\nTODO: In principle those different formats could be bound to specific types: * valued filtering term => `count` * concept => `distribution` * custom => `report`",
                     "examples": [
                         "NCIT:C8936",
                         "ageAtDiagnosis:<=P17Y",
+                        "individual.diseases.diseaseCode",
                         "cnvstats"
                     ],
                     "type": "string"
@@ -24,8 +33,11 @@
                     "type": "string"
                 },
                 "type": {
+                    "default": "count",
+                    "description": "The type of aggregation object that will be returned for this term. Please see `beaconAggregationResults` for definitions.",
                     "enum": [
                         "count",
+                        "distribution",
                         "report"
                     ],
                     "type": "string"
@@ -44,20 +56,20 @@
         [
             {
                 "description": "count of matched Rhabdomyosarcoma samples",
-                "entity": "biosample",
+                "entryTypeId": "biosample",
                 "id": "NCIT:C3359",
                 "label": "Rhabdomyosarcoma",
                 "type": "count"
             },
             {
                 "description": "count of individuals with an age at diagnosis younger than 18 years",
-                "entity": "individual",
+                "entryTypeId": "individual",
                 "id": "ageAtDiagnosis:<=P17Y",
                 "type": "count"
             },
             {
                 "description": "CNV frequencies per 1Mb genomic bin.",
-                "entity": "analysis",
+                "entryTypeId": "analysis",
                 "id": "cnvstats",
                 "type": "report"
             }

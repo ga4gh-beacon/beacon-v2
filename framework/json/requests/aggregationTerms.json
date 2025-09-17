@@ -1,10 +1,11 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Terms used to specify items to return in an aggregation data response. \nIn practice we use the the `id` field from existing filtering terms and avoid\nthe additional modifiers, but additionally allows the use of custom summary\nstructures beyond aggregaion corresponding to query filters; e.g.\n* a `survivalGroups` term could aggregate data by survival groups\n* a `cnvfrequencies` term could invoke a list of objects for gain, loss, ...\n  events per genomic interval in the matched data\nNote: Alphanumeric filters usually would be used in form of a full stringified\nexpression, e.g. `sexAtBirth:=female` to allow counts on this specific value.",
+    "description": "Terms used to specify items to return in an aggregation data response. \nIn practice we can use the the `id` field from existing filtering terms and avoid\nthe additional modifiers, but additionally allows the use of custom summary\nstructures beyond aggregaion corresponding to query filters; e.g.\n\n* a `survivalGroups` term could aggregate data by survival groups\n* a `cnvfrequencies` term could invoke a list of objects for gain, loss, ...\n  events per genomic interval in the matched data\n* a path to an attribute in the model (e.g. `biosample.histologicalDiagnosis.id`)\n  to retrieve a distribution of values in the field (with their counts)\n\nAlphanumeric filters usually can be used in form of a full stringified\nvalued expression, e.g. `sexAtBirth:=female` to allow counts on this specific\nvalue (see <https://docs.genomebeacons.org/filters/#alphanumerical-value-queries>).",
     "items": {
         "examples": [
             "UBERON:0000992",
             "NCIT:C4908",
+            "biosample.histologicalDiagnosis.id",
             "sexAtBirth:=female",
             "ageAtDiagnosis:<=P17Y",
             "survivalGroups",
