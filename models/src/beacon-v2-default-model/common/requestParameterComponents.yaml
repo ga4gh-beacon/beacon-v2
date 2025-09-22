@@ -48,11 +48,11 @@ $defs:
 
   RequestProfileId:
     description: |-
-      The `requestProfile` parameter here allows beacons to check the type of query
+      The `profileId` parameter here allows beacons to check the type of query
       being performed and to compare the provided request parameters for conformity
       with the expected query profile.
       The parameter definition here is a placeholder; the definitions of typed queries
-      will use constant values for their `requestProfile` parameter.
+      will use constant values for their `profileId` parameter.
       
       Origin: Beacon v2+
     versions:
@@ -150,7 +150,7 @@ $defs:
     description: |-
       The bases of a sequence variant at a given position differing from the
       reference sequence, as defined by the `referenceBases` parameter. Please
-      see `refereenceBases` for further information.
+      see `referenceBases` for further information.
       Origin: VCF derived use in Beacon v0.3 -> v2.1
       Status: LEGACY
     versions:

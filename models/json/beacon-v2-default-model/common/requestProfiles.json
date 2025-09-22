@@ -9,14 +9,14 @@
                 "geneId": {
                     "$ref": "./requestParameterComponents.json#/$defs/GeneId"
                 },
-                "requestProfile": {
+                "profileId": {
                     "const": "BV2aminoacidChangeRequest"
                 }
             },
             "required": [
                 "aminoacidChange",
                 "geneId",
-                "requestProfile"
+                "profileId"
             ],
             "type": "object"
         },
@@ -28,15 +28,15 @@
                 "assemblyId": {
                     "$ref": "./requestParameterComponents.json#/$defs/Assembly"
                 },
+                "profileId": {
+                    "const": "BV2alleleRequest",
+                    "description": "Note: The `profileId` parameter had not been defined for Beacon v2.0\nand therefore in _senso stricto_ is not part of requests only relying\non v2 parameters."
+                },
                 "referenceBases": {
                     "$ref": "./requestParameterComponents.json#/$defs/ReferenceBases"
                 },
                 "referenceName": {
                     "$ref": "./requestParameterComponents.json#/$defs/RefSeqId"
-                },
-                "requestProfile": {
-                    "const": "BV2alleleRequest",
-                    "description": "Note: The `requestProfile` parameter had not been defined for Beacon v2.0\nand therefore in _senso stricto_ is not part of requests only relying\non v2 parameters."
                 },
                 "start": {
                     "$ref": "./requestParameterComponents.json#/$defs/Start"
@@ -46,7 +46,7 @@
                 "referenceName",
                 "start",
                 "alternateBases",
-                "requestProfile"
+                "profileId"
             ],
             "type": "object"
         },
@@ -59,11 +59,11 @@
                 "end": {
                     "$ref": "./requestParameterComponents.json#/$defs/End"
                 },
+                "profileId": {
+                    "const": "BV2bracketRequest"
+                },
                 "referenceName": {
                     "$ref": "./requestParameterComponents.json#/$defs/RefSeqId"
-                },
-                "requestProfile": {
-                    "const": "BV2bracketRequest"
                 },
                 "start": {
                     "$ref": "./requestParameterComponents.json#/$defs/Start"
@@ -83,7 +83,7 @@
                 "start",
                 "end",
                 "variantType",
-                "requestProfile"
+                "profileId"
             ],
             "type": "object"
         },
@@ -101,11 +101,11 @@
                     },
                     "type": "array"
                 },
+                "profileId": {
+                    "const": "BV2rangeRequest"
+                },
                 "referenceName": {
                     "$ref": "./requestParameterComponents.json#/$defs/RefSeqId"
-                },
-                "requestProfile": {
-                    "const": "BV2rangeRequest"
                 },
                 "start": {
                     "items": {
@@ -129,7 +129,7 @@
                 "referenceName",
                 "start",
                 "end",
-                "requestProfile"
+                "profileId"
             ],
             "type": "object"
         },
@@ -185,7 +185,7 @@
                 "geneId": {
                     "$ref": "./requestParameterComponents.json#/$defs/GeneId"
                 },
-                "requestProfile": {
+                "profileId": {
                     "const": "geneIdRequest"
                 },
                 "variantMaxLength": {
@@ -197,7 +197,7 @@
             },
             "required": [
                 "geneId",
-                "requestProfile"
+                "profileId"
             ],
             "type": "object"
         },
@@ -206,20 +206,20 @@
                 "genomicAlleleShortForm": {
                     "$ref": "./requestParameterComponents.json#/$defs/GenomicAlleleShortForm"
                 },
-                "requestProfile": {
+                "profileId": {
                     "const": "GenomicAlleleShortFormRequest"
                 }
             },
             "required": [
                 "genomicAlleleShortForm",
-                "requestProfile"
+                "profileId"
             ],
             "type": "object"
         },
         "VariantIdRequest": {
             "description": "A typical Beacon v2 request for matching variations by their `variantId`.\nThis request is used to retrieve a specific variant by its identifier.",
             "properties": {
-                "requestProfile": {
+                "profileId": {
                     "const": "BV2variantIdRequest"
                 },
                 "variantId": {
@@ -228,12 +228,12 @@
             },
             "required": [
                 "variantId",
-                "requestProfile"
+                "profileId"
             ],
             "type": "object"
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Request profiles allow beacons to\n\n* verify combinations of parameters to fulfill given requirements\n* announce which requests are supported (indirectly or through a FUTURE\n  informational endpoint)\n\nIn case of a missing `requestProfile` parameter a generic request w/o imposed\nlimits on request parameters is assumed with decision about support left to the\nimplementations. ",
+    "description": "Request profiles allow beacons to\n\n* verify combinations of parameters to fulfill given requirements\n* announce which requests are supported (indirectly or through a FUTURE\n  informational endpoint)\n\nIn case of a missing `profileId` parameter a generic request w/o imposed\nlimits on request parameters is assumed with decision about support left to the\nimplementations. ",
     "name": "Request Profiles"
 }

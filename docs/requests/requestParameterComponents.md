@@ -1,7 +1,7 @@
 # Request Parameter Definitions
 Component definitions for `requestProfiles`. The definition of each parameter as a component allows for reuse across multiple request patterns but also for e.g. easy referencing in OpenAPI endpoints.
 
-## `AminoacidChange` 
+## `AminoacidChange`
 
 #### Description
 Aminoacid alteration of interest. Format 1 letter Origin: Beacon v2.0    
@@ -14,7 +14,7 @@ Aminoacid alteration of interest. Format 1 letter Origin: Beacon v2.0
     - `M734V`        
 
 
-## `Assembly` 
+## `Assembly`
 
 #### Description
 Genomic assembly accession and version as RefSqeq assembly accession (e.g. "GCF_000001405.39") or a versioned assembly name or synonym such as UCSC Genome Browser assembly (e.g. "hg38") or Genome Reference Consortium Human (e.g. "GRCh38.p13") names. DEPRECATION NOTE: The use of a assembly specific sequence identifier obviates this parameter. Not part of VRS v2 aligned model versions.    
@@ -34,7 +34,7 @@ Genomic assembly accession and version as RefSqeq assembly accession (e.g. "GCF_
     - `GRCh38.p13`        
 
 
-## `GeneId` 
+## `GeneId`
 
 #### Description
     
@@ -50,7 +50,7 @@ Origin: Beacon v2.0
     - `BRAF`    
     - `SCN5A`        
 
-## `GenomicAlleleShortForm` 
+## `GenomicAlleleShortForm`
 
 #### Description
 HGVSId descriptor Origin: Beacon v2.0    
@@ -62,7 +62,7 @@ HGVSId descriptor Origin: Beacon v2.0
     - `NM_004006.2:c.4375C>T`        
 
 
-## `RefSeqId` 
+## `RefSeqId`
 
 #### Description
 Reference sequence id for genomic reference sequence in which variant coordinates are given, e.g. "refseq:NC_000009.12" for human chromosome 9 in the GRCh38 assembly. The use of the assembly specific RefSeqId is recommended although alternatively names, synonymous or aliases e.g. "chr9" could be used in conjunction with an `Assembly` parameter. DEPRECATION NOTE: To be replaced with the `RefgetAccession` from VRS v2.    
@@ -75,7 +75,7 @@ Reference sequence id for genomic reference sequence in which variant coordinate
     - `chr9`    
     - `NC_012920.1`        
 
-## `ReferenceBases` 
+## `ReferenceBases`
 
 #### Description
 The reference bases for the variant at the indicated position. It is based on the VCF cocept of having (anchored) reference bases at an indicated genomic location in combination with `alternateBases` to define their replacement. In contrast, standards such as GA4GH VRS only indicate the `sequence` observed at a given base position, including the use of an empty sequence together with `start` + `end` positions with `end - start > 0` to indicate deletions. Origin: VCF derived (optional) use in Beacon v0.3 -> v2.1 Status: LEGACY    
@@ -84,17 +84,17 @@ The reference bases for the variant at the indicated position. It is based on th
     
 * `$ref`: `#/$defs/Sequence`    
 
-## `AlternateBases` 
+## `AlternateBases`
 
 #### Description
-The bases of a sequence variant at a given position differing from the reference sequence, as defined by the `referenceBases` parameter. Please see `refereenceBases` for further information. Origin: VCF derived use in Beacon v0.3 -> v2.1 Status: LEGACY    
+The bases of a sequence variant at a given position differing from the reference sequence, as defined by the `referenceBases` parameter. Please see `referenceBases` for further information. Origin: VCF derived use in Beacon v0.3 -> v2.1 Status: LEGACY    
 
 #### Definitions
     
 * `$ref`: `#/$defs/Sequence`    
 
 
-## `Sequence` 
+## `Sequence`
 
 #### Description
 DNA bases.    
@@ -108,7 +108,7 @@ Origin: VRS v1.n
 TODO: Review use of base characters.    
 
 
-## `VariantType` 
+## `VariantType`
 
 #### Description
 The `variantType` is used to query variants which are not defined through a sequence of one or more bases using the `alternateBases` parameter. This VCF derived parameter is being replaced by the more specific VRS derived parameters such as `copyChange`. (Legacy) Examples here are e.g. structural variants:     
@@ -158,7 +158,7 @@ Endpoints are expected to provide query expansion according to the hierarchy of 
     - `DEL`    
     - `EFO:0030069`        
 
-## `Start` 
+## `Start`
 
 #### Description
 NOTE: This parameter will be _potentially_ replaced by the VRS based definition
@@ -199,7 +199,7 @@ Precise or fuzzy start coordinate position(s), allele locus (0-based, inclusive)
 * `minItems`: `1`     
 * `maxItems`: `2`    
 
-## `End` 
+## `End`
 
 #### Description
 
@@ -220,7 +220,7 @@ Precise or bracketing the end of the variants of interest:
 * `minItems`: `1`      
 * `maxItems`: `2`    
 
-## `MateName` 
+## `MateName`
 
 #### Description
 
@@ -236,7 +236,7 @@ Status: DEPRECATED in v2.n
     
 * `$ref`: `#/$defs/RefSeqId`    
 
-## `MateStart` 
+## `MateStart`
 
 #### Description
 genomic start position of fusion partner breakpoint region
@@ -246,7 +246,7 @@ Status: DEPRECATED in v2.n (see `mateName`)
         
 * `type`: `integer`    
 
-## `MateEnd` 
+## `MateEnd`
 
 #### Description
 genomic end position of fusion partner breakpoint region Status: DEPRECATED in v2.n (see `mateName`)    
@@ -255,7 +255,7 @@ genomic end position of fusion partner breakpoint region Status: DEPRECATED in v
         
 * `type`: `integer`    
 
-## `VariantMinLength` 
+## `VariantMinLength`
 
 #### Description
     
@@ -274,7 +274,7 @@ Status: DEPRECATED in v2.n (see `sequenceLength`)
 * `format`: `int64`        
 * `minimum`: `0`    
 
-## `VariantMaxLength` 
+## `VariantMaxLength`
 
 #### Description
     

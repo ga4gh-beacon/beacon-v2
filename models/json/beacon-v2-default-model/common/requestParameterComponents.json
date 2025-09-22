@@ -2,7 +2,7 @@
     "$defs": {
         "AlternateBases": {
             "$ref": "#/$defs/Sequence",
-            "description": "The bases of a sequence variant at a given position differing from the\nreference sequence, as defined by the `referenceBases` parameter. Please\nsee `refereenceBases` for further information.\nOrigin: VCF derived use in Beacon v0.3 -> v2.1\nStatus: LEGACY",
+            "description": "The bases of a sequence variant at a given position differing from the\nreference sequence, as defined by the `referenceBases` parameter. Please\nsee `referenceBases` for further information.\nOrigin: VCF derived use in Beacon v0.3 -> v2.1\nStatus: LEGACY",
             "versions": [
                 "v1",
                 "v2.0",
@@ -124,7 +124,7 @@
             ]
         },
         "RequestProfileId": {
-            "description": "The `requestProfile` parameter here allows beacons to check the type of query\nbeing performed and to compare the provided request parameters for conformity\nwith the expected query profile.\nThe parameter definition here is a placeholder; the definitions of typed queries\nwill use constant values for their `requestProfile` parameter.\n\nOrigin: Beacon v2+",
+            "description": "The `profileId` parameter here allows beacons to check the type of query\nbeing performed and to compare the provided request parameters for conformity\nwith the expected query profile.\nThe parameter definition here is a placeholder; the definitions of typed queries\nwill use constant values for their `profileId` parameter.\n\nOrigin: Beacon v2+",
             "type": "string",
             "versions": [
                 "VQS"

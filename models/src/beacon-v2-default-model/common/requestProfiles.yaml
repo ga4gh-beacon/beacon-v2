@@ -8,7 +8,7 @@ description: |-
   * announce which requests are supported (indirectly or through a FUTURE
     informational endpoint)
 
-  In case of a missing `requestProfile` parameter a generic request w/o imposed
+  In case of a missing `profileId` parameter a generic request w/o imposed
   limits on request parameters is assumed with decision about support left to the
   implementations. 
 
@@ -62,13 +62,13 @@ $defs:
       This request is used to retrieve a specific variant by its identifier.
     type: object
     properties:
-      requestProfile:
+      profileId:
         const: BV2variantIdRequest
       variantId:
         $ref: "./requestParameterComponents.yaml#/$defs/VariantId"
     required:
       - variantId
-      - requestProfile
+      - profileId
 
   # <------------------------------------------------------------------------> #
 
@@ -79,7 +79,7 @@ $defs:
       may be restricted by additionally providing the gene ID.
     type: object
     properties:
-      requestProfile:
+      profileId:
         const: BV2aminoacidChangeRequest
       aminoacidChange:
         $ref: "./requestParameterComponents.yaml#/$defs/AminoacidChange"
@@ -88,20 +88,20 @@ $defs:
     required:
       - aminoacidChange
       - geneId
-      - requestProfile
+      - profileId
 
   # <------------------------------------------------------------------------> #
 
   GenomicAlleleShortFormRequest:
     type: object
     properties:
-      requestProfile:
+      profileId:
         const: GenomicAlleleShortFormRequest
       genomicAlleleShortForm:
         $ref: "./requestParameterComponents.yaml#/$defs/GenomicAlleleShortForm"
     required:
       - genomicAlleleShortForm
-      - requestProfile
+      - profileId
 
   # <------------------------------------------------------------------------> #
 
@@ -115,7 +115,7 @@ $defs:
             a `molecularEffectRequest` - see also notes there.
     type: object
     properties:
-      requestProfile:
+      profileId:
         const: geneIdRequest
       geneId:
         $ref: "./requestParameterComponents.yaml#/$defs/GeneId"
@@ -125,16 +125,16 @@ $defs:
         $ref: "./requestParameterComponents.yaml#/$defs/VariantMaxLength"
     required:
       - geneId
-      - requestProfile
+      - profileId
 
   # <------------------------------------------------------------------------> #
 
   BV2alleleRequest:
     type: object
     properties:
-      requestProfile:
+      profileId:
         description: |-
-          Note: The `requestProfile` parameter had not been defined for Beacon v2.0
+          Note: The `profileId` parameter had not been defined for Beacon v2.0
           and therefore in _senso stricto_ is not part of requests only relying
           on v2 parameters.
         const: BV2alleleRequest
@@ -152,7 +152,7 @@ $defs:
       - referenceName
       - start
       - alternateBases
-      - requestProfile
+      - profileId
 
   # <------------------------------------------------------------------------> #
 
@@ -169,7 +169,7 @@ $defs:
       no `sequence` parameter should be used.
     type: object
     properties:
-      requestProfile:
+      profileId:
         const: BV2bracketRequest
       assemblyId:
         $ref: "./requestParameterComponents.yaml#/$defs/Assembly"
@@ -190,7 +190,7 @@ $defs:
       - start
       - end
       - variantType
-      - requestProfile
+      - profileId
 
   # <------------------------------------------------------------------------> #
 
@@ -205,7 +205,7 @@ $defs:
       _i.e._ a subset of the `start` and `end` specifications.
     type: object
     properties:
-      requestProfile:
+      profileId:
         const: BV2rangeRequest
       assemblyId:
         $ref: "./requestParameterComponents.yaml#/$defs/Assembly"
@@ -233,6 +233,6 @@ $defs:
       - referenceName
       - start
       - end
-      - requestProfile
+      - profileId
 
 
