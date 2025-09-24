@@ -45,12 +45,15 @@ $defs:
           of 'high', 'medium' and 'low' similarity.
       excluded:
         description: >-
-          Flag to indicate whether the filtering term was observed or not. The
+          Property to indicate whether the filtering term was observed or not. The
           default is `false`, _i.e._ will be selected for **existence** of the term.
           The use of `true` should select for a **negation** of the term, _i.e._
           an indication that the condition has been evaluated & excluded (c.f.
           the the description in Phenopackets  as "...to indicate that the phenotype
           was looked for, but found to be absent.")
+          Note: The `excluded` property is specific for `OntologyFilter` instances
+          since e.g. `AlphanumericFilter` can implement the functionality via
+          operators (`!`) and `CustomFilter` instances can be designed for exclusion.
         type: boolean
         default: false
       scope:
@@ -84,11 +87,11 @@ $defs:
         type: string
         enum:
           - '='
-          - <
+          - '<'
           - '>'
           - '!'
           - '>='
-          - <=
+          - '<='
         description: Defines how the value relates to the field `id`.
         default: '='
         example: '>'
@@ -118,11 +121,6 @@ $defs:
         type: string
         description: Custom filter terms should contain a unique identifier.
         example: demographic.ethnicity:asian
-      excluded:
-        description: >-
-          See `excluded` in `OntologyFilter`.
-        type: boolean
-        default: false
       scope:
         type: string
         description: |-
