@@ -5,7 +5,6 @@ endpointSets:
     openAPIEndpointsDefinition: https://exampleBeacons.org/datasets/endpoints.json
     rootUrl: https://exampleBeacons.org/datasets
     singleEntryUrl: https://exampleBeacons.org/datasets/{id}
-    filteringTermsUrl: https://exampleBeacons.org/datasets/{id}/filtering_terms
     endpoints:
       genomicVariantLookup:
         returnedEntryType: genomicVariant
@@ -27,7 +26,6 @@ endpointSets:
     openAPIEndpointsDefinition: https://exampleBeacons.org/cohorts/endpoints.json
     rootUrl: https://exampleBeacons.org/cohorts
     singleEntryUrl: https://exampleBeacons.org/cohorts/{id}
-    filteringTermsUrl: https://exampleBeacons.org/cohorts/{id}/filtering_terms
     endpoints:
       individualLookup:
         returnedEntryType: individual

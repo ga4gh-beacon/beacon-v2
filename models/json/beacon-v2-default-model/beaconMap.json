@@ -57,7 +57,6 @@
                 }
             },
             "entryType": "cohort",
-            "filteringTermsUrl": "https://exampleBeacons.org/cohorts/{id}/filtering_terms",
             "openAPIEndpointsDefinition": "https://exampleBeacons.org/cohorts/endpoints.json",
             "rootUrl": "https://exampleBeacons.org/cohorts",
             "singleEntryUrl": "https://exampleBeacons.org/cohorts/{id}"
@@ -86,7 +85,6 @@
                 }
             },
             "entryType": "dataset",
-            "filteringTermsUrl": "https://exampleBeacons.org/datasets/{id}/filtering_terms",
             "openAPIEndpointsDefinition": "https://exampleBeacons.org/datasets/endpoints.json",
             "rootUrl": "https://exampleBeacons.org/datasets",
             "singleEntryUrl": "https://exampleBeacons.org/datasets/{id}"

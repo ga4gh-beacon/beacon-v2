@@ -22,14 +22,12 @@
                     }
                 },
                 "entryType": "dataset",
-                "filteringTermsUrl": "https://exampleBeacons.org/datasets/{id}/filteringTerms",
                 "openAPIEndpointsDefinition": "./datasets/endpoints.json",
                 "rootUrl": "https://exampleBeacons.org/datasets",
                 "singleEntryUrl": "https://exampleBeacons.org/datasets/{id}"
             },
             "exampleEntry": {
                 "entryType": "exampleEntry",
-                "filteringTermsUrl": "https://exampleBeacons.org/exampleEntries/{id}/filteringTerms",
                 "openAPIEndpointsDefinition": "./exampleEntries/endpoints.json",
                 "rootUrl": "https://exampleBeacons.org/exampleEntries",
                 "singleEntryUrl": "https://exampleBeacons.org/exampleEntries/{id}"
