@@ -1,28 +1,31 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Aggregation Terms
 description: |-
-  Terms used to specify items to return in an aggregation data response. 
-  In practice we can use the the `id` field from existing filtering terms and avoid
-  the additional modifiers, but additionally allows the use of custom summary
-  structures beyond aggregaion corresponding to query filters; e.g.
-  
-  * a `survivalGroups` term could aggregate data by survival groups
-  * a `cnvfrequencies` term could invoke a list of objects for gain, loss, ...
-    events per genomic interval in the matched data
-  * a path to an attribute in the model (e.g. `biosample.histologicalDiagnosis.id`)
-    to retrieve a distribution of values in the field (with their counts)
-  
-  Alphanumeric filters usually can be used in form of a full stringified
-  valued expression, e.g. `sexAtBirth:=female` to allow counts on this specific
-  value (see <https://docs.genomebeacons.org/filters/#alphanumerical-value-queries>).
+  Terms used to specify items to return in an aggregation data response. Terms
+  are provided through the beacon's `/aggregation_terms` endpoint and the `id`
+  values of those terms constitute the possible `id` values here. See also the
+  documentation for `AggregationTermInResponse.id` in `beaconAggregationTermsResults`.
 type: array
 items:
-  type: string
-  examples:
-    - UBERON:0000992
-    - NCIT:C4908
-    - biosample.histologicalDiagnosis.id
-    - sexAtBirth:=female
-    - ageAtDiagnosis:<=P17Y
-    - survivalGroups
-    - cnvfrequencies
+  $ref: '#/$defs/AggregationTermInRequest'
+$defs:
+  AggregationTermInRequest:
+    type: object
+    properties:
+      id:
+        type: string
+        description: >-
+          The `id` of the aggregation term as provided by the beacon.
+        examples:
+          - NCIT:C4908
+          - biosample.histologicalDiagnosis.id
+          - sexAtBirth
+          - ageAtDiagnosis:<=P17Y
+          - cnvfrequencies
+
+    examples:
+      - id: NCIT:C4908
+      - id: biosample.histologicalDiagnosis.id
+      - id: sexAtBirth
+      - id: ageAtDiagnosis:<=P17Y
+      - id: cnvfrequencies
