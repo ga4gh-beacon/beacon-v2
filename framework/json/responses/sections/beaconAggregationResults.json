@@ -3,6 +3,23 @@
         "AggregationResultsInstance": {
             "additionalItems": true,
             "description": "Summary data from results, with distributions for the aggregation terms given in the request. The model supports three alternative types of content for aggregation result instances:\n* a simple `count` result * a `distribution` for counts of multiple values * a `report` object for unspecified types of structured data, e.g. when there\n  is a need to provide additional attributes",
+            "oneOf": [
+                {
+                    "required": [
+                        "count"
+                    ]
+                },
+                {
+                    "required": [
+                        "distribution"
+                    ]
+                },
+                {
+                    "required": [
+                        "report"
+                    ]
+                }
+            ],
             "properties": {
                 "count": {
                     "description": "Number of observations for this aggregation term.",
@@ -36,14 +53,7 @@
                 }
             },
             "required": [
-                "id",
-                {
-                    "oneOf": [
-                        "count",
-                        "distribution",
-                        "report"
-                    ]
-                }
+                "id"
             ],
             "type": "object"
         },
