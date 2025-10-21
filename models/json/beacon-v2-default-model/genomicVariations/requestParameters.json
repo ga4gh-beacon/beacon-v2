@@ -3,7 +3,7 @@
     "g_variant": {
         "oneOf": [
             {
-                "$ref": "../common/requestProfiles.json#/$defs/g_variant"
+                "$ref": "../common/requestProfiles.json#/$defs/Bv2GenericVariantRequest"
             },
             {
                 "$ref": "../common/requestProfiles.json#/$defs/VariantIdRequest"

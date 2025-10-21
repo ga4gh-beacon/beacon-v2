@@ -21,7 +21,10 @@ $defs:
   Bv2GenericVariantRequest:
     description: |-
       This represents the generic collection of variant parameters allowed in
-      Beacon v2 requests.
+      Beacon v2 requests. Since it does not allow for specifying a `profileId`
+      (beacause of `additionalProperties: false`) it becomes the default request
+      profile when no specific one is indicated and thereby keeps compatibility
+      with the original Beacon v2 specification.
     type: object
     properties:
       assemblyId:

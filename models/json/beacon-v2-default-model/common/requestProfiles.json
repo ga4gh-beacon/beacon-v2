@@ -135,7 +135,7 @@
         },
         "Bv2GenericVariantRequest": {
             "additionalProperties": false,
-            "description": "This represents the generic collection of variant parameters allowed in\nBeacon v2 requests.",
+            "description": "This represents the generic collection of variant parameters allowed in\nBeacon v2 requests. Since it does not allow for specifying a `profileId`\n(beacause of `additionalProperties: false`) it becomes the default request\nprofile when no specific one is indicated and thereby keeps compatibility\nwith the original Beacon v2 specification.",
             "examples": {
                 "$ref": "../examples/g_variant.json#/examples"
             },

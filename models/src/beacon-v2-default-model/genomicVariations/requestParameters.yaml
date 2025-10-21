@@ -2,7 +2,7 @@ $schema: https://json-schema.org/draft/2020-12/schema
 g_variant:
   type: object
   oneOf:
-    - $ref: "../common/requestProfiles.yaml#/$defs/g_variant"
+    - $ref: "../common/requestProfiles.yaml#/$defs/Bv2GenericVariantRequest"
     - $ref: "../common/requestProfiles.yaml#/$defs/VariantIdRequest"
     - $ref: "../common/requestProfiles.yaml#/$defs/AminoacidChangeRequest"
     - $ref: "../common/requestProfiles.yaml#/$defs/GenomicAlleleShortFormRequest"
