@@ -63,6 +63,20 @@
             ],
             "type": "object"
         },
+        "FilteringTermsGroupsInRequest": {
+            "description": "Filtering terms unions groups. A single filtering term is considered as a union group with just one filter.",
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/FilteringTermInRequest" 
+                },
+                {
+                    "items": {
+                        "$ref": "#/$defs/FilteringTermInRequest"
+                    },
+                    "type": "array"
+                }
+            ]
+        },
         "FilteringTermInRequest": {
             "anyOf": [
                 {
@@ -118,7 +132,7 @@
     "additionalProperties": true,
     "description": "Filtering terms are the main means to select subsets of records from a Beacon response. While the name implies the application to a generated response, in practice implementations may apply them at the query stage. Note: In the processing of Beacon v2.0 requests multiple filters are assumed to be chained by the logical AND operator.",
     "items": {
-        "$ref": "#/$defs/FilteringTermInRequest"
+        "$ref": "#/$defs/FilteringTermsGroupsInRequest"
     },
     "title": "Filtering Term Element",
     "type": "array"
