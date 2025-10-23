@@ -64,7 +64,22 @@
             "type": "object"
         },
         "FilteringTermsGroupsInRequest": {
-            "description": "Filtering terms unions groups. A single filtering term is considered as a union group with just one filter.",
+            "description": "Filtering terms unions groups. A single filtering term is considered as a union group with just one filter. In other words this value may be either a filter or an array of filters that form a union group ('OR').",
+            "examples": [
+                { "id": "NCIT:C20197" },
+                [
+                    {
+                        "id": "Weight",
+                        "operator": ">",
+                        "value": "80"
+                    },
+                    {
+                        "id": "BMI",
+                        "operator": ">",
+                        "value": "25"
+                    }
+                ]
+            ],
             "oneOf": [
                 {
                     "$ref": "#/$defs/FilteringTermInRequest" 
