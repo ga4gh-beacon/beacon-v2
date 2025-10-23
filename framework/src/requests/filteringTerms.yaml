@@ -8,13 +8,29 @@ description: >-
   to be chained by the logical AND operator.
 type: array
 items:
-  $ref: '#/$defs/FilteringTermInRequest'
+  $ref: '#/$defs/FilteringTermsGroupsInRequest'
 $defs:
+  FilteringTermsGroupsInRequest:
+    description: Filtering terms unions groups. A single filtering term is considered as a union group with just one filter.
+      In other words this value may be either a filter or an array of filters that form a union group ('OR').
+    oneOf:
+      - $ref: '#/$defs/FilteringTermInRequest'
+      - - $ref: '#/$defs/FilteringTermInRequest'
+    examples:
+      - id: 'NCIT:C20197'
+      - - id: 'Weight'
+          operator: '>',
+          value: 80
+        - id: 'BMI'
+          operator: '>',
+          value: 25
+
   FilteringTermInRequest:
     anyOf:
       - $ref: '#/$defs/OntologyFilter'
       - $ref: '#/$defs/AlphanumericFilter'
       - $ref: '#/$defs/CustomFilter'  
+
   OntologyFilter:
     type: object
     description: Filter results to include records that contain a specific ontology

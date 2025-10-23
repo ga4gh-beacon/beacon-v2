@@ -71,12 +71,12 @@
                     {
                         "id": "Weight",
                         "operator": ">",
-                        "value": "80"
+                        "value": 80
                     },
                     {
                         "id": "BMI",
                         "operator": ">",
-                        "value": "25"
+                        "value": 25
                     }
                 ]
             ],
