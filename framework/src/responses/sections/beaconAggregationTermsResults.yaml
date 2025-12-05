@@ -5,21 +5,29 @@ type: array
 items:
   $ref: '#/$defs/AggregationTermInResponse'
 examples:
-  -
-    - id: NCIT:C3359
-      label: Rhabdomyosarcoma
-      description: count of matched Rhabdomyosarcoma samples 
-      type: count
-      entryTypeId: biosample
-    - id: ageAtDiagnosis:<=P17Y
-      description: count of individuals with an age at diagnosis younger than 18 years
-      type: count
-      entryTypeId: individual
-    - id: cnvstats
-      description: >-
-        CNV frequencies per 1Mb genomic bin.
-      type: report
-      entryTypeId: analysis
+  - id: followupTime
+    label: Follow-up Time
+    description: Follow-up Time After Diagnosis
+    sorted: true
+    concepts:
+      - scope: individual
+        property: diseases.followup
+        type: string
+        format: iso8601duration
+        splits:
+          - P0D
+          - P18M
+          - P10Y
+          - P60Y
+  - id: diseaseBySex
+    label: Sex distributions for Diseases in Individuals
+    description: Cancer type by sex in matched individuals
+    concepts:
+      - property: diseases.diseaseCode.id
+        scope: individual
+      - property: sex.id
+        scope: individual
+additionalProperties: true
 
 $defs:
   AggregationTermInResponse:
@@ -31,51 +39,28 @@ $defs:
     properties:
       id:
         description: >-
-          The aggregation term id, wich could be a
-
-          * valued filtering term (`ageAtDiagnosis:<=P17Y`, `NCIT:C8936`)
-          * a concept indicated through its attribute's model path (`biosample.histologicalDiagnosis.id`)
-            or corresponding to the `id` of an alphanumeric filter
-          * a custom value
-
-          TODO: In principle those different formats could be bound to specific
-          types:
-          * valued filtering term => `count`
-          * concept => `distribution`
-          * custom => `report`
-
+          The aggregation term id.
         type: string
         examples:
-          - NCIT:C8936
-          - ageAtDiagnosis:<=P17Y
-          - individual.diseases.diseaseCode
-          - cnvstats
+          - followupTime
       label:
         description: >-
-          A short label, e.g. "preferred Label" in the case of an ontology term.
+          A short label which e.g. can be used by clients to label diagrams or
+          data tables.
         type: string
         examples:
-          - B Lymphoblastic Leukemia/Lymphoma
-          - Rhabdomyosarcoma
+          - Follow-up Time After Diagnosis
       description:
         description: >-
-          A description of the aggregation term, e.g. for custom terms.
-      entryTypeId:
+          A description of the summary concept, e.g. with details about the
+          included properties and the operations performed during aggregation.
+      sorted:
         description: >-
-          The entry type in the Beacon model on which the data will be aggregated.
-        type: string
-        examples:
-          - individual
-          - biosample
-      type:
-        description: >-
-          The type of aggregation object that will be returned for this term.
-          Please see `beaconAggregationResults` for definitions.
-        type: string
-        default: count
-        enum:
-          - count
-          - distribution
-          - report
+          Indicates whether the resulting distribution results will be sorted in
+          some way.
+        type: boolean
+      concepts:
+        type: array
+        items:
+          $ref: "./beaconAggregationResults.yaml#/$defs/AggregationConcept"
 
-additionalProperties: true

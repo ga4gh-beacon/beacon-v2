@@ -6,89 +6,23 @@ minItems: 0
 items:
   $ref: "#/$defs/AggregationResultsInstance"
 examples:
-  - 
-    - id: NCIT:C3359
-      label: Rhabdomyosarcoma
-      entryTypeId: biosample
-      count: 42
-    - id: ageAtDiagnosis:<=P17Y
-      label: age at diagnosis younger than 18 years
-      entryTypeId: individual
-      count: 44
-    - id: sex:=female
-      label: female sex at birth
-      entryTypeId: individual
-      count: 13
-    - id: sexAtBirth
-      label: sex at birth
-      entryTypeId: individual
-      distribution:
-        male: 23
-        female: 11
-        unknown: 0
-    - id: biosample.histological_diagnosis.id
-      label: histological diagnosis
-      entryTypeId: biosample
-      distribution:
-        NCIT:C4028: 9
-        NCIT:C4520: 2
-        NCIT:C48596: 23
-    - id: sexPerDisease
-      label: Sex distribution per cancer type
-      description: sex per NCIT cancer code (custom format)
-      entryTypeId: biosample
-      report:
-        - id: NCIT:C4872
-          label: Breast Carcinoma
-          counts:
-            femaleAtBirth: 836
-            maleAtBirth: 3
-        - id: NCIT:C3513
-          label: Esophageal Carcinoma
-          counts:
-            femaleAtBirth: 36
-            maleAtBirth: 81
-    - id: cnvstats
-      label: CNV frequencies
-      entryTypeId: analysis
-      description: >-
-        CNV frequencies per 1Mb genomic bin
-      schema: https://www.example.org/cnvFrequenciesSchema
-      report:
-        intervalfrequencies:
-          - id: 1p:000000000-000400000
-            cytobands: 1p36.33
-            no: 1
-            referenceName: chr1
-            start: 0
-            end: 400000
-            gainFrequency: 2.613
-            lossFrequency: 6.188
-          - id: 1p:000400000-001400000
-            cytobands: 1p36.33
-            no: 2
-            referenceName: chr1
-            start: 400000
-            end: 1400000
-            gainFrequency: 3.816
-            lossFrequency: 9.694
-
+  $ref: ../examples-sections/beaconAggregationResults-examples.yaml#/examples
 $defs:
   AggregationResultsInstance:
     description: >-
-      Summary data from results, with distributions for the aggregation terms
-      given in the request.
-      The model supports three alternative types of content for aggregation result
-      instances:
-
-      * a simple `count` result
-      * a `distribution` for counts of multiple values
-      * a `report` object for unspecified types of structured data, e.g. when there
-        is a need to provide additional attributes
+      Summary data from results, with distributions of values (or value combinations)
+      for one (or more) concepts.
+      Each summary is identified by an `id`, `label`, `description`, and a list
+      of one or more `concepts`. An an optional `sorted` property can indicate
+      to the client that the returned `distribution` of the aggregation objects
+      response has some pre-defined order.
+      Each of the `concepts` describes the scope (entity; `individual`, `biosample`
+      ...), the property aggregated on, and optional `termIds` or `splits` for
+      selection or binning of the property values.
     type: object
     properties:
       id:
-        $ref: ../../requests/summaryTerms.yaml#/$defs/AggregationTerm
+        type: string
         description: >-
           The id of the aggregation term being reported on.
       label:
@@ -97,69 +31,129 @@ $defs:
         type: string
         examples:
           - Genders
-      entryTypeId:
-        description: >-
-          Id of the entry type in the Beacon model for which the observations
-          were reported.
-          For the Beacon default model this is one of `individual`, `biosample`,
-          `analysis`, `run`, or `genomicVariation`.
-          The values here are not limited to the Beacon defaults to allow
-          modified or alternative data models.
-          This parameter would can be omitted, with the default being the id of
-          the entryType for which the Beacon is providing the current results.
-        type: string
       description:
         description: >-
-          Description of the aggregation performed for thios term.
+          Description of the aggregation performed for this term.
         type: string
-      count:
+      sorted:
         description: >-
-          Number of observations for this aggregation term.
-        type: integer
-        minimum: 0
+          Indicates whether the distribution results are sorted in some way.
+        type: boolean
+      concepts:
+        type: array
+        items:
+          $ref: "#/$defs/AggregationConcept"
       distribution:
-        $ref: "#/$defs/DistributionInstance"
-      report:
-        $ref: "#/$defs/Report"
+        description: >-
+          A distribution contains a list of aggregation objects, where each describes
+          the count of one (or more, intersected) values for the concept(s)
+          aggregated on.
+        type: array
+        items:
+          $ref: "#/$defs/AggregationObject"
 
     required:
       - id
-    oneOf:
-      - required:
-        - count
-      - required:
-        - distribution
-      - required:
-        - report
+      - distribution
     additionalItems: True
 
-  DistributionInstance:
-    description: >-
-      A distribution contains one or more values and their observed counts, e.g.
-      when using unvalued aggregation concepts such as e.g. aggregation on the
-      disease types (instead of getting the count for a specific disease) or on
-      sex (instead on separate counts for each option).  
-    type: object
-    additionalProperties:
-      type: integer
-      minProperties: 1
-      minimum: 0
-    examples:
-      - male: 23
-        female: 11
-        unknown: 0
-      - NCIT:C4028: 9
-        NCIT:C4520: 2
-        NCIT:C48596: 23
-
-  Report:
-    description: >-
-      Report for this aggregation term representing a summary of results beyond
-      a count of occurrences in the matched data. The format is left to the
-      implementation but should not expose information about individual records.  
-    type: object
-    schema:
+    AggregationConcept:
       description: >-
-        Optional reference to a schema for this report.
-      type: string
-    additionalItems: True
+        Concept on which the aggregation was performed, including the scope
+        (entity type), property, and optional termIds or splits for selection
+        or binning of the property values.
+      type: object
+      properties:
+        scope:
+          description: >-
+            The scope (entity type) for the aggregation concept.
+          type: string
+          examples:
+            - individual
+            - biosample
+            - genomicVariation
+        property:
+          description: >-
+            The property in th edata model on which the aggregation was performed.
+          type: string
+          examples:
+            - histologicalDiagnosis.id
+            - sex.id
+            - collectionMoment
+        termIds:
+          description: >-
+            Optional list of termIds to select specific values for aggregation.
+          type: array
+          items:
+            type: string
+          examples:
+            - - NCIT:C9335  # Malignant neoplasm of breast
+              - NCIT:C4863  # Prostate Carcinoma
+              - NCIT:C9384  # Kidney Carcinoma
+              - NCIT:C3513  # Esophageal Carcinoma
+            - - EFO:0030075 # cDNA microarray
+              - EFO:0010938 # large-insert clone DNA microarray
+              - EFO:0010939 # oligonucleotide DNA microarray
+              - EFO:0010937 # comparative genomic hybridization (CGH)
+        splits:
+          description: >-
+            Optional list of splits to group values for ranges or bins when
+            performing the aggregation.
+            TODO: Define types and/or couple them to property type.
+          type: array
+          examples:
+            - - P0D
+              - P18Y
+              - P65Y
+
+    AggregationObject:
+      description: >-
+        Aggregation object describing the count of one (or more, intersected)
+        values for the concept(s) aggregated on.
+      type: object
+      properties:
+        conceptValues:
+          description: >-
+            List of ordered concept values (one per concept in `concepts`). These
+            can represent values from the respected property or interpolations (
+            e.g. bins from splits).
+          type: array
+          items:
+            $ref: "#/$defs/ConceptValue"
+        count:
+          description: >-
+            Count of occurrences for this aggregation object in the matched data.
+          type: integer
+          minimum: 0
+      required:
+        - conceptValues
+        - count
+      additionalItems: True
+
+    ConceptValue:
+      description: >-
+        A value or bin ... for the concept property.
+      type: object
+      properties:
+        id:
+          description: >-
+            Identifier for the concept value. This can be e.g. a term id, a split/bin
+            range (e.g. '[P0D, P18M)'), or `undefined` for missing values.
+          type: string
+          examples:
+            - NCIT:C4017
+            - '[P0D, P18M)'
+            - undefined
+        label:
+          description: >-
+            Human readable label for the concept value.
+          type: string
+          examples:
+            - Breast Ductal Carcinoma
+            - '[P0D, P18M)'
+      required:
+        - id
+      additionalItems: True
+
+
+

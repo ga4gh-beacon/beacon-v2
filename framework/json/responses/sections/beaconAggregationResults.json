@@ -1,45 +1,135 @@
 {
     "$defs": {
         "AggregationResultsInstance": {
+            "AggregationConcept": {
+                "description": "Concept on which the aggregation was performed, including the scope (entity type), property, and optional termIds or splits for selection or binning of the property values.",
+                "properties": {
+                    "property": {
+                        "description": "The property in th edata model on which the aggregation was performed.",
+                        "examples": [
+                            "histologicalDiagnosis.id",
+                            "sex.id",
+                            "collectionMoment"
+                        ],
+                        "type": "string"
+                    },
+                    "scope": {
+                        "description": "The scope (entity type) for the aggregation concept.",
+                        "examples": [
+                            "individual",
+                            "biosample",
+                            "genomicVariation"
+                        ],
+                        "type": "string"
+                    },
+                    "splits": {
+                        "description": "Optional list of splits to group values for ranges or bins when performing the aggregation. TODO: Define types and/or couple them to property type.",
+                        "examples": [
+                            [
+                                "P0D",
+                                "P18Y",
+                                "P65Y"
+                            ]
+                        ],
+                        "type": "array"
+                    },
+                    "termIds": {
+                        "description": "Optional list of termIds to select specific values for aggregation.",
+                        "examples": [
+                            [
+                                "NCIT:C9335",
+                                "NCIT:C4863",
+                                "NCIT:C9384",
+                                "NCIT:C3513"
+                            ],
+                            [
+                                "EFO:0030075",
+                                "EFO:0010938",
+                                "EFO:0010939",
+                                "EFO:0010937"
+                            ]
+                        ],
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "AggregationObject": {
+                "additionalItems": true,
+                "description": "Aggregation object describing the count of one (or more, intersected) values for the concept(s) aggregated on.",
+                "properties": {
+                    "conceptValues": {
+                        "description": "List of ordered concept values (one per concept in `concepts`). These can represent values from the respected property or interpolations ( e.g. bins from splits).",
+                        "items": {
+                            "$ref": "#/$defs/ConceptValue"
+                        },
+                        "type": "array"
+                    },
+                    "count": {
+                        "description": "Count of occurrences for this aggregation object in the matched data.",
+                        "minimum": 0,
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "conceptValues",
+                    "count"
+                ],
+                "type": "object"
+            },
+            "ConceptValue": {
+                "additionalItems": true,
+                "description": "A value or bin ... for the concept property.",
+                "properties": {
+                    "id": {
+                        "description": "Identifier for the concept value. This can be e.g. a term id, a split/bin range (e.g. '[P0D, P18M)'), or `undefined` for missing values.",
+                        "examples": [
+                            "NCIT:C4017",
+                            "[P0D, P18M)",
+                            "undefined"
+                        ],
+                        "type": "string"
+                    },
+                    "label": {
+                        "description": "Human readable label for the concept value.",
+                        "examples": [
+                            "Breast Ductal Carcinoma",
+                            "[P0D, P18M)"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ],
+                "type": "object"
+            },
             "additionalItems": true,
-            "description": "Summary data from results, with distributions for the aggregation terms given in the request. The model supports three alternative types of content for aggregation result instances:\n* a simple `count` result * a `distribution` for counts of multiple values * a `report` object for unspecified types of structured data, e.g. when there\n  is a need to provide additional attributes",
-            "oneOf": [
-                {
-                    "required": [
-                        "count"
-                    ]
-                },
-                {
-                    "required": [
-                        "distribution"
-                    ]
-                },
-                {
-                    "required": [
-                        "report"
-                    ]
-                }
-            ],
+            "description": "Summary data from results, with distributions of values (or value combinations) for one (or more) concepts. Each summary is identified by an `id`, `label`, `description`, and a list of one or more `concepts`. An an optional `sorted` property can indicate to the client that the returned `distribution` of the aggregation objects response has some pre-defined order. Each of the `concepts` describes the scope (entity; `individual`, `biosample` ...), the property aggregated on, and optional `termIds` or `splits` for selection or binning of the property values.",
             "properties": {
-                "count": {
-                    "description": "Number of observations for this aggregation term.",
-                    "minimum": 0,
-                    "type": "integer"
+                "concepts": {
+                    "items": {
+                        "$ref": "#/$defs/AggregationConcept"
+                    },
+                    "type": "array"
                 },
                 "description": {
-                    "description": "Description of the aggregation performed for thios term.",
+                    "description": "Description of the aggregation performed for this term.",
                     "type": "string"
                 },
                 "distribution": {
-                    "$ref": "#/$defs/DistributionInstance"
-                },
-                "entryTypeId": {
-                    "description": "Id of the entry type in the Beacon model for which the observations were reported. For the Beacon default model this is one of `individual`, `biosample`, `analysis`, `run`, or `genomicVariation`. The values here are not limited to the Beacon defaults to allow modified or alternative data models. This parameter would can be omitted, with the default being the id of the entryType for which the Beacon is providing the current results.",
-                    "type": "string"
+                    "description": "A distribution contains a list of aggregation objects, where each describes the count of one (or more, intersected) values for the concept(s) aggregated on.",
+                    "items": {
+                        "$ref": "#/$defs/AggregationObject"
+                    },
+                    "type": "array"
                 },
                 "id": {
-                    "$ref": "../../requests/summaryTerms.json#/$defs/AggregationTerm",
-                    "description": "The id of the aggregation term being reported on."
+                    "description": "The id of the aggregation term being reported on.",
+                    "type": "string"
                 },
                 "label": {
                     "description": "The label of the aggregation term being reported on.",
@@ -48,145 +138,23 @@
                     ],
                     "type": "string"
                 },
-                "report": {
-                    "$ref": "#/$defs/Report"
+                "sorted": {
+                    "description": "Indicates whether the distribution results are sorted in some way.",
+                    "type": "boolean"
                 }
             },
             "required": [
-                "id"
+                "id",
+                "distribution"
             ],
-            "type": "object"
-        },
-        "DistributionInstance": {
-            "additionalProperties": {
-                "minProperties": 1,
-                "minimum": 0,
-                "type": "integer"
-            },
-            "description": "A distribution contains one or more values and their observed counts, e.g. when using unvalued aggregation concepts such as e.g. aggregation on the disease types (instead of getting the count for a specific disease) or on sex (instead on separate counts for each option).  ",
-            "examples": [
-                {
-                    "female": 11,
-                    "male": 23,
-                    "unknown": 0
-                },
-                {
-                    "NCIT:C4028": 9,
-                    "NCIT:C4520": 2,
-                    "NCIT:C48596": 23
-                }
-            ],
-            "type": "object"
-        },
-        "Report": {
-            "additionalItems": true,
-            "description": "Report for this aggregation term representing a summary of results beyond a count of occurrences in the matched data. The format is left to the implementation but should not expose information about individual records.  ",
-            "schema": {
-                "description": "Optional reference to a schema for this report.",
-                "type": "string"
-            },
             "type": "object"
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Beacon aggregate results section.",
-    "examples": [
-        [
-            {
-                "count": 42,
-                "entryTypeId": "biosample",
-                "id": "NCIT:C3359",
-                "label": "Rhabdomyosarcoma"
-            },
-            {
-                "count": 44,
-                "entryTypeId": "individual",
-                "id": "ageAtDiagnosis:<=P17Y",
-                "label": "age at diagnosis younger than 18 years"
-            },
-            {
-                "count": 13,
-                "entryTypeId": "individual",
-                "id": "sex:=female",
-                "label": "female sex at birth"
-            },
-            {
-                "distribution": {
-                    "female": 11,
-                    "male": 23,
-                    "unknown": 0
-                },
-                "entryTypeId": "individual",
-                "id": "sexAtBirth",
-                "label": "sex at birth"
-            },
-            {
-                "distribution": {
-                    "NCIT:C4028": 9,
-                    "NCIT:C4520": 2,
-                    "NCIT:C48596": 23
-                },
-                "entryTypeId": "biosample",
-                "id": "biosample.histological_diagnosis.id",
-                "label": "histological diagnosis"
-            },
-            {
-                "description": "sex per NCIT cancer code (custom format)",
-                "entryTypeId": "biosample",
-                "id": "sexPerDisease",
-                "label": "Sex distribution per cancer type",
-                "report": [
-                    {
-                        "counts": {
-                            "femaleAtBirth": 836,
-                            "maleAtBirth": 3
-                        },
-                        "id": "NCIT:C4872",
-                        "label": "Breast Carcinoma"
-                    },
-                    {
-                        "counts": {
-                            "femaleAtBirth": 36,
-                            "maleAtBirth": 81
-                        },
-                        "id": "NCIT:C3513",
-                        "label": "Esophageal Carcinoma"
-                    }
-                ]
-            },
-            {
-                "description": "CNV frequencies per 1Mb genomic bin",
-                "entryTypeId": "analysis",
-                "id": "cnvstats",
-                "label": "CNV frequencies",
-                "report": {
-                    "intervalfrequencies": [
-                        {
-                            "cytobands": "1p36.33",
-                            "end": 400000,
-                            "gainFrequency": 2.613,
-                            "id": "1p:000000000-000400000",
-                            "lossFrequency": 6.188,
-                            "no": 1,
-                            "referenceName": "chr1",
-                            "start": 0
-                        },
-                        {
-                            "cytobands": "1p36.33",
-                            "end": 1400000,
-                            "gainFrequency": 3.816,
-                            "id": "1p:000400000-001400000",
-                            "lossFrequency": 9.694,
-                            "no": 2,
-                            "referenceName": "chr1",
-                            "start": 400000
-                        }
-                    ]
-                },
-                "schema": "https://www.example.org/cnvFrequenciesSchema"
-            }
-        ]
-    ],
+    "examples": {
+        "$ref": "../examples-sections/beaconAggregationResults-examples.json#/examples"
+    },
     "items": {
         "$ref": "#/$defs/AggregationResultsInstance"
     },

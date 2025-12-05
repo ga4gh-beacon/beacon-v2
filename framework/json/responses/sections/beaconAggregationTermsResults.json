@@ -3,44 +3,32 @@
         "AggregationTermInResponse": {
             "description": "Information about the aggregation performed using this term.",
             "properties": {
-                "description": {
-                    "description": "A description of the aggregation term, e.g. for custom terms."
+                "concepts": {
+                    "items": {
+                        "$ref": "./beaconAggregationResults.json#/$defs/AggregationConcept"
+                    },
+                    "type": "array"
                 },
-                "entryTypeId": {
-                    "description": "The entry type in the Beacon model on which the data will be aggregated.",
-                    "examples": [
-                        "individual",
-                        "biosample"
-                    ],
-                    "type": "string"
+                "description": {
+                    "description": "A description of the summary concept, e.g. with details about the included properties and the operations performed during aggregation."
                 },
                 "id": {
-                    "description": "The aggregation term id, wich could be a\n* valued filtering term (`ageAtDiagnosis:<=P17Y`, `NCIT:C8936`) * a concept indicated through its attribute's model path (`biosample.histologicalDiagnosis.id`)\n  or corresponding to the `id` of an alphanumeric filter\n* a custom value\nTODO: In principle those different formats could be bound to specific types: * valued filtering term => `count` * concept => `distribution` * custom => `report`",
+                    "description": "The aggregation term id.",
                     "examples": [
-                        "NCIT:C8936",
-                        "ageAtDiagnosis:<=P17Y",
-                        "individual.diseases.diseaseCode",
-                        "cnvstats"
+                        "followupTime"
                     ],
                     "type": "string"
                 },
                 "label": {
-                    "description": "A short label, e.g. \"preferred Label\" in the case of an ontology term.",
+                    "description": "A short label which e.g. can be used by clients to label diagrams or data tables.",
                     "examples": [
-                        "B Lymphoblastic Leukemia/Lymphoma",
-                        "Rhabdomyosarcoma"
+                        "Follow-up Time After Diagnosis"
                     ],
                     "type": "string"
                 },
-                "type": {
-                    "default": "count",
-                    "description": "The type of aggregation object that will be returned for this term. Please see `beaconAggregationResults` for definitions.",
-                    "enum": [
-                        "count",
-                        "distribution",
-                        "report"
-                    ],
-                    "type": "string"
+                "sorted": {
+                    "description": "Indicates whether the resulting distribution results will be sorted in some way.",
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -53,27 +41,41 @@
     "additionalProperties": true,
     "description": "Aggregation terms and concepts supported for this Beacon.",
     "examples": [
-        [
-            {
-                "description": "count of matched Rhabdomyosarcoma samples",
-                "entryTypeId": "biosample",
-                "id": "NCIT:C3359",
-                "label": "Rhabdomyosarcoma",
-                "type": "count"
-            },
-            {
-                "description": "count of individuals with an age at diagnosis younger than 18 years",
-                "entryTypeId": "individual",
-                "id": "ageAtDiagnosis:<=P17Y",
-                "type": "count"
-            },
-            {
-                "description": "CNV frequencies per 1Mb genomic bin.",
-                "entryTypeId": "analysis",
-                "id": "cnvstats",
-                "type": "report"
-            }
-        ]
+        {
+            "concepts": [
+                {
+                    "format": "iso8601duration",
+                    "property": "diseases.followup",
+                    "scope": "individual",
+                    "splits": [
+                        "P0D",
+                        "P18M",
+                        "P10Y",
+                        "P60Y"
+                    ],
+                    "type": "string"
+                }
+            ],
+            "description": "Follow-up Time After Diagnosis",
+            "id": "followupTime",
+            "label": "Follow-up Time",
+            "sorted": true
+        },
+        {
+            "concepts": [
+                {
+                    "property": "diseases.diseaseCode.id",
+                    "scope": "individual"
+                },
+                {
+                    "property": "sex.id",
+                    "scope": "individual"
+                }
+            ],
+            "description": "Cancer type by sex in matched individuals",
+            "id": "diseaseBySex",
+            "label": "Sex distributions for Diseases in Individuals"
+        }
     ],
     "items": {
         "$ref": "#/$defs/AggregationTermInResponse"

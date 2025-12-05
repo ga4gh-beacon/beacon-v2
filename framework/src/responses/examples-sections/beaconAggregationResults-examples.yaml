@@ -1,0 +1,764 @@
+examples:
+  - id: followupTime
+    label: Follow-up Time
+    description: >-
+      Follow-up time after diagnosis
+    sorted: true
+    concepts:
+      - scope: individual
+        property: index_disease.followup
+        type: string
+        format: iso8601duration
+        splits:
+          - P0D
+          - P18M
+          - P10Y
+          - P60Y
+    distribution:
+      - conceptValues:
+        - id: '[P0D, P18M)'
+          label: '[P0D, P18M)'
+        count: 325
+      - conceptValues:
+        - id: '[P18M, P10Y)'
+          label: '[P5Y, P10Y)'
+        count: 339
+      - conceptValues:
+        - id: '[P10Y, P60Y)'
+          label: '[P10Y, P60Y)'
+        count: 61
+      - conceptValues:
+        - id: undefined
+          label: undefined
+        count: 719
+
+  - id: diseaseBySex
+    label: Sex distributions for Diseases in Individuals
+    description: >-
+      Cancer type by sex in matched individuals
+    concepts:
+      - property: diseases.disease_code.id
+        scope: individual
+      - property: sex.id
+        scope: individual
+    distribution:
+      - conceptValues:
+        - id: NCIT:C2919
+          label: Prostate Adenocarcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 426
+      - conceptValues:
+        - id: NCIT:C4017
+          label: Breast Ductal Carcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 423
+      - conceptValues:
+        - id: NCIT:C3512
+          label: Lung Adenocarcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 317
+      - conceptValues:
+        - id: NCIT:C132256
+          label: Unspecified Tissue
+        - id: NCIT:C17998
+          label: unknown
+        count: 248
+      - conceptValues:
+        - id: NCIT:C27753
+          label: Acute Myeloid Leukemia, Not Otherwise Specified
+        - id: NCIT:C17998
+          label: unknown
+        count: 246
+      - conceptValues:
+        - id: NCIT:C9245
+          label: Invasive Breast Carcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 216
+      - conceptValues:
+        - id: NCIT:C4349
+          label: Colon Adenocarcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 161
+      - conceptValues:
+        - id: NCIT:C3163
+          label: Chronic Lymphocytic Leukemia
+        - id: NCIT:C17998
+          label: unknown
+        count: 158
+      - conceptValues:
+        - id: NCIT:C3512
+          label: Lung Adenocarcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 138
+      - conceptValues:
+        - id: NCIT:C6287
+          label: Endometrial Endometrioid Adenocarcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 135
+      - conceptValues:
+        - id: NCIT:C2926
+          label: Lung Non-Small Cell Carcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 133
+      - conceptValues:
+        - id: NCIT:C39851
+          label: Bladder Urothelial Carcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 129
+      - conceptValues:
+        - id: NCIT:C4349
+          label: Colon Adenocarcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 109
+      - conceptValues:
+        - id: NCIT:C3058
+          label: Glioblastoma
+        - id: NCIT:C20197
+          label: male
+        count: 107
+      - conceptValues:
+        - id: NCIT:C4194
+          label: Invasive Breast Carcinoma of No Special Type
+        - id: NCIT:C16576
+          label: female
+        count: 107
+      - conceptValues:
+        - id: NCIT:C4349
+          label: Colon Adenocarcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 94
+      - conceptValues:
+        - id: NCIT:C8294
+          label: Pancreatic Adenocarcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 92
+      - conceptValues:
+        - id: NCIT:C3058
+          label: Glioblastoma
+        - id: NCIT:C16576
+          label: female
+        count: 89
+      - conceptValues:
+        - id: NCIT:C8294
+          label: Pancreatic Adenocarcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 87
+      - conceptValues:
+        - id: NCIT:C3222
+          label: Medulloblastoma
+        - id: NCIT:C20197
+          label: male
+        count: 82
+      - conceptValues:
+        - id: NCIT:C80280
+          label: Diffuse Large B-Cell Lymphoma, Not Otherwise Specified
+        - id: NCIT:C17998
+          label: unknown
+        count: 80
+      - conceptValues:
+        - id: NCIT:C7978
+          label: Ovarian Serous Cystadenocarcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 80
+      - conceptValues:
+        - id: NCIT:C4033
+          label: Clear Cell Renal Cell Carcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 79
+      - conceptValues:
+        - id: NCIT:C4017
+          label: Breast Ductal Carcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 79
+      - conceptValues:
+        - id: NCIT:C3209
+          label: Follicular Lymphoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 77
+      - conceptValues:
+        - id: NCIT:C3058
+          label: Glioblastoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 76
+      - conceptValues:
+        - id: NCIT:C3270
+          label: Neuroblastoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 73
+      - conceptValues:
+        - id: NCIT:C105555
+          label: Ovarian High Grade Serous Adenocarcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 72
+      - conceptValues:
+        - id: NCIT:C3493
+          label: Lung Squamous Cell Carcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 71
+      - conceptValues:
+        - id: NCIT:C9349
+          label: Plasmacytoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 68
+      - conceptValues:
+        - id: NCIT:C4004
+          label: Gastric Adenocarcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 62
+      - conceptValues:
+        - id: NCIT:C3512
+          label: Lung Adenocarcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 60
+      - conceptValues:
+        - id: NCIT:C3510
+          label: Cutaneous Melanoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 60
+      - conceptValues:
+        - id: NCIT:C3099
+          label: Hepatocellular Carcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 55
+      - conceptValues:
+        - id: NCIT:C9383
+          label: Rectal Adenocarcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 54
+      - conceptValues:
+        - id: NCIT:C7950
+          label: Invasive Breast Lobular Carcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 51
+      - conceptValues:
+        - id: NCIT:C3167
+          label: Acute Lymphoblastic Leukemia
+        - id: NCIT:C17998
+          label: unknown
+        count: 51
+      - conceptValues:
+        - id: NCIT:C3222
+          label: Medulloblastoma
+        - id: NCIT:C16576
+          label: female
+        count: 50
+      - conceptValues:
+        - id: NCIT:C8181
+          label: Oropharyngeal Squamous Cell Carcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 49
+      - conceptValues:
+        - id: NCIT:C4028
+          label: Cervical Squamous Cell Carcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 48
+      - conceptValues:
+        - id: NCIT:C3171
+          label: Acute Myeloid Leukemia
+        - id: NCIT:C16576
+          label: female
+        count: 46
+      - conceptValues:
+        - id: NCIT:C3099
+          label: Hepatocellular Carcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 45
+      - conceptValues:
+        - id: NCIT:C3493
+          label: Lung Squamous Cell Carcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 43
+      - conceptValues:
+        - id: NCIT:C4033
+          label: Clear Cell Renal Cell Carcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 42
+      - conceptValues:
+        - id: NCIT:C4035
+          label: Thyroid Gland Papillary Carcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 42
+      - conceptValues:
+        - id: NCIT:C3493
+          label: Lung Squamous Cell Carcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 41
+      - conceptValues:
+        - id: NCIT:C4908
+          label: Ovarian Carcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 39
+      - conceptValues:
+        - id: NCIT:C4004
+          label: Gastric Adenocarcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 39
+      - conceptValues:
+        - id: NCIT:C3510
+          label: Cutaneous Melanoma
+        - id: NCIT:C20197
+          label: male
+        count: 39
+      - conceptValues:
+        - id: NCIT:C39851
+          label: Bladder Urothelial Carcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 38
+      - conceptValues:
+        - id: NCIT:C3171
+          label: Acute Myeloid Leukemia
+        - id: NCIT:C20197
+          label: male
+        count: 38
+      - conceptValues:
+        - id: NCIT:C9383
+          label: Rectal Adenocarcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 35
+      - conceptValues:
+        - id: NCIT:C3222
+          label: Medulloblastoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 35
+      - conceptValues:
+        - id: NCIT:C7540
+          label: Small Lymphocytic Lymphoma
+        - id: NCIT:C20197
+          label: male
+        count: 34
+      - conceptValues:
+        - id: NCIT:C4345
+          label: Myeloproliferative Neoplasm
+        - id: NCIT:C17998
+          label: unknown
+        count: 34
+      - conceptValues:
+        - id: NCIT:C4004
+          label: Gastric Adenocarcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 33
+      - conceptValues:
+        - id: NCIT:C132256
+          label: Unspecified Tissue
+        - id: NCIT:C20197
+          label: male
+        count: 32
+      - conceptValues:
+        - id: NCIT:C4025
+          label: Esophageal Adenocarcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 32
+      - conceptValues:
+        - id: NCIT:C8851
+          label: Diffuse Large B-Cell Lymphoma
+        - id: NCIT:C20197
+          label: male
+        count: 31
+      - conceptValues:
+        - id: NCIT:C3868
+          label: Gastrointestinal Stromal Tumor
+        - id: NCIT:C20197
+          label: male
+        count: 31
+      - conceptValues:
+        - id: NCIT:C9296
+          label: Gastroesophageal Junction Adenocarcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 30
+      - conceptValues:
+        - id: NCIT:C4025
+          label: Esophageal Adenocarcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 30
+      - conceptValues:
+        - id: NCIT:C27838
+          label: Endometrial Serous Adenocarcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 30
+      - conceptValues:
+        - id: NCIT:C4033
+          label: Clear Cell Renal Cell Carcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 29
+      - conceptValues:
+        - id: NCIT:C3510
+          label: Cutaneous Melanoma
+        - id: NCIT:C16576
+          label: female
+        count: 28
+      - conceptValues:
+        - id: NCIT:C6975
+          label: Papillary Renal Cell Carcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 28
+      - conceptValues:
+        - id: NCIT:C5105
+          label: Colorectal Adenocarcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 27
+      - conceptValues:
+        - id: NCIT:C7978
+          label: Ovarian Serous Cystadenocarcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 26
+      - conceptValues:
+        - id: NCIT:C8294
+          label: Pancreatic Adenocarcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 26
+      - conceptValues:
+        - id: NCIT:C9385
+          label: Renal Cell Carcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 26
+      - conceptValues:
+        - id: NCIT:C4917
+          label: Lung Small Cell Carcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 26
+      - conceptValues:
+        - id: NCIT:C8936
+          label: B Lymphoblastic Leukemia/Lymphoma
+        - id: NCIT:C20197
+          label: male
+        count: 25
+      - conceptValues:
+        - id: NCIT:C3771
+          label: Breast Lobular Carcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 25
+      - conceptValues:
+        - id: NCIT:C4345
+          label: Myeloproliferative Neoplasm
+        - id: NCIT:C16576
+          label: female
+        count: 24
+      - conceptValues:
+        - id: NCIT:C3242
+          label: Multiple Myeloma
+        - id: NCIT:C16576
+          label: female
+        count: 24
+      - conceptValues:
+        - id: NCIT:C7600
+          label: Acute Myeloid Leukemia, Myelodysplasia-Related
+        - id: NCIT:C20197
+          label: male
+        count: 23
+      - conceptValues:
+        - id: NCIT:C3812
+          label: Carcinoma of Unknown Primary
+        - id: NCIT:C16576
+          label: female
+        count: 23
+      - conceptValues:
+        - id: NCIT:C8936
+          label: B Lymphoblastic Leukemia/Lymphoma
+        - id: NCIT:C16576
+          label: female
+        count: 23
+      - conceptValues:
+        - id: NCIT:C3242
+          label: Multiple Myeloma
+        - id: NCIT:C20197
+          label: male
+        count: 23
+      - conceptValues:
+        - id: NCIT:C3163
+          label: Chronic Lymphocytic Leukemia
+        - id: NCIT:C16576
+          label: female
+        count: 23
+      - conceptValues:
+        - id: NCIT:C3230
+          label: Meningioma
+        - id: NCIT:C17998
+          label: unknown
+        count: 22
+      - conceptValues:
+        - id: NCIT:C3247
+          label: Myelodysplastic Syndrome
+        - id: NCIT:C17998
+          label: unknown
+        count: 22
+      - conceptValues:
+        - id: NCIT:C2926
+          label: Lung Non-Small Cell Carcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 22
+      - conceptValues:
+        - id: NCIT:C3209
+          label: Follicular Lymphoma
+        - id: NCIT:C20197
+          label: male
+        count: 22
+      - conceptValues:
+        - id: NCIT:C4345
+          label: Myeloproliferative Neoplasm
+        - id: NCIT:C20197
+          label: male
+        count: 21
+      - conceptValues:
+        - id: NCIT:C3017
+          label: Ependymoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 21
+      - conceptValues:
+        - id: NCIT:C71732
+          label: Triple-Negative Breast Carcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 21
+      - conceptValues:
+        - id: NCIT:C3270
+          label: Neuroblastoma
+        - id: NCIT:C20197
+          label: male
+        count: 21
+      - conceptValues:
+        - id: NCIT:C3059
+          label: Glioma
+        - id: NCIT:C17998
+          label: unknown
+        count: 21
+      - conceptValues:
+        - id: NCIT:C5105
+          label: Colorectal Adenocarcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 21
+      - conceptValues:
+        - id: NCIT:C3174
+          label: Chronic Myeloid Leukemia, BCR-ABL1 Positive
+        - id: NCIT:C17998
+          label: unknown
+        count: 21
+      - conceptValues:
+        - id: NCIT:C4908
+          label: Ovarian Carcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 21
+      - conceptValues:
+        - id: NCIT:C9477
+          label: Anaplastic Astrocytoma
+        - id: NCIT:C16576
+          label: female
+        count: 21
+      - conceptValues:
+        - id: NCIT:C3270
+          label: Neuroblastoma
+        - id: NCIT:C16576
+          label: female
+        count: 21
+      - conceptValues:
+        - id: NCIT:C3247
+          label: Myelodysplastic Syndrome
+        - id: NCIT:C20197
+          label: male
+        count: 20
+      - conceptValues:
+        - id: NCIT:C4337
+          label: Mantle Cell Lymphoma
+        - id: NCIT:C20197
+          label: male
+        count: 20
+      - conceptValues:
+        - id: NCIT:C4024
+          label: Esophageal Squamous Cell Carcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 20
+      - conceptValues:
+        - id: NCIT:C7927
+          label: Liver Carcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 20
+      - conceptValues:
+        - id: NCIT:C3099
+          label: Hepatocellular Carcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 20
+      - conceptValues:
+        - id: NCIT:C80280
+          label: Diffuse Large B-Cell Lymphoma, Not Otherwise Specified
+        - id: NCIT:C20197
+          label: male
+        count: 20
+      - conceptValues:
+        - id: NCIT:C4872
+          label: Breast Carcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 20
+      - conceptValues:
+        - id: NCIT:C5214
+          label: Breast Adenocarcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 20
+      - conceptValues:
+        - id: NCIT:C4872
+          label: Breast Carcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 19
+      - conceptValues:
+        - id: NCIT:C3230
+          label: Meningioma
+        - id: NCIT:C16576
+          label: female
+        count: 19
+      - conceptValues:
+        - id: NCIT:C7540
+          label: Small Lymphocytic Lymphoma
+        - id: NCIT:C16576
+          label: female
+        count: 18
+      - conceptValues:
+        - id: NCIT:C3868
+          label: Gastrointestinal Stromal Tumor
+        - id: NCIT:C16576
+          label: female
+        count: 18
+      - conceptValues:
+        - id: NCIT:C4917
+          label: Lung Small Cell Carcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 18
+      - conceptValues:
+        - id: NCIT:C35417
+          label: Intrahepatic Cholangiocarcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 18
+      - conceptValues:
+        - id: NCIT:C8863
+          label: Nodal Marginal Zone Lymphoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 18
+      - conceptValues:
+        - id: NCIT:C39851
+          label: Bladder Urothelial Carcinoma
+        - id: NCIT:C17998
+          label: unknown
+        count: 18
+      - conceptValues:
+        - id: NCIT:C8851
+          label: Diffuse Large B-Cell Lymphoma
+        - id: NCIT:C16576
+          label: female
+        count: 18
+      - conceptValues:
+        - id: NCIT:C132256
+          label: Unspecified Tissue
+        - id: NCIT:C16576
+          label: female
+        count: 17
+      - conceptValues:
+        - id: NCIT:C3288
+          label: Oligodendroglioma
+        - id: NCIT:C20197
+          label: male
+        count: 17
+      - conceptValues:
+        - id: NCIT:C3224
+          label: Melanoma
+        - id: NCIT:C16576
+          label: female
+        count: 17
+      - conceptValues:
+        - id: NCIT:C9309
+          label: Seminoma
+        - id: NCIT:C20197
+          label: male
+        count: 17
+      - conceptValues:
+        - id: NCIT:C2926
+          label: Lung Non-Small Cell Carcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 17
+      - conceptValues:
+        - id: NCIT:C4858
+          label: Placental Neoplasm
+        - id: NCIT:C17998
+          label: unknown
+        count: 17
+      - conceptValues:
+        - id: NCIT:C35417
+          label: Intrahepatic Cholangiocarcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 17
+      - conceptValues:
+        - id: NCIT:C4035
+          label: Thyroid Gland Papillary Carcinoma
+        - id: NCIT:C20197
+          label: male
+        count: 16
+      - conceptValues:
+        - id: NCIT:C7716
+          label: Renal Pelvis and Ureter Urothelial Carcinoma
+        - id: NCIT:C16576
+          label: female
+        count: 16
