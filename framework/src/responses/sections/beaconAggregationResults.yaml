@@ -35,6 +35,14 @@ $defs:
         description: >-
           Description of the aggregation performed for this term.
         type: string
+      scope:
+        description: >-
+          The scope (entity type) for which the results are reported.
+        type: string
+        examples:
+          - individual
+          - biosample
+          - genomicVariation
       sorted:
         description: >-
           Indicates whether the distribution results are sorted in some way.
@@ -59,27 +67,20 @@ $defs:
 
     AggregationConcept:
       description: >-
-        Concept on which the aggregation was performed, including the scope
-        (entity type), property, and optional termIds or splits for selection
+        Concept on which the aggregation was performed, including the scoped
+        property, and optional termIds or splits for selection
         or binning of the property values.
       type: object
       properties:
-        scope:
-          description: >-
-            The scope (entity type) for the aggregation concept.
-          type: string
-          examples:
-            - individual
-            - biosample
-            - genomicVariation
         property:
           description: >-
-            The property in th edata model on which the aggregation was performed.
+            The property, including the entity/scope, in the data model on which the
+            aggregation was performed.
           type: string
           examples:
-            - histologicalDiagnosis.id
-            - sex.id
-            - collectionMoment
+            - biosample.histologicalDiagnosis.id
+            - individual.sex.id
+            - biosample.collectionMoment
         termIds:
           description: >-
             Optional list of termIds to select specific values for aggregation.

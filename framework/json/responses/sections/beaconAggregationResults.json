@@ -2,23 +2,14 @@
     "$defs": {
         "AggregationResultsInstance": {
             "AggregationConcept": {
-                "description": "Concept on which the aggregation was performed, including the scope (entity type), property, and optional termIds or splits for selection or binning of the property values.",
+                "description": "Concept on which the aggregation was performed, including the scoped property, and optional termIds or splits for selection or binning of the property values.",
                 "properties": {
                     "property": {
-                        "description": "The property in th edata model on which the aggregation was performed.",
+                        "description": "The property, including the entity/scope, in the data model on which the aggregation was performed.",
                         "examples": [
-                            "histologicalDiagnosis.id",
-                            "sex.id",
-                            "collectionMoment"
-                        ],
-                        "type": "string"
-                    },
-                    "scope": {
-                        "description": "The scope (entity type) for the aggregation concept.",
-                        "examples": [
-                            "individual",
-                            "biosample",
-                            "genomicVariation"
+                            "biosample.histologicalDiagnosis.id",
+                            "individual.sex.id",
+                            "biosample.collectionMoment"
                         ],
                         "type": "string"
                     },
@@ -135,6 +126,15 @@
                     "description": "The label of the aggregation term being reported on.",
                     "examples": [
                         "Genders"
+                    ],
+                    "type": "string"
+                },
+                "scope": {
+                    "description": "The scope (entity type) for which the results are reported.",
+                    "examples": [
+                        "individual",
+                        "biosample",
+                        "genomicVariation"
                     ],
                     "type": "string"
                 },

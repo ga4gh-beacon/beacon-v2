@@ -10,8 +10,7 @@ examples:
     description: Follow-up Time After Diagnosis
     sorted: true
     concepts:
-      - scope: individual
-        property: diseases.followup
+      - property: individual.diseases.followup
         type: string
         format: iso8601duration
         splits:
@@ -23,10 +22,8 @@ examples:
     label: Sex distributions for Diseases in Individuals
     description: Cancer type by sex in matched individuals
     concepts:
-      - property: diseases.diseaseCode.id
-        scope: individual
-      - property: sex.id
-        scope: individual
+      - property: individual.diseases.diseaseCode.id
+      - property: individual.sex.id
 additionalProperties: true
 
 $defs:

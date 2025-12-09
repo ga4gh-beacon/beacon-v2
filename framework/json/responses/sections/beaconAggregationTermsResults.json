@@ -45,8 +45,7 @@
             "concepts": [
                 {
                     "format": "iso8601duration",
-                    "property": "diseases.followup",
-                    "scope": "individual",
+                    "property": "individual.diseases.followup",
                     "splits": [
                         "P0D",
                         "P18M",
@@ -64,12 +63,10 @@
         {
             "concepts": [
                 {
-                    "property": "diseases.diseaseCode.id",
-                    "scope": "individual"
+                    "property": "individual.diseases.diseaseCode.id"
                 },
                 {
-                    "property": "sex.id",
-                    "scope": "individual"
+                    "property": "individual.sex.id"
                 }
             ],
             "description": "Cancer type by sex in matched individuals",
