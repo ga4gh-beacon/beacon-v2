@@ -40,42 +40,47 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
     "description": "Aggregation terms and concepts supported for this Beacon.",
-    "examples": [
-        {
-            "concepts": [
+    "properties": {
+        "aggregationTerms": {
+            "examples": [
                 {
-                    "format": "iso8601duration",
-                    "property": "individual.diseases.followup",
-                    "splits": [
-                        "P0D",
-                        "P18M",
-                        "P10Y",
-                        "P60Y"
+                    "concepts": [
+                        {
+                            "format": "iso8601duration",
+                            "property": "individual.diseases.followup",
+                            "splits": [
+                                "P0D",
+                                "P18M",
+                                "P10Y",
+                                "P60Y"
+                            ],
+                            "type": "string"
+                        }
                     ],
-                    "type": "string"
-                }
-            ],
-            "description": "Follow-up Time After Diagnosis",
-            "id": "followupTime",
-            "label": "Follow-up Time",
-            "sorted": true
-        },
-        {
-            "concepts": [
-                {
-                    "property": "individual.diseases.diseaseCode.id"
+                    "description": "Follow-up Time After Diagnosis",
+                    "id": "followupTime",
+                    "label": "Follow-up Time",
+                    "sorted": true
                 },
                 {
-                    "property": "individual.sex.id"
+                    "concepts": [
+                        {
+                            "property": "individual.diseases.diseaseCode.id"
+                        },
+                        {
+                            "property": "individual.sex.id"
+                        }
+                    ],
+                    "description": "Cancer type by sex in matched individuals",
+                    "id": "diseaseBySex",
+                    "label": "Sex distributions for Diseases in Individuals"
                 }
             ],
-            "description": "Cancer type by sex in matched individuals",
-            "id": "diseaseBySex",
-            "label": "Sex distributions for Diseases in Individuals"
+            "items": {
+                "$ref": "#/$defs/AggregationTermInResponse"
+            },
+            "type": "array"
         }
-    ],
-    "items": {
-        "$ref": "#/$defs/AggregationTermInResponse"
     },
-    "type": "array"
+    "type": "object"
 }

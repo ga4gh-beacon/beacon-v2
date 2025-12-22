@@ -1,29 +1,32 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 description: >-
   Aggregation terms and concepts supported for this Beacon.
-type: array
-items:
-  $ref: '#/$defs/AggregationTermInResponse'
-examples:
-  - id: followupTime
-    label: Follow-up Time
-    description: Follow-up Time After Diagnosis
-    sorted: true
-    concepts:
-      - property: individual.diseases.followup
-        type: string
-        format: iso8601duration
-        splits:
-          - P0D
-          - P18M
-          - P10Y
-          - P60Y
-  - id: diseaseBySex
-    label: Sex distributions for Diseases in Individuals
-    description: Cancer type by sex in matched individuals
-    concepts:
-      - property: individual.diseases.diseaseCode.id
-      - property: individual.sex.id
+type: object
+properties:
+  aggregationTerms:
+    type: array
+    items:
+      $ref: '#/$defs/AggregationTermInResponse'
+    examples:
+      - id: followupTime
+        label: Follow-up Time
+        description: Follow-up Time After Diagnosis
+        sorted: true
+        concepts:
+          - property: individual.diseases.followup
+            type: string
+            format: iso8601duration
+            splits:
+              - P0D
+              - P18M
+              - P10Y
+              - P60Y
+      - id: diseaseBySex
+        label: Sex distributions for Diseases in Individuals
+        description: Cancer type by sex in matched individuals
+        concepts:
+          - property: individual.diseases.diseaseCode.id
+          - property: individual.sex.id
 additionalProperties: true
 
 $defs:
