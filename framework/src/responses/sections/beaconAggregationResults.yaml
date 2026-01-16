@@ -65,96 +65,96 @@ $defs:
       - distribution
     additionalItems: True
 
-    AggregationConcept:
-      description: >-
-        Concept on which the aggregation was performed, including the scoped
-        property, and optional termIds or splits for selection
-        or binning of the property values.
-      type: object
-      properties:
-        property:
-          description: >-
-            The property, including the entity/scope, in the data model on which the
-            aggregation was performed.
+  AggregationConcept:
+    description: >-
+      Concept on which the aggregation was performed, including the scoped
+      property, and optional termIds or splits for selection
+      or binning of the property values.
+    type: object
+    properties:
+      property:
+        description: >-
+          The property, including the entity/scope, in the data model on which the
+          aggregation was performed.
+        type: string
+        examples:
+          - biosample.histologicalDiagnosis.id
+          - individual.sex.id
+          - biosample.collectionMoment
+      termIds:
+        description: >-
+          Optional list of termIds to select specific values for aggregation.
+        type: array
+        items:
           type: string
-          examples:
-            - biosample.histologicalDiagnosis.id
-            - individual.sex.id
-            - biosample.collectionMoment
-        termIds:
-          description: >-
-            Optional list of termIds to select specific values for aggregation.
-          type: array
-          items:
-            type: string
-          examples:
-            - - NCIT:C9335  # Malignant neoplasm of breast
-              - NCIT:C4863  # Prostate Carcinoma
-              - NCIT:C9384  # Kidney Carcinoma
-              - NCIT:C3513  # Esophageal Carcinoma
-            - - EFO:0030075 # cDNA microarray
-              - EFO:0010938 # large-insert clone DNA microarray
-              - EFO:0010939 # oligonucleotide DNA microarray
-              - EFO:0010937 # comparative genomic hybridization (CGH)
-        splits:
-          description: >-
-            Optional list of splits to group values for ranges or bins when
-            performing the aggregation.
-            TODO: Define types and/or couple them to property type.
-          type: array
-          examples:
-            - - P0D
-              - P18Y
-              - P65Y
+        examples:
+          - - NCIT:C9335  # Malignant neoplasm of breast
+            - NCIT:C4863  # Prostate Carcinoma
+            - NCIT:C9384  # Kidney Carcinoma
+            - NCIT:C3513  # Esophageal Carcinoma
+          - - EFO:0030075 # cDNA microarray
+            - EFO:0010938 # large-insert clone DNA microarray
+            - EFO:0010939 # oligonucleotide DNA microarray
+            - EFO:0010937 # comparative genomic hybridization (CGH)
+      splits:
+        description: >-
+          Optional list of splits to group values for ranges or bins when
+          performing the aggregation.
+          TODO: Define types and/or couple them to property type.
+        type: array
+        examples:
+          - - P0D
+            - P18Y
+            - P65Y
 
-    AggregationObject:
-      description: >-
-        Aggregation object describing the count of one (or more, intersected)
-        values for the concept(s) aggregated on.
-      type: object
-      properties:
-        conceptValues:
-          description: >-
-            List of ordered concept values (one per concept in `concepts`). These
-            can represent values from the respected property or interpolations (
-            e.g. bins from splits).
-          type: array
-          items:
-            $ref: "#/$defs/ConceptValue"
-        count:
-          description: >-
-            Count of occurrences for this aggregation object in the matched data.
-          type: integer
-          minimum: 0
-      required:
-        - conceptValues
-        - count
-      additionalItems: True
+  AggregationObject:
+    description: >-
+      Aggregation object describing the count of one (or more, intersected)
+      values for the concept(s) aggregated on.
+    type: object
+    properties:
+      conceptValues:
+        description: >-
+          List of ordered concept values (one per concept in `concepts`). These
+          can represent values from the respected property or interpolations (
+          e.g. bins from splits).
+        type: array
+        items:
+          $ref: "#/$defs/ConceptValue"
+      count:
+        description: >-
+          Count of occurrences for this aggregation object in the matched data.
+        type: integer
+        minimum: 0
+    required:
+      - conceptValues
+      - count
+    additionalItems: True
 
-    ConceptValue:
-      description: >-
-        A value or bin ... for the concept property.
-      type: object
-      properties:
-        id:
-          description: >-
-            Identifier for the concept value. This can be e.g. a term id, a split/bin
-            range (e.g. '[P0D, P18M)'), or `undefined` for missing values.
-          type: string
-          examples:
-            - NCIT:C4017
-            - '[P0D, P18M)'
-            - undefined
-        label:
-          description: >-
-            Human readable label for the concept value.
-          type: string
-          examples:
-            - Breast Ductal Carcinoma
-            - '[P0D, P18M)'
-      required:
-        - id
-      additionalItems: True
+  ConceptValue:
+    description: >-
+      A value or bin ... for the concept property.
+    type: object
+    properties:
+      id:
+        description: >-
+          Identifier for the concept value. This can be e.g. a term id, a split/bin
+          range (e.g. '[P0D, P18M)'), or `undefined` for missing values.
+        type: string
+        examples:
+          - NCIT:C4017
+          - '[P0D, P18M)'
+          - undefined
+      label:
+        description: >-
+          Human readable label for the concept value.
+        type: string
+        examples:
+          - Breast Ductal Carcinoma
+          - '[P0D, P18M)'
+    required:
+      - id
+    additionalItems: True
 
 
 
