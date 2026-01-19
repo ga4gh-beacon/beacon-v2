@@ -124,7 +124,7 @@
             ]
         },
         "RequestProfileId": {
-            "description": "The `profileId` parameter here allows beacons to check the type of query\nbeing performed and to compare the provided request parameters for conformity\nwith the expected query profile.\nThe parameter definition here is a placeholder; the definitions of typed queries\nwill use constant values for their `profileId` parameter.\n\nOrigin: Beacon v2+",
+            "description": "The `requestProfileId` parameter here allows beacons to check the type of query\nbeing performed and to compare the provided request parameters for conformity\nwith the expected query profile.\nThe parameter definition here is a placeholder; the definitions of typed queries\nwill use constant values for their `requestProfileId` parameter.\n\nOrigin: Beacon v2+",
             "type": "string",
             "versions": [
                 "VQS"

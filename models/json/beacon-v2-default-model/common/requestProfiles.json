@@ -9,14 +9,14 @@
                 "geneId": {
                     "$ref": "./requestParameterComponents.json#/$defs/GeneId"
                 },
-                "profileId": {
+                "requestProfileId": {
                     "const": "BV2aminoacidChangeRequest"
                 }
             },
             "required": [
                 "aminoacidChange",
                 "geneId",
-                "profileId"
+                "requestProfileId"
             ],
             "type": "object"
         },
@@ -28,9 +28,9 @@
                 "assemblyId": {
                     "$ref": "./requestParameterComponents.json#/$defs/Assembly"
                 },
-                "profileId": {
+                "requestProfileId": {
                     "const": "BV2alleleRequest",
-                    "description": "Note: The `profileId` parameter had not been defined for Beacon v2.0\nand therefore in _senso stricto_ is not part of requests only relying\non v2 parameters."
+                    "description": "Note: The `requestProfileId` parameter had not been defined for Beacon v2.0\nand therefore in _senso stricto_ is not part of requests only relying\non v2 parameters."
                 },
                 "referenceBases": {
                     "$ref": "./requestParameterComponents.json#/$defs/ReferenceBases"
@@ -46,7 +46,7 @@
                 "referenceName",
                 "start",
                 "alternateBases",
-                "profileId"
+                "requestProfileId"
             ],
             "type": "object"
         },
@@ -59,7 +59,7 @@
                 "end": {
                     "$ref": "./requestParameterComponents.json#/$defs/End"
                 },
-                "profileId": {
+                "requestProfileId": {
                     "const": "BV2bracketRequest"
                 },
                 "referenceName": {
@@ -83,7 +83,7 @@
                 "start",
                 "end",
                 "variantType",
-                "profileId"
+                "requestProfileId"
             ],
             "type": "object"
         },
@@ -101,7 +101,7 @@
                     },
                     "type": "array"
                 },
-                "profileId": {
+                "requestProfileId": {
                     "const": "BV2rangeRequest"
                 },
                 "referenceName": {
@@ -129,13 +129,13 @@
                 "referenceName",
                 "start",
                 "end",
-                "profileId"
+                "requestProfileId"
             ],
             "type": "object"
         },
         "Bv2GenericVariantRequest": {
             "additionalProperties": false,
-            "description": "This represents the generic collection of variant parameters allowed in\nBeacon v2 requests. Since it does not allow for specifying a `profileId`\n(beacause of `additionalProperties: false`) it becomes the default request\nprofile when no specific one is indicated and thereby keeps compatibility\nwith the original Beacon v2 specification.",
+            "description": "This represents the generic collection of variant parameters allowed in\nBeacon v2 requests. Since it does not allow for specifying a `requestProfileId`\n(beacause of `additionalProperties: false`) it becomes the default request\nprofile when no specific one is indicated and thereby keeps compatibility\nwith the original Beacon v2 specification.",
             "examples": {
                 "$ref": "../examples/g_variant.json#/examples"
             },
@@ -185,7 +185,7 @@
                 "geneId": {
                     "$ref": "./requestParameterComponents.json#/$defs/GeneId"
                 },
-                "profileId": {
+                "requestProfileId": {
                     "const": "geneIdRequest"
                 },
                 "variantMaxLength": {
@@ -197,7 +197,7 @@
             },
             "required": [
                 "geneId",
-                "profileId"
+                "requestProfileId"
             ],
             "type": "object"
         },
@@ -206,20 +206,20 @@
                 "genomicAlleleShortForm": {
                     "$ref": "./requestParameterComponents.json#/$defs/GenomicAlleleShortForm"
                 },
-                "profileId": {
+                "requestProfileId": {
                     "const": "GenomicAlleleShortFormRequest"
                 }
             },
             "required": [
                 "genomicAlleleShortForm",
-                "profileId"
+                "requestProfileId"
             ],
             "type": "object"
         },
         "VariantIdRequest": {
             "description": "A typical Beacon v2 request for matching variations by their `variantId`.\nThis request is used to retrieve a specific variant by its identifier.",
             "properties": {
-                "profileId": {
+                "requestProfileId": {
                     "const": "BV2variantIdRequest"
                 },
                 "variantId": {
@@ -228,12 +228,12 @@
             },
             "required": [
                 "variantId",
-                "profileId"
+                "requestProfileId"
             ],
             "type": "object"
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Request profiles allow beacons to\n\n* verify combinations of parameters to fulfill given requirements\n* announce which requests are supported (indirectly or through a FUTURE\n  informational endpoint)\n\nIn case of a missing `profileId` parameter a generic request w/o imposed\nlimits on request parameters is assumed with decision about support left to the\nimplementations. ",
+    "description": "Request profiles allow beacons to\n\n* verify combinations of parameters to fulfill given requirements\n* announce which requests are supported (indirectly or through a FUTURE\n  informational endpoint)\n\nIn case of a missing `requestProfileId` parameter a generic request w/o imposed\nlimits on request parameters is assumed with decision about support left to the\nimplementations. ",
     "name": "Request Profiles"
 }
