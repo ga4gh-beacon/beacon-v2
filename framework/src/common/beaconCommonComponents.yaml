@@ -9,8 +9,6 @@ type: object
 $defs:
   $schema:
     type: string
-    $comment: 'TO REVIEW: adding a `format` or `regex` attribute that validates correctly
-      against a file path (relative).'
     description: >-
       The $schema keyword is used to declare which dialect of JSON Schema (e.g.
       `https://json-schema.org/draft/2020-12/schema`) the version of the Beacon
