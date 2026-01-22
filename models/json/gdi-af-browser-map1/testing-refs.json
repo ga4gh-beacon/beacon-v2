@@ -1,0 +1,110 @@
+{
+  "openapi": "3.1.1",
+  "servers": [],
+  "info": {
+    "version": "0.1.0",
+    "title": "GA4GH Beacon API Specification for GDI MAP Stage 1 Allele Frequency Browser",
+    "description": "This is a streamlined subset of GA4GH Beacon API Specification v.2.0.0 to support for GDI MAP Stage 1 Allele Frequency Browser",
+    "contact": {
+      "email": "beacon@ga4gh.org"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags": [
+    {
+      "name": "Beacon Metadata endpoints",
+      "description": "Endpoints to get information about the Beacon instance."
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "Get information about the beacon. Synonym of /info endpoint. This information is used to populate UIs where description of the beacon, its hosting organitzation, contacts, etc. are required.",
+        "operationId": "getBeaconRoot",
+        "tags": [
+          "Beacon Metadata endpoints"
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/infoOKResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/errorResponse"
+          }
+        } 
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "errorResponse": {
+        "description": "Any unsuccessful operation result",
+        "content": {
+          "application/json": {
+            "schema":{
+              "additionalProperties": true,
+              "description": "A `beaconErrorResponse` denotes an unsuccessful operation, e.g. due to a missing parameter or an invalid query. The response contains an error object.",
+              "properties": {
+                "error": {
+                  "description": "Beacon-specific error.",
+                  "properties": {
+                    "errorCode": {
+                        "description": "Entry not found",
+                        "examples": [
+                            "404"
+                        ],
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "errorMessage": {
+                        "examples": [
+                            "The provided parameters are incomplete: `start` is missing."
+                        ],
+                        "type": "string"
+                    }
+                  },                
+                  "required": [
+                      "errorCode"
+                  ],
+                  "type": "object"                
+                 }
+              },
+              "required": [
+                "error"
+              ],
+              "type": "object"
+            }
+          }
+        }
+      },
+      "infoOKResponse": {
+        "description": "Any unsuccessful operation result",
+        "content": {
+          "application/json": {
+            "schema":{
+              "additionalProperties": true,
+              "description": "A `beaconErrorResponse` denotes an unsuccessful operation, e.g. due to a missing parameter or an invalid query. The response contains an error object.",
+              "properties": {
+                  "beaconId": {
+                    "description": "The Id of a Beacon. Usually a reversed domain string, but any URI is acceptable. The purpose of this attribute is, in the context of a Beacon network, to disambiguate responses coming from different Beacons.",
+                    "examples": [
+                        "org.example.beacon.v2",
+                        "org.progenetix.beacon"
+                    ],
+                    "type": "string"
+                  }
+                },
+              "required": [
+                  "beaconId"
+              ],
+              "type": "object"                
+            }
+          }
+        }
+      }
+    }
+  }
+}

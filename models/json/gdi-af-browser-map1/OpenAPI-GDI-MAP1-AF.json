@@ -37,24 +37,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful metadata operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/infoOKResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/infoOKResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorInformationalResponse"
           }
         }
       }
@@ -68,24 +54,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful metadata operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/infoOKResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/infoOKResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorInformationalResponse"
           }
         }
       }
@@ -99,24 +71,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful metadata operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/serviceinfoResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/serviceinfoResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorInformationalResponse"
           }
         }
       }
@@ -130,24 +88,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful configuration metadata request operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/configurationResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/configurationResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorInformationalResponse"
           }
         }
       }
@@ -162,24 +106,10 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": "Successful map metadata request operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/mapResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/mapResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       }
@@ -198,24 +128,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful filtering terms metadata request operation",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/filteringTermsResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/filteringTermsResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorInformationalResponse"
           }
         }
       }
@@ -236,24 +152,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful collection list operation.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/CollectionsResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/CollectionsResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       },
@@ -275,24 +177,10 @@
         },
         "responses": {
           "200": {
-            "description": "Successful collection list operation.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/CollectionsResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/CollectionsResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       }
@@ -311,24 +199,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful operation.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/ResultsOKResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultsOKResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       },
@@ -350,24 +224,10 @@
         },
         "responses": {
           "200": {
-            "description": "Successful operation.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/ResultsOKResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultsOKResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       }
@@ -390,24 +250,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful operation.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/ResultsOKResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultsOKResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       },
@@ -429,24 +275,10 @@
         },
         "responses": {
           "200": {
-            "description": "Successful operation.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/ResultsOKResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultsOKResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorResponse"
           }
         },
         "parameters": [
@@ -493,24 +325,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful operation.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/ResultsOKResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultsOKResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       },
@@ -532,24 +350,10 @@
         },
         "responses": {
           "200": {
-            "description": "Successful operation.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/ResultsOKResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultsOKResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       }
@@ -567,24 +371,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful operation.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/ResultsOKResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultsOKResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       },
@@ -606,24 +396,10 @@
         },
         "responses": {
           "200": {
-            "description": "Successful operation.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/ResultsOKResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ResultsOKResponse"
           },
           "default": {
-            "description": "Any unsuccessful operation result",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/responses/errorResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/errorResponse"
           }
         }
       }
@@ -766,6 +542,30 @@
                   "$ref": "#/components/schemas/beaconResponseMeta"
                 }
                 },
+              "required": [
+                "meta",
+                "error"
+              ],
+              "type": "object"
+            }
+          }
+        }
+      },
+      "errorInformationalResponse": {
+        "description": "Any unsuccessful operation result",
+        "content": {
+          "application/json": {
+            "schema":{
+              "additionalProperties": true,
+              "description": "A `beaconErrorResponse` denotes an unsuccessful operation, e.g. due to a missing parameter or an invalid query. The response contains an error object.",
+              "properties": {
+                "error": {
+                  "$ref": "#/components/schemas/BeaconError"
+                },
+                "meta": {
+                  "$ref":"#/components/schemas/beaconinformationalResponseMeta"
+                }
+              },
               "required": [
                 "meta",
                 "error"
