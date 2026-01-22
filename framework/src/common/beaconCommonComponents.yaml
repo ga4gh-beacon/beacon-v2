@@ -12,9 +12,7 @@ $defs:
     $comment: 'TO REVIEW: adding a `format` or `regex` attribute that validates correctly
       against a file path (relative).'
     description: >-
-      Refers to the JSON Schema which describes the set of valid attributes
-      for this particular document type. This attribute is mostly used in schemas
-      that should be tested in Beacon implementations.
+      Version of an API, depending on the context, e.g. in request or response, this property refers to the version of Beacon API implemented or the version of the code. Check the description where this property is used to understand if the expected content is the former or the later. Beacon uses a Github-style, \"v\"-prefixed semantic versioning format, but this is not mandatory when the property refers to a code version
   ApiVersion:
     description: >-
       Version of API, e.g. in request or response. Beacon uses a Github-style,
