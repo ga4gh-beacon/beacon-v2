@@ -1,0 +1,2466 @@
+{
+  "openapi": "3.1.1",
+  "servers": [],
+  "info": {
+    "version": "0.1.0",
+    "title": "GA4GH Beacon API Specification for GDI MAP Stage 1 Allele Frequency Browser",
+    "description": "This is a streamlined subset of GA4GH Beacon API Specification v.2.0.0 to support for GDI MAP Stage 1 Allele Frequency Browser",
+    "contact": {
+      "email": "beacon@ga4gh.org"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags": [
+    {
+      "name": "Beacon Metadata endpoints",
+      "description": "Endpoints to get information about the Beacon instance."
+    },
+    {
+      "name": "Datasets endpoints",
+      "description": "Endpoints to get information about datasets."
+    },
+    {
+      "name": "Genomic Variations endpoints",
+      "description": "Endpoints to get details about genomic variations, including allele frequencies."
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "Get information about the beacon. Synonym of /info endpoint. This information is used to populate UIs where description of the beacon, its hosting organitzation, contacts, etc. are required.",
+        "operationId": "getBeaconRoot",
+        "tags": [
+          "Beacon Metadata endpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful metadata operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/infoOKResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/info": {
+      "get": {
+        "description": "Get information about the beacon. Synonym of root endpoint. This information is used to populate UIs where description of the beacon, its hosting organitzation, contacts, etc. are required.",
+        "operationId": "getBeaconinfoRoot",
+        "tags": [
+          "Beacon Metadata endpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful metadata operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/infoOKResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/service-info": {
+      "get": {
+        "description": "Get information about the beacon using GA4GH Serviceinfo format. This endpoint is mandatory for GA4GH compliant service instances.",
+        "operationId": "getBeaconServiceinfo",
+        "tags": [
+          "Beacon Metadata endpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful metadata operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/serviceinfoResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/configuration": {
+      "get": {
+        "description": "Gets information about the beacon configuration, including supported entry types, default security and granularity settings and beacon maturity level.",
+        "operationId": "getBeaconConfiguration",
+        "tags": [
+          "Beacon Metadata endpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful configuration metadata request operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/configurationResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/map": {
+      "get": {
+        "description": "Returns the endpoints supported by this Beacon instance, so the client can determine if a given information is available.",
+        "operationId": "getBeaconMap",
+        "tags": [
+          "Beacon Metadata endpoints"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful map metadata request operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/mapResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/filtering_terms": {
+      "parameters": [
+        {"$ref": "#/components/parameters/skip"},
+        {"$ref": "#/components/parameters/limit"},
+        {"$ref": "#/components/parameters/pageToken"}
+      ],
+      "get": {
+        "description": "Get the list of filtering terms handled by this beacon. NOTE - For GDI MAP Stage 1 AF Browser, this list is expected to be empty.",
+        "operationId": "getFilteringTerms",
+        "tags": [
+          "Beacon Metadata endpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful filtering terms metadata request operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/filteringTermsResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/datasets": {
+      "parameters": [
+        {"$ref": "#/components/parameters/skip"},
+        {"$ref": "#/components/parameters/limit"},
+        {"$ref": "#/components/parameters/pageToken"},
+        {"$ref": "#/components/parameters/filters"},
+        {"$ref": "#/components/parameters/testMode"}
+      ],
+      "get": {
+        "description": "Get a list of datasets",
+        "operationId": "getDatasets",
+        "tags": [
+          "Datasets endpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful collection list operation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/CollectionsResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Get a Beacon *datasets* response",
+        "operationId": "postDatasetsRequest",
+        "tags": [
+          "Datasets endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/beaconRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful collection list operation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/CollectionsResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/datasets/{id}": {
+      "parameters": [
+        {"$ref": "#/components/parameters/entryId"},
+        {"$ref": "#/components/parameters/requestedSchema"},
+        {"$ref": "#/components/parameters/testMode"}
+      ],
+      "get": {
+        "description": "Get details about one dataset, identified by its (unique) 'id'",
+        "operationId": "getOneDataset",
+        "tags": [
+          "Datasets endpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/ResultsOKResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Get details about one dataset, identified by its (unique) 'id'",
+        "operationId": "postOneDataset",
+        "tags": [
+          "Datasets endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/beaconRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/ResultsOKResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/datasets/{id}/g_variants": {
+      "parameters": [        
+        {"$ref": "#/components/parameters/entryId"},
+        {"$ref": "#/components/parameters/testMode"},
+        {"$ref": "#/components/parameters/requestedGranularity"},
+        {"$ref": "#/components/parameters/pageToken"},
+        {"$ref": "#/components/parameters/requestedSchema"},
+        {"$ref": "#/components/parameters/skip"},
+        {"$ref": "#/components/parameters/limit"}
+      ],
+      "get": {
+        "description": "Get a *genomic variations* response for one dataset, identified by its (unique) 'id'",
+        "operationId": "getOneDatasetEntries",
+        "tags": [
+          "Datasets endpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/ResultsOKResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Get a *genomic variations* response for one dataset, identified by its (unique) 'id'",
+        "operationId": "postOneDatasetEntries",
+        "tags": [
+          "Datasets endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/beaconRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/ResultsOKResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/g_variants": {
+      "parameters": [        
+        {"$ref": "#/components/parameters/filters"},
+        {"$ref": "#/components/parameters/testMode"},
+        {"$ref": "#/components/parameters/requestedGranularity"},
+        {"$ref": "#/components/parameters/pageToken"},
+        {"$ref": "#/components/parameters/requestedSchema"},
+        {"$ref": "#/components/parameters/skip"},
+        {"$ref": "#/components/parameters/limit"},
+        {"$ref": "#/components/parameters/includeResultsetResponses"}
+      ],
+      "get": {
+        "parameters": [
+          {"$ref": "#/components/parameters/start"},
+          {"$ref": "#/components/parameters/end"},
+          {"$ref": "#/components/parameters/assemblyId"},
+          {"$ref": "#/components/parameters/referenceName"},
+          {"$ref": "#/components/parameters/referenceBases"},
+          {"$ref": "#/components/parameters/alternateBases"},
+          {"$ref": "#/components/parameters/variantMinLength"},
+          {"$ref": "#/components/parameters/variantMaxLength"},
+          {"$ref": "#/components/parameters/genomicAlleleShortForm"},
+          {"$ref": "#/components/parameters/geneId"},
+          {"$ref": "#/components/parameters/aminoacidChange"}
+        ],
+        "description": "Get a Beacon response for genomic variations",
+        "operationId": "getGenomicVariations",
+        "tags": [
+          "Genomic Variations endpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/ResultsOKResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Get a Beacon response for genomic variations",
+        "operationId": "postGenomicVariationsRequest",
+        "tags": [
+          "Genomic Variations endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/beaconRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/ResultsOKResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/g_variants/{id}": {
+      "parameters": [
+        {"$ref": "#/components/parameters/entryId"},
+        {"$ref": "#/components/parameters/testMode"}
+      ],
+      "get": {
+        "description": "Get details about one genomic variation, identified by its (unique) 'id'",
+        "operationId": "getOneGenomicVariation",
+        "tags": [
+          "Genomic Variations endpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/ResultsOKResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Get details about one genomic variation, identified by its (unique) 'id'",
+        "operationId": "postOneGenomicVariation",
+        "tags": [
+          "Genomic Variations endpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/beaconRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/ResultsOKResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Any unsuccessful operation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/errorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "infoOKResponse": {
+        "description": "The `beaconInfoResponse` provides metadata describing a Beacon instance, such as its name, the organization responsible for the Beacon, contact information, site logo and alternative URLs and importantly the beacon's API version. It is based on the GA4GH `service-info` standard.\nThe content of the `beaconInfoResponse` can be used by clients such as web front ends or beacon aggregators to evaluate potential access patterns and to display information about the beacon.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "additionalProperties": true,
+              "properties": {
+                  "meta": {
+                      "$ref": "#/components/schemas/beaconinformationalResponseMeta",
+                      "description": "information about the response that could be relevant for the Beacon client in order to interpret the results."
+                  },
+                  "response": {
+                      "$ref": "#/components/schemas/beaconinfoResults",
+                      "description": "Metadata describing a Beacon instance."
+                  }
+              },
+              "required": [
+                  "meta",
+                  "response"
+              ],
+              "type": "object"        
+            }
+          }
+        }
+      },
+      "serviceinfoResponse": {
+        "description": "Successful metadata operation",
+        "content": {
+          "application/json": {
+            "schema":{
+              "properties": {
+                "contactUrl": {
+                  "description": "URL of the contact for the provider of this service, e.g. a link to a contact form (RFC 3986 format), or an email (RFC 2368 format).",
+                  "example": "mailto:support@example.com",
+                  "format": "uri",
+                  "type": "string"
+                },
+                "createdAt": {
+                  "description": "Timestamp describing when the service was first deployed and available (RFC 3339 format)",
+                  "example": "2019-06-04T12:58:19Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "Description of the service. Should be human readable and provide information about the service.",
+                  "example": "This service provides...",
+                  "type": "string"
+                },
+                "documentationUrl": {
+                  "description": "URL of the documentation of this service (RFC 3986 format). This should help someone learn how to use your service, including any specifics required to access data, e.g. authentication.",
+                  "example": "https://docs.myservice.example.com",
+                  "format": "uri",
+                  "type": "string"
+                },
+                "environment": {
+                  "description": "Environment the service is running in. Use this to distinguish between production, development and testing/staging deployments. Suggested values are prod, test, dev, staging. However this is advised and not enforced.",
+                  "example": "test",
+                  "type": "string"
+                },
+                "id": {
+                  "description": "Unique ID of this service. Reverse domain name notation is recommended, though not required. The identifier should attempt to be globally unique so it can be used in downstream aggregator services e.g. Service Registry.",
+                  "example": "org.ga4gh.myservice",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "Name of this service. Should be human readable.",
+                  "example": "My project",
+                  "type": "string"
+                },
+                "organization": {
+                  "description": "Organization providing the service",
+                  "properties": {
+                    "name": {
+                      "description": "Name of the organization responsible for the service",
+                      "example": "My organization",
+                      "type": "string"
+                    },
+                    "url": {
+                      "description": "URL of the website of the organization (RFC 3986 format)",
+                      "example": "https://example.com",
+                      "format": "uri",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "url"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "$ref": "#/components/schemas/ServiceType"
+                },
+                "updatedAt": {
+                  "description": "Timestamp describing when the service was last updated (RFC 3339 format)",
+                  "example": "2019-06-04T12:58:19Z",
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "version": {
+                  "description": "Version of the service being described. Semantic versioning is recommended, but other identifiers, such as dates or commit hashes, are also allowed. The version should be changed whenever the service is updated.",
+                  "example": "1.0.0",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "type",
+                "organization",
+                "version"
+              ],
+              "title": "GA4GH service-info API specification",
+              "type": "object",
+              "description": "Response of a request for information about a Beacon"
+          
+            }
+          }
+        }
+      },
+      "errorResponse": {
+        "description": "Any unsuccessful operation result",
+        "content": {
+          "application/json": {
+            "schema":{
+              "additionalProperties": true,
+              "description": "A `beaconErrorResponse` denotes an unsuccessful operation, e.g. due to a missing parameter or an invalid query. The response contains an error object.",
+              "properties": {
+                "error": {
+                  "$ref": "#/components/schemas/BeaconError"
+                },
+                "meta": {
+                  "$ref": "#/components/schemas/beaconResponseMeta"
+                }
+                },
+              "required": [
+                "meta",
+                "error"
+              ],
+              "type": "object"
+            }
+          }
+        }
+      },
+      "configurationResponse": {
+        "description": "Successful configuration metadata request operation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "additionalProperties": true,
+              "properties": {
+                "meta": {
+                  "$ref": "#/components/schemas/beaconinformationalResponseMeta",
+                  "description": "information about the response that could be relevant for the Beacon client in order to interpret the results."
+                },
+                "response": {
+                  "$ref": "#/components/schemas/beaconConfigurationSchema",
+                  "description": "The configuration of this Beacon instance, including the entry types implemented, the filtering terms available, the supported schemas, etc."
+                }
+              },
+              "required": [
+                "meta",
+                "response"
+              ],
+              "type": "object",
+              "description": "Response of a request for the Beacon instance configuration"
+            }
+          }
+        }
+      },
+      "mapResponse": {
+        "description": "Successful map metadata request operation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "description": "A beaconMapResponse provides information about the beacon instance such as the different endpoints supported by this implementation of the Beacon API. This response is aimed to allow Beacon clients such as web front ends and Beacon network aggregators to evaluate which access patterns can be implemented against individual beacons.",
+              "additionalProperties": true,
+              "properties": {
+                "meta": {
+                  "$ref": "#/components/schemas/beaconinformationalResponseMeta",
+                  "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
+                },
+                "response": {
+                  "description": "Returning the Beacon Map.",
+                  "$ref": "#/components/schemas/beaconMapSchema"
+                }
+              },
+              "required": [
+                "meta",
+                "response"
+              ],
+              "type": "object"
+            }
+          }
+        }
+      },
+      "filteringTermsResponse": {
+        "description": "Successful filtering terms metadata request operation",
+        "content": {
+          "application/json": {
+            "schema": {
+              "additionalProperties": true,
+              "properties": {
+                "meta": {
+                  "$ref": "#/components/schemas/beaconinformationalResponseMeta"
+                },
+                "response": {
+                  "additionalProperties": true,
+                  "description": "Filtering terms and ontology resources utilised in this Beacon.",
+                  "properties": {
+                    "filteringTerms": {
+                      "items": {
+                        "$ref": "#/components/schemas/FilteringTermInResponse"
+                      },
+                      "type": "array"
+                     },
+                    "resources": {
+                      "items": {
+                        "$ref": "#/components/schemas/Resource"
+                      },
+                      "type": "array",
+                      "description": "List of ontology resources referenced by the filtering terms provided in this response."
+                     }
+                  },
+                  "type": "object"
+                }
+              },
+              "required": [
+                "meta",
+                "response"
+              ],
+              "type": "object",
+              "description": "Response of a request for the Beacon instance supported filtering terms"
+            }
+          }
+        }
+      },
+      "CollectionsResponse": {
+        "description": "Successful collection list operation.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "additionalProperties": true,
+              "description": "A type of Beacon response that includes details about the **collections** in a beacon. The types of collections are defined in each beacon's configuration; if using the Beacon v2+ default model usually the types `dataset` and `cohort` are supported.",
+              "properties": {
+                  "beaconHandovers": {
+                      "$ref": "#/components/schemas/ListOfHandovers",
+                      "description": "List of handovers that apply to the whole response, not to any resultset or result in particular."
+                  },
+                  "info": {
+                      "$ref": "#/components/schemas/info",
+                      "description": "Additional details that could be of interest. Provided to clearly enclose any attribute that is not part of the Beacon specification."
+                  },
+                  "meta": {
+                      "$ref": "#/components/schemas/beaconResponseMeta",
+                      "description": "information about the response that could be relevant for the Beacon client in order to interpret the results."
+                  },
+                  "response": {
+                      "additionalProperties": true,
+                      "description": "Returning the Beacon Collections list, filtered or unfiltered.",
+                      "properties": {
+                          "collections": {
+                              "items": {
+                                  "type": "object"
+                              },
+                              "minItems": 0,
+                              "type": "array"
+                          }
+                      },
+                      "required": [
+                          "collections"
+                      ],
+                      "type": "object"
+                  },
+                  "responseSummary": {
+                      "$ref": "#/components/schemas/beaconSummaryResponseSection",
+                      "description": "Response summary, including Boolean and optionally results count."
+                  }
+              },
+              "required": [
+                  "meta",
+                  "responseSummary",
+                  "response"
+              ],
+              "type": "object"
+            }
+          }
+        }
+      },
+      "ResultsOKResponse": {
+        "description": "Successful operation.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {"$ref": "#/components/schemas/beaconBooleanResponse"},
+                {"$ref": "#/components/schemas/beaconCountResponse"},
+                {"$ref": "#/components/schemas/beaconResultsetsResponse"}
+              ]
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "requestedSchema": {
+        "name": "requestedSchema",
+        "description": "Schema to be used to format the `result` field in the response. The response will use Beacon format.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        },
+        "example": "ga4gh-service-info-v1.0"
+      },
+      "skip": {
+        "name": "skip",
+        "in": "query",
+        "schema": {
+          "default": 0,
+          "description": "* In the request: number of pages to skip * In the response: number of pages that has been skipped",
+          "example": 0,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "limit": {
+        "name": "limit",
+        "in": "query",
+        "schema": {
+          "default": 10,
+          "description": "Size of the page. Use `0` to return all the results or the maximum allowed by the Beacon, if there is any.",
+          "example": 10,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "pageToken": {
+        "name": "pageToken",
+        "in": "query",
+        "schema": {
+          "description": "A hash or similar that allows the server to retrieve a \"page\", e.g. (a subset of) a query response.",
+          "example": "ab0sc&fe1dd",
+          "type": "string"
+        }
+      },
+      "entryId": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "requestedGranularity": {
+        "name": "requestedGranularity",
+        "description": "Level of granularity of the `result` field in the response.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "default": "boolean",
+          "description": "Level of detail of the response:\n* `boolean`: returns true/false' responses * `count`: adds the total number of positive results found * `record`: returns details for every row. In cases where a Beacon prefers to return records with fewer than allattributes, different strategies have to be considered w/o adding them to the current design, e.g.:\n    - keeping non-mandatory attributes empty\n    - Beacon to provide a minimal record definition",
+          "enum": [
+            "boolean",
+            "count",
+            "record"
+          ],
+          "type": "string"
+        },
+        "example": "boolean"
+      },
+      "filters": {
+        "name": "filters",
+        "in": "query",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "examples": {
+          "example1": {
+            "value": [
+              "DUO:0000007"
+            ]
+          }
+        }
+      },
+      "includeResultsetResponses": {
+        "name": "includeResultsetResponses",
+        "in": "query",
+        "schema": {
+          "default": "HIT",
+          "description": "Indicator of whether responses from every Resultset should be included in the response to this request or just the ones with positive, negative results or no details at all. If null (not specified), the default value of 'HIT' is assumed. This parameter allows for returning boolean/counting results although the Beacon instance is capable to return record level details.",
+          "enum": [
+            "ALL",
+            "HIT",
+            "MISS",
+            "NONE"
+          ],
+          "examples": [
+            "ALL",
+            "HIT",
+            "MISS",
+            "NONE"
+          ],
+          "type": "string"
+        }
+      },
+      "testMode": {
+        "name": "testMode",
+        "in": "query",
+        "schema": {
+          "default": false,
+          "description": "Used for indicating that a request or response is done in a test context e.g. for compliance testing i.e. to evaluate the acceptance/understanding of a request and the structure of the returned response by the Beacon instance. A TRUE `testMode` parameter DOES NOT require that the Beacon instance is a test instance, but that this specific request-response cycle is a testing one. When `true` the Beacon instance MUST respond the request but it SHOULD use virtual or non-sensitive data. Here, what is being evaluated is the acceptance/understanding of a request and the structure of the returned response by the Beacon instance.",
+          "type": "boolean"
+        }
+      },
+      "start": {
+        "name": "start",
+        "in": "query",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "minItems": 1,
+          "maxItems": 2
+        }
+      },
+      "end": {
+        "name": "end",
+        "in": "query",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "minItems": 0,
+          "maxItems": 2
+        }
+      },
+      "assemblyId": {
+        "name": "assemblyId",
+        "in": "query",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "referenceName": {
+        "name": "referenceName",
+        "in": "query",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "referenceBases": {
+        "name": "referenceBases",
+        "in": "query",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "alternateBases": {
+        "name": "alternateBases",
+        "in": "query",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "variantMinLength": {
+        "name": "variantMinLength",
+        "in": "query",
+        "schema": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0
+        }
+      },
+      "variantMaxLength": {
+        "name": "variantMaxLength",
+        "in": "query",
+        "schema": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0
+        }
+      },
+      "genomicAlleleShortForm": {
+        "name": "allele",
+        "in": "query",
+        "schema": {
+          "type": "string"
+        },
+        "example": "NM_004006.2:c.4375C>T"
+      },
+      "geneId": {
+        "name": "geneid",
+        "in": "query",
+        "schema": {
+          "type": "string"
+        },
+        "example": "BRAF"
+      },
+      "aminoacidChange": {
+        "name": "aminoacidChange",
+        "in": "query",
+        "schema": {
+          "type": "string"
+        },
+        "example": "V600E"
+      }
+    },
+    "schemas": {
+      "AlphanumericFilter": {
+          "description": "Filter results based on operators and values applied to alphanumeric\nfields.",
+          "properties": {
+              "id": {
+                  "description": "Field identfier to be queried.",
+                  "example": "ageOfOnset",
+                  "type": "string"
+              },
+              "operator": {
+                  "default": "=",
+                  "description": "Defines how the value relates to the field `id`.",
+                  "enum": [
+                      "=",
+                      "<",
+                      ">",
+                      "!",
+                      ">=",
+                      "<="
+                  ],
+                  "example": ">",
+                  "type": "string"
+              },
+              "scope": {
+                  "description": "The entry type in the model to which the filter should be applied. It\nis good practice to use unanimous `id` values (e.g. `ageAtDiagnosis`\ninstead of `age`) and avoid the use of the `scope` parameter.",
+                  "examples": [
+                      "individuals"
+                  ],
+                  "type": "string"
+              },
+              "value": {
+                  "description": "Alphanumeric search term to be used within the query which can contain wildcard characters (%) to denote any number of unknown characters.  Values can be assocatied with units if applicable.",
+                  "example": "P70Y",
+                  "type": "string"
+              }
+          },
+          "required": [
+              "id",
+              "operator",
+              "value"
+          ],
+          "type": "object"
+      },
+      "ApiVersion": {
+        "description": "Version of an API, depending on the context, e.g. in request or response, this property refers to the version of Beacon API implemented or the version of the code. Check the description where this property is used to understand if the expected content is the former or the later. Beacon uses a Github-style, \"v\"-prefixed semantic versioning format, but this is not mandatory when the property refers to a code version",
+        "examples": [
+            "v2.0.1",
+            "v0.3"
+        ],
+        "type": "string"
+      },
+      "basicElement":{
+        "additionalProperties": true,
+        "description": "Definition of the basic element, which is root for most other objects.",
+        "properties": {
+            "id": {
+                "description": "A (unique) identifier of the element.",
+                "type": "string"
+            },
+            "name": {
+                "description": "A distinctive name for the element.",
+                "type": "string"
+            }
+        },
+        "required": [
+            "id",
+            "name"
+        ],
+        "title": "Basic Element",
+        "type": "object"
+      },
+      "beaconBooleanResponse":{
+        "description": "Complete definition for a minimal response that provides *only* an aggregate Boolean `\"exists\": true` or `\"exists\": false` answer to the query.  \nAdditional information - which should not consist of record-level information - can be provided through `beaconHandovers`.  ",
+        "properties": {
+            "beaconHandovers": {
+                "$ref": "#/components/schemas/ListOfHandovers",
+                "description": "List of handovers that apply to the whole response, not to any resultset or result in particular."
+            },
+            "info": {
+                "$ref": "#/components/schemas/info",
+                "description": "Additional details that could be of interest. Provided to clearly enclose any attribute that is not part of the Beacon specification."
+            },
+            "meta": {
+                "$ref": "#/components/schemas/beaconResponseMeta",
+                "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
+            },
+            "responseSummary": {
+                "$ref": "#/components/schemas/beaconBooleanResponseSection",
+                "description": "Boolean (true/false) response section."
+            }
+        },
+        "required": [
+            "meta",
+            "responseSummary"
+        ],
+        "type": "object"        
+      },
+      "beaconBooleanResponseSection":{
+        "description": "Boolean (true/false) response section.",
+        "properties": {
+            "exists": {
+                "$ref": "#/components/schemas/Exists"
+            }
+        },
+        "required": [
+            "exists"
+        ],
+        "type": "object"        
+      },
+      "beaconConfigurationSchema":{
+        "additionalProperties": true,
+        "description": "The Beacon configuration reports several attributes of the beacon instance related to security, maturity and available entry types.",
+        "properties": {
+            "entryTypes": {
+                "$ref": "#/components/schemas/EntryTypes"
+            },
+            "maturityAttributes": {
+                "description": "Declares the level of maturity of the Beacon instance.",
+                "properties": {
+                    "productionStatus": {
+                        "description": "* `DEV`: Service potentially unstable, _i.e._ potentially not real data,\n  inconsistent availability; data should not be used in production setups   \n* `TEST`: Service is stable but data should be considered synthetic   * `PROD`: Service stable with real world data  ",
+                        "enum": [
+                            "DEV",
+                            "TEST",
+                            "PROD"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "securityAttributes": {
+                "description": "Configuration of the security aspects of the Beacon. By default, a Beacon that does not declare the configuration settings would return `boolean` (true/false) responses, and only if the user is authenticated and explicitly authorized to access the Beacon resources. Although this is the safest set of settings, it is not recommended unless the Beacon shares very sensitive information. Non sensitive Beacons should preferably opt for a `record` and `PUBLIC` combination.",
+                "properties": {
+                    "defaultGranularity": {
+                        "$ref": "#/components/schemas/Granularity",
+                        "description": "Default granularity. Some responses could return higher detail, but this would be the granularity by default."
+                    },
+                    "securityLevels": {
+                        "default": [
+                            "CONTROLLED"
+                        ],
+                        "description": "All access levels supported by the Beacon. Any combination is valid, as every option would apply to different parts of the Beacon.",
+                        "items": {
+                            "enum": [
+                                "PUBLIC",
+                                "REGISTERED",
+                                "CONTROLLED"
+                            ]
+                        },
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "required": [
+            "$schema",
+            "maturityAttributes",
+            "entryTypes"
+        ],
+        "title": "Beacon Configuration",
+        "type": "object"       
+      },
+      "beaconCountResponse":{
+        "description": "Complete definition for a minimal response that provides an aggregate Boolean `\"exists\": true` or `\"exists\": false` answer to the query as well as the count of the matched records.\nAdditional information - which should not consist of record-level information - can be provided through `beaconHandovers`.  ",
+        "properties": {
+            "beaconHandovers": {
+                "$ref": "#/components/schemas/ListOfHandovers",
+                "description": "List of handovers that apply to the whole response, not to any resultset or result in particular."
+            },
+            "info": {
+                "$ref": "#/components/schemas/info",
+                "description": "Additional details that could be of interest. Provided to clearly enclose any attribute that is not part of the Beacon specification."
+            },
+            "meta": {
+                "$ref": "#/components/schemas/beaconResponseMeta",
+                "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
+            },
+            "responseSummary": {
+                "$ref": "#/components/schemas/beaconBooleanResponseSection",
+                "description": "Boolean (true/false) response section."
+            }
+        },
+        "required": [
+            "meta",
+            "responseSummary"
+        ],
+        "type": "object"        
+      },
+      "beaconCountResponseSection":{
+        "description": "Response summary, including Boolean and optionally results count.",
+        "properties": {
+            "countAdjustedTo": {
+                "$ref": "#/components/schemas/CountAdjustedTo"
+            },
+            "countPrecision": {
+                "$ref": "#/components/schemas/CountPrecision"
+            },
+            "exists": {
+                "$ref": "#/components/schemas/Exists"
+            },
+            "numTotalResults": {
+                "$ref": "#/components/schemas/NumTotalResults"
+            }
+        },
+        "required": [
+            "exists"
+        ],
+        "type": "object"        
+      },
+      "BeaconError":{
+        "description": "Beacon-specific error.",
+        "properties": {
+            "errorCode": {
+                "description": "Entry not found",
+                "examples": [
+                    "404"
+                ],
+                "format": "int32",
+                "type": "integer"
+            },
+            "errorMessage": {
+                "examples": [
+                    "The provided parameters are incomplete: `start` is missing."
+                ],
+                "type": "string"
+            }
+        },
+        "required": [
+            "errorCode"
+        ],
+        "type": "object"
+      },
+      "BeaconId": {
+        "description": "The Id of a Beacon. Usually a reversed domain string, but any URI is acceptable. The purpose of this attribute is, in the context of a Beacon network, to disambiguate responses coming from different Beacons.",
+        "examples": [
+            "org.example.beacon.v2",
+            "org.progenetix.beacon"
+        ],
+        "type": "string"
+      },
+      "beaconinfoResults":{
+        "additionalProperties": true,
+        "description": "Metadata describing a Beacon instance.",
+        "properties": {
+            "alternativeUrl": {
+                "description": "Alternative URL to the API, e.g. a restricted version of this Beacon (RFC 3986 format).",
+                "examples": [
+                    "https://example.org/beacon/authenticated"
+                ],
+                "type": "string"
+            },
+            "apiVersion": {
+                "$ref": "#/components/schemas/ApiVersion",
+                "description": "Version of the server API. This is NOT the Beacon API version, but the version of the code deployed in this Beacon instance."
+            },
+            "createDateTime": {
+                "description": "The date/time the Beacon was created (ISO 8601 format) in Coordinated Universal Time (UTC).",
+                "examples": [
+                    "2014-07-19",
+                    "2017-01-17 20:33:40+00:00Z"
+                ],
+                "type": "string"
+            },
+            "description": {
+                "description": "Description of the Beacon.",
+                "type": "string"
+            },
+            "environment": {
+                "description": "Environment the service is running in. Use this to distinguish between production, development and testing/staging deployments.",
+                "enum": [
+                    "prod",
+                    "test",
+                    "dev",
+                    "staging"
+                ],
+                "examples": [
+                    "dev"
+                ],
+                "type": "string"
+            },
+            "id": {
+                "$ref": "#/components/schemas/BeaconId"
+            },
+            "info": {
+                "$ref": "#/components/schemas/info",
+                "description": "Additional unspecified metadata about the Beacon service."
+            },
+            "name": {
+                "description": "Name of the Beacon.",
+                "type": "string"
+            },
+            "organization": {
+                "$ref": "#/components/schemas/BeaconOrganization"
+            },
+            "updateDateTime": {
+                "description": "The time the Beacon was updated in (ISO 8601 format) in Coordinated Universal Time (UTC).",
+                "examples": [
+                    "2014-07-19",
+                    "2017-01-17 20:33:40+00:00Z"
+                ],
+                "type": "string"
+            },
+            "version": {
+                "$ref": "#/components/schemas/ApiVersion",
+                "description": "This is the version of the code deployed in this Beacon instance, NOT the Beacon API version supported."
+            },
+            "welcomeUrl": {
+                "description": "URL to the welcome page for this Beacon (RFC 3986 format).",
+                "example": "https://example.org/wiki/Main_Page",
+                "type": "string"
+            }
+        },
+        "required": [
+            "id",
+            "name",
+            "apiVersion",
+            "environment",
+            "organization"
+        ],
+        "type": "object"
+      },
+      "beaconinformationalResponseMeta":{
+        "additionalProperties": true,
+        "description": "Meta information about the response.",
+        "properties": {
+            "apiVersion": {
+                "$ref": "#/components/schemas/ApiVersion",
+                "description": "Beacon API version schema in which the response is returned by the server. It could match or note the version requested by the client."
+            },
+            "beaconId": {
+                "$ref": "#/components/schemas/BeaconId"
+            },
+            "returnedSchemas": {
+                "$ref": "#/components/schemas/ListOfSchemas"
+            }
+        },
+        "required": [
+            "beaconId",
+            "apiVersion",
+            "returnedSchemas"
+        ],
+        "type": "object"
+      },
+      "beaconMapSchema":{
+        "description": "Beacon Map schema definition.",
+        "properties": {
+          "endpointSets": {
+              "additionalProperties": {
+                  "$ref": "#/components/schemas/Endpoint"
+              },
+              "description": "List of enpoints included in this Beacon instance. This list is meant to inform Beacon clients, e.g. a Beacon Network, about the available endpoints, it is not used to generate any automatic list, but could be used for Beacon validation purposes.",
+              "minProperties": 1,
+              "type": "object"
+          }
+        },
+        "required": [
+            "endpointSets"
+        ],
+        "title": "Beacon Map",
+        "type": "object"        
+      },
+      "BeaconOrganization": {
+        "description": "Organization owning the Beacon.",
+        "properties": {
+            "address": {
+                "description": "Address of the organization.",
+                "type": "string"
+            },
+            "contactUrl": {
+                "description": "URL with the contact for the Beacon operator/maintainer, e.g. link to a contact form (RFC 3986 format) or an email (RFC 2368 format).",
+                "type": "string"
+            },
+            "description": {
+                "description": "Description of the organization.",
+                "type": "string"
+            },
+            "id": {
+                "description": "Unique identifier of the organization.",
+                "type": "string"
+            },
+            "info": {
+                "$ref": "#/components/schemas/info",
+                "description": "Additional unspecified metadata about the host Organization."
+            },
+            "logoUrl": {
+                "description": "URL to the logo (PNG/JPG/SVG format) of the organization (RFC 3986 format).",
+                "type": "string"
+            },
+            "name": {
+                "description": "Name of the organization.",
+                "type": "string"
+            },
+            "welcomeUrl": {
+                "description": "URL of the website of the organization (RFC 3986 format).",
+                "type": "string"
+            }
+        },
+        "required": [
+            "id",
+            "name"
+        ],
+        "type": "object"
+      },
+      "BeaconQuery": {
+        "description": "Parameters to limit the list of returned results.",
+        "properties": {
+          "filters": {
+            "$ref": "#/components/schemas/filteringTerms"
+          },
+          "includeResultsetResponses": {
+            "$ref": "#/components/schemas/IncludeResultsetResponses"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination",
+            "description": "Pagination parameters applied to response documents, in case of record level granularity."
+          },
+          "requestParameters": {
+            "$ref": "#/components/schemas/requestParameters",
+            "description": "Parameters used for the entry type specific query elements."
+          },
+          "requestedGranularity": {
+            "$ref": "#/components/schemas/Granularity",
+            "description": "Requested granularity for the response. Beacons do not have to respond with the requested granularity, e.g. may respond with count results although record level granularity had been requested but indicate the granularity of the response in the response's metadata."
+          },
+          "testMode": {
+            "$ref": "#/components/schemas/TestMode",
+            "description": "Used for indicating that a request or response is done in a test context."
+          }
+        },
+        "type": "object"
+      },
+      "beaconRequestBody": {
+        "description": "Schema for the Beacon request. It is named `RequestBody` to keep the same nomenclature used by OpenAPI v3, but it actually contains the definition of the whole HTTP POST request payload.",
+        "properties": {
+          "meta": {
+            "$ref": "#/components/schemas/beaconRequestMeta",
+            "description": "Information relevant for building the response."
+          },
+          "query": {
+            "$ref": "#/components/schemas/BeaconQuery"
+          }
+        },
+        "required": [
+          "meta"
+        ],
+        "type": "object"     
+      },
+      "beaconRequestMeta":{
+        "description": "Meta section of the Beacon request. It includes request context details relevant for the Beacon server when processing the request.",
+        "properties": {
+          "apiVersion": {
+              "$ref": "#/components/schemas/ApiVersion",
+              "description": "API version expected by the client to be supported by the server and used in the response format."
+          },
+          "requestedSchemas": {
+              "$ref": "#/components/schemas/ListOfSchemas",
+              "description": "Set of schemas to be used in the response."
+          }
+        },
+        "required": [
+            "apiVersion"
+        ],
+        "type": "object"
+      },
+      "beaconResponseMeta":{
+        "description": "information about the response that could be relevant for the Beacon client in order to interpret the results.",
+        "properties": {
+          "apiVersion": {
+            "$ref": "#/components/schemas/ApiVersion"
+          },
+          "beaconId": {
+              "$ref": "#/components/schemas/BeaconId"
+          },
+          "receivedRequestSummary": {
+              "$ref": "#/components/schemas/receivedRequestSummary"
+          },
+          "returnedGranularity": {
+              "$ref": "#/components/schemas/Granularity",
+              "description": "Granularity of the Beacon response which may differ from the requested one. For details see the prototype definition."
+          },
+          "returnedSchemas": {
+              "$ref": "#/components/schemas/ListOfSchemas",
+              "description": "The `returnedSchemas` parameter indicates that the request has been interpreted for the indicated entity. This helps to disambiguate between negative responses due to e.g. no hit on a well understood request and failures to interpret or answer the request due to a missing entity. "
+          },
+          "testMode": {
+              "$ref": "#/components/schemas/TestMode"
+          }
+        },
+        "required": [
+            "beaconId",
+            "apiVersion",
+            "returnedSchemas",
+            "returnedGranularity",
+            "receivedRequestSummary"
+        ],
+        "type": "object"        
+      },
+      "beaconResultsets":{
+        "additionalProperties": true,
+        "description": "Sets of results to be returned as query response.",
+        "properties": {
+            "resultSets": {
+                "items": {
+                    "$ref": "#/components/schemas/ResultsetInstance"
+                },
+                "minItems": 0,
+                "type": "array"
+            }
+        },
+        "required": [
+            "resultSets"
+        ],
+        "title": "Beacon ResultSet",
+        "type": "object"        
+      },
+      "beaconResultsetsResponse":{
+        "additionalProperties": true,
+        "description": "A `beaconResultsetsResponse` returns the results of a query against a beacon or beacon aggregator. Beyond the `responseSummary` for overall matches the response contains details about the matches in individual **collections** in the beacon or beacon network. This type of response is required when serving a request with a \"record\" level `responseGranularity`, and `beaconResultsets` typically contain a list of records matched by the query.\nThe types of `beaconResultsets` objects are defined in the beacon's configuration; e.g. if using the Beacon v2+ default model the types `dataset` and `cohort` are supported as result sets.    ",
+        "properties": {
+          "beaconHandovers": {
+            "$ref": "#/components/schemas/ListOfHandovers",
+            "description": "List of handovers that apply to the whole response, not to any resultset or result in particular."
+          },
+          "info": {
+            "$ref": "#/components/schemas/info",
+            "description": "Additional details that could be of interest. Provided to clearly enclose any attribute that is not part of the Beacon specification."
+          },
+          "meta": {
+            "$ref": "#/components/schemas/beaconResponseMeta",
+            "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
+          },
+          "response": {
+            "$ref": "#/components/schemas/beaconResultsets",
+            "description": "Response for queries that recovers any result."
+          },
+          "responseSummary": {
+            "$ref": "#/components/schemas/beaconSummaryResponseSection",
+            "description": "Response summary, including Boolean and optionally results count."
+          }
+        },
+        "required": [
+          "meta",
+          "responseSummary",
+          "response"
+        ],
+        "type": "object"        
+      },
+      "beaconSummaryResponseSection":{
+        "description": "Beacon results summary section.",
+        "properties": {
+            "exists": {
+                "$ref": "#/components/schemas/Exists"
+            },
+            "numTotalResults": {
+                "$ref": "#/components/schemas/NumTotalResults"
+            }
+        },
+        "required": [
+        "exists"
+        ],
+        "type": "object"
+      },
+      "CountAdjustedTo": {
+          "description": "For counts with intentional (e.g. due to privacy concerns) or technical derived imprecision this parameter offers an option to declare the range or limits for the true results. \nIf present, CountPrecision states the type of adjustment.",
+          "examples": [
+              [
+                  "1",
+                  "5"
+              ],
+              [
+                  "<5"
+              ]
+          ],
+          "items": {
+              "minimum": 1,
+              "type": [
+                  "integer",
+                  "string"
+              ]
+          },
+          "maxItems": 2,
+          "minItems": 1,
+          "type": "array"
+      },
+      "CountPrecision": {
+          "description": "For counts with intentional (e.g. due to privacy concerns) or technical derived imprecision this parameter offers an option to declare the number's precision. \n If present, CountAdjustedTo provides more details. The 3 possible options are: \n* exact >- A value that is precise. \n* imprecise >-A value that is not guaranteed to be precise.\n* rounded >- A value that has been (floor or ceiling) rounded to a given value.",
+          "default": "imprecise",
+          "enum": [
+              "exact",
+              "imprecise",
+              "rounded"
+          ],
+          "type": "string"
+      },
+      "CURIE": {
+        "description": "Definition of an identifier in the CURIE `prefix:local-part` format which is the default type of e.g. ontology term `id` values (used e.g. for filters or external identifiers).",
+        "examples": [
+            "ga4gh:GA.01234abcde",
+            "DUO:0000004",
+            "orcid:0000-0003-3463-0775",
+            "PMID:15254584"
+        ],
+        "pattern": "^\\w[^:]+:.+$",
+        "type": "string"
+      },
+      "CustomFilter": {
+          "description": "Filter results to include records that contain a custom term defined by this Beacon.",
+          "properties": {
+              "id": {
+                  "description": "Custom filter terms should contain a unique identifier.",
+                  "example": "demographic.ethnicity:asian",
+                  "type": "string"
+              },
+              "scope": {
+                  "description": "The entry type in the model to which the filter should be applied.",
+                  "examples": [
+                      "individuals"
+                  ],
+                  "type": "string"
+              }
+          },
+          "required": [
+              "id"
+          ],
+          "type": "object"
+      },
+      "elementWithDescription": {
+        "allOf": [
+          {
+              "$ref": "#/components/schemas/basicElement"
+          },
+          {
+              "properties": {
+                  "description": {
+                      "description": "A textual description for the element.",
+                      "type": "string"
+                  }
+              },
+              "type": "object"
+          }
+        ],
+        "description": "Definition of the basic element extended with a description.",
+        "title": "Basic Element including a description",
+        "type": "object"
+      },
+      "Endpoint":{
+        "properties": {
+          "endpoints": {
+            "additionalProperties": {
+              "properties": {
+                "returnedEntryType": {
+                  "description": "Which entry type is returned by querying this endpoint. It MUST match one of the entry types defined in the Beacon configuration file (`beaconConfiguration.json`).",
+                  "type": "string"
+                },
+                "url": {
+                  "description": "Endpoint URL",
+                  "format": "uri-template",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "url",
+                "returnedEntryType"
+              ],
+              "type": "object"
+            },
+            "description": "Optional. A list describing additional endpoints implemented by this Beacon instance for that entry type. Additional details on the endpoint parameters, supported HTTP verbs, etc. could be obtained by parsing the OpenAPI definition referenced in the `openAPIEndpointsDefinition` attribute.",
+            "minProperties": 0,
+            "type": "object"
+          },
+          "entryType": {
+            "description": "",
+            "type": "string"
+          },
+          "openAPIEndpointsDefinition": {
+            "description": "Reference to the file that includes the OpenAPI definition of the endpoints implemented in this Beacon instance. The referenced file MUST BE a valid OpenAPI definition file, as it is expected that the Beacon clients (e.g. a Beacon Network) should be able to parse it to discover additional details on the supported verbs, parameters, etc.",
+            "type": "string"
+          },
+          "rootUrl": {
+            "description": "The base url for this entry type. Returns a list of entries. It is added here for convenience of the Beacon clients, so they don't need to parse the OpenAPI endpoints definition to get that base endpoint. Also, in very simple Beacons, that endpoint could be the only one implemented, together with ´singleEntryUrl`, in which case the whole map of endpoints is found in the current Map.",
+            "format": "uri",
+            "type": "string"
+          },
+          "singleEntryUrl": {
+            "description": "Optional, but recommended. Returns only one instance of this entry, identified by an `id`. It is added here for convenience of the Beacon clients, so they don't need to parse the OpenAPI endpoints definition to get that base endpoint. Also, in very simple Beacons, that endpoint could be the only one implemented, together with ´rootUrl`, in which case the whole map of endpoints is found in the current Map.",
+            "format": "uri-template",
+            "type": "string"
+          }
+        },
+        "required": [
+          "entryType",
+          "rootUrl"
+        ],
+        "type": "object"        
+      },
+      "entryTypeDefinition": {
+        "additionalProperties": true,
+        "description": "Definition of an element or scope of the element, to describe each type of entry type included in a beacon. The `id` attribute is the key that should be used in other parts of the data model to allow Beacon clients to identify the different parts (e.g. endpoints, filtering terms, request parameters, etc.) that are relevant for an entry type.",
+        "properties": {
+          "aCollectionOf": {
+              "description": "If the entry type is a collection of other entry types, (e.g. a Dataset is a collection of Records), then this attribute must list the entry types that could be included. One collection type could be defined as included more than one entry type (e.g. a Dataset could include Individuals or Genomic Variants), in such cases the entries are alternative, meaning that a given instance of this entry type could be of only one of the types (e.g. a given Dataset contains Individuals, while another Dataset could contain Genomic Variants, but not both at once).",
+              "items": {
+                  "$ref": "#/components/schemas/basicElement"
+              },
+              "type": "array"
+          },
+          "additionallySupportedSchemas": {
+            "description": "List of additional schemas that could be used for this concept in this instance of Beacon.",
+            "items": {
+              "$ref": "#/components/schemas/referenceToAnSchema"
+            },
+            "type": "array"
+          },
+          "defaultSchema": {
+              "$ref": "#/components/schemas/referenceToAnSchema",
+              "description": "Description of the default schema used for this concept."
+          },
+          "description": {
+              "description": "A textual description for the element.",
+              "type": "string"
+          },
+          "id": {
+              "description": "A unique identifier of the entry type.",
+              "examples": [
+                  "biosample",
+                  "individual",
+                  "dataset"
+              ],
+              "type": "string"
+          },
+          "name": {
+              "description": "A distinctive name for the entry type.",
+              "type": "string"
+          },
+          "nonFilteredQueriesAllowed": {
+              "$ref": "#/components/schemas/NonFilteredQueriesAllowed"
+          },
+          "ontologyTermForThisType": {
+            "$ref": "#/components/schemas/ontologyTerm",
+            "description": "This property should help clients to understand what concept the entry type represents, independently if the entry type name is more or less descriptive. It could also help to map entry types across different Beacons that use different names for the same concept and for semantic web applications."
+          },
+          "partOfSpecification": {
+            "description": "This is a label to group together entry types that are part of the same Beacon Model specification.",
+            "example": "Beacon v2.0 default model",
+            "type": "string"
+          }
+        },
+        "required": [
+            "id",
+            "name",
+            "partOfSpecification",
+            "defaultSchema"
+        ],
+        "title": "",
+        "type": "object"
+      },  
+      "EntryTypes": {
+          "additionalProperties": {
+            "$ref": "#/components/schemas/entryTypeDefinition"
+          },
+          "description": "This is a dictionary of the entry types implemented in this Beacon instance.",
+          "minProperties": 1,
+          "type": "object"
+      },
+      "Exists": {
+        "description": "Indicator of whether any record was observed in any of the collections queried. This should be non-null.",
+        "examples": [
+            true
+        ],
+        "type": "boolean"
+      },
+      "filteringTerms": {
+        "additionalProperties": true,
+        "description": "Filtering terms are the main means to select subsets of records from a Beacon response. While the name implies the application to a generated response, in practice implementations may apply them at the query stage. Note: In the processing of Beacon v2.0 requests multiple filters are assumed to be chained by the logical AND operator.",
+        "items": {
+            "$ref": "#/components/schemas/FilteringTermInRequest"
+        },
+        "title": "Filtering Term Element",
+        "type": "array"
+      },
+      "FilteringTermInRequest": {
+        "anyOf": [
+          {
+              "$ref": "#/components/schemas/OntologyFilter"
+          },
+          {
+              "$ref": "#/components/schemas/AlphanumericFilter"
+          },
+          {
+              "$ref": "#/components/schemas/CustomFilter"
+          }
+        ]
+      },
+      "FilteringTermInResponse": {
+        "description": "Entities can be filtered using this term.",
+        "properties": {
+          "id": {
+            "description": "The field id in the case of numeric or alphanumeric fields, or the term id in the case of ontology or custom terms. CURIE syntax in the case of an ontology term.",
+            "examples": [
+              "NCIT:C8936",
+              "HP:0008773"
+            ],
+            "type": "string"
+          },
+          "label": {
+            "description": "This would be the \"preferred Label\" in the case of an ontology term.",
+            "examples": [
+              "B Lymphoblastic Leukemia/Lymphoma",
+              "Aplasia/Hypoplasia of the middle ear"
+            ],
+            "type": "string"
+          },
+          "scopes": {
+            "description": "Entry types affected by this filter.",
+            "examples": [
+              [
+                "individual",
+                "biosample",
+                "analysis",
+                "run",
+                "genomicVariation"
+              ],
+              [
+                "biosample"
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "type": {
+            "description": "Either \"custom\", \"alphanumeric\" or ontology/terminology full name. TODO: An ontology ... with a registered prefix does not need a full name so one may better use CURIE to indicate that the resource can be retrieved from the id. This also will allow to provide an enum here.",
+            "examples": [
+              "Human Phenotype Ontology",
+              "alphanumeric"
+            ],
+            "type": "string"
+          },
+          "values": {
+            "description": "Optional list of possible values for alphanumeric filters",
+            "examples": [
+              [
+                "benign",
+                "likely benign",
+                "pathogenic"
+              ],
+              [
+                "pathogenic"
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          }
+        },
+        "required": [
+          "type",
+          "id"
+        ],
+        "type": "object"
+      },
+      "Filters": {
+        "description": "Ontology based filters. A CURIE syntax is encouraged to be used.",
+        "example": [
+            "BTO:0000199",
+            "PATO:0000383"
+        ],
+        "items": {
+            "type": "string"
+        },
+        "type": "array"
+      },
+      "Granularity": {
+        "default": "boolean",
+        "description": "Level of detail of the response:\n* `boolean`: returns true/false' responses * `count`: adds the total number of positive results found * `record`: returns details for every row. In cases where a Beacon prefers to return records with fewer than all attributes, different strategies have to be considered w/o adding them to the current design, e.g.:\n    - keeping non-mandatory attributes empty\n    - Beacon to provide a minimal record definition",
+        "enum": [
+            "boolean",
+            "count",
+            "record"
+        ],
+        "type": "string"
+      },
+      "Handover": {
+        "description": "A handover is a typed link for attaching actionable links to results, non purely informational, requests. The goal of the handovers is to list the different actions available, e.g.:\n* a link to a request access page * linking to a file for download, e.g. a VCF file\nAnother common scenario is to provide a fast summary response (e.g. BeconCountResponse) and to provide access to different endpoints for the entities matched by the query using temporary access tokens in the handover URLs.",
+        "properties": {
+            "handoverType": {
+              "$ref": "#/components/schemas/HandoverType"
+            },
+            "note": {
+                "description": "An optional text including considerations on the handover link provided.",
+                "example": "This handover link provides access to a summarized VCF.",
+                "type": "string"
+            },
+            "url": {
+                "description": "URL endpoint to where the handover process could progress, in RFC3986 format",
+                "example": "https://api.mygenomeservice.org/Handover/9dcc48d7-fc88-11e8-9110-b0c592dbf8c0/",
+                "format": "uri",
+                "type": "string"
+            }
+        },
+        "required": [
+            "handoverType",
+            "url"
+        ],
+        "type": "object"
+      },
+      "HandoverType": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ontologyTerm"
+          }
+        ],
+        "description": "Handover type, as an Ontology_term object with CURIE syntax for the `id` value. Use \"CUSTOM:123455\" CURIE-style `id` when no ontology is available.",
+        "examples": [
+            {
+                "id": "EDAM:2572",
+                "label": "BAM"
+            },
+            {
+                "id": "EDAM:3016",
+                "label": "VCF"
+            },
+            {
+                "id": "CUSTOM:pgxseg",
+                "label": "genomic variants in .pgxseg file format"
+            }
+        ]    
+      },
+      "IncludeResultsetResponses": {
+          "default": "HIT",
+          "description": "Indicator of whether responses from every Resultset should be included in the response to this request or just the ones with positive, negative results or no details at all. If null (not specified), the default value of 'HIT' is assumed. This parameter allows for returning boolean/counting results although the Beacon instance is capable to return record level details.",
+          "enum": [
+              "ALL",
+              "HIT",
+              "MISS",
+              "NONE"
+          ],
+          "examples": [
+              "ALL",
+              "HIT",
+              "MISS",
+              "NONE"
+          ],
+          "type": "string"
+      },
+      "info": {
+        "description": "Placeholder to allow the Beacon to return any additional information that is necessary or could be of interest in relation to the query or the entry returned. It is recommended to encapsulate additional informations in this attribute instead of directly adding attributes at the same level than the others in order to avoid collision in the names of attributes in future versions of the specification.",
+        "title": "Info",
+        "type": "object"
+      },
+      "Limit": {
+          "default": 10,
+          "description": "Size of the page. Use `0` to return all the results or the maximum allowed by the Beacon, if there is any.",
+          "example": 10,
+          "minimum": 0,
+          "type": "integer"
+      },
+      "ListOfHandovers": {
+        "description": "Set of handovers to be added in one section the response.",
+        "items": {
+            "$ref": "#/components/schemas/Handover",
+            "description": "Requested schema to be used for individuals in the response."
+        },
+        "type": "array"
+      },
+      "ListOfSchemas": {
+          "description": "Set of schemas to be used in the response to a request. As the Beacon specification allows multiple schemas per entry type, this list could include more than one schema per entry type. This list is used both in the request (to indicate which schemas are requested by the client) and in the response (to indicate which schemas have been used by the server to generate the response). The schemas apply to the body of the response. The schema of the whole response document should follow the corresponding Beacon specification version.",
+          "items": {
+              "$ref": "#/components/schemas/SchemasPerEntity"
+          },
+          "type": "array",
+          "minItems": 0
+      },
+      "NonFilteredQueriesAllowed": {
+        "default": true,
+        "description": "Switch that declares if this Beacon instance, for a given entry type, admits queries that does not include any element that restrict returning all the results, like filters, parameters, ids, etc. The default value is 'true' for backward compatibility and for clarity in the request-response dialog.",
+        "type": "boolean"
+      },
+      "NumTotalResults": {
+        "description": "Total number of results. NOT the number of results returned in this batch (after pagination) but the total obtained by the query.",
+        "examples": [
+            123
+        ],
+        "minimum": 0,
+        "type": "integer"
+      },
+      "OntologyFilter": {
+        "description": "Filter results to include records that contain a specific ontology term.",
+        "properties": {
+            "id": {
+                "description": "Term ID to be queried, using CURIE syntax where possible.",
+                "example": "HP:0002664",
+                "type": "string"
+            },
+            "includeDescendantTerms": {
+                "default": true,
+                "description": "Define if the Beacon should implement the ontology hierarchy, thus query the descendant terms of `id`.",
+                "type": "boolean"
+            },
+            "scope": {
+                "description": "The entry type in the model to which the filter should be applied. For\nexample, the use of `NCIT:C4013` (Malignant Head and Neck Neoplasm) can\nw/o specified scope mean both \"match cancer samples\" or \"match individuals\"\nwith the disease\" which - in the case of individuals - could then lead\nto matching germline and cancer variants while a scope of `biosamples`\nwould limit the response to variants observed in the cancer tissue.\nNote: It is good practice to avoid ambiguous terms, _i.e._ use different\nvocabularies for different entry types.",
+                "examples": [
+                    "biosamples"
+                ],
+                "type": "string"
+            },
+            "similarity": {
+                "default": "exact",
+                "description": "Allow the Beacon to return results which do not match the filter exactly, but do match to a certain degree of similarity. The Beacon defines the semantic similarity model implemented and how to apply the thresholds of 'high', 'medium' and 'low' similarity.",
+                "enum": [
+                    "exact",
+                    "high",
+                    "medium",
+                    "low"
+                ],
+                "type": "string"
+            }
+        },
+        "required": [
+            "id"
+        ],
+        "type": "object"
+      },
+      "ontologyTerm": {
+        "additionalProperties": true,
+        "description": "Definition of an ontology term.",
+        "properties": {
+          "id": {
+              "$ref": "#/components/schemas/CURIE"
+          },
+          "label": {
+              "description": "The text that describes the term. By default it could be the preferred text of the term in the source ontology, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context.",
+              "type": "string"
+          }
+        },
+        "required": [
+            "id"
+        ],
+        "title": "Ontology Term",
+        "type": "object"
+      },
+      "PageToken": {
+          "description": "A hash or similar that allows the server to retrieve a \"page\", e.g. (a subset of) a query response.",
+          "example": "ab0sc&fe1dd",
+          "type": "string"
+      },
+      "Pagination": {
+          "description": "Pagination to apply or that has been applied on the results.",
+          "properties": {
+            "currentPage": {
+                "$ref": "#/components/schemas/PageToken",
+                "description": "Token of the returned page. To be used only in the response to allow the client to check if the returned page is the one requested."
+            },
+            "limit": {
+                "$ref": "#/components/schemas/Limit"
+            },
+            "nextPage": {
+                "$ref": "#/components/schemas/PageToken",
+                "description": "Token of the next page. Used to navigate forward. If empty, it is assumed that no more pages are available"
+            },
+            "previousPage": {
+                "$ref": "#/components/schemas/PageToken",
+                "description": "Token of the previous page. Used to navigate backwards. If empty, it is assumed that the current page is the first one."
+            },
+            "skip": {
+                "$ref": "#/components/schemas/Skip"
+            }
+          },
+          "type": "object"
+      },
+      "receivedRequestSummary":{
+        "description": "Section of the response that summarize the request received as it has been interpreted by the Beacon server. This summary can help to identify differences between the incoming request and its interpretation or processing, e.g. in the response granularity or pagination. The required properties include those that should be part of every request.",
+        "properties": {
+            "apiVersion": {
+                "$ref": "#/components/schemas/ApiVersion",
+                "description": "Version of the Beacon API version expected by the client to be supported by the server and used in the response format."
+            },
+            "filters": {
+                "$ref": "#/components/schemas/Filters",
+                "description": "Filters as submitted in the request."
+            },
+            "includeResultsetResponses": {
+                "$ref": "#/components/schemas/IncludeResultsetResponses"
+            },
+            "pagination": {
+                "$ref": "#/components/schemas/Pagination",
+                "description": "Pagination as requested for the results."
+            },
+            "requestParameters": {
+                "$ref": "#/components/schemas/requestParameters",
+                "description": "Dictionary of request parameters received in the `RequestBody` or as part of a GET request."
+            },
+            "requestedGranularity": {
+                "$ref": "#/components/schemas/Granularity",
+                "description": "Requested granularity for the response which may differe from the response's actual granularity."
+            },
+            "requestedSchemas": {
+                "$ref": "#/components/schemas/ListOfSchemas",
+                "description": "Set of schemas to be used in the response to a request. `minItems: 0` is used to confirm that an empty array is acceptable here."
+            },
+            "testMode": {
+                "$ref": "#/components/schemas/TestMode",
+                "description": "Used for indicating that a request was received in a test context."
+            }
+        },
+        "required": [
+            "apiVersion",
+            "requestedSchemas",
+            "pagination",
+            "requestedGranularity"
+        ],
+        "type": "object"  
+      },
+      "referenceToAnSchema": {
+        "additionalProperties": true,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/elementWithDescription"
+          },
+          {
+            "properties": {
+              "referenceToSchemaDefinition": {
+                "$comment": "this should map to a resolvable reference",
+                "type": "string"
+              },
+              "schemaVersion": {
+                "description": "this version reference is only used for readability in the client. The 'referenceToSchemaDefinition' property is the only source for determining the actual schema used.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "referenceToSchemaDefinition"
+            ],
+            "type": "object"
+          }
+        ],
+        "description": "Definition of an annotated URL address or a file reference.",
+        "title": "An annotated URL address or a file reference",
+        "type": "object"
+      },
+      "requestParameters": {
+        "description": "Dictionary of request parameters received in the `RequestBody` or as part of a GET request.",
+        "additionalProperties": {
+          "type": "object"
+        },
+        "properties": {
+          "$schema": {
+            "description": "Added here to allow proper validation of the documents w/o providing specific values.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "Resource": {
+        "description": "Description of an ontology resource defined externally to this beacon implementation, such as MeSH or EFO, based on the phenopackets resource object (https://phenopacket-schema.readthedocs.io/en/latest/resource.html)",
+        "properties": {
+          "id": {
+            "description": "Preferably OBO ID representing the resource; alternatively a URI pointing towards the definitions may be used if not in OBO.",
+            "examples": [
+              "hp"
+            ],
+            "type": "string"
+          },
+          "iriPrefix": {
+            "description": "The full Internationalized Resource Identifier (IRI) prefix",
+            "examples": [
+              "https://purl.obolibrary.org/obo/HP_"
+            ],
+            "type": "string"
+          },
+          "name": {
+            "description": "The name of the ontology referred to by the id element",
+            "examples": [
+              "Human Phenotype Ontology"
+            ],
+            "type": "string"
+          },
+          "nameSpacePrefix": {
+            "description": "The prefix used in the CURIE of an OntologyClass",
+            "examples": [
+              "HP"
+            ],
+            "type": "string"
+          },
+          "url": {
+            "description": "Uniform Resource Locator of the resource",
+            "examples": [
+              "https://purl.obolibrary.org/obo/hp.owl"
+            ],
+            "type": "string"
+          },
+          "version": {
+            "description": "The version of the resource or ontology used to make the annotation",
+            "examples": [
+              "17-06-2019"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "type": "object"
+      },
+      "ResultsetInstance": {
+        "properties": {
+          "countAdjustedTo": {
+              "$ref": "#/components/schemas/CountAdjustedTo"
+          },
+          "countPrecision": {
+              "$ref": "#/components/schemas/CountPrecision"
+          },
+          "exists": {
+              "type": "boolean"
+          },
+          "id": {
+              "description": "id of the resultset",
+              "example": "datasetA",
+              "type": "string"
+          },
+          "info": {
+              "$ref": "#/components/schemas/info"
+          },
+          "results": {
+              "items": {
+                  "type": "object"
+              },
+              "minItems": 0,
+              "type": "array"
+          },
+          "resultsCount": {
+              "description": "Precise or approximate number of results in this Resultset.",
+              "type": "integer"
+          },
+          "resultsHandovers": {
+              "$ref": "#/components/schemas/ListOfHandovers",
+              "description": "List of handover objects that apply to this resultset, not to the whole Beacon or to a result in particular."
+          },
+          "setType": {
+              "default": "dataset",
+              "description": "Entry type of resultSet. It SHOULD MATCH an entry type declared as collection in the Beacon configuration.",
+              "type": "string"
+          }
+        },
+        "required": [
+            "id",
+            "setType",
+            "exists"
+        ],
+        "type": "object"
+      },
+      "SchemasPerEntity": {
+          "description": "Schema to be used for the requested entry type in the response.",
+          "properties": {
+              "entityType": {
+                  "$comment": "TO REVIEW: Should that refer to a concept definition? Or would that include an undesired dependency to the configuration?",
+                  "example": "Individual",
+                  "type": "string"
+              },
+              "schema": {
+                  "$comment": "TO DO: Add the correct format as 'uri' or 'regex'",
+                  "examples": [
+                      "./ga4gh-beacon-dataset-v2.0.0",
+                      "https://www.example.org/schemas/ga4gh-beacon-dataset-v2.0.0.json"
+                  ],
+                  "type": "string"
+              }
+          },
+          "type": "object"
+      },
+      "ServiceType": {
+        "description": "Type of a GA4GH service",
+        "properties": {
+          "artifact": {
+            "description": "Name of the API or GA4GH specification implemented. Official GA4GH types should be assigned as part of standards approval process. Custom artifacts are supported.",
+            "example": "beacon",
+            "type": "string"
+          },
+          "group": {
+            "description": "Namespace in reverse domain name format. Use `org.ga4gh` for implementations compliant with official GA4GH specifications. For services with custom APIs not standardized by GA4GH, or implementations diverging from official GA4GH specifications, use a different namespace (e.g. your organization's reverse domain name).",
+            "example": "org.ga4gh",
+            "type": "string"
+          },
+          "version": {
+            "description": "Version of the API or specification. GA4GH specifications use semantic versioning.",
+            "example": "1.0.0",
+            "type": "string"
+          }
+        },
+        "required": [
+          "group",
+          "artifact",
+          "version"
+        ],
+        "type": "object"
+      },
+      "Skip": {
+          "default": 0,
+          "description": "* In the request: number of pages to skip * In the response: number of pages that has been skipped",
+          "example": 0,
+          "minimum": 0,
+          "type": "integer"
+      },
+      "TestMode": {
+          "default": false,
+          "description": "Used for indicating that a request or response is done in a test context e.g. for compliance testing i.e. to evaluate the acceptance/understanding of a request and the structure of the returned response by the Beacon instance. A TRUE `testMode` parameter DOES NOT require that the Beacon instance is a test instance, but that this specific request-response cycle is a testing one. When `true` the Beacon instance MUST respond the request but it SHOULD use virtual or non-sensitive data. Here, what is being evaluated is the acceptance/understanding of a request and the structure of the returned response by the Beacon instance.",
+          "type": "boolean"
+      }
+    }
+  }
+}
