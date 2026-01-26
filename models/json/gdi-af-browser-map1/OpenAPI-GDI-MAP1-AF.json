@@ -750,36 +750,27 @@
         "name": "skip",
         "in": "query",
         "schema": {
-          "default": 0,
-          "description": "* In the request: number of pages to skip * In the response: number of pages that has been skipped",
-          "example": 0,
-          "minimum": 0,
-          "type": "integer"
+          "$ref": "#/components/schemas/Skip"
         }
       },
       "limit": {
         "name": "limit",
         "in": "query",
         "schema": {
-          "default": 10,
-          "description": "Size of the page. Use `0` to return all the results or the maximum allowed by the Beacon, if there is any.",
-          "example": 10,
-          "minimum": 0,
-          "type": "integer"
+          "$ref": "#/components/schemas/Limit"
         }
       },
       "pageToken": {
         "name": "pageToken",
         "in": "query",
         "schema": {
-          "description": "A hash or similar that allows the server to retrieve a \"page\", e.g. (a subset of) a query response.",
-          "example": "ab0sc&fe1dd",
-          "type": "string"
+          "$ref": "#/components/schemas/PageToken"
         }
       },
       "entryId": {
         "name": "id",
         "in": "path",
+        "description": "The Id of a the entry to retrieve.",
         "required": true,
         "schema": {
           "type": "string"
@@ -787,18 +778,10 @@
       },
       "requestedGranularity": {
         "name": "requestedGranularity",
-        "description": "Level of granularity of the `result` field in the response.",
         "in": "query",
         "required": false,
         "schema": {
-          "default": "boolean",
-          "description": "Level of detail of the response:\n* `boolean`: returns true/false' responses * `count`: adds the total number of positive results found * `record`: returns details for every row. In cases where a Beacon prefers to return records with fewer than allattributes, different strategies have to be considered w/o adding them to the current design, e.g.:\n    - keeping non-mandatory attributes empty\n    - Beacon to provide a minimal record definition",
-          "enum": [
-            "boolean",
-            "count",
-            "record"
-          ],
-          "type": "string"
+          "$ref": "#/components/schemas/Granularity"
         },
         "example": "boolean"
       },
@@ -823,35 +806,20 @@
         "name": "includeResultsetResponses",
         "in": "query",
         "schema": {
-          "default": "HIT",
-          "description": "Indicator of whether responses from every Resultset should be included in the response to this request or just the ones with positive, negative results or no details at all. If null (not specified), the default value of 'HIT' is assumed. This parameter allows for returning boolean/counting results although the Beacon instance is capable to return record level details.",
-          "enum": [
-            "ALL",
-            "HIT",
-            "MISS",
-            "NONE"
-          ],
-          "examples": [
-            "ALL",
-            "HIT",
-            "MISS",
-            "NONE"
-          ],
-          "type": "string"
+          "$ref": "#/components/schemas/IncludeResultsetResponses"
         }
       },
       "testMode": {
         "name": "testMode",
         "in": "query",
         "schema": {
-          "default": false,
-          "description": "Used for indicating that a request or response is done in a test context e.g. for compliance testing i.e. to evaluate the acceptance/understanding of a request and the structure of the returned response by the Beacon instance. A TRUE `testMode` parameter DOES NOT require that the Beacon instance is a test instance, but that this specific request-response cycle is a testing one. When `true` the Beacon instance MUST respond the request but it SHOULD use virtual or non-sensitive data. Here, what is being evaluated is the acceptance/understanding of a request and the structure of the returned response by the Beacon instance.",
-          "type": "boolean"
+          "$ref": "#/components/schemas/TestMode"
         }
       },
       "start": {
         "name": "start",
         "in": "query",
+        "description": "Precise or fuzzy start coordinate position(s), allele locus (0-based, inclusive). * `start` only:\n  - for single positions, e.g. the start of a specified sequence\n    alteration where the size is given through the specified `alternateBases`\n  - typical use are queries for SNV and small InDels\n  - the use of `start` without an `end` parameter requires the use of\n    `alternateBases`\n* 1 value in both `start` and `end`:\n  - for searching any variant falling fully or partially within the range\n    between `start` and `end` (a.k.a. \"range query\")\n  - additional use of `variantType` OR `alternateBases` can limit the\n    scope of the query\n  - by convention, partial overlaps of variants with the indicated genomic\n    range are accepted; for specific overlap requirements the 4-parameter\n    \"Bracket Queries\" should be employed\n* 2 values in both `start` and `end` for constructing a \"Bracket Query\":\n  - can be used to match any contiguous genomic interval, e.g. for querying\n    imprecise positions\n  - identifies all structural variants starting between `start[0]` and `start[1]`,\n    and ending between `end[0]` <-> `end[1]`\n  - single or double sided precise matches can be achieved by setting\n    `start[1]=start[0]+1` and `end[1]=end[0]+1`",
         "schema": {
           "type": "array",
           "items": {
@@ -866,6 +834,7 @@
       "end": {
         "name": "end",
         "in": "query",
+        "description": "Precise or bracketing the end of the variants of interest: * (0-based, exclusive) - see `start` * for bracket queries, provide 2 values (e.g. [111,222]).\"",
         "schema": {
           "type": "array",
           "items": {
@@ -873,7 +842,7 @@
             "format": "int64",
             "minimum": 0
           },
-          "minItems": 0,
+          "minItems": 1,
           "maxItems": 2
         }
       },
@@ -882,11 +851,13 @@
         "in": "query",
         "schema": {
           "type": "string"
-        }
+        },
+        "description": "Genomic assembly accession and version as RefSqeq assembly accession (e.g. \"GCF_000001405.39\") or a versioned assembly name or synonym such as UCSC Genome Browser assembly (e.g. \"hg38\") or Genome Reference Consortium Human (e.g. \"GRCh38.p13\") names."
       },
       "referenceName": {
         "name": "referenceName",
         "in": "query",
+        "description": "Reference sequence id for genomic reference sequence in which variant coordinates are given, e.g. \"refseq:NC_000009.12\" for human chromosome 9 in the GRCh38 assembly. The use of the assembly specific RefSeqId is recommended although alternatively names, synonymous or aliases e.g. \"chr9\" could be used in conjunction with an `Assembly` parameter.",
         "schema": {
           "type": "string"
         }
@@ -894,6 +865,7 @@
       "referenceBases": {
         "name": "referenceBases",
         "in": "query",
+        "description": "Reference bases for this variant (starting from `start`). * Accepted values: `[ACGTN]*` * N is a wildcard, that denotes the position of any base,\n  and can be used as a standalone base of any type or within a partially known\n  sequence. As example, a query of `ANNT` the Ns can take take any form of [ACGT]\n  and will match `ANNT`, `ACNT`, `ACCT`, `ACGT` ... and so forth.\n* an *empty value* is used in the case of insertions with the maximally trimmed, inserted\n  sequence being indicated in `AlternateBases`",
         "schema": {
           "type": "string"
         }
@@ -902,12 +874,15 @@
         "name": "alternateBases",
         "in": "query",
         "schema": {
+          "pattern": "^([ACGTUNRYSWKMBDHV\\-\\.]*)$",
           "type": "string"
-        }
+        },
+        "description": "Alternate bases for this variant (starting from `start`). * Accepted values: `[ACGTN]*` * The current specification supports allelic variants, **not** genotype queries\n  (i.e. multiple co-occurring alleles).\n* N is a wildcard, that denotes the position of any base,\n  and can be used as a standalone base of any type or within a partially known\n  sequence. As example, a query of `ANNT` the Ns can take take any form of [ACGT]\n  and will match `ANNT`, `ACNT`, `ACCT`, `ACGT` ... and so forth.\n* an *empty value* is used in the case of deletions with the maximally trimmed,\n  deleted sequence being indicated in `ReferenceBases`\n* Categorical variant queries, e.g. such *not* being represented through\n  sequence & position, make use of the `variantType` parameter."
       },
       "variantMinLength": {
         "name": "variantMinLength",
         "in": "query",
+        "description": "* Minimum length in bases of a genomic variant * This is an optional parameter without prescribed use. While a length is\n  commonly available for structural variants such as copy number variations,\n  it is recommended that length based queries should also be supported for\n  variants with indicated referenceBases and alternateBases, to enable\n  length-specific wildcard queries.",
         "schema": {
           "type": "integer",
           "format": "int64",
@@ -917,6 +892,7 @@
       "variantMaxLength": {
         "name": "variantMaxLength",
         "in": "query",
+        "description": "The `variantType` is used to query variants which are not defined through a sequence of one or more bases using the `alternateBases` parameter. Examples here are e.g. structural variants: * DUP\n  - increased allelic count of material from the genomic region between\n    `start` and `end` positions\n  - no assumption about the placement of the additional sequences is being\n    made (i.e. no _in situ_ requirement as tandem duplications)\n* DEL: deletion of sequence following `start` The Beacon model is not prescriptive with regard to the values allowed for `variantType` with use of extended types (such as from `EFO:0030063`) being permitted. However, a support for the basic CNV types above - where represented in the data - is recommended.",
         "schema": {
           "type": "integer",
           "format": "int64",
@@ -926,6 +902,7 @@
       "genomicAlleleShortForm": {
         "name": "allele",
         "in": "query",
+        "description": "HGVSId descriptor",
         "schema": {
           "type": "string"
         },
@@ -934,6 +911,7 @@
       "geneId": {
         "name": "geneid",
         "in": "query",
+        "description": "* A gene identifier * It is strongly suggested to use a symbol following\n  the HGNC (https://www.genenames.org) nomenclature.",
         "schema": {
           "type": "string"
         },
@@ -945,8 +923,23 @@
         "schema": {
           "type": "string"
         },
-        "example": "V600E"
-      }
+        "example": "V600E",
+        "description": "Aminoacid alteration of interest. Format 1 letter"
+      },
+      "variantType": {
+        "name": "variantType",
+        "in": "query",
+        "description": "The `variantType` is used to query variants which are not defined through a sequence of one or more bases using the `alternateBases` parameter. Examples here are e.g. structural variants: * DUP\n  - increased allelic count of material from the genomic region between\n    `start` and `end` positions\n  - no assumption about the placement of the additional sequences is being\n    made (i.e. no _in situ_ requirement as tandem duplications)\n* DEL: deletion of sequence following `start` The Beacon model is not prescriptive with regard to the values allowed for `variantType` with use of extended types (such as from `EFO:0030063`) being permitted. However, a support for the basic CNV types above - where represented in the data - is recommended.",
+        "schema": {
+          "type": "string"
+        },
+        "example": [
+              "EFO:0030070",
+              "DUP",
+              "DEL",
+              "EFO:0030069"
+        ]
+      } 
     },
     "schemas": {
       "AlphanumericFilter": {
@@ -1825,6 +1818,21 @@
         },
         "type": "array"
       },
+      "geneId": {
+          "description": "* A gene identifier * It is strongly suggested to use a symbol following\n  the HGNC (https://www.genenames.org) nomenclature.",
+          "examples": [
+              "BRAF",
+              "SCN5A"
+          ],
+          "type": "string"
+      },
+      "genomicAlleleShortForm": {
+          "description": "HGVSId descriptor",
+          "examples": [
+              "NM_004006.2:c.4375C>T"
+          ],
+          "type": "string"
+      },
       "Granularity": {
         "default": "boolean",
         "description": "Level of detail of the response:\n* `boolean`: returns true/false' responses * `count`: adds the total number of positive results found * `record`: returns details for every row. In cases where a Beacon prefers to return records with fewer than all attributes, different strategies have to be considered w/o adding them to the current design, e.g.:\n    - keeping non-mandatory attributes empty\n    - Beacon to provide a minimal record definition",
@@ -2256,11 +2264,21 @@
           "minimum": 0,
           "type": "integer"
       },
+      "Start": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "minItems": 1,
+          "maxItems": 2
+      },
       "TestMode": {
           "default": false,
           "description": "Used for indicating that a request or response is done in a test context e.g. for compliance testing i.e. to evaluate the acceptance/understanding of a request and the structure of the returned response by the Beacon instance. A TRUE `testMode` parameter DOES NOT require that the Beacon instance is a test instance, but that this specific request-response cycle is a testing one. When `true` the Beacon instance MUST respond the request but it SHOULD use virtual or non-sensitive data. Here, what is being evaluated is the acceptance/understanding of a request and the structure of the returned response by the Beacon instance.",
           "type": "boolean"
-      }
+      }    
     }
   }
 }
