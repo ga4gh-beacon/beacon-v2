@@ -1,0 +1,11 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "id": "InternalId12345",
+    "genomicFeature": {
+        "featureId": "Ensembl:ENSG00000141510.18"
+    },
+    "matrixIds": [
+        "matrix12345",
+        "matrix67890"
+    ]
+}

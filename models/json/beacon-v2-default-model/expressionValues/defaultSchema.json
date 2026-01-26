@@ -1,0 +1,52 @@
+{
+    "$comment": "version: ga4gh-beacon-expressionValues-v2.0.0",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
+    "description": "Schema for an expression value entry. It represents the expression value of a specific biosample for a specific feature in a specific matrix.",
+    "properties": {
+        "id": {
+            "description": "Internal expression value ID. It is a unique identifier for the expression value.",
+            "examples": [
+                "expressionValue-001"
+            ],
+            "type": "string"
+        },
+        "biosampleId": {
+            "description": "Reference to the biosample ID.",
+            "examples": [
+                "008dafdd-a3d1-4801-8c0a-8714e2b58e48"
+            ],
+            "type": "string"
+        },
+        "value": {
+            "description": "Value of the expression value.",
+            "examples": [
+                "100"
+            ],
+            "type": "number"
+        },
+        "featureId": {
+            "description": "Reference to the feature ID.",
+            "examples": [
+                "ENSG00000000000"
+            ],
+            "type": "string"
+        },
+        "matrixId": {
+            "description": "Reference to the matrix ID.",
+            "examples": [
+                "matrix-gene-expression-001"
+            ],
+            "type": "string"
+        }
+    },
+    "required": [
+        "biosampleId",
+        "value",
+        "featureId",
+        "matrixId",
+        "id"
+    ],
+    "title": "Expression value",
+    "type": "object"
+}

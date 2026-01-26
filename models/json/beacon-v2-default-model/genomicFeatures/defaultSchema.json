@@ -2,7 +2,7 @@
     "$comment": "version: ga4gh-beacon-feature-v2.1.2",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Schema for the genomic feature (e.g. gene or transcript...)",
+    "description": "Schema for the genomic feature (e.g. gene, transcript or genomic interval...)",
     "properties": {
         "id": {
             "description": "Internal feature ID.",

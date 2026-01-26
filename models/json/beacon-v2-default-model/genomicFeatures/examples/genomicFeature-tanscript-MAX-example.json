@@ -1,0 +1,59 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "id": "InternalId12345",
+    "genomicFeature": {
+        "featureId": "ENSEMBL:ENST00000269305.9",
+        "genomicInterval": {
+            "location": {
+                "interval": {
+                    "end": {
+                        "type": "Number",
+                        "value": 7668421
+                    },
+                    "start": {
+                        "type": "Number",
+                        "value": 7687490
+                    },
+                    "type": "SequenceInterval"
+                },
+                "sequence_id": "INSDC:CM000669.2",
+                "type": "SequenceLocation"
+            },
+            "strand": "negative"
+        },
+        "featureType": {
+            "id": "SO:0000234",
+            "label": "mRNA"
+        },
+        "ontologyTerms": [
+            {
+                "id": "GO:0006915",
+                "label": "apoptotic process"
+            },
+            {
+                "id": "GO:0006281",
+                "label": "DNA repair"
+            },
+            {
+                "id": "GO:0006974",
+                "label": "DNA damage response"
+            },
+            {
+                "id": "GO:0007049",
+                "label": "cell cycle"
+            }
+        ],
+        "xrefs": [
+            "NCBI_RefSeq:NM_000546.6"
+        ],
+        "relationship": {
+            "parent": "ENSEMBL:ENSG00000141510.18"
+        }
+
+    },
+    "matrixIds": [
+        "matrix-gene-expression-001",
+        "matrix-protein-interaction-002",
+        "matrix-variant-frequency-003"
+    ]
+}

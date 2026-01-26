@@ -1,0 +1,13 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "id": "InternalId12345",
+    "genomicFeature": {
+        "featureId": "EXON:00004567"
+    },
+    "matrixIds": [
+        "matrix-gene-expression-001",
+        "matrix-protein-interaction-002",
+        "matrix-variant-frequency-003"
+    ]
+}
+

@@ -1,0 +1,32 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "createDateTime": "2016-11-08T00:00:00Z",
+    "matrixId": "GSE88557",
+    "downloadUrl": "https://www.ncbi.nlm.nih.gov/geo/download/?type=rnaseq_counts&acc=GSE88557&format=file&file=GSE88557_raw_counts_GRCh38.p13_NCBI.tsv.gz",
+    "featureType": {
+        "id": "SO:0000704",
+        "label": "gene"
+    },
+    "expressionValues": {
+        "unit": "raw",
+        "scale": "linear"
+    },
+    "description": "The libraries contained in this Experiment come from tissue sub-sections from the sigmoid colon obtained from GTEx. They are stranded PE101 Illumina Hi-Seq RNA-Seq libraries from rRNA-depleted Total RNA > 200 nucleotides in size.",
+    "assayType": {
+        "id": "OBI:0003090",
+        "label": "bulk RNA-seq assay"
+    },
+    "name": "total RNA-seq from sigmoid colon (ENCSR812AKX)",
+    "dimensions": {
+        "features": 39376,
+        "biosamples": 1
+    },
+    "annotation": {
+        "source": "NCBI Homo sapiens Annotation Release",
+        "version": "109.20190905"
+    },
+    "assembly": {
+        "accession": "GCA_000001405.29",
+        "name": "GRCh38.p14"
+    }
+}
