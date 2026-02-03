@@ -43,6 +43,39 @@ $defs:
           exactly, but do match to a certain degree of similarity. The Beacon defines
           the semantic similarity model implemented and how to apply the thresholds
           of 'high', 'medium' and 'low' similarity.
+      excluded:
+        description: >-
+          Field to indicate whether the filtering term was observed or not. The
+          default is `false`, _i.e._ selects for **existence** of the term or value
+          (c.f. the the description in Phenopackets  as "...to indicate that the
+          phenotype was looked for, but found to be absent.")
+          
+          The use of `true` select for an explicit **negation** of the term, _i.e._
+          only returns a match if the 
+          
+          * queried property has an excluded property 
+          * the value of the `excluded` field in the is set to `true`
+
+          A use of `excluded: false` avoids the match of positively negated
+          values.
+
+          Implementations MUST ensure that the `excluded` property is upported for
+          target property or provide appropriate handling of the request. For
+          example, to implement the default `excluded: false` queries in MongoDB
+          a request could use the `$not` operator to exclude
+          both documents with the term and documents that do not have the 
+          `thisField.excluded` property and the ones that have it set to `false`
+
+          `db.test.find({"thisFieldexcluded":{$ne:true}})`
+
+          ... as the default.
+
+          Note: The `excluded` field is specific for `OntologyFilter` instances
+          since e.g. `AlphanumericFilter` can implement the functionality via
+          operators (`!`) and `CustomFilter` instances can be specifically designed
+          towards exclusion.
+        type: boolean
+        default: false
       scope:
         type: string
         description: |-
@@ -74,11 +107,11 @@ $defs:
         type: string
         enum:
           - '='
-          - <
+          - '<'
           - '>'
           - '!'
           - '>='
-          - <=
+          - '<='
         description: Defines how the value relates to the field `id`.
         default: '='
         example: '>'

@@ -79,6 +79,11 @@
         "OntologyFilter": {
             "description": "Filter results to include records that contain a specific ontology term.",
             "properties": {
+                "excluded": {
+                    "default": false,
+                    "description": "Field to indicate whether the filtering term was observed or not. The default is `false`, _i.e._ selects for **existence** of the term or value (c.f. the the description in Phenopackets  as \"...to indicate that the phenotype was looked for, but found to be absent.\")\nThe use of `true` select for an explicit **negation** of the term, _i.e._ only returns a match if the \n* queried property has an excluded property  * the value of the `excluded` field in the is set to `true`\nA use of `excluded: false` has no operational effect and is equivalent to omitting the filter.\nNote: The `excluded` field is specific for `OntologyFilter` instances since e.g. `AlphanumericFilter` can implement the functionality via operators (`!`) and `CustomFilter` instances can be specifically designed towards exclusion.",
+                    "type": "boolean"
+                },
                 "id": {
                     "description": "Term ID to be queried, using CURIE syntax where possible.",
                     "example": "HP:0002664",
