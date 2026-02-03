@@ -13,7 +13,7 @@
                     "type": "string"
                 },
                 "splits": {
-                    "description": "Optional list of splits to group values for ranges or bins when performing the aggregation. TODO: Define types and/or couple them to property type.",
+                    "description": "Optional list of **sorted** splits to group values for ranges or bins when performing the aggregation. TODO: Define types and/or couple them to property type.",
                     "examples": [
                         [
                             "P0D",
@@ -127,7 +127,7 @@
             "description": "A value or bin ... for the concept property.",
             "properties": {
                 "id": {
-                    "description": "Identifier for the concept value. This can be e.g. a term id, a split/bin range (e.g. '[P0D, P18M)'), or `undefined` for missing values.",
+                    "description": "Identifier for the concept value. This can be e.g. a term id, a bin (e.g. '[P0D, P18M)'), or `undefined` for missing values.",
                     "examples": [
                         "NCIT:C4017",
                         "[P0D, P18M)",

@@ -98,7 +98,7 @@ $defs:
             - EFO:0010937 # comparative genomic hybridization (CGH)
       splits:
         description: >-
-          Optional list of splits to group values for ranges or bins when
+          Optional list of **sorted** splits to group values for ranges or bins when
           performing the aggregation.
           TODO: Define types and/or couple them to property type.
         type: array
@@ -138,8 +138,8 @@ $defs:
     properties:
       id:
         description: >-
-          Identifier for the concept value. This can be e.g. a term id, a split/bin
-          range (e.g. '[P0D, P18M)'), or `undefined` for missing values.
+          Identifier for the concept value. This can be e.g. a term id, a bin
+          (e.g. '[P0D, P18M)'), or `undefined` for missing values.
         type: string
         examples:
           - NCIT:C4017
