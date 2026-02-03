@@ -4,7 +4,7 @@ description: |-
   Terms used to specify items to return in an aggregation data response. Terms
   are provided through the beacon's `/aggregation_terms` endpoint and the `id`
   values of those terms constitute the possible `id` values here. See also the
-  documentation for `AggregationTermInResponse.id` in `beaconAggregationTermsResults`.
+  documentation for `AggregationTermInResponse.id` in `beaconAggregationConceptsResults`.
 
   TODO: The current implementation does not allow to define aggregations, _i.e._
   to send aggregaion term objects or parts thereof (e.g. `splits`, `termIds`). It
@@ -16,19 +16,27 @@ items:
   $ref: '#/$defs/AggregationTermInRequest'
 $defs:
   AggregationTermInRequest:
+    description: >-
+      An array of `AggregationConceptInRequest` objects representing the concepts
+      to be aggregated for a single aggregation, e.g. terms corresponding to
+      `sexAtBirth` and `diagnosis`.
+    type: array
+    items:
+      $ref: '#/$defs/AggregationConceptInRequest'
+
+  AggregationConceptInRequest:
     type: object
     properties:
       id:
         type: string
         description: >-
-          The `id` of the aggregation term as provided by the beacon. It is used
-          to select the aggregation term and to identify the aggregation result
-          in the response.
+          The `id` of the aggregation concept as provided by the beacon. It is used
+          to select the aggregation concept, _i.e._ usually corresponding to a
+          property in the data model.
         examples:
-          - selectedDiagnosesBySex
-          - biosample.histologicalDiagnosis.id
           - sexAtBirth
-          - sampleByAgeAtCollection
+          - biosample.histologicalDiagnosis.id
+          - ageAtCollection
 
     examples:
       - id: selectedDiagnosesBySex
