@@ -22,6 +22,7 @@ paths:
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/filters'
+        - $ref: '#/components/parameters/aggregators'
       description: Get a list of datasets
       operationId: getDatasets
       tags:
@@ -334,3 +335,10 @@ components:
         example1:
           value:
             - DUO:0000007
+    aggregators:
+      name: aggregators
+      in: query
+      schema:
+        type: array
+        items:
+          type: string

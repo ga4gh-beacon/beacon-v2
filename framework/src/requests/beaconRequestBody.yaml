@@ -25,7 +25,7 @@ $defs:
         $ref: ./requestParameters.yaml
       filters:
         $ref: ./filteringTerms.yaml
-      aggregationTerms:
+      aggregators:
         description: >-
           List of ids of aggregation terms to include in an summary
           data response

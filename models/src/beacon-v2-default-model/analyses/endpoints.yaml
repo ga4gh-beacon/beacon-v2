@@ -18,6 +18,7 @@ paths:
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/includeResultsetResponses'
         - $ref: '#/components/parameters/filters'
+        - $ref: '#/components/parameters/aggregators'
       description: Get a Beacon response for bioinformatics analyses
       operationId: getAnalyses
       tags:
@@ -190,3 +191,10 @@ components:
         example1:
           value:
             - variantcaller:GATK4.0
+    aggregators:
+      name: aggregators
+      in: query
+      schema:
+        type: array
+        items:
+          type: string

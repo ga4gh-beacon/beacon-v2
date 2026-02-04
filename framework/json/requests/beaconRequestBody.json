@@ -3,7 +3,7 @@
         "BeaconQuery": {
             "description": "Parameters to limit the list of returned results.",
             "properties": {
-                "aggregationTerms": {
+                "aggregators": {
                     "$ref": "./aggregationTerms.json",
                     "description": "List of ids of aggregation terms to include in an summary data response"
                 },
