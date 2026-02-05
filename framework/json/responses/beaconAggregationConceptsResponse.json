@@ -7,7 +7,7 @@
             "$ref": "./sections/beaconInformationalResponseMeta.json"
         },
         "response": {
-            "$ref": "./sections/beaconAggregationConceptsResults.json"
+            "$ref": "./sections/beaconAggregationTermsResults.json"
         }
     },
     "required": [

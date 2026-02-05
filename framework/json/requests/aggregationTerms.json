@@ -17,7 +17,7 @@
             ],
             "properties": {
                 "id": {
-                    "description": "The `id` of the aggregation concept as provided by the beacon. It is used to select the aggregation concept, _i.e._ usually corresponding to a property in the data model.",
+                    "description": "The `id` of the aggregation concept as provided by the beacon. It is used to select the aggregation concept, _i.e._ usually corresponding to a property in the data model. ",
                     "examples": [
                         "sexAtBirth",
                         "biosample.histologicalDiagnosis.id",
@@ -37,7 +37,7 @@
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Terms used to specify items to return in an aggregation data response. Terms\nare provided through the beacon's `/aggregation_terms` endpoint and the `id`\nvalues of those terms constitute the possible `id` values here. See also the\ndocumentation for `AggregationTermInResponse.id` in `beaconAggregationConceptsResults`.\n\nTODO: The current implementation does not allow to define aggregations, _i.e._\nto send aggregaion term objects or parts thereof (e.g. `splits`, `termIds`). It\nonly allows to select from the predefined aggregations. This behaviour might\nbe changed in the future, e.g. allowing dynamic aggregation definitions through\nPOSTing aggregation term objects.",
+    "description": "Terms used to specify items to return in an aggregation data response. Terms\nare provided through the beacon's `/aggregation_terms` endpoint and the `id`\nvalues of those terms constitute the possible `id` values here. See also the\ndocumentation for `AggregationTermInResponse.id` in `beaconAggregationTermsResults`.\n\nTODO: The current implementation does not allow to define aggregations, _i.e._\nto send aggregation concepts or parts thereof (e.g. `splits`, `termIds`). It\nonly allows to select from the predefined aggregations. This behaviour might\nbe changed in the future, e.g. allowing dynamic aggregation definitions through\nPOSTing aggregation term objects or modifiers to properties of the `AggregationConcept`\nsuch as `splits`, `termIds` and `sorted`.",
     "items": {
         "$ref": "#/$defs/AggregationTermInRequest"
     },

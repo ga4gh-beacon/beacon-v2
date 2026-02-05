@@ -27,10 +27,12 @@ $defs:
           The id of the aggregation term being reported on.
       label:
         description: >-
-          The label of the aggregation term being reported on.
+          The label for the aggregation concept(s) being reported on.
         type: string
         examples:
           - Genders
+          - Diseases by Sex at Birth
+          - Follow-up Time After Diagnosis
       description:
         description: >-
           Description of the aggregation performed for this term.
@@ -43,10 +45,6 @@ $defs:
           - individual
           - biosample
           - genomicVariation
-      sorted:
-        description: >-
-          Indicates whether the distribution results are sorted in some way.
-        type: boolean
       concepts:
         type: array
         items:
@@ -61,7 +59,7 @@ $defs:
           $ref: "#/$defs/AggregationObject"
 
     required:
-      - id
+      - concepts
       - distribution
     additionalItems: True
 
@@ -72,6 +70,25 @@ $defs:
       or binning of the property values.
     type: object
     properties:
+      id:
+        description: >-
+          The aggregation term id. It can be used to limit or combine the aggregations
+          performed.
+        type: string
+        examples:
+          - followupTime
+          - sexAtBirth
+      label:
+        description: >-
+          A short label which e.g. can be used by clients to label diagrams or
+          data tables.
+        type: string
+        examples:
+          - Follow-up Time After Diagnosis
+      description:
+        description: >-
+          A description of the summary concept, e.g. with details about the
+          included property and the operations performed during aggregation.
       property:
         description: >-
           The property, including the entity/scope, in the data model on which the
@@ -81,6 +98,11 @@ $defs:
           - biosample.histologicalDiagnosis.id
           - individual.sex.id
           - biosample.collectionMoment
+      sorted:
+        description: >-
+          Indicates whether the resulting distribution results will be sorted in
+          some way.
+        type: boolean
       termIds:
         description: >-
           Optional list of termIds to select specific values for aggregation.
@@ -106,6 +128,8 @@ $defs:
           - - P0D
             - P18Y
             - P65Y
+    required:
+      - id
 
   AggregationObject:
     description: >-

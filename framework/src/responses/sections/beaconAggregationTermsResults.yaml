@@ -1,0 +1,29 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+description: >-
+  Aggregation concepts supported for this Beacon.
+type: object
+properties:
+  aggregationTerms:
+    type: array
+    items:
+      $ref: "./beaconAggregationResults.yaml#/$defs/AggregationConcept"
+
+  examples:
+    - id: followupTime
+      label: Follow-up Time
+      description: Follow-up Time After Diagnosis
+      property: individual.diseases.followup
+      type: string
+      format: iso8601duration
+      sorted: true
+      splits:
+        - P0D
+        - P18M
+        - P10Y
+        - P60Y
+    - id: disease
+      label: Diseases
+      description: Disease type in matched individuals
+      property: individual.diseases.diseaseCode.id
+
+additionalProperties: false

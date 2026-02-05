@@ -3,6 +3,24 @@
         "AggregationConcept": {
             "description": "Concept on which the aggregation was performed, including the scoped property, and optional termIds or splits for selection or binning of the property values.",
             "properties": {
+                "description": {
+                    "description": "A description of the summary concept, e.g. with details about the included property and the operations performed during aggregation."
+                },
+                "id": {
+                    "description": "The aggregation term id. It can be used to limit or combine the aggregations performed.",
+                    "examples": [
+                        "followupTime",
+                        "sexAtBirth"
+                    ],
+                    "type": "string"
+                },
+                "label": {
+                    "description": "A short label which e.g. can be used by clients to label diagrams or data tables.",
+                    "examples": [
+                        "Follow-up Time After Diagnosis"
+                    ],
+                    "type": "string"
+                },
                 "property": {
                     "description": "The property, including the entity/scope, in the data model on which the aggregation was performed.",
                     "examples": [
@@ -11,6 +29,10 @@
                         "biosample.collectionMoment"
                     ],
                     "type": "string"
+                },
+                "sorted": {
+                    "description": "Indicates whether the resulting distribution results will be sorted in some way.",
+                    "type": "boolean"
                 },
                 "splits": {
                     "description": "Optional list of **sorted** splits to group values for ranges or bins when performing the aggregation. TODO: Define types and/or couple them to property type.",
@@ -45,6 +67,9 @@
                     "type": "array"
                 }
             },
+            "required": [
+                "id"
+            ],
             "type": "object"
         },
         "AggregationObject": {
@@ -96,9 +121,11 @@
                     "type": "string"
                 },
                 "label": {
-                    "description": "The label of the aggregation term being reported on.",
+                    "description": "The label for the aggregation concept(s) being reported on.",
                     "examples": [
-                        "Genders"
+                        "Genders",
+                        "Diseases by Sex at Birth",
+                        "Follow-up Time After Diagnosis"
                     ],
                     "type": "string"
                 },
@@ -110,14 +137,10 @@
                         "genomicVariation"
                     ],
                     "type": "string"
-                },
-                "sorted": {
-                    "description": "Indicates whether the distribution results are sorted in some way.",
-                    "type": "boolean"
                 }
             },
             "required": [
-                "id",
+                "concepts",
                 "distribution"
             ],
             "type": "object"

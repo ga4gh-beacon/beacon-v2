@@ -7,7 +7,7 @@ properties:
   meta:
     $ref: ./sections/beaconInformationalResponseMeta.yaml
   response:
-    $ref: ./sections/beaconAggregationConceptsResults.yaml
+    $ref: ./sections/beaconAggregationTermsResults.yaml
 required:
   - meta
   - response
