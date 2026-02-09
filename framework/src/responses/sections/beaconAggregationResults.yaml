@@ -17,7 +17,7 @@ $defs:
       to the client that the returned `distribution` of the aggregation objects
       response has some pre-defined order.
       Each of the `concepts` describes the scope (entity; `individual`, `biosample`
-      ...), the property aggregated on, and optional `termIds` or `splits` for
+      ...), the property aggregated on, and optional `terms` or `splits` for
       selection or binning of the property values.
     type: object
     properties:
@@ -66,7 +66,7 @@ $defs:
   AggregationConcept:
     description: >-
       Concept on which the aggregation was performed, including the scoped
-      property, and optional termIds or splits for selection
+      property, and optional terms or splits for selection
       or binning of the property values.
     type: object
     properties:
@@ -103,31 +103,53 @@ $defs:
           Indicates whether the resulting distribution results will be sorted in
           some way.
         type: boolean
-      termIds:
+      terms:
         description: >-
-          Optional list of termIds to select specific values for aggregation.
+          Optional list of terms to select specific values for aggregation.
+          TODO: 
+            * id/label object definition
         type: array
         items:
-          type: string
+          type: object
         examples:
-          - - NCIT:C9335  # Malignant neoplasm of breast
-            - NCIT:C4863  # Prostate Carcinoma
-            - NCIT:C9384  # Kidney Carcinoma
-            - NCIT:C3513  # Esophageal Carcinoma
-          - - EFO:0030075 # cDNA microarray
-            - EFO:0010938 # large-insert clone DNA microarray
-            - EFO:0010939 # oligonucleotide DNA microarray
-            - EFO:0010937 # comparative genomic hybridization (CGH)
+          - - id: NCIT:C9384
+              label: Kidney Carcinoma
+            - id: NCIT:C3513
+              label: Esophageal Carcinoma
+            - id: NCIT:C35850
+              label: Head and Neck Carcinoma
+            - id: NCIT:C4878
+              label: Lung Carcinoma
+            - id: NCIT:C207229
+          - - id: EFO:0030075
+              label: cDNA microarray
+            - id: EFO:0010938
+              label: large-insert clone DNA microarray
+            - id: EFO:0010939
+              label: oligonucleotide DNA microarray
+            - id: EFO:0010937
+              label: comparative genomic hybridization (CGH)
       splits:
         description: >-
           Optional list of **sorted** splits to group values for ranges or bins when
           performing the aggregation.
-          TODO: Define types and/or couple them to property type.
+          TODO: 
+            * Define types and/or couple them to property type
+            * value/label object definition
         type: array
+        items:
+          type: object
         examples:
-          - - P0D
-            - P18Y
-            - P65Y
+          - - value: P18M
+              label: < 18 months
+            - value: P18Y
+              label: 1.5 to < 18 years
+            - value: P65Y
+              label: 18 to < 65 years
+            - value: P80Y
+              label: 65 to < 80 years
+            - value: P150Y
+              label: 80 years and older
     required:
       - id
 

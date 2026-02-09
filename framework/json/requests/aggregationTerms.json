@@ -1,27 +1,22 @@
 {
     "$defs": {
         "AggregationConceptInRequest": {
-            "examples": [
-                {
-                    "id": "selectedDiagnosesBySex"
-                },
-                {
-                    "id": "biosample.histologicalDiagnosis.id"
-                },
-                {
-                    "id": "sexAtBirth"
-                },
-                {
-                    "id": "ageAtDiagnosis"
-                }
-            ],
             "properties": {
                 "id": {
                     "description": "The `id` of the aggregation concept as provided by the beacon. It is used to select the aggregation concept, _i.e._ usually corresponding to a property in the data model. ",
                     "examples": [
-                        "sexAtBirth",
-                        "biosample.histologicalDiagnosis.id",
-                        "ageAtCollection"
+                        {
+                            "id": "selectedDiagnoses"
+                        },
+                        {
+                            "id": "biosample.histologicalDiagnosis.id"
+                        },
+                        {
+                            "id": "sexAtBirth"
+                        },
+                        {
+                            "id": "ageAtDiagnosis"
+                        }
                     ],
                     "type": "string"
                 }
@@ -30,6 +25,21 @@
         },
         "AggregationTermInRequest": {
             "description": "An array of `AggregationConceptInRequest` objects representing the concepts to be aggregated for a single aggregation, e.g. terms corresponding to `sexAtBirth` and `diagnosis`.",
+            "examples": [
+                [
+                    {
+                        "id": "selectedDiagnoses"
+                    },
+                    {
+                        "id": "sexAtBirth"
+                    }
+                ],
+                [
+                    {
+                        "id": "biosample.histologicalDiagnosis.id"
+                    }
+                ]
+            ],
             "items": {
                 "$ref": "#/$defs/AggregationConceptInRequest"
             },
@@ -37,7 +47,31 @@
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Terms used to specify items to return in an aggregation data response. Terms\nare provided through the beacon's `/aggregation_terms` endpoint and the `id`\nvalues of those terms constitute the possible `id` values here. See also the\ndocumentation for `AggregationTermInResponse.id` in `beaconAggregationTermsResults`.\n\nTODO: The current implementation does not allow to define aggregations, _i.e._\nto send aggregation concepts or parts thereof (e.g. `splits`, `termIds`). It\nonly allows to select from the predefined aggregations. This behaviour might\nbe changed in the future, e.g. allowing dynamic aggregation definitions through\nPOSTing aggregation term objects or modifiers to properties of the `AggregationConcept`\nsuch as `splits`, `termIds` and `sorted`.",
+    "description": "Terms used to specify items to return in an aggregation data response. Terms\nare provided through the beacon's `/aggregation_terms` endpoint and the `id`\nvalues of those terms constitute the possible `id` values here. See also the\ndocumentation for `AggregationTermInResponse.id` in `beaconAggregationTermsResults`.\n\nTODO: The current implementation does not allow to define aggregations, _i.e._\nto send aggregation concepts or parts thereof (e.g. `splits`, `terms`). It\nonly allows to select from the predefined aggregations. This behaviour might\nbe changed in the future, e.g. allowing dynamic aggregation definitions through\nPOSTing aggregation term objects or modifiers to properties of the `AggregationConcept`\nsuch as `splits`, `terms` and `sorted`.\n\nNote: The request for aggregations is a list of lists of objects:\n* The outer list level is the list of all aggregations resulting in a distribution\n  of one or more dimensional aggregation results.\n* The lists of `AggregationConceptInRequest` have 1 or more (but mostly 1 or 2)\n  concepts which are evaluated together, e.g. \"diagnoses for sex at birth\".",
+    "examples": [
+        [
+            [
+                {
+                    "id": "selectedDiagnoses"
+                },
+                {
+                    "id": "sexAtBirth"
+                }
+            ],
+            [
+                {
+                    "id": "biosample.histologicalDiagnosis.id"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "id": "ageAtDiagnosis"
+                }
+            ]
+        ]
+    ],
     "items": {
         "$ref": "#/$defs/AggregationTermInRequest"
     },

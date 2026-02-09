@@ -17,10 +17,20 @@ properties:
       format: iso8601duration
       sorted: true
       splits:
-        - P0D
-        - P18M
-        - P10Y
-        - P60Y
+        - value: P6M
+          label: < 6 months
+        - value: P1Y
+          label: < 1 year
+        - value: P18M
+          label: < 18 months
+        - value: P3Y
+          label: < 3 years
+        - value: P5Y
+          label: < 5 years
+        - value: P10Y
+          label: < 10 years
+        - value: P100Y
+          label: "> 10 years"
     - id: disease
       label: Diseases
       description: Disease type in matched individuals
