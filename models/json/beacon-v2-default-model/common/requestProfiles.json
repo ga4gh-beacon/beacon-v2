@@ -28,15 +28,15 @@
                 "assemblyId": {
                     "$ref": "./requestParameterComponents.json#/$defs/Assembly"
                 },
-                "requestProfileId": {
-                    "const": "BV2alleleRequest",
-                    "description": "Note: The `requestProfileId` parameter had not been defined for Beacon v2.0\nand therefore in _senso stricto_ is not part of requests only relying\non v2 parameters."
-                },
                 "referenceBases": {
                     "$ref": "./requestParameterComponents.json#/$defs/ReferenceBases"
                 },
                 "referenceName": {
                     "$ref": "./requestParameterComponents.json#/$defs/RefSeqId"
+                },
+                "requestProfileId": {
+                    "const": "BV2alleleRequest",
+                    "description": "Note: The `requestProfileId` parameter had not been defined for Beacon v2.0\nand therefore in _senso stricto_ is not part of requests only relying\non v2 parameters."
                 },
                 "start": {
                     "$ref": "./requestParameterComponents.json#/$defs/Start"
@@ -59,11 +59,11 @@
                 "end": {
                     "$ref": "./requestParameterComponents.json#/$defs/End"
                 },
-                "requestProfileId": {
-                    "const": "BV2bracketRequest"
-                },
                 "referenceName": {
                     "$ref": "./requestParameterComponents.json#/$defs/RefSeqId"
+                },
+                "requestProfileId": {
+                    "const": "BV2bracketRequest"
                 },
                 "start": {
                     "$ref": "./requestParameterComponents.json#/$defs/Start"
@@ -101,11 +101,11 @@
                     },
                     "type": "array"
                 },
-                "requestProfileId": {
-                    "const": "BV2rangeRequest"
-                },
                 "referenceName": {
                     "$ref": "./requestParameterComponents.json#/$defs/RefSeqId"
+                },
+                "requestProfileId": {
+                    "const": "BV2rangeRequest"
                 },
                 "start": {
                     "items": {

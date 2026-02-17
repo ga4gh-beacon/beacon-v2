@@ -116,6 +116,13 @@
                     "type": "string"
                 }
             },
+            "requestProfileId": {
+                "in": "query",
+                "name": "requestProfileId",
+                "schema": {
+                    "type": "string"
+                }
+            },
             "requestedSchema": {
                 "description": "Schema to be used to format the `result` field in the response. The response will use Beacon format.",
                 "example": "ga4gh-service-info-v1.0",

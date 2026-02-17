@@ -229,6 +229,11 @@ components:
       required: true
       schema:
         type: string
+    requestProfileId:
+      name: requestProfileId
+      in: query
+      schema:
+        type: string
     start:
       name: start
       in: query
