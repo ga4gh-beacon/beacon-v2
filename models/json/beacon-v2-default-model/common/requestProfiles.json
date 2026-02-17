@@ -1,0 +1,239 @@
+{
+    "$defs": {
+        "AminoacidChangeRequest": {
+            "description": "A Beacon v2 request for amino acid change queries, e.g. for the\nretrieval of all variants leading to specific amino acid change. The request\nmay be restricted by additionally providing the gene ID.",
+            "properties": {
+                "aminoacidChange": {
+                    "$ref": "./requestParameterComponents.json#/$defs/AminoacidChange"
+                },
+                "geneId": {
+                    "$ref": "./requestParameterComponents.json#/$defs/GeneId"
+                },
+                "requestProfileId": {
+                    "const": "BV2aminoacidChangeRequest"
+                }
+            },
+            "required": [
+                "aminoacidChange",
+                "geneId",
+                "requestProfileId"
+            ],
+            "type": "object"
+        },
+        "BV2alleleRequest": {
+            "properties": {
+                "alternateBases": {
+                    "$ref": "./requestParameterComponents.json#/$defs/AlternateBases"
+                },
+                "assemblyId": {
+                    "$ref": "./requestParameterComponents.json#/$defs/Assembly"
+                },
+                "referenceBases": {
+                    "$ref": "./requestParameterComponents.json#/$defs/ReferenceBases"
+                },
+                "referenceName": {
+                    "$ref": "./requestParameterComponents.json#/$defs/RefSeqId"
+                },
+                "requestProfileId": {
+                    "const": "BV2alleleRequest",
+                    "description": "Note: The `requestProfileId` parameter had not been defined for Beacon v2.0\nand therefore in _senso stricto_ is not part of requests only relying\non v2 parameters."
+                },
+                "start": {
+                    "$ref": "./requestParameterComponents.json#/$defs/Start"
+                }
+            },
+            "required": [
+                "referenceName",
+                "start",
+                "alternateBases",
+                "requestProfileId"
+            ],
+            "type": "object"
+        },
+        "BV2bracketRequest": {
+            "description": "A typical Beacon v2 request for matching variations where start and end\nfall in a genomic range. Here, the approximate or varying positions for\nvariation start and end are queried through brackets, _i.e._ by using 2\nvalues for `start` and `end` each. This is a typical scenario in querying\nfor CNVs where the `variantType` parameter indicates the relative change in\ngenomic copy number through either VCF derived string parameters\nor, preferably, EFO terms (pls. refer to the class definition.)\nSince a bracket request is a positional query for varying sequence extend\nno `sequence` parameter should be used.",
+            "properties": {
+                "assemblyId": {
+                    "$ref": "./requestParameterComponents.json#/$defs/Assembly"
+                },
+                "end": {
+                    "$ref": "./requestParameterComponents.json#/$defs/End"
+                },
+                "referenceName": {
+                    "$ref": "./requestParameterComponents.json#/$defs/RefSeqId"
+                },
+                "requestProfileId": {
+                    "const": "BV2bracketRequest"
+                },
+                "start": {
+                    "$ref": "./requestParameterComponents.json#/$defs/Start"
+                },
+                "variantMaxLength": {
+                    "$ref": "./requestParameterComponents.json#/$defs/VariantMaxLength"
+                },
+                "variantMinLength": {
+                    "$ref": "./requestParameterComponents.json#/$defs/VariantMinLength"
+                },
+                "variantType": {
+                    "$ref": "./requestParameterComponents.json#/$defs/VariantType"
+                }
+            },
+            "required": [
+                "referenceName",
+                "start",
+                "end",
+                "variantType",
+                "requestProfileId"
+            ],
+            "type": "object"
+        },
+        "BV2rangeRequest": {
+            "description": "Beacon Range Queries are supposed to return matches of any variant with at\nleast partial overlap of the sequence range specified by `referenceName`,\n`start` and end `parameters`. Additional qualifiers such as `variantType`\nor length of the affected sequence can be used to further restrict the\nreturned results.\nFor this request type `start` and `end` with a single position are used,\n_i.e._ a subset of the `start` and `end` specifications.",
+            "properties": {
+                "assemblyId": {
+                    "$ref": "./requestParameterComponents.json#/$defs/Assembly"
+                },
+                "end": {
+                    "items": {
+                        "maxItems": 1,
+                        "minItems": 1,
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "referenceName": {
+                    "$ref": "./requestParameterComponents.json#/$defs/RefSeqId"
+                },
+                "requestProfileId": {
+                    "const": "BV2rangeRequest"
+                },
+                "start": {
+                    "items": {
+                        "maxItems": 1,
+                        "minItems": 1,
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "variantMaxLength": {
+                    "$ref": "./requestParameterComponents.json#/$defs/VariantMaxLength"
+                },
+                "variantMinLength": {
+                    "$ref": "./requestParameterComponents.json#/$defs/VariantMinLength"
+                },
+                "variantType": {
+                    "$ref": "./requestParameterComponents.json#/$defs/VariantType"
+                }
+            },
+            "required": [
+                "referenceName",
+                "start",
+                "end",
+                "requestProfileId"
+            ],
+            "type": "object"
+        },
+        "Bv2GenericVariantRequest": {
+            "additionalProperties": false,
+            "description": "This represents the generic collection of variant parameters allowed in\nBeacon v2 requests. Since it does not allow for specifying a `requestProfileId`\n(beacause of `additionalProperties: false`) it becomes the default request\nprofile when no specific one is indicated and thereby keeps compatibility\nwith the original Beacon v2 specification.",
+            "examples": {
+                "$ref": "../examples/g_variant.json#/examples"
+            },
+            "properties": {
+                "alternateBases": {
+                    "$ref": "./requestParameterComponents.json#/$defs/AlternateBases"
+                },
+                "aminoacidChange": {
+                    "$ref": "./requestParameterComponents.json#/$defs/AminoacidChange"
+                },
+                "assemblyId": {
+                    "$ref": "./requestParameterComponents.json#/$defs/Assembly"
+                },
+                "end": {
+                    "$ref": "./requestParameterComponents.json#/$defs/End"
+                },
+                "geneId": {
+                    "$ref": "./requestParameterComponents.json#/$defs/GeneId"
+                },
+                "genomicAlleleShortForm": {
+                    "$ref": "./requestParameterComponents.json#/$defs/GenomicAlleleShortForm"
+                },
+                "referenceBases": {
+                    "$ref": "./requestParameterComponents.json#/$defs/ReferenceBases"
+                },
+                "referenceName": {
+                    "$ref": "./requestParameterComponents.json#/$defs/RefSeqId"
+                },
+                "start": {
+                    "$ref": "./requestParameterComponents.json#/$defs/Start"
+                },
+                "variantMaxLength": {
+                    "$ref": "./requestParameterComponents.json#/$defs/VariantMaxLength"
+                },
+                "variantMinLength": {
+                    "$ref": "./requestParameterComponents.json#/$defs/VariantMinLength"
+                },
+                "variantType": {
+                    "$ref": "./requestParameterComponents.json#/$defs/VariantType"
+                }
+            },
+            "type": "object"
+        },
+        "GeneIdRequest": {
+            "description": "A typical Beacon v2.n request for gene queries, e.g. for the retrieval of\nall variants in a gene or variants restricted by additional parameters\nsuch `variantType` or length of the affected sequence.\nTODO: Evaluate to split into more basic `GeneIdRequest` and specialized\n      requests requiring an effect component. There is already a type for\n      a `molecularEffectRequest` - see also notes there.",
+            "properties": {
+                "geneId": {
+                    "$ref": "./requestParameterComponents.json#/$defs/GeneId"
+                },
+                "requestProfileId": {
+                    "const": "geneIdRequest"
+                },
+                "variantMaxLength": {
+                    "$ref": "./requestParameterComponents.json#/$defs/VariantMaxLength"
+                },
+                "variantMinLength": {
+                    "$ref": "./requestParameterComponents.json#/$defs/VariantMinLength"
+                }
+            },
+            "required": [
+                "geneId",
+                "requestProfileId"
+            ],
+            "type": "object"
+        },
+        "GenomicAlleleShortFormRequest": {
+            "properties": {
+                "genomicAlleleShortForm": {
+                    "$ref": "./requestParameterComponents.json#/$defs/GenomicAlleleShortForm"
+                },
+                "requestProfileId": {
+                    "const": "GenomicAlleleShortFormRequest"
+                }
+            },
+            "required": [
+                "genomicAlleleShortForm",
+                "requestProfileId"
+            ],
+            "type": "object"
+        },
+        "VariantIdRequest": {
+            "description": "A typical Beacon v2 request for matching variations by their `variantId`.\nThis request is used to retrieve a specific variant by its identifier.",
+            "properties": {
+                "requestProfileId": {
+                    "const": "BV2variantIdRequest"
+                },
+                "variantId": {
+                    "$ref": "./requestParameterComponents.json#/$defs/VariantId"
+                }
+            },
+            "required": [
+                "variantId",
+                "requestProfileId"
+            ],
+            "type": "object"
+        }
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Request profiles allow beacons to\n\n* verify combinations of parameters to fulfill given requirements\n* announce which requests are supported (indirectly or through a FUTURE\n  informational endpoint)\n\nIn case of a missing `requestProfileId` parameter a generic request w/o imposed\nlimits on request parameters is assumed with decision about support left to the\nimplementations. ",
+    "name": "Request Profiles"
+}
