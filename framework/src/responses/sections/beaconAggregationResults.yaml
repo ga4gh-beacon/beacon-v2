@@ -11,7 +11,7 @@ $defs:
   AggregationResultsInstance:
     description: >-
       Summary data from results, with distributions of values (or value combinations)
-      for one (or more) concepts.
+      for one or more concepts.
       Each summary is identified by an `id`, `label`, `description`, and a list
       of one or more `concepts`. An an optional `sorted` property can indicate
       to the client that the returned `distribution` of the aggregation objects
@@ -131,14 +131,14 @@ $defs:
               label: comparative genomic hybridization (CGH)
       splits:
         description: >-
-          Optional list of **sorted** splits to group values for ranges or bins when
-          performing the aggregation.
+          Optional list of **sorted** splits to group values for ranges or bins
+          when performing the aggregation.
           TODO: 
             * Define types and/or couple them to property type
-            * value/label object definition
         type: array
+        minItems: 1
         items:
-          type: object
+          $ref: "#/$defs/SplitItem"
         examples:
           - - value: P18M
               label: < 18 months
@@ -146,10 +146,15 @@ $defs:
               label: 1.5 to < 18 years
             - value: P65Y
               label: 18 to < 65 years
-            - value: P80Y
-              label: 65 to < 80 years
             - value: P150Y
-              label: 80 years and older
+              label: 65 years and older
+          - - value: 0
+              label: "0"
+            - value: 1
+              label: "1"
+            - value: 2
+              label: "2 or more"
+
     required:
       - id
 
@@ -201,6 +206,28 @@ $defs:
     required:
       - id
     additionalItems: True
+
+    SplitItem:
+      description: >-
+        A split item for binning values during aggregation.
+      type: object
+      properties:
+        value:
+          description: >-
+            The value for the split, representing the inclusive lower bounds.
+            TODO: Other types than string? String can be a value/unit string...
+            Overmodeling this might get too complex.
+          type: string
+          examples:
+            - P18M
+            - 0
+        label:
+          description: >-
+            A human readable label for the bin resulting from the split.
+          type: string
+          examples:
+            - < 18 months
+            - 10kg to less than 25kg
 
 
 

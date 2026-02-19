@@ -35,7 +35,7 @@
                     "type": "boolean"
                 },
                 "splits": {
-                    "description": "Optional list of **sorted** splits to group values for ranges or bins when performing the aggregation. TODO: \n  * Define types and/or couple them to property type\n  * value/label object definition",
+                    "description": "Optional list of **sorted** splits to group values for ranges or bins when performing the aggregation. TODO: \n  * Define types and/or couple them to property type",
                     "examples": [
                         [
                             {
@@ -51,18 +51,29 @@
                                 "value": "P65Y"
                             },
                             {
-                                "label": "65 to < 80 years",
-                                "value": "P80Y"
+                                "label": "65 years and older",
+                                "value": "P150Y"
+                            }
+                        ],
+                        [
+                            {
+                                "label": "0",
+                                "value": 0
                             },
                             {
-                                "label": "80 years and older",
-                                "value": "P150Y"
+                                "label": "1",
+                                "value": 1
+                            },
+                            {
+                                "label": "2 or more",
+                                "value": 2
                             }
                         ]
                     ],
                     "items": {
-                        "type": "object"
+                        "$ref": "#/$defs/SplitItem"
                     },
+                    "minItems": 1,
                     "type": "array"
                 },
                 "terms": {
@@ -144,7 +155,7 @@
         },
         "AggregationResultsInstance": {
             "additionalItems": true,
-            "description": "Summary data from results, with distributions of values (or value combinations) for one (or more) concepts. Each summary is identified by an `id`, `label`, `description`, and a list of one or more `concepts`. An an optional `sorted` property can indicate to the client that the returned `distribution` of the aggregation objects response has some pre-defined order. Each of the `concepts` describes the scope (entity; `individual`, `biosample` ...), the property aggregated on, and optional `terms` or `splits` for selection or binning of the property values.",
+            "description": "Summary data from results, with distributions of values (or value combinations) for one or more concepts. Each summary is identified by an `id`, `label`, `description`, and a list of one or more `concepts`. An an optional `sorted` property can indicate to the client that the returned `distribution` of the aggregation objects response has some pre-defined order. Each of the `concepts` describes the scope (entity; `individual`, `biosample` ...), the property aggregated on, and optional `terms` or `splits` for selection or binning of the property values.",
             "properties": {
                 "concepts": {
                     "items": {
@@ -193,6 +204,28 @@
             "type": "object"
         },
         "ConceptValue": {
+            "SplitItem": {
+                "description": "A split item for binning values during aggregation.",
+                "properties": {
+                    "label": {
+                        "description": "A human readable label for the bin resulting from the split.",
+                        "examples": [
+                            "< 18 months",
+                            "10kg to less than 25kg"
+                        ],
+                        "type": "string"
+                    },
+                    "value": {
+                        "description": "The value for the split, representing the inclusive lower bounds. TODO: Other types than string? String can be a value/unit string... Overmodeling this might get too complex.",
+                        "examples": [
+                            "P18M",
+                            0
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
             "additionalItems": true,
             "description": "A value or bin ... for the concept property.",
             "properties": {
