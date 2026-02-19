@@ -65,8 +65,8 @@ $defs:
 
   AggregationConcept:
     description: >-
-      Concept on which the aggregation was performed, including the scoped
-      property, and optional termIds or splits for selection
+      Concept on which the aggregation was performed, including the property
+      in the data model and optional termIds or splits for selection
       or binning of the property values.
     type: object
     properties:
