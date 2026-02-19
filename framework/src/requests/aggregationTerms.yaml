@@ -7,14 +7,26 @@ description: |-
   documentation for `AggregationTermInResponse.id` in `beaconAggregationTermsResults`.
 
   TODO: The current implementation does not allow to define aggregations, _i.e._
-  to send aggregation concepts or parts thereof (e.g. `splits`, `termIds`). It
+  to send aggregation concepts or parts thereof (e.g. `splits`, `terms`). It
   only allows to select from the predefined aggregations. This behaviour might
   be changed in the future, e.g. allowing dynamic aggregation definitions through
   POSTing aggregation term objects or modifiers to properties of the `AggregationConcept`
-  such as `splits`, `termIds` and `sorted`.
+  such as `splits`, `terms` and `sorted`.
+
+  Note: The request for aggregations is a list of lists of objects:
+  * The outer list level is the list of all aggregations resulting in a distribution
+    of one or more dimensional aggregation results.
+  * The lists of `AggregationConceptInRequest` have 1 or more (but mostly 1 or 2)
+    concepts which are evaluated together, e.g. "diagnoses for sex at birth".
 type: array
 items:
   $ref: '#/$defs/AggregationTermInRequest'
+examples:
+  - - - id: selectedDiagnoses
+      - id: sexAtBirth
+    - - id: biosample.histologicalDiagnosis.id
+  - - - id: ageAtDiagnosis
+
 $defs:
   AggregationTermInRequest:
     description: >-
@@ -24,6 +36,10 @@ $defs:
     type: array
     items:
       $ref: '#/$defs/AggregationConceptInRequest'
+    examples:
+      - - id: selectedDiagnoses
+        - id: sexAtBirth
+      - - id: biosample.histologicalDiagnosis.id
 
   AggregationConceptInRequest:
     type: object
@@ -35,12 +51,7 @@ $defs:
           to select the aggregation concept, _i.e._ usually corresponding to a
           property in the data model. 
         examples:
-          - sexAtBirth
-          - biosample.histologicalDiagnosis.id
-          - ageAtCollection
-
-    examples:
-      - id: selectedDiagnosesBySex
-      - id: biosample.histologicalDiagnosis.id
-      - id: sexAtBirth
-      - id: ageAtDiagnosis
+          - id: selectedDiagnoses
+          - id: biosample.histologicalDiagnosis.id
+          - id: sexAtBirth
+          - id: ageAtDiagnosis

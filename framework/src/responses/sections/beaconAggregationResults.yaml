@@ -11,13 +11,13 @@ $defs:
   AggregationResultsInstance:
     description: >-
       Summary data from results, with distributions of values (or value combinations)
-      for one (or more) concepts.
+      for one or more concepts.
       Each summary is identified by an `id`, `label`, `description`, and a list
       of one or more `concepts`. An an optional `sorted` property can indicate
       to the client that the returned `distribution` of the aggregation objects
       response has some pre-defined order.
       Each of the `concepts` describes the scope (entity; `individual`, `biosample`
-      ...), the property aggregated on, and optional `termIds` or `splits` for
+      ...), the property aggregated on, and optional `terms` or `splits` for
       selection or binning of the property values.
     type: object
     properties:
@@ -103,31 +103,58 @@ $defs:
           Indicates whether the resulting distribution results will be sorted in
           some way.
         type: boolean
-      termIds:
+      terms:
         description: >-
-          Optional list of termIds to select specific values for aggregation.
+          Optional list of terms to select specific values for aggregation.
+          TODO: 
+            * id/label object definition
         type: array
         items:
-          type: string
+          type: object
         examples:
-          - - NCIT:C9335  # Malignant neoplasm of breast
-            - NCIT:C4863  # Prostate Carcinoma
-            - NCIT:C9384  # Kidney Carcinoma
-            - NCIT:C3513  # Esophageal Carcinoma
-          - - EFO:0030075 # cDNA microarray
-            - EFO:0010938 # large-insert clone DNA microarray
-            - EFO:0010939 # oligonucleotide DNA microarray
-            - EFO:0010937 # comparative genomic hybridization (CGH)
+          - - id: NCIT:C9384
+              label: Kidney Carcinoma
+            - id: NCIT:C3513
+              label: Esophageal Carcinoma
+            - id: NCIT:C35850
+              label: Head and Neck Carcinoma
+            - id: NCIT:C4878
+              label: Lung Carcinoma
+            - id: NCIT:C207229
+          - - id: EFO:0030075
+              label: cDNA microarray
+            - id: EFO:0010938
+              label: large-insert clone DNA microarray
+            - id: EFO:0010939
+              label: oligonucleotide DNA microarray
+            - id: EFO:0010937
+              label: comparative genomic hybridization (CGH)
       splits:
         description: >-
-          Optional list of **sorted** splits to group values for ranges or bins when
-          performing the aggregation.
-          TODO: Define types and/or couple them to property type.
+          Optional list of **sorted** splits to group values for ranges or bins
+          when performing the aggregation.
+          TODO: 
+            * Define types and/or couple them to property type
         type: array
+        minItems: 1
+        items:
+          $ref: "#/$defs/SplitItem"
         examples:
-          - - P0D
-            - P18Y
-            - P65Y
+          - - value: P18M
+              label: < 18 months
+            - value: P18Y
+              label: 1.5 to < 18 years
+            - value: P65Y
+              label: 18 to < 65 years
+            - value: P150Y
+              label: 65 years and older
+          - - value: 0
+              label: "0"
+            - value: 1
+              label: "1"
+            - value: 2
+              label: "2 or more"
+
     required:
       - id
 
@@ -179,6 +206,28 @@ $defs:
     required:
       - id
     additionalItems: True
+
+    SplitItem:
+      description: >-
+        A split item for binning values during aggregation.
+      type: object
+      properties:
+        value:
+          description: >-
+            The value for the split, representing the inclusive lower bounds.
+            TODO: Other types than string? String can be a value/unit string...
+            Overmodeling this might get too complex.
+          type: string
+          examples:
+            - P18M
+            - 0
+        label:
+          description: >-
+            A human readable label for the bin resulting from the split.
+          type: string
+          examples:
+            - < 18 months
+            - 10kg to less than 25kg
 
 
 

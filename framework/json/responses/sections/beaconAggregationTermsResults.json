@@ -18,10 +18,34 @@
                 "property": "individual.diseases.followup",
                 "sorted": true,
                 "splits": [
-                    "P0D",
-                    "P18M",
-                    "P10Y",
-                    "P60Y"
+                    {
+                        "label": "< 6 months",
+                        "value": "P6M"
+                    },
+                    {
+                        "label": "< 1 year",
+                        "value": "P1Y"
+                    },
+                    {
+                        "label": "< 18 months",
+                        "value": "P18M"
+                    },
+                    {
+                        "label": "< 3 years",
+                        "value": "P3Y"
+                    },
+                    {
+                        "label": "< 5 years",
+                        "value": "P5Y"
+                    },
+                    {
+                        "label": "< 10 years",
+                        "value": "P10Y"
+                    },
+                    {
+                        "label": "> 10 years",
+                        "value": "P100Y"
+                    }
                 ],
                 "type": "string"
             },

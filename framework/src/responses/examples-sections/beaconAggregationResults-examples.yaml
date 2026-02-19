@@ -1,4 +1,18 @@
 examples:
+  - id: biosampleStatus
+    label: Type of Sample Material
+    concepts:
+      - property: biosample.biosampleStatus
+    distribution:
+      - conceptValues:
+          - id: EFO:0009654
+            label: reference sample
+        count: 123
+      - conceptValues:
+          - id: EFO:0009656
+            label: neoplastic sample
+        count: 456
+
   - id: followupTime
     label: Follow-up Time
     description: >-
@@ -7,29 +21,22 @@ examples:
     concepts:
       - scope: individual
         property: index_disease.followup
-        type: string
-        format: iso8601duration
-        splits:
-          - P0D
-          - P18M
-          - P10Y
-          - P60Y
     distribution:
       - conceptValues:
-        - id: '[P0D, P18M)'
-          label: '[P0D, P18M)'
+          - id: '[P0D, P18M)'
+            label: < 18 months
         count: 325
       - conceptValues:
-        - id: '[P18M, P10Y)'
-          label: '[P5Y, P10Y)'
+          - id: '[P18M, P10Y)'
+            label: 1.5 to < 10 years
         count: 339
       - conceptValues:
-        - id: '[P10Y, P60Y)'
-          label: '[P10Y, P60Y)'
+          - id: '[P10Y, P60Y)'
+            label: 8 to < 60 years
         count: 61
       - conceptValues:
-        - id: undefined
-          label: undefined
+          - id: undefined
+            label: undefined
         count: 719
 
   - id: diseaseBySex
@@ -43,212 +50,182 @@ examples:
         scope: individual
     distribution:
       - conceptValues:
-        - id: NCIT:C2919
-          label: Prostate Adenocarcinoma
-        - id: NCIT:C20197
-          label: male
+          - id: NCIT:C2919
+            label: Prostate Adenocarcinoma
+          - id: NCIT:C20197
+            label: male
         count: 426
       - conceptValues:
-        - id: NCIT:C4017
-          label: Breast Ductal Carcinoma
-        - id: NCIT:C16576
-          label: female
+          - id: NCIT:C4017
+            label: Breast Ductal Carcinoma
+          - id: NCIT:C16576
+            label: female
         count: 423
       - conceptValues:
-        - id: NCIT:C3512
-          label: Lung Adenocarcinoma
-        - id: NCIT:C16576
-          label: female
+          - id: NCIT:C3512
+            label: Lung Adenocarcinoma
+          - id: NCIT:C16576
+            label: female
         count: 317
       - conceptValues:
-        - id: NCIT:C3512
-          label: Lung Adenocarcinoma
-        - id: NCIT:C20197
-          label: male
+          - id: NCIT:C3512
+            label: Lung Adenocarcinoma
+          - id: NCIT:C20197
+            label: male
         count: 138
       - conceptValues:
-        - id: NCIT:C2926
-          label: Lung Non-Small Cell Carcinoma
-        - id: NCIT:C17998
-          label: unknown
+          - id: NCIT:C2926
+            label: Lung Non-Small Cell Carcinoma
+          - id: NCIT:C17998
+            label: unknown
         count: 133
       - conceptValues:
-        - id: NCIT:C4349
-          label: Colon Adenocarcinoma
-        - id: NCIT:C20197
-          label: male
+          - id: NCIT:C4349
+            label: Colon Adenocarcinoma
+          - id: NCIT:C20197
+            label: male
         count: 94
       - conceptValues:
-        - id: NCIT:C8294
-          label: Pancreatic Adenocarcinoma
-        - id: NCIT:C16576
-          label: female
+          - id: NCIT:C8294
+            label: Pancreatic Adenocarcinoma
+          - id: NCIT:C16576
+            label: female
         count: 92
       - conceptValues:
-        - id: NCIT:C8294
-          label: Pancreatic Adenocarcinoma
-        - id: NCIT:C20197
-          label: male
+          - id: NCIT:C8294
+            label: Pancreatic Adenocarcinoma
+          - id: NCIT:C20197
+            label: male
         count: 87
       - conceptValues:
-        - id: NCIT:C3493
-          label: Lung Squamous Cell Carcinoma
-        - id: NCIT:C20197
-          label: male
+          - id: NCIT:C3493
+            label: Lung Squamous Cell Carcinoma
+          - id: NCIT:C20197
+            label: male
         count: 71
       - conceptValues:
-        - id: NCIT:C4004
-          label: Gastric Adenocarcinoma
-        - id: NCIT:C17998
-          label: unknown
+          - id: NCIT:C4004
+            label: Gastric Adenocarcinoma
+          - id: NCIT:C17998
+            label: unknown
         count: 62
       - conceptValues:
-        - id: NCIT:C3512
-          label: Lung Adenocarcinoma
-        - id: NCIT:C17998
-          label: unknown
+          - id: NCIT:C3512
+            label: Lung Adenocarcinoma
+          - id: NCIT:C17998
+            label: unknown
         count: 60
       - conceptValues:
-        - id: NCIT:C3099
-          label: Hepatocellular Carcinoma
-        - id: NCIT:C17998
-          label: unknown
+          - id: NCIT:C3099
+            label: Hepatocellular Carcinoma
+          - id: NCIT:C17998
+            label: unknown
         count: 55
       - conceptValues:
-        - id: NCIT:C3099
-          label: Hepatocellular Carcinoma
-        - id: NCIT:C20197
-          label: male
+          - id: NCIT:C3099
+            label: Hepatocellular Carcinoma
+          - id: NCIT:C20197
+            label: male
         count: 45
       - conceptValues:
-        - id: NCIT:C3493
-          label: Lung Squamous Cell Carcinoma
-        - id: NCIT:C16576
-          label: female
+          - id: NCIT:C3493
+            label: Lung Squamous Cell Carcinoma
+          - id: NCIT:C16576
+            label: female
         count: 43
       - conceptValues:
-        - id: NCIT:C3493
-          label: Lung Squamous Cell Carcinoma
-        - id: NCIT:C17998
-          label: unknown
+          - id: NCIT:C3493
+            label: Lung Squamous Cell Carcinoma
+          - id: NCIT:C17998
+            label: unknown
         count: 41
       - conceptValues:
-        - id: NCIT:C4004
-          label: Gastric Adenocarcinoma
-        - id: NCIT:C16576
-          label: female
+          - id: NCIT:C4004
+            label: Gastric Adenocarcinoma
+          - id: NCIT:C16576
+            label: female
         count: 39
       - conceptValues:
-        - id: NCIT:C3510
-          label: Cutaneous Melanoma
-        - id: NCIT:C20197
-          label: male
-        count: 39
-      - conceptValues:
-        - id: NCIT:C3171
-          label: Acute Myeloid Leukemia
-        - id: NCIT:C20197
-          label: male
-        count: 38
-      - conceptValues:
-        - id: NCIT:C3222
-          label: Medulloblastoma
-        - id: NCIT:C17998
-          label: unknown
+          - id: NCIT:C3222
+            label: Medulloblastoma
+          - id: NCIT:C17998
+            label: unknown
         count: 35
       - conceptValues:
-        - id: NCIT:C7540
-          label: Small Lymphocytic Lymphoma
-        - id: NCIT:C20197
-          label: male
+          - id: NCIT:C7540
+            label: Small Lymphocytic Lymphoma
+          - id: NCIT:C20197
+            label: male
         count: 34
       - conceptValues:
-        - id: NCIT:C4004
-          label: Gastric Adenocarcinoma
-        - id: NCIT:C20197
-          label: male
+          - id: NCIT:C4004
+            label: Gastric Adenocarcinoma
+          - id: NCIT:C20197
+            label: male
         count: 33
       - conceptValues:
-        - id: NCIT:C4025
-          label: Esophageal Adenocarcinoma
-        - id: NCIT:C17998
-          label: unknown
+          - id: NCIT:C4025
+            label: Esophageal Adenocarcinoma
+          - id: NCIT:C17998
+            label: unknown
         count: 32
       - conceptValues:
-        - id: NCIT:C4025
-          label: Esophageal Adenocarcinoma
-        - id: NCIT:C20197
-          label: male
+          - id: NCIT:C4025
+            label: Esophageal Adenocarcinoma
+          - id: NCIT:C20197
+            label: male
         count: 30
       - conceptValues:
-        - id: NCIT:C5105
-          label: Colorectal Adenocarcinoma
-        - id: NCIT:C20197
-          label: male
+          - id: NCIT:C5105
+            label: Colorectal Adenocarcinoma
+          - id: NCIT:C20197
+            label: male
         count: 27
       - conceptValues:
-        - id: NCIT:C8294
-          label: Pancreatic Adenocarcinoma
-        - id: NCIT:C17998
-          label: unknown
+          - id: NCIT:C8294
+            label: Pancreatic Adenocarcinoma
+          - id: NCIT:C17998
+            label: unknown
         count: 26
       - conceptValues:
-        - id: NCIT:C4917
-          label: Lung Small Cell Carcinoma
-        - id: NCIT:C16576
-          label: female
+          - id: NCIT:C4917
+            label: Lung Small Cell Carcinoma
+          - id: NCIT:C16576
+            label: female
         count: 26
       - conceptValues:
-        - id: NCIT:C2926
-          label: Lung Non-Small Cell Carcinoma
-        - id: NCIT:C16576
-          label: female
+          - id: NCIT:C2926
+            label: Lung Non-Small Cell Carcinoma
+          - id: NCIT:C16576
+            label: female
         count: 22
       - conceptValues:
-        - id: NCIT:C5105
-          label: Colorectal Adenocarcinoma
-        - id: NCIT:C16576
-          label: female
+          - id: NCIT:C5105
+            label: Colorectal Adenocarcinoma
+          - id: NCIT:C16576
+            label: female
         count: 21
       - conceptValues:
-        - id: NCIT:C4024
-          label: Esophageal Squamous Cell Carcinoma
-        - id: NCIT:C17998
-          label: unknown
+          - id: NCIT:C4024
+            label: Esophageal Squamous Cell Carcinoma
+          - id: NCIT:C17998
+            label: unknown
         count: 20
       - conceptValues:
-        - id: NCIT:C3099
-          label: Hepatocellular Carcinoma
-        - id: NCIT:C16576
-          label: female
+          - id: NCIT:C3099
+            label: Hepatocellular Carcinoma
+          - id: NCIT:C16576
+            label: female
         count: 20
       - conceptValues:
-        - id: NCIT:C3230
-          label: Meningioma
-        - id: NCIT:C16576
-          label: female
-        count: 19
-      - conceptValues:
-        - id: NCIT:C4917
-          label: Lung Small Cell Carcinoma
-        - id: NCIT:C20197
-          label: male
+          - id: NCIT:C4917
+            label: Lung Small Cell Carcinoma
+          - id: NCIT:C20197
+            label: male
         count: 18
       - conceptValues:
-        - id: NCIT:C3224
-          label: Melanoma
-        - id: NCIT:C16576
-          label: female
-        count: 17
-      - conceptValues:
-        - id: NCIT:C9309
-          label: Seminoma
-        - id: NCIT:C20197
-          label: male
-        count: 17
-      - conceptValues:
-        - id: NCIT:C2926
-          label: Lung Non-Small Cell Carcinoma
-        - id: NCIT:C20197
-          label: male
+          - id: NCIT:C2926
+            label: Lung Non-Small Cell Carcinoma
+          - id: NCIT:C20197
+            label: male
         count: 17
