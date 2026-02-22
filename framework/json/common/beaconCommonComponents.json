@@ -1,12 +1,11 @@
 {
     "$defs": {
         "$schema": {
-            "$comment": "TO REVIEW: adding a `format` or `regex` attribute that validates correctly against a file path (relative).",
-            "description": "Refers to the JSON Schema which describes the set of valid attributes for this particular document type. This attribute is mostly used in schemas that should be tested in Beacon implementations.",
+            "description": "The $schema keyword is used to declare which dialect of JSON Schema (e.g. `https://json-schema.org/draft/2020-12/schema`) the version of the Beacon schema was written for. This identifier can be used to validate the correct format of the current definitions.",
             "type": "string"
         },
         "ApiVersion": {
-            "description": "Version of API, e.g. in request or response. Beacon uses a Github-style, \"v\"-prefixed semantic versioning format.",
+            "description": "Version of API instance. Depending on the context (e.g. in request or response) this property refers to the version of Beacon API implemented or the version of the code implementing the Beacon resource. Refer to the description where this property is used to understand if the expected content is the former or the later.\nBeacon uses a \"v\"-prefixed semantic versioning format, but this is not mandatory when the property refers to an implementation code version.",
             "examples": [
                 "v2.0.1",
                 "v0.3"
