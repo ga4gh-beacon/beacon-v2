@@ -12,10 +12,12 @@ $defs:
     description: >-
       Summary data from results, with distributions of values (or value combinations)
       for one or more concepts.
+
       Each summary is identified by an `id`, `label`, `description`, and a list
       of one or more `concepts`. An an optional `sorted` property can indicate
       to the client that the returned `distribution` of the aggregation objects
       response has some pre-defined order.
+
       Each of the `concepts` describes the scope (entity; `individual`, `biosample`
       ...), the property aggregated on, and optional `terms` or `splits` for
       selection or binning of the property values.
@@ -25,6 +27,8 @@ $defs:
         type: string
         description: >-
           The id of the aggregation term being reported on.
+        examples:
+          - individual.diseases.code.id
       label:
         description: >-
           The label for the aggregation concept(s) being reported on.
@@ -57,10 +61,18 @@ $defs:
         type: array
         items:
           $ref: "#/$defs/AggregationObject"
+      distinctValuesCount:
+          $ref: "#/$defs/DistinctValuesCount"
+      anyValueCount:
+          $ref: "#/$defs/AnyValueCount"
 
     required:
       - concepts
-      - distribution
+      - anyOf:
+          - distribution
+          - distinctValuesCount
+          - anyValueCount
+
     additionalItems: True
 
   AggregationConcept:
@@ -202,7 +214,7 @@ $defs:
         type: string
         examples:
           - Breast Ductal Carcinoma
-          - '[P0D, P18M)'
+          - younger than 18 months
     required:
       - id
     additionalItems: True
@@ -229,5 +241,24 @@ $defs:
             - < 18 months
             - 10kg to less than 25kg
 
+      DistinctValuesCount:
+        description: >-
+          The number of distinct values for the aggregated concept(s) in the
+          matched data. This can e.g. be used to represent the number of all
+          distinct `biosample.id` values to report the number of distinct biosamples
+          in the matched data.
+        type: integer
+        minimum: 0
 
+      AnyValueCount:
+        description: >-
+          The number of any value for the the aggregated concept(s) in the
+          matched data (excluding such with missing values for _any_ of the
+          properties). 
+          This can be used to report the data content for a given property (e.g.
+          individuals with a reported `followupTime` value, regardless of the
+          value), or of samples which have values for combined properties (e.g.
+          all individuals with `followupTime`and reported `sex`).
+        type: integer
+        minimum: 0
 

@@ -31,20 +31,12 @@
                         "value": "P18M"
                     },
                     {
-                        "label": "< 3 years",
-                        "value": "P3Y"
-                    },
-                    {
-                        "label": "< 5 years",
-                        "value": "P5Y"
-                    },
-                    {
                         "label": "< 10 years",
                         "value": "P10Y"
                     },
                     {
                         "label": "> 10 years",
-                        "value": "P100Y"
+                        "value": "P150Y"
                     }
                 ],
                 "type": "string"

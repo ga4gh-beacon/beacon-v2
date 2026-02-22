@@ -155,8 +155,11 @@
         },
         "AggregationResultsInstance": {
             "additionalItems": true,
-            "description": "Summary data from results, with distributions of values (or value combinations) for one or more concepts. Each summary is identified by an `id`, `label`, `description`, and a list of one or more `concepts`. An an optional `sorted` property can indicate to the client that the returned `distribution` of the aggregation objects response has some pre-defined order. Each of the `concepts` describes the scope (entity; `individual`, `biosample` ...), the property aggregated on, and optional `terms` or `splits` for selection or binning of the property values.",
+            "description": "Summary data from results, with distributions of values (or value combinations) for one or more concepts.\nEach summary is identified by an `id`, `label`, `description`, and a list of one or more `concepts`. An an optional `sorted` property can indicate to the client that the returned `distribution` of the aggregation objects response has some pre-defined order.\nEach of the `concepts` describes the scope (entity; `individual`, `biosample` ...), the property aggregated on, and optional `terms` or `splits` for selection or binning of the property values.",
             "properties": {
+                "anyValueCount": {
+                    "$ref": "#/$defs/AnyValueCount"
+                },
                 "concepts": {
                     "items": {
                         "$ref": "#/$defs/AggregationConcept"
@@ -167,6 +170,9 @@
                     "description": "Description of the aggregation performed for this term.",
                     "type": "string"
                 },
+                "distinctValuesCount": {
+                    "$ref": "#/$defs/DistinctValuesCount"
+                },
                 "distribution": {
                     "description": "A distribution contains a list of aggregation objects, where each describes the count of one (or more, intersected) values for the concept(s) aggregated on.",
                     "items": {
@@ -176,6 +182,9 @@
                 },
                 "id": {
                     "description": "The id of the aggregation term being reported on.",
+                    "examples": [
+                        "individual.diseases.code.id"
+                    ],
                     "type": "string"
                 },
                 "label": {
@@ -199,12 +208,28 @@
             },
             "required": [
                 "concepts",
-                "distribution"
+                {
+                    "anyOf": [
+                        "distribution",
+                        "distinctValuesCount",
+                        "anyValueCount"
+                    ]
+                }
             ],
             "type": "object"
         },
         "ConceptValue": {
             "SplitItem": {
+                "AnyValueCount": {
+                    "description": "The number of any value for the the aggregated concept(s) in the matched data (excluding missing values).",
+                    "minimum": 0,
+                    "type": "integer"
+                },
+                "DistinctValuesCount": {
+                    "description": "The number of distinct values for the aggregated concept(s) in the matched data.",
+                    "minimum": 0,
+                    "type": "integer"
+                },
                 "description": "A split item for binning values during aggregation.",
                 "properties": {
                     "label": {
@@ -242,7 +267,7 @@
                     "description": "Human readable label for the concept value.",
                     "examples": [
                         "Breast Ductal Carcinoma",
-                        "[P0D, P18M)"
+                        "younger than 18 months"
                     ],
                     "type": "string"
                 }
