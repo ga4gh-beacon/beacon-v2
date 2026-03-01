@@ -21,17 +21,24 @@ $defs:
       Each of the `concepts` describes the scope (entity; `individual`, `biosample`
       ...), the property aggregated on, and optional `terms` or `splits` for
       selection or binning of the property values.
+
+      TODO: Remove `id`, `label`, `description` for only selecting on concepts
+      and just keeping those & the result properties?!
     type: object
     properties:
       id:
         type: string
         description: >-
-          The id of the aggregation term being reported on.
+          The id of the aggregation which can be used e.g. as a selector.
+          TODO: Remove in favour of only selecting and reporting concepts?!
         examples:
-          - individual.diseases.code.id
+          - DiseaseBySexAtBirth
+          - FollowupTime
+          - HistologicalDiagnoses
       label:
         description: >-
           The label for the aggregation concept(s) being reported on.
+          TODO: Remove in favour of only selecting and reporting concepts?!
         type: string
         examples:
           - Genders
@@ -40,10 +47,12 @@ $defs:
       description:
         description: >-
           Description of the aggregation performed for this term.
+          TODO: Remove in favour of only selecting and reporting concepts?!
         type: string
       scope:
         description: >-
           The scope (entity type) for which the results are reported.
+          TODO: Remove in favour of only selecting and reporting concepts?!
         type: string
         examples:
           - individual

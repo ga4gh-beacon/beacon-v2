@@ -155,7 +155,7 @@
         },
         "AggregationResultsInstance": {
             "additionalItems": true,
-            "description": "Summary data from results, with distributions of values (or value combinations) for one or more concepts.\nEach summary is identified by an `id`, `label`, `description`, and a list of one or more `concepts`. An an optional `sorted` property can indicate to the client that the returned `distribution` of the aggregation objects response has some pre-defined order.\nEach of the `concepts` describes the scope (entity; `individual`, `biosample` ...), the property aggregated on, and optional `terms` or `splits` for selection or binning of the property values.",
+            "description": "Summary data from results, with distributions of values (or value combinations) for one or more concepts.\nEach summary is identified by an `id`, `label`, `description`, and a list of one or more `concepts`. An an optional `sorted` property can indicate to the client that the returned `distribution` of the aggregation objects response has some pre-defined order.\nEach of the `concepts` describes the scope (entity; `individual`, `biosample` ...), the property aggregated on, and optional `terms` or `splits` for selection or binning of the property values.\nTODO: Remove `id`, `label`, `description` for only selecting on concepts and just keeping those & the result properties?!",
             "properties": {
                 "anyValueCount": {
                     "$ref": "#/$defs/AnyValueCount"
@@ -167,7 +167,7 @@
                     "type": "array"
                 },
                 "description": {
-                    "description": "Description of the aggregation performed for this term.",
+                    "description": "Description of the aggregation performed for this term. TODO: Remove in favour of only selecting and reporting concepts?!",
                     "type": "string"
                 },
                 "distinctValuesCount": {
@@ -181,14 +181,16 @@
                     "type": "array"
                 },
                 "id": {
-                    "description": "The id of the aggregation term being reported on.",
+                    "description": "The id of the aggregation which can be used e.g. as a selector. TODO: Remove in favour of only selecting and reporting concepts?!",
                     "examples": [
-                        "individual.diseases.code.id"
+                        "DiseaseBySexAtBirth",
+                        "FollowupTime",
+                        "HistologicalDiagnoses"
                     ],
                     "type": "string"
                 },
                 "label": {
-                    "description": "The label for the aggregation concept(s) being reported on.",
+                    "description": "The label for the aggregation concept(s) being reported on. TODO: Remove in favour of only selecting and reporting concepts?!",
                     "examples": [
                         "Genders",
                         "Diseases by Sex at Birth",
@@ -197,7 +199,7 @@
                     "type": "string"
                 },
                 "scope": {
-                    "description": "The scope (entity type) for which the results are reported.",
+                    "description": "The scope (entity type) for which the results are reported. TODO: Remove in favour of only selecting and reporting concepts?!",
                     "examples": [
                         "individual",
                         "biosample",
