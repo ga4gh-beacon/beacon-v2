@@ -1,5 +1,7 @@
 :root {
   --md-accent-fg-color: #076d63;
+  font-size: 1.2em;
+
 }
 
 .md-grid {
@@ -32,9 +34,9 @@ div.figcaption {
 
 h2 {
     color: var(--md-accent-fg-color);
-    border-top:  var(--md-accent-fg-color) thin solid;
+/*    border-top:  var(--md-accent-fg-color) thin solid;
     border-bottom:  var(--md-accent-fg-color) thin solid;
-}
+*/}
 
 div.tabbed-set {
     background-color:  #fafafa;

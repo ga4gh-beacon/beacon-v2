@@ -31,6 +31,7 @@ nav:
             - Biosamples, Variants...: records
             - Data Handovers: handovers
             - REST API: rest-api
+        - Data Aggregations: aggregations
     - 'Creating Beacons':
         - Implementations Options: implementations-options
         - Implementation Examples:
