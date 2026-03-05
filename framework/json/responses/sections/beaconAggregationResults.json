@@ -6,36 +6,8 @@
                 "description": {
                     "description": "A description of the summary concept, e.g. with details about the included property and the operations performed during aggregation."
                 },
-                "id": {
-                    "description": "The aggregation term id. It can be used to limit or combine the aggregations performed.",
-                    "examples": [
-                        "followupTime",
-                        "sexAtBirth"
-                    ],
-                    "type": "string"
-                },
-                "label": {
-                    "description": "A short label which e.g. can be used by clients to label diagrams or data tables.",
-                    "examples": [
-                        "Follow-up Time After Diagnosis"
-                    ],
-                    "type": "string"
-                },
-                "property": {
-                    "description": "The property, including the entity/scope, in the data model on which the aggregation was performed.",
-                    "examples": [
-                        "biosample.histologicalDiagnosis.id",
-                        "individual.sex.id",
-                        "biosample.collectionMoment"
-                    ],
-                    "type": "string"
-                },
-                "sorted": {
-                    "description": "Indicates whether the resulting distribution results will be sorted in some way.",
-                    "type": "boolean"
-                },
-                "terms": {
-                    "description": "Optional list of terms to select specific values for aggregation. TODO: \n  * id/label object definition",
+                "filters": {
+                    "description": "Optional list of filters to select specific values for aggregation.",
                     "examples": [
                         [
                             {
@@ -123,6 +95,34 @@
                         "type": "array"
                     },
                     "type": "array"
+                },
+                "id": {
+                    "description": "The aggregation term id. It can be used to limit or combine the aggregations performed.",
+                    "examples": [
+                        "followupTime",
+                        "sexAtBirth"
+                    ],
+                    "type": "string"
+                },
+                "label": {
+                    "description": "A short label which e.g. can be used by clients to label diagrams or data tables.",
+                    "examples": [
+                        "Follow-up Time After Diagnosis"
+                    ],
+                    "type": "string"
+                },
+                "property": {
+                    "description": "The property, including the entity/scope, in the data model on which the aggregation was performed.",
+                    "examples": [
+                        "biosample.histologicalDiagnosis.id",
+                        "individual.sex.id",
+                        "biosample.collectionMoment"
+                    ],
+                    "type": "string"
+                },
+                "sorted": {
+                    "description": "Indicates whether the resulting distribution results will be sorted in some way.",
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -155,7 +155,7 @@
         },
         "AggregationResultsInstance": {
             "additionalItems": true,
-            "description": "Summary data from results, with distributions of values (or value combinations) for one or more concepts.\nEach summary is identified by an `id`, `label`, `description`, and a list of one or more `concepts`. An an optional `sorted` property can indicate to the client that the returned `distribution` of the aggregation objects response has some pre-defined order.\nEach of the `concepts` describes the scope (entity; `individual`, `biosample` ...), the property aggregated on, and optional `terms` or `splits` for selection or binning of the property values.\nTODO: Remove `id`, `label`, `description` for only selecting on concepts and just keeping those & the result properties?!",
+            "description": "Summary data from results, with distributions of values (or value combinations) for one or more concepts.\nEach summary is identified by an `id`, `label`, `description`, and a list of one or more `concepts`. An an optional `sorted` property can indicate to the client that the returned `distribution` of the aggregation objects response has some pre-defined order.\nEach of the `concepts` describes the scope (entity; `individual`, `biosample` ...), the property aggregated on, and optional `terms` or `splits` for selection or binning of the property values.",
             "properties": {
                 "anyValueCount": {
                     "$ref": "#/$defs/AnyValueCount"
@@ -165,10 +165,6 @@
                         "$ref": "#/$defs/AggregationConcept"
                     },
                     "type": "array"
-                },
-                "description": {
-                    "description": "Description of the aggregation performed for this term. TODO: Remove in favour of only selecting and reporting concepts?!",
-                    "type": "string"
                 },
                 "distinctValuesCount": {
                     "$ref": "#/$defs/DistinctValuesCount"
@@ -180,32 +176,13 @@
                     },
                     "type": "array"
                 },
-                "id": {
-                    "description": "The id of the aggregation which can be used e.g. as a selector. TODO: Remove in favour of only selecting and reporting concepts?!",
-                    "examples": [
-                        "DiseaseBySexAtBirth",
-                        "FollowupTime",
-                        "HistologicalDiagnoses"
-                    ],
-                    "type": "string"
-                },
-                "label": {
-                    "description": "The label for the aggregation concept(s) being reported on. TODO: Remove in favour of only selecting and reporting concepts?!",
-                    "examples": [
-                        "Genders",
-                        "Diseases by Sex at Birth",
-                        "Follow-up Time After Diagnosis"
-                    ],
-                    "type": "string"
-                },
                 "scope": {
-                    "description": "The scope (entity type) for which the results are reported. TODO: Remove in favour of only selecting and reporting concepts?!",
+                    "description": "The scope (entity type) for which the results are reported. This does not have to be explicitly provided if it can be inferred from the scope of the response entry point, but can be provided for clarity or if the response includes aggregations for multiple scopes (e.g. an overview response at the `/datasets` endpoint).",
                     "examples": [
                         "individual",
                         "biosample",
                         "genomicVariation"
-                    ],
-                    "type": "string"
+                    ]
                 }
             },
             "required": [

@@ -1,9 +1,18 @@
 {
     "examples": [
         {
+            "anyValueCount": 3456,
             "concepts": [
                 {
-                    "property": "biosample.biosampleStatus"
+                    "id": "followupIndividuals"
+                }
+            ]
+        },
+        {
+            "concepts": [
+                {
+                    "id": "biosampleStatus",
+                    "label": "Biosample provenance status"
                 }
             ],
             "distribution": [
@@ -25,18 +34,26 @@
                     ],
                     "count": 456
                 }
-            ],
-            "id": "biosampleStatus",
-            "label": "Type of Sample Material"
+            ]
         },
         {
             "concepts": [
                 {
-                    "property": "index_disease.followup",
-                    "scope": "individual"
+                    "label": "Different histological diagnoses",
+                    "property": "biosample.histological_diagnosis.id"
                 }
             ],
-            "description": "Follow-up time after diagnosis",
+            "distinctValuesCount": 32,
+            "scope": "biosample"
+        },
+        {
+            "concepts": [
+                {
+                    "label": "Follow-up time since diagnosis",
+                    "property": "individual.index_disease.followup",
+                    "sorted": true
+                }
+            ],
             "distribution": [
                 {
                     "conceptValues": [
@@ -75,22 +92,19 @@
                     "count": 719
                 }
             ],
-            "id": "followupTime",
-            "label": "Follow-up Time",
-            "sorted": true
+            "scope": "individual"
         },
         {
             "concepts": [
                 {
-                    "property": "diseases.disease_code.id",
-                    "scope": "individual"
+                    "id": "diseases",
+                    "label": "Selected carcinoma types"
                 },
                 {
-                    "property": "sex.id",
-                    "scope": "individual"
+                    "id": "sexAtBirth",
+                    "label": "Sex at birth"
                 }
             ],
-            "description": "Cancer type by sex in matched individuals",
             "distribution": [
                 {
                     "conceptValues": [
@@ -143,19 +157,6 @@
                         }
                     ],
                     "count": 138
-                },
-                {
-                    "conceptValues": [
-                        {
-                            "id": "NCIT:C2926",
-                            "label": "Lung Non-Small Cell Carcinoma"
-                        },
-                        {
-                            "id": "NCIT:C17998",
-                            "label": "unknown"
-                        }
-                    ],
-                    "count": 133
                 },
                 {
                     "conceptValues": [
@@ -238,32 +239,6 @@
                 {
                     "conceptValues": [
                         {
-                            "id": "NCIT:C3099",
-                            "label": "Hepatocellular Carcinoma"
-                        },
-                        {
-                            "id": "NCIT:C17998",
-                            "label": "unknown"
-                        }
-                    ],
-                    "count": 55
-                },
-                {
-                    "conceptValues": [
-                        {
-                            "id": "NCIT:C3099",
-                            "label": "Hepatocellular Carcinoma"
-                        },
-                        {
-                            "id": "NCIT:C20197",
-                            "label": "male"
-                        }
-                    ],
-                    "count": 45
-                },
-                {
-                    "conceptValues": [
-                        {
                             "id": "NCIT:C3493",
                             "label": "Lung Squamous Cell Carcinoma"
                         },
@@ -299,32 +274,6 @@
                         }
                     ],
                     "count": 39
-                },
-                {
-                    "conceptValues": [
-                        {
-                            "id": "NCIT:C3222",
-                            "label": "Medulloblastoma"
-                        },
-                        {
-                            "id": "NCIT:C17998",
-                            "label": "unknown"
-                        }
-                    ],
-                    "count": 35
-                },
-                {
-                    "conceptValues": [
-                        {
-                            "id": "NCIT:C7540",
-                            "label": "Small Lymphocytic Lymphoma"
-                        },
-                        {
-                            "id": "NCIT:C20197",
-                            "label": "male"
-                        }
-                    ],
-                    "count": 34
                 },
                 {
                     "conceptValues": [
@@ -407,19 +356,6 @@
                 {
                     "conceptValues": [
                         {
-                            "id": "NCIT:C2926",
-                            "label": "Lung Non-Small Cell Carcinoma"
-                        },
-                        {
-                            "id": "NCIT:C16576",
-                            "label": "female"
-                        }
-                    ],
-                    "count": 22
-                },
-                {
-                    "conceptValues": [
-                        {
                             "id": "NCIT:C5105",
                             "label": "Colorectal Adenocarcinoma"
                         },
@@ -446,19 +382,6 @@
                 {
                     "conceptValues": [
                         {
-                            "id": "NCIT:C3099",
-                            "label": "Hepatocellular Carcinoma"
-                        },
-                        {
-                            "id": "NCIT:C16576",
-                            "label": "female"
-                        }
-                    ],
-                    "count": 20
-                },
-                {
-                    "conceptValues": [
-                        {
                             "id": "NCIT:C4917",
                             "label": "Lung Small Cell Carcinoma"
                         },
@@ -468,23 +391,9 @@
                         }
                     ],
                     "count": 18
-                },
-                {
-                    "conceptValues": [
-                        {
-                            "id": "NCIT:C2926",
-                            "label": "Lung Non-Small Cell Carcinoma"
-                        },
-                        {
-                            "id": "NCIT:C20197",
-                            "label": "male"
-                        }
-                    ],
-                    "count": 17
                 }
             ],
-            "id": "diseaseBySex",
-            "label": "Sex distributions for Diseases in Individuals"
+            "scope": "individual"
         }
     ]
 }

@@ -1,53 +1,145 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": false,
-    "description": "Aggregation concepts supported for this Beacon.",
-    "properties": {
-        "aggregationTerms": {
-            "items": {
-                "$ref": "./beaconAggregationResults.json#/$defs/AggregationConcept"
+    "$defs": {
+        "AggregationTermFilter": {
+            "description": "A filter item for filtering values during aggregation. This is similar to the filtering terms but lacking some unnecessary properties (e.g. `scopes` since defined through  the parent). Note: Filters in aggregations are evaluated in an OR context, _i.e._ to select a subset of values from the parent property. TODO: Re-use filtering terms (except the OR use)?",
+            "examples": [
+                [
+                    {
+                        "id": "NCIT:C9384",
+                        "label": "Kidney Carcinoma"
+                    },
+                    {
+                        "id": "NCIT:C3513",
+                        "label": "Esophageal Carcinoma"
+                    },
+                    {
+                        "id": "NCIT:C35850",
+                        "label": "Head and Neck Carcinoma"
+                    }
+                ],
+                [
+                    {
+                        "id": "EFO:0030075",
+                        "label": "cDNA microarray"
+                    },
+                    {
+                        "id": "EFO:0010938",
+                        "label": "large-insert clone DNA microarray"
+                    }
+                ]
+            ],
+            "properties": {
+                "id": {
+                    "description": "The value to be matched for the property.",
+                    "type": "string"
+                },
+                "label": {
+                    "description": "A label, for information purposes, for the value to be matched.     ",
+                    "type": "string"
+                }
             },
-            "type": "array"
+            "type": "object"
         },
-        "examples": [
-            {
-                "description": "Follow-up Time After Diagnosis",
-                "format": "iso8601duration",
-                "id": "followupTime",
-                "label": "Follow-up Time",
-                "property": "individual.diseases.followup",
-                "sorted": true,
-                "splits": [
-                    {
-                        "label": "< 6 months",
-                        "value": "P6M"
+        "AggregationTermInResponse": {
+            "properties": {
+                "description": {
+                    "description": "Description of the aggregation performed for this term.",
+                    "type": "string"
+                },
+                "filters": {
+                    "description": "Optional list of filters to select specific values for aggregation.",
+                    "items": {
+                        "$ref": "#/$defs/AggregationTermFilter"
                     },
-                    {
-                        "label": "< 1 year",
-                        "value": "P1Y"
+                    "minItems": 1,
+                    "type": "array"
+                },
+                "id": {
+                    "description": "The id of the aggregation which can be used e.g. as a selector.",
+                    "examples": [
+                        "SexAtBirth",
+                        "FollowupTime",
+                        "HistologicalDiagnoses"
+                    ],
+                    "type": "string"
+                },
+                "label": {
+                    "description": "The label for the aggregation concept being reported on.",
+                    "examples": [
+                        "Sex at Birth",
+                        "Follow-up Time After Diagnosis",
+                        "Diagnoses"
+                    ],
+                    "type": "string"
+                },
+                "splits": {
+                    "description": "Optional list of **sorted** splits to group values for ranges or bins when performing the aggregation. TODO: \n  * Define types and/or couple them to property type?",
+                    "items": {
+                        "$ref": "#/$defs/SplitItem"
                     },
+                    "minItems": 1,
+                    "type": "array"
+                }
+            }
+        },
+        "SplitItem": {
+            "description": "A split item for binning values during aggregation.",
+            "examples": [
+                [
                     {
                         "label": "< 18 months",
                         "value": "P18M"
                     },
                     {
-                        "label": "< 10 years",
-                        "value": "P10Y"
+                        "label": "18 months to less than 18 years",
+                        "value": "P18Y"
                     },
                     {
-                        "label": "> 10 years",
+                        "label": "18 years to less than 65 years",
+                        "value": "P65Y"
+                    },
+                    {
+                        "label": "65 years and older",
                         "value": "P150Y"
                     }
                 ],
-                "type": "string"
+                [
+                    {
+                        "label": "0kg to less than 10kg",
+                        "value": 10
+                    },
+                    {
+                        "label": "10kg to less than 25kg",
+                        "value": 25
+                    },
+                    {
+                        "label": "25kg and more",
+                        "value": 999
+                    }
+                ]
+            ],
+            "properties": {
+                "label": {
+                    "description": "A human readable label for the bin resulting from the split.",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value for the split, representing the inclusive lower bounds. TODO: Other types than string? String can be a value/unit string... Overmodeling this might get too complex.",
+                    "type": "string"
+                }
             },
-            {
-                "description": "Disease type in matched individuals",
-                "id": "disease",
-                "label": "Diseases",
-                "property": "individual.diseases.diseaseCode.id"
-            }
-        ]
+            "type": "object"
+        }
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Aggregation terms supported for this beacon. The aggregation terms deatil the respective property and optional selectors (splits, filters) applied when generating summaries. The structure as object aligns with the filtering terms results and allows for later expansion (e.g. adding `resources` for information about terms).",
+    "properties": {
+        "aggregationTerms": {
+            "items": {
+                "$ref": "#/$defs/AggregationTermInResponse"
+            },
+            "type": "array"
+        }
     },
     "type": "object"
 }

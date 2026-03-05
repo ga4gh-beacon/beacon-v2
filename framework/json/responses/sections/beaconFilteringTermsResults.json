@@ -3,11 +3,6 @@
         "FilteringTermInResponse": {
             "description": "Entities can be filtered using this term.",
             "properties": {
-                "aggregatable": {
-                    "description": "This filter can be used as a category in a summary data response",
-                    "example": true,
-                    "type": "boolean"
-                },
                 "id": {
                     "description": "The field id in the case of numeric or alphanumeric fields, or the term id in the case of ontology or custom terms. CURIE syntax in the case of an ontology term.",
                     "examples": [

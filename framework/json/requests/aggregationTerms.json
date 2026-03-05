@@ -1,9 +1,96 @@
 {
     "$defs": {
         "AggregationConceptInRequest": {
+            "description": "An array of `AggregationTermInRequest` objects representing the terms to be aggregated for a single aggregation, e.g. terms corresponding to `sexAtBirth` and `diagnosis`.",
+            "examples": [
+                [
+                    {
+                        "filters": [
+                            "NCIT:C9384",
+                            "NCIT:C3513",
+                            "NCIT:C35850"
+                        ],
+                        "id": "selectedDiagnoses"
+                    },
+                    {
+                        "id": "sexAtBirth"
+                    }
+                ],
+                [
+                    {
+                        "id": "biosample.histologicalDiagnosis.id"
+                    }
+                ]
+            ],
+            "items": {
+                "$ref": "#/$defs/AggregationTermInRequest"
+            },
+            "type": "array"
+        },
+        "AggregationTermInRequest": {
+            "description": "An object representing an individual term to be aggregated, e.g. a term corresponding to `sexAtBirth` or `diagnosis`. The `id` property is required and identifies the term to be aggregated, while the `filters` and `splits` properties are optional modifiers of the aggregation term. Note: The request object does not specifiy the property or scope of the aggregation.",
             "properties": {
+                "filters": {
+                    "description": "Optional list of filters to select specific values of the given property for aggregation, as a modifier of the aggregation term. For example, for an aggregation term of `diagnosis` filters could be used to specify a subset of diagnoses to be aggregated.\nNotes:\n* While using the prototype of filters in the filtering section, these\n  filters are not chained by the logical AND operator but are applied as\n  a set of values to be used for the aggregation (i.e. evaluated separately)\n* The `scope` property from `filteringTerms` does not apply since the scope\n  is defined through the aggregation term itself.\n* For value binning use the `splits` property instead of filters.",
+                    "examples": [
+                        [
+                            {
+                                "id": "NCIT:C9384"
+                            },
+                            {
+                                "id": "NCIT:C3513"
+                            },
+                            {
+                                "id": "NCIT:C35850"
+                            }
+                        ],
+                        [
+                            {
+                                "id": "sex:male"
+                            },
+                            {
+                                "id": "sex:female"
+                            },
+                            {
+                                "id": "sex:other"
+                            }
+                        ]
+                    ],
+                    "items": {
+                        "$ref": "./filteringTerms.json#/$defs/FilteringTermInRequest"
+                    },
+                    "splits": {
+                        "description": "Optional list of **sorted** splits to group values for ranges or bins when performing the aggregation. TODO: object definition OR make it plain values? TODO: Define types and/or couple them to property type",
+                        "examples": [
+                            [
+                                "P18M",
+                                "P18Y",
+                                "P65Y",
+                                "P150Y"
+                            ],
+                            [
+                                0,
+                                1,
+                                2
+                            ]
+                        ],
+                        "items": {
+                            "oneOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ]
+                        },
+                        "minItems": 1,
+                        "type": "array"
+                    },
+                    "type": "array"
+                },
                 "id": {
-                    "description": "The `id` of the aggregation concept as provided by the beacon. It is used to select the aggregation concept, _i.e._ usually corresponding to a property in the data model. ",
+                    "description": "The `id` of the aggregation term as provided by the beacon. It is used to select the aggregation term, _i.e._ usually corresponding to a property in the data model. ",
                     "examples": [
                         {
                             "id": "selectedDiagnoses"
@@ -22,58 +109,12 @@
                 }
             },
             "type": "object"
-        },
-        "AggregationTermInRequest": {
-            "description": "An array of `AggregationConceptInRequest` objects representing the concepts to be aggregated for a single aggregation, e.g. terms corresponding to `sexAtBirth` and `diagnosis`.",
-            "examples": [
-                [
-                    {
-                        "id": "selectedDiagnoses"
-                    },
-                    {
-                        "id": "sexAtBirth"
-                    }
-                ],
-                [
-                    {
-                        "id": "biosample.histologicalDiagnosis.id"
-                    }
-                ]
-            ],
-            "items": {
-                "$ref": "#/$defs/AggregationConceptInRequest"
-            },
-            "type": "array"
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Terms used to specify items to return in an aggregation data response. Terms\nare provided through the beacon's `/aggregation_terms` endpoint and the `id`\nvalues of those terms constitute the possible `id` values here. See also the\ndocumentation for `AggregationTermInResponse.id` in `beaconAggregationTermsResults`.\n\nTODO: The current implementation does not allow to define aggregations, _i.e._\nto send aggregation concepts or parts thereof (e.g. `splits`, `terms`). It\nonly allows to select from the predefined aggregations. This behaviour might\nbe changed in the future, e.g. allowing dynamic aggregation definitions through\nPOSTing aggregation term objects or modifiers to properties of the `AggregationConcept`\nsuch as `splits`, `terms` and `sorted`.\n\nNote: The request for aggregations is a list of lists of objects:\n* The outer list level is the list of all aggregations resulting in a distribution\n  of one or more dimensional aggregation results.\n* The lists of `AggregationConceptInRequest` have 1 or more (but mostly 1 or 2)\n  concepts which are evaluated together, e.g. \"diagnoses for sex at birth\".",
-    "examples": [
-        [
-            [
-                {
-                    "id": "selectedDiagnoses"
-                },
-                {
-                    "id": "sexAtBirth"
-                }
-            ],
-            [
-                {
-                    "id": "biosample.histologicalDiagnosis.id"
-                }
-            ]
-        ],
-        [
-            [
-                {
-                    "id": "ageAtDiagnosis"
-                }
-            ]
-        ]
-    ],
+    "description": "Terms used to specify items to return in an aggregation data response. Terms\nare provided through the beacon's `/aggregation_terms` endpoint and the `id`\nvalues of those terms constitute the possible `id` values here. See also the\ndocumentation for `AggregationTermInResponse.id` in `beaconAggregationTermsResults`.\n\nNote: The request for aggregations is a list of lists of objects:\n* The outer list level is the list of all aggregations (\"concepts\") resulting\n  in a distribution of one or more dimensional aggregation results.\n* The individual concepts have lists of 1 or more (but mostly 1 or 2)\n  aggregation terms - corresponding to individual properties - which are\n  evaluated together, e.g. \"diagnoses (1) for sex at birth (2)\".",
     "items": {
-        "$ref": "#/$defs/AggregationTermInRequest"
+        "$ref": "#/$defs/AggregationConceptInRequest"
     },
     "title": "Aggregation Terms",
     "type": "array"

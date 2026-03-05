@@ -1,8 +1,11 @@
 examples:
-  - id: biosampleStatus
-    label: Type of Sample Material
-    concepts:
-      - property: biosample.biosampleStatus
+  - concepts:
+      - id: followupIndividuals
+    anyValueCount: 3456
+
+  - concepts:
+      - id: biosampleStatus
+        label: Biosample provenance status
     distribution:
       - conceptValues:
           - id: EFO:0009654
@@ -13,14 +16,17 @@ examples:
             label: neoplastic sample
         count: 456
 
-  - id: followupTime
-    label: Follow-up Time
-    description: >-
-      Follow-up time after diagnosis
-    sorted: true
+  - scope: biosample
     concepts:
-      - scope: individual
-        property: index_disease.followup
+      - property: biosample.histological_diagnosis.id
+        label: Different histological diagnoses
+    distinctValuesCount: 32
+  
+  - scope: individual
+    concepts:
+      - property: individual.index_disease.followup
+        label: Follow-up time since diagnosis
+        sorted: true
     distribution:
       - conceptValues:
           - id: '[P0D, P18M)'
@@ -39,15 +45,12 @@ examples:
             label: undefined
         count: 719
 
-  - id: diseaseBySex
-    label: Sex distributions for Diseases in Individuals
-    description: >-
-      Cancer type by sex in matched individuals
+  - scope: individual
     concepts:
-      - property: diseases.disease_code.id
-        scope: individual
-      - property: sex.id
-        scope: individual
+      - id: diseases
+        label: Selected carcinoma types
+      - id: sexAtBirth
+        label: Sex at birth
     distribution:
       - conceptValues:
           - id: NCIT:C2919
@@ -73,12 +76,6 @@ examples:
           - id: NCIT:C20197
             label: male
         count: 138
-      - conceptValues:
-          - id: NCIT:C2926
-            label: Lung Non-Small Cell Carcinoma
-          - id: NCIT:C17998
-            label: unknown
-        count: 133
       - conceptValues:
           - id: NCIT:C4349
             label: Colon Adenocarcinoma
@@ -116,18 +113,6 @@ examples:
             label: unknown
         count: 60
       - conceptValues:
-          - id: NCIT:C3099
-            label: Hepatocellular Carcinoma
-          - id: NCIT:C17998
-            label: unknown
-        count: 55
-      - conceptValues:
-          - id: NCIT:C3099
-            label: Hepatocellular Carcinoma
-          - id: NCIT:C20197
-            label: male
-        count: 45
-      - conceptValues:
           - id: NCIT:C3493
             label: Lung Squamous Cell Carcinoma
           - id: NCIT:C16576
@@ -145,18 +130,6 @@ examples:
           - id: NCIT:C16576
             label: female
         count: 39
-      - conceptValues:
-          - id: NCIT:C3222
-            label: Medulloblastoma
-          - id: NCIT:C17998
-            label: unknown
-        count: 35
-      - conceptValues:
-          - id: NCIT:C7540
-            label: Small Lymphocytic Lymphoma
-          - id: NCIT:C20197
-            label: male
-        count: 34
       - conceptValues:
           - id: NCIT:C4004
             label: Gastric Adenocarcinoma
@@ -194,12 +167,6 @@ examples:
             label: female
         count: 26
       - conceptValues:
-          - id: NCIT:C2926
-            label: Lung Non-Small Cell Carcinoma
-          - id: NCIT:C16576
-            label: female
-        count: 22
-      - conceptValues:
           - id: NCIT:C5105
             label: Colorectal Adenocarcinoma
           - id: NCIT:C16576
@@ -212,20 +179,8 @@ examples:
             label: unknown
         count: 20
       - conceptValues:
-          - id: NCIT:C3099
-            label: Hepatocellular Carcinoma
-          - id: NCIT:C16576
-            label: female
-        count: 20
-      - conceptValues:
           - id: NCIT:C4917
             label: Lung Small Cell Carcinoma
           - id: NCIT:C20197
             label: male
         count: 18
-      - conceptValues:
-          - id: NCIT:C2926
-            label: Lung Non-Small Cell Carcinoma
-          - id: NCIT:C20197
-            label: male
-        count: 17
