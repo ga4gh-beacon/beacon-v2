@@ -38,10 +38,25 @@ $defs:
       filters:
         description: >-
           Optional list of filters to select specific values for aggregation.
+          In contrast to the filters in the request which are evaluated in an
+          AND context, filters in aggregations are evaluated aseparately, _i.e._
+          to select a subset of values from the parent property.
         type: array
         minItems: 1
         items:
-          $ref: "#/$defs/AggregationTermFilter"
+          $ref: ../../requests/filteringTerms.yaml#$defs/FilteringTermInRequest   
+        examples:
+          - - id: NCIT:C9384
+              label: Kidney Carcinoma
+            - id: NCIT:C3513
+              label: Esophageal Carcinoma
+            - id: NCIT:C35850
+              label: Head and Neck Carcinoma
+          - - id: EFO:0030075
+              label: cDNA microarray
+            - id: EFO:0010938
+              label: large-insert clone DNA microarray
+
       splits:
         description: >-
           Optional list of **sorted** splits to group values for ranges or bins
@@ -52,36 +67,6 @@ $defs:
         minItems: 1
         items:
           $ref: "#/$defs/SplitItem"
-
-  AggregationTermFilter:
-    description: >-
-      A filter item for filtering values during aggregation. This is similar to
-      the filtering terms but lacking some unnecessary properties (e.g. `scopes`
-      since defined through  the parent).
-      Note: Filters in aggregations are evaluated in an OR context, _i.e._ to
-      select a subset of values from the parent property.
-      TODO: Re-use filtering terms (except the OR use)?
-    type: object
-    properties:
-      id:
-        description: >-
-          The value to be matched for the property.
-        type: string
-      label:
-        description: >-
-          A label, for information purposes, for the value to be matched.     
-        type: string
-    examples:
-      - - id: NCIT:C9384
-          label: Kidney Carcinoma
-        - id: NCIT:C3513
-          label: Esophageal Carcinoma
-        - id: NCIT:C35850
-          label: Head and Neck Carcinoma
-      - - id: EFO:0030075
-          label: cDNA microarray
-        - id: EFO:0010938
-          label: large-insert clone DNA microarray
     
   SplitItem:
     description: >-
