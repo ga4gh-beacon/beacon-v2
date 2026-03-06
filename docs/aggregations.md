@@ -245,9 +245,18 @@ ageAtSampleCollection:
 
 ## Requesting Aggregations
 
-To request specific aggregations, clients can use the `aggregators` query parameter which itself is an array of arrays of concepts. 
+!!! info "Use `aggregated` Granularity"
+
+    Aggregation responses are invoked by setting the granularity parameter to `aggregated` in the request: `?requestedGranularity=aggregated`. This indicates that the client is not interested in record level responses but rather in aggregated summaries of the data content.
+
+
+To request specific aggregations from the ones indicated at the `.../aggregation_terms`
+endpoint clients can use the `aggregators` query parameter which itself is an array
+of arrays of concepts. 
 
 === "POST Request Example"
+
+    In this example 2 aggregations are requested: A simple 1D aggregation for the `sampleOriginDetails` concept and a 2D aggregation for the combination of `selectedDiseases` and `sexAtBirth`.
 
     ```json
     "aggregators": [
