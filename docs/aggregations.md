@@ -188,14 +188,6 @@ single property in the data model. 2D aggregations - reporting the occurrence of
 intersecting values, e.g. combining concepts for "diseases" and "sex at birth",
 are simply derived from those.
 
-```yaml
-id: sampleOriginDetails
-label: Anatomical Origin
-description: >-
-  Counts for anatomical sites in matched biosamples
-property: biosample.sample_origin_detail.id
-```
-
 Aggregation concepts can have additional modifiers:
 
 * `filters` - to limit the aggregation to a subset of the data, e.g. to a selection of disease codes
@@ -207,7 +199,17 @@ Aggregation concepts can have additional modifiers:
 pre-sorted order with some inherent meaning (e.g. age bins)
 * a `format` property to indicate the format of the values, e.g. for age splits provided in ISO8601 duration format
 
-#### `filters` Example
+### Basic example
+
+```yaml
+id: sampleOriginDetails
+label: Anatomical Origin
+description: >-
+  Counts for anatomical sites in matched biosamples
+property: biosample.sample_origin_detail.id
+```
+
+### `filters` Example
 
 ```yaml
 selectedDiseases:
@@ -223,7 +225,7 @@ selectedDiseases:
       label: Lung Adenocarcinoma
 ```
 
-#### `splits` Example
+### `splits` Example
 
 ```yaml
 ageAtSampleCollection:
