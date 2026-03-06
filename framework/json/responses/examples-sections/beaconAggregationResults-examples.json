@@ -99,6 +99,53 @@
                 {
                     "id": "diseases",
                     "label": "Selected carcinoma types"
+                }
+            ],
+            "distribution": [
+                {
+                    "conceptValues": [
+                        {
+                            "id": "NCIT:C2919",
+                            "label": "Prostate Adenocarcinoma"
+                        }
+                    ],
+                    "count": 426
+                },
+                {
+                    "conceptValues": [
+                        {
+                            "id": "NCIT:C4017",
+                            "label": "Breast Ductal Carcinoma"
+                        }
+                    ],
+                    "count": 423
+                },
+                {
+                    "conceptValues": [
+                        {
+                            "id": "NCIT:C3512",
+                            "label": "Lung Adenocarcinoma"
+                        }
+                    ],
+                    "count": 317
+                },
+                {
+                    "conceptValues": [
+                        {
+                            "id": "NCIT:C4349",
+                            "label": "Colon Adenocarcinoma"
+                        }
+                    ],
+                    "count": 94
+                }
+            ],
+            "scope": "individual"
+        },
+        {
+            "concepts": [
+                {
+                    "id": "diseases",
+                    "label": "Selected carcinoma types"
                 },
                 {
                     "id": "sexAtBirth",
