@@ -254,6 +254,9 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "value"
+            ],
             "type": "object"
         }
     },

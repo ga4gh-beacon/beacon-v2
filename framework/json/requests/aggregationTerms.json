@@ -59,34 +59,6 @@
                     "items": {
                         "$ref": "./filteringTerms.json#/$defs/FilteringTermInRequest"
                     },
-                    "splits": {
-                        "description": "Optional list of **sorted** splits to group values for ranges or bins when performing the aggregation. TODO: object definition OR make it plain values? TODO: Define types and/or couple them to property type",
-                        "examples": [
-                            [
-                                "P18M",
-                                "P18Y",
-                                "P65Y",
-                                "P150Y"
-                            ],
-                            [
-                                0,
-                                1,
-                                2
-                            ]
-                        ],
-                        "items": {
-                            "oneOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ]
-                        },
-                        "minItems": 1,
-                        "type": "array"
-                    },
                     "type": "array"
                 },
                 "id": {
@@ -106,8 +78,39 @@
                         }
                     ],
                     "type": "string"
+                },
+                "splits": {
+                    "description": "Optional list of **sorted** splits to group values for ranges or bins when performing the aggregation. TODO: object definition OR make it plain values? TODO: Define types and/or couple them to property type",
+                    "examples": [
+                        [
+                            "P18M",
+                            "P18Y",
+                            "P65Y",
+                            "P150Y"
+                        ],
+                        [
+                            0,
+                            1,
+                            2
+                        ]
+                    ],
+                    "items": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "number"
+                            }
+                        ]
+                    },
+                    "minItems": 1,
+                    "type": "array"
                 }
             },
+            "required": [
+                "id"
+            ],
             "type": "object"
         }
     },

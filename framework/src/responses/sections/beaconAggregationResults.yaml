@@ -222,6 +222,8 @@ $defs:
         examples:
           - < 18 months
           - 10kg to less than 25kg
+    required:
+      - value
 
   DistinctValuesCount:
     description: >-
