@@ -7,7 +7,7 @@
                     "description": "A description of the summary concept, e.g. with details about the included property and the operations performed during aggregation."
                 },
                 "filters": {
-                    "description": "Optional list of filters to select specific values for aggregation.",
+                    "description": "Optional list of filters that had been used to select specific values for this aggregation of the matched data.",
                     "examples": [
                         [
                             {
@@ -21,13 +21,6 @@
                             {
                                 "id": "NCIT:C35850",
                                 "label": "Head and Neck Carcinoma"
-                            },
-                            {
-                                "id": "NCIT:C4878",
-                                "label": "Lung Carcinoma"
-                            },
-                            {
-                                "id": "NCIT:C207229"
                             }
                         ],
                         [
@@ -38,62 +31,13 @@
                             {
                                 "id": "EFO:0010938",
                                 "label": "large-insert clone DNA microarray"
-                            },
-                            {
-                                "id": "EFO:0010939",
-                                "label": "oligonucleotide DNA microarray"
-                            },
-                            {
-                                "id": "EFO:0010937",
-                                "label": "comparative genomic hybridization (CGH)"
                             }
                         ]
                     ],
                     "items": {
-                        "type": "object"
+                        "$ref": "../../requests/filteringTerms.json#$defs/FilteringTermInRequest"
                     },
-                    "splits": {
-                        "description": "Optional list of **sorted** splits to group values for ranges or bins when performing the aggregation. TODO: \n  * Define types and/or couple them to property type",
-                        "examples": [
-                            [
-                                {
-                                    "label": "< 18 months",
-                                    "value": "P18M"
-                                },
-                                {
-                                    "label": "1.5 to < 18 years",
-                                    "value": "P18Y"
-                                },
-                                {
-                                    "label": "18 to < 65 years",
-                                    "value": "P65Y"
-                                },
-                                {
-                                    "label": "65 years and older",
-                                    "value": "P150Y"
-                                }
-                            ],
-                            [
-                                {
-                                    "label": "0",
-                                    "value": 0
-                                },
-                                {
-                                    "label": "1",
-                                    "value": 1
-                                },
-                                {
-                                    "label": "2 or more",
-                                    "value": 2
-                                }
-                            ]
-                        ],
-                        "items": {
-                            "$ref": "#/$defs/SplitItem"
-                        },
-                        "minItems": 1,
-                        "type": "array"
-                    },
+                    "minItems": 1,
                     "type": "array"
                 },
                 "id": {
@@ -123,6 +67,14 @@
                 "sorted": {
                     "description": "Indicates whether the resulting distribution results will be sorted in some way.",
                     "type": "boolean"
+                },
+                "splits": {
+                    "description": "Optional list of **sorted** splits to group values for ranges or bins when performing the aggregation. This is for information only and the values should be reflected in the distribution itself.",
+                    "items": {
+                        "$ref": "../beaconAggregationTermsResults#/$defs/SplitItem"
+                    },
+                    "minItems": 1,
+                    "type": "array"
                 }
             },
             "required": [
@@ -233,31 +185,6 @@
             "description": "The number of distinct values for the aggregated concept(s) in the matched data. This can e.g. be used to represent the number of all distinct `biosample.id` values to report the number of distinct biosamples in the matched data.",
             "minimum": 0,
             "type": "integer"
-        },
-        "SplitItem": {
-            "description": "A split item for binning values during aggregation.",
-            "properties": {
-                "label": {
-                    "description": "A human readable label for the bin resulting from the split.",
-                    "examples": [
-                        "< 18 months",
-                        "10kg to less than 25kg"
-                    ],
-                    "type": "string"
-                },
-                "value": {
-                    "description": "The value for the split, representing the inclusive lower bounds. TODO: Other types than string? String can be a value/unit string... Overmodeling this might get too complex.",
-                    "examples": [
-                        "P18M",
-                        0
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "value"
-            ],
-            "type": "object"
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
