@@ -47,7 +47,7 @@ $defs:
           - 'B Lymphoblastic Leukemia/Lymphoma'
           - 'Aplasia/Hypoplasia of the middle ear'
       scopes:
-        description: >- 
+        description: >-
           Entry types affected by this filter.
         examples: 
           - 
@@ -62,7 +62,7 @@ $defs:
         items:
           type: string
       values:
-        description: >- 
+        description: >-
           Optional list of possible values for alphanumeric filters
         examples: 
           - 
@@ -75,6 +75,7 @@ $defs:
         items:
           type: string
         minItems: 1
+
   Resource:
     type: object
     description: >-
