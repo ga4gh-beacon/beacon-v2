@@ -190,8 +190,15 @@ are simply derived from those.
 
 Aggregation concepts can have additional modifiers:
 
-* `filters` - to limit the aggregation to a subset of the data, e.g. to a selection of disease codes
-    - the usual filter definitions apply; _i.e._ if an ontology term is used as filter value the count will include all records with this term or any of its child terms (unless the filter's `includeDescendantTerms` flag is set to `False`)
+* `filters` - to limit the aggregations to subsets of the data, e.g. to a selection
+  of disease codes
+    - If `filters` are indicated for an aggregation concept, only aggregations
+      for the concept's property fulfilling the individual filters will be reported
+    - Without `filters` all values for the property will be reported (with potential limits
+      imposed by the beacon).
+    - The usual filter definitions apply; _i.e._ if an ontology term is used as
+      filter value the count will include all records with this term or any of
+      its child terms (unless an `includeDescendantTerms` flag is set to `False`)
 * `splits` - to partition continuous data such as age values, followup times or other numeric measurements into countable bins
     - Note: `splits` are upper & exclusive boundaries of bins, following established practices (_cf._ `$split` use in [MongoDB aggregation pipelines](https://www.mongodb.com/docs/manual/reference/operator/aggregation/split/))
 
