@@ -282,11 +282,11 @@ of arrays of concepts.
 === "GET Request Example"
 
     The **non normative** `GET` example uses a standard comma concatenation for
-    the outer `aggregators` list and a double colon `::` to separate `id` values
+    the outer `aggregators` list and square brackets `[]` for nesting and indication
     of intersecting concepts.
 
     ```
-    ?aggregators=sampleOriginDetails,selectedDiseases::sexAtBirth
+    ?aggregators=[sampleOriginDetails],[selectedDiseases,sexAtBirth]
     ```
 
 
