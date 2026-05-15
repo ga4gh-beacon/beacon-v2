@@ -14,26 +14,49 @@ description: |-
     evaluated together, e.g. "diagnoses (1) for sex at birth (2)".
 type: array
 items:
-  $ref: '#/$defs/AggregationConceptInRequest'
+  $ref: '#/$defs/AggregationsInRequest'
 
 $defs:
-  AggregationConceptInRequest:
+  AggregationsInRequest:
+    type: object
+    $comment: >-
+          to review
+    properties:
+      requestId:
+        description: >-
+          An optional id for the aggregation request, which can be used for
+          tracking and logging purposes. This is not used by the beacon for
+          processing the request but can be included in the response metadata.
+        type: string
+      aggregationTerms:
+        description: >-
+          An array of `AggregationTermInRequest` objects representing the terms
+          to be aggregated for a single aggregation, e.g. terms corresponding to
+          `sexAtBirth` and `diagnosis`.
+        type: array
+        items:
+          $ref: '#/$defs/AggregationTermInRequest'
+        examples:
+          - - id: SexAtBirth
     description: >-
       An array of `AggregationTermInRequest` objects representing the terms
       to be aggregated for a single aggregation, e.g. terms corresponding to
       `sexAtBirth` and `diagnosis`.
-    type: array
-    items:
-      $ref: '#/$defs/AggregationTermInRequest'
+    required:
+      - requestId
+      - aggregationTerms
     examples:
-      - - id: selectedDiagnoses
-          filters:
-            - NCIT:C9384
-            - NCIT:C3513
-            - NCIT:C35850
-        - id: sexAtBirth
-      - - id: biosample.histologicalDiagnosis.id
-
+      - requestId: agg1
+        aggregationTerms:
+          - id: SexAtBirth
+      - requestId: agg2
+        aggregationTerms:
+          - id: SexAtBirth
+          - id: HistologicalDiagnoses
+            aggregationFilters:
+              - id: NCIT:C9384
+              - id: NCIT:C3513
+              - id: NCIT:C35850
   AggregationTermInRequest:
     type: object
     description: >-
@@ -55,9 +78,9 @@ $defs:
           - id: biosample.histologicalDiagnosis.id
           - id: sexAtBirth
           - id: ageAtDiagnosis
-      filters:
+      filtersForAggregation:
         description: >-
-          Optional list of filters to select specific values of the given property
+          List of filters to select specific values of the given property
           for aggregation, as a modifier of the aggregation term. For example,
           for an aggregation term of `diagnosis` filters could be used to specify
           a subset of diagnoses to be aggregated.
@@ -79,27 +102,14 @@ $defs:
             - id: NCIT:C35850
           - - id: sex:male
             - id: sex:female
-            - id: sex:other          
-      splits:
-        description: >-
-          Optional list of **sorted** splits to group values for ranges or bins
-          when performing the aggregation.
-          TODO: object definition OR make it plain values?
-          TODO: Define types and/or couple them to property type
-        type: array
-        minItems: 1
-        items:
-          oneOf:
-            - type: string
-            - type: number
-        examples:
-          - - P18M
-            - P18Y
-            - P65Y
-            - P150Y
-          - - 0
-            - 1
-            - 2
+            - id: sex:other
+          - - id: BMI
+              operator: <
+              value: 17
+          - - id: NCIT:C11112
+              includesDescendants: true
+      customSplits:
+        $ref: '../responses/sections/beaconAggregationTermsResults.yaml#/$defs/SplitItem'
     required:
       - id
 

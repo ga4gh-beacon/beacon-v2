@@ -10,8 +10,7 @@ properties:
   aggregationTerms:
     type: array
     items:
-      $ref: "#/$defs/AggregationTermInResponse"
-
+      $ref: "#/$defs/AggregationTermInResponse" 
 $defs:
   AggregationTermInResponse:
     properties:
@@ -23,7 +22,14 @@ $defs:
           - SexAtBirth
           - FollowupTime
           - HistologicalDiagnoses
-      label:
+      modelProperty:
+        description: >-
+          The property in the data model on which the aggregation is performed. This can be used as a selector for the aggregation in the request.
+        type: string
+        examples:
+          - individual.sex
+          - biosample.histologicalDiagnosis
+      label:  
         description: >-
           The label for the aggregation concept being reported on.
         type: string
@@ -35,47 +41,65 @@ $defs:
         description: >-
           Description of the aggregation performed for this term.
         type: string
-      filters:
+      categories:
         description: >-
-          Optional list of filters to select specific values for aggregation.
-          In contrast to the filters in the request which are evaluated in an
-          AND context, filters in aggregations are evaluated aseparately, _i.e._
-          to select a subset of values from the parent property.
+          List of selected values for aggregation or splits.
         type: array
         minItems: 1
         items:
-          $ref: ../../requests/filteringTerms.yaml#$defs/FilteringTermInRequest   
+          oneOf:
+              - $ref: "#/$defs/ValuesForAggregationTerm"
+              - $ref: "#/$defs/SplitItem"
         examples:
           - - id: NCIT:C9384
-              label: Kidney Carcinoma
+              name: Kidney Carcinoma
             - id: NCIT:C3513
-              label: Esophageal Carcinoma
+              name: Esophageal Carcinoma
             - id: NCIT:C35850
-              label: Head and Neck Carcinoma
-          - - id: EFO:0030075
-              label: cDNA microarray
-            - id: EFO:0010938
-              label: large-insert clone DNA microarray
-
-      splits:
+              name: Head and Neck Carcinoma
+          - - id: sex.male
+              name: men
+            - id: sex.female
+              name: women
+            - id: sex.others
+              name: others
+          - - id: lymphoma
+              name: Lymphomes
+            - id: melanoma
+              name: Melanomas
+            - id: others
+              name: Other cancer types
+    required:
+      - id
+      - modelProperty    
+  ValuesForAggregationTerm:
         description: >-
-          Optional list of **sorted** splits to group values for ranges or bins
-          when performing the aggregation.
-          TODO: 
-            * Define types and/or couple them to property type?
+          List of selected values for aggregation.
         type: array
         minItems: 1
         items:
-          $ref: "#/$defs/SplitItem"
-    
+          $ref: ../../common/basicElement.yaml
+        examples:
+          - - id: NCIT:C9384
+              name: Kidney Carcinoma
+            - id: NCIT:C3513
+              name: Esophageal Carcinoma
+            - id: NCIT:C35850
+              name: Head and Neck Carcinoma
+          - - id: sex.male
+              name: men
+            - id: sex.female
+              name: women
+            - id: sex.others
+              name: others
   SplitItem:
     description: >-
       A split item for binning values during aggregation.
     type: object
     properties:
-      value:
+      upperBound:
         description: >-
-          The value for the split, representing the inclusive lower bounds.
+          The value for the split, representing inclusive lower bounds to exclusive upper bounds.
           TODO: Other types than string? String can be a value/unit string...
           Overmodeling this might get too complex.
         type: string
@@ -83,20 +107,33 @@ $defs:
         description: >-
           A human readable label for the bin resulting from the split.
         type: string
+      sortOrder:
+        description: >-
+          Optional integer to specify the order of splits.
+        type: integer
+    required:
+      - upperBound
+      - sortOrder 
     examples:
-      - - value: P18M
+      - - upperBound: P18M
           label: < 18 months
-        - value: P18Y
+          sortOrder: 1
+        - upperBound: P18Y
           label: 18 months to less than 18 years
-        - value: P65Y
+          sortOrder: 2
+        - upperBound: P65Y
           label: 18 years to less than 65 years
-        - value: P150Y
+          sortOrder: 3
+        - upperBound: P150Y
           label: 65 years and older
-      - - value: 10
+          sortOrder: 4
+      - - upperBound: 10
           label: 0kg to less than 10kg
-        - value: 25
+          sortOrder: 1
+        - upperBound: 25
           label: 10kg to less than 25kg
-        - value: 999
+          sortOrder: 2
+        - upperBound: 999
           label: 25kg and more
-
+          sortOrder: 3
 
