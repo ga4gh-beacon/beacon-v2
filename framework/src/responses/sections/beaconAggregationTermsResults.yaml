@@ -1,6 +1,6 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 description: >-
-  Aggregation terms supported for this beacon. The aggregation terms deatil
+  Aggregation terms supported for this beacon. The aggregation terms detail
   the respective property and optional selectors (splits, filters) applied when
   generating summaries.
   The structure as object aligns with the filtering terms results and allows for
@@ -17,14 +17,17 @@ $defs:
       id:
         type: string
         description: >-
-          The id of the aggregation which can be used e.g. as a selector.
+          The id of the aggregation which can be used as a selector. The id should
+          be identical to the `modelProperty` if no splits or filters are applied,
+          but can be different to indicate a modified scope.
         examples:
           - SexAtBirth
           - FollowupTime
           - HistologicalDiagnoses
       modelProperty:
         description: >-
-          The property in the data model on which the aggregation is performed. This can be used as a selector for the aggregation in the request.
+          The property in the data model on which the aggregation is performed.
+          This can be used as a selector for the aggregation in the request.
         type: string
         examples:
           - individual.sex
