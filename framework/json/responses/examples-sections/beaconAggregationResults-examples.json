@@ -1,5 +1,151 @@
 {
     "examples": [
+        [
+            {
+                "requestId": "aggr1"
+            },
+            {
+                "aggregationTerms": [
+                    {
+                        "categories": [
+                            {
+                                "id": "NCIT:C16576",
+                                "name": "female"
+                            },
+                            {
+                                "id": "NCIT:C20197",
+                                "name": "male"
+                            },
+                            {
+                                "id": "NCIT:C1799",
+                                "name": "unknown"
+                            }
+                        ],
+                        "id": "sex",
+                        "label": "Selected Diagnoses"
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "requestId": "aggr1"
+            },
+            {
+                "aggregationTerms": [
+                    {
+                        "id": "selectedDiagnoses",
+                        "label": "Selected Diagnoses"
+                    }
+                ],
+                "categoriesAndValues": [
+                    {
+                        "ids": [
+                            "NCIT:C2919"
+                        ],
+                        "names": [
+                            "Prostate Adenocarcinoma"
+                        ],
+                        "value": 426
+                    },
+                    {
+                        "ids": [
+                            "NCIT:C4017"
+                        ],
+                        "names": [
+                            "Breast Ductal Carcinoma"
+                        ],
+                        "value": 423
+                    },
+                    {
+                        "ids": [
+                            "NCIT:C3512"
+                        ],
+                        "names": [
+                            "Lung Adenocarcinoma"
+                        ],
+                        "value": 317
+                    },
+                    {
+                        "ids": [
+                            "NCIT:C4349"
+                        ],
+                        "names": [
+                            "Colon Adenocarcinoma"
+                        ],
+                        "value": 94
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "requestId": "aggr3"
+            },
+            {
+                "aggregationTerms": [
+                    {
+                        "id": "selectedDiagnoses",
+                        "label": "Selected Diagnoses"
+                    },
+                    {
+                        "id": "sexAtBirth",
+                        "label": "Sex at Birth"
+                    }
+                ]
+            }
+        ],
+        [
+            {
+                "aggregationTerms": [
+                    {
+                        "id": "selectedDiagnoses",
+                        "label": "Selected Diagnoses"
+                    },
+                    {
+                        "id": "sexAtBirth",
+                        "label": "Sex at Birth"
+                    }
+                ],
+                "categoriesAndValues": [
+                    [
+                        {
+                            "ids": [
+                                "NCIT:C9384",
+                                "sex:male"
+                            ]
+                        },
+                        {
+                            "names": [
+                                "Kidney Carcinoma",
+                                "Male"
+                            ]
+                        },
+                        {
+                            "value": 100
+                        }
+                    ],
+                    [
+                        {
+                            "ids": [
+                                "NCIT:C9384",
+                                "sex:female"
+                            ]
+                        },
+                        {
+                            "names": [
+                                "Kidney Carcinoma",
+                                "Female"
+                            ]
+                        },
+                        {
+                            "value": 200
+                        }
+                    ]
+                ],
+                "requestId": "aggr3"
+            }
+        ],
         {
             "anyValueCount": 3456,
             "concepts": [

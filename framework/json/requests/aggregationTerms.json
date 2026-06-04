@@ -3,50 +3,17 @@
         "AggregationTermInRequest": {
             "description": "An object representing an individual term to be aggregated, e.g. a term corresponding to `sexAtBirth` or `diagnosis`. The `id` property is required and identifies the term to be aggregated, while the `filters` and `splits` properties are optional modifiers of the aggregation term. Note: The request object does not specifiy the property or scope of the aggregation.",
             "properties": {
-                "customSplits": {
-                    "$ref": "../responses/sections/beaconAggregationTermsResults.json#/$defs/SplitItem"
-                },
-                "filtersForAggregation": {
-                    "description": "List of filters to select specific values of the given property for aggregation, as a modifier of the aggregation term. For example, for an aggregation term of `diagnosis` filters could be used to specify a subset of diagnoses to be aggregated.\nNotes:\n* While using the prototype of filters in the filtering section, these\n  filters are not chained by the logical AND operator but are applied as\n  a set of values to be used for the aggregation (i.e. evaluated separately)\n* The `scope` property from `filteringTerms` does not apply since the scope\n  is defined through the aggregation term itself.\n* For value binning use the `splits` property instead of filters.",
-                    "examples": [
-                        [
+                "categories": {
+                    "description": "List of categories to select specific values of the given property for aggregation, as a modifier of the aggregation term. For example, for an aggregation term of `diagnosis` categories could be used to specify a subset of diagnoses to be aggregated.",
+                    "items": {
+                        "oneOf": [
                             {
-                                "id": "NCIT:C9384"
+                                "$ref": "#/$defs/ValuesForAggregation"
                             },
                             {
-                                "id": "NCIT:C3513"
-                            },
-                            {
-                                "id": "NCIT:C35850"
-                            }
-                        ],
-                        [
-                            {
-                                "id": "sex:male"
-                            },
-                            {
-                                "id": "sex:female"
-                            },
-                            {
-                                "id": "sex:other"
-                            }
-                        ],
-                        [
-                            {
-                                "id": "BMI",
-                                "operator": "<",
-                                "value": 17
-                            }
-                        ],
-                        [
-                            {
-                                "id": "NCIT:C11112",
-                                "includesDescendants": true
+                                "$ref": "#/$defs/SplitItem"
                             }
                         ]
-                    ],
-                    "items": {
-                        "$ref": "./filteringTerms.json#/$defs/FilteringTermInRequest"
                     },
                     "type": "array"
                 },
@@ -81,10 +48,28 @@
                 {
                     "aggregationTerms": [
                         {
-                            "id": "SexAtBirth"
+                            "id": "Sex"
                         }
                     ],
-                    "requestId": "agg1"
+                    "requestId": "aggr1"
+                },
+                {
+                    "aggregationTerms": [
+                        {
+                            "categories": [
+                                [
+                                    {
+                                        "id": "NCIT:C16576"
+                                    },
+                                    {
+                                        "id": "NCIT:C20197"
+                                    }
+                                ]
+                            ],
+                            "id": "Sex"
+                        }
+                    ],
+                    "requestId": "aggr2"
                 },
                 {
                     "aggregationTerms": [
@@ -92,7 +77,7 @@
                             "id": "SexAtBirth"
                         },
                         {
-                            "aggregationFilters": [
+                            "categories": [
                                 {
                                     "id": "NCIT:C9384"
                                 },
@@ -106,19 +91,20 @@
                             "id": "HistologicalDiagnoses"
                         }
                     ],
-                    "requestId": "agg2"
+                    "requestId": "aggr3"
+                },
+                {
+                    "aggregationTerms": [
+                        {
+                            "id": "AgeOfOnset"
+                        }
+                    ],
+                    "requestId": "aggr4"
                 }
             ],
             "properties": {
                 "aggregationTerms": {
                     "description": "An array of `AggregationTermInRequest` objects representing the terms to be aggregated for a single aggregation, e.g. terms corresponding to `sexAtBirth` and `diagnosis`.",
-                    "examples": [
-                        [
-                            {
-                                "id": "SexAtBirth"
-                            }
-                        ]
-                    ],
                     "items": {
                         "$ref": "#/$defs/AggregationTermInRequest"
                     },
@@ -132,6 +118,102 @@
             "required": [
                 "requestId",
                 "aggregationTerms"
+            ],
+            "type": "object"
+        },
+        "ValuesForAggregation": {
+            "description": "An object representing a specific value of the property on which the aggregation is performed, used as a modifier of the aggregation term to select specific values for aggregation. For example, for an aggregation term of `diagnosis` this could be used to specify a specific diagnosis to be aggregated.",
+            "properties": {
+                "id": {
+                    "description": "The `id` of the category or value to be aggregated, e.g. an ontology term CURIE or a value from a controlled list.",
+                    "examples": [
+                        "NCIT:C9384"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "customSplits": {
+            "description": "A split item for binning values during aggregation.",
+            "examples": [
+                [
+                    {
+                        "label": "< 18 months",
+                        "sortOrder": 1,
+                        "splitBounds": [
+                            "P0M",
+                            "P18M"
+                        ]
+                    },
+                    {
+                        "label": "18 months to less than 18 years",
+                        "sortOrder": 2,
+                        "splitBounds": [
+                            "P18M",
+                            "P18Y"
+                        ]
+                    },
+                    {
+                        "label": "18 years to less than 65 years",
+                        "sortOrder": 3,
+                        "splitBounds": [
+                            "P18Y",
+                            "P65Y"
+                        ]
+                    },
+                    {
+                        "label": "65 years and older",
+                        "sortOrder": 4,
+                        "splitBounds": [
+                            "P65Y"
+                        ]
+                    }
+                ],
+                [
+                    {
+                        "label": "0kg to less than 10kg",
+                        "sortOrder": 1,
+                        "splitBounds": [
+                            0,
+                            10
+                        ]
+                    },
+                    {
+                        "label": "10kg to less than 25kg",
+                        "sortOrder": 2,
+                        "splitBounds": [
+                            10,
+                            25
+                        ]
+                    },
+                    {
+                        "label": "25kg or higher",
+                        "sortOrder": 3,
+                        "splitBounds": [
+                            25
+                        ]
+                    }
+                ]
+            ],
+            "properties": {
+                "label": {
+                    "description": "A human readable label for the bin resulting from the split.",
+                    "type": "string"
+                },
+                "sortOrder": {
+                    "description": "Integer to specify the intended order of splits. This is required to ensure the correct order of bins in the results, or for the client to be able to reconstruct the expected order in case any of the intermediate steps reorders them.",
+                    "type": "integer"
+                },
+                "splitBounds": {
+                    "description": "The values for the split, representing inclusive lower bounds to exclusive upper bounds. When only one value is given, it represents the lower bound and the upper bound is considered unbounded. The format of the values should be consistent with the type of the property being split, e.g. ISO8601 durations for time intervals or numeric values for continuous numeric variables. ",
+                    "minItems": 1,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "splitBounds",
+                "sortOrder"
             ],
             "type": "object"
         }
