@@ -79,13 +79,13 @@
                         {
                             "categories": [
                                 {
-                                    "id": "NCIT:C9384"
+                                    "id": "NCIT:C2919"
                                 },
                                 {
-                                    "id": "NCIT:C3513"
+                                    "id": "NCIT:C4017"
                                 },
                                 {
-                                    "id": "NCIT:C35850"
+                                    "id": "NCIT:C3512"
                                 }
                             ],
                             "id": "HistologicalDiagnoses"

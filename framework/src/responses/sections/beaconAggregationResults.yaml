@@ -31,18 +31,17 @@ $defs:
           tracking and logging purposes. This is not used by the beacon for
           processing the request but can be included in the response metadata.
         type: string
-      concepts:
+      aggregationTerms:
         type: array
         items:
           $ref: "#/$defs/AggregationConcept"
-      distribution:
+      categoriesAndValues:
         description: >-
-          A distribution contains a list of aggregation objects, where each describes
-          the count of one (or more, intersected) values for the concept(s)
-          aggregated on.
+          A aggregation results where each describes the count of one (or more,
+          intersected) values for the concept(s) aggregated on.
         type: array
         items:
-          $ref: "#/$defs/AggregationObject"
+          $ref: "#/$defs/AggregationCategoriesResult"
       distinctValuesCount:
           $ref: "#/$defs/DistinctValuesCount"
       anyValueCount:
@@ -119,53 +118,34 @@ $defs:
     required:
       - id
 
-  AggregationObject:
+  AggregationCategoriesResult:
     description: >-
       Aggregation object describing the count of one (or more, intersected)
       values for the concept(s) aggregated on.
     type: object
     properties:
-      conceptValues:
+      ids:
         description: >-
-          List of ordered concept values (one per concept in `concepts`). These
-          can represent values from the respected property or interpolations (
+          Ordered list of ids of categories (one per concept in `concepts`).
+          These can represent values from the respected property or interpolations (
           e.g. bins from splits).
         type: array
         items:
-          $ref: "#/$defs/ConceptValue"
+          type: string
+      names:
+        description: >-
+          Ordered list of names for the categories (see `ids`).
+        type: array
+        items:
+          type: string
       count:
         description: >-
-          Count of occurrences for this aggregation object in the matched data.
+          Count of occurrences for this categorie of the in the matched data.
         type: integer
         minimum: 0
     required:
-      - conceptValues
+      - ids
       - count
-    additionalItems: True
-
-  ConceptValue:
-    description: >-
-      A value or bin ... for the concept property.
-    type: object
-    properties:
-      id:
-        description: >-
-          Identifier for the concept value. This can be e.g. a term id, a bin
-          (e.g. '[P0D, P18M)'), or `undefined` for missing values.
-        type: string
-        examples:
-          - NCIT:C4017
-          - '[P0D, P18M)'
-          - undefined
-      label:
-        description: >-
-          Human readable label for the concept value.
-        type: string
-        examples:
-          - Breast Ductal Carcinoma
-          - younger than 18 months
-    required:
-      - id
     additionalItems: True
 
   DistinctValuesCount:

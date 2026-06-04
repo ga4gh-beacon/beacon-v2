@@ -56,14 +56,17 @@ $defs:
               - - id: NCIT:C16576
                 - id: NCIT:C20197
       - requestId: aggr3
-        # Example of an aggregation that includes two dimensions, like a two entry table. The example also selects some specific categories for the second term. If the first term has 2 categories, and all possible combinations exists in the data itself, the result would include 6 "cells" with the corresponding count.
+        # Example of an aggregation that includes two dimensions, like a two
+        # entry table. The example also selects some specific categories for the
+        # second term. If the first term has 2 categories, and all possible
+        # combinations exists in the data itself, the result would include 6 "cells" with the corresponding count.
         aggregationTerms:
           - id: SexAtBirth
           - id: HistologicalDiagnoses
             categories:
-              - id: NCIT:C9384
-              - id: NCIT:C3513
-              - id: NCIT:C35850
+              - id: NCIT:C2919
+              - id: NCIT:C4017
+              - id: NCIT:C3512
       - requestId: aggr4
         # Example of an aggregation with splits for the term "age of onset".
         aggregationTerms:

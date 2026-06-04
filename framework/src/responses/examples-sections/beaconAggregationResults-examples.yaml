@@ -1,271 +1,116 @@
 examples:
   # aggr1 in requests/aggregationTerms.yaml
-  - - requestId: aggr1
-    - aggregationTerms:
-        - id: sex 
-          label: Selected Diagnoses
-          categories:
-            - id: NCIT:C16576
-              name: female
-            - id: NCIT:C20197
-              name: male
-            - id: NCIT:C1799
-              name: unknown
+  - requestId: aggr1
+    aggregationTerms:
+      - id: sex 
+        label: Selected Diagnoses
+        # TODO: Do we need categories here? They appear in the `categoriesAndValues`
+        # part as `ids` and `mames`.
+        # One argument: Categories with zero matches could be missing from the response.
+        categories:
+          - id: NCIT:C16576
+            name: female
+          - id: NCIT:C20197
+            name: male
+          - id: NCIT:C1799
+            name: unknown
+    categoriesAndValues:
+      - ids: ["NCIT:C16576"]
+        names: ["female"]
+        count: 778
+      - id: ["NCIT:C20197"]
+        names: [male]
+        count: 957
+      - ids: ["NCIT:C1799"]
+        names: ["unknown"]
+        count: 11
 
 # /individuals - counting how many individuals have each of the selected diagnoses in the matched data. If one individual has multiple diagnoses, they will be counted in each of the respective categories.
-  - - requestId: aggr1
-    - aggregationTerms:
-        - id: selectedDiagnoses
-          label: Selected Diagnoses
-      categoriesAndValues:
-          - ids: [NCIT:C2919]
-            names: [Prostate Adenocarcinoma]
-            value: 426
-          - ids: [NCIT:C4017] 
-            names: [Breast Ductal Carcinoma]
-            value: 423
-          - ids: [NCIT:C3512]
-            names: [Lung Adenocarcinoma]
-            value: 317
-# bio1: ind1
-# bio2: ind2
-# bio3: ind1
-# individual.Id    Ind1:2    Ind2:1
-# /biosamples?aggregators:individualId << Number of biosamples per individual
-# /individuals?granul:count&filters
-          - ids: [NCIT:C4349]
-            names: [Colon Adenocarcinoma]
-            value: 94
-# ind1: 2 ind2: 
+  - requestId: aggr2
+    aggregationTerms:
+      - id: selectedDiagnoses
+        label: Selected Diagnoses
+    categoriesAndValues:
+      - ids: ["NCIT:C2919"]
+        names: ["Prostate Adenocarcinoma"]
+        count: 426
+      - ids: ["NCIT:C4017"] 
+        names: ["Breast Ductal Carcinoma"]
+        count: 523
+      - ids: ["NCIT:C3512"]
+        names: ["Lung Adenocarcinoma"]
+        count: 317
 
+  - requestId: aggr3
+    aggregationTerms:
+      - id: SexAtBirth
+        label: Sex at Birth
+      - id: HistologicalDiagnoses
+        label: Selected Diagnoses
+    categoriesAndValues:
+      - ids: ["NCIT:C20197", "NCIT:C2919"]
+        names: ["male", "Prostate Adenocarcinoma"]
+        count: 426
+      - ids: ["NCIT:C16576", "NCIT:C2919"]
+        names: ["female", "Prostate Adenocarcinoma"]
+        count: 0
+      - ids: ["NCIT:C1799", "NCIT:C2919"]
+        names: ["unknown", "Prostate Adenocarcinoma"]
+        count: 0
+      - ids: ["NCIT:C20197", "NCIT:C4017"] 
+        names: ["male", "Breast Ductal Carcinoma"]
+        count: 4
+      - ids: ["NCIT:C16576", "NCIT:C4017"] 
+        names: ["female", "Breast Ductal Carcinoma"]
+        count: 501
+      - ids: ["NCIT:C1799", "NCIT:C4017"] 
+        names: ["unknown", "Breast Ductal Carcinoma"]
+        count: 18
+      - ids: ["NCIT:C20197", "NCIT:C3512"] 
+        names: ["male", "Lung Adenocarcinoma"]
+        count: 201
+      - ids: ["NCIT:C16576", "NCIT:C3512"] 
+        names: ["female", "Lung Adenocarcinoma"]
+        count: 66
+      - ids: ["NCIT:C1799", "NCIT:C3512"] 
+        names: ["unknown", "Lung Adenocarcinoma"]
+        count: 51
 
-  - - requestId: aggr3
-    - aggregationTerms:
-        - id: selectedDiagnoses
-          label: Selected Diagnoses
-        - id: sexAtBirth
-          label: Sex at Birth
-
-  - - requestId: aggr3
-      aggregationTerms:
-        - id: selectedDiagnoses
-          label: Selected Diagnoses
-        - id: sexAtBirth
-          label: Sex at Birth
-      categoriesAndValues:
-        - - ids: [NCIT:C9384, sex:male]
-          - names: [Kidney Carcinoma, Male]
-          - value: 100
-        - - ids: [NCIT:C9384, sex:female]
-          - names: [Kidney Carcinoma, Female]
-          - value: 200
-
-
-
-  - concepts:
-      - id: followupIndividuals
-    anyValueCount: 3456
-
-  - concepts:
-      - id: biosampleStatus
-        label: Biosample provenance status
-    distribution:
-      - conceptValues:
-          - id: EFO:0009654
-            label: reference sample
-        count: 123
-      - conceptValues:
-          - id: EFO:0009656
-            label: neoplastic sample
-        count: 456
-
-  - scope: biosample
-    concepts:
-      - property: biosample.histological_diagnosis.id
-        label: Different histological diagnoses
-    distinctValuesCount: 32
-  
-  - scope: individual
-    concepts:
-      - property: individual.index_disease.followup
-        label: Follow-up time since diagnosis
-        sorted: true
-    distribution:
-      - conceptValues:
-          - id: '[P0D, P18M)'
-            label: < 18 months
-        count: 325
-      - conceptValues:
-          - id: '[P18M, P10Y)'
-            label: 1.5 to < 10 years
+  - requestId: aggr4
+    aggregationTerms:
+      - id: AgeOfOnset
+        description: >-
+          Age of onset of the disease addressed in the data. The aggregation of
+          age values has been peformed on splits for the indicated age ranges.
+          The number of individuals with unknown or older age of onset is included
+          as a separate category.
+        sorted: True
+    categoriesAndValues:
+      - ids: ["[P0D, P18M)"]
+        names: ["birth to 18 months"]
+        count: 426
+      - ids: ["[P18M, P10Y)"]
+        names: ["1.5 to 10 years"]
         count: 339
-      - conceptValues:
-          - id: '[P10Y, P60Y)'
-            label: 8 to < 60 years
+      - ids: ["[P10Y, P60Y)"]
+        names: ["8 to 60 years"]
         count: 61
-      - conceptValues:
-          - id: undefined
-            label: undefined
+      - ids: ["other"]
+        names: ["older or unknown"]
         count: 719
 
-  - scope: individual
-    concepts:
-      - id: diseases
-        label: Selected carcinoma types
-    distribution:
-      - conceptValues:
-          - id: NCIT:C2919
-            label: Prostate Adenocarcinoma
-        count: 426
-      - conceptValues:
-          - id: NCIT:C4017
-            label: Breast Ductal Carcinoma
-        count: 423
-      - conceptValues:
-          - id: NCIT:C3512
-            label: Lung Adenocarcinoma
-        count: 317
-      - conceptValues:
-          - id: NCIT:C4349
-            label: Colon Adenocarcinoma
-        count: 94
+  - requestId: aggr5
+    aggregationTerms:
+      - id: followupIndividuals
+        description: >-
+          Number of individuals with follow-up data.
+    anyValueCount: 3456
 
-  - scope: individual
-    concepts:
-      - id: diseases
-        label: Selected carcinoma types
-      - id: sexAtBirth
-        label: Sex at birth
-    distribution:
-      - conceptValues:
-          - id: NCIT:C2919
-            label: Prostate Adenocarcinoma
-          - id: NCIT:C20197
-            label: male
-        count: 426
-      - conceptValues:
-          - id: NCIT:C4017
-            label: Breast Ductal Carcinoma
-          - id: NCIT:C16576
-            label: female
-        count: 423
-      - conceptValues:
-          - id: NCIT:C3512
-            label: Lung Adenocarcinoma
-          - id: NCIT:C16576
-            label: female
-        count: 317
-      - conceptValues:
-          - id: NCIT:C3512
-            label: Lung Adenocarcinoma
-          - id: NCIT:C20197
-            label: male
-        count: 138
-      - conceptValues:
-          - id: NCIT:C4349
-            label: Colon Adenocarcinoma
-          - id: NCIT:C20197
-            label: male
-        count: 94
-      - conceptValues:
-          - id: NCIT:C8294
-            label: Pancreatic Adenocarcinoma
-          - id: NCIT:C16576
-            label: female
-        count: 92
-      - conceptValues:
-          - id: NCIT:C8294
-            label: Pancreatic Adenocarcinoma
-          - id: NCIT:C20197
-            label: male
-        count: 87
-      - conceptValues:
-          - id: NCIT:C3493
-            label: Lung Squamous Cell Carcinoma
-          - id: NCIT:C20197
-            label: male
-        count: 71
-      - conceptValues:
-          - id: NCIT:C4004
-            label: Gastric Adenocarcinoma
-          - id: NCIT:C17998
-            label: unknown
-        count: 62
-      - conceptValues:
-          - id: NCIT:C3512
-            label: Lung Adenocarcinoma
-          - id: NCIT:C17998
-            label: unknown
-        count: 60
-      - conceptValues:
-          - id: NCIT:C3493
-            label: Lung Squamous Cell Carcinoma
-          - id: NCIT:C16576
-            label: female
-        count: 43
-      - conceptValues:
-          - id: NCIT:C3493
-            label: Lung Squamous Cell Carcinoma
-          - id: NCIT:C17998
-            label: unknown
-        count: 41
-      - conceptValues:
-          - id: NCIT:C4004
-            label: Gastric Adenocarcinoma
-          - id: NCIT:C16576
-            label: female
-        count: 39
-      - conceptValues:
-          - id: NCIT:C4004
-            label: Gastric Adenocarcinoma
-          - id: NCIT:C20197
-            label: male
-        count: 33
-      - conceptValues:
-          - id: NCIT:C4025
-            label: Esophageal Adenocarcinoma
-          - id: NCIT:C17998
-            label: unknown
-        count: 32
-      - conceptValues:
-          - id: NCIT:C4025
-            label: Esophageal Adenocarcinoma
-          - id: NCIT:C20197
-            label: male
-        count: 30
-      - conceptValues:
-          - id: NCIT:C5105
-            label: Colorectal Adenocarcinoma
-          - id: NCIT:C20197
-            label: male
-        count: 27
-      - conceptValues:
-          - id: NCIT:C8294
-            label: Pancreatic Adenocarcinoma
-          - id: NCIT:C17998
-            label: unknown
-        count: 26
-      - conceptValues:
-          - id: NCIT:C4917
-            label: Lung Small Cell Carcinoma
-          - id: NCIT:C16576
-            label: female
-        count: 26
-      - conceptValues:
-          - id: NCIT:C5105
-            label: Colorectal Adenocarcinoma
-          - id: NCIT:C16576
-            label: female
-        count: 21
-      - conceptValues:
-          - id: NCIT:C4024
-            label: Esophageal Squamous Cell Carcinoma
-          - id: NCIT:C17998
-            label: unknown
-        count: 20
-      - conceptValues:
-          - id: NCIT:C4917
-            label: Lung Small Cell Carcinoma
-          - id: NCIT:C20197
-            label: male
-        count: 18
+  - requestId: aggr6
+    aggregationTerms:
+      - id: biosampleIds
+        description: >-
+          Number of distinct biosample ids, used to indicate the number of
+          biosamples.
+    distinctValuesCount: 243062
+
