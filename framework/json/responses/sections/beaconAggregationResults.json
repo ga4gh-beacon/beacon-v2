@@ -128,6 +128,11 @@
                     },
                     "type": "array"
                 },
+                "requestId": {
+                    "$comment": "to review",
+                    "description": "An optional id for the aggregation request, which can be used for tracking and logging purposes. This is not used by the beacon for processing the request but can be included in the response metadata.",
+                    "type": "string"
+                },
                 "scope": {
                     "description": "The scope (entity type) for which the results are reported. This does not have to be explicitly provided if it can be inferred from the scope of the response entry point, but can be provided for clarity or if the response includes aggregations for multiple scopes (e.g. an overview response at the `/datasets` endpoint).",
                     "examples": [

@@ -2,46 +2,71 @@
     "$defs": {
         "AggregationTermInResponse": {
             "properties": {
-                "description": {
-                    "description": "Description of the aggregation performed for this term.",
-                    "type": "string"
-                },
-                "filters": {
-                    "description": "Optional list of filters to select specific values for aggregation. In contrast to the filters in the request which are evaluated in an AND context, filters in aggregations are evaluated aseparately, _i.e._ to select a subset of values from the parent property.",
+                "categories": {
+                    "description": "List of selected values for aggregation or splits.",
                     "examples": [
                         [
                             {
                                 "id": "NCIT:C9384",
-                                "label": "Kidney Carcinoma"
+                                "name": "Kidney Carcinoma"
                             },
                             {
                                 "id": "NCIT:C3513",
-                                "label": "Esophageal Carcinoma"
+                                "name": "Esophageal Carcinoma"
                             },
                             {
                                 "id": "NCIT:C35850",
-                                "label": "Head and Neck Carcinoma"
+                                "name": "Head and Neck Carcinoma"
                             }
                         ],
                         [
                             {
-                                "id": "EFO:0030075",
-                                "label": "cDNA microarray"
+                                "id": "sex.male",
+                                "name": "men"
                             },
                             {
-                                "id": "EFO:0010938",
-                                "label": "large-insert clone DNA microarray"
+                                "id": "sex.female",
+                                "name": "women"
+                            },
+                            {
+                                "id": "sex.others",
+                                "name": "others"
+                            }
+                        ],
+                        [
+                            {
+                                "id": "lymphoma",
+                                "name": "Lymphomes"
+                            },
+                            {
+                                "id": "melanoma",
+                                "name": "Melanomas"
+                            },
+                            {
+                                "id": "others",
+                                "name": "Other cancer types"
                             }
                         ]
                     ],
                     "items": {
-                        "$ref": "../../requests/filteringTerms.json#$defs/FilteringTermInRequest"
+                        "oneOf": [
+                            {
+                                "$ref": "#/$defs/ValuesForAggregationTerm"
+                            },
+                            {
+                                "$ref": "#/$defs/SplitItem"
+                            }
+                        ]
                     },
                     "minItems": 1,
                     "type": "array"
                 },
+                "description": {
+                    "description": "Description of the aggregation performed for this term.",
+                    "type": "string"
+                },
                 "id": {
-                    "description": "The id of the aggregation which can be used e.g. as a selector.",
+                    "description": "The id of the aggregation which can be used as a selector. The id should be identical to the `modelProperty` if no splits or filters are applied, but can be different to indicate a modified scope.",
                     "examples": [
                         "SexAtBirth",
                         "FollowupTime",
@@ -58,15 +83,19 @@
                     ],
                     "type": "string"
                 },
-                "splits": {
-                    "description": "Optional list of **sorted** splits to group values for ranges or bins when performing the aggregation. TODO: \n  * Define types and/or couple them to property type?",
-                    "items": {
-                        "$ref": "#/$defs/SplitItem"
-                    },
-                    "minItems": 1,
-                    "type": "array"
+                "modelProperty": {
+                    "description": "The property in the data model on which the aggregation is performed. This can be used as a selector for the aggregation in the request.",
+                    "examples": [
+                        "individual.sex",
+                        "biosample.histologicalDiagnosis"
+                    ],
+                    "type": "string"
                 }
-            }
+            },
+            "required": [
+                "id",
+                "modelProperty"
+            ]
         },
         "SplitItem": {
             "description": "A split item for binning values during aggregation.",
@@ -74,33 +103,40 @@
                 [
                     {
                         "label": "< 18 months",
-                        "value": "P18M"
+                        "sortOrder": 1,
+                        "upperBound": "P18M"
                     },
                     {
                         "label": "18 months to less than 18 years",
-                        "value": "P18Y"
+                        "sortOrder": 2,
+                        "upperBound": "P18Y"
                     },
                     {
                         "label": "18 years to less than 65 years",
-                        "value": "P65Y"
+                        "sortOrder": 3,
+                        "upperBound": "P65Y"
                     },
                     {
                         "label": "65 years and older",
-                        "value": "P150Y"
+                        "sortOrder": 4,
+                        "upperBound": "P150Y"
                     }
                 ],
                 [
                     {
                         "label": "0kg to less than 10kg",
-                        "value": 10
+                        "sortOrder": 1,
+                        "upperBound": 10
                     },
                     {
                         "label": "10kg to less than 25kg",
-                        "value": 25
+                        "sortOrder": 2,
+                        "upperBound": 25
                     },
                     {
                         "label": "25kg and more",
-                        "value": 999
+                        "sortOrder": 3,
+                        "upperBound": 999
                     }
                 ]
             ],
@@ -109,16 +145,62 @@
                     "description": "A human readable label for the bin resulting from the split.",
                     "type": "string"
                 },
-                "value": {
-                    "description": "The value for the split, representing the inclusive lower bounds. TODO: Other types than string? String can be a value/unit string... Overmodeling this might get too complex.",
+                "sortOrder": {
+                    "description": "Optional integer to specify the order of splits.",
+                    "type": "integer"
+                },
+                "upperBound": {
+                    "description": "The value for the split, representing inclusive lower bounds to exclusive upper bounds. TODO: Other types than string? String can be a value/unit string... Overmodeling this might get too complex.",
                     "type": "string"
                 }
             },
+            "required": [
+                "upperBound",
+                "sortOrder"
+            ],
             "type": "object"
+        },
+        "ValuesForAggregationTerm": {
+            "description": "List of selected values for aggregation.",
+            "examples": [
+                [
+                    {
+                        "id": "NCIT:C9384",
+                        "name": "Kidney Carcinoma"
+                    },
+                    {
+                        "id": "NCIT:C3513",
+                        "name": "Esophageal Carcinoma"
+                    },
+                    {
+                        "id": "NCIT:C35850",
+                        "name": "Head and Neck Carcinoma"
+                    }
+                ],
+                [
+                    {
+                        "id": "sex.male",
+                        "name": "men"
+                    },
+                    {
+                        "id": "sex.female",
+                        "name": "women"
+                    },
+                    {
+                        "id": "sex.others",
+                        "name": "others"
+                    }
+                ]
+            ],
+            "items": {
+                "$ref": "../../common/basicElement.json"
+            },
+            "minItems": 1,
+            "type": "array"
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Aggregation terms supported for this beacon. The aggregation terms deatil the respective property and optional selectors (splits, filters) applied when generating summaries. The structure as object aligns with the filtering terms results and allows for later expansion (e.g. adding `resources` for information about terms).",
+    "description": "Aggregation terms supported for this beacon. The aggregation terms detail the respective property and optional selectors (splits, filters) applied when generating summaries. The structure as object aligns with the filtering terms results and allows for later expansion (e.g. adding `resources` for information about terms).",
     "properties": {
         "aggregationTerms": {
             "items": {
