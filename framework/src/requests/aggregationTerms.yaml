@@ -36,8 +36,6 @@ $defs:
         type: array
         items:
           $ref: '#/$defs/AggregationTermInRequest'
-        examples:
-          - - id: SexAtBirth
     description: >-
       An array of `AggregationTermInRequest` objects representing the terms
       to be aggregated for a single aggregation, e.g. terms corresponding to
@@ -46,17 +44,30 @@ $defs:
       - requestId
       - aggregationTerms
     examples:
-      - requestId: agg1
+      - requestId: aggr1
+        # Simple example of one aggregation term for "sex". All values in individual.sex will be returned as categories in the response distribution.
         aggregationTerms:
-          - id: SexAtBirth
-      - requestId: agg2
+          - id: Sex
+      - requestId: aggr2
+        # Example of one aggregation for which just a subset of values are returned.
+        aggregationTerms:
+          - id: Sex
+            categories:
+              - - id: NCIT:C16576
+                - id: NCIT:C20197
+      - requestId: aggr3
+        # Example of an aggregation that includes two dimensions, like a two entry table. The example also selects some specific categories for the second term. If the first term has 2 categories, and all possible combinations exists in the data itself, the result would include 6 "cells" with the corresponding count.
         aggregationTerms:
           - id: SexAtBirth
           - id: HistologicalDiagnoses
-            aggregationFilters:
+            categories:
               - id: NCIT:C9384
               - id: NCIT:C3513
               - id: NCIT:C35850
+      - requestId: aggr4
+        # Example of an aggregation with splits for the term "age of onset".
+        aggregationTerms:
+          - id: AgeOfOnset
   AggregationTermInRequest:
     type: object
     description: >-
@@ -78,38 +89,72 @@ $defs:
           - id: biosample.histologicalDiagnosis.id
           - id: sexAtBirth
           - id: ageAtDiagnosis
-      filtersForAggregation:
+      categories:
         description: >-
-          List of filters to select specific values of the given property
+          List of categories to select specific values of the given property
           for aggregation, as a modifier of the aggregation term. For example,
-          for an aggregation term of `diagnosis` filters could be used to specify
+          for an aggregation term of `diagnosis` categories could be used to specify
           a subset of diagnoses to be aggregated.
-
-          Notes:
-
-          * While using the prototype of filters in the filtering section, these
-            filters are not chained by the logical AND operator but are applied as
-            a set of values to be used for the aggregation (i.e. evaluated separately)
-          * The `scope` property from `filteringTerms` does not apply since the scope
-            is defined through the aggregation term itself.
-          * For value binning use the `splits` property instead of filters.
         type: array
         items:
-          $ref: './filteringTerms.yaml#/$defs/FilteringTermInRequest'
-        examples:
-          - - id: NCIT:C9384
-            - id: NCIT:C3513
-            - id: NCIT:C35850
-          - - id: sex:male
-            - id: sex:female
-            - id: sex:other
-          - - id: BMI
-              operator: <
-              value: 17
-          - - id: NCIT:C11112
-              includesDescendants: true
-      customSplits:
-        $ref: '../responses/sections/beaconAggregationTermsResults.yaml#/$defs/SplitItem'
+          oneOf:
+            - $ref: "#/$defs/ValuesForAggregation"
+            - $ref: "#/$defs/SplitItem"
     required:
       - id
 
+  ValuesForAggregation:
+    description: >-
+      An object representing a specific value of the property on which the aggregation is performed, used as a modifier of the aggregation term to select specific values for aggregation. For example, for an aggregation term of `diagnosis` this could be used to specify a specific diagnosis to be aggregated.
+    type: object
+    properties:
+      id:
+        type: string
+        description: >-
+          The `id` of the category or value to be aggregated, e.g. an ontology term CURIE or a value from a controlled list.
+        examples:
+          - NCIT:C9384
+  customSplits:
+    # TO DO: Provide an example that is not the same than in beaconAggregationTermsResults, to avoid confusion between request and response examples.
+    description: >-
+      A split item for binning values during aggregation.
+    type: object
+    properties:
+      splitBounds:
+        description: >-
+          The values for the split, representing inclusive lower bounds to exclusive upper bounds. When only one value is given, it represents the lower bound and the upper bound is considered unbounded. The format of the values should be consistent with the type of the property being split, e.g. ISO8601 durations for time intervals or numeric values for continuous numeric variables. 
+        type: array
+        minItems: 1
+      label:
+        description: >-
+          A human readable label for the bin resulting from the split.
+        type: string
+      sortOrder:
+        description: >-
+          Integer to specify the intended order of splits. This is required to ensure the correct order of bins in the results, or for the client to be able to reconstruct the expected order in case any of the intermediate steps reorders them.
+        type: integer
+    required:
+      - splitBounds
+      - sortOrder 
+    examples:
+      - - splitBounds: [P0M,P18M]
+          label: < 18 months
+          sortOrder: 1
+        - splitBounds: [P18M,P18Y]
+          label: 18 months to less than 18 years
+          sortOrder: 2
+        - splitBounds: [P18Y,P65Y]
+          label: 18 years to less than 65 years
+          sortOrder: 3
+        - splitBounds: [P65Y]
+          label: 65 years and older
+          sortOrder: 4
+      - - splitBounds: [0,10]
+          label: 0kg to less than 10kg
+          sortOrder: 1
+        - splitBounds: [10,25]
+          label: 10kg to less than 25kg
+          sortOrder: 2
+        - splitBounds: [25]
+          label: 25kg or higher
+          sortOrder: 3

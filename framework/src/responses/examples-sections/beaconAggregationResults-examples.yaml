@@ -1,4 +1,67 @@
 examples:
+  # aggr1 in requests/aggregationTerms.yaml
+  - - requestId: aggr1
+    - aggregationTerms:
+        - id: sex 
+          label: Selected Diagnoses
+          categories:
+            - id: NCIT:C16576
+              name: female
+            - id: NCIT:C20197
+              name: male
+            - id: NCIT:C1799
+              name: unknown
+
+# /individuals - counting how many individuals have each of the selected diagnoses in the matched data. If one individual has multiple diagnoses, they will be counted in each of the respective categories.
+  - - requestId: aggr1
+    - aggregationTerms:
+        - id: selectedDiagnoses
+          label: Selected Diagnoses
+      categoriesAndValues:
+          - ids: [NCIT:C2919]
+            names: [Prostate Adenocarcinoma]
+            value: 426
+          - ids: [NCIT:C4017] 
+            names: [Breast Ductal Carcinoma]
+            value: 423
+          - ids: [NCIT:C3512]
+            names: [Lung Adenocarcinoma]
+            value: 317
+# bio1: ind1
+# bio2: ind2
+# bio3: ind1
+# individual.Id    Ind1:2    Ind2:1
+# /biosamples?aggregators:individualId << Number of biosamples per individual
+# /individuals?granul:count&filters
+          - ids: [NCIT:C4349]
+            names: [Colon Adenocarcinoma]
+            value: 94
+# ind1: 2 ind2: 
+
+
+  - - requestId: aggr3
+    - aggregationTerms:
+        - id: selectedDiagnoses
+          label: Selected Diagnoses
+        - id: sexAtBirth
+          label: Sex at Birth
+
+  - - requestId: aggr3
+      aggregationTerms:
+        - id: selectedDiagnoses
+          label: Selected Diagnoses
+        - id: sexAtBirth
+          label: Sex at Birth
+      categoriesAndValues:
+        - - ids: [NCIT:C9384, sex:male]
+          - names: [Kidney Carcinoma, Male]
+          - value: 100
+        - - ids: [NCIT:C9384, sex:female]
+          - names: [Kidney Carcinoma, Female]
+          - value: 200
+
+
+
   - concepts:
       - id: followupIndividuals
     anyValueCount: 3456

@@ -31,17 +31,6 @@ $defs:
           tracking and logging purposes. This is not used by the beacon for
           processing the request but can be included in the response metadata.
         type: string
-      scope:
-        description: >-
-          The scope (entity type) for which the results are reported. This does
-          not have to be explicitly provided if it can be inferred from the
-          scope of the response entry point, but can be provided for clarity or
-          if the response includes aggregations for multiple scopes (e.g. an overview
-          response at the `/datasets` endpoint).
-        examples:
-          - individual
-          - biosample
-          - genomicVariation
       concepts:
         type: array
         items:
@@ -83,7 +72,7 @@ $defs:
         examples:
           - followupTime
           - sexAtBirth
-      label:
+      name:
         description: >-
           A short label which e.g. can be used by clients to label diagrams or
           data tables.
@@ -94,23 +83,14 @@ $defs:
         description: >-
           A description of the summary concept, e.g. with details about the
           included property and the operations performed during aggregation.
-      property:
-        description: >-
-          The property, including the entity/scope, in the data model on which the
-          aggregation was performed.
-        type: string
-        examples:
-          - biosample.histologicalDiagnosis.id
-          - individual.sex.id
-          - biosample.collectionMoment
       sorted:
         description: >-
           Indicates whether the resulting distribution results will be sorted in
           some way.
         type: boolean
-      filters:
+      categories:
         description: >-
-          Optional list of filters that had been used to select specific values
+          List of categories that had been used to select specific values
           for this aggregation of the matched data.
         type: array
         minItems: 1
@@ -118,15 +98,15 @@ $defs:
           $ref: ../../requests/filteringTerms.yaml#$defs/FilteringTermInRequest   
         examples:
           - - id: NCIT:C9384
-              label: Kidney Carcinoma
+              name: Kidney Carcinoma
             - id: NCIT:C3513
-              label: Esophageal Carcinoma
+              name: Esophageal Carcinoma
             - id: NCIT:C35850
-              label: Head and Neck Carcinoma
+              name: Head and Neck Carcinoma
           - - id: EFO:0030075
-              label: cDNA microarray
+              name: cDNA microarray
             - id: EFO:0010938
-              label: large-insert clone DNA microarray
+              name: large-insert clone DNA microarray
       splits:
         description: >-
           Optional list of **sorted** splits to group values for ranges or bins

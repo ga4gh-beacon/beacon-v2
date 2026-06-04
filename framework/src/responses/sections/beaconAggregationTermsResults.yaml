@@ -1,10 +1,7 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 description: >-
-  Aggregation terms supported for this beacon. The aggregation terms deatil
-  the respective property and optional selectors (splits, filters) applied when
-  generating summaries.
-  The structure as object aligns with the filtering terms results and allows for
-  later expansion (e.g. adding `resources` for information about terms).
+  List of aggregation terms supported for this beacon. The aggregation terms detail
+  the respective property which include the aggregation categories (e.g. all diagnoses or ageAtDiagnosis) applied when generating summaries.
 type: object
 properties:
   aggregationTerms:
@@ -17,18 +14,11 @@ $defs:
       id:
         type: string
         description: >-
-          The id of the aggregation which can be used e.g. as a selector.
+          The id of the aggregation to be used in the request.
         examples:
           - SexAtBirth
           - FollowupTime
           - HistologicalDiagnoses
-      modelProperty:
-        description: >-
-          The property in the data model on which the aggregation is performed. This can be used as a selector for the aggregation in the request.
-        type: string
-        examples:
-          - individual.sex
-          - biosample.histologicalDiagnosis
       label:  
         description: >-
           The label for the aggregation concept being reported on.
@@ -37,41 +27,62 @@ $defs:
           - Sex at Birth
           - Follow-up Time After Diagnosis
           - Diagnoses
+      modelProperty:
+        description: >-
+          The property in the data model on which the aggregation is actually performed. This is informative.
+        type: string
+        examples:
+          - individual.sex
+          - biosample.histologicalDiagnosis
       description:
         description: >-
-          Description of the aggregation performed for this term.
+          Human readable description of the aggregation performed for this term.
         type: string
       categories:
         description: >-
-          List of selected values for aggregation or splits.
+          List of selected values for aggregation or splits. If this property is present, it indicates that not all values in the modelProperty would be returned, but just the ones listed in valuesForAggregationTerm or the results would be returned in bins instead as a continuous variable.
         type: array
         minItems: 1
         items:
           oneOf:
               - $ref: "#/$defs/ValuesForAggregationTerm"
               - $ref: "#/$defs/SplitItem"
-        examples:
-          - - id: NCIT:C9384
-              name: Kidney Carcinoma
-            - id: NCIT:C3513
-              name: Esophageal Carcinoma
-            - id: NCIT:C35850
-              name: Head and Neck Carcinoma
-          - - id: sex.male
-              name: men
-            - id: sex.female
-              name: women
-            - id: sex.others
-              name: others
-          - - id: lymphoma
-              name: Lymphomes
-            - id: melanoma
-              name: Melanomas
-            - id: others
-              name: Other cancer types
     required:
       - id
       - modelProperty    
+    examples:
+      - id: karyotypicSex
+        label: karyotypic sex
+        modelProperty: individual.karyotypicSex
+        description: >-
+          Aggregation by the karyotypic sex of the individuals. The karyotypic sex is determined by the chromosomal composition of the individual.
+      - id: karyotypicSexPloidy
+        label: sex ploidy
+        modelProperty: individual.karyotypicSex
+        description: >-
+          Aggregation by the sex ploidy of the individuals.
+        categories:
+          - - id: diploid
+              name: Diploid
+            - id: aneuploid
+              name: Aneuploid
+            - id: polyploid
+              name: Polyploid
+      - id: ageOfOnset
+        label: Age of Onset
+        modelProperty: individual.diseases.ageofOnset
+        description: >-
+          Aggregation by the age of onset of the individuals. The age of onset is calculated as the difference between the date of onset and the date of birth of the individual.
+        splits:
+          - splitBounds: [0,18]
+            label: 0 to less than 18 years
+            sortOrder: 1
+          - splitBounds: [18,65]
+            label: 18 to less than 65 years
+            sortOrder: 2
+          - splitBounds: [65]
+            label: 65 years and older
+            sortOrder: 3
   ValuesForAggregationTerm:
         description: >-
           List of selected values for aggregation.
@@ -92,48 +103,53 @@ $defs:
               name: women
             - id: sex.others
               name: others
+          - - id: lymphoma
+              name: Lymphomes
+            - id: melanoma
+              name: Melanomas
+            - id: others
+              name: Other cancer types
   SplitItem:
     description: >-
       A split item for binning values during aggregation.
     type: object
     properties:
-      upperBound:
+      splitBounds:
         description: >-
-          The value for the split, representing inclusive lower bounds to exclusive upper bounds.
-          TODO: Other types than string? String can be a value/unit string...
-          Overmodeling this might get too complex.
-        type: string
+          The values for the split, representing inclusive lower bounds to exclusive upper bounds. When only one value is given, it represents the lower bound and the upper bound is considered unbounded. The format of the values should be consistent with the type of the property being split, e.g. ISO8601 durations for time intervals or numeric values for continuous numeric variables. 
+        type: array
+        minItems: 1
       label:
         description: >-
           A human readable label for the bin resulting from the split.
         type: string
       sortOrder:
         description: >-
-          Optional integer to specify the order of splits.
+          Integer to specify the intended order of splits. This is required to ensure the correct order of bins in the results, or for the client to be able to reconstruct the expected order in case any of the intermediate steps reorders them.
         type: integer
     required:
-      - upperBound
+      - splitBounds
       - sortOrder 
     examples:
-      - - upperBound: P18M
+      - - splitBounds: [P0M,P18M]
           label: < 18 months
           sortOrder: 1
-        - upperBound: P18Y
+        - splitBounds: [P18M,P18Y]
           label: 18 months to less than 18 years
           sortOrder: 2
-        - upperBound: P65Y
+        - splitBounds: [P18Y,P65Y]
           label: 18 years to less than 65 years
           sortOrder: 3
-        - upperBound: P150Y
+        - splitBounds: [P65Y]
           label: 65 years and older
           sortOrder: 4
-      - - upperBound: 10
+      - - splitBounds: [0,10]
           label: 0kg to less than 10kg
           sortOrder: 1
-        - upperBound: 25
+        - splitBounds: [10,25]
           label: 10kg to less than 25kg
           sortOrder: 2
-        - upperBound: 999
-          label: 25kg and more
+        - splitBounds: [25]
+          label: 25kg or higher
           sortOrder: 3
 
