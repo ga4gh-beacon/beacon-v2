@@ -121,25 +121,12 @@
             ],
             "type": "object"
         },
-        "ValuesForAggregation": {
-            "description": "An object representing a specific value of the property on which the aggregation is performed, used as a modifier of the aggregation term to select specific values for aggregation. For example, for an aggregation term of `diagnosis` this could be used to specify a specific diagnosis to be aggregated.",
-            "properties": {
-                "id": {
-                    "description": "The `id` of the category or value to be aggregated, e.g. an ontology term CURIE or a value from a controlled list.",
-                    "examples": [
-                        "NCIT:C9384"
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "customSplits": {
+        "SplitItem": {
             "description": "A split item for binning values during aggregation.",
             "examples": [
                 [
                     {
-                        "label": "< 18 months",
+                        "label": "birth to 18 months",
                         "sortOrder": 1,
                         "splitBounds": [
                             "P0M",
@@ -215,6 +202,19 @@
                 "splitBounds",
                 "sortOrder"
             ],
+            "type": "object"
+        },
+        "ValuesForAggregation": {
+            "description": "An object representing a specific value of the property on which the aggregation is performed, used as a modifier of the aggregation term to select specific values for aggregation. For example, for an aggregation term of `diagnosis` this could be used to specify a specific diagnosis to be aggregated.",
+            "properties": {
+                "id": {
+                    "description": "The `id` of the category or value to be aggregated, e.g. an ontology term CURIE or a value from a controlled list.",
+                    "examples": [
+                        "NCIT:C9384"
+                    ],
+                    "type": "string"
+                }
+            },
             "type": "object"
         }
     },

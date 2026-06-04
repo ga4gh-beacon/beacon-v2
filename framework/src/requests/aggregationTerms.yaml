@@ -114,7 +114,7 @@ $defs:
           The `id` of the category or value to be aggregated, e.g. an ontology term CURIE or a value from a controlled list.
         examples:
           - NCIT:C9384
-  customSplits:
+  SplitItem:
     # TO DO: Provide an example that is not the same than in beaconAggregationTermsResults, to avoid confusion between request and response examples.
     description: >-
       A split item for binning values during aggregation.
@@ -138,7 +138,7 @@ $defs:
       - sortOrder 
     examples:
       - - splitBounds: [P0M,P18M]
-          label: < 18 months
+          label: birth to 18 months
           sortOrder: 1
         - splitBounds: [P18M,P18Y]
           label: 18 months to less than 18 years
