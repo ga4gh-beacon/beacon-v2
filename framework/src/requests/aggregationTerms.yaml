@@ -140,24 +140,9 @@ $defs:
       - splitBounds
       - sortOrder 
     examples:
-      - - splitBounds: [P0M,P18M]
-          label: birth to 18 months
-          sortOrder: 1
-        - splitBounds: [P18M,P18Y]
-          label: 18 months to less than 18 years
-          sortOrder: 2
-        - splitBounds: [P18Y,P65Y]
-          label: 18 years to less than 65 years
-          sortOrder: 3
-        - splitBounds: [P65Y]
-          label: 65 years and older
-          sortOrder: 4
-      - - splitBounds: [0,10]
-          label: 0kg to less than 10kg
-          sortOrder: 1
-        - splitBounds: [10,25]
-          label: 10kg to less than 25kg
-          sortOrder: 2
-        - splitBounds: [25]
-          label: 25kg or higher
-          sortOrder: 3
+      - splitBounds: [P0M,P18M]
+        label: birth to 18 months
+        sortOrder: 1
+      - splitBounds: [25]
+        label: 25kg or higher
+        sortOrder: 3
