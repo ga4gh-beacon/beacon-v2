@@ -85,13 +85,12 @@
                     "$ref": "#/$defs/DistinctValuesCount"
                 },
                 "requestId": {
-                    "$comment": "to review",
                     "description": "An optional id for the aggregation request, which can be used for tracking and logging purposes. This is not used by the beacon for processing the request but can be included in the response metadata.",
                     "type": "string"
                 }
             },
             "required": [
-                "concepts",
+                "aggregationTerms",
                 {
                     "anyOf": [
                         "categoriesAndValues",
