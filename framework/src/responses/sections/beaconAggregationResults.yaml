@@ -50,7 +50,7 @@ $defs:
     required:
       - concepts
       - anyOf:
-          - distribution
+          - categoriesAndValues
           - distinctValuesCount
           - anyValueCount
 

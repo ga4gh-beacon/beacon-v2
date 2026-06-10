@@ -94,7 +94,7 @@
                 "concepts",
                 {
                     "anyOf": [
-                        "distribution",
+                        "categoriesAndValues",
                         "distinctValuesCount",
                         "anyValueCount"
                     ]
