@@ -24,8 +24,6 @@ $defs:
     type: object
     properties:
       requestId:
-        $comment: >-
-          to review
         description: >-
           An optional id for the aggregation request, which can be used for
           tracking and logging purposes. This is not used by the beacon for
@@ -48,7 +46,7 @@ $defs:
           $ref: "#/$defs/AnyValueCount"
 
     required:
-      - concepts
+      - aggregationTerms
       - anyOf:
           - categoriesAndValues
           - distinctValuesCount
