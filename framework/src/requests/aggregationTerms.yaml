@@ -54,9 +54,9 @@ $defs:
         # Example of one aggregation for which just a subset of values are returned.
         aggregationTerms:
           - id: Sex
-            categories:
-              - - id: NCIT:C16576
-                - id: NCIT:C20197
+            selectors:
+              - value: NCIT:C16576
+              - value: NCIT:C20197
       - requestId: aggr3
         # Example of an aggregation that includes two dimensions, like a two
         # entry table. The example also selects some specific categories for the
@@ -66,10 +66,10 @@ $defs:
         aggregationTerms:
           - id: SexAtBirth
           - id: HistologicalDiagnoses
-            categories:
-              - id: NCIT:C2919
-              - id: NCIT:C4017
-              - id: NCIT:C3512
+            selectors:
+              - value: NCIT:C2919
+              - value: NCIT:C4017
+              - value: NCIT:C3512
       - requestId: aggr4
         # Example of an aggregation with splits for the term "age of onset".
         aggregationTerms:

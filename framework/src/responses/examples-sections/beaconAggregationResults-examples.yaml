@@ -93,7 +93,7 @@ examples:
         names: ["1.5 to 10 years"]
         count: 339
       - ids: ["[P10Y, P60Y)"]
-        names: ["8 to 60 years"]
+        names: ["10 to 60 years"]
         count: 61
       - ids: ["other"]
         names: ["older or unknown"]

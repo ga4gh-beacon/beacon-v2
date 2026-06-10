@@ -59,17 +59,15 @@
                 {
                     "aggregationTerms": [
                         {
-                            "categories": [
-                                [
-                                    {
-                                        "id": "NCIT:C16576"
-                                    },
-                                    {
-                                        "id": "NCIT:C20197"
-                                    }
-                                ]
-                            ],
-                            "id": "Sex"
+                            "id": "Sex",
+                            "selectors": [
+                                {
+                                    "value": "NCIT:C16576"
+                                },
+                                {
+                                    "value": "NCIT:C20197"
+                                }
+                            ]
                         }
                     ],
                     "requestId": "aggr2"
@@ -80,18 +78,18 @@
                             "id": "SexAtBirth"
                         },
                         {
-                            "categories": [
+                            "id": "HistologicalDiagnoses",
+                            "selectors": [
                                 {
-                                    "id": "NCIT:C2919"
+                                    "value": "NCIT:C2919"
                                 },
                                 {
-                                    "id": "NCIT:C4017"
+                                    "value": "NCIT:C4017"
                                 },
                                 {
-                                    "id": "NCIT:C3512"
+                                    "value": "NCIT:C3512"
                                 }
-                            ],
-                            "id": "HistologicalDiagnoses"
+                            ]
                         }
                     ],
                     "requestId": "aggr3"
