@@ -87,34 +87,6 @@ $defs:
           Indicates whether the resulting distribution results will be sorted in
           some way.
         type: boolean
-      categories:
-        description: >-
-          List of categories that had been used to select specific values
-          for this aggregation of the matched data.
-        type: array
-        minItems: 1
-        items:
-          $ref: ../../requests/filteringTerms.yaml#$defs/FilteringTermInRequest   
-        examples:
-          - - id: NCIT:C9384
-              name: Kidney Carcinoma
-            - id: NCIT:C3513
-              name: Esophageal Carcinoma
-            - id: NCIT:C35850
-              name: Head and Neck Carcinoma
-          - - id: EFO:0030075
-              name: cDNA microarray
-            - id: EFO:0010938
-              name: large-insert clone DNA microarray
-      splits:
-        description: >-
-          Optional list of **sorted** splits to group values for ranges or bins
-          when performing the aggregation. This is for information only and the values
-          should be reflected in the distribution itself.
-        type: array
-        minItems: 1
-        items:
-          $ref: "../beaconAggregationTermsResults#/$defs/SplitItem"
     required:
       - id
 
