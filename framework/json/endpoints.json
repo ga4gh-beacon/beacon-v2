@@ -92,7 +92,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "./responses/beaconAggregationConceptsResponse.json"
+                                    "$ref": "./responses/beaconAggregationTermsResponse.json"
                                 }
                             }
                         },
