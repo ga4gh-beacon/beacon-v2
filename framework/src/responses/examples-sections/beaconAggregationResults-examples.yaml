@@ -4,16 +4,6 @@ examples:
     aggregationTerms:
       - id: sex 
         label: Selected Diagnoses
-        # TODO: Do we need categories here? They appear in the `categoriesAndValues`
-        # part as `ids` and `mames`.
-        # One argument: Categories with zero matches could be missing from the response.
-        categories:
-          - id: NCIT:C16576
-            name: female
-          - id: NCIT:C20197
-            name: male
-          - id: NCIT:C1799
-            name: unknown
     categoriesAndValues:
       - ids: ["NCIT:C16576"]
         names: ["female"]
@@ -93,7 +83,7 @@ examples:
         names: ["1.5 to 10 years"]
         count: 339
       - ids: ["[P10Y, P60Y)"]
-        names: ["8 to 60 years"]
+        names: ["10 to 60 years"]
         count: 61
       - ids: ["other"]
         names: ["older or unknown"]

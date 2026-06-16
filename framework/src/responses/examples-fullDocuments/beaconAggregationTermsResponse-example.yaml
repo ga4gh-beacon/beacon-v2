@@ -1,27 +1,41 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-$comment: >-
-  TODO
 meta:
   beaconId: string
   apiVersion: string
   returnedSchemas:
     - map: beacon-map-v2.0.0
 response:
-  resources:
-    - id: hp
-      name: Human Phenotype Ontology
-      url: https://purl.obolibrary.org/obo/hp.owl
-      version: 27-03-2020
-      namespacePrefix: HP
-      iriPrefix: https://purl.obolibrary.org/obo/HP_
-  filteringTerms:
-    - type: numeric
-      id: PATO:0000011
-      label: age
-    - type: Human Phenotype Ontology
-      id: HP:0008773
-      label: Aplasia/Hypoplasia of the middle ear
-    - type: custom
-      id: ownsIPhone
-      label: Individuals associated with this term owns an IPhone
+  aggregationTerms:
+    - id: karyotypicSex
+      label: karyotypic sex
+      modelProperty: individual.karyotypicSex
+      description: >-
+        Aggregation by the karyotypic sex of the individuals. The karyotypic
+        sex is determined by the chromosomal composition of the individual.
+    - id: karyotypicSexPloidy
+      label: sex ploidy
+      modelProperty: individual.karyotypicSex
+      description: >-
+        Aggregation by the sex ploidy of the individuals.
+      selectors:
+        - value: diploid
+          label: Diploid
+        - value: aneuploid
+          label: Aneuploid
+        - value: polyploid
+          label: Polyploid
+    - id: ageOfOnset
+      label: Age of Onset
+      modelProperty: individual.diseases.ageofOnset
+      description: >-
+        Aggregation by the age of onset of the individuals. The age of onset
+        is calculated as the difference between the date of onset and the date
+        of birth of the individual.
+      selectors:
+        - splitValue: P65Y
+          label: younger than 65 years
+          sortOrder: 1
+        - splitValue: P150Y
+          label: 65 years and older   # Note: This label depends on the preceding
+          sortOrder: 2
 info: {}

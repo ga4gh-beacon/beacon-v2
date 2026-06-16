@@ -38,15 +38,16 @@ $defs:
         description: >-
           Human readable description of the aggregation performed for this term.
         type: string
-      categories:
+      selectors:
         description: >-
-          List of selected values for aggregation or splits. If this property is present, it indicates that not all values in the modelProperty would be returned, but just the ones listed in valuesForAggregationTerm or the results would be returned in bins instead as a continuous variable.
-        type: array
-        minItems: 1
-        items:
-          oneOf:
-              - $ref: "#/$defs/ValuesForAggregationTerm"
-              - $ref: "#/$defs/SplitItem"
+          Optional selectors for limiting or binning the aggregation on the
+          `modelProperty`. If this parameter is present, it indicates that only
+          the indicated values would be aggregated or that the results would be
+          returned in bins (e.g. for continuous values).
+        oneOf:
+          - $ref: "../../requests/aggregationTerms.yaml#/#/$defs/ValueSelectors"
+          - $ref: "../../requests/aggregationTerms.yaml#/#/$defs/RangeSelectors"
+          - $ref: "../../requests/aggregationTerms.yaml#/#/$defs/SplitSelectors"
     required:
       - id
       - modelProperty    
@@ -55,101 +56,31 @@ $defs:
         label: karyotypic sex
         modelProperty: individual.karyotypicSex
         description: >-
-          Aggregation by the karyotypic sex of the individuals. The karyotypic sex is determined by the chromosomal composition of the individual.
+          Aggregation by the karyotypic sex of the individuals. The karyotypic
+          sex is determined by the chromosomal composition of the individual.
       - id: karyotypicSexPloidy
         label: sex ploidy
         modelProperty: individual.karyotypicSex
         description: >-
           Aggregation by the sex ploidy of the individuals.
-        categories:
-          - - id: diploid
-              name: Diploid
-            - id: aneuploid
-              name: Aneuploid
-            - id: polyploid
-              name: Polyploid
+        selectors:
+          - value: diploid
+            label: Diploid
+          - value: aneuploid
+            label: Aneuploid
+          - value: polyploid
+            label: Polyploid
       - id: ageOfOnset
         label: Age of Onset
         modelProperty: individual.diseases.ageofOnset
         description: >-
-          Aggregation by the age of onset of the individuals. The age of onset is calculated as the difference between the date of onset and the date of birth of the individual.
-        splits:
-          - splitBounds: [0,18]
-            label: 0 to less than 18 years
+          Aggregation by the age of onset of the individuals. The age of onset
+          is calculated as the difference between the date of onset and the date
+          of birth of the individual.
+        selectors:
+          - splitValue: P65Y
+            label: younger than 65 years
             sortOrder: 1
-          - splitBounds: [18,65]
-            label: 18 to less than 65 years
+          - splitValue: P150Y
+            label: 65 years and older   # Note: This label depends on the preceding
             sortOrder: 2
-          - splitBounds: [65]
-            label: 65 years and older
-            sortOrder: 3
-  ValuesForAggregationTerm:
-        description: >-
-          List of selected values for aggregation.
-        type: array
-        minItems: 1
-        items:
-          $ref: ../../common/basicElement.yaml
-        examples:
-          - - id: NCIT:C9384
-              name: Kidney Carcinoma
-            - id: NCIT:C3513
-              name: Esophageal Carcinoma
-            - id: NCIT:C35850
-              name: Head and Neck Carcinoma
-          - - id: sex.male
-              name: men
-            - id: sex.female
-              name: women
-            - id: sex.others
-              name: others
-          - - id: lymphoma
-              name: Lymphomes
-            - id: melanoma
-              name: Melanomas
-            - id: others
-              name: Other cancer types
-  SplitItem:
-    description: >-
-      A split item for binning values during aggregation.
-    type: object
-    properties:
-      splitBounds:
-        description: >-
-          The values for the split, representing inclusive lower bounds to exclusive upper bounds. When only one value is given, it represents the lower bound and the upper bound is considered unbounded. The format of the values should be consistent with the type of the property being split, e.g. ISO8601 durations for time intervals or numeric values for continuous numeric variables. 
-        type: array
-        minItems: 1
-      label:
-        description: >-
-          A human readable label for the bin resulting from the split.
-        type: string
-      sortOrder:
-        description: >-
-          Integer to specify the intended order of splits. This is required to ensure the correct order of bins in the results, or for the client to be able to reconstruct the expected order in case any of the intermediate steps reorders them.
-        type: integer
-    required:
-      - splitBounds
-      - sortOrder 
-    examples:
-      - - splitBounds: [P0M,P18M]
-          label: < 18 months
-          sortOrder: 1
-        - splitBounds: [P18M,P18Y]
-          label: 18 months to less than 18 years
-          sortOrder: 2
-        - splitBounds: [P18Y,P65Y]
-          label: 18 years to less than 65 years
-          sortOrder: 3
-        - splitBounds: [P65Y]
-          label: 65 years and older
-          sortOrder: 4
-      - - splitBounds: [0,10]
-          label: 0kg to less than 10kg
-          sortOrder: 1
-        - splitBounds: [10,25]
-          label: 10kg to less than 25kg
-          sortOrder: 2
-        - splitBounds: [25]
-          label: 25kg or higher
-          sortOrder: 3
-

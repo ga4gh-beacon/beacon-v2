@@ -3,20 +3,6 @@
         {
             "aggregationTerms": [
                 {
-                    "categories": [
-                        {
-                            "id": "NCIT:C16576",
-                            "name": "female"
-                        },
-                        {
-                            "id": "NCIT:C20197",
-                            "name": "male"
-                        },
-                        {
-                            "id": "NCIT:C1799",
-                            "name": "unknown"
-                        }
-                    ],
                     "id": "sex",
                     "label": "Selected Diagnoses"
                 }
@@ -237,7 +223,7 @@
                         "[P10Y, P60Y)"
                     ],
                     "names": [
-                        "8 to 60 years"
+                        "10 to 60 years"
                     ]
                 },
                 {

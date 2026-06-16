@@ -6,12 +6,10 @@ description: |-
   values of those terms constitute the possible `id` values here. See also the
   documentation for `AggregationTermInResponse.id` in `beaconAggregationTermsResults`.
 
-  Note: The request for aggregations is a list of lists of objects:
-  * The outer list level is the list of all aggregations ("concepts") resulting
-    in a distribution of one or more dimensional aggregation results.
-  * The individual concepts have lists of 1 or more (but mostly 1 or 2)
-    aggregation terms - corresponding to individual properties - which are
-    evaluated together, e.g. "diagnoses (1) for sex at birth (2)".
+  The request for aggregations is a list of aggregation objects. The individual 
+  aggregation request objects contain lists of 1 or more (but mostly 1 or 2)
+  aggregation terms which correspond to individual properties and - if more than
+  one - are evaluated together, e.g. "diagnoses (1) for sex at birth (2)".
 type: array
 items:
   $ref: '#/$defs/AggregationsInRequest'
@@ -19,27 +17,25 @@ items:
 $defs:
   AggregationsInRequest:
     type: object
-    $comment: >-
-          to review
+    description: >-
+      A principal aggregation directive, indicating which of the single property
+      aggregations indicated in a beacon's `/aggregation_terms` should be evaluated,
+      alone or in combination.
     properties:
       requestId:
         description: >-
-          An optional id for the aggregation request, which can be used for
+          A process id for the aggregation request, which can be used for
           tracking and logging purposes. This is not used by the beacon for
-          processing the request but can be included in the response metadata.
+          interpreting the request but can be included in the response metadata.
         type: string
       aggregationTerms:
         description: >-
-          An array of `AggregationTermInRequest` objects representing the terms
-          to be aggregated for a single aggregation, e.g. terms corresponding to
-          `sexAtBirth` and `diagnosis`.
+          An array of one or more `AggregationTermInRequest` objects representing
+          the properties to be aggregated, e.g. terms corresponding to `sexAtBirth`
+          and `diagnosis`.
         type: array
         items:
           $ref: '#/$defs/AggregationTermInRequest'
-    description: >-
-      An array of `AggregationTermInRequest` objects representing the terms
-      to be aggregated for a single aggregation, e.g. terms corresponding to
-      `sexAtBirth` and `diagnosis`.
     required:
       - requestId
       - aggregationTerms
@@ -52,21 +48,22 @@ $defs:
         # Example of one aggregation for which just a subset of values are returned.
         aggregationTerms:
           - id: Sex
-            categories:
-              - - id: NCIT:C16576
-                - id: NCIT:C20197
+            selectors:
+              - value: NCIT:C16576
+              - value: NCIT:C20197
       - requestId: aggr3
         # Example of an aggregation that includes two dimensions, like a two
         # entry table. The example also selects some specific categories for the
         # second term. If the first term has 2 categories, and all possible
-        # combinations exists in the data itself, the result would include 6 "cells" with the corresponding count.
+        # combinations exists in the data itself, the result would include 6 "cells"
+        # with the corresponding count.
         aggregationTerms:
           - id: SexAtBirth
           - id: HistologicalDiagnoses
-            categories:
-              - id: NCIT:C2919
-              - id: NCIT:C4017
-              - id: NCIT:C3512
+            selectors:
+              - value: NCIT:C2919
+              - value: NCIT:C4017
+              - value: NCIT:C3512
       - requestId: aggr4
         # Example of an aggregation with splits for the term "age of onset".
         aggregationTerms:
@@ -92,57 +89,139 @@ $defs:
           - id: biosample.histologicalDiagnosis.id
           - id: sexAtBirth
           - id: ageAtDiagnosis
-      categories:
+      selectors:
         description: >-
-          List of categories to select specific values of the given property
+          List of selectors to select specific values of the given property
           for aggregation, as a modifier of the aggregation term. For example,
-          for an aggregation term of `diagnosis` categories could be used to specify
+          for an aggregation term of `diagnosis` selectors could be used to specify
           a subset of diagnoses to be aggregated.
-        type: array
-        items:
-          oneOf:
-            - $ref: "#/$defs/ValuesForAggregation"
-            - $ref: "#/$defs/SplitItem"
+        oneOf:
+          - $ref: "#/$defs/ValueSelectors"
+          - $ref: "#/$defs/RangeSelectors"
+          - $ref: "#/$defs/SplitSelectors"
     required:
       - id
 
-  ValuesForAggregation:
+  ValueSelectors:
     description: >-
-      An object representing a specific value of the property on which the aggregation is performed, used as a modifier of the aggregation term to select specific values for aggregation. For example, for an aggregation term of `diagnosis` this could be used to specify a specific diagnosis to be aggregated.
+      Selectors array prototypes guarantee that all individual selector values
+      are of the same type.
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/ValueForAggregation"
+
+  RangeSelectors:
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/RangeForAggregation"
+
+  SplitSelectors:
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/SplitForAggregation"
+
+  ValueForAggregation:
+    description: >-
+      An object representing a specific value of the property on which the aggregation
+      is performed, used as a modifier of the aggregation term to select specific
+      values for aggregation. For example, for an aggregation term of `diagnosis`
+      this could be used to specify a specific diagnosis to be aggregated on.
     type: object
     properties:
-      id:
+      value:
         type: string
         description: >-
-          The `id` of the category or value to be aggregated, e.g. an ontology term CURIE or a value from a controlled list.
-        examples:
-          - NCIT:C9384
-  SplitItem:
-    # TO DO: Provide an example that is not the same than in beaconAggregationTermsResults, to avoid confusion between request and response examples.
-    description: >-
-      A split item for binning values during aggregation.
+          The specific value of the category or value to be aggregated, e.g. an
+          ontology term CURIE an alphanumeric value.
+      label:
+        type: string
+        description: >-
+          An optional label for the value, e.g. to allow the service to return
+          in an informative response.
+      examples:
+        - value: NCIT:C9384
+          label: Kidney Carcinoma
+        - value: female
+      required:
+        - value
+
+  RangeForAggregation:
     type: object
     properties:
-      splitBounds:
+      rangeBounds:
         description: >-
-          The values for the split, representing inclusive lower bounds to exclusive upper bounds. When only one value is given, it represents the lower bound and the upper bound is considered unbounded. The format of the values should be consistent with the type of the property being split, e.g. ISO8601 durations for time intervals or numeric values for continuous numeric variables. 
+          The limits of the range, representing inclusive lower bounds to exclusive
+          upper bounds. When only one value is given, it represents the lower
+          bound and the upper bound is considered unbounded. The format of the
+          values should be consistent with the type of the property being split,
+          e.g. ISO8601 durations for time intervals or numeric values for continuous
+          numeric variables. 
         type: array
+        items:
+          type:
+            - string
+            - number
         minItems: 1
+      label:
+        type: string
+      sortOrder:
+        description: >-
+          Integer to specify the intended order of splits. This is required to
+          ensure the correct order of bins in the results, or for the client to
+          be able to reconstruct the expected order in case any of the intermediate
+          steps reorders them.
+        type: integer
+    examples:
+      - rangeBounds: [P0M,P18M]
+        label: birth to 18 months
+        sortOrder: 1
+    required:
+      - rangeBounds
+      - sortOrder 
+
+  SplitForAggregation:
+    description: >-
+      A split item for partitioning the values during aggregation.
+    type: object
+    properties:
+      splitValue:
+        description: >-
+          A value at which the split should occur in the properties value space.
+          The format of the value should be consistent with the type of the property
+          being split, e.g. ISO8601 durations for time intervals or numeric values
+          for continuous numeric variables.
+          Split values are exclusive upper bounds for the resulting bins, meaning
+          that values equal to the split value will be included in the next bin.
+          Note: To cover the complete value space one might use a (last) split
+          value that extends beyond the maximum value in the data, e.g. `P150Y` for
+          age at diagnosis.
+        type:
+          - string
+          - number
       label:
         description: >-
           A human readable label for the bin resulting from the split.
         type: string
       sortOrder:
         description: >-
-          Integer to specify the intended order of splits. This is required to ensure the correct order of bins in the results, or for the client to be able to reconstruct the expected order in case any of the intermediate steps reorders them.
+          Integer to specify the intended order of splits. This is required to
+          ensure the correct order of bins in the results, or for the client to
+          be able to reconstruct the expected order in case any of the intermediate
+          steps reorders them.
         type: integer
     required:
-      - splitBounds
+      - splitValue
       - sortOrder 
     examples:
-      - splitBounds: [P0M,P18M]
-        label: birth to 18 months
+      - splitValue: P65Y
+        label: younger than 65 years
         sortOrder: 1
-      - splitBounds: [25]
+      - splitValue: P150Y
+        label: 65 years and older   # Note: This label depends on a preceding
+        sortOrder: 2
+      - splitValue: 25
         label: 25kg or higher
         sortOrder: 3

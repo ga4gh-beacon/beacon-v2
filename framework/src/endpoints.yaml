@@ -157,7 +157,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ./responses/beaconAggregationConceptsResponse.yaml
+                $ref: ./responses/beaconAggregationTermsResponse.yaml
         default:
           description: An unsuccessful operation.
           content:

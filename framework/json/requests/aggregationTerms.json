@@ -3,20 +3,6 @@
         "AggregationTermInRequest": {
             "description": "An object representing an individual term to be aggregated, e.g. a term corresponding to `sexAtBirth` or `diagnosis`. The `id` property is required and identifies the term to be aggregated, while the `filters` and `splits` properties are optional modifiers of the aggregation term. Note: The request object does not specifiy the property or scope of the aggregation.",
             "properties": {
-                "categories": {
-                    "description": "List of categories to select specific values of the given property for aggregation, as a modifier of the aggregation term. For example, for an aggregation term of `diagnosis` categories could be used to specify a subset of diagnoses to be aggregated.",
-                    "items": {
-                        "oneOf": [
-                            {
-                                "$ref": "#/$defs/ValuesForAggregation"
-                            },
-                            {
-                                "$ref": "#/$defs/SplitItem"
-                            }
-                        ]
-                    },
-                    "type": "array"
-                },
                 "id": {
                     "description": "The `id` of the aggregation term as provided by the beacon. It is used to select the aggregation term, _i.e._ usually corresponding to a property in the data model. ",
                     "examples": [
@@ -34,6 +20,20 @@
                         }
                     ],
                     "type": "string"
+                },
+                "selectors": {
+                    "description": "List of selectors to select specific values of the given property for aggregation, as a modifier of the aggregation term. For example, for an aggregation term of `diagnosis` selectors could be used to specify a subset of diagnoses to be aggregated.",
+                    "oneOf": [
+                        {
+                            "$ref": "#/$defs/ValueSelectors"
+                        },
+                        {
+                            "$ref": "#/$defs/RangeSelectors"
+                        },
+                        {
+                            "$ref": "#/$defs/SplitSelectors"
+                        }
+                    ]
                 }
             },
             "required": [
@@ -42,8 +42,7 @@
             "type": "object"
         },
         "AggregationsInRequest": {
-            "$comment": "to review",
-            "description": "An array of `AggregationTermInRequest` objects representing the terms to be aggregated for a single aggregation, e.g. terms corresponding to `sexAtBirth` and `diagnosis`.",
+            "description": "A principal aggregation directive, indicating which of the single property aggregations indicated in a beacon's `/aggregation_terms` should be evaluated, alone or in combination.",
             "examples": [
                 {
                     "aggregationTerms": [
@@ -56,17 +55,15 @@
                 {
                     "aggregationTerms": [
                         {
-                            "categories": [
-                                [
-                                    {
-                                        "id": "NCIT:C16576"
-                                    },
-                                    {
-                                        "id": "NCIT:C20197"
-                                    }
-                                ]
-                            ],
-                            "id": "Sex"
+                            "id": "Sex",
+                            "selectors": [
+                                {
+                                    "value": "NCIT:C16576"
+                                },
+                                {
+                                    "value": "NCIT:C20197"
+                                }
+                            ]
                         }
                     ],
                     "requestId": "aggr2"
@@ -77,18 +74,18 @@
                             "id": "SexAtBirth"
                         },
                         {
-                            "categories": [
+                            "id": "HistologicalDiagnoses",
+                            "selectors": [
                                 {
-                                    "id": "NCIT:C2919"
+                                    "value": "NCIT:C2919"
                                 },
                                 {
-                                    "id": "NCIT:C4017"
+                                    "value": "NCIT:C4017"
                                 },
                                 {
-                                    "id": "NCIT:C3512"
+                                    "value": "NCIT:C3512"
                                 }
-                            ],
-                            "id": "HistologicalDiagnoses"
+                            ]
                         }
                     ],
                     "requestId": "aggr3"
@@ -104,14 +101,14 @@
             ],
             "properties": {
                 "aggregationTerms": {
-                    "description": "An array of `AggregationTermInRequest` objects representing the terms to be aggregated for a single aggregation, e.g. terms corresponding to `sexAtBirth` and `diagnosis`.",
+                    "description": "An array of one or more `AggregationTermInRequest` objects representing the properties to be aggregated, e.g. terms corresponding to `sexAtBirth` and `diagnosis`.",
                     "items": {
                         "$ref": "#/$defs/AggregationTermInRequest"
                     },
                     "type": "array"
                 },
                 "requestId": {
-                    "description": "An optional id for the aggregation request, which can be used for tracking and logging purposes. This is not used by the beacon for processing the request but can be included in the response metadata.",
+                    "description": "A process id for the aggregation request, which can be used for tracking and logging purposes. This is not used by the beacon for interpreting the request but can be included in the response metadata.",
                     "type": "string"
                 }
             },
@@ -121,23 +118,67 @@
             ],
             "type": "object"
         },
-        "SplitItem": {
-            "description": "A split item for binning values during aggregation.",
+        "RangeForAggregation": {
             "examples": [
                 {
                     "label": "birth to 18 months",
-                    "sortOrder": 1,
-                    "splitBounds": [
+                    "rangeBounds": [
                         "P0M",
                         "P18M"
-                    ]
+                    ],
+                    "sortOrder": 1
+                }
+            ],
+            "properties": {
+                "label": {
+                    "type": "string"
+                },
+                "rangeBounds": {
+                    "description": "The limits of the range, representing inclusive lower bounds to exclusive upper bounds. When only one value is given, it represents the lower bound and the upper bound is considered unbounded. The format of the values should be consistent with the type of the property being split, e.g. ISO8601 durations for time intervals or numeric values for continuous numeric variables. ",
+                    "items": {
+                        "type": [
+                            "string",
+                            "number"
+                        ]
+                    },
+                    "minItems": 1,
+                    "type": "array"
+                },
+                "sortOrder": {
+                    "description": "Integer to specify the intended order of splits. This is required to ensure the correct order of bins in the results, or for the client to be able to reconstruct the expected order in case any of the intermediate steps reorders them.",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "rangeBounds",
+                "sortOrder"
+            ],
+            "type": "object"
+        },
+        "RangeSelectors": {
+            "items": {
+                "$ref": "#/$defs/RangeForAggregation"
+            },
+            "minItems": 1,
+            "type": "array"
+        },
+        "SplitForAggregation": {
+            "description": "A split item for partitioning the values during aggregation.",
+            "examples": [
+                {
+                    "label": "younger than 65 years",
+                    "sortOrder": 1,
+                    "splitValue": "P65Y"
+                },
+                {
+                    "label": "65 years and older",
+                    "sortOrder": 2,
+                    "splitValue": "P150Y"
                 },
                 {
                     "label": "25kg or higher",
                     "sortOrder": 3,
-                    "splitBounds": [
-                        25
-                    ]
+                    "splitValue": 25
                 }
             ],
             "properties": {
@@ -149,34 +190,64 @@
                     "description": "Integer to specify the intended order of splits. This is required to ensure the correct order of bins in the results, or for the client to be able to reconstruct the expected order in case any of the intermediate steps reorders them.",
                     "type": "integer"
                 },
-                "splitBounds": {
-                    "description": "The values for the split, representing inclusive lower bounds to exclusive upper bounds. When only one value is given, it represents the lower bound and the upper bound is considered unbounded. The format of the values should be consistent with the type of the property being split, e.g. ISO8601 durations for time intervals or numeric values for continuous numeric variables. ",
-                    "minItems": 1,
-                    "type": "array"
+                "splitValue": {
+                    "description": "A value at which the split should occur in the properties value space. The format of the value should be consistent with the type of the property being split, e.g. ISO8601 durations for time intervals or numeric values for continuous numeric variables. Split values are exclusive upper bounds for the resulting bins, meaning that values equal to the split value will be included in the next bin. Note: To cover the complete value space one might use a (last) split value that extends beyond the maximum value in the data, e.g. `P150Y` for age at diagnosis.",
+                    "type": [
+                        "string",
+                        "number"
+                    ]
                 }
             },
             "required": [
-                "splitBounds",
+                "splitValue",
                 "sortOrder"
             ],
             "type": "object"
         },
-        "ValuesForAggregation": {
-            "description": "An object representing a specific value of the property on which the aggregation is performed, used as a modifier of the aggregation term to select specific values for aggregation. For example, for an aggregation term of `diagnosis` this could be used to specify a specific diagnosis to be aggregated.",
+        "SplitSelectors": {
+            "items": {
+                "$ref": "#/$defs/SplitForAggregation"
+            },
+            "minItems": 1,
+            "type": "array"
+        },
+        "ValueForAggregation": {
+            "description": "An object representing a specific value of the property on which the aggregation is performed, used as a modifier of the aggregation term to select specific values for aggregation. For example, for an aggregation term of `diagnosis` this could be used to specify a specific diagnosis to be aggregated on.",
             "properties": {
-                "id": {
-                    "description": "The `id` of the category or value to be aggregated, e.g. an ontology term CURIE or a value from a controlled list.",
-                    "examples": [
-                        "NCIT:C9384"
-                    ],
+                "examples": [
+                    {
+                        "label": "Kidney Carcinoma",
+                        "value": "NCIT:C9384"
+                    },
+                    {
+                        "value": "female"
+                    }
+                ],
+                "label": {
+                    "description": "An optional label for the value, e.g. to allow the service to return in an informative response.",
+                    "type": "string"
+                },
+                "required": [
+                    "value"
+                ],
+                "value": {
+                    "description": "The specific value of the category or value to be aggregated, e.g. an ontology term CURIE an alphanumeric value.",
                     "type": "string"
                 }
             },
             "type": "object"
+        },
+        "ValueSelectors": {
+            "description": "Selectors array prototypes guarantee that all individual selector values are of the same type.",
+            "items": {
+                "$ref": "#/$defs/ValueForAggregation"
+            },
+            "minItems": 1,
+            "type": "array"
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Terms used to specify items to return in an aggregation data response. Terms\nare provided through the beacon's `/aggregation_terms` endpoint and the `id`\nvalues of those terms constitute the possible `id` values here. See also the\ndocumentation for `AggregationTermInResponse.id` in `beaconAggregationTermsResults`.\n\nNote: The request for aggregations is a list of lists of objects:\n* The outer list level is the list of all aggregations (\"concepts\") resulting\n  in a distribution of one or more dimensional aggregation results.\n* The individual concepts have lists of 1 or more (but mostly 1 or 2)\n  aggregation terms - corresponding to individual properties - which are\n  evaluated together, e.g. \"diagnoses (1) for sex at birth (2)\".",
+    "description": "Terms used to specify items to return in an aggregation data response. Terms\nare provided through the beacon's `/aggregation_terms` endpoint and the `id`\nvalues of those terms constitute the possible `id` values here. See also the\ndocumentation for `AggregationTermInResponse.id` in `beaconAggregationTermsResults`.\n\nThe request for aggregations is a list of aggregation objects. The individual \naggregation request objects contain lists of 1 or more (but mostly 1 or 2)\naggregation terms which correspond to individual properties and - if more than\none - are evaluated together, e.g. \"diagnoses (1) for sex at birth (2)\".",
     "items": {
         "$ref": "#/$defs/AggregationsInRequest"
     },

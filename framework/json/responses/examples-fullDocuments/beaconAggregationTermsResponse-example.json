@@ -1,5 +1,4 @@
 {
-    "$comment": "TODO",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "info": {},
     "meta": {
@@ -12,31 +11,50 @@
         ]
     },
     "response": {
-        "filteringTerms": [
+        "aggregationTerms": [
             {
-                "id": "PATO:0000011",
-                "label": "age",
-                "type": "numeric"
+                "description": "Aggregation by the karyotypic sex of the individuals. The karyotypic sex is determined by the chromosomal composition of the individual.",
+                "id": "karyotypicSex",
+                "label": "karyotypic sex",
+                "modelProperty": "individual.karyotypicSex"
             },
             {
-                "id": "HP:0008773",
-                "label": "Aplasia/Hypoplasia of the middle ear",
-                "type": "Human Phenotype Ontology"
+                "description": "Aggregation by the sex ploidy of the individuals.",
+                "id": "karyotypicSexPloidy",
+                "label": "sex ploidy",
+                "modelProperty": "individual.karyotypicSex",
+                "selectors": [
+                    {
+                        "label": "Diploid",
+                        "value": "diploid"
+                    },
+                    {
+                        "label": "Aneuploid",
+                        "value": "aneuploid"
+                    },
+                    {
+                        "label": "Polyploid",
+                        "value": "polyploid"
+                    }
+                ]
             },
             {
-                "id": "ownsIPhone",
-                "label": "Individuals associated with this term owns an IPhone",
-                "type": "custom"
-            }
-        ],
-        "resources": [
-            {
-                "id": "hp",
-                "iriPrefix": "https://purl.obolibrary.org/obo/HP_",
-                "name": "Human Phenotype Ontology",
-                "namespacePrefix": "HP",
-                "url": "https://purl.obolibrary.org/obo/hp.owl",
-                "version": "27-03-2020"
+                "description": "Aggregation by the age of onset of the individuals. The age of onset is calculated as the difference between the date of onset and the date of birth of the individual.",
+                "id": "ageOfOnset",
+                "label": "Age of Onset",
+                "modelProperty": "individual.diseases.ageofOnset",
+                "selectors": [
+                    {
+                        "label": "younger than 65 years",
+                        "sortOrder": 1,
+                        "splitValue": "P65Y"
+                    },
+                    {
+                        "label": "65 years and older",
+                        "sortOrder": 2,
+                        "splitValue": "P150Y"
+                    }
+                ]
             }
         ]
     }
