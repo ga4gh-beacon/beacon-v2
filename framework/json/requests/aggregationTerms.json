@@ -23,21 +23,17 @@
                 },
                 "selectors": {
                     "description": "List of selectors to select specific values of the given property for aggregation, as a modifier of the aggregation term. For example, for an aggregation term of `diagnosis` selectors could be used to specify a subset of diagnoses to be aggregated.",
-                    "items": {
-                        "oneOf": [
-                            {
-                                "$ref": "#/$defs/ValueForAggregation"
-                            },
-                            {
-                                "$ref": "#/$defs/RangeForAggregation"
-                            },
-                            {
-                                "$ref": "#/$defs/SplitForAggregation"
-                            }
-                        ]
-                    },
-                    "minItems": 1,
-                    "type": "array"
+                    "oneOf": [
+                        {
+                            "$ref": "#/$defs/ValueSelectors"
+                        },
+                        {
+                            "$ref": "#/$defs/RangeSelectors"
+                        },
+                        {
+                            "$ref": "#/$defs/SplitSelectors"
+                        }
+                    ]
                 }
             },
             "required": [
@@ -159,6 +155,13 @@
             ],
             "type": "object"
         },
+        "RangeSelectors": {
+            "items": {
+                "$ref": "#/$defs/RangeForAggregation"
+            },
+            "minItems": 1,
+            "type": "array"
+        },
         "SplitForAggregation": {
             "description": "A split item for partitioning the values during aggregation.",
             "examples": [
@@ -201,6 +204,13 @@
             ],
             "type": "object"
         },
+        "SplitSelectors": {
+            "items": {
+                "$ref": "#/$defs/SplitForAggregation"
+            },
+            "minItems": 1,
+            "type": "array"
+        },
         "ValueForAggregation": {
             "description": "An object representing a specific value of the property on which the aggregation is performed, used as a modifier of the aggregation term to select specific values for aggregation. For example, for an aggregation term of `diagnosis` this could be used to specify a specific diagnosis to be aggregated on.",
             "properties": {
@@ -226,6 +236,14 @@
                 }
             },
             "type": "object"
+        },
+        "ValueSelectors": {
+            "description": "Selectors array prototypes guarantee that all individual selector values are of the same type.",
+            "items": {
+                "$ref": "#/$defs/ValueForAggregation"
+            },
+            "minItems": 1,
+            "type": "array"
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",

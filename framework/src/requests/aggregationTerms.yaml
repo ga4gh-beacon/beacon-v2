@@ -95,15 +95,33 @@ $defs:
           for aggregation, as a modifier of the aggregation term. For example,
           for an aggregation term of `diagnosis` selectors could be used to specify
           a subset of diagnoses to be aggregated.
-        type: array
-        minItems: 1
-        items:
-          oneOf:
-            - $ref: "#/$defs/ValueForAggregation"
-            - $ref: "#/$defs/RangeForAggregation"
-            - $ref: "#/$defs/SplitForAggregation"
+        oneOf:
+          - $ref: "#/$defs/ValueSelectors"
+          - $ref: "#/$defs/RangeSelectors"
+          - $ref: "#/$defs/SplitSelectors"
     required:
       - id
+
+  ValueSelectors:
+    description: >-
+      Selectors array prototypes guarantee that all individual selector values
+      are of the same type.
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/ValueForAggregation"
+
+  RangeSelectors:
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/RangeForAggregation"
+
+  SplitSelectors:
+    type: array
+    minItems: 1
+    items:
+      $ref: "#/$defs/SplitForAggregation"
 
   ValueForAggregation:
     description: >-

@@ -80,21 +80,17 @@
                 },
                 "selectors": {
                     "description": "Optional selectors for limiting or binning the aggregation on the `modelProperty`. If this parameter is present, it indicates that only the indicated values would be aggregated or that the results would be returned in bins (e.g. for continuous values).",
-                    "items": {
-                        "oneOf": [
-                            {
-                                "$ref": "../../requests/aggregationTerms.json#/$defs/ValueForAggregation"
-                            },
-                            {
-                                "$ref": "../../requests/aggregationTerms.json#/$defs/RangeForAggregation"
-                            },
-                            {
-                                "$ref": "../../requests/aggregationTerms.json#/$defs/SplitForAggregation"
-                            }
-                        ]
-                    },
-                    "minItems": 1,
-                    "type": "array"
+                    "oneOf": [
+                        {
+                            "$ref": "../../requests/aggregationTerms.json#/#/$defs/ValueSelectors"
+                        },
+                        {
+                            "$ref": "../../requests/aggregationTerms.json#/#/$defs/RangeSelectors"
+                        },
+                        {
+                            "$ref": "../../requests/aggregationTerms.json#/#/$defs/SplitSelectors"
+                        }
+                    ]
                 }
             },
             "required": [

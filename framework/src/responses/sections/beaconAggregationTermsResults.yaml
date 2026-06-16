@@ -44,14 +44,10 @@ $defs:
           `modelProperty`. If this parameter is present, it indicates that only
           the indicated values would be aggregated or that the results would be
           returned in bins (e.g. for continuous values).
-        type: array
-        minItems: 1
-        items:
-          oneOf:
-              - $ref: "../../requests/aggregationTerms.yaml#/$defs/ValueForAggregation"
-              - $ref: "../../requests/aggregationTerms.yaml#/$defs/RangeForAggregation"
-              - $ref: "../../requests/aggregationTerms.yaml#/$defs/SplitForAggregation"
-
+        oneOf:
+          - $ref: "../../requests/aggregationTerms.yaml#/#/$defs/ValueSelectors"
+          - $ref: "../../requests/aggregationTerms.yaml#/#/$defs/RangeSelectors"
+          - $ref: "../../requests/aggregationTerms.yaml#/#/$defs/SplitSelectors"
     required:
       - id
       - modelProperty    
