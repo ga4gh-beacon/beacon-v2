@@ -1,4 +1,4 @@
-# Beacon Aggregations for Data Summaries
+# Beacon Aggregations
 
 !!! warning "WiP"
 
@@ -18,277 +18,517 @@ public context. Responses under the new `aggregated` granularity level allow to:
   e.g. numbers of samples with individual features or combinations of features
 * profile query responses for multiple (single or intersected) parameters
 
-## Response Format
+## Endpoints
 
-Aggregation are provided inside the `responseAggregation` property of the response and consist
-of array of objects with the following structure:
+### `/aggregation_terms`
 
-* a required, ordered list of one or more `concepts` objects, describing the
-parameters for which the aggregation is provided
-* summaries for the single or interssected concepts
-    - `distinctValuesCount`: a count of the distinct values for single or intersected concepts and/or
-    - `anyValueCount`: a count for all records with existing values and/or 
-    - `distribution`: a distribution of all distinct values/combinations with the count of their occurrence
-* an optional `scope` parameter to indicate the entity the results refer to (usually the current entry type but might be variable for collection and overview aggregations)
+Similar to the `/filtering_terms` endpoint, this endpoint returns the list of
+individual aggregation terms that can be used to construct the `aggregators` parameters.
 
-The following examples display different aggregation objects (which would be items in the `responseAggregation` array). Note that **id values are for demonstration only** and do not have a normative function.
+#### Examples for `/aggregation_terms`
 
-**Aggregations and Queries:** For most of the example cases one can envision both a use in "data overview context" (e.g. to profile the content of a resource or collection) and in "query context" (e.g. to profile the response for a specific query).
+This example beacon provides aggregation terms at the `/aggregation_terms` entry type inside `response.aggregationTerms`; for space reasons they are split
+into different views here.
 
-### Examples: Representation of Distinct Values Count `distinctValuesCount`
-
-The most basic count - getting the number of samples:
-
-```json
-{
-  "concepts": [
-    {"id": "biosampleCount", "property": "biosample.id"}
-  ],
-  "distinctValuesCount": 258545
-}
-```
-
-How many different diseases are represented in the data?
-
-```json
-{
-  "concepts": [
-    {"id": "disease", "label": "Disease"}
-  ],
-  "distinctValuesCount": 89
-}
-```
-
-### Example: Informative Values `anyValueCount`
-
-How many individuals in the data have a follow-up time?
-
-```json
-{
-  "scope": "individual",
-  "concepts": [
-    {"id": "followUpTime", "label": "Follow-up time"}
-  ],
-  "anyValueCount": 1200
-}
-```
-
-### Example: Value Distribution `distribution`, Single Property
-
-What is the distribution of diseases in the samples?
-
-```json
-{
-  "scope": "biosample",
-  "concepts": [
-    {
-      "id": "sampleDiagnoses",
-      "label": "Diagnoses of selected carcinoma types",
-      "property": "biosample.histologicalDiagnosis.id"
-    }
-  ],
-  "distribution": [
-    {
-      "conceptValues": [
-        {"id": "NCIT:C2919", "label": "Prostate Adenocarcinoma"}
-      ],
-      "count": 426
-    },
-    {
-      "conceptValues": [
-        {"id": "NCIT:C4017", "label": "Breast Ductal Carcinoma"}
-      ],
-      "count": 423
-    },
-    {
-      "conceptValues": [
-        {"id": "NCIT:C3512", "label": "Lung Adenocarcinoma"}
-      ],
-      "count": 317
-    }
-  ]
-}
-```
-
-### Example: Value Distribution `distribution`, Intersecting Concepts
-
-What is the distribution of diseases in the samples, separately by sex?
-Please note:
-
-![Stacked Bar Chart Example](img/aggregations-disease-by-sex-example-plot.png){ style="float: right; margin: 20px 0px 10px 20px; width: 350px" }
-
-* there are now **2 concepts** in the `concepts` list and the `conceptValues` in the distribution are observed combinations of values for both concepts, in the **same order**
-* the `count` indicates the number of times this combination was observed (e.g. 8421 cases of "male" & "Prostate Adenocarcinoma" but 0 cases for "female" & "Prostate Adenocarcinoma")
-
-[![plotly logo](img/plotly-logo.png){ style="float: left; margin: 5px 20px 5px 0px; width: 100px" }](https://plotly.com/javascript/)
-
-The stacked bar chart was generated in Plotly.js from the Beacon 2D aggregation in the example below, directly derived from the response JSON on the Progenetix site and reflecting the resource's content.
-
-```json
-{
-  "scope": "individual",
-  "concepts": [
-    {"id": "selectedDiseases", "label": "Selected carcinoma types"},
-    {"id": "sexAtBirth", "label": "Sex at birth"}
-  ],
-  "distribution": [
-    {
-      "conceptValues": [
-        {"id": "NCIT:C2919", "label": "Prostate Adenocarcinoma"},
-        {"id": "NCIT:C20197", "label": "male"}
-      ],
-      "count": 8421
-    },
-    {
-      "conceptValues": [
-        {"id": "NCIT:C2919", "label": "Prostate Adenocarcinoma"},
-        {"id": "NCIT:C16576", "label": "female"}
-      ],
-      "count": 0
-    },
-    {
-      "conceptValues": [
-        {"id": "NCIT:C4017", "label": "Breast Ductal Carcinoma"},
-        {"id": "NCIT:C16576", "label": "female"}
-      ],
-      "count": 11449
-    },
-    {
-      "conceptValues": [
-        {"id": "NCIT:C4017", "label": "Breast Ductal Carcinoma"},
-        {"id": "NCIT:C20197", "label": "male"}
-      ],
-      "count": 70
-    },
-    {
-      "conceptValues": [
-        {"id": "NCIT:C3512", "label": "Lung Adenocarcinoma"},
-        {"id": "NCIT:C16576", "label": "female"}
-      ],
-      "count": 6928
-    },
-    {
-      "conceptValues": [
-        {"id": "NCIT:C3512", "label": "Lung Adenocarcinoma"},
-        {"id": "NCIT:C20197", "label": "male"}
-      ],
-      "count": 3112
-    }
-  ]
-}
-```
-
-## Definition of Aggregation Concepts
-
-Similar to `.../filtering_terms/` (see [filters](filters.md)) beacons should indicate their
-supported aggregations in the `.../aggregation_terms/` endpoint which allows clients
-to dynamically discover the available aggregations and their semantics. Aggregation
-terms provide **single**, _i.e._ 1-dimensional concepts, usually referring to a
-single property in the data model. 2D aggregations - reporting the occurrence of
-intersecting values, e.g. combining concepts for "diseases" and "sex at birth",
-are simply derived from those.
-
-Aggregation concepts can have additional modifiers:
-
-* `filters` - to limit the aggregations to subsets of the data, e.g. to a selection
-  of disease codes
-    - If `filters` are indicated for an aggregation concept, only aggregations
-      for the concept's property fulfilling the individual filters will be reported
-    - Without `filters` all values for the property will be reported (with potential limits
-      imposed by the beacon).
-    - The usual filter definitions apply; _i.e._ if an ontology term is used as
-      filter value the count will include all records with this term or any of
-      its child terms (unless an `includeDescendantTerms` flag is set to `False`)
-* `splits` - to partition continuous data such as age values, followup times or other numeric measurements into countable bins
-    - Note: `splits` are upper & exclusive boundaries of bins, following established practices (_cf._ `$split` use in [MongoDB aggregation pipelines](https://www.mongodb.com/docs/manual/reference/operator/aggregation/split/))
-
-* a `sorted` flag, to indicate that the aggregation results are returned in a
-pre-sorted order with some inherent meaning (e.g. age bins)
-* a `format` property to indicate the format of the values, e.g. for age splits provided in ISO8601 duration format
-
-### Basic example
-
-```yaml
-id: sampleOriginDetails
-label: Anatomical Origin
-description: >-
-  Counts for anatomical sites in matched biosamples
-property: biosample.sample_origin_detail.id
-```
-
-### `filters` Example
-
-```yaml
-selectedDiseases:
-  id: selectedDiseases
-  label: Selected Diagnostic Classes (by NCIT)
-  property: individual.diseases.disease_code.id
-  filters:
-    - id: NCIT:C2919
-      label: Prostate Adenocarcinoma
-    - id: NCIT:C4017
-      label: Breast Ductal Carcinoma
-    - id: NCIT:C3512
-      label: Lung Adenocarcinoma
-```
-
-### `splits` Example
-
-```yaml
-ageAtSampleCollection:
-  id: ageAtSampleCollection
-  label: Age at sample collection
-  description: >-
-    Age at diagnosis (sample collection...)
-  property: biosample.collection_moment
-  format: iso8601duration
-  splits:
-    - value: P18Y
-      label: < 18 years
-    - value: P65Y
-      label: < 65 years
-    - value: P120Y
-      label: 65+ years
-  sorted: True
-```
-
-## Requesting Aggregations
-
-!!! info "Use `aggregated` Granularity"
-
-    Aggregation responses are invoked by setting the granularity parameter to `aggregated` in the request: `?requestedGranularity=aggregated`. This indicates that the client is not interested in record level responses but rather in aggregated summaries of the data content.
-
-
-To request specific aggregations from the ones indicated at the `.../aggregation_terms`
-endpoint clients can use the `aggregators` query parameter which itself is an array
-of arrays of concepts. 
-
-=== "POST Request Example"
-
-    In this example 2 aggregations are requested: A simple 1D aggregation for the `sampleOriginDetails` concept and a 2D aggregation for the combination of `selectedDiseases` and `sexAtBirth`.
+=== "Histological Diagnoses"
 
     ```json
-    "aggregators": [
-      [
-        {"id": "sampleOriginDetails"}
-      ],
-      [
-        {"id": "selectedDiseases"},
-        {"id": "sexAtBirth"}
+    {
+      "id": "HistologicalDiagnoses",
+      "label": "Histological Diagnoses",
+      "modelProperty": "biosample.histologicalDiagnosis.id"
+    }
+    ```
+
+=== "Selected Diagnoses"
+    
+    Here the values for the `histologicalDiagnosis` property are only evaluated
+    for a few selected entities.
+
+    ```json
+    {
+      "id": "SelectedCarcinomaDiagnoses",
+      "label": "Selected Carcinoma Diagnoses",
+      "modelProperty": "biosample.histologicalDiagnosis.id",
+      "selectors": [
+        {
+          "label": "Prostate Adenocarcinoma",
+          "value": "NCIT:C2919"
+        },
+        {
+          "label": "Breast Ductal Carcinoma",
+          "value": "NCIT:C4017"
+        },
+        {
+          "label": "Lung Adenocarcinoma",
+          "value": "NCIT:C3512"
+        }
       ]
+    }
+    ```
+
+=== "Sex at Birth"
+
+    This aggregation does not indicate a specific property in the model but provides the available selectors.
+
+    ```json
+    {
+      "id": "SexAtBirth",
+      "selectors": [
+        { 
+          "label": "female", 
+          "value": "NCIT:C16576"
+        },
+        {
+          "label": "male", 
+          "value": "NCIT:C20197"
+        },
+        {
+          "label": "unknown", 
+          "value": "NCIT:C1799"
+        }
+      ]
+    }
+    ```
+
+=== "Age at onset of disease"
+
+    This aggregation does not indicate a specific property in the model but provides the available selectors.
+
+    ```json
+    {
+      "description": "Aggregation by the age of onset of the individuals with pre-defined age ranges.",
+      "id": "AgeOfOnset",
+      "label": "Age of Onset",
+      "modelProperty": "individual.diseases.ageofOnset",
+      "selectors": [
+          {
+              "label": "birth to 18 months",
+              "rangeBounds": ["P0D", "P18M"],
+              "sortOrder": 1
+          },
+          {
+              "label": "1.5 to 10 years",
+              "rangeBounds": ["P18M", "P10Y"],
+              "sortOrder": 2
+          },
+          {
+              "label": "10 to 60 years",
+              "rangeBounds": ["P10Y", "P60Y"],
+              "sortOrder": 3
+          },
+          {
+              "label": "60 years and older",
+              "rangeBounds": ["P60Y"],
+              "sortOrder": 4
+          }
+      ]
+    }
+    ```
+
+### Other endpoints
+
+Standard data endpoints can provide aggregation results, if the `aggregated`
+granularity is specified in the request. 
+
+## Requests
+
+### Parameters
+
+* `requestedGranularity`
+* `aggregators`: list of aggregation objects to be applied to the query. The aggregation
+  objects (_i.e._ `aggregators`) are constructed from one or more aggregation terms which
+  should be indicate in the `/aggregation_terms` endpoint.
+
+## Responses
+
+The format of the response will be a
+`beaconAggregationReponse`, _i.e._ an extension of a `beaconCountResponse` with
+an additional section `responseAggregation` containing the aggregation results.
+
+For `beaconResultsetResponses` (e.g. upon a query at a data endpoints such as
+`/biosamples`), per resultset `resultsAggregation` should be provided instead of
+the `results` section.
+
+## Examples
+
+=== "Simple - `aggr1`"
+
+    #### Request
+
+    The example request uses the ontology filter `NCIT:C3512` to match individuals
+    with lung adenocarcinomas and requests data aggregations. No aggregators
+    are specified in the request; _i.e._ the beacon decides.
+
+    ```json
+    {
+      "requestedGranularity": "aggregated",
+      "filters": [
+        {"id": "NCIT:C3512"}
+      ],
+      "aggregators": [
+        {
+          "requestId": "aggr1",
+          "aggregationTerms": [
+            {"id": "SexAtBirth"}
+          ]
+        }
+      ]
+    }
+    ```
+
+    #### Response
+
+    Here the beacon provides (only) an aggregation of the sex of the matched individuals.
+
+    ```json
+    "resultsAggregation": [
+      {
+          "requestId": "aggr1",
+          "aggregationTerms": [
+              {"id": "SexAtBirth"}
+          ],
+          "categoriesAndValues": [
+              {
+                  "count": 778,
+                  "ids": ["NCIT:C16576"],
+                  "names": ["female"]
+              },
+              {
+                  "count": 957,
+                  "id": ["NCIT:C20197"],
+                  "names": ["male"]
+              },
+              {
+                  "count": 11,
+                  "ids": ["NCIT:C1799"],
+                  "names": ["unknown"]
+              }
+          ]
+      }
     ]
     ```
 
-=== "GET Request Example"
+=== "With Selectors - `aggr2`"
 
-    The **non normative** `GET` example uses a standard comma concatenation for
-    the outer `aggregators` list and square brackets `[]` for nesting and indication
-    of intersecting concepts.
+    #### Request
 
+    **Note**: In principle the `selectors` parameter would not be needed here
+    if the beacon indicates that those selectors are part of a predefined
+    `SelectedCarcinomaDiagnoses` `aggregationTerm`.
+
+    ```json
+    "aggregators": [
+      {
+        "requestId": "aggr2",
+        "aggregationTerms": [
+          {
+            "id": "SelectedCarcinomaDiagnoses",
+            "label": "Selected diagnoses (some carcinoma entities)",
+            "selectors": [
+              {
+                "label": "Prostate Adenocarcinoma",
+                "value": "NCIT:C2919"
+              },
+              {
+                "label": "Breast Ductal Carcinoma",
+                "value": "NCIT:C4017"
+              },
+              {
+                "label": "Lung Adenocarcinoma",
+                "value": "NCIT:C3512"
+              }
+            ]
+          }
+    ]}]
     ```
-    ?aggregators=[sampleOriginDetails],[selectedDiseases,sexAtBirth]
+
+    Only the `aggregators` parameter is shown (which could be combined w/ any
+    `filters` and/or variant parameters request, depending on the beacon).
+
+
+    #### Response
+
+    Here the beacon provides (only) an aggregation of the sex of the matched individuals.
+
+    ```json
+    "resultsAggregation": [
+      {
+        "requestId": "aggr2",
+        "aggregationTerms": [
+          {
+            "id": "SelectedCarcinomaDiagnoses",
+            "label": "Selected diagnoses (some carcinoma entities)"
+          }
+        ],
+        "categoriesAndValues": [
+          {
+            "count": 426,
+            "ids": ["NCIT:C2919"],
+            "names": ["Prostate Adenocarcinoma"]
+          },
+          {
+            "count": 523,
+            "ids": ["NCIT:C4017"],
+            "names": ["Breast Ductal Carcinoma"]
+          },
+          {
+            "count": 317,
+            "ids": ["NCIT:C3512"],
+            "names": ["Lung Adenocarcinoma"]
+          }
+        ],
+      }
+    ]
+    ```
+
+=== "Two Dimensions - `aggr3`"
+
+    #### Request
+
+    Here the intersecting counts for 2 properties are reported. Note that for
+    `SexAtBirth` only known values are used; _i.e._ the `unknown` (or other...)
+    category is not included in the aggregations.
+
+    As above, the `selectors` parameter would not be needed for the `SelectedCarcinomaDiagnoses`
+    if the same values are part of its definition.
+
+    ```json
+    "aggregators": [
+      {
+        "requestId": "aggr3",
+        "aggregationTerms": [
+          {
+            "id": "SexAtBirth",
+            "selectors": [
+              {"value": "NCIT:C16576"},
+              {"value": "NCIT:C20197"}
+            ]
+          },
+          {
+            "id": "SelectedCarcinomaDiagnoses",
+            "selectors": [
+              {
+                "label": "Prostate Adenocarcinoma",
+                "value": "NCIT:C2919"
+              },
+              {
+                "label": "Breast Ductal Carcinoma",
+                "value": "NCIT:C4017"
+              },
+              {
+                "label": "Lung Adenocarcinoma",
+                "value": "NCIT:C3512"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+    ```
+
+    Only the `aggregators` parameter is shown (which could be combined w/ any
+    `filters` and/or variant parameters request, depending on the beacon).
+
+    #### Response
+
+    ![Stacked Bar Chart Example](img/aggregations-disease-by-sex-example-plot.png){ style="float: right; margin: 20px 0px 10px 20px; width: 350px" }
+    
+    Aggregation of the different combinations for selected values representing
+    sex at birth and histological diagnosis are returned.
+
+    [![plotly logo](img/plotly-logo.png){ style="float: left; margin: 5px 20px 5px 0px; width: 100px" }](https://plotly.com/javascript/)
+
+    The stacked bar chart was generated in Plotly.js from the Beacon 2D aggregation in the example below, directly derived from the response JSON on the Progenetix site and reflecting the resource's content. The list of `aggregationTerms` is essential for understanding the order of
+    the dimensions in the `ids` and `names` in the `categoriesAndValues` list - 
+    think of them as `[x, y]` axes and `[x, y]` values in a plot (though the
+    order can obviousluy be transposed). The example plot does not necessarily reflect
+    the example data.
+
+
+    ```json
+    "resultsAggregation": [
+      {
+        "requestId": "aggr3",
+        "aggregationTerms": [
+          {"id": "SexAtBirth", "label": "Sex at Birth"},
+          {"id": "HistologicalDiagnoses", "label": "Selected Diagnoses"}
+        ],
+        "categoriesAndValues": [
+          {
+            "count": 426,
+            "ids": ["NCIT:C20197", "NCIT:C2919"],
+            "names": ["male", "Prostate Adenocarcinoma"]
+          },
+          {
+            "count": 0,
+            "ids": ["NCIT:C16576", "NCIT:C2919"],
+            "names": ["female", "Prostate Adenocarcinoma"]
+          },
+          {
+            "count": 4,
+            "ids": ["NCIT:C20197", "NCIT:C4017"],
+            "names": ["male", "Breast Ductal Carcinoma"]
+          },
+          {
+            "count": 501,
+            "ids": ["NCIT:C16576", "NCIT:C4017"],
+            "names": ["female", "Breast Ductal Carcinoma"]
+          },
+          {
+            "count": 201,
+            "ids": ["NCIT:C20197", "NCIT:C3512"],
+            "names": ["male", "Lung Adenocarcinoma"]
+          },
+          {
+            "count": 66,
+            "ids": ["NCIT:C16576", "NCIT:C3512"],
+            "names": ["female", "Lung Adenocarcinoma"]
+          }
+        ]
+      }
+    ]
+    ```
+
+=== "With Range Selectors - `aggr4`"
+
+    #### Request
+
+    **Note**: In principle the `selectors` parameter would not be needed here
+    if the beacon indicates that those range selectors are part of a predefined
+    `AgeOfOnset` `aggregationTerm`.
+
+    ```json
+    "aggregators": [
+      {
+        "requestId": "aggr4",
+        "aggregationTerms": [
+          {
+            "id": "AgeOfOnset",
+            "selectors": [
+              {
+                "label": "birth to 18 months",
+                "rangeBounds": ["P0D", "P18M"],
+                "sortOrder": 1
+              },
+              {
+                "label": "1.5 to 10 years",
+                "rangeBounds": ["P18M", "P10Y"],
+                "sortOrder": 2
+              },
+              {
+                "label": "10 to 60 years",
+                "rangeBounds": ["P10Y", "P60Y"],
+                "sortOrder": 3
+              },
+              {
+                "label": "60 years and older",
+                "rangeBounds": ["P60Y"],
+                "sortOrder": 4
+              }
+            ]
+          }
+        ]
+      }
+    ]
+    ```
+
+    Only the `aggregators` parameter is shown (which could be combined w/ any
+    `filters` and/or variant parameters request, depending on the beacon).
+
+
+    #### Response
+
+    Here the beacon provides (only) an aggregation of the sex of the matched individuals.
+
+    ```json
+    "resultsAggregation": [
+      {
+        "requestId": "aggr4",
+        "aggregationTerms": [
+          {
+            "description": "Age of onset of the disease addressed in the data. The aggregation of age values has been peformed on splits for the indicated age ranges. The number of individuals with unknown or older age of onset is included as a separate category.",
+            "id": "AgeOfOnset",
+            "sorted": true
+          }
+        ],
+        "categoriesAndValues": [
+          {
+            "count": 426,
+            "ids": ["[P0D, P18M)"],
+            "names": ["birth to 18 months"]
+          },
+          {
+            "count": 339,
+            "ids": [
+              "[P18M, P10Y)"],
+            "names": ["1.5 to 10 years"]
+          },
+          {
+            "count": 61,
+            "ids": ["[P10Y, P60Y)"],
+            "names": ["10 to 60 years"]
+          },
+          {
+            "count": 719,
+            "ids": ["other"],
+            "names": ["older or unknown"]
+          }
+        ]
+      }
+    ]
     ```
 
 
 
 
+## DEV: Changes
+
+### `aggregationTerms` in `requests`
+
+* improved the description which contained errors from the previous "list of lists"
+  structure and did some confusing double-definitions of the same concepts
+* changed the name of `categories` for specifying the returns of defined in `aggregationTerms`
+  to `selectors`
+* refactored `selectors` to a cleaner structure, so far with 3 different types
+    - `ValueSelectors`
+    - `RangeSelectors`
+    - `SplitSelectors`
+* this allows 2 ways tio define value bins:
+    - ranges which might not cover the whole value space
+    - splits for, well, splitting the value space into bins of arbitrary sizes
+
+### `beaconAggregationResults` in `responses/sections/`
+
+* removed `categories` (and `splits`) from the response definition since they don't
+  serve a purpose besides a checkback of which selectors were applied
+* TODO: clear directive that zero values have to be returned for categories
+
+### `beaconAggregationTermsResults` in `responses/sections/`
+
+* reference the definitions for the selectors in `aggregationTerms` in `requests`
+  instead of separate definition
+* removed the full examples since they are provided in a separate examples document
+
+### `endpoints`
+
+* corrected to `beaconAggregationTermsResponse`
+
+### Example Documents
+
+#### aggregationTerms-example
+
+* new document with aggregators aggr1-4
+* includes demonstration of `selectors` for values and ranges
+
+#### beaconRequestBody-MAX-example
+
+* added `aggr3` as example of how to use the `aggregators` parameter in the request
+
+#### beaconAggregationTermsResponse-example
+
+* fixed the example document which was just an unedited copy of filteringTerms
+
+#### beaconAggregationResults-examples
+
+* aligned the examples with the aggr1-4 examples in the `aggregationTerms-example` document
