@@ -3,8 +3,7 @@
         {
             "aggregationTerms": [
                 {
-                    "id": "sex",
-                    "label": "Selected Diagnoses"
+                    "id": "SexAtBirth"
                 }
             ],
             "categoriesAndValues": [
@@ -41,8 +40,8 @@
         {
             "aggregationTerms": [
                 {
-                    "id": "selectedDiagnoses",
-                    "label": "Selected Diagnoses"
+                    "id": "SelectedCarcinomaDiagnoses",
+                    "label": "Selected diagnoses (some carcinoma entities)"
                 }
             ],
             "categoriesAndValues": [
@@ -111,17 +110,6 @@
                     ]
                 },
                 {
-                    "count": 0,
-                    "ids": [
-                        "NCIT:C1799",
-                        "NCIT:C2919"
-                    ],
-                    "names": [
-                        "unknown",
-                        "Prostate Adenocarcinoma"
-                    ]
-                },
-                {
                     "count": 4,
                     "ids": [
                         "NCIT:C20197",
@@ -144,17 +132,6 @@
                     ]
                 },
                 {
-                    "count": 18,
-                    "ids": [
-                        "NCIT:C1799",
-                        "NCIT:C4017"
-                    ],
-                    "names": [
-                        "unknown",
-                        "Breast Ductal Carcinoma"
-                    ]
-                },
-                {
                     "count": 201,
                     "ids": [
                         "NCIT:C20197",
@@ -173,17 +150,6 @@
                     ],
                     "names": [
                         "female",
-                        "Lung Adenocarcinoma"
-                    ]
-                },
-                {
-                    "count": 51,
-                    "ids": [
-                        "NCIT:C1799",
-                        "NCIT:C3512"
-                    ],
-                    "names": [
-                        "unknown",
                         "Lung Adenocarcinoma"
                     ]
                 }

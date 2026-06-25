@@ -68,6 +68,7 @@ $defs:
         # Example of an aggregation with splits for the term "age of onset".
         aggregationTerms:
           - id: AgeOfOnset
+
   AggregationTermInRequest:
     type: object
     description: >-

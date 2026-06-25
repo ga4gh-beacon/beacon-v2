@@ -13,14 +13,102 @@
     "response": {
         "aggregationTerms": [
             {
+                "id": "SexAtBirth",
+                "selectors": [
+                    {
+                        "value": "NCIT:C16576"
+                    },
+                    {
+                        "value": "NCIT:C20197"
+                    },
+                    {
+                        "value": "NCIT:C1799"
+                    }
+                ]
+            },
+            {
+                "id": "SelectedCarcinomaDiagnoses",
+                "selectors": [
+                    {
+                        "label": "Prostate Adenocarcinoma",
+                        "value": "NCIT:C2919"
+                    },
+                    {
+                        "label": "Breast Ductal Carcinoma",
+                        "value": "NCIT:C4017"
+                    },
+                    {
+                        "label": "Lung Adenocarcinoma",
+                        "value": "NCIT:C3512"
+                    }
+                ]
+            },
+            {
+                "description": "Aggregation by the age of onset of the individuals providing pre-defined age ranges.",
+                "id": "AgeOfOnset",
+                "label": "Age of Onset",
+                "modelProperty": "individual.diseases.ageofOnset",
+                "selectors": [
+                    {
+                        "label": "birth to 18 months",
+                        "rangeBounds": [
+                            "P0D",
+                            "P18M"
+                        ],
+                        "sortOrder": 1
+                    },
+                    {
+                        "label": "1.5 to 10 years",
+                        "rangeBounds": [
+                            "P18M",
+                            "P10Y"
+                        ],
+                        "sortOrder": 2
+                    },
+                    {
+                        "label": "10 to 60 years",
+                        "rangeBounds": [
+                            "P10Y",
+                            "P60Y"
+                        ],
+                        "sortOrder": 3
+                    },
+                    {
+                        "label": "60 years and older",
+                        "rangeBounds": [
+                            "P60Y"
+                        ],
+                        "sortOrder": 4
+                    }
+                ]
+            },
+            {
+                "description": "Aggregation by the age of onset of the individuals. The age of onset is calculated as the difference between the date of onset and the date of birth of the individual. This example for the age of onset is split into two categories using a splitValue of 65 years (P65Y).",
+                "id": "RetirementAgeOfOnset",
+                "label": "Age of Onset at Retirement Age",
+                "modelProperty": "individual.diseases.ageofOnset",
+                "selectors": [
+                    {
+                        "label": "younger than 65 years",
+                        "sortOrder": 1,
+                        "splitValue": "P65Y"
+                    },
+                    {
+                        "label": "65 years and older",
+                        "sortOrder": 2,
+                        "splitValue": "P150Y"
+                    }
+                ]
+            },
+            {
                 "description": "Aggregation by the karyotypic sex of the individuals. The karyotypic sex is determined by the chromosomal composition of the individual.",
-                "id": "karyotypicSex",
+                "id": "KaryotypicSex",
                 "label": "karyotypic sex",
                 "modelProperty": "individual.karyotypicSex"
             },
             {
                 "description": "Aggregation by the sex ploidy of the individuals.",
-                "id": "karyotypicSexPloidy",
+                "id": "KaryotypicSexPloidy",
                 "label": "sex ploidy",
                 "modelProperty": "individual.karyotypicSex",
                 "selectors": [
@@ -35,24 +123,6 @@
                     {
                         "label": "Polyploid",
                         "value": "polyploid"
-                    }
-                ]
-            },
-            {
-                "description": "Aggregation by the age of onset of the individuals. The age of onset is calculated as the difference between the date of onset and the date of birth of the individual.",
-                "id": "ageOfOnset",
-                "label": "Age of Onset",
-                "modelProperty": "individual.diseases.ageofOnset",
-                "selectors": [
-                    {
-                        "label": "younger than 65 years",
-                        "sortOrder": 1,
-                        "splitValue": "P65Y"
-                    },
-                    {
-                        "label": "65 years and older",
-                        "sortOrder": 2,
-                        "splitValue": "P150Y"
                     }
                 ]
             }

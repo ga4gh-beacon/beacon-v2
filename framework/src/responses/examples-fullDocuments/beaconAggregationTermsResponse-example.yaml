@@ -6,13 +6,74 @@ meta:
     - map: beacon-map-v2.0.0
 response:
   aggregationTerms:
-    - id: karyotypicSex
+
+    - id: SexAtBirth
+      selectors:
+        - value: NCIT:C16576
+        - value: NCIT:C20197
+        - value: NCIT:C1799
+
+    - id: SelectedCarcinomaDiagnoses
+      selectors:
+        - value: NCIT:C2919
+          label: Prostate Adenocarcinoma
+        - value: NCIT:C4017
+          label: Breast Ductal Carcinoma
+        - value: NCIT:C3512
+          label: Lung Adenocarcinoma
+
+    - id: AgeOfOnset
+      label: Age of Onset
+      modelProperty: individual.diseases.ageofOnset
+      description: >-
+        Aggregation by the age of onset of the individuals providing pre-defined
+        age ranges.
+      selectors:
+        - rangeBounds:
+            - P0D
+            - P18M
+          label: birth to 18 months
+          sortOrder: 1
+        - rangeBounds:
+            - P18M
+            - P10Y
+          label: 1.5 to 10 years
+          sortOrder: 2
+        - rangeBounds:
+            - P10Y
+            - P60Y
+          label: 10 to 60 years
+          sortOrder: 3
+        - rangeBounds:
+            - P60Y
+          label: 60 years and older
+          sortOrder: 4
+
+    - id: RetirementAgeOfOnset
+      label: Age of Onset at Retirement Age
+      modelProperty: individual.diseases.ageofOnset
+      description: >-
+        Aggregation by the age of onset of the individuals. The age of onset
+        is calculated as the difference between the date of onset and the date
+        of birth of the individual.
+        This example for the age of onset is split into two categories using a
+        splitValue of 65 years (P65Y).
+      selectors:
+        - splitValue: P65Y
+          label: younger than 65 years
+          sortOrder: 1
+        - splitValue: P150Y
+          label: 65 years and older
+          sortOrder: 2
+
+    - id: KaryotypicSex
       label: karyotypic sex
       modelProperty: individual.karyotypicSex
       description: >-
         Aggregation by the karyotypic sex of the individuals. The karyotypic
         sex is determined by the chromosomal composition of the individual.
-    - id: karyotypicSexPloidy
+
+    - id: KaryotypicSexPloidy
       label: sex ploidy
       modelProperty: individual.karyotypicSex
       description: >-
@@ -24,18 +85,5 @@ response:
           label: Aneuploid
         - value: polyploid
           label: Polyploid
-    - id: ageOfOnset
-      label: Age of Onset
-      modelProperty: individual.diseases.ageofOnset
-      description: >-
-        Aggregation by the age of onset of the individuals. The age of onset
-        is calculated as the difference between the date of onset and the date
-        of birth of the individual.
-      selectors:
-        - splitValue: P65Y
-          label: younger than 65 years
-          sortOrder: 1
-        - splitValue: P150Y
-          label: 65 years and older   # Note: This label depends on the preceding
-          sortOrder: 2
+
 info: {}

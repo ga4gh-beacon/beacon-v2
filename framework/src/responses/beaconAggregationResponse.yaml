@@ -1,7 +1,7 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 description: >-
-  Definition for a response that provides solely summaries of records in
-  the beacon but not delivers individual records. While summaries might be also part
+  Definition for a response that provides solely aggregations of record properties in
+  the beacon but does not delivers individual records. While aggregations might be also part
   of other response types (e.g. result set specific in `beaconResultsetResponse`)
   this response type specifically focuses on providing aggregated statistics of
   a beacon resource similarily to the `beaconBooleanResponse` and `beaconCountResponse`.

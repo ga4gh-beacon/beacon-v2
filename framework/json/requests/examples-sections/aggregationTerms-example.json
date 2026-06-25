@@ -4,7 +4,7 @@
         {
             "aggregationTerms": [
                 {
-                    "id": "Sex"
+                    "id": "SexAtBirth"
                 }
             ],
             "requestId": "aggr1"
@@ -12,13 +12,20 @@
         {
             "aggregationTerms": [
                 {
-                    "id": "Sex",
+                    "id": "SelectedCarcinomaDiagnoses",
+                    "label": "Selected diagnoses (some carcinoma entities)",
                     "selectors": [
                         {
-                            "value": "NCIT:C16576"
+                            "label": "Prostate Adenocarcinoma",
+                            "value": "NCIT:C2919"
                         },
                         {
-                            "value": "NCIT:C20197"
+                            "label": "Breast Ductal Carcinoma",
+                            "value": "NCIT:C4017"
+                        },
+                        {
+                            "label": "Lung Adenocarcinoma",
+                            "value": "NCIT:C3512"
                         }
                     ]
                 }
@@ -28,10 +35,18 @@
         {
             "aggregationTerms": [
                 {
-                    "id": "SexAtBirth"
+                    "id": "SexAtBirth",
+                    "selectors": [
+                        {
+                            "value": "NCIT:C16576"
+                        },
+                        {
+                            "value": "NCIT:C20197"
+                        }
+                    ]
                 },
                 {
-                    "id": "HistologicalDiagnoses",
+                    "id": "SelectedCarcinomaDiagnoses",
                     "selectors": [
                         {
                             "label": "Prostate Adenocarcinoma",

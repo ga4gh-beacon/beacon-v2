@@ -1,9 +1,8 @@
 examples:
-  # aggr1 in requests/aggregationTerms.yaml
+  # aggr1 in requests ... aggregationTerms-examples
   - requestId: aggr1
     aggregationTerms:
-      - id: sex 
-        label: Selected Diagnoses
+      - id: SexAtBirth 
     categoriesAndValues:
       - ids: ["NCIT:C16576"]
         names: ["female"]
@@ -15,11 +14,11 @@ examples:
         names: ["unknown"]
         count: 11
 
-# /individuals - counting how many individuals have each of the selected diagnoses in the matched data. If one individual has multiple diagnoses, they will be counted in each of the respective categories.
+  # /individuals - counting how many individuals have each of the selected diagnoses in the matched data. If one individual has multiple diagnoses, they will be counted in each of the respective categories.
   - requestId: aggr2
     aggregationTerms:
-      - id: selectedDiagnoses
-        label: Selected Diagnoses
+      - id: SelectedCarcinomaDiagnoses
+        label: Selected diagnoses (some carcinoma entities)
     categoriesAndValues:
       - ids: ["NCIT:C2919"]
         names: ["Prostate Adenocarcinoma"]
@@ -44,27 +43,18 @@ examples:
       - ids: ["NCIT:C16576", "NCIT:C2919"]
         names: ["female", "Prostate Adenocarcinoma"]
         count: 0
-      - ids: ["NCIT:C1799", "NCIT:C2919"]
-        names: ["unknown", "Prostate Adenocarcinoma"]
-        count: 0
       - ids: ["NCIT:C20197", "NCIT:C4017"] 
         names: ["male", "Breast Ductal Carcinoma"]
         count: 4
       - ids: ["NCIT:C16576", "NCIT:C4017"] 
         names: ["female", "Breast Ductal Carcinoma"]
         count: 501
-      - ids: ["NCIT:C1799", "NCIT:C4017"] 
-        names: ["unknown", "Breast Ductal Carcinoma"]
-        count: 18
       - ids: ["NCIT:C20197", "NCIT:C3512"] 
         names: ["male", "Lung Adenocarcinoma"]
         count: 201
       - ids: ["NCIT:C16576", "NCIT:C3512"] 
         names: ["female", "Lung Adenocarcinoma"]
         count: 66
-      - ids: ["NCIT:C1799", "NCIT:C3512"] 
-        names: ["unknown", "Lung Adenocarcinoma"]
-        count: 51
 
   - requestId: aggr4
     aggregationTerms:
