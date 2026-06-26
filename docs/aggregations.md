@@ -513,6 +513,7 @@ the `results` section.
 ### `endpoints`
 
 * corrected to `beaconAggregationTermsResponse`
+* adding the `beaconAggregationResponse` as an option to all endpoints files already containing a `beaconCountResponse` reference
 
 ### Example Documents
 
