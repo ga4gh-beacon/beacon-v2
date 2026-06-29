@@ -460,8 +460,7 @@ the `results` section.
           },
           {
             "count": 339,
-            "ids": [
-              "[P18M, P10Y)"],
+            "ids": ["[P18M, P10Y)"],
             "names": ["1.5 to 10 years"]
           },
           {
@@ -479,6 +478,104 @@ the `results` section.
     ]
     ```
 
+=== "Gene Panel Aggregations - `aggr5`"
+
+    #### Request
+
+    This requests aggregates sets of genes and the types of variants they're affected
+    by with. The `CancerPanelGeneIds` aggregation term is defined in the `/aggregation_terms` endpoint and provides a list of genes that are part of a cancer panel. The `VariantVRSCNVtype` aggregation term is also defined in the `/aggregation_terms` endpoint and provides a list of variant types (e.g., high-level loss, high-level gain) that are associated with the genes in the cancer panel.
+
+    As above, the `selectors` modifiers would not be needed if already indicated
+    in the respective aggregation term definitions.
+
+    ```json
+    "aggregators" : [
+      {
+        "requestId": "aggr5",
+        "aggregationTerms": [
+          {
+            "id": "CancerPanelGeneIds",
+            "label": "Cancer Panel Genes",
+            "selectors": [
+              {"value": "CDKN2A"},
+              {"value": "TP53"},
+              {"value": "EGFR"},
+              {"value": "MYCN"}
+            ]
+          },
+          {
+            "id": "VariantVRSCNVtype",
+            "selectors": [
+              {"label": "high-level loss", "value": "EFO:0020073"
+              },
+              {"label": "high-level gain", "value": "EFO:0030072"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+    ```
+
+    #### Response
+
+    This aggregation response is a two-dimensional aggregation of the counts of samples with specific gene variants (high-level loss or gain) for a set of cancer panel genes. The `categoriesAndValues` section provides the counts for each combination of gene and variant type.
+
+    This represents a typical application for generating a "gene panel dashboard".
+
+    ```json
+    "resultsAggregation": [
+      {
+        "requestId": "aggr5",
+        "aggregationTerms": [
+          {"id": "CancerPanelGeneIds", "label": "Cancer Panel Genes"},
+          {"id": "VariantVRSCNVtype"}
+        ],
+        "categoriesAndValues": [
+          {
+            "count": 277,
+            "ids": ["CDKN2A", "EFO:0020073"],
+            "names": ["CDKN2A", "high-level loss"]
+          },
+          {
+            "count": 0,
+            "ids": ["CDKN2A", "EFO:0030072"],
+            "names": ["CDKN2A", "high-level gain"]
+          },
+          {
+            "count": 68,
+            "ids": ["TP53", "EFO:0020073"],
+            "names": ["TP53", "high-level loss"]
+          },
+          {
+            "count": 4,
+            "ids": ["TP53", "EFO:0030072"],
+            "names": ["TP53", "high-level gain"]
+          },
+          {
+            "count": 0,
+            "ids": ["EGFR", "EFO:0020073"],
+            "names": ["EGFR", "high-level loss"]
+          },
+          {
+            "count": 161,
+            "ids": ["EGFR", "EFO:0030072"],
+            "names": ["EGFR", "high-level gain"]
+          },
+          {
+            "count": 2,
+            "ids": ["MYCN", "EFO:0020073"],
+            "names": ["MYCN", "high-level loss"]
+          },
+          {
+            "count": 88,
+            "ids": ["MYCN", "EFO:0030072"],
+            "names": ["MYCN", "high-level gain"]
+          }
+        ],
+      }
+    ]
+    ```
 
 
 

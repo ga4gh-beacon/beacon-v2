@@ -101,6 +101,42 @@
                 ]
             },
             {
+                "description": "Aggregation by the gene identifiers of the genomic variants. The gene identifiers are selected from a predefined list of cancer related genes. The gene identifiers are represented as HGNC gene symbols. Note: The very limited gene list serves as example for usually more extended gene panels.",
+                "id": "CancerPanelGeneIds",
+                "label": "Selected cancer related genes",
+                "modelProperty": "genomicVariant.molecularAttributes.geneIds",
+                "selectors": [
+                    {
+                        "value": "CDKN2A"
+                    },
+                    {
+                        "value": "TP53"
+                    },
+                    {
+                        "value": "EGFR"
+                    },
+                    {
+                        "value": "MYCN"
+                    }
+                ]
+            },
+            {
+                "description": "Aggregation by the copy number variation (CNV) types of the genomic variants. The CNV types are selected VRS \"high level\" types.",
+                "id": "VariantVRShighLevelCNVtypes",
+                "label": "CNV types indicating a high-level gain or loss, respectively",
+                "modelProperty": "genomicVariant.variation.copyChange",
+                "selectors": [
+                    {
+                        "label": "high-level loss",
+                        "value": "EFO:0020073"
+                    },
+                    {
+                        "label": "high-level gain",
+                        "value": "EFO:0030072"
+                    }
+                ]
+            },
+            {
                 "description": "Aggregation by the karyotypic sex of the individuals. The karyotypic sex is determined by the chromosomal composition of the individual.",
                 "id": "KaryotypicSex",
                 "label": "karyotypic sex",

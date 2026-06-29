@@ -105,6 +105,42 @@
                 }
             ],
             "requestId": "aggr4"
+        },
+        {
+            "aggregationTerms": [
+                {
+                    "id": "CancerPanelGeneIds",
+                    "label": "Cancer Panel Genes",
+                    "selectors": [
+                        {
+                            "value": "CDKN2A"
+                        },
+                        {
+                            "value": "TP53"
+                        },
+                        {
+                            "value": "EGFR"
+                        },
+                        {
+                            "value": "MYCN"
+                        }
+                    ]
+                },
+                {
+                    "id": "VariantVRSCNVtype",
+                    "selectors": [
+                        {
+                            "label": "high-level loss",
+                            "value": "EFO:0020073"
+                        },
+                        {
+                            "label": "high-level gain",
+                            "value": "EFO:0030072"
+                        }
+                    ]
+                }
+            ],
+            "requestId": "aggr5"
         }
     ]
 }

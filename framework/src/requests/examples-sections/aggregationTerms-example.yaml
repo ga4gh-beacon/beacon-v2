@@ -55,4 +55,19 @@ aggregators:
             label: 60 years and older
             sortOrder: 4
 
+  - requestId: aggr5
+    aggregationTerms:
+      - id: CancerPanelGeneIds
+        label: Cancer Panel Genes
+        selectors:
+          - value: CDKN2A
+          - value: TP53
+          - value: EGFR
+          - value: MYCN
+      - id: VariantVRSCNVtype
+        selectors:
+          - value: EFO:0020073
+            label: high-level loss
+          - value: EFO:0030072
+            label: high-level gain
 

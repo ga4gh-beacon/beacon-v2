@@ -66,6 +66,33 @@ response:
           label: 65 years and older
           sortOrder: 2
 
+    - id: CancerPanelGeneIds
+      label: Selected cancer related genes
+      modelProperty: genomicVariant.molecularAttributes.geneIds
+      description: >-
+        Aggregation by the gene identifiers of the genomic variants. The gene
+        identifiers are selected from a predefined list of cancer related genes.
+        The gene identifiers are represented as HGNC gene symbols.
+        Note: The very limited gene list serves as example for usually more extended
+        gene panels.
+      selectors:
+        - value: CDKN2A
+        - value: TP53
+        - value: EGFR
+        - value: MYCN
+
+    - id: VariantVRShighLevelCNVtypes
+      label: CNV types indicating a high-level gain or loss, respectively
+      modelProperty: genomicVariant.variation.copyChange
+      description: >-
+        Aggregation by the copy number variation (CNV) types of the genomic
+        variants. The CNV types are selected VRS "high level" types.
+      selectors:
+        - value: EFO:0020073
+          label: high-level loss
+        - value: EFO:0030072
+          label: high-level gain
+
     - id: KaryotypicSex
       label: karyotypic sex
       modelProperty: individual.karyotypicSex
