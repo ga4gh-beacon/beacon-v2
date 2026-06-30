@@ -18,6 +18,16 @@ public context. Responses under the new `aggregated` granularity level allow to:
   e.g. numbers of samples with individual features or combinations of features
 * profile query responses for multiple (single or intersected) parameters
 
+## Development Requirements and Design Principles
+
+* aggregations should be based on the same model as the rest of the Beacon API, so that they can be
+  applied to any data endpoint and any resourcs
+    - aggregating property values at the level of beacons, collections and records
+* multi-dimensional, _i.e._ intersecting aggregations should be possible, so that the counts for combinations of features can be reported
+* the principle reported values should be *counts* while other statistical measures (range, mean, median, etc.) could be added in the future
+* aggregations should provide a means to report on binned values, e.g. for numeric values such as age or other continuous variables
+* aggregations should be able to report on pre-defined sets of values, e.g. for a set of disease codes, genes or other entities
+
 ## Endpoints
 
 ### `/aggregation_terms`
@@ -506,10 +516,8 @@ the `results` section.
           {
             "id": "VariantVRSCNVtype",
             "selectors": [
-              {"label": "high-level loss", "value": "EFO:0020073"
-              },
-              {"label": "high-level gain", "value": "EFO:0030072"
-              }
+              {"label": "high-level loss", "value": "EFO:0020073"},
+              {"label": "high-level gain", "value": "EFO:0030072"}
             ]
           }
         ]
