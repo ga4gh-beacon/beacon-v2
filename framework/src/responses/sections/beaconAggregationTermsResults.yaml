@@ -38,16 +38,16 @@ $defs:
         description: >-
           Human readable description of the aggregation performed for this term.
         type: string
-      selectors:
+      categories:
         description: >-
-          Optional selectors for limiting or binning the aggregation on the
+          Optional categories for limiting or binning the aggregation on the
           `modelProperty`. If this parameter is present, it indicates that only
           the indicated values would be aggregated or that the results would be
           returned in bins (e.g. for continuous values).
         oneOf:
-          - $ref: "../../requests/aggregationTerms.yaml#/#/$defs/ValueSelectors"
-          - $ref: "../../requests/aggregationTerms.yaml#/#/$defs/RangeSelectors"
-          - $ref: "../../requests/aggregationTerms.yaml#/#/$defs/SplitSelectors"
+          - $ref: "../../requests/aggregationTerms.yaml#/#/$defs/ValueCategories"
+          - $ref: "../../requests/aggregationTerms.yaml#/#/$defs/RangeCategories"
+          - $ref: "../../requests/aggregationTerms.yaml#/#/$defs/SplitCategories"
     required:
       - id
       - modelProperty    

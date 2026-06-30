@@ -8,31 +8,31 @@
             ],
             "categoriesAndValues": [
                 {
-                    "count": 778,
-                    "ids": [
-                        "NCIT:C16576"
+                    "categories": [
+                        {
+                            "name": "female",
+                            "value": "NCIT:C16576"
+                        }
                     ],
-                    "names": [
-                        "female"
-                    ]
+                    "count": 778
                 },
                 {
-                    "count": 957,
-                    "id": [
-                        "NCIT:C20197"
+                    "categories": [
+                        {
+                            "name": "male",
+                            "value": "NCIT:C20197"
+                        }
                     ],
-                    "names": [
-                        "male"
-                    ]
+                    "count": 957
                 },
                 {
-                    "count": 11,
-                    "ids": [
-                        "NCIT:C1799"
+                    "categories": [
+                        {
+                            "name": "unknown",
+                            "value": "NCIT:C1799"
+                        }
                     ],
-                    "names": [
-                        "unknown"
-                    ]
+                    "count": 11
                 }
             ],
             "requestId": "aggr1"
@@ -46,31 +46,31 @@
             ],
             "categoriesAndValues": [
                 {
-                    "count": 426,
-                    "ids": [
-                        "NCIT:C2919"
+                    "categories": [
+                        {
+                            "name": "Prostate Adenocarcinoma",
+                            "value": "NCIT:C2919"
+                        }
                     ],
-                    "names": [
-                        "Prostate Adenocarcinoma"
-                    ]
+                    "count": 426
                 },
                 {
-                    "count": 523,
-                    "ids": [
-                        "NCIT:C4017"
+                    "categories": [
+                        {
+                            "names": "Breast Ductal Carcinoma",
+                            "value": "NCIT:C4017"
+                        }
                     ],
-                    "names": [
-                        "Breast Ductal Carcinoma"
-                    ]
+                    "count": 523
                 },
                 {
-                    "count": 317,
-                    "ids": [
-                        "NCIT:C3512"
+                    "categories": [
+                        {
+                            "name": "Lung Adenocarcinoma",
+                            "value": "NCIT:C3512"
+                        }
                     ],
-                    "names": [
-                        "Lung Adenocarcinoma"
-                    ]
+                    "count": 317
                 }
             ],
             "requestId": "aggr2"
@@ -88,70 +88,82 @@
             ],
             "categoriesAndValues": [
                 {
-                    "count": 426,
-                    "ids": [
-                        "NCIT:C20197",
-                        "NCIT:C2919"
+                    "categories": [
+                        {
+                            "name": "male",
+                            "value": "NCIT:C20197"
+                        },
+                        {
+                            "name": "Prostate Adenocarcinoma",
+                            "value": "NCIT:C2919"
+                        }
                     ],
-                    "names": [
-                        "male",
-                        "Prostate Adenocarcinoma"
-                    ]
+                    "count": 426
                 },
                 {
-                    "count": 0,
-                    "ids": [
-                        "NCIT:C16576",
-                        "NCIT:C2919"
+                    "categories": [
+                        {
+                            "name": "female",
+                            "value": "NCIT:C16576"
+                        },
+                        {
+                            "name": "Prostate Adenocarcinoma",
+                            "value": "NCIT:C2919"
+                        }
                     ],
-                    "names": [
-                        "female",
-                        "Prostate Adenocarcinoma"
-                    ]
+                    "count": 0
                 },
                 {
-                    "count": 4,
-                    "ids": [
-                        "NCIT:C20197",
-                        "NCIT:C4017"
+                    "categories": [
+                        {
+                            "name": "male",
+                            "value": "NCIT:C20197"
+                        },
+                        {
+                            "name": "Breast Ductal Carcinoma",
+                            "value": "NCIT:C4017"
+                        }
                     ],
-                    "names": [
-                        "male",
-                        "Breast Ductal Carcinoma"
-                    ]
+                    "count": 4
                 },
                 {
-                    "count": 501,
-                    "ids": [
-                        "NCIT:C16576",
-                        "NCIT:C4017"
+                    "categories": [
+                        {
+                            "name": "female",
+                            "value": "NCIT:C16576"
+                        },
+                        {
+                            "name": "Breast Ductal Carcinoma",
+                            "value": "NCIT:C4017"
+                        }
                     ],
-                    "names": [
-                        "female",
-                        "Breast Ductal Carcinoma"
-                    ]
+                    "count": 501
                 },
                 {
-                    "count": 201,
-                    "ids": [
-                        "NCIT:C20197",
-                        "NCIT:C3512"
+                    "categories": [
+                        {
+                            "name": "male",
+                            "value": "NCIT:C20197"
+                        },
+                        {
+                            "name": "Lung Adenocarcinoma",
+                            "value": "NCIT:C3512"
+                        }
                     ],
-                    "names": [
-                        "male",
-                        "Lung Adenocarcinoma"
-                    ]
+                    "count": 201
                 },
                 {
-                    "count": 66,
-                    "ids": [
-                        "NCIT:C16576",
-                        "NCIT:C3512"
+                    "categories": [
+                        {
+                            "name": "female",
+                            "value": "NCIT:C16576"
+                        },
+                        {
+                            "name": "Lung Adenocarcinoma",
+                            "value": "NCIT:C3512"
+                        }
                     ],
-                    "names": [
-                        "female",
-                        "Lung Adenocarcinoma"
-                    ]
+                    "count": 66
                 }
             ],
             "requestId": "aggr3"
@@ -166,40 +178,40 @@
             ],
             "categoriesAndValues": [
                 {
-                    "count": 426,
-                    "ids": [
-                        "[P0D, P18M)"
+                    "categories": [
+                        {
+                            "name": "birth to 18 months",
+                            "value": "[P0D, P18M)"
+                        }
                     ],
-                    "names": [
-                        "birth to 18 months"
-                    ]
+                    "count": 426
                 },
                 {
-                    "count": 339,
-                    "ids": [
-                        "[P18M, P10Y)"
+                    "categories": [
+                        {
+                            "name": "1.5 to 10 years",
+                            "value": "[P18M, P10Y)"
+                        }
                     ],
-                    "names": [
-                        "1.5 to 10 years"
-                    ]
+                    "count": 339
                 },
                 {
-                    "count": 61,
-                    "ids": [
-                        "[P10Y, P60Y)"
+                    "categories": [
+                        {
+                            "name": "10 to 60 years",
+                            "value": "[P10Y, P60Y)"
+                        }
                     ],
-                    "names": [
-                        "10 to 60 years"
-                    ]
+                    "count": 61
                 },
                 {
-                    "count": 719,
-                    "ids": [
-                        "other"
+                    "categories": [
+                        {
+                            "name": "older or unknown",
+                            "value": "other"
+                        }
                     ],
-                    "names": [
-                        "older or unknown"
-                    ]
+                    "count": 719
                 }
             ],
             "requestId": "aggr4"
@@ -216,92 +228,108 @@
             ],
             "categoriesAndValues": [
                 {
-                    "count": 277,
-                    "ids": [
-                        "CDKN2A",
-                        "EFO:0020073"
+                    "categories": [
+                        {
+                            "name": "CDKN2A",
+                            "value": "CDKN2A"
+                        },
+                        {
+                            "name": "high-level loss",
+                            "value": "EFO:0020073"
+                        }
                     ],
-                    "names": [
-                        "CDKN2A",
-                        "high-level loss"
-                    ]
+                    "count": 277
                 },
                 {
-                    "count": 0,
-                    "ids": [
-                        "CDKN2A",
-                        "EFO:0030072"
+                    "categories": [
+                        {
+                            "name": "CDKN2A",
+                            "value": "CDKN2A"
+                        },
+                        {
+                            "name": "high-level gain",
+                            "value": "EFO:0030072"
+                        }
                     ],
-                    "names": [
-                        "CDKN2A",
-                        "high-level gain"
-                    ]
+                    "count": 0
                 },
                 {
-                    "count": 68,
-                    "ids": [
-                        "TP53",
-                        "EFO:0020073"
+                    "categories": [
+                        {
+                            "name": "TP53",
+                            "value": "TP53"
+                        },
+                        {
+                            "name": "high-level loss",
+                            "value": "EFO:0020073"
+                        }
                     ],
-                    "names": [
-                        "TP53",
-                        "high-level loss"
-                    ]
+                    "count": 68
                 },
                 {
-                    "count": 4,
-                    "ids": [
-                        "TP53",
-                        "EFO:0030072"
+                    "categories": [
+                        {
+                            "name": "TP53",
+                            "value": "TP53"
+                        },
+                        {
+                            "name": "high-level gain",
+                            "value": "EFO:0030072"
+                        }
                     ],
-                    "names": [
-                        "TP53",
-                        "high-level gain"
-                    ]
+                    "count": 4
                 },
                 {
-                    "count": 0,
-                    "ids": [
-                        "EGFR",
-                        "EFO:0020073"
+                    "categories": [
+                        {
+                            "name": "EGFR",
+                            "value": "EGFR"
+                        },
+                        {
+                            "name": "high-level loss",
+                            "value": "EFO:0020073"
+                        }
                     ],
-                    "names": [
-                        "EGFR",
-                        "high-level loss"
-                    ]
+                    "count": 0
                 },
                 {
-                    "count": 161,
-                    "ids": [
-                        "EGFR",
-                        "EFO:0030072"
+                    "categories": [
+                        {
+                            "name": "EGFR",
+                            "value": "EGFR"
+                        },
+                        {
+                            "name": "high-level gain",
+                            "value": "EFO:0030072"
+                        }
                     ],
-                    "names": [
-                        "EGFR",
-                        "high-level gain"
-                    ]
+                    "count": 161
                 },
                 {
-                    "count": 2,
-                    "ids": [
-                        "MYCN",
-                        "EFO:0020073"
+                    "categories": [
+                        {
+                            "name": "MYCN",
+                            "value": "MYCN"
+                        },
+                        {
+                            "name": "high-level loss",
+                            "value": "EFO:0020073"
+                        }
                     ],
-                    "names": [
-                        "MYCN",
-                        "high-level loss"
-                    ]
+                    "count": 2
                 },
                 {
-                    "count": 88,
-                    "ids": [
-                        "MYCN",
-                        "EFO:0030072"
+                    "categories": [
+                        {
+                            "name": "MYCN",
+                            "value": "MYCN"
+                        },
+                        {
+                            "name": "high-level gain",
+                            "value": "EFO:0030072"
+                        }
                     ],
-                    "names": [
-                        "MYCN",
-                        "high-level gain"
-                    ]
+                    "count": 88
                 }
             ],
             "requestId": "aggr5"

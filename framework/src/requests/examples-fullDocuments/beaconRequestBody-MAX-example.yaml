@@ -18,13 +18,13 @@ query:
       aggregationTerms:
         - id: SexAtBirth
         - id: HistologicalDiagnoses
-          selectors:
+          categories:
             - value: NCIT:C2919
-              label: Prostate Adenocarcinoma
+              name: Prostate Adenocarcinoma
             - value: NCIT:C4017
-              label: Breast Ductal Carcinoma
+              name: Breast Ductal Carcinoma
             - value: NCIT:C3512
-              label: Lung Adenocarcinoma
+              name: Lung Adenocarcinoma
   includeResultsetResponses: HIT
   pagination:
     skip: 0

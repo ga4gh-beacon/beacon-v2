@@ -4,14 +4,17 @@ examples:
     aggregationTerms:
       - id: SexAtBirth 
     categoriesAndValues:
-      - ids: ["NCIT:C16576"]
-        names: ["female"]
+      - categories:
+          - value: NCIT:C16576
+            name: female
         count: 778
-      - id: ["NCIT:C20197"]
-        names: [male]
+      - categories:
+          - value: NCIT:C20197
+            name: male
         count: 957
-      - ids: ["NCIT:C1799"]
-        names: ["unknown"]
+      - categories:
+          - value: NCIT:C1799
+            name: unknown
         count: 11
 
   # /individuals - counting how many individuals have each of the selected diagnoses in the matched data. If one individual has multiple diagnoses, they will be counted in each of the respective categories.
@@ -20,14 +23,17 @@ examples:
       - id: SelectedCarcinomaDiagnoses
         label: Selected diagnoses (some carcinoma entities)
     categoriesAndValues:
-      - ids: ["NCIT:C2919"]
-        names: ["Prostate Adenocarcinoma"]
+      - categories:
+          - value: NCIT:C2919
+            name: Prostate Adenocarcinoma
         count: 426
-      - ids: ["NCIT:C4017"] 
-        names: ["Breast Ductal Carcinoma"]
+      - categories:
+          - value: NCIT:C4017
+            names: Breast Ductal Carcinoma
         count: 523
-      - ids: ["NCIT:C3512"]
-        names: ["Lung Adenocarcinoma"]
+      - categories:
+          - value: NCIT:C3512
+            name: Lung Adenocarcinoma
         count: 317
 
   - requestId: aggr3
@@ -37,23 +43,41 @@ examples:
       - id: HistologicalDiagnoses
         label: Selected Diagnoses
     categoriesAndValues:
-      - ids: ["NCIT:C20197", "NCIT:C2919"]
-        names: ["male", "Prostate Adenocarcinoma"]
+      - categories:
+          - value: NCIT:C20197
+            name: male
+          - value: NCIT:C2919
+            name: Prostate Adenocarcinoma
         count: 426
-      - ids: ["NCIT:C16576", "NCIT:C2919"]
-        names: ["female", "Prostate Adenocarcinoma"]
+      - categories:
+          - value: NCIT:C16576
+            name: female
+          - value: NCIT:C2919
+            name: Prostate Adenocarcinoma
         count: 0
-      - ids: ["NCIT:C20197", "NCIT:C4017"] 
-        names: ["male", "Breast Ductal Carcinoma"]
+      - categories:
+          - value: NCIT:C20197
+            name: male
+          - value: NCIT:C4017
+            name: Breast Ductal Carcinoma
         count: 4
-      - ids: ["NCIT:C16576", "NCIT:C4017"] 
-        names: ["female", "Breast Ductal Carcinoma"]
+      - categories:
+          - value: NCIT:C16576
+            name: female
+          - value: NCIT:C4017
+            name: Breast Ductal Carcinoma
         count: 501
-      - ids: ["NCIT:C20197", "NCIT:C3512"] 
-        names: ["male", "Lung Adenocarcinoma"]
+      - categories:
+          - value: NCIT:C20197
+            name: male
+          - value: NCIT:C3512
+            name: Lung Adenocarcinoma
         count: 201
-      - ids: ["NCIT:C16576", "NCIT:C3512"] 
-        names: ["female", "Lung Adenocarcinoma"]
+      - categories:
+          - value: NCIT:C16576
+            name: female
+          - value: NCIT:C3512
+            name: Lung Adenocarcinoma
         count: 66
 
   - requestId: aggr4
@@ -66,17 +90,21 @@ examples:
           as a separate category.
         sorted: True
     categoriesAndValues:
-      - ids: ["[P0D, P18M)"]
-        names: ["birth to 18 months"]
+      - categories:
+          - value: "[P0D, P18M)"
+            name: birth to 18 months
         count: 426
-      - ids: ["[P18M, P10Y)"]
-        names: ["1.5 to 10 years"]
+      - categories:
+          - value: "[P18M, P10Y)"
+            name: "1.5 to 10 years"
         count: 339
-      - ids: ["[P10Y, P60Y)"]
-        names: ["10 to 60 years"]
+      - categories:
+          - value: "[P10Y, P60Y)"
+            name: 10 to 60 years
         count: 61
-      - ids: ["other"]
-        names: ["older or unknown"]
+      - categories:
+          - value: other
+            name: older or unknown
         count: 719
 
   - requestId: aggr5
@@ -85,29 +113,53 @@ examples:
         label: Cancer Panel Genes
       - id: VariantVRSCNVtype
     categoriesAndValues:
-      - ids: ["CDKN2A", "EFO:0020073"]
-        names: ["CDKN2A", "high-level loss"]
+      - categories:
+          - value: CDKN2A
+            name: CDKN2A
+          - value: EFO:0020073
+            name: high-level loss
         count: 277
-      - ids: ["CDKN2A", "EFO:0030072"]
-        names: ["CDKN2A", "high-level gain"]
+      - categories:
+          - value: CDKN2A
+            name: CDKN2A
+          - value: EFO:0030072
+            name: high-level gain
         count: 0
-      - ids: ["TP53", "EFO:0020073"]
-        names: ["TP53", "high-level loss"]
+      - categories:
+          - value: TP53
+            name: TP53
+          - value: EFO:0020073
+            name: high-level loss
         count: 68
-      - ids: ["TP53", "EFO:0030072"]
-        names: ["TP53", "high-level gain"]
+      - categories:
+          - value: TP53
+            name: TP53
+          - value: EFO:0030072
+            name: high-level gain
         count: 4
-      - ids: ["EGFR", "EFO:0020073"]
-        names: ["EGFR", "high-level loss"]
+      - categories:
+          - value: EGFR
+            name: EGFR
+          - value: EFO:0020073
+            name: high-level loss
         count: 0
-      - ids: ["EGFR", "EFO:0030072"]
-        names: ["EGFR", "high-level gain"]
+      - categories:
+          - value: EGFR
+            name: EGFR
+          - value: EFO:0030072
+            name: high-level gain
         count: 161
-      - ids: ["MYCN", "EFO:0020073"]
-        names: ["MYCN", "high-level loss"]
+      - categories:
+          - value: MYCN
+            name: MYCN
+          - value: EFO:0020073
+            name: high-level loss
         count: 2
-      - ids: ["MYCN", "EFO:0030072"]
-        names: ["MYCN", "high-level gain"]
+      - categories:
+          - value: MYCN
+            name: MYCN
+          - value: EFO:0030072
+            name: high-level gain
         count: 88
 
   - requestId: aggr6

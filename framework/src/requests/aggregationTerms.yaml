@@ -48,7 +48,7 @@ $defs:
         # Example of one aggregation for which just a subset of values are returned.
         aggregationTerms:
           - id: Sex
-            selectors:
+            categories:
               - value: NCIT:C16576
               - value: NCIT:C20197
       - requestId: aggr3
@@ -60,7 +60,7 @@ $defs:
         aggregationTerms:
           - id: SexAtBirth
           - id: HistologicalDiagnoses
-            selectors:
+            categories:
               - value: NCIT:C2919
               - value: NCIT:C4017
               - value: NCIT:C3512
@@ -90,20 +90,20 @@ $defs:
           - id: biosample.histologicalDiagnosis.id
           - id: sexAtBirth
           - id: ageAtDiagnosis
-      selectors:
+      categories:
         description: >-
-          List of selectors to select specific values of the given property
+          List of categories to select specific values of the given property
           for aggregation, as a modifier of the aggregation term. For example,
-          for an aggregation term of `diagnosis` selectors could be used to specify
+          for an aggregation term of `diagnosis` categories could be used to specify
           a subset of diagnoses to be aggregated.
         oneOf:
-          - $ref: "#/$defs/ValueSelectors"
-          - $ref: "#/$defs/RangeSelectors"
-          - $ref: "#/$defs/SplitSelectors"
+          - $ref: "#/$defs/ValueCategories"
+          - $ref: "#/$defs/RangeCategories"
+          - $ref: "#/$defs/SplitCategories"
     required:
       - id
 
-  ValueSelectors:
+  ValueCategories:
     description: >-
       Selectors array prototypes guarantee that all individual selector values
       are of the same type.
@@ -112,13 +112,13 @@ $defs:
     items:
       $ref: "#/$defs/ValueForAggregation"
 
-  RangeSelectors:
+  RangeCategories:
     type: array
     minItems: 1
     items:
       $ref: "#/$defs/RangeForAggregation"
 
-  SplitSelectors:
+  SplitCategories:
     type: array
     minItems: 1
     items:
@@ -137,14 +137,14 @@ $defs:
         description: >-
           The specific value of the category or value to be aggregated, e.g. an
           ontology term CURIE an alphanumeric value.
-      label:
+      name:
         type: string
         description: >-
-          An optional label for the value, e.g. to allow the service to return
+          An optional name for the value, e.g. to allow the service to return
           in an informative response.
       examples:
         - value: NCIT:C9384
-          label: Kidney Carcinoma
+          name: Kidney Carcinoma
         - value: female
       required:
         - value
@@ -166,18 +166,18 @@ $defs:
             - string
             - number
         minItems: 1
-      label:
+      name:
         type: string
       sortOrder:
         description: >-
-          Integer to specify the intended order of splits. This is required to
+          Integer to specify the intended order of ranges. This is required to
           ensure the correct order of bins in the results, or for the client to
           be able to reconstruct the expected order in case any of the intermediate
           steps reorders them.
         type: integer
     examples:
       - rangeBounds: [P0M,P18M]
-        label: birth to 18 months
+        name: birth to 18 months
         sortOrder: 1
     required:
       - rangeBounds
@@ -202,9 +202,9 @@ $defs:
         type:
           - string
           - number
-      label:
+      name:
         description: >-
-          A human readable label for the bin resulting from the split.
+          A human readable name for the bin resulting from the split.
         type: string
       sortOrder:
         description: >-
@@ -218,11 +218,8 @@ $defs:
       - sortOrder 
     examples:
       - splitValue: P65Y
-        label: younger than 65 years
+        name: younger than 65 years
         sortOrder: 1
       - splitValue: P150Y
-        label: 65 years and older   # Note: This label depends on a preceding
+        name: 65 years and older   # Note: This label depends on a preceding
         sortOrder: 2
-      - splitValue: 25
-        label: 25kg or higher
-        sortOrder: 3

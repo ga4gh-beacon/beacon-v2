@@ -12,22 +12,22 @@
         {
             "aggregationTerms": [
                 {
-                    "id": "SelectedCarcinomaDiagnoses",
-                    "label": "Selected diagnoses (some carcinoma entities)",
-                    "selectors": [
+                    "categories": [
                         {
-                            "label": "Prostate Adenocarcinoma",
+                            "name": "Prostate Adenocarcinoma",
                             "value": "NCIT:C2919"
                         },
                         {
-                            "label": "Breast Ductal Carcinoma",
+                            "name": "Breast Ductal Carcinoma",
                             "value": "NCIT:C4017"
                         },
                         {
-                            "label": "Lung Adenocarcinoma",
+                            "name": "Lung Adenocarcinoma",
                             "value": "NCIT:C3512"
                         }
-                    ]
+                    ],
+                    "id": "SelectedCarcinomaDiagnoses",
+                    "label": "Selected diagnoses (some carcinoma entities)"
                 }
             ],
             "requestId": "aggr2"
@@ -35,32 +35,32 @@
         {
             "aggregationTerms": [
                 {
-                    "id": "SexAtBirth",
-                    "selectors": [
+                    "categories": [
                         {
                             "value": "NCIT:C16576"
                         },
                         {
                             "value": "NCIT:C20197"
                         }
-                    ]
+                    ],
+                    "id": "SexAtBirth"
                 },
                 {
-                    "id": "SelectedCarcinomaDiagnoses",
-                    "selectors": [
+                    "categories": [
                         {
-                            "label": "Prostate Adenocarcinoma",
+                            "name": "Prostate Adenocarcinoma",
                             "value": "NCIT:C2919"
                         },
                         {
-                            "label": "Breast Ductal Carcinoma",
+                            "name": "Breast Ductal Carcinoma",
                             "value": "NCIT:C4017"
                         },
                         {
-                            "label": "Lung Adenocarcinoma",
+                            "name": "Lung Adenocarcinoma",
                             "value": "NCIT:C3512"
                         }
-                    ]
+                    ],
+                    "id": "SelectedCarcinomaDiagnoses"
                 }
             ],
             "requestId": "aggr3"
@@ -68,10 +68,9 @@
         {
             "aggregationTerms": [
                 {
-                    "id": "AgeOfOnset",
-                    "selectors": [
+                    "categories": [
                         {
-                            "label": "birth to 18 months",
+                            "name": "birth to 18 months",
                             "rangeBounds": [
                                 "P0D",
                                 "P18M"
@@ -79,7 +78,7 @@
                             "sortOrder": 1
                         },
                         {
-                            "label": "1.5 to 10 years",
+                            "name": "1.5 to 10 years",
                             "rangeBounds": [
                                 "P18M",
                                 "P10Y"
@@ -87,7 +86,7 @@
                             "sortOrder": 2
                         },
                         {
-                            "label": "10 to 60 years",
+                            "name": "10 to 60 years",
                             "rangeBounds": [
                                 "P10Y",
                                 "P60Y"
@@ -95,13 +94,14 @@
                             "sortOrder": 3
                         },
                         {
-                            "label": "60 years and older",
+                            "name": "60 years and older",
                             "rangeBounds": [
                                 "P60Y"
                             ],
                             "sortOrder": 4
                         }
-                    ]
+                    ],
+                    "id": "AgeOfOnset"
                 }
             ],
             "requestId": "aggr4"
@@ -109,9 +109,7 @@
         {
             "aggregationTerms": [
                 {
-                    "id": "CancerPanelGeneIds",
-                    "label": "Cancer Panel Genes",
-                    "selectors": [
+                    "categories": [
                         {
                             "value": "CDKN2A"
                         },
@@ -124,20 +122,22 @@
                         {
                             "value": "MYCN"
                         }
-                    ]
+                    ],
+                    "id": "CancerPanelGeneIds",
+                    "label": "Cancer Panel Genes"
                 },
                 {
-                    "id": "VariantVRSCNVtype",
-                    "selectors": [
+                    "categories": [
                         {
-                            "label": "high-level loss",
+                            "name": "high-level loss",
                             "value": "EFO:0020073"
                         },
                         {
-                            "label": "high-level gain",
+                            "name": "high-level gain",
                             "value": "EFO:0030072"
                         }
-                    ]
+                    ],
+                    "id": "VariantVRSCNVtype"
                 }
             ],
             "requestId": "aggr5"

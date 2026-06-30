@@ -4,24 +4,31 @@
             "additionalItems": true,
             "description": "Aggregation object describing the count of one (or more, intersected) values for the concept(s) aggregated on.",
             "properties": {
+                "categories": {
+                    "description": "Ordered list of `value`, `name` categories where number and order have to correspond to the `aggregationTerms`. These can represent values from the respected property or interpolations (e.g. bins from ranges).",
+                    "items": {
+                        "oneOf": [
+                            {
+                                "$ref": "../../requests/aggregationTerms.json#/$defs/ValueCategories"
+                            },
+                            {
+                                "$ref": "../../requests/aggregationTerms.json#/$defs/RangeCategories"
+                            },
+                            {
+                                "$ref": "../../requests/aggregationTerms.json#/$defs/SplitCategories"
+                            }
+                        ]
+                    },
+                    "type": "array"
+                },
                 "count": {
                     "description": "Count of occurrences for this categorie of the in the matched data.",
                     "minimum": 0,
                     "type": "integer"
                 },
-                "ids": {
-                    "description": "Ordered list of ids of categories (one per concept in `concepts`). These can represent values from the respected property or interpolations ( e.g. bins from splits).",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "names": {
-                    "description": "Ordered list of names for the categories (see `ids`).",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
+                "sortOrder": {
+                    "description": "Optional indicator of the order of this category. ",
+                    "type": "integer"
                 }
             },
             "required": [
@@ -31,7 +38,7 @@
             "type": "object"
         },
         "AggregationConcept": {
-            "description": "Concept on which the aggregation was performed, including the property in the data model and optional termIds or splits for selection or binning of the property values.",
+            "description": "Concept on which the aggregation was performed, including the property in the data model and optional categories for selection or binning of the property values.",
             "properties": {
                 "description": {
                     "description": "A description of the summary concept, e.g. with details about the included property and the operations performed during aggregation."
@@ -63,7 +70,7 @@
         },
         "AggregationResultsInstance": {
             "additionalItems": true,
-            "description": "Summary data from results, with distributions of values (or value combinations) for one or more concepts.\nEach summary is identified by an `id`, `label`, `description`, and a list of one or more `concepts`. An an optional `sorted` property can indicate to the client that the returned `distribution` of the aggregation objects response has some pre-defined order.\nEach of the `concepts` describes the scope (entity; `individual`, `biosample` ...), the property aggregated on, and optional `terms` or `splits` for selection or binning of the property values.",
+            "description": "Summary data from results, with distributions of values (or value combinations) for one or more concepts.\nEach summary is identified by an `id`, `label`, `description`, and a list of one or more `concepts`.  TODO: An an optional `sorted` property can indicate to the client that the returned `categoriesAndValues` of the aggregation objects response has some pre-defined order.\nEach of the `aggregationTerms` optionally describes the scope (entity; `individual`, `biosample` ...), the property aggregated on, and optional `categories` for selection or binning of the property values.",
             "properties": {
                 "aggregationTerms": {
                     "items": {
@@ -87,9 +94,14 @@
                 "requestId": {
                     "description": "An optional id for the aggregation request, which can be used for tracking and logging purposes. This is not used by the beacon for processing the request but can be included in the response metadata.",
                     "type": "string"
+                },
+                "scope": {
+                    "description": "Optional scope of the aggregation, e.g. `individuals`, `biosamples`, `analyses`, etc. This main use is specifying aggregations at `collection` type endpoints (datasets or cohorts), to indicate the entity the aggregations were counted against. If not specified, the scope is assumed to be the entry type.",
+                    "type": "string"
                 }
             },
             "required": [
+                "requestId",
                 "aggregationTerms",
                 {
                     "anyOf": [

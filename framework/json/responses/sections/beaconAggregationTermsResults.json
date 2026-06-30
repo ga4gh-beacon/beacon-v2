@@ -2,6 +2,20 @@
     "$defs": {
         "AggregationTermInResponse": {
             "properties": {
+                "categories": {
+                    "description": "Optional categories for limiting or binning the aggregation on the `modelProperty`. If this parameter is present, it indicates that only the indicated values would be aggregated or that the results would be returned in bins (e.g. for continuous values).",
+                    "oneOf": [
+                        {
+                            "$ref": "../../requests/aggregationTerms.json#/#/$defs/ValueCategories"
+                        },
+                        {
+                            "$ref": "../../requests/aggregationTerms.json#/#/$defs/RangeCategories"
+                        },
+                        {
+                            "$ref": "../../requests/aggregationTerms.json#/#/$defs/SplitCategories"
+                        }
+                    ]
+                },
                 "description": {
                     "description": "Human readable description of the aggregation performed for this term.",
                     "type": "string"
@@ -31,20 +45,6 @@
                         "biosample.histologicalDiagnosis"
                     ],
                     "type": "string"
-                },
-                "selectors": {
-                    "description": "Optional selectors for limiting or binning the aggregation on the `modelProperty`. If this parameter is present, it indicates that only the indicated values would be aggregated or that the results would be returned in bins (e.g. for continuous values).",
-                    "oneOf": [
-                        {
-                            "$ref": "../../requests/aggregationTerms.json#/#/$defs/ValueSelectors"
-                        },
-                        {
-                            "$ref": "../../requests/aggregationTerms.json#/#/$defs/RangeSelectors"
-                        },
-                        {
-                            "$ref": "../../requests/aggregationTerms.json#/#/$defs/SplitSelectors"
-                        }
-                    ]
                 }
             },
             "required": [

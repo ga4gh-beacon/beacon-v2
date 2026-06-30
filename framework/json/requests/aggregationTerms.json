@@ -3,6 +3,20 @@
         "AggregationTermInRequest": {
             "description": "An object representing an individual term to be aggregated, e.g. a term corresponding to `sexAtBirth` or `diagnosis`. The `id` property is required and identifies the term to be aggregated, while the `filters` and `splits` properties are optional modifiers of the aggregation term. Note: The request object does not specifiy the property or scope of the aggregation.",
             "properties": {
+                "categories": {
+                    "description": "List of categories to select specific values of the given property for aggregation, as a modifier of the aggregation term. For example, for an aggregation term of `diagnosis` categories could be used to specify a subset of diagnoses to be aggregated.",
+                    "oneOf": [
+                        {
+                            "$ref": "#/$defs/ValueCategories"
+                        },
+                        {
+                            "$ref": "#/$defs/RangeCategories"
+                        },
+                        {
+                            "$ref": "#/$defs/SplitCategories"
+                        }
+                    ]
+                },
                 "id": {
                     "description": "The `id` of the aggregation term as provided by the beacon. It is used to select the aggregation term, _i.e._ usually corresponding to a property in the data model. ",
                     "examples": [
@@ -20,20 +34,6 @@
                         }
                     ],
                     "type": "string"
-                },
-                "selectors": {
-                    "description": "List of selectors to select specific values of the given property for aggregation, as a modifier of the aggregation term. For example, for an aggregation term of `diagnosis` selectors could be used to specify a subset of diagnoses to be aggregated.",
-                    "oneOf": [
-                        {
-                            "$ref": "#/$defs/ValueSelectors"
-                        },
-                        {
-                            "$ref": "#/$defs/RangeSelectors"
-                        },
-                        {
-                            "$ref": "#/$defs/SplitSelectors"
-                        }
-                    ]
                 }
             },
             "required": [
@@ -55,15 +55,15 @@
                 {
                     "aggregationTerms": [
                         {
-                            "id": "Sex",
-                            "selectors": [
+                            "categories": [
                                 {
                                     "value": "NCIT:C16576"
                                 },
                                 {
                                     "value": "NCIT:C20197"
                                 }
-                            ]
+                            ],
+                            "id": "Sex"
                         }
                     ],
                     "requestId": "aggr2"
@@ -74,8 +74,7 @@
                             "id": "SexAtBirth"
                         },
                         {
-                            "id": "HistologicalDiagnoses",
-                            "selectors": [
+                            "categories": [
                                 {
                                     "value": "NCIT:C2919"
                                 },
@@ -85,7 +84,8 @@
                                 {
                                     "value": "NCIT:C3512"
                                 }
-                            ]
+                            ],
+                            "id": "HistologicalDiagnoses"
                         }
                     ],
                     "requestId": "aggr3"
@@ -118,10 +118,17 @@
             ],
             "type": "object"
         },
+        "RangeCategories": {
+            "items": {
+                "$ref": "#/$defs/RangeForAggregation"
+            },
+            "minItems": 1,
+            "type": "array"
+        },
         "RangeForAggregation": {
             "examples": [
                 {
-                    "label": "birth to 18 months",
+                    "name": "birth to 18 months",
                     "rangeBounds": [
                         "P0M",
                         "P18M"
@@ -130,7 +137,7 @@
                 }
             ],
             "properties": {
-                "label": {
+                "name": {
                     "type": "string"
                 },
                 "rangeBounds": {
@@ -145,7 +152,7 @@
                     "type": "array"
                 },
                 "sortOrder": {
-                    "description": "Integer to specify the intended order of splits. This is required to ensure the correct order of bins in the results, or for the client to be able to reconstruct the expected order in case any of the intermediate steps reorders them.",
+                    "description": "Integer to specify the intended order of ranges. This is required to ensure the correct order of bins in the results, or for the client to be able to reconstruct the expected order in case any of the intermediate steps reorders them.",
                     "type": "integer"
                 }
             },
@@ -155,9 +162,9 @@
             ],
             "type": "object"
         },
-        "RangeSelectors": {
+        "SplitCategories": {
             "items": {
-                "$ref": "#/$defs/RangeForAggregation"
+                "$ref": "#/$defs/SplitForAggregation"
             },
             "minItems": 1,
             "type": "array"
@@ -166,24 +173,19 @@
             "description": "A split item for partitioning the values during aggregation.",
             "examples": [
                 {
-                    "label": "younger than 65 years",
+                    "name": "younger than 65 years",
                     "sortOrder": 1,
                     "splitValue": "P65Y"
                 },
                 {
-                    "label": "65 years and older",
+                    "name": "65 years and older",
                     "sortOrder": 2,
                     "splitValue": "P150Y"
-                },
-                {
-                    "label": "25kg or higher",
-                    "sortOrder": 3,
-                    "splitValue": 25
                 }
             ],
             "properties": {
-                "label": {
-                    "description": "A human readable label for the bin resulting from the split.",
+                "name": {
+                    "description": "A human readable name for the bin resulting from the split.",
                     "type": "string"
                 },
                 "sortOrder": {
@@ -204,9 +206,10 @@
             ],
             "type": "object"
         },
-        "SplitSelectors": {
+        "ValueCategories": {
+            "description": "Selectors array prototypes guarantee that all individual selector values are of the same type.",
             "items": {
-                "$ref": "#/$defs/SplitForAggregation"
+                "$ref": "#/$defs/ValueForAggregation"
             },
             "minItems": 1,
             "type": "array"
@@ -216,15 +219,15 @@
             "properties": {
                 "examples": [
                     {
-                        "label": "Kidney Carcinoma",
+                        "name": "Kidney Carcinoma",
                         "value": "NCIT:C9384"
                     },
                     {
                         "value": "female"
                     }
                 ],
-                "label": {
-                    "description": "An optional label for the value, e.g. to allow the service to return in an informative response.",
+                "name": {
+                    "description": "An optional name for the value, e.g. to allow the service to return in an informative response.",
                     "type": "string"
                 },
                 "required": [
@@ -236,14 +239,6 @@
                 }
             },
             "type": "object"
-        },
-        "ValueSelectors": {
-            "description": "Selectors array prototypes guarantee that all individual selector values are of the same type.",
-            "items": {
-                "$ref": "#/$defs/ValueForAggregation"
-            },
-            "minItems": 1,
-            "type": "array"
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",

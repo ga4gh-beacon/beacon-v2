@@ -14,12 +14,13 @@ $defs:
       for one or more concepts.
 
       Each summary is identified by an `id`, `label`, `description`, and a list
-      of one or more `concepts`. An an optional `sorted` property can indicate
-      to the client that the returned `distribution` of the aggregation objects
+      of one or more `concepts`. 
+      TODO: An an optional `sorted` property can indicate
+      to the client that the returned `categoriesAndValues` of the aggregation objects
       response has some pre-defined order.
 
-      Each of the `concepts` describes the scope (entity; `individual`, `biosample`
-      ...), the property aggregated on, and optional `terms` or `splits` for
+      Each of the `aggregationTerms` optionally describes the scope (entity; `individual`,
+      `biosample` ...), the property aggregated on, and optional `categories` for
       selection or binning of the property values.
     type: object
     properties:
@@ -33,6 +34,14 @@ $defs:
         type: array
         items:
           $ref: "#/$defs/AggregationConcept"
+      scope:
+        description: >-
+          Optional scope of the aggregation, e.g. `individuals`, `biosamples`,
+          `analyses`, etc. This main use is specifying aggregations
+          at `collection` type endpoints (datasets or cohorts), to indicate the
+          entity the aggregations were counted against. If not specified, the scope
+          is assumed to be the entry type.
+        type: string
       categoriesAndValues:
         description: >-
           A aggregation results where each describes the count of one (or more,
@@ -46,6 +55,7 @@ $defs:
           $ref: "#/$defs/AnyValueCount"
 
     required:
+      - requestId
       - aggregationTerms
       - anyOf:
           - categoriesAndValues
@@ -57,14 +67,14 @@ $defs:
   AggregationConcept:
     description: >-
       Concept on which the aggregation was performed, including the property
-      in the data model and optional termIds or splits for selection
-      or binning of the property values.
+      in the data model and optional categories for selection or binning of the
+      property values.
     type: object
     properties:
       id:
         description: >-
-          The aggregation term id. It can be used to limit or combine the aggregations
-          performed.
+          The aggregation term id. It can be used to limit or combine the
+          aggregations performed.
         type: string
         examples:
           - followupTime
@@ -94,25 +104,26 @@ $defs:
       values for the concept(s) aggregated on.
     type: object
     properties:
-      ids:
+      categories:
         description: >-
-          Ordered list of ids of categories (one per concept in `concepts`).
-          These can represent values from the respected property or interpolations (
-          e.g. bins from splits).
+          Ordered list of `value`, `name` categories where number and order have
+          to correspond to the `aggregationTerms`. These can represent values from
+          the respected property or interpolations (e.g. bins from ranges).
         type: array
         items:
-          type: string
-      names:
-        description: >-
-          Ordered list of names for the categories (see `ids`).
-        type: array
-        items:
-          type: string
+          oneOf:
+            - $ref: "../../requests/aggregationTerms.yaml#/$defs/ValueCategories"
+            - $ref: "../../requests/aggregationTerms.yaml#/$defs/RangeCategories"
+            - $ref: "../../requests/aggregationTerms.yaml#/$defs/SplitCategories"
       count:
         description: >-
           Count of occurrences for this categorie of the in the matched data.
         type: integer
         minimum: 0
+      sortOrder:
+        description: >-
+          Optional indicator of the order of this category. 
+        type: integer
     required:
       - ids
       - count

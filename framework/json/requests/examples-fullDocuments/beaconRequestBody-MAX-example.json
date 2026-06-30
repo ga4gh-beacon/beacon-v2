@@ -17,21 +17,21 @@
                         "id": "SexAtBirth"
                     },
                     {
-                        "id": "HistologicalDiagnoses",
-                        "selectors": [
+                        "categories": [
                             {
-                                "label": "Prostate Adenocarcinoma",
+                                "name": "Prostate Adenocarcinoma",
                                 "value": "NCIT:C2919"
                             },
                             {
-                                "label": "Breast Ductal Carcinoma",
+                                "name": "Breast Ductal Carcinoma",
                                 "value": "NCIT:C4017"
                             },
                             {
-                                "label": "Lung Adenocarcinoma",
+                                "name": "Lung Adenocarcinoma",
                                 "value": "NCIT:C3512"
                             }
-                        ]
+                        ],
+                        "id": "HistologicalDiagnoses"
                     }
                 ],
                 "requestId": "aggr3"

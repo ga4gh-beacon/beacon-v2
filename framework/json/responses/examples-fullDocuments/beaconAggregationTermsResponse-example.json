@@ -13,8 +13,7 @@
     "response": {
         "aggregationTerms": [
             {
-                "id": "SexAtBirth",
-                "selectors": [
+                "categories": [
                     {
                         "value": "NCIT:C16576"
                     },
@@ -24,33 +23,32 @@
                     {
                         "value": "NCIT:C1799"
                     }
-                ]
+                ],
+                "id": "SexAtBirth",
+                "modelProperty": "individual.sex.id"
             },
             {
-                "id": "SelectedCarcinomaDiagnoses",
-                "selectors": [
+                "categories": [
                     {
-                        "label": "Prostate Adenocarcinoma",
+                        "name": "Prostate Adenocarcinoma",
                         "value": "NCIT:C2919"
                     },
                     {
-                        "label": "Breast Ductal Carcinoma",
+                        "name": "Breast Ductal Carcinoma",
                         "value": "NCIT:C4017"
                     },
                     {
-                        "label": "Lung Adenocarcinoma",
+                        "name": "Lung Adenocarcinoma",
                         "value": "NCIT:C3512"
                     }
-                ]
+                ],
+                "id": "SelectedCarcinomaDiagnoses",
+                "modelProperty": "biosample.histologicalDiagnosis.id"
             },
             {
-                "description": "Aggregation by the age of onset of the individuals providing pre-defined age ranges.",
-                "id": "AgeOfOnset",
-                "label": "Age of Onset",
-                "modelProperty": "individual.diseases.ageofOnset",
-                "selectors": [
+                "categories": [
                     {
-                        "label": "birth to 18 months",
+                        "name": "birth to 18 months",
                         "rangeBounds": [
                             "P0D",
                             "P18M"
@@ -58,7 +56,7 @@
                         "sortOrder": 1
                     },
                     {
-                        "label": "1.5 to 10 years",
+                        "name": "1.5 to 10 years",
                         "rangeBounds": [
                             "P18M",
                             "P10Y"
@@ -66,7 +64,7 @@
                         "sortOrder": 2
                     },
                     {
-                        "label": "10 to 60 years",
+                        "name": "10 to 60 years",
                         "rangeBounds": [
                             "P10Y",
                             "P60Y"
@@ -74,38 +72,38 @@
                         "sortOrder": 3
                     },
                     {
-                        "label": "60 years and older",
+                        "name": "60 years and older",
                         "rangeBounds": [
                             "P60Y"
                         ],
                         "sortOrder": 4
                     }
-                ]
+                ],
+                "description": "Aggregation by the age of onset of the individuals providing pre-defined age ranges.",
+                "id": "AgeOfOnset",
+                "label": "Age of Onset",
+                "modelProperty": "individual.diseases.ageofOnset"
             },
             {
-                "description": "Aggregation by the age of onset of the individuals. The age of onset is calculated as the difference between the date of onset and the date of birth of the individual. This example for the age of onset is split into two categories using a splitValue of 65 years (P65Y).",
-                "id": "RetirementAgeOfOnset",
-                "label": "Age of Onset at Retirement Age",
-                "modelProperty": "individual.diseases.ageofOnset",
-                "selectors": [
+                "categories": [
                     {
-                        "label": "younger than 65 years",
+                        "name": "younger than 65 years",
                         "sortOrder": 1,
                         "splitValue": "P65Y"
                     },
                     {
-                        "label": "65 years and older",
+                        "name": "65 years and older",
                         "sortOrder": 2,
                         "splitValue": "P150Y"
                     }
-                ]
+                ],
+                "description": "Aggregation by the age of onset of the individuals. The age of onset is calculated as the difference between the date of onset and the date of birth of the individual. This example for the age of onset is split into two categories using a splitValue of 65 years (P65Y).",
+                "id": "RetirementAgeOfOnset",
+                "label": "Age of Onset at Retirement Age",
+                "modelProperty": "individual.diseases.ageofOnset"
             },
             {
-                "description": "Aggregation by the gene identifiers of the genomic variants. The gene identifiers are selected from a predefined list of cancer related genes. The gene identifiers are represented as HGNC gene symbols. Note: The very limited gene list serves as example for usually more extended gene panels.",
-                "id": "CancerPanelGeneIds",
-                "label": "Selected cancer related genes",
-                "modelProperty": "genomicVariant.molecularAttributes.geneIds",
-                "selectors": [
+                "categories": [
                     {
                         "value": "CDKN2A"
                     },
@@ -118,49 +116,33 @@
                     {
                         "value": "MYCN"
                     }
-                ]
+                ],
+                "description": "Aggregation by the gene identifiers of the genomic variants. The gene identifiers are selected from a predefined list of cancer related genes. The gene identifiers are represented as HGNC gene symbols. Note: The very limited gene list serves as example for usually more extended gene panels.",
+                "id": "CancerPanelGeneIds",
+                "label": "Selected cancer related genes",
+                "modelProperty": "genomicVariant.molecularAttributes.geneIds"
             },
             {
-                "description": "Aggregation by the copy number variation (CNV) types of the genomic variants. The CNV types are selected VRS \"high level\" types.",
-                "id": "VariantVRShighLevelCNVtypes",
-                "label": "CNV types indicating a high-level gain or loss, respectively",
-                "modelProperty": "genomicVariant.variation.copyChange",
-                "selectors": [
+                "categories": [
                     {
-                        "label": "high-level loss",
+                        "name": "high-level loss",
                         "value": "EFO:0020073"
                     },
                     {
-                        "label": "high-level gain",
+                        "name": "high-level gain",
                         "value": "EFO:0030072"
                     }
-                ]
+                ],
+                "description": "Aggregation by the copy number variation (CNV) types of the genomic variants. The CNV types are selected VRS \"high level\" types.",
+                "id": "VariantVRShighLevelCNVtypes",
+                "label": "CNV types indicating a high-level gain or loss, respectively",
+                "modelProperty": "genomicVariant.variation.copyChange"
             },
             {
                 "description": "Aggregation by the karyotypic sex of the individuals. The karyotypic sex is determined by the chromosomal composition of the individual.",
                 "id": "KaryotypicSex",
                 "label": "karyotypic sex",
                 "modelProperty": "individual.karyotypicSex"
-            },
-            {
-                "description": "Aggregation by the sex ploidy of the individuals.",
-                "id": "KaryotypicSexPloidy",
-                "label": "sex ploidy",
-                "modelProperty": "individual.karyotypicSex",
-                "selectors": [
-                    {
-                        "label": "Diploid",
-                        "value": "diploid"
-                    },
-                    {
-                        "label": "Aneuploid",
-                        "value": "aneuploid"
-                    },
-                    {
-                        "label": "Polyploid",
-                        "value": "polyploid"
-                    }
-                ]
             }
         ]
     }
