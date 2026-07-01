@@ -259,19 +259,28 @@ the `results` section.
           {
             "count": 426,
             "categories": [
-              {"value": "NCIT:C2919", "name": "Prostate Adenocarcinoma"}
+              {
+                "value": "NCIT:C2919",
+                "name": "Prostate Adenocarcinoma"
+              }
             ]
           },
           {
             "count": 523,
             "categories": [
-              {"value": "NCIT:C4017", "name": "Breast Ductal Carcinoma"}
+              {
+                "value": "NCIT:C4017",
+                "name": "Breast Ductal Carcinoma"
+              }
             ]
           },
           {
             "count": 317,
             "categories": [
-              {"value": "NCIT:C3512", "name": "Lung Adenocarcinoma"}
+              {
+                "value": "NCIT:C3512",
+                "name": "Lung Adenocarcinoma"
+              }
             ]
           }
         ],
@@ -456,25 +465,41 @@ the `results` section.
           {
             "count": 426,
             "categories": [
-              {"value": "[P0D, P18M)", "name": "birth to 18 months", "sortOrder": 1}
+              {
+                "value": "[P0D, P18M)", 
+                "name": "birth to 18 months",
+                "sortOrder": 1
+              }
             ]
           },
           {
             "count": 339,
             "categories":[
-              {"value": "[P18M, P10Y)", "name": "1.5 to 10 years", "sortOrder": 2}
+              {
+                "value": "[P18M, P10Y)",
+                "name": "1.5 to 10 years",
+                "sortOrder": 2
+              }
             ]
           },
           {
             "count": 61,
             "categories": [
-              {"value": "[P10Y, P60Y)", "name": "10 to 60 years", "sortOrder": 3}
+              {
+                "value": "[P10Y, P60Y)",
+                "name": "10 to 60 years",
+                "sortOrder": 3
+              }
             ]
           },
           {
             "count": 719,
             "categories": [
-              {"value": "other", "name": "older or unknown", "sortOrder": 4}
+              {
+                "value": "other",
+                "name": "older or unknown",
+                "sortOrder": 4
+              }
             ]
           }
         ]
@@ -509,6 +534,7 @@ the `results` section.
           },
           {
             "id": "VariantVRSCNVtype",
+            "label": "High-level Copy Number Variants",
             "categories": [
               {"value": "EFO:0020073", "name": "high-level loss"},
               {"value": "EFO:0030072", "name": "high-level gain"}
