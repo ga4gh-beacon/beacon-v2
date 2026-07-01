@@ -60,50 +60,31 @@ into different views here.
       "id": "SelectedCarcinomaDiagnoses",
       "label": "Selected Carcinoma Diagnoses",
       "modelProperty": "biosample.histologicalDiagnosis.id",
-      "selectors": [
-        {
-          "label": "Prostate Adenocarcinoma",
-          "value": "NCIT:C2919"
-        },
-        {
-          "label": "Breast Ductal Carcinoma",
-          "value": "NCIT:C4017"
-        },
-        {
-          "label": "Lung Adenocarcinoma",
-          "value": "NCIT:C3512"
-        }
+      "categories": [
+        {"value": "NCIT:C2919", "name": "Prostate Adenocarcinoma"},
+        {"value": "NCIT:C4017", "name": "Breast Ductal Carcinoma"},
+        {"value": "NCIT:C3512", "name": "Lung Adenocarcinoma"}
       ]
     }
     ```
 
 === "Sex at Birth"
 
-    This aggregation does not indicate a specific property in the model but provides the available selectors.
-
     ```json
     {
       "id": "SexAtBirth",
-      "selectors": [
-        { 
-          "label": "female", 
-          "value": "NCIT:C16576"
-        },
-        {
-          "label": "male", 
-          "value": "NCIT:C20197"
-        },
-        {
-          "label": "unknown", 
-          "value": "NCIT:C1799"
-        }
+      "modelProperty": "individual.sex.id",
+      "categories": [
+        {"value": "NCIT:C16576", "name": "female"},
+        {"value": "NCIT:C20197", "name": "male"},
+        {"value": "NCIT:C1799", "name": "unknown"}
       ]
     }
     ```
 
 === "Age at onset of disease"
 
-    This aggregation does not indicate a specific property in the model but provides the available selectors.
+    This aggregation does not indicate a specific property in the model but provides the available categories.
 
     ```json
     {
@@ -111,24 +92,24 @@ into different views here.
       "id": "AgeOfOnset",
       "label": "Age of Onset",
       "modelProperty": "individual.diseases.ageofOnset",
-      "selectors": [
+      "categories": [
           {
-              "label": "birth to 18 months",
+              "name": "birth to 18 months",
               "rangeBounds": ["P0D", "P18M"],
               "sortOrder": 1
           },
           {
-              "label": "1.5 to 10 years",
+              "name": "1.5 to 10 years",
               "rangeBounds": ["P18M", "P10Y"],
               "sortOrder": 2
           },
           {
-              "label": "10 to 60 years",
+              "name": "10 to 60 years",
               "rangeBounds": ["P10Y", "P60Y"],
               "sortOrder": 3
           },
           {
-              "label": "60 years and older",
+              "name": "60 years and older",
               "rangeBounds": ["P60Y"],
               "sortOrder": 4
           }
@@ -180,7 +161,7 @@ the `results` section.
         {
           "requestId": "aggr1",
           "aggregationTerms": [
-            {"id": "SexAtBirth"}
+            {"id": "SexAtBirth", "label" "Sex at Birth"}
           ]
         }
       ]
@@ -201,18 +182,21 @@ the `results` section.
           "categoriesAndValues": [
               {
                   "count": 778,
-                  "ids": ["NCIT:C16576"],
-                  "names": ["female"]
+                  "categories": [
+                    {"value": "NCIT:C16576", "name": "female"}
+                  ]
               },
               {
                   "count": 957,
-                  "id": ["NCIT:C20197"],
-                  "names": ["male"]
+                  "categories": [
+                    {"value": "NCIT:C20197", "name": "male"}
+                  ]
               },
               {
                   "count": 11,
-                  "ids": ["NCIT:C1799"],
-                  "names": ["unknown"]
+                  "categories": [
+                    {"value": "NCIT:C1799", "name": "unknown"}
+                  ]
               }
           ]
       }
@@ -223,8 +207,8 @@ the `results` section.
 
     #### Request
 
-    **Note**: In principle the `selectors` parameter would not be needed here
-    if the beacon indicates that those selectors are part of a predefined
+    **Note**: In principle the `categories` parameter would not be needed here
+    if the beacon indicates that those categories are part of a predefined
     `SelectedCarcinomaDiagnoses` `aggregationTerm`.
 
     ```json
@@ -235,17 +219,17 @@ the `results` section.
           {
             "id": "SelectedCarcinomaDiagnoses",
             "label": "Selected diagnoses (some carcinoma entities)",
-            "selectors": [
+            "categories": [
               {
-                "label": "Prostate Adenocarcinoma",
+                "name": "Prostate Adenocarcinoma",
                 "value": "NCIT:C2919"
               },
               {
-                "label": "Breast Ductal Carcinoma",
+                "name": "Breast Ductal Carcinoma",
                 "value": "NCIT:C4017"
               },
               {
-                "label": "Lung Adenocarcinoma",
+                "name": "Lung Adenocarcinoma",
                 "value": "NCIT:C3512"
               }
             ]
@@ -259,7 +243,7 @@ the `results` section.
 
     #### Response
 
-    Here the beacon provides (only) an aggregation of the sex of the matched individuals.
+    Here the beacon provides (only) an aggregation of the selected diagnoses of the matched individuals.
 
     ```json
     "resultsAggregation": [
@@ -274,18 +258,21 @@ the `results` section.
         "categoriesAndValues": [
           {
             "count": 426,
-            "ids": ["NCIT:C2919"],
-            "names": ["Prostate Adenocarcinoma"]
+            "categories": [
+              {"value": "NCIT:C2919", "name": "Prostate Adenocarcinoma"}
+            ]
           },
           {
             "count": 523,
-            "ids": ["NCIT:C4017"],
-            "names": ["Breast Ductal Carcinoma"]
+            "categories": [
+              {"value": "NCIT:C4017", "name": "Breast Ductal Carcinoma"}
+            ]
           },
           {
             "count": 317,
-            "ids": ["NCIT:C3512"],
-            "names": ["Lung Adenocarcinoma"]
+            "categories": [
+              {"value": "NCIT:C3512", "name": "Lung Adenocarcinoma"}
+            ]
           }
         ],
       }
@@ -300,7 +287,7 @@ the `results` section.
     `SexAtBirth` only known values are used; _i.e._ the `unknown` (or other...)
     category is not included in the aggregations.
 
-    As above, the `selectors` parameter would not be needed for the `SelectedCarcinomaDiagnoses`
+    As above, the `categories` parameter would not be needed for the `SelectedCarcinomaDiagnoses`
     if the same values are part of its definition.
 
     ```json
@@ -310,26 +297,17 @@ the `results` section.
         "aggregationTerms": [
           {
             "id": "SexAtBirth",
-            "selectors": [
-              {"value": "NCIT:C16576"},
-              {"value": "NCIT:C20197"}
+            "categories": [
+              {"value": "NCIT:C16576", "name": "female"},
+              {"value": "NCIT:C20197", "name": "male"}
             ]
           },
           {
             "id": "SelectedCarcinomaDiagnoses",
-            "selectors": [
-              {
-                "label": "Prostate Adenocarcinoma",
-                "value": "NCIT:C2919"
-              },
-              {
-                "label": "Breast Ductal Carcinoma",
-                "value": "NCIT:C4017"
-              },
-              {
-                "label": "Lung Adenocarcinoma",
-                "value": "NCIT:C3512"
-              }
+            "categories": [
+              {"value": "NCIT:C2919", "name": "Prostate Adenocarcinoma"},
+              {"value": "NCIT:C4017", "name": "Breast Ductal Carcinoma"},
+              {"value": "NCIT:C3512", "name": "Lung Adenocarcinoma"}
             ]
           }
         ]
@@ -367,33 +345,45 @@ the `results` section.
         "categoriesAndValues": [
           {
             "count": 426,
-            "ids": ["NCIT:C20197", "NCIT:C2919"],
-            "names": ["male", "Prostate Adenocarcinoma"]
-          },
+            "categories": [
+              {"value": "NCIT:C2919", "name": "Prostate Adenocarcinoma"},
+              {"value": "NCIT:C20197", "name": "male"}
+            ]
+        },
           {
             "count": 0,
-            "ids": ["NCIT:C16576", "NCIT:C2919"],
-            "names": ["female", "Prostate Adenocarcinoma"]
-          },
+            "categories": [
+              {"value": "NCIT:C2919", "name": "Prostate Adenocarcinoma"},
+              {"value": "NCIT:C16576", "name": "female"},
+            ]
+        },
           {
             "count": 4,
-            "ids": ["NCIT:C20197", "NCIT:C4017"],
-            "names": ["male", "Breast Ductal Carcinoma"]
+            "categories": [
+              {"value": "NCIT:C4017", "name": "Breast Ductal Carcinoma"},
+              {"value": "NCIT:C20197", "name": "male"}
+            ]
           },
           {
             "count": 501,
-            "ids": ["NCIT:C16576", "NCIT:C4017"],
-            "names": ["female", "Breast Ductal Carcinoma"]
+            "categories": [
+              {"value": "NCIT:C4017", "name": "Breast Ductal Carcinoma"},
+              {"value": "NCIT:C16576", "name": "female"}
+            ]
           },
           {
             "count": 201,
-            "ids": ["NCIT:C20197", "NCIT:C3512"],
-            "names": ["male", "Lung Adenocarcinoma"]
+            "categories": [
+              {"value": "NCIT:C3512", "name": "Lung Adenocarcinoma"},
+              {"value": "NCIT:C20197", "name": "male"}
+            ]
           },
           {
             "count": 66,
-            "ids": ["NCIT:C16576", "NCIT:C3512"],
-            "names": ["female", "Lung Adenocarcinoma"]
+            "categories": [
+              {"value": "NCIT:C3512", "name": "Lung Adenocarcinoma"},
+              {"value": "NCIT:C16576", "name": "female"}
+            ]
           }
         ]
       }
@@ -404,8 +394,8 @@ the `results` section.
 
     #### Request
 
-    **Note**: In principle the `selectors` parameter would not be needed here
-    if the beacon indicates that those range selectors are part of a predefined
+    **Note**: In principle the `categories` parameter would not be needed here
+    if the beacon indicates that those range categories are part of a predefined
     `AgeOfOnset` `aggregationTerm`.
 
     ```json
@@ -415,24 +405,24 @@ the `results` section.
         "aggregationTerms": [
           {
             "id": "AgeOfOnset",
-            "selectors": [
+            "categories": [
               {
-                "label": "birth to 18 months",
+                "name": "birth to 18 months",
                 "rangeBounds": ["P0D", "P18M"],
                 "sortOrder": 1
               },
               {
-                "label": "1.5 to 10 years",
+                "name": "1.5 to 10 years",
                 "rangeBounds": ["P18M", "P10Y"],
                 "sortOrder": 2
               },
               {
-                "label": "10 to 60 years",
+                "name": "10 to 60 years",
                 "rangeBounds": ["P10Y", "P60Y"],
                 "sortOrder": 3
               },
               {
-                "label": "60 years and older",
+                "name": "60 years and older",
                 "rangeBounds": ["P60Y"],
                 "sortOrder": 4
               }
@@ -465,23 +455,27 @@ the `results` section.
         "categoriesAndValues": [
           {
             "count": 426,
-            "ids": ["[P0D, P18M)"],
-            "names": ["birth to 18 months"]
+            "categories": [
+              {"value": "[P0D, P18M)", "name": "birth to 18 months", "sortOrder": 1}
+            ]
           },
           {
             "count": 339,
-            "ids": ["[P18M, P10Y)"],
-            "names": ["1.5 to 10 years"]
+            "categories":[
+              {"value": "[P18M, P10Y)", "name": "1.5 to 10 years", "sortOrder": 2}
+            ]
           },
           {
             "count": 61,
-            "ids": ["[P10Y, P60Y)"],
-            "names": ["10 to 60 years"]
+            "categories": [
+              {"value": "[P10Y, P60Y)", "name": "10 to 60 years", "sortOrder": 3}
+            ]
           },
           {
             "count": 719,
-            "ids": ["other"],
-            "names": ["older or unknown"]
+            "categories": [
+              {"value": "other", "name": "older or unknown", "sortOrder": 4}
+            ]
           }
         ]
       }
@@ -495,7 +489,7 @@ the `results` section.
     This requests aggregates sets of genes and the types of variants they're affected
     by with. The `CancerPanelGeneIds` aggregation term is defined in the `/aggregation_terms` endpoint and provides a list of genes that are part of a cancer panel. The `VariantVRSCNVtype` aggregation term is also defined in the `/aggregation_terms` endpoint and provides a list of variant types (e.g., high-level loss, high-level gain) that are associated with the genes in the cancer panel.
 
-    As above, the `selectors` modifiers would not be needed if already indicated
+    As above, the `categories` modifiers would not be needed if already indicated
     in the respective aggregation term definitions.
 
     ```json
@@ -506,18 +500,18 @@ the `results` section.
           {
             "id": "CancerPanelGeneIds",
             "label": "Cancer Panel Genes",
-            "selectors": [
-              {"value": "CDKN2A"},
-              {"value": "TP53"},
-              {"value": "EGFR"},
-              {"value": "MYCN"}
+            "categories": [
+              {"value": "CDKN2A", "name": "CDKN2A"},
+              {"value": "TP53", "name": "TP53"},
+              {"value": "EGFR", "name": "EGFR"},
+              {"value": "MYCN", "name": "MYCN"}
             ]
           },
           {
             "id": "VariantVRSCNVtype",
-            "selectors": [
-              {"label": "high-level loss", "value": "EFO:0020073"},
-              {"label": "high-level gain", "value": "EFO:0030072"}
+            "categories": [
+              {"value": "EFO:0020073", "name": "high-level loss"},
+              {"value": "EFO:0030072", "name": "high-level gain"}
             ]
           }
         ]
@@ -537,50 +531,66 @@ the `results` section.
         "requestId": "aggr5",
         "aggregationTerms": [
           {"id": "CancerPanelGeneIds", "label": "Cancer Panel Genes"},
-          {"id": "VariantVRSCNVtype"}
+          {"id": "VariantVRSCNVtype", "label": "High-level Copy Number Variants"}
         ],
         "categoriesAndValues": [
           {
             "count": 277,
-            "ids": ["CDKN2A", "EFO:0020073"],
-            "names": ["CDKN2A", "high-level loss"]
+            "categories": [
+              {"value": "CDKN2A", "name": "CDKN2A"},
+              {"value": "EFO:0020073", "name": "high-level loss"}
+            ]
           },
           {
             "count": 0,
-            "ids": ["CDKN2A", "EFO:0030072"],
-            "names": ["CDKN2A", "high-level gain"]
+            "categories": [
+              {"value": "CDKN2A", "name": "CDKN2A"},
+              {"value": "EFO:0030072", "name": "high-level gain"}
+            ]
           },
           {
             "count": 68,
-            "ids": ["TP53", "EFO:0020073"],
-            "names": ["TP53", "high-level loss"]
+            "categories": [
+              {"value": "TP53", "name": "TP53"},
+              {"value": "EFO:0020073", "name": "high-level loss"}
+            ]
           },
           {
             "count": 4,
-            "ids": ["TP53", "EFO:0030072"],
-            "names": ["TP53", "high-level gain"]
+            "categories": [
+              {"value": "TP53", "name": "TP53"},
+              {"value": "EFO:0030072", "name": "high-level gain"}
+            ]
           },
           {
             "count": 0,
-            "ids": ["EGFR", "EFO:0020073"],
-            "names": ["EGFR", "high-level loss"]
+            "categories": [
+              {"value": "EGFR", "name": "EGFR"},
+              {"value": "EFO:0020073", "name": "high-level loss"}
+            ]
           },
           {
             "count": 161,
-            "ids": ["EGFR", "EFO:0030072"],
-            "names": ["EGFR", "high-level gain"]
+            "categories": [
+              {"value": "EGFR", "name": "EGFR"},
+              {"value": "EFO:0030072", "name": "high-level gain"}
+            ]
           },
           {
             "count": 2,
-            "ids": ["MYCN", "EFO:0020073"],
-            "names": ["MYCN", "high-level loss"]
+            "categories": [
+              {"value": "MYCN", "name": "MYCN"},
+              {"value": "EFO:0020073", "name": "high-level loss"}
+            ]
           },
           {
             "count": 88,
-            "ids": ["MYCN", "EFO:0030072"],
-            "names": ["MYCN", "high-level gain"]
+            "categories": [
+              {"value": "MYCN", "name": "MYCN"},
+              {"value": "EFO:0030072", "name": "high-level gain"}
+            ]
           }
-        ],
+        ]
       }
     ]
     ```
@@ -594,8 +604,8 @@ the `results` section.
 * improved the description which contained errors from the previous "list of lists"
   structure and did some confusing double-definitions of the same concepts
 * changed the name of `categories` for specifying the returns of defined in `aggregationTerms`
-  to `selectors`
-* refactored `selectors` to a cleaner structure, so far with 3 different types
+  to `categories`
+* refactored `categories` to a cleaner structure, so far with 3 different types
     - `ValueSelectors`
     - `RangeSelectors`
     - `SplitSelectors`
@@ -606,12 +616,12 @@ the `results` section.
 ### `beaconAggregationResults` in `responses/sections/`
 
 * removed `categories` (and `splits`) from the response definition since they don't
-  serve a purpose besides a checkback of which selectors were applied
+  serve a purpose besides a checkback of which categories were applied
 * TODO: clear directive that zero values have to be returned for categories
 
 ### `beaconAggregationTermsResults` in `responses/sections/`
 
-* reference the definitions for the selectors in `aggregationTerms` in `requests`
+* reference the definitions for the categories in `aggregationTerms` in `requests`
   instead of separate definition
 * removed the full examples since they are provided in a separate examples document
 
@@ -625,7 +635,7 @@ the `results` section.
 #### aggregationTerms-example
 
 * new document with aggregators aggr1-4
-* includes demonstration of `selectors` for values and ranges
+* includes demonstration of `categories` for values and ranges
 
 #### beaconRequestBody-MAX-example
 
