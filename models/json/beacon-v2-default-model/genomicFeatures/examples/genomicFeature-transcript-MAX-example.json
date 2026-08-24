@@ -2,7 +2,10 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "id": "InternalId12345",
     "genomicFeature": {
-        "featureId": "ENSEMBL:ENST00000269305.9",
+        "featureIdentifier": {
+            "id": "ENST00000269305.9",
+            "resource": "ensembl"
+        },
         "genomicInterval": {
             "location": {
                 "interval": {
@@ -47,9 +50,8 @@
             "NCBI_RefSeq:NM_000546.6"
         ],
         "relationship": {
-            "parent": "ENSEMBL:ENSG00000141510.18"
+            "parent": "ENSG00000141510.18"
         }
-
     },
     "matrixIds": [
         "matrix-gene-expression-001",

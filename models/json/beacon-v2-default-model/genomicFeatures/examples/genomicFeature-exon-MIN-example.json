@@ -2,7 +2,14 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "id": "InternalId12345",
     "genomicFeature": {
-        "featureId": "EXON:00004567"
+        "featureIdentifier": {
+            "id": "EXON:00004567",
+            "resource": "local"
+        },
+        "featureType": {
+            "id": "SO:0000147",
+            "label": "exon"
+        }
     },
     "matrixIds": [
         "matrix-gene-expression-001",
@@ -10,4 +17,3 @@
         "matrix-variant-frequency-003"
     ]
 }
-

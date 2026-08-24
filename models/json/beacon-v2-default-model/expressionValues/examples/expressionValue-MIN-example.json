@@ -1,0 +1,8 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "id": "expressionValue-001",
+    "biosampleId": "008dafdd-a3d1-4801-8c0a-8714e2b58e48",
+    "featureId": "ENSG00000141510.18",
+    "matrixId": "matrix-gene-expression-001",
+    "value": 100
+}

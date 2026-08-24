@@ -1,13 +1,51 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Genomic feature(s) related to the variant. NOTE: Although genes could also be referenced using these attributes, they have an independent section to allow direct queries.",
+    "description": "A genomic feature (gene, transcript, exon, or genomic interval) used as a quantified row in RNA-seq expression matrices and/or as an annotated feature related to a genomic variant.",
     "properties": {
-        "featureId":{
-            "description": "Stable identifier of genomic feature, preferably in CURIE format (e.g. HGNC:11998, ENSEMBL:ENSG00000141510). For anonymous or interval-derived features, a locally minted identifier MUST be used.",
-            "examples": [
-                "HGNC:11998", "ENSEMBL:ENSG00000141510", "EXON:00004567"
+        "featureIdentifier": {
+            "description": "Identifier of the genomic feature as it appears in the expression matrix (native accession), plus the identifier namespace. Gene symbols MUST NOT be stored here; use aliases instead. Annotation release (e.g. Ensembl 109) belongs on the matrix annotation, not on this object.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Native accession of the genomic feature as used in the matrix row (versioned when the matrix uses versioned IDs). Not a CURIE. For anonymous or interval-derived features with no public accession, a locally minted identifier MUST be used.",
+                    "examples": [
+                        "ENSG00000141510.18",
+                        "ENST00000269305.9",
+                        "EXON:00004567"
+                    ]
+                },
+                "resource": {
+                    "type": "string",
+                    "description": "Identifier namespace for id. An identifiers.org prefix is recommended (e.g. ensembl, hgnc, ncbigene, refseq, gencode). Use local for locally minted identifiers. Required because id is not a CURIE.",
+                    "examples": [
+                        "ensembl",
+                        "hgnc",
+                        "ncbigene",
+                        "refseq",
+                        "gencode",
+                        "local"
+                    ]
+                }
+            },
+            "required": [
+                "id",
+                "resource"
             ],
-            "type": "string"
+            "examples": [
+                {
+                    "id": "ENSG00000141510.18",
+                    "resource": "ensembl"
+                },
+                {
+                    "id": "ENST00000269305.9",
+                    "resource": "ensembl"
+                },
+                {
+                    "id": "EXON:00004567",
+                    "resource": "local"
+                }
+            ]
         },
         "genomicInterval": {
             "description": "Genomic interval of the genomic feature, uses the VRS schema for the coordinates and adds the strand",
@@ -25,11 +63,11 @@
                     "default": "positive"
                 }
             }
-            
         },
         "aliases": {
-            "description": "Human-readable names or symbols commonly used for this feature (gene symbols, transcript names, or other aliases).",                    "examples": [
-                "TP53", 
+            "description": "Human-readable names or symbols commonly used for this feature (gene symbols, transcript names, or other aliases).",
+            "examples": [
+                "TP53",
                 "BRCA1"
             ],
             "type": "array",
@@ -40,34 +78,38 @@
         "xrefs": {
             "description": "Cross-references of the genomic feature. CURIE format is recommended.",
             "examples": [
-                "HGNC:11998", "Entrez:11998"
+                "HGNC:11998",
+                "NCBIGene:7157"
             ],
             "type": "array",
             "items": {
                 "type": "string"
             }
         },
-        "featureType":{
+        "featureType": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/common/ontologyTerm.json",
-            "description": "Ontology term that describes the type of genomic feature. Values from SO (Sequence ontology) are recommended, e.g. `SO:0001623: 5 prime UTR variant`",
+            "description": "Ontology term that describes the type of genomic feature. Values from SO (Sequence Ontology) are recommended.",
             "examples": [
                 {
                     "id": "SO:0000704",
                     "label": "gene"
                 },
                 {
-                    "id":"SO:0000333",
-                    "label":"exon_junction"
+                    "id": "SO:0000234",
+                    "label": "mRNA"
                 },
                 {
-                    "id":"SO:0000234",
-                    "label":"mRNA"
+                    "id": "SO:0000147",
+                    "label": "exon"
                 }
             ]
         },
         "ontologyTerms": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/common/ontologyTerm.json",
+            "type": "array",
             "description": "Ontology terms of the genomic feature like biological functions, molecular effects, etc.",
+            "items": {
+                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/common/ontologyTerm.json"
+            },
             "examples": [
                 {
                     "id": "GO:0048856",
@@ -77,22 +119,24 @@
         },
         "relationship": {
             "type": "object",
-            "description": "Object representing the hierarchical relationships of the genomic feature like gene -> transcript -> exon. It is recommended to use the featureId of the parent and children as CURIE format. Locally minted identifiers are also allowed.",
+            "description": "Hierarchical relationships of the genomic feature (gene -> transcript -> exon). parent and children MUST use the same native id form as featureIdentifier.id (not CURIEs).",
             "properties": {
                 "parent": {
-                    "description": "Parent of the genomic feature, usually a gene or transcript",
+                    "description": "Parent of the genomic feature, usually a gene or transcript. Value MUST match the parent's featureIdentifier.id.",
                     "examples": [
-                        "HGNC:11998", "ENSEMBL:ENSG00000141510"
+                        "ENSG00000141510.18",
+                        "ENST00000269305.9"
                     ],
                     "type": "string"
                 },
                 "children": {
-                    "description": "Children of the genomic feature, usually a transcript or exon",
+                    "description": "Children of the genomic feature, usually a transcript or exon. Values MUST match each child's featureIdentifier.id.",
                     "type": "array",
                     "items": {
                         "type": "string",
                         "examples": [
-                            "ENSEMBL:ENST00000141510","EXON:00004567"
+                            "ENST00000269305.9",
+                            "EXON:00004567"
                         ]
                     }
                 }
@@ -100,7 +144,8 @@
         }
     },
     "required": [
-        "featureId"
+        "featureIdentifier",
+        "featureType"
     ],
     "title": "GenomicFeature",
     "type": "object"

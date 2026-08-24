@@ -2,7 +2,10 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "id": "InternalId12345",
     "genomicFeature": {
-        "featureId": "Ensembl:ENSG00000141510.18",
+        "featureIdentifier": {
+            "id": "ENSG00000141510.18",
+            "resource": "ensembl"
+        },
         "genomicInterval": {
             "location": {
                 "interval": {
@@ -52,40 +55,39 @@
         ],
         "xrefs": [
             "HGNC:11998",
-            "NCBI_Gene:7157"
+            "NCBIGene:7157"
         ],
         "relationship": {
             "children": [
-                "Ensembl:ENST00000269305.9",
-                "Ensembl:ENST00000445888.6",
-                "Ensembl:ENST00000503591.2",
-                "Ensembl:ENST00000508793.6",
-                "Ensembl:ENST00000604348.6",
-                "Ensembl:ENST00000620739.4",
-                "Ensembl:ENST00000610292.4",
-                "Ensembl:ENST00000619485.4",
-                "Ensembl:ENST00000455263.6",
-                "Ensembl:ENST00000359597.8",
-                "Ensembl:ENST00000420246.6",
-                "Ensembl:ENST00000610538.4",
-                "Ensembl:ENST00000622645.4",
-                "Ensembl:ENST00000514944.6",
-                "Ensembl:ENST00000413465.6",    
-                "Ensembl:ENST00000509690.6",
-                "Ensembl:ENST00000504937.5",
-                "Ensembl:ENST00000619186.4",
-                "Ensembl:ENST00000504290.5",
-                "Ensembl:ENST00000510385.5",
-                "Ensembl:ENST00000610623.4",
-                "Ensembl:ENST00000618944.4",
-                "Ensembl:ENST00000576024.1",
-                "Ensembl:ENST00000635293.1",
-                "Ensembl:ENST00000505014.5",
-                "Ensembl:ENST00000571370.2",
-                "Ensembl:ENST00000574684.1"
+                "ENST00000269305.9",
+                "ENST00000445888.6",
+                "ENST00000503591.2",
+                "ENST00000508793.6",
+                "ENST00000604348.6",
+                "ENST00000620739.4",
+                "ENST00000610292.4",
+                "ENST00000619485.4",
+                "ENST00000455263.6",
+                "ENST00000359597.8",
+                "ENST00000420246.6",
+                "ENST00000610538.4",
+                "ENST00000622645.4",
+                "ENST00000514944.6",
+                "ENST00000413465.6",
+                "ENST00000509690.6",
+                "ENST00000504937.5",
+                "ENST00000619186.4",
+                "ENST00000504290.5",
+                "ENST00000510385.5",
+                "ENST00000610623.4",
+                "ENST00000618944.4",
+                "ENST00000576024.1",
+                "ENST00000635293.1",
+                "ENST00000505014.5",
+                "ENST00000571370.2",
+                "ENST00000574684.1"
             ]
         }
-
     },
     "matrixIds": [
         "matrix-gene-expression-001",

@@ -1,9 +1,11 @@
-
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "id": "InternalId12345",
     "genomicFeature": {
-        "featureId": "EXON:00004567",
+        "featureIdentifier": {
+            "id": "EXON:00004567",
+            "resource": "local"
+        },
         "genomicInterval": {
             "location": {
                 "interval": {
@@ -27,7 +29,7 @@
             "label": "exon"
         },
         "relationship": {
-            "parent": "ENSEMBL:ENST00000269305.9"
+            "parent": "ENST00000269305.9"
         }
     },
     "matrixIds": [

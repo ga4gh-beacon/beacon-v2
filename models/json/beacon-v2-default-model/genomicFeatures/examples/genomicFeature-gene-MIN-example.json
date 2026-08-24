@@ -2,7 +2,14 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "id": "InternalId12345",
     "genomicFeature": {
-        "featureId": "Ensembl:ENSG00000141510.18"
+        "featureIdentifier": {
+            "id": "ENSG00000141510.18",
+            "resource": "ensembl"
+        },
+        "featureType": {
+            "id": "SO:0000704",
+            "label": "gene"
+        }
     },
     "matrixIds": [
         "matrix12345",
