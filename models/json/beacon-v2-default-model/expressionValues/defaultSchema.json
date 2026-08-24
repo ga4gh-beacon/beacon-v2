@@ -2,38 +2,39 @@
     "$comment": "version: ga4gh-beacon-expressionValues-v2.0.0",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Schema for an expression value entry. It represents the expression value of a specific biosample for a specific feature in a specific matrix.",
+    "description": "One quantified expression cell: the measured value of a specific genomic feature in a specific biosample within a specific matrix.",
     "properties": {
         "id": {
-            "description": "Internal expression value ID. It is a unique identifier for the expression value.",
+            "description": "Internal Beacon identifier for this expression value entry.",
             "examples": [
                 "expressionValue-001"
             ],
             "type": "string"
         },
         "biosampleId": {
-            "description": "Reference to the biosample ID.",
+            "description": "Reference to the biosample entry id that this value was measured in.",
             "examples": [
                 "008dafdd-a3d1-4801-8c0a-8714e2b58e48"
             ],
             "type": "string"
         },
         "value": {
-            "description": "Value of the expression value.",
+            "description": "Numeric expression quantification for this feature in this biosample. Units and scale are defined by the parent matrix (expressionUnitAndScale).",
             "examples": [
-                "100"
+                100
             ],
             "type": "number"
         },
         "featureId": {
-            "description": "Reference to the feature ID.",
+            "description": "Native accession of the quantified genomic feature as it appears in the matrix row. MUST equal genomicFeature.featureIdentifier.id of the matching feature. Not a CURIE and not genomicFeatures.id.",
             "examples": [
-                "ENSG00000000000"
+                "ENSG00000141510.18",
+                "ENST00000269305.9"
             ],
             "type": "string"
         },
         "matrixId": {
-            "description": "Reference to the matrix ID.",
+            "description": "Reference to the matrix entry id that this value belongs to.",
             "examples": [
                 "matrix-gene-expression-001"
             ],
