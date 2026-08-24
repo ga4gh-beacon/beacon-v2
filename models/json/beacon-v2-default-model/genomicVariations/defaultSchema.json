@@ -151,11 +151,20 @@
         },
         "GenomicFeature": {
             "$ref": "../common/genomicFeature.json",
-            "description": "Genomic feature(s) related to the variant. NOTE: Although genes could also be referenced using these attributes, they have an independent section to allow direct queries.",
+            "description": "A genomic feature (gene, transcript, exon, or genomic interval) used as a quantified row in RNA-seq expression matrices and/or as an annotated feature related to a genomic variant.",
             "examples": [
                 {
-                    "id": "HGNC:11998",
-                    "label": "TP53"
+                    "featureIdentifier": {
+                        "id": "ENSG00000141510.18",
+                        "resource": "ensembl"
+                    },
+                    "featureType": {
+                        "id": "SO:0000704",
+                        "label": "gene"
+                    },
+                    "aliases": [
+                        "TP53"
+                    ]
                 }
             ],
             "type": "object"
