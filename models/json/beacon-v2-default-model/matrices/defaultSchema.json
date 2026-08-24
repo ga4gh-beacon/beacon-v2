@@ -2,46 +2,47 @@
     "$comment": "version: ga4gh-beacon-matrix-v2.1.2",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "A RNA-seq expression matrix available in the beacon",
+    "description": "Metadata for an RNA-seq quantification matrix available in the Beacon. Cell-level values are represented as expressionValue entries (or retrieved via matrix expression_values endpoints); this object describes how those values and feature identifiers should be interpreted.",
     "properties": {
-        "id": {
-            "description": "Internal identifier of the matrix",
+        "matrixId": {
+            "description": "Unique identifier of the matrix entry within the Beacon.",
             "examples": [
-                "1234567890"
+                "matrix-gene-expression-001"
             ],
             "type": "string"
         },
         "createDateTime": {
             "$ref": "../common/commonDefinitions.json#/$defs/Timestamp",
-            "description": "The time the matrix was created (ISO 8601 format)",
+            "description": "The time the matrix was created (ISO 8601 format).",
             "examples": [
                 "2017-01-17T20:33:40Z"
             ]
         },
         "description": {
-            "description": "Description of the matrix",
+            "description": "Description of the matrix.",
             "examples": [
                 "This matrix provides examples of the actual data in this Beacon instance."
             ],
             "type": "string"
         },
         "downloadUrl": {
-            "description": "URL to download the matrix (RFC 3986 format).",
+            "description": "Optional URL to download the full matrix (RFC 3986). Bulk download is not required when sliced expression values are served via the API.",
             "examples": [
                 "https://example.org/matrices/matrix.csv"
             ],
             "type": "string"
         },
-        "matrixId": {
-            "description": "Unique identifier of the matrix",
+        "reproducible": {
+            "type": "boolean",
+            "description": "Whether this Beacon provides enough provenance to regenerate the quantification matrix (annotation source, version and file, assembly, units/scale, and analysis/protocol information). true means that information is available; false means provenance is incomplete and the matrix should not be treated as independently reproducible from Beacon metadata alone.",
             "examples": [
-                "matrix-gene-expression-001"
-            ],
-            "type": "string"
+                true,
+                false
+            ]
         },
         "assayType": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
-            "description": "Type of RNA-seq assay",
+            "description": "Type of RNA-seq assay (e.g. bulk vs single-cell).",
             "examples": [
                 {
                     "id": "OBI:0002631",
@@ -57,20 +58,23 @@
             "$ref": "../common/info.json"
         },
         "name": {
-            "description": "Name of the matrix",
+            "description": "Human-readable name of the matrix.",
             "examples": [
                 "Gene expression matrix"
             ],
             "type": "string"
         },
         "dimensions": {
+            "description": "Number of features (rows) and biosamples (columns) in the matrix.",
             "type": "object",
             "properties": {
                 "features": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of genomic feature rows."
                 },
                 "biosamples": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of biosample columns."
                 }
             },
             "required": [
@@ -79,19 +83,43 @@
             ]
         },
         "featureType": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
+            "description": "Sequence Ontology terms for the class(es) of genomic feature rows in this matrix. Homogeneous matrices list one term (e.g. gene or mRNA). Matrices that mix genes and transcripts (or other feature classes) MUST list every class present. Each feature in the matrix MUST have a genomicFeature.featureType that appears in this array. Values from SO (Sequence Ontology) are recommended.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
+            },
             "examples": [
-                {
-                    "id": "SO:0000704",
-                    "label": "gene"
-                }
-            ],
-            "description": "Ontology term that describes the type of genomic feature. Values from SO (Sequence ontology) are recommended."
+                [
+                    {
+                        "id": "SO:0000704",
+                        "label": "gene"
+                    }
+                ],
+                [
+                    {
+                        "id": "SO:0000234",
+                        "label": "mRNA"
+                    }
+                ],
+                [
+                    {
+                        "id": "SO:0000704",
+                        "label": "gene"
+                    },
+                    {
+                        "id": "SO:0000234",
+                        "label": "mRNA"
+                    }
+                ]
+            ]
         },
-        "expressionValues": {
+        "expressionUnitAndScale": {
+            "description": "Unit and numeric scale of expression values in this matrix. Applies to all expressionValue.value entries that reference this matrixId.",
             "type": "object",
             "required": [
-                "unit"
+                "unit",
+                "scale"
             ],
             "properties": {
                 "unit": {
@@ -102,7 +130,9 @@
                         "RPKM",
                         "CPM",
                         "RPM"
-                    ]
+                    ],
+                    "default": "raw",
+                    "description": "Quantification unit of the expression values."
                 },
                 "scale": {
                     "enum": [
@@ -110,33 +140,41 @@
                         "log2",
                         "log10"
                     ],
+                    "default": "linear",
                     "description": "Whether values are linear or log-transformed. If not provided, it is assumed to be linear."
                 }
             }
         },
         "annotation": {
+            "description": "Annotation catalog used to define feature identifiers in this matrix. source SHOULD use the same identifiers.org-style prefix vocabulary as genomicFeature.featureIdentifier.resource (e.g. ensembl, gencode). version is the annotation release; it is not the same as an Ensembl object version suffix (e.g. .18).",
             "type": "object",
             "properties": {
                 "source": {
+                    "type": "string",
+                    "description": "Identifier namespace / annotation catalog. An identifiers.org prefix is recommended.",
                     "examples": [
-                        "Ensembl",
-                        "Gencode",
-                        "RefSeq"
+                        "ensembl",
+                        "gencode",
+                        "refseq",
+                        "ncbigene"
                     ]
                 },
                 "version": {
+                    "type": "string",
+                    "description": "Annotation release or build version string.",
                     "examples": [
                         "109",
-                        "49"
+                        "49",
+                        "109.20190905"
                     ]
                 },
                 "file": {
                     "type": "string",
-                    "description": "URL to the annotation file"
+                    "description": "URL to the annotation file."
                 },
                 "md5Checksum": {
                     "type": "string",
-                    "description": "MD5 checksum of the annotation file"
+                    "description": "MD5 checksum of the annotation file."
                 }
             },
             "required": [
@@ -145,19 +183,21 @@
             ]
         },
         "assembly": {
-            "description": "Assembly accession used to mapfeatureId the reads",
-            "examples": {
-                "accession": "GCA_000001405.29",
-                "name": "GRCh38.p14"
-            },
+            "description": "Reference genome assembly used to map reads and define genomic coordinates for features in this matrix.",
+            "examples": [
+                {
+                    "accession": "GCA_000001405.29",
+                    "name": "GRCh38.p14"
+                }
+            ],
             "type": "object",
             "properties": {
                 "accession": {
-                    "description": "Assembly accession",
+                    "description": "Assembly accession (e.g. INSDC GCA_/GCF_).",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Name of the assembly",
+                    "description": "Human-readable assembly name.",
                     "type": "string"
                 }
             },
@@ -168,8 +208,12 @@
         }
     },
     "required": [
-        "expressionValues",
-        "matrixId"
+        "matrixId",
+        "expressionUnitAndScale",
+        "featureType",
+        "annotation",
+        "assembly",
+        "reproducible"
     ],
     "type": "object"
 }

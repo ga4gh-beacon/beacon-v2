@@ -1,0 +1,23 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "matrixId": "matrix-gene-expression-001",
+    "expressionUnitAndScale": {
+        "unit": "TPM",
+        "scale": "linear"
+    },
+    "featureType": [
+        {
+            "id": "SO:0000704",
+            "label": "gene"
+        }
+    ],
+    "annotation": {
+        "source": "ensembl",
+        "version": "109"
+    },
+    "assembly": {
+        "accession": "GCA_000001405.29",
+        "name": "GRCh38.p14"
+    },
+    "reproducible": false
+}
