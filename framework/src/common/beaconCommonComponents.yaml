@@ -257,7 +257,6 @@ $defs:
     description: Set of handovers to be added in one section the response.
     type: array
     items:
-      description: Requested schema to be used for individuals in the response.
       $ref: '#/$defs/Handover'
   Handover:
     type: object
