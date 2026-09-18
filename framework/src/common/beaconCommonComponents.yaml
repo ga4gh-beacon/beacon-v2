@@ -43,7 +43,7 @@ $defs:
         type: integer
         format: int32
         examples:
-          - '404'
+          - 404
         description: >-
           Entry not found
       errorMessage:
