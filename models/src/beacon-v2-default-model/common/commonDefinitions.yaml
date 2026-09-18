@@ -13,7 +13,7 @@ $defs:
         label: female
       - id: NCIT:C20197
         label: male
-      - id: NCIT:C1799
+      - id: NCIT:C17998
         label: unknown
   KaryotypicSex:
     description: >-
