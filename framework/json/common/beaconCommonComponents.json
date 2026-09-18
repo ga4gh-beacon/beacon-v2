@@ -18,7 +18,7 @@
                 "errorCode": {
                     "description": "Entry not found",
                     "examples": [
-                        "404"
+                        404
                     ],
                     "format": "int32",
                     "type": "integer"
