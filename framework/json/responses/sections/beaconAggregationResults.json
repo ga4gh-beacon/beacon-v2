@@ -1,0 +1,201 @@
+{
+    "$defs": {
+        "AggregationConcept": {
+            "description": "Concept on which the aggregation was performed, including the property in the data model and optional termIds or splits for selection or binning of the property values.",
+            "properties": {
+                "description": {
+                    "description": "A description of the summary concept, e.g. with details about the included property and the operations performed during aggregation."
+                },
+                "filters": {
+                    "description": "Optional list of filters that had been used to select specific values for this aggregation of the matched data.",
+                    "examples": [
+                        [
+                            {
+                                "id": "NCIT:C9384",
+                                "label": "Kidney Carcinoma"
+                            },
+                            {
+                                "id": "NCIT:C3513",
+                                "label": "Esophageal Carcinoma"
+                            },
+                            {
+                                "id": "NCIT:C35850",
+                                "label": "Head and Neck Carcinoma"
+                            }
+                        ],
+                        [
+                            {
+                                "id": "EFO:0030075",
+                                "label": "cDNA microarray"
+                            },
+                            {
+                                "id": "EFO:0010938",
+                                "label": "large-insert clone DNA microarray"
+                            }
+                        ]
+                    ],
+                    "items": {
+                        "$ref": "../../requests/filteringTerms.json#$defs/FilteringTermInRequest"
+                    },
+                    "minItems": 1,
+                    "type": "array"
+                },
+                "id": {
+                    "description": "The aggregation term id. It can be used to limit or combine the aggregations performed.",
+                    "examples": [
+                        "followupTime",
+                        "sexAtBirth"
+                    ],
+                    "type": "string"
+                },
+                "label": {
+                    "description": "A short label which e.g. can be used by clients to label diagrams or data tables.",
+                    "examples": [
+                        "Follow-up Time After Diagnosis"
+                    ],
+                    "type": "string"
+                },
+                "property": {
+                    "description": "The property, including the entity/scope, in the data model on which the aggregation was performed.",
+                    "examples": [
+                        "biosample.histologicalDiagnosis.id",
+                        "individual.sex.id",
+                        "biosample.collectionMoment"
+                    ],
+                    "type": "string"
+                },
+                "sorted": {
+                    "description": "Indicates whether the resulting distribution results will be sorted in some way.",
+                    "type": "boolean"
+                },
+                "splits": {
+                    "description": "Optional list of **sorted** splits to group values for ranges or bins when performing the aggregation. This is for information only and the values should be reflected in the distribution itself.",
+                    "items": {
+                        "$ref": "../beaconAggregationTermsResults#/$defs/SplitItem"
+                    },
+                    "minItems": 1,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "type": "object"
+        },
+        "AggregationObject": {
+            "additionalItems": true,
+            "description": "Aggregation object describing the count of one (or more, intersected) values for the concept(s) aggregated on.",
+            "properties": {
+                "conceptValues": {
+                    "description": "List of ordered concept values (one per concept in `concepts`). These can represent values from the respected property or interpolations ( e.g. bins from splits).",
+                    "items": {
+                        "$ref": "#/$defs/ConceptValue"
+                    },
+                    "type": "array"
+                },
+                "count": {
+                    "description": "Count of occurrences for this aggregation object in the matched data.",
+                    "minimum": 0,
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "conceptValues",
+                "count"
+            ],
+            "type": "object"
+        },
+        "AggregationResultsInstance": {
+            "additionalItems": true,
+            "description": "Summary data from results, with distributions of values (or value combinations) for one or more concepts.\nEach summary is identified by an `id`, `label`, `description`, and a list of one or more `concepts`. An an optional `sorted` property can indicate to the client that the returned `distribution` of the aggregation objects response has some pre-defined order.\nEach of the `concepts` describes the scope (entity; `individual`, `biosample` ...), the property aggregated on, and optional `terms` or `splits` for selection or binning of the property values.",
+            "properties": {
+                "anyValueCount": {
+                    "$ref": "#/$defs/AnyValueCount"
+                },
+                "concepts": {
+                    "items": {
+                        "$ref": "#/$defs/AggregationConcept"
+                    },
+                    "type": "array"
+                },
+                "distinctValuesCount": {
+                    "$ref": "#/$defs/DistinctValuesCount"
+                },
+                "distribution": {
+                    "description": "A distribution contains a list of aggregation objects, where each describes the count of one (or more, intersected) values for the concept(s) aggregated on.",
+                    "items": {
+                        "$ref": "#/$defs/AggregationObject"
+                    },
+                    "type": "array"
+                },
+                "scope": {
+                    "description": "The scope (entity type) for which the results are reported. This does not have to be explicitly provided if it can be inferred from the scope of the response entry point, but can be provided for clarity or if the response includes aggregations for multiple scopes (e.g. an overview response at the `/datasets` endpoint).",
+                    "examples": [
+                        "individual",
+                        "biosample",
+                        "genomicVariation"
+                    ]
+                }
+            },
+            "required": [
+                "concepts",
+                {
+                    "anyOf": [
+                        "distribution",
+                        "distinctValuesCount",
+                        "anyValueCount"
+                    ]
+                }
+            ],
+            "type": "object"
+        },
+        "AnyValueCount": {
+            "description": "The number of any value for the the aggregated concept(s) in the matched data (excluding such with missing values for _any_ of the properties).  This can be used to report the data content for a given property (e.g. individuals with a reported `followupTime` value, regardless of the value), or of samples which have values for combined properties (e.g. all individuals with `followupTime`and reported `sex`).",
+            "minimum": 0,
+            "type": "integer"
+        },
+        "ConceptValue": {
+            "additionalItems": true,
+            "description": "A value or bin ... for the concept property.",
+            "properties": {
+                "id": {
+                    "description": "Identifier for the concept value. This can be e.g. a term id, a bin (e.g. '[P0D, P18M)'), or `undefined` for missing values.",
+                    "examples": [
+                        "NCIT:C4017",
+                        "[P0D, P18M)",
+                        "undefined"
+                    ],
+                    "type": "string"
+                },
+                "label": {
+                    "description": "Human readable label for the concept value.",
+                    "examples": [
+                        "Breast Ductal Carcinoma",
+                        "younger than 18 months"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "type": "object"
+        },
+        "DistinctValuesCount": {
+            "description": "The number of distinct values for the aggregated concept(s) in the matched data. This can e.g. be used to represent the number of all distinct `biosample.id` values to report the number of distinct biosamples in the matched data.",
+            "minimum": 0,
+            "type": "integer"
+        }
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Beacon aggregate results section.",
+    "examples": {
+        "$ref": "../examples-sections/beaconAggregationResults-examples.json#/examples"
+    },
+    "items": {
+        "$ref": "#/$defs/AggregationResultsInstance"
+    },
+    "minItems": 0,
+    "name": "Beacon Aggregation Results",
+    "type": "array"
+}

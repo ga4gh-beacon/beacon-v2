@@ -1,0 +1,208 @@
+examples:
+  - concepts:
+      - id: followupIndividuals
+    anyValueCount: 3456
+
+  - concepts:
+      - id: biosampleStatus
+        label: Biosample provenance status
+    distribution:
+      - conceptValues:
+          - id: EFO:0009654
+            label: reference sample
+        count: 123
+      - conceptValues:
+          - id: EFO:0009656
+            label: neoplastic sample
+        count: 456
+
+  - scope: biosample
+    concepts:
+      - property: biosample.histological_diagnosis.id
+        label: Different histological diagnoses
+    distinctValuesCount: 32
+  
+  - scope: individual
+    concepts:
+      - property: individual.index_disease.followup
+        label: Follow-up time since diagnosis
+        sorted: true
+    distribution:
+      - conceptValues:
+          - id: '[P0D, P18M)'
+            label: < 18 months
+        count: 325
+      - conceptValues:
+          - id: '[P18M, P10Y)'
+            label: 1.5 to < 10 years
+        count: 339
+      - conceptValues:
+          - id: '[P10Y, P60Y)'
+            label: 8 to < 60 years
+        count: 61
+      - conceptValues:
+          - id: undefined
+            label: undefined
+        count: 719
+
+  - scope: individual
+    concepts:
+      - id: diseases
+        label: Selected carcinoma types
+    distribution:
+      - conceptValues:
+          - id: NCIT:C2919
+            label: Prostate Adenocarcinoma
+        count: 426
+      - conceptValues:
+          - id: NCIT:C4017
+            label: Breast Ductal Carcinoma
+        count: 423
+      - conceptValues:
+          - id: NCIT:C3512
+            label: Lung Adenocarcinoma
+        count: 317
+      - conceptValues:
+          - id: NCIT:C4349
+            label: Colon Adenocarcinoma
+        count: 94
+
+  - scope: individual
+    concepts:
+      - id: diseases
+        label: Selected carcinoma types
+      - id: sexAtBirth
+        label: Sex at birth
+    distribution:
+      - conceptValues:
+          - id: NCIT:C2919
+            label: Prostate Adenocarcinoma
+          - id: NCIT:C20197
+            label: male
+        count: 426
+      - conceptValues:
+          - id: NCIT:C4017
+            label: Breast Ductal Carcinoma
+          - id: NCIT:C16576
+            label: female
+        count: 423
+      - conceptValues:
+          - id: NCIT:C3512
+            label: Lung Adenocarcinoma
+          - id: NCIT:C16576
+            label: female
+        count: 317
+      - conceptValues:
+          - id: NCIT:C3512
+            label: Lung Adenocarcinoma
+          - id: NCIT:C20197
+            label: male
+        count: 138
+      - conceptValues:
+          - id: NCIT:C4349
+            label: Colon Adenocarcinoma
+          - id: NCIT:C20197
+            label: male
+        count: 94
+      - conceptValues:
+          - id: NCIT:C8294
+            label: Pancreatic Adenocarcinoma
+          - id: NCIT:C16576
+            label: female
+        count: 92
+      - conceptValues:
+          - id: NCIT:C8294
+            label: Pancreatic Adenocarcinoma
+          - id: NCIT:C20197
+            label: male
+        count: 87
+      - conceptValues:
+          - id: NCIT:C3493
+            label: Lung Squamous Cell Carcinoma
+          - id: NCIT:C20197
+            label: male
+        count: 71
+      - conceptValues:
+          - id: NCIT:C4004
+            label: Gastric Adenocarcinoma
+          - id: NCIT:C17998
+            label: unknown
+        count: 62
+      - conceptValues:
+          - id: NCIT:C3512
+            label: Lung Adenocarcinoma
+          - id: NCIT:C17998
+            label: unknown
+        count: 60
+      - conceptValues:
+          - id: NCIT:C3493
+            label: Lung Squamous Cell Carcinoma
+          - id: NCIT:C16576
+            label: female
+        count: 43
+      - conceptValues:
+          - id: NCIT:C3493
+            label: Lung Squamous Cell Carcinoma
+          - id: NCIT:C17998
+            label: unknown
+        count: 41
+      - conceptValues:
+          - id: NCIT:C4004
+            label: Gastric Adenocarcinoma
+          - id: NCIT:C16576
+            label: female
+        count: 39
+      - conceptValues:
+          - id: NCIT:C4004
+            label: Gastric Adenocarcinoma
+          - id: NCIT:C20197
+            label: male
+        count: 33
+      - conceptValues:
+          - id: NCIT:C4025
+            label: Esophageal Adenocarcinoma
+          - id: NCIT:C17998
+            label: unknown
+        count: 32
+      - conceptValues:
+          - id: NCIT:C4025
+            label: Esophageal Adenocarcinoma
+          - id: NCIT:C20197
+            label: male
+        count: 30
+      - conceptValues:
+          - id: NCIT:C5105
+            label: Colorectal Adenocarcinoma
+          - id: NCIT:C20197
+            label: male
+        count: 27
+      - conceptValues:
+          - id: NCIT:C8294
+            label: Pancreatic Adenocarcinoma
+          - id: NCIT:C17998
+            label: unknown
+        count: 26
+      - conceptValues:
+          - id: NCIT:C4917
+            label: Lung Small Cell Carcinoma
+          - id: NCIT:C16576
+            label: female
+        count: 26
+      - conceptValues:
+          - id: NCIT:C5105
+            label: Colorectal Adenocarcinoma
+          - id: NCIT:C16576
+            label: female
+        count: 21
+      - conceptValues:
+          - id: NCIT:C4024
+            label: Esophageal Squamous Cell Carcinoma
+          - id: NCIT:C17998
+            label: unknown
+        count: 20
+      - conceptValues:
+          - id: NCIT:C4917
+            label: Lung Small Cell Carcinoma
+          - id: NCIT:C20197
+            label: male
+        count: 18
