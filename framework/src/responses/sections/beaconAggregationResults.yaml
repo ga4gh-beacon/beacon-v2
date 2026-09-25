@@ -110,7 +110,7 @@ $defs:
         type: array
         minItems: 1
         items:
-          $ref: ../../requests/filteringTerms.yaml#$defs/FilteringTermInRequest   
+          $ref: ../../requests/filteringTerms.yaml#/$defs/FilteringTermInRequest
         examples:
           - - id: NCIT:C9384
               label: Kidney Carcinoma
