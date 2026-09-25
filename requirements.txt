@@ -3,3 +3,4 @@ mkdocs-with-pdf
 mdx_gh_links
 pymdown-extensions
 mkdocs-mermaid2-plugin
+ruamel.yaml
