@@ -5,8 +5,6 @@ type: array
 minItems: 0
 items:
   $ref: "#/$defs/AggregationResultsInstance"
-examples:
-  $ref: ../examples-sections/beaconAggregationResults-examples.yaml#/examples
 $defs:
   AggregationResultsInstance:
     description: >-
