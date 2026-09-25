@@ -5,8 +5,6 @@ type: array
 minItems: 0
 items:
   $ref: "#/$defs/AggregationResultsInstance"
-examples:
-  $ref: ../examples-sections/beaconAggregationResults-examples.yaml#/examples
 $defs:
   AggregationResultsInstance:
     description: >-
@@ -53,10 +51,13 @@ $defs:
 
     required:
       - concepts
-      - anyOf:
-          - distribution
-          - distinctValuesCount
-          - anyValueCount
+    anyOf:
+      - required:
+        - distribution
+      - required:
+        - distinctValuesCount
+      - required:
+        - anyValueCount
 
     additionalItems: True
 
@@ -107,7 +108,7 @@ $defs:
         type: array
         minItems: 1
         items:
-          $ref: ../../requests/filteringTerms.yaml#$defs/FilteringTermInRequest   
+          $ref: ../../requests/filteringTerms.yaml#/$defs/FilteringTermInRequest
         examples:
           - - id: NCIT:C9384
               label: Kidney Carcinoma
@@ -127,7 +128,7 @@ $defs:
         type: array
         minItems: 1
         items:
-          $ref: "../beaconAggregationTermsResults#/$defs/SplitItem"
+          $ref: "./beaconAggregationTermsResults.yaml#/$defs/SplitItem"
     required:
       - id
 

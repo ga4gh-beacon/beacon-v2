@@ -35,7 +35,7 @@
                         ]
                     ],
                     "items": {
-                        "$ref": "../../requests/filteringTerms.json#$defs/FilteringTermInRequest"
+                        "$ref": "../../requests/filteringTerms.json#/$defs/FilteringTermInRequest"
                     },
                     "minItems": 1,
                     "type": "array"
@@ -71,7 +71,7 @@
                 "splits": {
                     "description": "Optional list of **sorted** splits to group values for ranges or bins when performing the aggregation. This is for information only and the values should be reflected in the distribution itself.",
                     "items": {
-                        "$ref": "../beaconAggregationTermsResults#/$defs/SplitItem"
+                        "$ref": "./beaconAggregationTermsResults.json#/$defs/SplitItem"
                     },
                     "minItems": 1,
                     "type": "array"
@@ -107,6 +107,23 @@
         },
         "AggregationResultsInstance": {
             "additionalItems": true,
+            "anyOf": [
+                {
+                    "required": [
+                        "distribution"
+                    ]
+                },
+                {
+                    "required": [
+                        "distinctValuesCount"
+                    ]
+                },
+                {
+                    "required": [
+                        "anyValueCount"
+                    ]
+                }
+            ],
             "description": "Summary data from results, with distributions of values (or value combinations) for one or more concepts.\nEach summary is identified by an `id`, `label`, `description`, and a list of one or more `concepts`. An an optional `sorted` property can indicate to the client that the returned `distribution` of the aggregation objects response has some pre-defined order.\nEach of the `concepts` describes the scope (entity; `individual`, `biosample` ...), the property aggregated on, and optional `terms` or `splits` for selection or binning of the property values.",
             "properties": {
                 "anyValueCount": {
@@ -138,14 +155,7 @@
                 }
             },
             "required": [
-                "concepts",
-                {
-                    "anyOf": [
-                        "distribution",
-                        "distinctValuesCount",
-                        "anyValueCount"
-                    ]
-                }
+                "concepts"
             ],
             "type": "object"
         },
@@ -189,9 +199,6 @@
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Beacon aggregate results section.",
-    "examples": {
-        "$ref": "../examples-sections/beaconAggregationResults-examples.json#/examples"
-    },
     "items": {
         "$ref": "#/$defs/AggregationResultsInstance"
     },

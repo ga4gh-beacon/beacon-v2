@@ -35,7 +35,7 @@
                         ]
                     ],
                     "items": {
-                        "$ref": "../../requests/filteringTerms.json#$defs/FilteringTermInRequest"
+                        "$ref": "../../requests/filteringTerms.json#/$defs/FilteringTermInRequest"
                     },
                     "minItems": 1,
                     "type": "array"
