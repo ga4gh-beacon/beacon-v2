@@ -71,7 +71,7 @@
                 "splits": {
                     "description": "Optional list of **sorted** splits to group values for ranges or bins when performing the aggregation. This is for information only and the values should be reflected in the distribution itself.",
                     "items": {
-                        "$ref": "../beaconAggregationTermsResults#/$defs/SplitItem"
+                        "$ref": "./beaconAggregationTermsResults.json#/$defs/SplitItem"
                     },
                     "minItems": 1,
                     "type": "array"
