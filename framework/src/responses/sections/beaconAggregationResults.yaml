@@ -53,10 +53,13 @@ $defs:
 
     required:
       - concepts
-      - anyOf:
-          - distribution
-          - distinctValuesCount
-          - anyValueCount
+    anyOf:
+      - required:
+        - distribution
+      - required:
+        - distinctValuesCount
+      - required:
+        - anyValueCount
 
     additionalItems: True
 
