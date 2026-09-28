@@ -23,38 +23,32 @@ $defs:
       selection or binning of the property values.
     type: object
     properties:
-      scope:
+      requestId:
         description: >-
-          The scope (entity type) for which the results are reported. This does
-          not have to be explicitly provided if it can be inferred from the
-          scope of the response entry point, but can be provided for clarity or
-          if the response includes aggregations for multiple scopes (e.g. an overview
-          response at the `/datasets` endpoint).
-        examples:
-          - individual
-          - biosample
-          - genomicVariation
-      concepts:
+          An optional id for the aggregation request, which can be used for
+          tracking and logging purposes. This is not used by the beacon for
+          processing the request but can be included in the response metadata.
+        type: string
+      aggregationTerms:
         type: array
         items:
           $ref: "#/$defs/AggregationConcept"
-      distribution:
+      categoriesAndValues:
         description: >-
-          A distribution contains a list of aggregation objects, where each describes
-          the count of one (or more, intersected) values for the concept(s)
-          aggregated on.
+          A aggregation results where each describes the count of one (or more,
+          intersected) values for the concept(s) aggregated on.
         type: array
         items:
-          $ref: "#/$defs/AggregationObject"
+          $ref: "#/$defs/AggregationCategoriesResult"
       distinctValuesCount:
           $ref: "#/$defs/DistinctValuesCount"
       anyValueCount:
           $ref: "#/$defs/AnyValueCount"
 
     required:
-      - concepts
+      - aggregationTerms
       - anyOf:
-          - distribution
+          - categoriesAndValues
           - distinctValuesCount
           - anyValueCount
 
@@ -75,7 +69,7 @@ $defs:
         examples:
           - followupTime
           - sexAtBirth
-      label:
+      name:
         description: >-
           A short label which e.g. can be used by clients to label diagrams or
           data tables.
@@ -86,98 +80,42 @@ $defs:
         description: >-
           A description of the summary concept, e.g. with details about the
           included property and the operations performed during aggregation.
-      property:
-        description: >-
-          The property, including the entity/scope, in the data model on which the
-          aggregation was performed.
-        type: string
-        examples:
-          - biosample.histologicalDiagnosis.id
-          - individual.sex.id
-          - biosample.collectionMoment
       sorted:
         description: >-
           Indicates whether the resulting distribution results will be sorted in
           some way.
         type: boolean
-      filters:
-        description: >-
-          Optional list of filters that had been used to select specific values
-          for this aggregation of the matched data.
-        type: array
-        minItems: 1
-        items:
-          $ref: ../../requests/filteringTerms.yaml#$defs/FilteringTermInRequest   
-        examples:
-          - - id: NCIT:C9384
-              label: Kidney Carcinoma
-            - id: NCIT:C3513
-              label: Esophageal Carcinoma
-            - id: NCIT:C35850
-              label: Head and Neck Carcinoma
-          - - id: EFO:0030075
-              label: cDNA microarray
-            - id: EFO:0010938
-              label: large-insert clone DNA microarray
-      splits:
-        description: >-
-          Optional list of **sorted** splits to group values for ranges or bins
-          when performing the aggregation. This is for information only and the values
-          should be reflected in the distribution itself.
-        type: array
-        minItems: 1
-        items:
-          $ref: "../beaconAggregationTermsResults#/$defs/SplitItem"
     required:
       - id
 
-  AggregationObject:
+  AggregationCategoriesResult:
     description: >-
       Aggregation object describing the count of one (or more, intersected)
       values for the concept(s) aggregated on.
     type: object
     properties:
-      conceptValues:
+      ids:
         description: >-
-          List of ordered concept values (one per concept in `concepts`). These
-          can represent values from the respected property or interpolations (
+          Ordered list of ids of categories (one per concept in `concepts`).
+          These can represent values from the respected property or interpolations (
           e.g. bins from splits).
         type: array
         items:
-          $ref: "#/$defs/ConceptValue"
+          type: string
+      names:
+        description: >-
+          Ordered list of names for the categories (see `ids`).
+        type: array
+        items:
+          type: string
       count:
         description: >-
-          Count of occurrences for this aggregation object in the matched data.
+          Count of occurrences for this categorie of the in the matched data.
         type: integer
         minimum: 0
     required:
-      - conceptValues
+      - ids
       - count
-    additionalItems: True
-
-  ConceptValue:
-    description: >-
-      A value or bin ... for the concept property.
-    type: object
-    properties:
-      id:
-        description: >-
-          Identifier for the concept value. This can be e.g. a term id, a bin
-          (e.g. '[P0D, P18M)'), or `undefined` for missing values.
-        type: string
-        examples:
-          - NCIT:C4017
-          - '[P0D, P18M)'
-          - undefined
-      label:
-        description: >-
-          Human readable label for the concept value.
-        type: string
-        examples:
-          - Breast Ductal Carcinoma
-          - younger than 18 months
-    required:
-      - id
     additionalItems: True
 
   DistinctValuesCount:
