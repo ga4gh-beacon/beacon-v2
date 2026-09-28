@@ -18,6 +18,7 @@ paths:
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/includeResultsetResponses'
         - $ref: '#/components/parameters/filters'
+        - $ref: '#/components/parameters/aggregators'
       description: Get a list of individuals
       operationId: getIndividuals
       tags:
@@ -275,3 +276,10 @@ components:
         example1:
           value:
             - NCIT:C20197
+    aggregators:
+      name: aggregators
+      in: query
+      schema:
+        type: array
+        items:
+          type: string

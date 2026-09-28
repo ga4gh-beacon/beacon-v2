@@ -1,7 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": true,
-    "description": "A `beaconResultsetsResponse` returns the results of a query against a beacon or beacon aggregator. Beyond the `responseSummary` for overall matches the response contains details about the matches in individual **collections** in the beacon or beacon network. This type of response is required when serving a request with a \"record\" level `responseGranularity`, and `beaconResultsets` typically contain a list of records matched by the query.\nThe types of `beaconResultsets` objects are defined in the beacon's configuration; e.g. if using the Beacon v2+ default model the types `dataset` and `cohort` are supported as result sets.    ",
+    "description": "Definition for a response that provides solely summaries of records in the beacon but not delivers individual records. While summaries might be also part of other response types (e.g. result set specific in `beaconResultsetResponse`) this response type specifically focuses on providing aggregated statistics of a beacon resource similarily to the `beaconBooleanResponse` and `beaconCountResponse`.",
     "properties": {
         "beaconHandovers": {
             "$ref": "../common/beaconCommonComponents.json#/$defs/ListOfHandovers",
@@ -15,23 +14,18 @@
             "$ref": "./sections/beaconResponseMeta.json",
             "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
         },
-        "response": {
-            "$ref": "./sections/beaconResultsets.json",
-            "description": "Response for queries that recovers any result."
-        },
         "responseAggregation": {
             "$ref": "./sections/beaconAggregationResults.json",
             "description": "Aggregation of results for the overall response from the beacon."
         },
         "responseSummary": {
-            "$ref": "./sections/beaconSummaryResponseSection.json",
+            "$ref": "./sections/beaconCountResponseSection.json",
             "description": "Response summary, including Boolean and optionally results count."
         }
     },
     "required": [
         "meta",
-        "responseSummary",
-        "response"
+        "responseSummary"
     ],
     "type": "object"
 }

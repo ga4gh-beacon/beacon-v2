@@ -142,6 +142,28 @@ paths:
             application/json:
               schema:
                 $ref: ./responses/beaconErrorResponse.yaml
+  /aggregation_terms:
+    parameters:
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/limit'
+    get:
+      description: Get the list of aggregation terms handled by this beacon
+      operationId: getAggregationTerms
+      tags:
+        - Informational endpoints
+      responses:
+        '200':
+          description: Successful operation.
+          content:
+            application/json:
+              schema:
+                $ref: ./responses/beaconAggregationTermsResponse.yaml
+        default:
+          description: An unsuccessful operation.
+          content:
+            application/json:
+              schema:
+                $ref: ./responses/beaconErrorResponse.yaml
 components:
   responses:
     infoOKResponse:

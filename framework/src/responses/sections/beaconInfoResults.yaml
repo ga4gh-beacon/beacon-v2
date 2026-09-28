@@ -56,14 +56,14 @@ properties:
       The date/time the Beacon was created (ISO 8601 format).
     examples:
       - 2014-07-19
-      - 2017-01-17T20:33:40Z
+      - "2017-01-17T20:33:40Z"
   updateDateTime:
     type: string
     description: >-
       The time the Beacon was updated in (ISO 8601 format).
     examples:
       - 2014-07-19
-      - 2017-01-17T20:33:40Z
+      - "2017-01-17T20:33:40Z"
   info:
     description: >-
       Additional unspecified metadata about the Beacon service.

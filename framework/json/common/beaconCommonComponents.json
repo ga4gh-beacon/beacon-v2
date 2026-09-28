@@ -106,10 +106,11 @@
         },
         "Granularity": {
             "default": "boolean",
-            "description": "Level of detail of the response:\n* `boolean`: returns true/false' responses * `count`: adds the total number of positive results found * `record`: returns details for every row. In cases where a Beacon prefers to return records with fewer than allattributes, different strategies have to be considered w/o adding them to the current design, e.g.:\n    - keeping non-mandatory attributes empty\n    - Beacon to provide a minimal record definition",
+            "description": "Level of detail of the response:\n* `boolean`: returns true/false' responses * `count`: adds the total number of positive results found * `aggregated`: returns aggregated results, e.g. counts per filtering term * `record`: returns matched records in the schema of the respective response\n  entity",
             "enum": [
                 "boolean",
                 "count",
+                "aggregated",
                 "record"
             ],
             "type": "string"

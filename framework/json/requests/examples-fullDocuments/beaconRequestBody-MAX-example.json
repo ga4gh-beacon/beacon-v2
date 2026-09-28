@@ -10,6 +10,33 @@
         ]
     },
     "query": {
+        "aggregators": [
+            {
+                "aggregationTerms": [
+                    {
+                        "id": "SexAtBirth"
+                    },
+                    {
+                        "id": "HistologicalDiagnoses",
+                        "selectors": [
+                            {
+                                "label": "Prostate Adenocarcinoma",
+                                "value": "NCIT:C2919"
+                            },
+                            {
+                                "label": "Breast Ductal Carcinoma",
+                                "value": "NCIT:C4017"
+                            },
+                            {
+                                "label": "Lung Adenocarcinoma",
+                                "value": "NCIT:C3512"
+                            }
+                        ]
+                    }
+                ],
+                "requestId": "aggr3"
+            }
+        ],
         "filters": [
             {
                 "id": "EFO:0001212",

@@ -25,6 +25,11 @@ $defs:
         $ref: ./requestParameters.yaml
       filters:
         $ref: ./filteringTerms.yaml
+      aggregators:
+        description: >-
+          List of ids of aggregation terms to include in an summary
+          data response
+        $ref: ./aggregationTerms.yaml
       includeResultsetResponses:
         $ref: ../common/beaconCommonComponents.yaml#/$defs/IncludeResultsetResponses
       pagination:
