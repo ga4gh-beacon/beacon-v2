@@ -63,6 +63,35 @@
             ],
             "type": "object"
         },
+        "FilteringTermsGroupsInRequest": {
+            "description": "Either a single filter or the 'AND' (CNF) group of filters.",
+            "examples": [
+                { "id": "NCIT:C20197" },
+                [
+                    {
+                        "id": "Weight",
+                        "operator": ">",
+                        "value": 80
+                    },
+                    {
+                        "id": "BMI",
+                        "operator": ">",
+                        "value": 25
+                    }
+                ]
+            ],
+            "oneOf": [
+                {
+                    "$ref": "#/$defs/FilteringTermInRequest" 
+                },
+                {
+                    "items": {
+                        "$ref": "#/$defs/FilteringTermInRequest"
+                    },
+                    "type": "array"
+                }
+            ]
+        },
         "FilteringTermInRequest": {
             "anyOf": [
                 {
@@ -116,9 +145,13 @@
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Filtering terms are the main means to select subsets of records from a Beacon response. While the name implies the application to a generated response, in practice implementations may apply them at the query stage. Note: In the processing of Beacon v2.0 requests multiple filters are assumed to be chained by the logical AND operator.",
+    "description": "Filtering terms are the main means to select subsets of records from a Beacon response. While the name implies the application to a generated response, in practice implementations may apply them at the query stage. Note: While multiple filters are assumed to be chained by the logical AND operator, if any of filters is a group of filters itself the filters are chained by the logical OR operator.",
+    "examples": [
+                    [ { "id": "NCIT:C20197" } ],
+                    [ [ {"id": "MONDO:0004643"} ], [{"id": "MONDO:0020334"} ] ]
+    ],
     "items": {
-        "$ref": "#/$defs/FilteringTermInRequest"
+        "$ref": "#/$defs/FilteringTermsGroupsInRequest"
     },
     "title": "Filtering Term Element",
     "type": "array"
