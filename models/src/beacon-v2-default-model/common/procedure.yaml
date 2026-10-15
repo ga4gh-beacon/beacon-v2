@@ -1,13 +1,14 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Procedure
-description: 'Class describing a clinical procedure or intervention. Provenance: GA4GH
-  Phenopackets v2 `Procedure`'
+description: >-
+  Class describing a clinical procedure or intervention.
+  Provenance: GA4GH Phenopackets v2 `Procedure`
 type: object
 properties:
-  procedureCode:
-    description: Clinical procedure performed with recommended values from Medical
-      Action Ontology (MAXO) 'Medical action' term tree (MAXO:0000001). Compares to
-      Phenopackets v2 `Procedure.code`
+  code:
+    description: >-
+      Clinical procedure performed with recommended values from Medical
+      Action Ontology (MAXO) "Medical action" term tree (`MAXO:0000001`).
     $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     examples:
       - id: MAXO:0001175
@@ -17,21 +18,26 @@ properties:
       - id: OBI:0002654
         label: needle biopsy
   bodySite:
-    description: Specific body site where the procedure was performed. Recommended
-      valuee from Uber-anatomy ontology (UBERON)
+    description: >-
+      Specific body site where the procedure was performed. It is ecommended to
+      use values from Uber-anatomy ontology (UBERON)
     $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     examples:
       - id: UBERON:0003403
         label: Skin of forearm
       - id: UBERON:0003214
         label: mammary gland alveolus
+  performed:
+    description: >-
+      age/time when the procedure was performed (definition from Phenopackets v2)
+    $ref: ./timeElement.yaml
   dateOfProcedure:
-    description: Date of procedure, in ISO8601 format
+    description: >-
+      Date of procedure, in ISO8601 format.
+      TODO: This is an additional property in Beacon v2 and might be removed.
     type: string
     format: date
-    example: '2010-07-10'
-  ageAtProcedure:
-    description: Compares to Phenopackets v2 `Procedure.performed`
-    $ref: ./timeElement.yaml
+    examples:
+      - 2010-07-10
 required:
-  - procedureCode
+  - code

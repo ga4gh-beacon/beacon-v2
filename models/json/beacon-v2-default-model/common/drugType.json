@@ -1,0 +1,13 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "default": "UNKNOWN_DRUG_TYPE",
+    "description": "Drugs can be administered in different contexts. This element does not intend to capture information about the administration route (e.g., by mouth or intravenous), but rather about the setting - inpatient, outpatient, or related to a (generally one-time) procedure. Provenance: Phenopackets v2' The values correspond to the ordinal values in the Phenopackets:\n* 0 - UNKNOWN_DRUG_TYPE * 1 - PRESCRIPTION * 2 - HR_MEDICATION_LIST * 3 - ADMINISTRATION_RELATED_TO_PROCEDURE",
+    "enum": [
+        "UNKNOWN_DRUG_TYPE",
+        "PRESCRIPTION",
+        "HR_MEDICATION_LIST",
+        "ADMINISTRATION_RELATED_TO_PROCEDURE"
+    ],
+    "title": "DrugType",
+    "type": "string"
+}

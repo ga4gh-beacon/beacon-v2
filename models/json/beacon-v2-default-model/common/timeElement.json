@@ -1,30 +1,41 @@
 {
-    "$comments": "If using an ontology class the use of NCIT Age Group ontology term (NCIT:C20587) descendants is recommended.",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Definition of a wrapper for various time descriptors. This follows the\nPhenopackets structure https://github.com/phenopackets/phenopacket-schema/blob/v2/docs/time-element.rst",
     "oneOf": [
         {
-            "$ref": "./age.json"
+            "age": {
+                "$ref": "./age.json"
+            }
         },
         {
-            "$ref": "./ageRange.json"
+            "ageRange": {
+                "$ref": "./ageRange.json"
+            }
         },
         {
-            "$ref": "./gestationalAge.json"
+            "gestationalAge": {
+                "$ref": "./gestationalAge.json"
+            }
         },
         {
-            "$ref": "./commonDefinitions.json#/$defs/Timestamp"
+            "timestamp": {
+                "$ref": "./commonDefinitions.json#/$defs/Timestamp"
+            }
         },
         {
-            "$ref": "./timeInterval.json"
+            "interval": {
+                "$ref": "./timeInterval.json"
+            }
         },
         {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
+            "ontologyClass": {
+                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
+                "description": "If using an ontology class the use of NCIT Age Group ontology term (NCIT:C20587) descendants is recommended."
+            }
         }
     ],
     "title": "TimeElement",
     "type": [
-        "object",
-        "string"
+        "object"
     ]
 }

@@ -1,11 +1,25 @@
 {
-    "$comments": "Compares to https://github.com/phenopackets/phenopacket-schema/blob/master/docs/treatment.rst, with modifications.",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Treatment(s) prescribed/administered, defined by treatment ID, date and age of onset, dose, schedule and duration.",
+    "description": "Treatment(s) prescribed/administered, defined by treatment ID, date and age of onset, dose, schedule and duration. Provenance: Phenopackets v2 `Treatment`",
     "properties": {
         "ageAtOnset": {
-            "$ref": "./age.json"
+            "$ref": "./age.json",
+            "description": "Age at treatment. Addition compared to Phenopackets model. TODO: Keep? Needs a general solution for chaining treatments w/ time points, diseases."
+        },
+        "agent": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
+            "description": "Code of treatment. Value from NCIT or any relevant ontology.",
+            "examples": [
+                {
+                    "id": "NCIT:C287",
+                    "label": "Aspirin"
+                },
+                {
+                    "id": "NCIT:C62078",
+                    "label": "Tamoxifen"
+                }
+            ]
         },
         "cumulativeDose": {
             "$ref": "./quantity.json"
@@ -15,6 +29,9 @@
                 "$ref": "./doseInterval.json"
             },
             "type": "array"
+        },
+        "drugType": {
+            "$ref": "./drugType.json"
         },
         "routeOfAdministration": {
             "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
@@ -29,24 +46,10 @@
                     "label": "Dietary"
                 }
             ]
-        },
-        "treatmentCode": {
-            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
-            "description": "Code of treatment. Value from NCIT or any relevant ontology. Compares to `agent` in Phenopackets v2",
-            "examples": [
-                {
-                    "id": "NCIT:C287",
-                    "label": "Aspirin"
-                },
-                {
-                    "id": "NCIT:C62078",
-                    "label": "Tamoxifen"
-                }
-            ]
         }
     },
     "required": [
-        "treatmentCode"
+        "agent"
     ],
     "title": "Treatment",
     "type": "object"
