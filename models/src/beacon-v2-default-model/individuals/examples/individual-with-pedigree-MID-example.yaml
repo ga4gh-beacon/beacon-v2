@@ -10,10 +10,10 @@ geographicOrigin:
   id: GAZ:00002586
   label: State of Wisconsin
 diseases:
-  - diseaseCode:
+  - term:
       id: HP:0001645
       label: Sudden cardiac death
-    ageOfOnset:
+    onset:
       ageGroup:
         id: NCIT:C16731
         label: Newborn
@@ -24,7 +24,7 @@ diseases:
 pedigrees:
   - id: SCD-Pedigree001
     disease:
-      diseaseCode:
+      term:
         id: HP:0001645
         label: Sudden cardiac death
     numSubjects: 4

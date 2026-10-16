@@ -1,14 +1,16 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Disease
-description: Diseases diagnosed e.g. to an individual, defined by diseaseID, age of
-  onset, stage, level of severity, outcome and the presence of family history. Similarities
-  to GA4GH Phenopackets v2 `Disease`
+description: >-
+  Diseases diagnosed e.g. to an individual, defined by diseaseID, age of
+  onset, stage, level of severity, outcome and the presence of family history.
+  Similarities to GA4GH Phenopackets v2 `Disease`
 type: object
 properties:
-  diseaseCode:
-    description: 'Disease identifier. Value from disease ontologies such as HPO, OMIM,
-      Orphanet, MONDO, e.g. lactose intolerance (HP:0004789, ICD10CM:E73). Provenance:
-      GA4GH Phenopackets v2 `Disease.term`'
+  term:
+    description: >-
+      Disease identifier. Value from disease ontologies such as HPO, OMIM,
+      Orphanet, MONDO, e.g. lactose intolerance (HP:0004789, ICD10CM:E73).
+      Provenance: GA4GH Phenopackets v2 `Disease.term`
     $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     examples:
       - id: HP:0004789
@@ -17,7 +19,7 @@ properties:
         label: lactose intolerance
       - id: OMIM:164400
         label: Spinocerebellar ataxia 1
-  ageOfOnset:
+  onset:
     $ref: ./timeElement.yaml
     examples:
       - id: NCIT:C49685
@@ -28,18 +30,64 @@ properties:
         end:
           iso8601duration: P59Y
       - iso8601duration: P2M4D
-  stage:
-    description: 'Ontology term from Ontology for General Medical Science (OGMS),
-      e.g. acute onset (OGMS:0000119). Provenance: GA4GH Phenopackets v2 `Disease.disease_stage`'
+  diseaseStage:
+    description: >-
+      List of terms representing the disease stage, e.g. AJCC stage group.
+      The list of elements constituting this attribute should be derived from
+      child terms of NCIT:C28108 (Disease Stage Qualifier) or equivalent hierarchy
+      from another ontology.
+      Provenance: GA4GH Phenopackets v2 `Disease.disease_stage`
+    type: list
+    items:
+      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    examples:
+      - - id: NCIT:C93281
+          label: Advanced Stage
+        - id: NCIT:C27971
+          label: Stage IV
+      - - id: OGMS:0000119
+          label: acute onset
+        - id: OGMS:0000106
+          label: remission
+  clinicalTNMfinding:
+    description: >-
+      List of terms representing the tumor TNM score, e.g. NCIT codes.
+      Provenance: GA4GH Phenopackets v2 `Disease.clinical_tnm_finding`
+    type: list
+    items:
+      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    examples:
+      - - id: NCIT:C48720
+          label: T1 Stage Finding
+        - id: NCIT:C48706
+          label: N1 Stage Finding
+        - id: NCIT:C48699
+          label: M0 Stage Finding
+      - - id: NCIT:C48737
+          label: TX Stage Finding
+  primarySite:
+    description: >-
+      The primary site of disease. It is ecommended to use values from Uber-anatomy
+      ontology (UBERON).
     $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     examples:
-      - id: OGMS:0000119
-        label: acute onset
-      - id: OGMS:0000117
-        label: asymptomatic
-      - id: OGMS:0000106
-        label: remission
-  severity:
+      - id: UBERON:0002037
+        label: cerebellum
+      - id: UBERON:0000310
+        label: breast
+  laterality:
+    description: >-
+      Laterality (left or right) of the primary site of sites if applicable.
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    examples:
+      - id: NCIT:C25228
+        label: Right
+      - id: NCIT:C25229
+        label: Left
+  severity: 
+    description: >-
+      Severity of the disease. Not in Phenopackets (there only used for
+      `phenotypicFeature`).
     $ref: ./commonDefinitions.yaml#/$defs/SeverityLevel
     examples:
       - id: HP:0012828
@@ -47,16 +95,19 @@ properties:
       - id: HP:0012826
         label: Moderate
   familyHistory:
-    description: Boolean indicating determined or self-reported presence of family
+    description: >-
+      Boolean indicating determined or self-reported presence of family
       history of the disease.
+      Not in Phenopackets.
     type: boolean
     examples:
       - true
   notes:
-    description: Unstructured text to describe additional properties of this disease
-      instance.
+    description: >-
+      Unstructured text to describe additional properties of this disease instance.
+      Not in Phenopackets.
     type: string
     examples:
       - Some free text
 required:
-  - diseaseCode
+  - term

@@ -25,3 +25,15 @@
 * `Treatment`
     - `treatmentCode` => `agent`
     - new: `drugType` & definition in `common`
+* `Disease`
+    - `diseaseCode` => `term`
+        * TODO: Mondo example
+    - `ageOfOnset` => `onset`
+    - `stage` => `diseaseStage`
+    - `clinicalTNMfinding` added
+    - `primarySite` added
+    - `laterality` added
+    - TODO: `phenotypicFeature` is in Beacon but not in PXF - there it is only part
+      of `phenotypicFeature`. So far in schema but should be discussed.
+    - TODO: `familyHistory` is in Beacon but not in PXF. So far in schema but
+      should be discussed.

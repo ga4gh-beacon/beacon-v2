@@ -2,20 +2,20 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "diseases": [
         {
-            "ageOfOnset": {
+            "familyHistory": true,
+            "onset": {
                 "ageGroup": {
                     "id": "NCIT:C16731",
                     "label": "Newborn"
                 }
             },
-            "diseaseCode": {
-                "id": "HP:0001645",
-                "label": "Sudden cardiac death"
-            },
-            "familyHistory": true,
             "severity": {
                 "id": "HP:0012828",
                 "label": "Severe"
+            },
+            "term": {
+                "id": "HP:0001645",
+                "label": "Sudden cardiac death"
             }
         }
     ],
@@ -31,7 +31,7 @@
     "pedigrees": [
         {
             "disease": {
-                "diseaseCode": {
+                "term": {
                     "id": "HP:0001645",
                     "label": "Sudden cardiac death"
                 }

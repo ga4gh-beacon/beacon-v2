@@ -1,7 +1,7 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 id: SCD-Pedigree001
 disease:
-  diseaseCode:
+  term:
     id: HP:0004789
     label: lactose intolerance
 numSubjects: 4
