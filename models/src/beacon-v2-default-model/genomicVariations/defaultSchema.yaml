@@ -10,6 +10,7 @@ required:
 properties:
   variation:
     oneOf:
+      - $ref: https://w3id.org/ga4gh/schema/vrs/2.0.1/json/Variation
       - $ref: https://w3id.org/ga4gh/schema/vrs/1.3/vrs.json#/definitions/MolecularVariation
       - $ref: https://w3id.org/ga4gh/schema/vrs/1.3/vrs.json#/definitions/SystemicVariation
       - $ref: '#/$defs/LegacyVariation'
