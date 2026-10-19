@@ -37,3 +37,15 @@
       of `phenotypicFeature`. So far in schema but should be discussed.
     - TODO: `familyHistory` is in Beacon but not in PXF. So far in schema but
       should be discussed.
+* `Pedigree`
+    - non-breaking change `$defs.pedigreeMember` => `$defs.PedigreeMember`
+    - adding PXF derived `persons` and `$defs.Person` and notes about provenance
+* `Sex`
+    - The current Phenopackets v2 uses an ENUM representation of Sex in the sense
+      of "typical phenotypic sex, as would be determined by a midwife or physician at birth".
+      With some experience now from Beacon implementations and the irregular use
+      identifiers it seems beneficial to change the Beacon model to the same approach
+      (_i.e._ providing a generic conceptual representation and leave the resolution
+      to the implementations). This is also in line with the previously documented
+      NCIT terms.
+

@@ -1,6 +1,10 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Pedigree
-description: Pedigree studies in which the individual is part of.
+description: >-
+  Pedigree studies in which the individual is part of.
+  For compatibility to Phenopackets v2 `Pedigree` a PED-compatible list of `Person`
+  objects should be represented in `persons`.
+  Additional parameters are part of the Beacon v2 legacy model.
 type: object
 properties:
   id:
@@ -15,20 +19,63 @@ properties:
     example: 10
   members:
     type: array
-    description: 'List of members of the pedigree. If the current pedigree definition
+    description: >-
+      List of members of the pedigree. If the current pedigree definition
       is attached to the proband, it contains the whole list of pedigree members,
       including the proband. If the definition is attached to an individual different
       than the proband, it only contains two entries: one that describes that member,
-      e.g. the proband mother or father, and one that points to the proband.'
+      e.g. the proband mother or father, and one that points to the proband.
     items:
-      $ref: '#/$defs/pedigreeMember'
+      $ref: '#/$defs/PedigreeMember'
     minItems: 1
+  persons:
+    description: >-
+      list of family members in this pedigree
+      Provenance: Phenopackets v2
+    type: array
+    items:
+      $ref: "#/$defs/Person"
+    minItems: 1
+
 $defs:
-  pedigreeMember:
+  AffectedStatus:
+    type: string
+    enum:
+      - MISSING
+      - UNAFFECTED
+      - AFFECTED
+  Person:
+    description: >-
+      A Phenopackets compatible pedigree representation consists of a list of
+      persons, compatible to the representation in a PED file.
+      Source: Phenopackets v2 `Person`
+    type: object
+    properties:
+      familyId:
+        type: string
+      individualId:
+        type: string
+      paternalId:
+        type: string
+      maternalId:
+        type: string
+      sex:
+        $ref: ./commonDefinitions.yaml/#$defs/Sex
+      affectedStatus:
+        $ref: "#$defs/AffectedStatus"
+    required:
+      - familyId
+      - individualId
+      - paternalId
+      - maternalId
+      - sex
+      - affectedStatus
+  PedigreeMember:
     type: object
     properties:
       memberId:
-        description: Identifier of the individual. The individual could be part of
+        description: >-
+          Identifier of the individual. The individual could be part of
           the same Beacon datasets or not, in which case the information here is meant
           to complete the pedigree. If the individual is also in the dataset use that
           Individual ID. If it is not the in the dataset, use a non-collading ID,
@@ -90,5 +137,7 @@ $defs:
 required:
   - id
   - disease
-  - members
+  - anyOf:
+      - members
+      - persons
 additionalProperties: true

@@ -1,6 +1,14 @@
 {
     "$defs": {
-        "pedigreeMember": {
+        "AffectedStatus": {
+            "enum": [
+                "MISSING",
+                "UNAFFECTED",
+                "AFFECTED"
+            ],
+            "type": "string"
+        },
+        "PedigreeMember": {
             "examples": [
                 {
                     "membersInProband": [
@@ -93,11 +101,43 @@
                 "affected"
             ],
             "type": "object"
+        },
+        "Person": {
+            "description": "A Phenopackets compatible pedigree representation consists of a list of persons, compatible to the representation in a PED file. Source: Phenopackets v2 `Person`",
+            "properties": {
+                "affectedStatus": {
+                    "$ref": "#$defs/AffectedStatus"
+                },
+                "familyId": {
+                    "type": "string"
+                },
+                "individualId": {
+                    "type": "string"
+                },
+                "maternalId": {
+                    "type": "string"
+                },
+                "paternalId": {
+                    "type": "string"
+                },
+                "sex": {
+                    "$ref": "./commonDefinitions.json/#$defs/Sex"
+                }
+            },
+            "required": [
+                "familyId",
+                "individualId",
+                "paternalId",
+                "maternalId",
+                "sex",
+                "affectedStatus"
+            ],
+            "type": "object"
         }
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Pedigree studies in which the individual is part of.",
+    "description": "Pedigree studies in which the individual is part of. For compatibility to Phenopackets v2 `Pedigree` a PED-compatible list of `Person` objects should be represented in `persons`. Additional parameters are part of the Beacon v2 legacy model.",
     "properties": {
         "disease": {
             "$ref": "../common/disease.json"
@@ -110,7 +150,7 @@
         "members": {
             "description": "List of members of the pedigree. If the current pedigree definition is attached to the proband, it contains the whole list of pedigree members, including the proband. If the definition is attached to an individual different than the proband, it only contains two entries: one that describes that member, e.g. the proband mother or father, and one that points to the proband.",
             "items": {
-                "$ref": "#/$defs/pedigreeMember"
+                "$ref": "#/$defs/PedigreeMember"
             },
             "minItems": 1,
             "type": "array"
@@ -119,12 +159,25 @@
             "description": "Total number of subjects in pedigree.",
             "example": 10,
             "type": "integer"
+        },
+        "persons": {
+            "description": "list of family members in this pedigree Provenance: Phenopackets v2",
+            "items": {
+                "$ref": "#/$defs/Person"
+            },
+            "minItems": 1,
+            "type": "array"
         }
     },
     "required": [
         "id",
         "disease",
-        "members"
+        {
+            "anyOf": [
+                "members",
+                "persons"
+            ]
+        }
     ],
     "title": "Pedigree",
     "type": "object"

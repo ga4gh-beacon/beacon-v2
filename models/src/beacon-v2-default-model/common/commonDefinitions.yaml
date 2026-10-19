@@ -1,37 +1,48 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Common Definitions
-description: Definitions for concepts used in several entry types, but that having
-  only one property are not complex enough to require a full independent schema document.
+description: >-
+  Definitions for concepts used in several entry types, but that having only one
+  property are not complex enough to require a full independent schema document.
 $defs:
   Sex:
-    description: 'Sex of the individual. Recommended values from NCIT General Qualifier
-      (NCIT:C27993): "unknown" (not assessed or not available) - NCIT:C17998; "female"
-      - NCIT:C16576;  "male" - NCIT:C20197'
-    $ref: ../../../../framework/json/common/ontologyTerm.yaml
-    examples:
-      - id: NCIT:C16576
-        label: female
-      - id: NCIT:C20197
-        label: male
-      - id: NCIT:C17998
-        label: unknown
+    description: >-
+      An enumeration used to represent the sex of an individual. This element does
+      not represent gender identity or KaryotypicSex, but instead represents
+      typical “phenotypic sex”, as would be determined by a midwife or physician
+      at birth.
+
+      * UNKNOWN_SEX: Not assessed or not available. Maps to NCIT:C17998
+      * FEMALE: Female sex. Maps to NCIT:C46113
+      * MALE: Male sex. Maps to NCIT:C46112
+      * OTHER_SEX: It is not possible to accurately assess the applicability of
+        MALE/FEMALE. Maps to NCIT:C45908
+
+      Source: Phenopackets v2 `Sex`
+    type: string
+    enum:
+      - UNKNOWN_SEX
+      - FEMALE
+      - MALE
+      - OTHER_SEX
   KaryotypicSex:
     description: >-
       The chromosomal sex of an individual represented from a selection
       of options. The values correspond to the ordinal values in the Phenopackets
       schema where:
-      * 0 - UNKNOWN_KARYOTYPE (Untyped or inconclusive karyotyping)
-      * 1 - XX (Female)
-      * 2 - XY (Male)
-      * 3 - XO (Single X chromosome only)
-      * 4 - XXY (Two X and one Y chromosome)
-      * 5 - XXX (Three X chromosomes)
-      * 6 - XXYY (Two X chromosomes and two Y chromosomes)
-      * 7 - XXXY (Three X chromosomes and one Y chromosome)
-      * 8 - XXXX (Four X chromosomes)
-      * 9 - XYY (One X and two Y chromosomes)
-      * 10 - OTHER_KARYOTYPE (None of the above types)
-    $comments: Compares to https://github.com/phenopackets/phenopacket-schema/blob/master/docs/karyotypicsex.rst
+
+      * UNKNOWN_KARYOTYPE: Untyped or inconclusive karyotyping
+      * XX:   Female
+      * XY:   Male
+      * XO:   Single X chromosome only
+      * XXY:  Two X and one Y chromosome
+      * XXX:  Three X chromosomes
+      * XXYY: Two X chromosomes and two Y chromosomes
+      * XXXY: Three X chromosomes and one Y chromosome
+      * XXXX: Four X chromosomes
+      * XYY:  One X and two Y chromosomes
+      * OTHER_KARYOTYPE: None of the above types
+
+      Source: Phenopackets v2 `KaryotypicSex`
     type: string
     enum:
       - UNKNOWN_KARYOTYPE
@@ -54,7 +65,8 @@ $defs:
       - '1999-08-05T17:21:00+01:00'
       - '2002-09-21T02:37:00-08:00'
   Ethnicity:
-    description: Ethnic background of the individual. Recommended is the use of a
+    description: >-
+      Ethnic background of the individual. Recommended is the use of a
       value from NCIT Race (NCIT:C17049) ontology term descendants, e.g. NCIT:C126531
       (Latin American). A geographic ancestral origin category that is assigned to
       a population group based mainly on physical characteristics that are thought
@@ -76,7 +88,8 @@ $defs:
       - id: NCIT:C104495
         label: Other race
   GeographicLocation:
-    description: Country or region of origin of the individual (birthplace or residence
+    description: >-
+      Country or region of origin of the individual (birthplace or residence
       place regardless of ethnic origin). Value from GAZ Geographic Location ontology
       (GAZ:00000448), e.g. GAZ:00002459 (United States of America).
     $ref: ../../../../framework/json/common/ontologyTerm.yaml
@@ -90,9 +103,11 @@ $defs:
       - id: GAZ:00000460
         label: Eurasia
   SeverityLevel:
-    description: 'Severity as applicable to phenotype or disease observed. Recommended
-      are values from Human Phenotype Ontology (HP:0012824), e.g `mild`. The intensity
-      or degree of a manifestation. Source: Phenopackets v2'
+    description: >-
+      Severity as applicable to phenotype or disease observed; the intensity
+      or degree of a manifestation.
+      Recommended are values from Human Phenotype Ontology (HP:0012824), e.g `mild`. 
+      Source: Phenopackets v2
     $ref: ../../../../framework/json/common/ontologyTerm.yaml
     examples:
       - id: HP:0012828
@@ -106,8 +121,9 @@ $defs:
       - id: HP:0012827
         label: Borderline
   Unit:
-    description: The kind of unit. Recommended from NCIT Unit of Category ontology
-      term (NCIT:C42568) descendants
+    description: >-
+      The kind of unit.
+      Recommended are descendants from NCIT Unit of Category ontology term (NCIT:C42568)
     $ref: ../../../../framework/json/common/ontologyTerm.yaml
     examples:
       - id: NCIT:C70575
