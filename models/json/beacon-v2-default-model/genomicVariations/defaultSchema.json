@@ -510,6 +510,12 @@
                     },
                     "type": "array"
                 },
+                "pathogenicityPredictions": {
+                    "items": {
+                        "$ref": "#/definitions/PhenoClinicEffect"
+                    },
+                    "type": "array"
+                },
                 "phenotypicEffects": {
                     "items": {
                         "$ref": "#/$defs/PhenoClinicEffect"

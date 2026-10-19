@@ -414,7 +414,11 @@ $defs:
       phenotypicEffects:
         type: array
         items:
-          $ref: '#/$defs/PhenoClinicEffect'
+          $ref: '#/definitions/PhenoClinicEffect'
+      pathogenicityPredictions:
+        type: array
+        items:
+          $ref: '#/definitions/PhenoClinicEffect'
   SoftwareTool:
     type: object
     properties:
