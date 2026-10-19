@@ -1,18 +1,16 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "definitions": {
+    "$defs": {
         "TypedQuantity": {
             "properties": {
                 "quantity": {
                     "$ref": "./quantity.json",
                     "description": "Quantity denoting the outcome of the measurement",
                     "example": {
-                        "quentity": {
-                            "unit": {
-                                "id": "NCIT:C49670",
-                                "label": "Millimeter of Mercury"
-                            }
-                        }
+                        "unit": {
+                            "id": "NCIT:C49670",
+                            "label": "Millimeter of Mercury"
+                        },
+                        "value": 110
                     }
                 },
                 "quantityType": {
@@ -30,17 +28,20 @@
             ]
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Definition of a complex value class. Provenance: GA4GH Phenopackets v2 `TypedQuantity`",
     "properties": {
         "typedQuantities": {
             "description": "List of quantities required to fully describe the complex value",
             "items": {
-                "$ref": "#/definitions/TypedQuantity"
+                "$ref": "#/$defs/TypedQuantity"
             },
             "type": "array"
         }
     },
-    "required": [ "typedQuantities" ],
+    "required": [
+        "typedQuantities"
+    ],
     "title": "Complex Value",
     "type": "object"
 }

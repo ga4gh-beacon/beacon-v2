@@ -34,7 +34,6 @@ response:
         - id: exampleEntry
           name: Example entries
       endpoint: /datasets
-      filteringTermsReference: ./datasets/filteringTerms.json
       additionallySupportedSchemas: []
     exampleEntry:
       id: exampleEntry
@@ -50,6 +49,5 @@ response:
         referenceToSchemaDefinition: ./exampleEntry/defaultSchema.json
         schemaVersion: v.2
       endpoint: ./exampleEntries
-      filteringTermsReference: ./exampleEntry/filteringTerms.json
       additionallySupportedSchemas: []
 info: {}

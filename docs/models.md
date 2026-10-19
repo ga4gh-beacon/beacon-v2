@@ -1,4 +1,4 @@
-# beacon-v2-Models
+# Beacon Models
 
 ## Introduction
 
@@ -118,7 +118,7 @@ classDiagram
         ...
     }
 ```
-  <figcaption>Beacon v2 Models entities and their relationships</figcaption>
+  <figcaption>Beacon Model entities and their relationships</figcaption>
 </figure>
 
 The above entities are defined as follows;

@@ -58,7 +58,7 @@
             "type": "string"
         },
         "severity": {
-            "$ref": "./commonDefinitions.json#/definitions/SeverityLevel",
+            "$ref": "./commonDefinitions.json#/$defs/SeverityLevel",
             "examples": [
                 {
                     "id": "HP:0012828",

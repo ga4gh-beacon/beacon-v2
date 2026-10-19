@@ -729,9 +729,9 @@ sub add_properties_vrs {
     my ( $property, $data ) = @_;
     my %url = (
         'SequenceExpression' =>
-'https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/',
+'https://w3id.org/ga4gh/schema/vrs/1.3/vrs.json#/definitions/',
         'CopyNumber' =>
-'https://raw.githubusercontent.com/ga4gh/vrs/1.2/schema/vrs.json#/definitions/'
+'https://w3id.org/ga4gh/schema/vrs/1.3/vrs.json#/definitions/'
     );
     if ( exists $url{$property} ) {
         $data->{properties} =

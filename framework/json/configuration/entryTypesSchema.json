@@ -1,7 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": true,
-    "definitions": {
+    "$defs": {
         "EntryTypes": {
             "additionalProperties": {
                 "$ref": "./entryTypeDefinition.json",
@@ -11,10 +9,12 @@
             "minProperties": 1
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
     "description": "Schema for the Enrty Types list.",
     "properties": {
         "entryTypes": {
-            "$ref": "#/definitions/EntryTypes",
+            "$ref": "#/$defs/EntryTypes",
             "description": "List of entry types."
         }
     },

@@ -14,9 +14,9 @@ The only exception is: `service-info` which is a required GA4GH standard and has
 
 ### Schema Language and Conventions
 
-The **Beacon v2 API** follows [OpenAPI 3.0.2](https://spec.openapis.org/oas/v3.0.2) specification for the [endpoints](https://github.com/ga4gh-beacon/beacon-v2/blob/main/framework/src/endpoints.yaml), in conjuntion with JSON Schema ([2020-12]( https://json-schema.org/draft/2020-12/schema)) to define the [Framework](framework.md) {{config.repo_framework_icon}} and the [Models](models.md) {{config.repo_models_icon}} components. The specification uses JSON [references](https://json-spec.readthedocs.io/reference.html) (`$ref`) to reference internal (e.g., definitions) or external concepts/terms (e.g., [VRS](https://vrs.ga4gh.org/en/latest/terms_and_model.html)).
+The **Beacon API** follows [OpenAPI 3.0.2](https://spec.openapis.org/oas/v3.0.2) specification for the [endpoints](https://github.com/ga4gh-beacon/beacon-v2/blob/main/framework/src/endpoints.yaml), in conjuntion with JSON Schema ([2020-12]( https://json-schema.org/draft/2020-12/schema)) to define the [Framework](framework.md) {{config.repo_framework_icon}} and the [Models](models.md) {{config.repo_models_icon}} components. The specification uses JSON [references](https://json-spec.readthedocs.io/reference.html) (`$ref`) to reference internal (e.g., definitions) or external concepts/terms (e.g., [VRS](https://vrs.ga4gh.org/en/latest/terms_and_model.html)).
 
-The Beacon v2 specification is written in [YAML](https://yaml.org). The original files are located under `src` directory (see below). For technical purposes, we also provide a **copy** of the original YAML in JSON format (see `json` directory below). Changes in the specification must be performed in the YAML version and are then rewritten to the JSON version.
+The Beacon specification is written in [YAML](https://yaml.org). The original files are located under `src` directory (see below). For technical purposes, we also provide a **copy** of the original YAML in JSON format (see `json` directory below). Changes in the specification must be performed in the YAML version and are then rewritten to the JSON version.
 
 === "Framework"
 
@@ -96,8 +96,7 @@ The Beacon v2 specification is written in [YAML](https://yaml.org). The original
 <a href="https://xkcd.com/1179/" target="_blank"><img src="https://imgs.xkcd.com/comics/iso_8601.png"  align="right" style="margin 20px 0px 30px 20px; width: 200px; clear:none;" /></a>
 
 Date and time formats are specified as [ISO8601](https://www.w3.org/TR/NOTE-datetime)
-compatible strings, both for time points as well as for durations. Some of the ISO8601
-compatible formats have not (yet) been used in the Beacon v2 default model.
+compatible strings, both for time points as well as for durations.
 
 #### Examples
 
@@ -109,11 +108,11 @@ compatible formats have not (yet) been used in the Beacon v2 default model.
     - *P43Y08M*
 
 ##### LINK: W3C [ISO8601](https://www.w3.org/TR/NOTE-datetime)
-##### LINK: ISO8601 documentation at [GA4GH SchemaBlocks](https://schemablocks.org/standards/dates-times.html)
+##### LINK: ISO8601 documentation at [GA4GH SchemaBlocks](https://genomestandards.org/standards/dates-times.html)
 
 ## Integration with External Standards
 
-The development of the Beacon v2 framework and default model closely follows
+The development of the Beacon framework and default model closely follows
 and widely adopts concepts and schemas from approved GA4GH products such as
 Phenopackets and the Variant Representation Standard (VRS).
 
@@ -125,7 +124,7 @@ has been approved and covers a set of use cases and requirements, especially wit
 to genomic (including cytogenetic or feature based) locations. However, it is not yet
 suitable for a number of practical use cases, especially the representation of some structural variations.
 
-The Beacon v2 default model for `GenomicVariation` makes use of the VRS standard to represent
+The Beacon default model for `GenomicVariation` makes use of the VRS standard to represent
 the `variation` part, _i.e._ the location and sequence or copy number changes of the
 genomic variation. While a "legacy" alternative is still allowed this one too has been adjusted
 to make use of the VRS `Location` format.
@@ -237,7 +236,7 @@ The examples are for different forma of the `location` property inside a `genomi
 
 ### Phenopackets
 
-In the Beacon v2 default data model, many schemas are either directly compatible to
+In the Beacon default data model, many schemas are either directly compatible to
 [Phenopackets v2 building blocks](https://phenopacket-schema.readthedocs.io/en/latest/building-blocks.html)
 or at least reflect them but with some adjustments. While the Beacon v2 default model's schemas do not _per se_ have to reflect
 PXF schemas, we target an as-close-as-possible alignment to promote/leverage GA4GH-wide

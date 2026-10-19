@@ -1,7 +1,5 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "additionalProperties": true,
-    "definitions": {
+    "$defs": {
         "BeaconOrganization": {
             "description": "Organization owning the Beacon.",
             "properties": {
@@ -22,7 +20,7 @@
                     "type": "string"
                 },
                 "info": {
-                    "$ref": "../../common/beaconCommonComponents.json#/definitions/Info",
+                    "$ref": "../../common/info.json",
                     "description": "Additional unspecified metadata about the host Organization."
                 },
                 "logoUrl": {
@@ -45,6 +43,8 @@
             "type": "object"
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": true,
     "description": "Metadata describing a Beacon instance.",
     "properties": {
         "alternativeUrl": {
@@ -55,13 +55,13 @@
             "type": "string"
         },
         "apiVersion": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/ApiVersion"
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/ApiVersion"
         },
         "createDateTime": {
             "description": "The date/time the Beacon was created (ISO 8601 format).",
             "examples": [
                 "2014-07-19",
-                "2017-01-17 20:33:40"
+                "2017-01-17 20:33:40+00:00"
             ],
             "type": "string"
         },
@@ -83,10 +83,10 @@
             "type": "string"
         },
         "id": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/BeaconId"
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/BeaconId"
         },
         "info": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/Info",
+            "$ref": "../../common/info.json",
             "description": "Additional unspecified metadata about the Beacon service."
         },
         "name": {
@@ -94,18 +94,18 @@
             "type": "string"
         },
         "organization": {
-            "$ref": "#/definitions/BeaconOrganization"
+            "$ref": "#/$defs/BeaconOrganization"
         },
         "updateDateTime": {
             "description": "The time the Beacon was updated in (ISO 8601 format).",
             "examples": [
                 "2014-07-19",
-                "2017-01-17 20:33:40"
+                "2017-01-17 20:33:40+00:00"
             ],
             "type": "string"
         },
         "version": {
-            "$ref": "../../common/beaconCommonComponents.json#/definitions/ApiVersion",
+            "$ref": "../../common/beaconCommonComponents.json#/$defs/ApiVersion",
             "description": "TODO: This is a legacy use / duplication?"
         },
         "welcomeUrl": {

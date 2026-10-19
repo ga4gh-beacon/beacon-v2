@@ -8,7 +8,7 @@
 | [info](./obj/info.md) | Placeholder to allow the Beacon to return any additional information that is necessary or could be of interest in relation to the query or the entry returned. It is recommended to encapsulate additional informations in this attribute instead of directly adding attributes at the same level than the others in order to avoid collision in the names of attributes in future versions of the specification. | object | NA | NA | NA|
 | [interventionsOrProcedures](./obj/interventionsOrProcedures.md) | Class describing a clinical procedure or intervention. Provenance: GA4GH Phenopackets v2 `Procedure` | array | [ageAtProcedure](./obj/ageAtProcedure.md), [bodySite](./obj/bodySite.md), [dateOfProcedure](./obj/dateOfProcedure.md), [procedureCode](./obj/procedureCode.md) | NA | NA|
 | [karyotypicSex](./obj/karyotypicSex.md) | The chromosomal sex of an individual represented from a selection of options. | string | NA | NA | UNKNOWN_KARYOTYPE, XX, XY, XO, XXY, XXX, XXYY, XXXY, XXXX, XYY, OTHER_KARYOTYPE|
-| [measures](./obj/measures.md) | Definition of a measurement class. Provenance: GA4GH Phenopackets v2 `Measurement` | array | [assayCode](./obj/assayCode.md), [date](./obj/date.md), [measurementValue](./obj/measurementValue.md), [notes](./obj/notes.md), [observationMoment](./obj/observationMoment.md), [procedure](./obj/procedure.md) | NA | NA|
+| [measurements](./obj/measurements.md) | Definition of a measurement class. Provenance: GA4GH Phenopackets v2 `Measurement` | array | [assayCode](./obj/assayCode.md), [date](./obj/date.md), [measurementValue](./obj/measurementValue.md), [notes](./obj/notes.md), [observationMoment](./obj/observationMoment.md), [procedure](./obj/procedure.md) | NA | NA|
 | [pedigrees](./obj/pedigrees.md) | Pedigree studies in which the individual is part of. | array | [disease](./obj/disease.md), [id](./obj/id.md), [members](./obj/members.md), [numSubjects](./obj/numSubjects.md) | NA | NA|
 | [phenotypicFeatures](./obj/phenotypicFeatures.md) | Used to describe a phenotype that characterizes the subject or biosample. | array | [evidence](./obj/evidence.md), [excluded](./obj/excluded.md), [featureType](./obj/featureType.md), [modifiers](./obj/modifiers.md), [notes](./obj/notes.md), [onset](./obj/onset.md), [resolution](./obj/resolution.md), [severity](./obj/severity.md) | NA | NA|
 | [sex](./obj/sex.md) | Sex of the individual. Value from NCIT General Qualifier (NCIT:C27993): 'unknown' (not assessed or not available) (NCIT:C17998), 'female' (NCIT:C16576), or 'male', (NCIT:C20197). | object | [id](./obj/id.md), [label](./obj/label.md) | `[{"id": "NCIT:C16576", "label": "female"}, {"id": "NCIT:C20197", "label": "male"}, {"id": "NCIT:C1799", "label": "unknown"}]` | NA|
@@ -65,7 +65,7 @@ These are examples extracted directly from the [GitHub repository](https://githu
 	        "label": "Slovenia"
 	    },
 	    "id": "Ind001",
-	    "measures": [
+	    "measurements": [
 	        {
 	            "assayCode": {
 	                "id": "LOINC:26515-7",

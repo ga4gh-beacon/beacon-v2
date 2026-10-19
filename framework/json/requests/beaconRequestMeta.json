@@ -3,14 +3,14 @@
     "description": "Meta section of the Beacon request. It includes request context details relevant for the Beacon server when processing the request.",
     "properties": {
         "$schema": {
-            "$ref": "../common/beaconCommonComponents.json#/definitions/$schema"
+            "$ref": "../common/beaconCommonComponents.json#/$defs/$schema"
         },
         "apiVersion": {
-            "$ref": "../common/beaconCommonComponents.json#/definitions/ApiVersion",
+            "$ref": "../common/beaconCommonComponents.json#/$defs/ApiVersion",
             "description": "API version expected by the client to be supported by the server and used in the response format."
         },
         "requestedSchemas": {
-            "$ref": "../common/beaconCommonComponents.json#/definitions/ListOfSchemas",
+            "$ref": "../common/beaconCommonComponents.json#/$defs/ListOfSchemas",
             "description": "Set of schemas to be used in the response."
         }
     },

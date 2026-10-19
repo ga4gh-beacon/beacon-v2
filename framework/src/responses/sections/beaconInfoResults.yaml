@@ -10,13 +10,13 @@ required:
   - organization
 properties:
   id:
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/BeaconId
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/BeaconId
   name:
     type: string
     description: >-
       Name of the Beacon.
   apiVersion:
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/ApiVersion
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/ApiVersion
   environment:
     type: string
     description: "Environment the service is running in. Use this to distinguish\n\
@@ -29,7 +29,7 @@ properties:
     examples: 
       - dev
   organization:
-    $ref: '#/definitions/BeaconOrganization'
+    $ref: '#/$defs/BeaconOrganization'
   description:
     type: string
     description: >-
@@ -37,7 +37,7 @@ properties:
   version:
     description: >-
       TODO: This is a legacy use / duplication?
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/ApiVersion
+    $ref: ../../common/beaconCommonComponents.yaml#/$defs/ApiVersion
   welcomeUrl:
     type: string
     description: >-
@@ -67,8 +67,8 @@ properties:
   info:
     description: >-
       Additional unspecified metadata about the Beacon service.
-    $ref: ../../common/beaconCommonComponents.yaml#/definitions/Info
-definitions:
+    $ref: ../../common/info.yaml
+$defs:
   BeaconOrganization:
     description: >-
       Organization owning the Beacon.
@@ -109,5 +109,5 @@ definitions:
           3986 format).
       info:
         description: Additional unspecified metadata about the host Organization.
-        $ref: ../../common/beaconCommonComponents.yaml#/definitions/Info
+        $ref: ../../common/info.yaml
 additionalProperties: true

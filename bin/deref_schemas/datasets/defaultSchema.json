@@ -16,7 +16,7 @@
             "description": "Data use conditions applying to this dataset.",
             "$schema": "https://json-schema.org/draft/2020-12/schema",
             "additionalProperties": true,
-            "definitions": {
+            "$defs": {
                 "DUODataUse": {
                     "allOf": [
                         {

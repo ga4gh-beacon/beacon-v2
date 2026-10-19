@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Response including a list of Entry types definitions.",
+    "description": "The `beaconEntryTypesResponse` provides information about the entry types served through a beacon, including their definitions and pointers to their schemas.",
     "properties": {
         "meta": {
             "$ref": "./sections/beaconInformationalResponseMeta.json",

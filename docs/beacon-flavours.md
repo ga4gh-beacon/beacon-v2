@@ -1,7 +1,7 @@
 # Beacon "Flavours"
 
 !!! Note "About UI"
-    Most of the information that you will find here is related to the [Beacon v2 specification](/). For that reason, the examples are shown as REST API requests/responses in the form of [JSON](https://www.json.org/json-en.html). If you are only interested in using beacon with a **graphical interface** please visit the [implementations](implementations-options.md) page.
+    Most of the information that you will find here is related to the [Beacon {{config.beacon_major_version}} specification](/). For that reason, the examples are shown as REST API requests/responses in the form of [JSON](https://www.json.org/json-en.html). If you are only interested in using beacon with a **graphical interface** please visit the [implementations](implementations-options.md) page.
 
 While the original Beacon v1 only provided Boolean (_i.e._ **YES/NO**) responses
 on queries for the existence of specific genomic variants, Beacon v2 is a flexible
@@ -24,9 +24,10 @@ with a _true_ or _false_ value when queried for the existence of some data in a 
 a _Count Response_ Beacon only returns aggregate information, _i.e._ the number of matched
 entries (e.g. genomic variants), a feature also part of the Beacon v1 protocol.
 
-However, in contrast to earlier versions, in Beacon v2 _in principle_ a beaconized resource
-may implement all types of query options (e.g. combinations of various filters and
-genomic query parameters) but still only offer a Boolean and optionally Count response.
+However, in contrast to earlier versions, in Beacon {{config.beacon_major_version}}
+_in principle_ a beaconized resource may implement all types of query options
+(e.g. combinations of various filters and genomic query parameters) but still
+only offer a Boolean and optionally Count response.
 
 Also, all Beacons _should_ implement the _Boolean Response_ format as fallback option and
 handle extended options depending on the user's authentication status.
@@ -81,7 +82,6 @@ Information about the different data delivery options can be found here:
 
 * data delivery using [Model defined records](/records/)
 * file and information linking using [handover objects](/handovers/)
-
 
 
 

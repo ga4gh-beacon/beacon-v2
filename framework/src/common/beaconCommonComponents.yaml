@@ -6,19 +6,24 @@ description: >-
   exclusively with one or the other.
   Separate schema documents are provided for complex components.
 type: object
-definitions:
+$defs:
   $schema:
     type: string
-    $comment: 'TO REVIEW: adding a `format` or `regex` attribute that validates correctly
-      against a file path (relative).'
     description: >-
-      Refers to the JSON Schema which describes the set of valid attributes
-      for this particular document type. This attribute is mostly used in schemas
-      that should be tested in Beacon implementations.
+      The $schema keyword is used to declare which dialect of JSON Schema (e.g.
+      `https://json-schema.org/draft/2020-12/schema`) the version of the Beacon
+      schema was written for. This identifier can be used to validate the
+      correct format of the current definitions.
   ApiVersion:
     description: >-
-      Version of API, e.g. in request or response. Beacon uses a Github-style,
-      "v"-prefixed semantic versioning format.
+      Version of API instance. Depending on the context (e.g. in request or
+      response) this property refers to the version of Beacon API implemented or
+      the version of the code implementing the Beacon resource. Refer to the
+      description where this property is used to understand if the expected
+      content is the former or the later.
+
+      Beacon uses a "v"-prefixed semantic versioning format, but this is not
+      mandatory when the property refers to an implementation code version.
     type: string
     examples:
       - v2.0.1
@@ -43,13 +48,49 @@ definitions:
         type: integer
         format: int32
         examples:
-          - '404'
+          - 404
         description: >-
           Entry not found
       errorMessage:
         type: string
         examples:
           - 'The provided parameters are incomplete: `start` is missing.'
+  CountAdjustedTo:
+    description: >-
+      For counts with intentional (e.g. due to privacy concerns) or technical
+      derived imprecision this parameter offers an option to declare the range
+      or limits for the true results.
+      If present, CountPrecision states the type of adjustment.
+    examples:
+      - - "1"
+        - "5"
+      - - "<5"
+    type: array
+    minItems: 1
+    maxItems: 2
+    items:
+      type: 
+        - integer
+        - string
+      minimum: 1
+  CountPrecision:
+    description: >-
+      For counts with intentional (e.g. due to privacy concerns) or technical
+      derived imprecision this parameter offers an option to declare the number's precision.
+      If present, CountAdjustedTo provides more details.
+      The 3 possible options are:
+      - exact >-
+        A value that is precise.
+      - imprecise >-
+        A value that is not guaranteed to be precise.
+      - rounded >-
+        A value that has been (floor or ceiling) rounded to a given value.
+    enum:
+      - exact
+      - imprecise
+      - rounded
+    default: imprecise
+    type: string
   CURIE:
     pattern: ^\w[^:]+:.+$
     type: string
@@ -67,7 +108,7 @@ definitions:
       Set of schemas to be used in the response to a request.
     type: array
     items:
-      $ref: '#/definitions/SchemasPerEntity'
+      $ref: '#/$defs/SchemasPerEntity'
   SchemasPerEntity:
     description: >-
       Schema to be used for the requested entry type in the response.
@@ -91,24 +132,24 @@ definitions:
     type: object
     properties:
       skip:
-        $ref: '#/definitions/Skip'
+        $ref: '#/$defs/Skip'
       limit:
-        $ref: '#/definitions/Limit'
+        $ref: '#/$defs/Limit'
       currentPage:
         description: >-
           Token of the returned page. To be used only in the response to allow
           the client to check if the returned page is the one requested.
-        $ref: '#/definitions/PageToken'
+        $ref: '#/$defs/PageToken'
       nextPage:
         description: >-
           Token of the next page. Used to navigate forward. If empty, it is
           assumed that no more pages are available
-        $ref: '#/definitions/PageToken'
+        $ref: '#/$defs/PageToken'
       previousPage:
         description: >-
           Token of the previous page. Used to navigate backwards. If empty, it
           is assumed that the current page is the first one.
-        $ref: '#/definitions/PageToken'
+        $ref: '#/$defs/PageToken'
   Skip:
     description: >-
       * In the request: number of pages to skip
@@ -212,22 +253,11 @@ definitions:
     minimum: 0
     examples:
       - 123
-  Info:
-    description: >-
-      Placeholder to allow the Beacon to return any additional information that
-      is necessary or could be of interest in relation to the query or the entry
-      returned.
-      It is recommended to encapsulate additional informations in this attribute
-      instead of directly adding attributes at the same level than the others in
-      order to avoid collision in the names of attributes in future versions of
-      the specification.
-    type: object
   ListOfHandovers:
     description: Set of handovers to be added in one section the response.
     type: array
     items:
-      description: Requested schema to be used for individuals in the response.
-      $ref: '#/definitions/Handover'
+      $ref: '#/$defs/Handover'
   Handover:
     type: object
     description: >-
@@ -247,7 +277,7 @@ definitions:
       - url
     properties:
       handoverType:
-        $ref: '#/definitions/HandoverType'
+        $ref: '#/$defs/HandoverType'
       note:
         type: string
         description: >-

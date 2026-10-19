@@ -4,7 +4,7 @@ description: 'Definition of a quantity class. Provenance: GA4GH Phenopackets v2 
 type: object
 properties:
   unit:
-    $ref: ./commonDefinitions.yaml#/definitions/Unit
+    $ref: ./commonDefinitions.yaml#/$defs/Unit
   value:
     description: The value of the quantity in the units
     type: number

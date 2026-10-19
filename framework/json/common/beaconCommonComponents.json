@@ -1,13 +1,11 @@
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "definitions": {
+    "$defs": {
         "$schema": {
-            "$comment": "TO REVIEW: adding a `format` or `regex` attribute that validates correctly against a file path (relative).",
-            "description": "Refers to the JSON Schema which describes the set of valid attributes for this particular document type. This attribute is mostly used in schemas that should be tested in Beacon implementations.",
+            "description": "The $schema keyword is used to declare which dialect of JSON Schema (e.g. `https://json-schema.org/draft/2020-12/schema`) the version of the Beacon schema was written for. This identifier can be used to validate the correct format of the current definitions.",
             "type": "string"
         },
         "ApiVersion": {
-            "description": "Version of API, e.g. in request or response. Beacon uses a Github-style, \"v\"-prefixed semantic versioning format.",
+            "description": "Version of API instance. Depending on the context (e.g. in request or response) this property refers to the version of Beacon API implemented or the version of the code implementing the Beacon resource. Refer to the description where this property is used to understand if the expected content is the former or the later.\nBeacon uses a \"v\"-prefixed semantic versioning format, but this is not mandatory when the property refers to an implementation code version.",
             "examples": [
                 "v2.0.1",
                 "v0.3"
@@ -20,7 +18,7 @@
                 "errorCode": {
                     "description": "Entry not found",
                     "examples": [
-                        "404"
+                        404
                     ],
                     "format": "int32",
                     "type": "integer"
@@ -56,6 +54,38 @@
             "pattern": "^\\w[^:]+:.+$",
             "type": "string"
         },
+        "CountAdjustedTo": {
+            "description": "For counts with intentional (e.g. due to privacy concerns) or technical derived imprecision this parameter offers an option to declare the range or limits for the true results. If present, CountPrecision states the type of adjustment.",
+            "examples": [
+                [
+                    "1",
+                    "5"
+                ],
+                [
+                    "<5"
+                ]
+            ],
+            "items": {
+                "minimum": 1,
+                "type": [
+                    "integer",
+                    "string"
+                ]
+            },
+            "maxItems": 2,
+            "minItems": 1,
+            "type": "array"
+        },
+        "CountPrecision": {
+            "default": "imprecise",
+            "description": "For counts with intentional (e.g. due to privacy concerns) or technical derived imprecision this parameter offers an option to declare the number's precision. If present, CountAdjustedTo provides more details. The 3 possible options are: - exact >-\n  A value that is precise.\n- imprecise >-\n  A value that is not guaranteed to be precise.\n- rounded >-\n  A value that has been (floor or ceiling) rounded to a given value.",
+            "enum": [
+                "exact",
+                "imprecise",
+                "rounded"
+            ],
+            "type": "string"
+        },
         "Exists": {
             "description": "Indicator of whether any record was observed in any of the collections queried. This should be non-null.",
             "examples": [
@@ -88,7 +118,7 @@
             "description": "A handover is a typed link for attaching actionable links to results, non purely informational, requests. The goal of the handovers is to list the different actions available, e.g.:\n* a link to a request access page * linking to a file for download, e.g. a VCF file\nAnother common scenario is to provide a fast summary response (e.g. BeconCountResponse) and to provide access to different endpoints for the entities matched by the query using temporary access tokens in the handover URLs.",
             "properties": {
                 "handoverType": {
-                    "$ref": "#/definitions/HandoverType"
+                    "$ref": "#/$defs/HandoverType"
                 },
                 "note": {
                     "description": "An optional text including considerations on the handover link provided.",
@@ -143,10 +173,6 @@
             ],
             "type": "string"
         },
-        "Info": {
-            "description": "Placeholder to allow the Beacon to return any additional information that is necessary or could be of interest in relation to the query or the entry returned. It is recommended to encapsulate additional informations in this attribute instead of directly adding attributes at the same level than the others in order to avoid collision in the names of attributes in future versions of the specification.",
-            "type": "object"
-        },
         "Limit": {
             "default": 10,
             "description": "Size of the page. Use `0` to return all the results or the maximum allowed by the Beacon, if there is any.",
@@ -157,15 +183,14 @@
         "ListOfHandovers": {
             "description": "Set of handovers to be added in one section the response.",
             "items": {
-                "$ref": "#/definitions/Handover",
-                "description": "Requested schema to be used for individuals in the response."
+                "$ref": "#/$defs/Handover"
             },
             "type": "array"
         },
         "ListOfSchemas": {
             "description": "Set of schemas to be used in the response to a request.",
             "items": {
-                "$ref": "#/definitions/SchemasPerEntity"
+                "$ref": "#/$defs/SchemasPerEntity"
             },
             "type": "array"
         },
@@ -191,22 +216,22 @@
             "description": "Pagination to apply or that has been applied on the results.",
             "properties": {
                 "currentPage": {
-                    "$ref": "#/definitions/PageToken",
+                    "$ref": "#/$defs/PageToken",
                     "description": "Token of the returned page. To be used only in the response to allow the client to check if the returned page is the one requested."
                 },
                 "limit": {
-                    "$ref": "#/definitions/Limit"
+                    "$ref": "#/$defs/Limit"
                 },
                 "nextPage": {
-                    "$ref": "#/definitions/PageToken",
+                    "$ref": "#/$defs/PageToken",
                     "description": "Token of the next page. Used to navigate forward. If empty, it is assumed that no more pages are available"
                 },
                 "previousPage": {
-                    "$ref": "#/definitions/PageToken",
+                    "$ref": "#/$defs/PageToken",
                     "description": "Token of the previous page. Used to navigate backwards. If empty, it is assumed that the current page is the first one."
                 },
                 "skip": {
-                    "$ref": "#/definitions/Skip"
+                    "$ref": "#/$defs/Skip"
                 }
             },
             "type": "object"
@@ -243,6 +268,7 @@
             "type": "boolean"
         }
     },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Definition of relatively simple components used in different points of the Beacon specification, both in requests and responses, therefore not associated exclusively with one or the other. Separate schema documents are provided for complex components.",
     "title": "Beacon Common Components",
     "type": "object"

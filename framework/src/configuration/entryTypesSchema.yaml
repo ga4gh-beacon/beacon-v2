@@ -5,8 +5,8 @@ type: object
 properties:
   entryTypes:
     description: List of entry types.
-    $ref: '#/definitions/EntryTypes'
-definitions:
+    $ref: '#/$defs/EntryTypes'
+$defs:
   EntryTypes:
     description: This is a dictionary of the entry types implemented in this Beacon
       instance.

@@ -4,7 +4,7 @@ description: Definition of an ontology term.
 type: object
 properties:
   id:
-    $ref: './beaconCommonComponents.yaml#/definitions/CURIE'
+    $ref: './beaconCommonComponents.yaml#/$defs/CURIE'
   label:
     type: string
     description: The text that describes the term. By default it could be the preferred

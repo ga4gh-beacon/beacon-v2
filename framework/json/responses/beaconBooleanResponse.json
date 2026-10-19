@@ -1,13 +1,13 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Complete definition for a minimal response that provides *only* a `Boolean` exists true|false answer.",
+    "description": "Complete definition for a minimal response that provides *only* an aggregate Boolean `\"exists\": true` or `\"exists\": false` answer to the query.  \nAdditional information - which should not consist of record-level information - can be provided through `beaconHandovers`.  ",
     "properties": {
         "beaconHandovers": {
-            "$ref": "../common/beaconCommonComponents.json#/definitions/ListOfHandovers",
+            "$ref": "../common/beaconCommonComponents.json#/$defs/ListOfHandovers",
             "description": "List of handovers that apply to the whole response, not to any resultset or result in particular."
         },
         "info": {
-            "$ref": "../common/beaconCommonComponents.json#/definitions/Info",
+            "$ref": "../common/info.json",
             "description": "Additional details that could be of interest. Provided to clearly enclose any attribute that is not part of the Beacon specification."
         },
         "meta": {

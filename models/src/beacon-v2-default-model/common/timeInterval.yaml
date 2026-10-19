@@ -5,12 +5,12 @@ type: object
 $comments: From https://github.com/phenopackets/phenopacket-schema/blob/v2/docs/time-interval.rst
 properties:
   start:
-    $ref: ./commonDefinitions.yaml#/definitions/Timestamp
+    $ref: ./commonDefinitions.yaml#/$defs/Timestamp
     examples:
       - '1999-08-05T17:21:00+01:00'
       - '2002-09-21T02:37:00-08:00'
   end:
-    $ref: ./commonDefinitions.yaml#/definitions/Timestamp
+    $ref: ./commonDefinitions.yaml#/$defs/Timestamp
     examples:
       - '2022-03-10T15:25:07Z'
 required:

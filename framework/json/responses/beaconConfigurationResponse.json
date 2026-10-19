@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Information about the Beacon. Aimed to Beacon clients like web pages or Beacon networks.",
+    "description": "The `beaconConfigurationResponse` returns information about configuration parameters of a given beacon instance such as maturity or security attributes or supported entry types. It is directed towards Beacon clients like web pages or network aggregators.",
     "properties": {
         "meta": {
             "$ref": "./sections/beaconInformationalResponseMeta.json",

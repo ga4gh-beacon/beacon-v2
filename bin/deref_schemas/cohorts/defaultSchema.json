@@ -2,7 +2,7 @@
     "$comment": "version: ga4gh-beacon-cohort-v2.0.0",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "definitions": {
+    "$defs": {
         "CohortCriteria": {
             "description": "Criteria used for defining the cohort. It is assumed that all cohort participants will match or NOT match such criteria.",
             "properties": {
@@ -525,7 +525,7 @@
                     "description": "Phenotypic condition(s) in cohort inclusion criteria",
                     "items": {
                         "$schema": "https://json-schema.org/draft/2020-12/schema",
-                        "definitions": {},
+                        "$defs": {},
                         "description": "Used to describe a phenotype that characterizes the subject or biosample.",
                         "properties": {
                             "evidence": {
@@ -2369,7 +2369,7 @@
                     "description": "Phenotypic condition(s) in cohort inclusion criteria",
                     "items": {
                         "$schema": "https://json-schema.org/draft/2020-12/schema",
-                        "definitions": {},
+                        "$defs": {},
                         "description": "Used to describe a phenotype that characterizes the subject or biosample.",
                         "properties": {
                             "evidence": {
@@ -3418,7 +3418,7 @@
                     "description": "Phenotypic condition(s) in cohort inclusion criteria",
                     "items": {
                         "$schema": "https://json-schema.org/draft/2020-12/schema",
-                        "definitions": {},
+                        "$defs": {},
                         "description": "Used to describe a phenotype that characterizes the subject or biosample.",
                         "properties": {
                             "evidence": {

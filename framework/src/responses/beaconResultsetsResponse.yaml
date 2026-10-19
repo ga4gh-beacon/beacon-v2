@@ -1,5 +1,15 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-description: Beacon response that includes record level details, grouped in Resultsets.
+description: >-
+  A `beaconResultsetsResponse` returns the results of a query against a beacon
+  or beacon aggregator. Beyond the `responseSummary` for overall matches the
+  response contains details about the matches in individual **collections** in
+  the beacon or beacon network. This type of response is required when serving
+  a request with a "record" level `responseGranularity`, and `beaconResultsets`
+  typically contain a list of records matched by the query.
+
+  The types of `beaconResultsets` objects are defined in the beacon's configuration;
+  e.g. if using the Beacon v2+ default model the types `dataset` and `cohort` are
+  supported as result sets.    
 type: object
 properties:
   meta:
@@ -15,12 +25,12 @@ properties:
     description: >-
       Additional details that could be of interest. Provided to clearly
       enclose any attribute that is not part of the Beacon specification.
-    $ref: ../common/beaconCommonComponents.yaml#/definitions/Info
+    $ref: ../common/info.yaml
   beaconHandovers:
     description: >-
       List of handovers that apply to the whole response, not to any resultset
       or result in particular.
-    $ref: ../common/beaconCommonComponents.yaml#/definitions/ListOfHandovers
+    $ref: ../common/beaconCommonComponents.yaml#/$defs/ListOfHandovers
   response:
     description: >-
       Response for queries that recovers any result.

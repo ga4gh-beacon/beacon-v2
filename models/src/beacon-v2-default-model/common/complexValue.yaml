@@ -8,11 +8,11 @@ properties:
     description: List of quantities required to fully describe the complex value
     type: array
     items:
-      $ref: '#/definitions/TypedQuantity'
+      $ref: '#/$defs/TypedQuantity'
 required:
   - typedQuantities
 
-definitions:
+$defs:
   TypedQuantity:
     properties:
       quantityType:
@@ -26,10 +26,10 @@ definitions:
         description: Quantity denoting the outcome of the measurement
         $ref: ./quantity.yaml
         example:
-          quentity:
-            unit:
-              id: NCIT:C49670
-              label: Millimeter of Mercury
+          unit:
+            id: NCIT:C49670
+            label: Millimeter of Mercury
+          value: 110
     required:
       - quantityType
       - quantity
