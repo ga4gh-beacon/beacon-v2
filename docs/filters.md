@@ -65,13 +65,15 @@ Alphanumerical value Filter types contain:
 * `type` = data type as 'alphanumeric' (required) 
 * `id` = field id (required) 
 * `label` = field label (optional) 
+* `values` = an array of possible values for this id (optional)
 
 ```json
 "filteringTerms": [
 	{
 		"type": "alphanumeric",
-		"id": "PATO:0000011",
-		"label": "age"
+		"id": "geographicOrigin",
+		"label": "Geographic Origin",
+		"values": ["Eurasia", "Municipality of El Masnou", "Slovenia", "United States of America"]
 	}
 ]
 ```
