@@ -176,6 +176,51 @@ paths:
             application/json:
               schema:
                 $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+  /features/{id}/matrices:
+    parameters:
+      - $ref: '#/components/parameters/entryId'
+    get:
+      parameters:
+        - $ref: '#/components/parameters/requestedSchema'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/limit'
+      description: >-
+        Get a *matrices* response for one genomic feature, identified by its
+        (unique) 'id'
+      operationId: getOneFeatureMatrices
+      tags:
+        - GET Endpoints
+      responses:
+        '200':
+          $ref: '#/components/responses/ResultsOKResponse'
+        default:
+          description: An unsuccessful operation
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+    post:
+      description: >-
+        Get a *matrices* response for one genomic feature, identified by its
+        (unique) 'id'
+      operationId: postOneFeatureMatrices
+      tags:
+        - POST Endpoints
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json
+        required: true
+      responses:
+        '200':
+          $ref: '#/components/responses/ResultsOKResponse'
+        default:
+          description: An unsuccessful operation
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /features/filtering_terms:
     get:
       parameters:

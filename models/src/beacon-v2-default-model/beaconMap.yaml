@@ -135,10 +135,13 @@ endpointSets:
     rootUrl: https://exampleBeacons.org/matrices
     singleEntryUrl: https://exampleBeacons.org/matrices/{id}
     endpoints:
+      biosampleLookup:
+        returnedEntryType: biosample
+        url: https://exampleBeacons.org/matrices/{id}/biosamples
+      expressionValueLookup:
+        returnedEntryType: expressionValue
+        url: https://exampleBeacons.org/matrices/{id}/expression_values
       featureLookup:
         returnedEntryType: feature
         url: https://exampleBeacons.org/matrices/{id}/features
-      biosampleLookup:
-        returnedEntryType: feature
-        url: https://exampleBeacons.org/matrices/{id}/biosamples
 

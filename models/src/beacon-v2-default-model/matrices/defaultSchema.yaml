@@ -1,277 +1,165 @@
-openapi: 3.0.2
-servers: []
-info:
-  version: 2.0.0
-  title: GA4GH Beacon API Specification - Matrices Endpoints
-  description: TBD
-  contact:
-    email: beacon@ga4gh.org
-  license:
-    name: Apache 2.0
-    url: https://www.apache.org/licenses/LICENSE-2.0.html
-paths:
-  /matrices:
-    get:
-      parameters:
-        - $ref: '#/components/parameters/requestedSchema'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/includeResultsetResponses'
-        - $ref: '#/components/parameters/filters'
-      description: Get a list of matrices
-      operationId: getmatrices
-      tags:
-        - GET Endpoints
-      responses:
-        '200':
-          $ref: '#/components/responses/ResultsOKResponse'
-        default:
-          $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-    post:
-      description: Get a Beacon response for matrices
-      operationId: postmatricesRequest
-      tags:
-        - POST Endpoints
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json
-        required: true
-      responses:
-        '200':
-          $ref: '#/components/responses/ResultsOKResponse'
-        default:
-          description: An unsuccessful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-  /matrices/{id}:
-    parameters:
-      - $ref: '#/components/parameters/entryId'
-    get:
-      description: >-
-        Get details about one matrix, identified by its (unique) 'id'
-      operationId: getOneMatrix
-      tags:
-        - GET Endpoints
-      responses:
-        '200':
-          $ref: '#/components/responses/ResultsOKResponse'
-        default:
-          description: An unsuccessful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-    post:
-      description: >-
-        Get details about one matrix, identified by its (unique) 'id'
-      operationId: postOneMatrix
-      tags:
-        - POST Endpoints
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json
-        required: true
-      responses:
-        '200':
-          $ref: '#/components/responses/ResultsOKResponse'
-        default:
-          description: An unsuccessful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-  /matrices/{id}/g_variants:
-    parameters:
-      - $ref: '#/components/parameters/entryId'
-    get:
-      parameters:
-        - $ref: '#/components/parameters/requestedSchema'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/limit'
-      description: >-
-        Get a *genomic variations* response for one matrix, identified by
-        its (unique) 'id'
-      operationId: getOneMatrixGenomicVariants
-      tags:
-        - GET Endpoints
-      responses:
-        '200':
-          $ref: '#/components/responses/ResultsOKResponse'
-        default:
-          description: An unsuccessful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-    post:
-      description: >-
-        Get a *genomic variations* response for one matrix, identified by
-        its (unique) 'id'
-      operationId: potOnematrixGenomicVariants
-      tags:
-        - POST Endpoints
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json
-        required: true
-      responses:
-        '200':
-          $ref: '#/components/responses/ResultsOKResponse'
-        default:
-          description: An unsuccessful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-  /matrices/{id}/biosamples:
-    parameters:
-      - $ref: '#/components/parameters/entryId'
-    get:
-      parameters:
-        - $ref: '#/components/parameters/requestedSchema'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/limit'
-      description: >-
-        Get a *biosamples* response for one matrix, identified by its
-        (unique) 'id'
-      operationId: getOneMatrixBiosamples
-      tags:
-        - GET Endpoints
-      responses:
-        '200':
-          $ref: '#/components/responses/ResultsOKResponse'
-        default:
-          description: An unsuccessful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-    post:
-      description: >-
-        Get a *biosamples* response for one matrix, identified by its
-        (unique) 'id'
-      operationId: postOneMatrixBiosamples
-      tags:
-        - POST Endpoints
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json
-        required: true
-      responses:
-        '200':
-          $ref: '#/components/responses/ResultsOKResponse'
-        default:
-          description: An unsuccessful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-  /matrices/filtering_terms:
-    get:
-      parameters:
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/limit'
-      description: Get the list of filtering terms that could be used with matrices.
-      operationId: getIndivualsFilteringTerms
-      tags:
-        - GET Endpoints
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json
-        default:
-          description: An unsuccessful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-    post:
-      description: Get the list of filtering terms that could be used with matrices.
-      operationId: postmatricesFilteringTerms
-      tags:
-        - POST Endpoints
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json
-        required: true
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json
-        default:
-          description: An unsuccessful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-components:
-  responses:
-    ResultsOKResponse:
-      description: Successful operation.
-      content:
-        application/json:
-          schema:
-            oneOf:
-              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconBooleanResponse.json
-              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconCountResponse.json
-              - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconResultsetsResponse.json
-  parameters:
-    requestedSchema:
-      name: requestedSchema
-      description: Schema to be used to format the `result` field in the response.
-        The response will use Beacon format.
-      in: query
-      required: false
-      schema:
+$comment: 'version: ga4gh-beacon-matrix-v2.1.2'
+$schema: https://json-schema.org/draft/2020-12/schema
+additionalProperties: true
+description: Metadata for an RNA-seq quantification matrix available in the Beacon. Cell-level values
+  are represented as expressionValue entries (or retrieved via matrix expression_values endpoints); this
+  object describes how those values and feature identifiers should be interpreted.
+properties:
+  matrixId:
+    description: Unique identifier of the matrix entry within the Beacon.
+    examples:
+    - matrix-gene-expression-001
+    type: string
+  createDateTime:
+    $ref: ../common/commonDefinitions.yaml#/$defs/Timestamp
+    description: The time the matrix was created (ISO 8601 format).
+    examples:
+    - '2017-01-17T20:33:40Z'
+  description:
+    description: Description of the matrix.
+    examples:
+    - This matrix provides examples of the actual data in this Beacon instance.
+    type: string
+  downloadUrl:
+    description: Optional URL to download the full matrix (RFC 3986). Bulk download is not required when
+      sliced expression values are served via the API.
+    examples:
+    - https://example.org/matrices/matrix.csv
+    type: string
+  reproducible:
+    type: boolean
+    description: Whether this Beacon provides enough provenance to regenerate the quantification matrix
+      (annotation source, version and file, assembly, units/scale, and analysis/protocol information).
+      true means that information is available; false means provenance is incomplete and the matrix should
+      not be treated as independently reproducible from Beacon metadata alone.
+    examples:
+    - true
+    - false
+  assayType:
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    description: Type of RNA-seq assay (e.g. bulk vs single-cell).
+    examples:
+    - id: OBI:0002631
+      label: single-cell RNA sequencing assay
+    - id: OBI:0003090
+      label: bulk RNA-seq assay
+  info:
+    $ref: ../common/info.yaml
+  name:
+    description: Human-readable name of the matrix.
+    examples:
+    - Gene expression matrix
+    type: string
+  dimensions:
+    description: Number of features (rows) and biosamples (columns) in the matrix.
+    type: object
+    properties:
+      features:
+        type: integer
+        description: Number of genomic feature rows.
+      biosamples:
+        type: integer
+        description: Number of biosample columns.
+    required:
+    - features
+    - biosamples
+  featureType:
+    description: Sequence Ontology terms for the class(es) of genomic feature rows in this matrix. Homogeneous
+      matrices list one term (e.g. gene or mRNA). Matrices that mix genes and transcripts (or other feature
+      classes) MUST list every class present. Each feature in the matrix MUST have a genomicFeature.featureType
+      that appears in this array. Values from SO (Sequence Ontology) are recommended.
+    type: array
+    minItems: 1
+    items:
+      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+    examples:
+    - - id: SO:0000704
+        label: gene
+    - - id: SO:0000234
+        label: mRNA
+    - - id: SO:0000704
+        label: gene
+      - id: SO:0000234
+        label: mRNA
+  expressionUnitAndScale:
+    description: Unit and numeric scale of expression values in this matrix. Applies to all expressionValue.value
+      entries that reference this matrixId.
+    type: object
+    required:
+    - unit
+    - scale
+    properties:
+      unit:
+        enum:
+        - raw
+        - TPM
+        - FPKM
+        - RPKM
+        - CPM
+        - RPM
+        default: raw
+        description: Quantification unit of the expression values.
+      scale:
+        enum:
+        - linear
+        - log2
+        - log10
+        default: linear
+        description: Whether values are linear or log-transformed. If not provided, it is assumed to be
+          linear.
+  annotation:
+    description: Annotation catalog used to define feature identifiers in this matrix. source SHOULD use
+      the same identifiers.org-style prefix vocabulary as genomicFeature.featureIdentifier.resource (e.g.
+      ensembl, gencode). version is the annotation release; it is not the same as an Ensembl object version
+      suffix (e.g. .18).
+    type: object
+    properties:
+      source:
         type: string
-      example: ga4gh-service-info-v1.0
-    skip:
-      name: skip
-      in: query
-      schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Skip
-    limit:
-      name: limit
-      in: query
-      schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/Limit
-    includeResultsetResponses:
-      name: includeResultsetResponses
-      in: query
-      schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses
-    entryId:
-      name: id
-      in: path
-      required: true
-      schema:
+        description: Identifier namespace / annotation catalog. An identifiers.org prefix is recommended.
+        examples:
+        - ensembl
+        - gencode
+        - refseq
+        - ncbigene
+      version:
         type: string
-    filters:
-      name: filters
-      in: query
-      schema:
-        type: array
-        items:
-          type: string
-      examples:
-        example1:
-          value:
-            - NCIT:C20197
+        description: Annotation release or build version string.
+        examples:
+        - '109'
+        - '49'
+        - '109.20190905'
+      file:
+        type: string
+        description: URL to the annotation file.
+      md5Checksum:
+        type: string
+        description: MD5 checksum of the annotation file.
+    required:
+    - source
+    - version
+  assembly:
+    description: Reference genome assembly used to map reads and define genomic coordinates for features
+      in this matrix.
+    examples:
+    - accession: GCA_000001405.29
+      name: GRCh38.p14
+    type: object
+    properties:
+      accession:
+        description: Assembly accession (e.g. INSDC GCA_/GCF_).
+        type: string
+      name:
+        description: Human-readable assembly name.
+        type: string
+    required:
+    - accession
+    - name
+required:
+- matrixId
+- expressionUnitAndScale
+- featureType
+- annotation
+- assembly
+- reproducible
+type: object

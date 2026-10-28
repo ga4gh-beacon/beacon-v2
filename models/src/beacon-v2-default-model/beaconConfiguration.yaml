@@ -135,6 +135,23 @@ entryTypes:
       referenceToSchemaDefinition: https://exampleBeacons.org/matrices/defaultSchema.json
       schemaVersion: v2.0.0
     additionallySupportedSchemas: []
+  expressionValue:
+    id: expressionValue
+    name: Expression value
+    ontologyTermForThisType:
+      id: edam:data_0006
+      label: Data
+    partOfSpecification: Beacon v2.1.2
+    description: >-
+      One quantified expression cell: the measured value of a specific genomic
+      feature in a specific biosample within a specific matrix. Accessed via
+      nested matrix expression_values endpoints; not a root entry-type collection.
+    defaultSchema:
+      id: ga4gh-beacon-expressionValues-v2.0.0
+      name: Default schema for an expression value
+      referenceToSchemaDefinition: https://exampleBeacons.org/expressionValues/defaultSchema.json
+      schemaVersion: v2.0.0
+    additionallySupportedSchemas: []
   feature:
     id: feature
     name: Genomic feature

@@ -1,7 +1,7 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Genomic feature
 $comment: 'version: ga4gh-beacon-feature-v2.1.2'
-description: Schema for the genomic feature (e.g. gene or transcript...)
+description: Schema for the genomic feature (e.g. gene, transcript or genomic interval...)
 type: object
 properties:
   id:
