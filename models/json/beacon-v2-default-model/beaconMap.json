@@ -159,8 +159,12 @@
         "matrixEndpoints": {
             "endpoints": {
                 "biosampleLookup": {
-                    "returnedEntryType": "feature",
+                    "returnedEntryType": "biosample",
                     "url": "https://exampleBeacons.org/matrices/{id}/biosamples"
+                },
+                "expressionValueLookup": {
+                    "returnedEntryType": "expressionValue",
+                    "url": "https://exampleBeacons.org/matrices/{id}/expression_values"
                 },
                 "featureLookup": {
                     "returnedEntryType": "feature",

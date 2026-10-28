@@ -443,6 +443,78 @@
                     "POST Endpoints"
                 ]
             }
+        },
+        "/features/{id}/matrices": {
+            "get": {
+                "description": "Get a *matrices* response for one genomic feature, identified by its (unique) 'id'",
+                "operationId": "getOneFeatureMatrices",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/requestedSchema"
+                    },
+                    {
+                        "$ref": "#/components/parameters/skip"
+                    },
+                    {
+                        "$ref": "#/components/parameters/limit"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/ResultsOKResponse"
+                    },
+                    "default": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
+                        "description": "An unsuccessful operation"
+                    }
+                },
+                "tags": [
+                    "GET Endpoints"
+                ]
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/entryId"
+                }
+            ],
+            "post": {
+                "description": "Get a *matrices* response for one genomic feature, identified by its (unique) 'id'",
+                "operationId": "postOneFeatureMatrices",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "$ref": "#/components/responses/ResultsOKResponse"
+                    },
+                    "default": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
+                        "description": "An unsuccessful operation"
+                    }
+                },
+                "tags": [
+                    "POST Endpoints"
+                ]
+            }
         }
     },
     "servers": []
