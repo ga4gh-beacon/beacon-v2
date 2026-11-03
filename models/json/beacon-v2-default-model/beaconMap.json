@@ -97,6 +97,14 @@
         },
         "featureEndpoints": {
             "endpoints": {
+                "biosampleLookup": {
+                    "returnedEntryType": "biosample",
+                    "url": "https://exampleBeacons.org/features/{id}/biosamples"
+                },
+                "genomicVariantLookup": {
+                    "returnedEntryType": "genomicVariant",
+                    "url": "https://exampleBeacons.org/features/{id}/g_variants"
+                },
                 "matrixLookup": {
                     "returnedEntryType": "matrix",
                     "url": "https://exampleBeacons.org/features/{id}/matrices"
@@ -172,6 +180,7 @@
                 }
             },
             "entryType": "matrix",
+            "filteringTermsUrl": "https://exampleBeacons.org/matrices/{id}/filtering_terms",
             "openAPIEndpointsDefinition": "https://exampleBeacons.org/matrices/endpoints.json",
             "rootUrl": "https://exampleBeacons.org/matrices",
             "singleEntryUrl": "https://exampleBeacons.org/matrices/{id}"
