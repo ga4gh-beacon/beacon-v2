@@ -82,7 +82,7 @@
                 "biosamples"
             ]
         },
-        "featureType": {
+        "featureTypes": {
             "description": "Sequence Ontology terms for the class(es) of genomic feature rows in this matrix. Homogeneous matrices list one term (e.g. gene or mRNA). Matrices that mix genes and transcripts (or other feature classes) MUST list every class present. Each feature in the matrix MUST have a genomicFeature.featureType that appears in this array. Values from SO (Sequence Ontology) are recommended.",
             "type": "array",
             "minItems": 1,
@@ -142,6 +142,24 @@
                     ],
                     "default": "linear",
                     "description": "Whether values are linear or log-transformed. If not provided, it is assumed to be linear."
+                }
+            }
+        },
+        "expressionValueRange": {
+            "type": "object",
+            "description": "Global minimum and maximum of expressionValue.value across this matrix. Uses the same unit and scale as expressionUnitAndScale.",
+            "required": [
+                "min",
+                "max"
+            ],
+            "properties": {
+                "min": {
+                    "type": "number",
+                    "description": "Minimum expression value observed in the matrix."
+                },
+                "max": {
+                    "type": "number",
+                    "description": "Maximum expression value observed in the matrix."
                 }
             }
         },
@@ -210,7 +228,7 @@
     "required": [
         "matrixId",
         "expressionUnitAndScale",
-        "featureType",
+        "featureTypes",
         "annotation",
         "assembly",
         "reproducible"
