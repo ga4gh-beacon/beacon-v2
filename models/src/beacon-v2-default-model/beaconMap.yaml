@@ -129,11 +129,18 @@ endpointSets:
       matrixLookup:
         returnedEntryType: matrix
         url: https://exampleBeacons.org/features/{id}/matrices
+      biosampleLookup:
+        returnedEntryType: biosample
+        url: https://exampleBeacons.org/features/{id}/biosamples
+      genomicVariantLookup:
+        returnedEntryType: genomicVariant
+        url: https://exampleBeacons.org/features/{id}/g_variants
   matrixEndpoints:
     entryType: matrix
     openAPIEndpointsDefinition: https://exampleBeacons.org/matrices/endpoints.json
     rootUrl: https://exampleBeacons.org/matrices
     singleEntryUrl: https://exampleBeacons.org/matrices/{id}
+    filteringTermsUrl: https://exampleBeacons.org/matrices/{id}/filtering_terms
     endpoints:
       biosampleLookup:
         returnedEntryType: biosample

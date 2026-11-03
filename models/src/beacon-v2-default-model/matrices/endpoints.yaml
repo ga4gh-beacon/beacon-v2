@@ -51,6 +51,17 @@ components:
       name: minValue
       schema:
         type: number
+    order:
+      description: Sort direction for expression values by cell quantification (`asc` or
+        `desc`); default is ascending.
+      in: query
+      name: order
+      schema:
+        default: asc
+        enum:
+        - asc
+        - desc
+        type: string
     requestedSchema:
       description: Schema to be used to format the `result` field in the response. The response will use
         Beacon format.
@@ -92,6 +103,14 @@ components:
           minValue:
             description: Minimum expression count value to filter results.
             type: number
+          order:
+            default: asc
+            description: Sort direction for expression values by cell quantification (`asc` or
+              `desc`); default is ascending.
+            enum:
+            - asc
+            - desc
+            type: string
         type: object
 info:
   contact:
@@ -141,52 +160,6 @@ paths:
           description: An unsuccessful operation
       tags:
       - POST Endpoints
-  /matrices/filtering_terms:
-    get:
-      description: Get the list of filtering terms that could be used with matrices.
-      operationId: getMatricesFilteringTerms
-      parameters:
-      - $ref: '#/components/parameters/skip'
-      - $ref: '#/components/parameters/limit'
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json
-          description: Successful operation
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-          description: An unsuccessful operation
-      tags:
-      - GET Endpoints
-    post:
-      description: Get the list of filtering terms that could be used with matrices.
-      operationId: postMatricesFilteringTerms
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json
-        required: true
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json
-          description: Successful operation
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-          description: An unsuccessful operation
-      tags:
-      - POST Endpoints
   /matrices/{id}:
     get:
       description: Get details about one matrix, identified by its (unique) 'id'
@@ -224,6 +197,58 @@ paths:
           description: An unsuccessful operation
       tags:
       - POST Endpoints
+  /matrices/{id}/filtering_terms:
+    parameters:
+    - $ref: '#/components/parameters/entryId'
+    get:
+      parameters:
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/limit'
+      description: >-
+        Get a response about the *filtering terms* that could be used with a
+        given matrix, identified by its (unique) 'id'
+      operationId: getOneMatrixFilteringTerms
+      tags:
+      - GET Endpoints
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json
+        default:
+          description: An unsuccessful operation
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
+    post:
+      description: >-
+        Get a response about the *filtering terms* that could be used with a
+        given matrix, identified by its (unique) 'id'
+      operationId: postOneMatrixFilteringTerms
+      tags:
+      - POST Endpoints
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json
+        default:
+          description: An unsuccessful operation
+          content:
+            application/json:
+              schema:
+                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /matrices/{id}/biosamples:
     get:
       description: Get a *biosamples* response for one matrix, identified by its (unique) 'id'
@@ -232,6 +257,7 @@ paths:
       - $ref: '#/components/parameters/requestedSchema'
       - $ref: '#/components/parameters/skip'
       - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/filters'
       responses:
         '200':
           $ref: '#/components/responses/ResultsOKResponse'
@@ -277,6 +303,8 @@ paths:
       - $ref: '#/components/parameters/biosampleIDList'
       - $ref: '#/components/parameters/minValue'
       - $ref: '#/components/parameters/maxValue'
+      - $ref: '#/components/parameters/order'
+      - $ref: '#/components/parameters/filters'
       responses:
         '200':
           $ref: '#/components/responses/ResultsOKResponse'
@@ -318,6 +346,7 @@ paths:
       - $ref: '#/components/parameters/requestedSchema'
       - $ref: '#/components/parameters/skip'
       - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/filters'
       responses:
         '200':
           $ref: '#/components/responses/ResultsOKResponse'

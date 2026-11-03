@@ -235,6 +235,7 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/filters'
       description: >-
         Get a *matrices* response from one biosample, identified by its (unique) 'id'
       operationId: getOneBiosampleMatrices
