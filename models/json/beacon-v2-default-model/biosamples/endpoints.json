@@ -389,6 +389,9 @@
                     },
                     {
                         "$ref": "#/components/parameters/limit"
+                    },
+                    {
+                        "$ref": "#/components/parameters/filters"
                     }
                 ],
                 "responses": {
