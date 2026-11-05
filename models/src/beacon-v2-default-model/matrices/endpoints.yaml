@@ -1,7 +1,9 @@
 components:
   parameters:
     biosampleIDList:
-      description: Comma-separated list of biosample IDs to filter expression values.
+      description: >-
+        Comma-separated list of biosample IDs (expression_values slice, or
+        filter for nested matrix biosamples listing).
       in: query
       name: biosampleIDList
       schema:
@@ -13,7 +15,9 @@ components:
       schema:
         type: string
     featureIDList:
-      description: Comma-separated list of feature IDs to filter expression values.
+      description: >-
+        Comma-separated list of feature IDs (expression_values slice, or
+        filter for nested matrix features listing).
       in: query
       name: featureIDList
       schema:
@@ -52,8 +56,9 @@ components:
       schema:
         type: number
     order:
-      description: Sort direction for expression values by cell quantification (`asc` or
-        `desc`); default is ascending.
+      description: >-
+        Order expression_values by cell quantification (`asc` or `desc`);
+        default is ascending. Not used on nested features/biosamples listings.
       in: query
       name: order
       schema:
@@ -61,6 +66,15 @@ components:
         enum:
         - asc
         - desc
+        type: string
+    pageToken:
+      description: >-
+        RNAget extension — opaque keyset page token for expression_values
+        (prefer over deep skip). On POST, prefer query.pagination.nextPage /
+        previousPage.
+      in: query
+      name: pageToken
+      schema:
         type: string
     requestedSchema:
       description: Schema to be used to format the `result` field in the response. The response will use
@@ -87,31 +101,42 @@ components:
             - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconResultsetsResponse.json
       description: Successful operation.
   schemas:
+    ExpressionValuesRequestParameters:
+      description: >-
+        RNAget slice parameters for expression_values. Must be sent under
+        `query.requestParameters` (not as top-level siblings of meta/query).
+      type: object
+      additionalProperties: false
+      properties:
+        biosampleIDList:
+          description: Comma-separated list of biosample IDs to filter expression values.
+          type: string
+        featureIDList:
+          description: Comma-separated list of feature IDs to filter expression values.
+          type: string
+        maxValue:
+          description: Maximum expression count value to filter results.
+          type: number
+        minValue:
+          description: Minimum expression count value to filter results.
+          type: number
+        order:
+          default: asc
+          description: >-
+            Order results by cell quantification value (`asc` or `desc`);
+            default is ascending. There is no sort-by-id or expression.min/max.
+          enum:
+          - asc
+          - desc
+          type: string
     ExpressionValuesRequestBody:
+      description: >-
+        Standard Beacon request body. Put featureIDList, biosampleIDList,
+        minValue, maxValue, and order under query.requestParameters (see
+        ExpressionValuesRequestParameters). Top-level sibling slice fields are
+        not accepted by the RNAget reference implementation.
       allOf:
       - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json
-      - properties:
-          biosampleIDList:
-            description: Comma-separated list of biosample IDs to filter expression values.
-            type: string
-          featureIDList:
-            description: Comma-separated list of feature IDs to filter expression values.
-            type: string
-          maxValue:
-            description: Maximum expression count value to filter results.
-            type: number
-          minValue:
-            description: Minimum expression count value to filter results.
-            type: number
-          order:
-            default: asc
-            description: Sort direction for expression values by cell quantification (`asc` or
-              `desc`); default is ascending.
-            enum:
-            - asc
-            - desc
-            type: string
-        type: object
 info:
   contact:
     email: beacon@ga4gh.org
@@ -251,13 +276,16 @@ paths:
                 $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /matrices/{id}/biosamples:
     get:
-      description: Get a *biosamples* response for one matrix, identified by its (unique) 'id'
+      description: >-
+        Get a *biosamples* response for one matrix, identified by its (unique)
+        'id'. Optional biosampleIDList filters to the given biosample ids.
       operationId: getOneMatrixBiosamples
       parameters:
       - $ref: '#/components/parameters/requestedSchema'
       - $ref: '#/components/parameters/skip'
       - $ref: '#/components/parameters/limit'
       - $ref: '#/components/parameters/filters'
+      - $ref: '#/components/parameters/biosampleIDList'
       responses:
         '200':
           $ref: '#/components/responses/ResultsOKResponse'
@@ -293,7 +321,9 @@ paths:
       - POST Endpoints
   /matrices/{id}/expression_values:
     get:
-      description: Get an *expression values* response for one matrix, identified by its (unique) 'id'
+      description: >-
+        Get an *expression values* response for one matrix, identified by its
+        (unique) 'id'. RNAget extension: pageToken for keyset pagination.
       operationId: getOneMatrixExpressionValues
       parameters:
       - $ref: '#/components/parameters/requestedSchema'
@@ -304,6 +334,7 @@ paths:
       - $ref: '#/components/parameters/minValue'
       - $ref: '#/components/parameters/maxValue'
       - $ref: '#/components/parameters/order'
+      - $ref: '#/components/parameters/pageToken'
       - $ref: '#/components/parameters/filters'
       responses:
         '200':
@@ -340,13 +371,16 @@ paths:
       - POST Endpoints
   /matrices/{id}/features:
     get:
-      description: Get a *features* response for one matrix, identified by its (unique) 'id'
+      description: >-
+        Get a *features* response for one matrix, identified by its (unique)
+        'id'. Optional featureIDList filters to the given feature ids.
       operationId: getOneMatrixFeatures
       parameters:
       - $ref: '#/components/parameters/requestedSchema'
       - $ref: '#/components/parameters/skip'
       - $ref: '#/components/parameters/limit'
       - $ref: '#/components/parameters/filters'
+      - $ref: '#/components/parameters/featureIDList'
       responses:
         '200':
           $ref: '#/components/responses/ResultsOKResponse'
