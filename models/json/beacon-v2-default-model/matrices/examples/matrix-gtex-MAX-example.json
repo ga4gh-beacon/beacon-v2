@@ -1,0 +1,49 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "matrixId": "GTEx-v8-Adipose-Subcutaneous",
+    "createDateTime": "2026-11-03T10:00:37Z",
+    "description": "GTEx Analysis v8 gene-level TPM matrix for Adipose - Subcutaneous samples. GCT format (#1.3): id, Name (ENSG), Description (symbol), then one column per sample. Full tissue matrix is imported by default (~56k genes × ~663 samples).",
+    "downloadUrl": "https://storage.googleapis.com/adult-gtex/bulk-gex/v8/rna-seq/tpms-by-tissue/gene_tpm_2017-06-05_v8_adipose_subcutaneous.gct.gz",
+    "reproducible": true,
+    "assayType": {
+        "id": "OBI:0003090",
+        "label": "bulk RNA-seq assay"
+    },
+    "info": {
+        "source": "gtex",
+        "format": "gtex_gct",
+        "tissue": {
+            "id": "UBERON:0002190",
+            "label": "Adipose - Subcutaneous"
+        }
+    },
+    "name": "GTEx v8 Adipose - Subcutaneous gene TPM",
+    "dimensions": {
+        "features": 56200,
+        "biosamples": 663
+    },
+    "featureTypes": [
+        {
+            "id": "SO:0000704",
+            "label": "gene"
+        }
+    ],
+    "expressionUnitAndScale": {
+        "unit": "TPM",
+        "scale": "linear"
+    },
+    "expressionValueRange": {
+        "min": 0.0,
+        "max": 86050.0
+    },
+    "annotation": {
+        "source": "gencode",
+        "version": "v26",
+        "file": "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_26/gencode.v26.annotation.gtf.gz",
+        "md5Checksum": "3cfe0c4c63a51a31034accf262cbb76b"
+    },
+    "assembly": {
+        "accession": "GCA_000001405.15",
+        "name": "GRCh38"
+    }
+}

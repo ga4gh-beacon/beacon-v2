@@ -1,0 +1,23 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "matrixId": "GTEx-v8-Adipose-Subcutaneous",
+    "expressionUnitAndScale": {
+        "unit": "TPM",
+        "scale": "linear"
+    },
+    "featureTypes": [
+        {
+            "id": "SO:0000704",
+            "label": "gene"
+        }
+    ],
+    "annotation": {
+        "source": "gencode",
+        "version": "v26"
+    },
+    "assembly": {
+        "accession": "GCA_000001405.15",
+        "name": "GRCh38"
+    },
+    "reproducible": true
+}

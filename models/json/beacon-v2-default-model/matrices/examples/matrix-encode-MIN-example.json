@@ -1,13 +1,9 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "matrixId": "matrix-gene-expression-001",
+    "matrixId": "ENCSR622FSM",
     "expressionUnitAndScale": {
         "unit": "TPM",
         "scale": "linear"
-    },
-    "expressionValueRange": {
-        "min": 0,
-        "max": 1000
     },
     "featureTypes": [
         {
@@ -16,12 +12,12 @@
         }
     ],
     "annotation": {
-        "source": "ensembl",
-        "version": "109"
+        "source": "gencode",
+        "version": "v24"
     },
     "assembly": {
-        "accession": "GCA_000001405.29",
-        "name": "GRCh38.p14"
+        "accession": "GCA_000001405.15",
+        "name": "GRCh38"
     },
-    "reproducible": false
+    "reproducible": true
 }

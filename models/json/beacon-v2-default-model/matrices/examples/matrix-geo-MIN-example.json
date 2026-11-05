@@ -1,0 +1,27 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "matrixId": "GSE164073",
+    "expressionUnitAndScale": {
+        "unit": "TPM",
+        "scale": "linear"
+    },
+    "featureTypes": [
+        {
+            "id": "SO:0000336",
+            "label": "pseudogene"
+        },
+        {
+            "id": "SO:0000704",
+            "label": "gene"
+        }
+    ],
+    "annotation": {
+        "source": "ncbigene",
+        "version": "109.20190905"
+    },
+    "assembly": {
+        "accession": "GCA_000001405.15",
+        "name": "GRCh38.p13"
+    },
+    "reproducible": true
+}
