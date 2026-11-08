@@ -19,6 +19,9 @@ genomicInterval:
 featureType:
   id: SO:0000234
   label: mRNA
+biotype:
+  id: SO:0001217
+  label: protein_coding_gene
 ontologyTerms:
 - id: GO:0006915
   label: apoptotic process

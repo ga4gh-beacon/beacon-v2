@@ -113,9 +113,27 @@
                 }
             ]
         },
+        "biotype": {
+            "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/common/ontologyTerm.json",
+            "description": "Gene or transcript biotype from Sequence Ontology (e.g. protein_coding_gene). Not the same as featureType (structural class such as gene, mRNA, or exon). Prefer SO CURIEs over annotation-catalog strings such as Ensembl \"protein_coding\".",
+            "examples": [
+                {
+                    "id": "SO:0001217",
+                    "label": "protein_coding_gene"
+                },
+                {
+                    "id": "SO:0002127",
+                    "label": "lncRNA_gene"
+                },
+                {
+                    "id": "SO:0000336",
+                    "label": "pseudogene"
+                }
+            ]
+        },
         "ontologyTerms": {
             "type": "array",
-            "description": "Ontology terms of the genomic feature like biological functions, molecular effects, etc.",
+            "description": "Ontology terms for biological functions, molecular effects, and similar annotations (e.g. GO). Biotype MUST use biotype, not this array.",
             "items": {
                 "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/common/ontologyTerm.json"
             },
