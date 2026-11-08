@@ -58,15 +58,11 @@ components:
     order:
       description: >-
         Order expression_values by cell quantification (`asc` or `desc`);
-        default is ascending. Not used on nested features/biosamples listings.
+        default is descending. Not used on nested features/biosamples listings.
       in: query
       name: order
       schema:
-        default: asc
-        enum:
-        - asc
-        - desc
-        type: string
+        $ref: ../common/commonDefinitions.yaml#/$defs/Order
     pageToken:
       description: >-
         RNAget extension — opaque keyset page token for expression_values
@@ -121,14 +117,10 @@ components:
           description: Minimum expression count value to filter results.
           type: number
         order:
-          default: asc
+          $ref: ../common/commonDefinitions.yaml#/$defs/Order
           description: >-
             Order results by cell quantification value (`asc` or `desc`);
-            default is ascending. There is no sort-by-id or expression.min/max.
-          enum:
-          - asc
-          - desc
-          type: string
+            default is descending. There is no sort-by-id or expression.min/max.
     ExpressionValuesRequestBody:
       description: >-
         Standard Beacon request body. Put featureIDList, biosampleIDList,

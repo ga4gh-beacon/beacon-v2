@@ -75,6 +75,15 @@
             ],
             "type": "string"
         },
+        "Order": {
+            "default": "desc",
+            "description": "Direction for ordering expression values by cell quantification (`asc` or `desc`); default is descending.",
+            "enum": [
+                "asc",
+                "desc"
+            ],
+            "type": "string"
+        },
         "SeverityLevel": {
             "$ref": "../../../../framework/json/common/ontologyTerm.json",
             "description": "Severity as applicable to phenotype or disease observed. Recommended are values from Human Phenotype Ontology (HP:0012824), e.g `mild`. The intensity or degree of a manifestation. Source: Phenopackets v2",
