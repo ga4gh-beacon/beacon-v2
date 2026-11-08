@@ -1,36 +1,34 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "id": "InternalId12345",
-    "genomicFeature": {
-        "featureIdentifier": {
-            "id": "EXON:00004567",
-            "resource": "local"
-        },
-        "genomicInterval": {
-            "location": {
-                "interval": {
-                    "end": {
-                        "type": "Number",
-                        "value": 7668421
-                    },
-                    "start": {
-                        "type": "Number",
-                        "value": 7668534
-                    },
-                    "type": "SequenceInterval"
+    "featureIdentifier": {
+        "id": "EXON:00004567",
+        "resource": "local"
+    },
+    "genomicInterval": {
+        "location": {
+            "interval": {
+                "end": {
+                    "type": "Number",
+                    "value": 7668421
                 },
-                "sequence_id": "INSDC:CM000669.2",
-                "type": "SequenceLocation"
+                "start": {
+                    "type": "Number",
+                    "value": 7668534
+                },
+                "type": "SequenceInterval"
             },
-            "strand": "negative"
+            "sequence_id": "INSDC:CM000669.2",
+            "type": "SequenceLocation"
         },
-        "featureType": {
-            "id": "SO:0000147",
-            "label": "exon"
-        },
-        "relationship": {
-            "parent": "ENST00000269305.9"
-        }
+        "strand": "negative"
+    },
+    "featureType": {
+        "id": "SO:0000147",
+        "label": "exon"
+    },
+    "relationship": {
+        "parent": "ENST00000269305.9"
     },
     "matrixIds": [
         "matrix-gene-expression-001",

@@ -66,7 +66,7 @@ properties:
   featureTypes:
     description: Sequence Ontology terms for the class(es) of genomic feature rows in this matrix. Homogeneous
       matrices list one term (e.g. gene or mRNA). Matrices that mix genes and transcripts (or other feature
-      classes) MUST list every class present. Each feature in the matrix MUST have a genomicFeature.featureType
+      classes) MUST list every class present. Each feature in the matrix MUST have a featureType
       that appears in this array. Values from SO (Sequence Ontology) are recommended.
     type: array
     minItems: 1
@@ -123,7 +123,7 @@ properties:
         description: Maximum expression value observed in the matrix.
   annotation:
     description: Annotation catalog used to define feature identifiers in this matrix. source SHOULD use
-      the same identifiers.org-style prefix vocabulary as genomicFeature.featureIdentifier.resource (e.g.
+      the same identifiers.org-style prefix vocabulary as featureIdentifier.resource (e.g.
       ensembl, gencode). version is the annotation release; it is not the same as an Ensembl object version
       suffix (e.g. .18).
     type: object

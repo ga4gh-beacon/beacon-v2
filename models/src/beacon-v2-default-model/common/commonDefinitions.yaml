@@ -116,3 +116,12 @@ $defs:
         label: Kilogram
       - id: NCIT:C28253
         label: Milligram
+  Order:
+    description: >-
+      Direction for ordering expression values by cell quantification
+      (`asc` or `desc`); default is descending.
+    type: string
+    enum:
+      - asc
+      - desc
+    default: desc

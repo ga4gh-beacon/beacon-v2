@@ -26,7 +26,7 @@
             "type": "number"
         },
         "featureId": {
-            "description": "Native accession of the quantified genomic feature as it appears in the matrix row. MUST equal genomicFeature.featureIdentifier.id of the matching feature. Not a CURIE and not genomicFeatures.id.",
+            "description": "Native accession of the quantified genomic feature as it appears in the matrix row. MUST equal featureIdentifier.id of the matching feature. Not a CURIE and not genomicFeatures.id.",
             "examples": [
                 "ENSG00000141510.18",
                 "ENST00000269305.9"

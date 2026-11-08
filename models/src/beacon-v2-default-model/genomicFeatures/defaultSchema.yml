@@ -1,7 +1,10 @@
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Genomic feature
 $comment: 'version: ga4gh-beacon-feature-v2.1.2'
-description: Schema for the genomic feature (e.g. gene, transcript or genomic interval...)
+description: >-
+  A genomic feature (gene, transcript, exon, or genomic interval) used as a quantified
+  row in RNA-seq expression matrices and/or as an annotated feature related to a genomic
+  variant.
 type: object
 properties:
   id:
@@ -9,9 +12,127 @@ properties:
     type: string
     examples:
       - Feature12345
-  genomicFeature:
-    $ref: ../common/genomicFeature.yaml
+  featureIdentifier:
+    description: >-
+      Identifier of the genomic feature as it appears in the expression matrix (native
+      accession), plus the identifier namespace. Gene symbols MUST NOT be stored here;
+      use aliases instead. Annotation release (e.g. Ensembl 109) belongs on the matrix
+      annotation, not on this object.
     type: object
+    properties:
+      id:
+        type: string
+        description: >-
+          Native accession of the genomic feature as used in the matrix row (versioned
+          when the matrix uses versioned IDs). Not a CURIE. For anonymous or
+          interval-derived features with no public accession, a locally minted
+          identifier MUST be used.
+        examples:
+          - ENSG00000141510.18
+          - ENST00000269305.9
+          - EXON:00004567
+      resource:
+        type: string
+        description: >-
+          Identifier namespace for id. An identifiers.org prefix is recommended (e.g.
+          ensembl, hgnc, ncbigene, refseq, gencode). Use local for locally minted
+          identifiers. Required because id is not a CURIE.
+        examples:
+          - ensembl
+          - hgnc
+          - ncbigene
+          - refseq
+          - gencode
+          - local
+    required:
+      - id
+      - resource
+    examples:
+      - id: ENSG00000141510.18
+        resource: ensembl
+      - id: ENST00000269305.9
+        resource: ensembl
+      - id: EXON:00004567
+        resource: local
+  genomicInterval:
+    description: >-
+      Genomic interval of the genomic feature, uses the VRS schema for the coordinates
+      and adds the strand
+    type: object
+    properties:
+      location:
+        $ref: https://w3id.org/ga4gh/schema/vrs/1.3/vrs.json#/definitions/Location
+      strand:
+        type: string
+        enum:
+          - positive
+          - negative
+        default: positive
+  aliases:
+    description: >-
+      Human-readable names or symbols commonly used for this feature (gene symbols,
+      transcript names, or other aliases).
+    examples:
+      - TP53
+      - BRCA1
+    type: array
+    items:
+      type: string
+  xrefs:
+    description: Cross-references of the genomic feature. CURIE format is recommended.
+    examples:
+      - HGNC:11998
+      - NCBIGene:7157
+    type: array
+    items:
+      type: string
+  featureType:
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/common/ontologyTerm.json
+    description: >-
+      Ontology term that describes the type of genomic feature. Values from SO
+      (Sequence Ontology) are recommended.
+    examples:
+      - id: SO:0000704
+        label: gene
+      - id: SO:0000234
+        label: mRNA
+      - id: SO:0000147
+        label: exon
+  ontologyTerms:
+    type: array
+    description: >-
+      Ontology terms of the genomic feature like biological functions, molecular
+      effects, etc.
+    items:
+      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/common/ontologyTerm.json
+    examples:
+      - id: GO:0048856
+        label: anatomical structure development
+  relationship:
+    type: object
+    description: >-
+      Hierarchical relationships of the genomic feature (gene -> transcript -> exon).
+      parent and children MUST use the same native id form as featureIdentifier.id
+      (not CURIEs).
+    properties:
+      parent:
+        description: >-
+          Parent of the genomic feature, usually a gene or transcript. Value MUST match
+          the parent's featureIdentifier.id.
+        examples:
+          - ENSG00000141510.18
+          - ENST00000269305.9
+        type: string
+      children:
+        description: >-
+          Children of the genomic feature, usually a transcript or exon. Values MUST
+          match each child's featureIdentifier.id.
+        type: array
+        items:
+          type: string
+          examples:
+            - ENST00000269305.9
+            - EXON:00004567
   matrixIds:
     type: "array"
     items:
@@ -21,4 +142,6 @@ properties:
     $ref: ../common/info.yaml
 required:
   - id
+  - featureIdentifier
+  - featureType
 additionalProperties: true
