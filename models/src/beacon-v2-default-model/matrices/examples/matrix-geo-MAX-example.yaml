@@ -26,6 +26,18 @@ featureTypes:
   label: pseudogene
 - id: SO:0000704
   label: gene
+biotypes:
+- id: SO:0001217
+  label: protein_coding_gene
+- id: SO:0000336
+  label: pseudogene
+biosampleTypes:
+- id: UBERON:0000964
+  label: cornea
+- id: UBERON:0006761
+  label: corneal limbus
+- id: UBERON:0001777
+  label: sclera
 expressionUnitAndScale:
   unit: TPM
   scale: linear

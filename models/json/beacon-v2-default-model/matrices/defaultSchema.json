@@ -114,6 +114,64 @@
                 ]
             ]
         },
+        "biotypes": {
+            "description": "Sequence Ontology biotypes present on genomic feature rows of this matrix (e.g. protein_coding_gene, lncRNA_gene). Distinct from featureTypes (structural class). Each listed term MUST appear as some feature's biotype in this matrix. Values from SO (Sequence Ontology) are recommended.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
+            },
+            "examples": [
+                [
+                    {
+                        "id": "SO:0001217",
+                        "label": "protein_coding_gene"
+                    }
+                ],
+                [
+                    {
+                        "id": "SO:0001217",
+                        "label": "protein_coding_gene"
+                    },
+                    {
+                        "id": "SO:0002127",
+                        "label": "lncRNA_gene"
+                    }
+                ]
+            ]
+        },
+        "biosampleTypes": {
+            "description": "Ontology terms for tissue, cell type, or cell line present on biosample columns of this matrix. Prefer UBERON for anatomical tissue, CL for cell type, and CLO or BTO for cell lines. Each listed term MUST appear on a linked biosample (e.g. sampleOriginDetail). Distinct from assayType.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
+            },
+            "examples": [
+                [
+                    {
+                        "id": "UBERON:0002190",
+                        "label": "subcutaneous adipose tissue"
+                    }
+                ],
+                [
+                    {
+                        "id": "UBERON:0000964",
+                        "label": "cornea"
+                    },
+                    {
+                        "id": "UBERON:0001777",
+                        "label": "sclera"
+                    }
+                ],
+                [
+                    {
+                        "id": "CL:0000236",
+                        "label": "B cell"
+                    }
+                ]
+            ]
+        },
         "expressionUnitAndScale": {
             "description": "Unit and numeric scale of expression values in this matrix. Applies to all expressionValue.value entries that reference this matrixId.",
             "type": "object",

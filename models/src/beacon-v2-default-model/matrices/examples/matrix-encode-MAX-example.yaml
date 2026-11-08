@@ -22,6 +22,12 @@ dimensions:
 featureTypes:
 - id: SO:0000704
   label: gene
+biotypes:
+- id: SO:0001217
+  label: protein_coding_gene
+biosampleTypes:
+- id: EFO:0030018
+  label: BLaER1
 expressionUnitAndScale:
   unit: TPM
   scale: linear
