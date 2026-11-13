@@ -43,8 +43,11 @@ nav:
                - Biosamples: schemas-md/biosamples_defaultSchema
                - Cohorts: schemas-md/cohorts_defaultSchema
                - Datasets: schemas-md/datasets_defaultSchema
+               - Expression Values: schemas-md/expressionValues_defaultSchema
+               - Genomic Features: schemas-md/genomicFeatures_defaultSchema
                - Genomic Variations: schemas-md/genomicVariations_defaultSchema
                - Individuals: schemas-md/individuals_defaultSchema
+               - Matrices: schemas-md/matrices_defaultSchema
                - Runs: schemas-md/runs_defaultSchema
             - Terms List: schemas-md/beacon_terms
     - Beacon Development:

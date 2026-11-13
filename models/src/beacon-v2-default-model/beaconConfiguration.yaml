@@ -125,7 +125,7 @@ entryTypes:
     id: matrix
     name: Matrices
     ontologyTermForThisType:
-      id: edam:2603
+      id: edam:data_2603
       label: Expression data
     partOfSpecification: Beacon v2.1.2
     description: Matrix of expression data
@@ -133,7 +133,7 @@ entryTypes:
       id: ga4gh-beacon-matrix-v2.1.2
       name: Default schema for the matrix properties
       referenceToSchemaDefinition: https://exampleBeacons.org/matrices/defaultSchema.json
-      schemaVersion: v2.0.0
+      schemaVersion: v2.1.2
     additionallySupportedSchemas: []
   expressionValue:
     id: expressionValue
@@ -164,5 +164,5 @@ entryTypes:
       id: ga4gh-beacon-feature-v2.1.2
       name: Default schema for the genomic features
       referenceToSchemaDefinition: https://exampleBeacons.org/genomicFeatures/defaultSchema.json
-      schemaVersion: v2.0.0
+      schemaVersion: v2.1.2
     additionallySupportedSchemas: []

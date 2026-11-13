@@ -127,6 +127,9 @@ The above entities are defined as follows;
   * **Genomic variations**: unique genomic alterations, e.g., position in a genome, sequence alterations, type, etc.
   * **Individuals**: either patients or healthy controls whose details (including phenotypic and clinical) are stored in the repository.
   * **Biosamples**: samples taken from individuals, including details of procedures, dates and times.
+  * **Matrices**: metadata of an RNA-seq quantification matrix (units and scale, annotation, assembly, assay type, feature types, biotypes and biosample types). Matrices relate biosamples (columns) to genomic features (rows).
+  * **Genomic features**: genes, transcripts, exons or other genomic intervals that are quantified as matrix rows, with identifier, type, biotype, aliases and cross-references.
+  * **Expression values**: one quantified cell, i.e. the value of a feature in a biosample within a matrix. Not a root collection: they are served under `/matrices/{id}/expression_values`.
   * **Analyses & Runs**: details on (a) procedures used for sequencing a biosample (runs), and (b) bioinformatic procedures to identify variants (analyses)
 
 !!! Important "**Beacon v1 Model:** [Repo](https://github.com/ga4gh-beacon/Model-BEACON-v1)"
