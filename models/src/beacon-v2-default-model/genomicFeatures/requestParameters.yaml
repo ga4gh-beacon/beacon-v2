@@ -1,0 +1,8 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+description: >-
+  Entry-type specific request parameters for the genomic feature model. No
+  feature-specific `query.requestParameters` are defined: features are selected
+  with `query.filters` (see the Beacon filtering terms).
+type: object
+additionalProperties: false
+properties: {}

@@ -19,7 +19,7 @@ paths:
         - $ref: '#/components/parameters/includeResultsetResponses'
         - $ref: '#/components/parameters/filters'
       description: Get a list of genomic features
-      operationId: getfeatures
+      operationId: getFeatures
       tags:
         - GET Endpoints
       responses:
@@ -97,7 +97,7 @@ paths:
       description: >-
         Get a *genomic variations* response for one genomic feature, identified by
         its (unique) 'id'
-      operationId: getOnegenomic featureGenomicVariants
+      operationId: getOneFeatureGenomicVariants
       tags:
         - GET Endpoints
       responses:
@@ -113,7 +113,7 @@ paths:
       description: >-
         Get a *genomic variations* response for one genomic feature, identified by
         its (unique) 'id'
-      operationId: potOnegenomic featureGenomicVariants
+      operationId: postOneFeatureGenomicVariants
       tags:
         - POST Endpoints
       requestBody:
@@ -142,7 +142,7 @@ paths:
       description: >-
         Get a *biosamples* response for one genomic feature, identified by its
         (unique) 'id'
-      operationId: getOnegenomic featureBiosamples
+      operationId: getOneFeatureBiosamples
       tags:
         - GET Endpoints
       responses:
@@ -184,7 +184,6 @@ paths:
         - $ref: '#/components/parameters/requestedSchema'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
-        - $ref: '#/components/parameters/filters'
       description: >-
         Get a *matrices* response for one genomic feature, identified by its
         (unique) 'id'
@@ -257,7 +256,7 @@ components:
       name: includeResultsetResponses
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/IncludeResultsetResponses
     entryId:
       name: id
       in: path

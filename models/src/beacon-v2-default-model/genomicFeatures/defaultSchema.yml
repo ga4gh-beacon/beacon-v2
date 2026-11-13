@@ -87,7 +87,7 @@ properties:
     items:
       type: string
   featureType:
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/common/ontologyTerm.json
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     description: >-
       Ontology term that describes the type of genomic feature. Values from SO
       (Sequence Ontology) are recommended.
@@ -99,7 +99,7 @@ properties:
       - id: SO:0000147
         label: exon
   biotype:
-    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/common/ontologyTerm.json
+    $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     description: >-
       Gene or transcript biotype from Sequence Ontology (e.g. protein_coding_gene).
       Not the same as featureType (structural class such as gene, mRNA, or exon).
@@ -118,7 +118,7 @@ properties:
       Ontology terms for biological functions, molecular effects, and similar
       annotations (e.g. GO). Biotype MUST use biotype, not this array.
     items:
-      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/src/common/ontologyTerm.json
+      $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
     examples:
       - id: GO:0048856
         label: anatomical structure development

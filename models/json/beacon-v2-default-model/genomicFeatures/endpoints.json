@@ -30,7 +30,7 @@
                 "in": "query",
                 "name": "includeResultsetResponses",
                 "schema": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses"
+                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/IncludeResultsetResponses"
                 }
             },
             "limit": {
@@ -98,7 +98,7 @@
         "/features": {
             "get": {
                 "description": "Get a list of genomic features",
-                "operationId": "getfeatures",
+                "operationId": "getFeatures",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/requestedSchema"
@@ -225,7 +225,7 @@
         "/features/{id}/biosamples": {
             "get": {
                 "description": "Get a *biosamples* response for one genomic feature, identified by its (unique) 'id'",
-                "operationId": "getOnegenomic featureBiosamples",
+                "operationId": "getOneFeatureBiosamples",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/requestedSchema"
@@ -297,7 +297,7 @@
         "/features/{id}/g_variants": {
             "get": {
                 "description": "Get a *genomic variations* response for one genomic feature, identified by its (unique) 'id'",
-                "operationId": "getOnegenomic featureGenomicVariants",
+                "operationId": "getOneFeatureGenomicVariants",
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/requestedSchema"
@@ -335,7 +335,7 @@
             ],
             "post": {
                 "description": "Get a *genomic variations* response for one genomic feature, identified by its (unique) 'id'",
-                "operationId": "potOnegenomic featureGenomicVariants",
+                "operationId": "postOneFeatureGenomicVariants",
                 "requestBody": {
                     "content": {
                         "application/json": {

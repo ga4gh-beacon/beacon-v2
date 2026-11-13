@@ -1,0 +1,57 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Alphanumeric filtering terms used with the genomic feature collection root (`/features`). They are plain Beacon alphanumeric filters (id, operator, value) and do not have to correspond to a property of the feature schema. Filters apply on collection roots only, never on nested routes.",
+    "filteringTerms": [
+        {
+            "description": "Exact-case match on `aliases`. Operator `=`.",
+            "examples": [
+                {
+                    "id": "symbol",
+                    "operator": "=",
+                    "value": "TP53"
+                }
+            ],
+            "id": "symbol",
+            "label": "Gene symbol",
+            "scopes": [
+                "genomicFeature"
+            ],
+            "type": "alphanumeric"
+        },
+        {
+            "description": "One term per tissue / cell-type ontology id (for example `tissue.percentile:UBERON:0002107`). The value is the percentile (0-100) of the feature's expression among features within that tissue. `>= 0` selects features detected in the tissue, `>= 99` the top 1%. Operators `>=`, `>`, `<=`, `<`, `=`.",
+            "examples": [
+                {
+                    "id": "tissue.percentile:UBERON:0002107",
+                    "operator": ">=",
+                    "value": "99"
+                }
+            ],
+            "id": "tissue.percentile:<ontologyId>",
+            "label": "Expression percentile within a tissue or cell type",
+            "scopes": [
+                "genomicFeature"
+            ],
+            "type": "alphanumeric",
+            "values": [
+                "90",
+                "95",
+                "99"
+            ]
+        },
+        {
+            "description": "Feature median percentile in at least one matrix. Operator `>=`.",
+            "id": "expression.percentile",
+            "label": "Top expressed",
+            "scopes": [
+                "genomicFeature"
+            ],
+            "type": "alphanumeric",
+            "values": [
+                "90",
+                "95",
+                "99"
+            ]
+        }
+    ]
+}
