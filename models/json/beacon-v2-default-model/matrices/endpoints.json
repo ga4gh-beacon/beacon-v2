@@ -81,7 +81,7 @@
                 }
             },
             "pageToken": {
-                "description": "RNAget extension — opaque keyset page token for expression_values (prefer over deep skip). On POST, prefer query.pagination.nextPage / previousPage.",
+                "description": "Keyset page token for expression_values (prefer over deep skip). On POST, prefer query.pagination.nextPage / previousPage.",
                 "in": "query",
                 "name": "pageToken",
                 "schema": {
@@ -500,89 +500,6 @@
                 "responses": {
                     "200": {
                         "$ref": "#/components/responses/ResultsOKResponse"
-                    },
-                    "default": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
-                                }
-                            }
-                        },
-                        "description": "An unsuccessful operation"
-                    }
-                },
-                "tags": [
-                    "POST Endpoints"
-                ]
-            }
-        },
-        "/matrices/{id}/filtering_terms": {
-            "get": {
-                "description": "Get a response about the *filtering terms* that could be used with a given matrix, identified by its (unique) 'id'",
-                "operationId": "getOneMatrixFilteringTerms",
-                "parameters": [
-                    {
-                        "$ref": "#/components/parameters/skip"
-                    },
-                    {
-                        "$ref": "#/components/parameters/limit"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json"
-                                }
-                            }
-                        },
-                        "description": "Successful operation"
-                    },
-                    "default": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
-                                }
-                            }
-                        },
-                        "description": "An unsuccessful operation"
-                    }
-                },
-                "tags": [
-                    "GET Endpoints"
-                ]
-            },
-            "parameters": [
-                {
-                    "$ref": "#/components/parameters/entryId"
-                }
-            ],
-            "post": {
-                "description": "Get a response about the *filtering terms* that could be used with a given matrix, identified by its (unique) 'id'",
-                "operationId": "postOneMatrixFilteringTerms",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json"
-                                }
-                            }
-                        },
-                        "description": "Successful operation"
                     },
                     "default": {
                         "content": {

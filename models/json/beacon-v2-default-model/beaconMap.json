@@ -180,7 +180,6 @@
                 }
             },
             "entryType": "matrix",
-            "filteringTermsUrl": "https://exampleBeacons.org/matrices/{id}/filtering_terms",
             "openAPIEndpointsDefinition": "https://exampleBeacons.org/matrices/endpoints.json",
             "rootUrl": "https://exampleBeacons.org/matrices",
             "singleEntryUrl": "https://exampleBeacons.org/matrices/{id}"

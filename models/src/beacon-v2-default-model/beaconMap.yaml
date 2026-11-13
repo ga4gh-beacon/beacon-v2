@@ -140,7 +140,6 @@ endpointSets:
     openAPIEndpointsDefinition: https://exampleBeacons.org/matrices/endpoints.json
     rootUrl: https://exampleBeacons.org/matrices
     singleEntryUrl: https://exampleBeacons.org/matrices/{id}
-    filteringTermsUrl: https://exampleBeacons.org/matrices/{id}/filtering_terms
     endpoints:
       biosampleLookup:
         returnedEntryType: biosample

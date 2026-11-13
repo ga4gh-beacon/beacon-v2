@@ -191,58 +191,6 @@ paths:
           description: An unsuccessful operation
       tags:
       - POST Endpoints
-  /matrices/{id}/filtering_terms:
-    parameters:
-    - $ref: '#/components/parameters/entryId'
-    get:
-      parameters:
-      - $ref: '#/components/parameters/skip'
-      - $ref: '#/components/parameters/limit'
-      description: >-
-        Get a response about the *filtering terms* that could be used with a
-        given matrix, identified by its (unique) 'id'
-      operationId: getOneMatrixFilteringTerms
-      tags:
-      - GET Endpoints
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json
-        default:
-          description: An unsuccessful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
-    post:
-      description: >-
-        Get a response about the *filtering terms* that could be used with a
-        given matrix, identified by its (unique) 'id'
-      operationId: postOneMatrixFilteringTerms
-      tags:
-      - POST Endpoints
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json
-        required: true
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json
-        default:
-          description: An unsuccessful operation
-          content:
-            application/json:
-              schema:
-                $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json
   /matrices/{id}/biosamples:
     get:
       description: >-
