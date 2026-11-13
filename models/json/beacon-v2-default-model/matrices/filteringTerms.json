@@ -1,0 +1,36 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Alphanumeric filtering terms used with the matrix collection root (`/matrices`). Plain Beacon alphanumeric filters (id, operator, value).",
+    "filteringTerms": [
+        {
+            "description": "Value of the matrix `source` property. Operator `=`.",
+            "examples": [
+                {
+                    "id": "matrix.source",
+                    "operator": "=",
+                    "value": "gtex"
+                }
+            ],
+            "id": "matrix.source",
+            "label": "Data source",
+            "scopes": [
+                "matrix"
+            ],
+            "type": "alphanumeric",
+            "values": [
+                "encode",
+                "geo",
+                "gtex"
+            ]
+        },
+        {
+            "description": "Value of `expressionUnitAndScale.unit`. Operator `=`.",
+            "id": "matrix.unit",
+            "label": "Units",
+            "scopes": [
+                "matrix"
+            ],
+            "type": "alphanumeric"
+        }
+    ]
+}

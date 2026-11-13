@@ -1,5 +1,5 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-matrixId: GTEx-v8-Adipose-Subcutaneous
+id: GTEx-v8-Adipose-Subcutaneous
 expressionUnitAndScale:
   unit: TPM
   scale: linear

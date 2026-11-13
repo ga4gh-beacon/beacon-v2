@@ -1,5 +1,5 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-matrixId: ENCSR622FSM
+id: ENCSR622FSM
 expressionUnitAndScale:
   unit: TPM
   scale: linear

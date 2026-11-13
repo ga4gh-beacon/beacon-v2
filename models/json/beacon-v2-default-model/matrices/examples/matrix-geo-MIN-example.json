@@ -1,9 +1,16 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "matrixId": "GSE164073",
+    "annotation": {
+        "source": "ncbigene",
+        "version": "109.20190905"
+    },
+    "assembly": {
+        "accession": "GCA_000001405.15",
+        "name": "GRCh38.p13"
+    },
     "expressionUnitAndScale": {
-        "unit": "TPM",
-        "scale": "linear"
+        "scale": "linear",
+        "unit": "TPM"
     },
     "featureTypes": [
         {
@@ -15,13 +22,6 @@
             "label": "gene"
         }
     ],
-    "annotation": {
-        "source": "ncbigene",
-        "version": "109.20190905"
-    },
-    "assembly": {
-        "accession": "GCA_000001405.15",
-        "name": "GRCh38.p13"
-    },
+    "id": "GSE164073",
     "reproducible": true
 }

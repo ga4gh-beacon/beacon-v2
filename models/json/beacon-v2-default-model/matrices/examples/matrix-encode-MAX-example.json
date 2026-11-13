@@ -1,30 +1,23 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "matrixId": "ENCSR622FSM",
-    "createDateTime": "2026-11-03T09:58:17Z",
-    "description": "Poly A+ RNA-Seq from the cytosolic compartment of untreated BLaER1 cells (Roderic Guigo, CRG). Gene quantifications from ENCFF144BAP (biological replicate 1), GRCh38 / GENCODE V24. Full ENSG set is imported by default.",
-    "downloadUrl": "https://www.encodeproject.org/files/ENCFF144BAP/@@download/ENCFF144BAP.tsv",
-    "reproducible": true,
+    "annotation": {
+        "file": "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_24/gencode.v24.annotation.gtf.gz",
+        "md5Checksum": "1bc16dd541cb93a35b821a0587306b30",
+        "source": "gencode",
+        "version": "v24"
+    },
     "assayType": {
         "id": "OBI:0003090",
         "label": "bulk RNA-seq assay"
     },
-    "info": {
-        "source": "encode",
-        "encodeFile": "ENCFF144BAP",
-        "lab": "Roderic Guigo, CRG",
-        "format": "encode_rsem_gene_quantifications",
-        "quantFileMd5": "6bcdf429f1361e520cfc06bb1431a0dc"
+    "assembly": {
+        "accession": "GCA_000001405.15",
+        "name": "GRCh38"
     },
-    "name": "ENCODE Guigo lab BLaER1 cytosolic polyA+ RNA-seq (ENCSR622FSM)",
-    "dimensions": {
-        "features": 50701,
-        "biosamples": 1
-    },
-    "featureTypes": [
+    "biosampleTypes": [
         {
-            "id": "SO:0000704",
-            "label": "gene"
+            "id": "EFO:0030018",
+            "label": "BLaER1"
         }
     ],
     "biotypes": [
@@ -33,28 +26,29 @@
             "label": "protein_coding_gene"
         }
     ],
-    "biosampleTypes": [
-        {
-            "id": "EFO:0030018",
-            "label": "BLaER1"
-        }
-    ],
+    "createDateTime": "2026-11-03T09:58:17Z",
+    "description": "Poly A+ RNA-Seq from the cytosolic compartment of untreated BLaER1 cells (Roderic Guigo, CRG). Gene quantifications from ENCFF144BAP (biological replicate 1), GRCh38 / GENCODE V24. Full ENSG set is imported by default.",
+    "dimensions": {
+        "biosamples": 1,
+        "features": 50701
+    },
+    "downloadUrl": "https://www.encodeproject.org/files/ENCFF144BAP/@@download/ENCFF144BAP.tsv",
     "expressionUnitAndScale": {
-        "unit": "TPM",
-        "scale": "linear"
+        "scale": "linear",
+        "unit": "TPM"
     },
     "expressionValueRange": {
-        "min": 0.0,
-        "max": 17895.34
+        "max": 17895.34,
+        "min": 0.0
     },
-    "annotation": {
-        "source": "gencode",
-        "version": "v24",
-        "file": "https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_24/gencode.v24.annotation.gtf.gz",
-        "md5Checksum": "1bc16dd541cb93a35b821a0587306b30"
-    },
-    "assembly": {
-        "accession": "GCA_000001405.15",
-        "name": "GRCh38"
-    }
+    "featureTypes": [
+        {
+            "id": "SO:0000704",
+            "label": "gene"
+        }
+    ],
+    "id": "ENCSR622FSM",
+    "name": "ENCODE Guigo lab BLaER1 cytosolic polyA+ RNA-seq (ENCSR622FSM)",
+    "reproducible": true,
+    "source": "encode"
 }

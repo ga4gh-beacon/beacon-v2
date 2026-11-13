@@ -1,5 +1,5 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-matrixId: GSE164073
+id: GSE164073
 expressionUnitAndScale:
   unit: TPM
   scale: linear

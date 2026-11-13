@@ -1,5 +1,5 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-matrixId: ENCSR622FSM
+id: ENCSR622FSM
 createDateTime: '2026-11-03T09:58:17Z'
 description: Poly A+ RNA-Seq from the cytosolic compartment of untreated BLaER1 cells (Roderic Guigo,
   CRG). Gene quantifications from ENCFF144BAP (biological replicate 1), GRCh38 / GENCODE V24. Full ENSG
@@ -9,12 +9,7 @@ reproducible: true
 assayType:
   id: OBI:0003090
   label: bulk RNA-seq assay
-info:
-  source: encode
-  encodeFile: ENCFF144BAP
-  lab: Roderic Guigo, CRG
-  format: encode_rsem_gene_quantifications
-  quantFileMd5: 6bcdf429f1361e520cfc06bb1431a0dc
+source: encode
 name: ENCODE Guigo lab BLaER1 cytosolic polyA+ RNA-seq (ENCSR622FSM)
 dimensions:
   features: 50701

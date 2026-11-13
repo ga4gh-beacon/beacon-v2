@@ -1,0 +1,18 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+description: >-
+  Alphanumeric filtering terms used with the matrix collection root
+  (`/matrices`). Plain Beacon alphanumeric filters (id, operator, value).
+filteringTerms:
+  - id: matrix.source
+    type: alphanumeric
+    scopes: [matrix]
+    label: Data source
+    description: Value of the matrix `source` property. Operator `=`.
+    values: [encode, geo, gtex]
+    examples:
+      - {id: matrix.source, operator: "=", value: gtex}
+  - id: matrix.unit
+    type: alphanumeric
+    scopes: [matrix]
+    label: Units
+    description: Value of `expressionUnitAndScale.unit`. Operator `=`.

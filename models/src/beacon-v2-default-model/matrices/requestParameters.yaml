@@ -1,0 +1,35 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+description: >-
+  Entry-type specific request parameters for the matrix model. Sent under
+  `query.requestParameters`; each entry is an object keyed by entry type, as
+  required by the Beacon framework `requestParameters` schema.
+type: object
+additionalProperties: false
+properties:
+  expressionValue:
+    description: >-
+      Slice parameters for `/matrices/{id}/expression_values`.
+    type: object
+    additionalProperties: false
+    properties:
+      featureIDList:
+        description: Comma-separated list of feature IDs to filter expression values.
+        type: string
+        examples:
+          - ENSG00000141510.18,ENSG00000012048.23
+      biosampleIDList:
+        description: Comma-separated list of biosample IDs to filter expression values.
+        type: string
+        examples:
+          - 008dafdd-a3d1-4801-8c0a-8714e2b58e48
+      minValue:
+        description: Minimum expression value to return.
+        type: number
+      maxValue:
+        description: Maximum expression value to return.
+        type: number
+      order:
+        $ref: ../common/commonDefinitions.yaml#/$defs/Order
+        description: >-
+          Order results by cell quantification value (`asc` or `desc`); default
+          is descending. There is no sort-by-id or expression.min/max.

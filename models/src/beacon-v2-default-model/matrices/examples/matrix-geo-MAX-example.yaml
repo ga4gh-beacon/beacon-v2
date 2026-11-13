@@ -1,5 +1,5 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-matrixId: GSE164073
+id: GSE164073
 createDateTime: '2026-11-03T09:58:21Z'
 description: NCBI-generated RNA-seq TPM counts for GSE164073 (transcriptional response to SARS-CoV-2 in
   cornea, limbus and sclera from human donors). Counts come from NCBI's standardized HISAT2 + featureCounts
@@ -10,13 +10,7 @@ reproducible: true
 assayType:
   id: OBI:0003090
   label: bulk RNA-seq assay
-info:
-  source: geo
-  format: geo_ncbi_rnaseq_counts
-  geoAccession: GSE164073
-  pipeline: NCBI GEO RNA-seq counts (HISAT2 + featureCounts, GRCh38.p13)
-  seriesDesign: Cornea, limbus and sclera isolated from human donor tissue; infected with SARS-CoV-2 for
-    24 hours in triplicate vs mock-infected controls.
+source: geo
 name: GEO GSE164073 NCBI TPM (cornea / limbus / sclera ± SARS-CoV-2)
 dimensions:
   features: 39376

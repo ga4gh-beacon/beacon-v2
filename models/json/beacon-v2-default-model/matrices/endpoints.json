@@ -2,7 +2,7 @@
     "components": {
         "parameters": {
             "biosampleIDList": {
-                "description": "Comma-separated list of biosample IDs (expression_values slice, or filter for nested matrix biosamples listing).",
+                "description": "Comma-separated list of biosample IDs (expression_values slice).",
                 "in": "query",
                 "name": "biosampleIDList",
                 "schema": {
@@ -18,7 +18,7 @@
                 }
             },
             "featureIDList": {
-                "description": "Comma-separated list of feature IDs (expression_values slice, or filter for nested matrix features listing).",
+                "description": "Comma-separated list of feature IDs (expression_values slice).",
                 "in": "query",
                 "name": "featureIDList",
                 "schema": {
@@ -46,7 +46,7 @@
                 "in": "query",
                 "name": "includeResultsetResponses",
                 "schema": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses"
+                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/IncludeResultsetResponses"
                 }
             },
             "limit": {
@@ -73,7 +73,7 @@
                 }
             },
             "order": {
-                "description": "Order expression_values by cell quantification (`asc` or `desc`); default is descending. Not used on nested features/biosamples listings.",
+                "description": "Order expression_values by cell quantification (`asc` or `desc`); default is descending.",
                 "in": "query",
                 "name": "order",
                 "schema": {
@@ -129,40 +129,16 @@
             }
         },
         "schemas": {
-            "ExpressionValuesRequestParameters": {
-                "description": "RNAget slice parameters for expression_values. Must be sent under `query.requestParameters` (not as top-level siblings of meta/query).",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                    "biosampleIDList": {
-                        "description": "Comma-separated list of biosample IDs to filter expression values.",
-                        "type": "string"
-                    },
-                    "featureIDList": {
-                        "description": "Comma-separated list of feature IDs to filter expression values.",
-                        "type": "string"
-                    },
-                    "maxValue": {
-                        "description": "Maximum expression count value to filter results.",
-                        "type": "number"
-                    },
-                    "minValue": {
-                        "description": "Minimum expression count value to filter results.",
-                        "type": "number"
-                    },
-                    "order": {
-                        "$ref": "../common/commonDefinitions.json#/$defs/Order",
-                        "description": "Order results by cell quantification value (`asc` or `desc`); default is descending. There is no sort-by-id or expression.min/max."
-                    }
-                }
-            },
             "ExpressionValuesRequestBody": {
-                "description": "Standard Beacon request body. Put featureIDList, biosampleIDList, minValue, maxValue, and order under query.requestParameters (see ExpressionValuesRequestParameters). Top-level sibling slice fields are not accepted by the RNAget reference implementation.",
                 "allOf": [
                     {
                         "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json"
                     }
-                ]
+                ],
+                "description": "Standard Beacon request body. Put featureIDList, biosampleIDList, minValue, maxValue, and order under query.requestParameters.expressionValue (see ExpressionValuesRequestParameters). Top-level sibling slice fields and flat keys directly under query.requestParameters are not accepted."
+            },
+            "ExpressionValuesRequestParameters": {
+                "$ref": "./requestParameters.json"
             }
         }
     },
@@ -307,92 +283,9 @@
                 ]
             }
         },
-        "/matrices/{id}/filtering_terms": {
-            "parameters": [
-                {
-                    "$ref": "#/components/parameters/entryId"
-                }
-            ],
-            "get": {
-                "parameters": [
-                    {
-                        "$ref": "#/components/parameters/skip"
-                    },
-                    {
-                        "$ref": "#/components/parameters/limit"
-                    }
-                ],
-                "description": "Get a response about the *filtering terms* that could be used with a given matrix, identified by its (unique) 'id'",
-                "operationId": "getOneMatrixFilteringTerms",
-                "tags": [
-                    "GET Endpoints"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "An unsuccessful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "post": {
-                "description": "Get a response about the *filtering terms* that could be used with a given matrix, identified by its (unique) 'id'",
-                "operationId": "postOneMatrixFilteringTerms",
-                "tags": [
-                    "POST Endpoints"
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json"
-                            }
-                        }
-                    },
-                    "required": true
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "An unsuccessful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/matrices/{id}/biosamples": {
             "get": {
-                "description": "Get a *biosamples* response for one matrix, identified by its (unique) 'id'. Optional biosampleIDList filters to the given biosample ids.",
+                "description": "Get a *biosamples* response for one matrix, identified by its (unique) 'id'.",
                 "operationId": "getOneMatrixBiosamples",
                 "parameters": [
                     {
@@ -403,12 +296,6 @@
                     },
                     {
                         "$ref": "#/components/parameters/limit"
-                    },
-                    {
-                        "$ref": "#/components/parameters/filters"
-                    },
-                    {
-                        "$ref": "#/components/parameters/biosampleIDList"
                     }
                 ],
                 "responses": {
@@ -499,9 +386,6 @@
                     },
                     {
                         "$ref": "#/components/parameters/pageToken"
-                    },
-                    {
-                        "$ref": "#/components/parameters/filters"
                     }
                 ],
                 "responses": {
@@ -563,7 +447,7 @@
         },
         "/matrices/{id}/features": {
             "get": {
-                "description": "Get a *features* response for one matrix, identified by its (unique) 'id'. Optional featureIDList filters to the given feature ids.",
+                "description": "Get a *features* response for one matrix, identified by its (unique) 'id'.",
                 "operationId": "getOneMatrixFeatures",
                 "parameters": [
                     {
@@ -574,12 +458,6 @@
                     },
                     {
                         "$ref": "#/components/parameters/limit"
-                    },
-                    {
-                        "$ref": "#/components/parameters/filters"
-                    },
-                    {
-                        "$ref": "#/components/parameters/featureIDList"
                     }
                 ],
                 "responses": {
@@ -622,6 +500,89 @@
                 "responses": {
                     "200": {
                         "$ref": "#/components/responses/ResultsOKResponse"
+                    },
+                    "default": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
+                        "description": "An unsuccessful operation"
+                    }
+                },
+                "tags": [
+                    "POST Endpoints"
+                ]
+            }
+        },
+        "/matrices/{id}/filtering_terms": {
+            "get": {
+                "description": "Get a response about the *filtering terms* that could be used with a given matrix, identified by its (unique) 'id'",
+                "operationId": "getOneMatrixFilteringTerms",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/skip"
+                    },
+                    {
+                        "$ref": "#/components/parameters/limit"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json"
+                                }
+                            }
+                        },
+                        "description": "Successful operation"
+                    },
+                    "default": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconErrorResponse.json"
+                                }
+                            }
+                        },
+                        "description": "An unsuccessful operation"
+                    }
+                },
+                "tags": [
+                    "GET Endpoints"
+                ]
+            },
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/entryId"
+                }
+            ],
+            "post": {
+                "description": "Get a response about the *filtering terms* that could be used with a given matrix, identified by its (unique) 'id'",
+                "operationId": "postOneMatrixFilteringTerms",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/requests/beaconRequestBody.json"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/beaconFilteringTermsResponse.json"
+                                }
+                            }
+                        },
+                        "description": "Successful operation"
                     },
                     "default": {
                         "content": {

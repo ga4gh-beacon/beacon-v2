@@ -5,8 +5,8 @@ description: Metadata for an RNA-seq quantification matrix available in the Beac
   are represented as expressionValue entries (or retrieved via matrix expression_values endpoints); this
   object describes how those values and feature identifiers should be interpreted.
 properties:
-  matrixId:
-    description: Unique identifier of the matrix entry within the Beacon.
+  id:
+    description: Unique identifier of the matrix entry within the Beacon. Referenced as matrixId by expressionValue entries.
     examples:
     - matrix-gene-expression-001
     type: string
@@ -45,6 +45,13 @@ properties:
       label: bulk RNA-seq assay
   info:
     $ref: ../common/info.yaml
+  source:
+    description: Origin of the matrix data, i.e. the resource or pipeline the quantification was obtained from.
+    examples:
+    - encode
+    - geo
+    - gtex
+    type: string
   name:
     description: Human-readable name of the matrix.
     examples:
@@ -119,7 +126,7 @@ properties:
         label: B cell
   expressionUnitAndScale:
     description: Unit and numeric scale of expression values in this matrix. Applies to all expressionValue.value
-      entries that reference this matrixId.
+      entries that reference this matrix id.
     type: object
     required:
     - unit
@@ -206,10 +213,18 @@ properties:
     - accession
     - name
 required:
-- matrixId
+- id
 - expressionUnitAndScale
 - featureTypes
-- annotation
-- assembly
 - reproducible
+if:
+  properties:
+    reproducible:
+      const: true
+  required:
+  - reproducible
+then:
+  required:
+  - annotation
+  - assembly
 type: object
