@@ -80,7 +80,7 @@ There is a set of tools in [`/bin`](./bin/) to facilitate the conversion. ATM, a
 ## 2.1.0
 
 *Released, July, 19, 2024*
-[Beacon-v2.1.0](https://github.com/ga4gh/beacon/tree/16862205c79294fae5473f7fa330bf5929b3b120)
+[Beacon-v2.1.0](https://github.com/ga4gh/beacon/tree/cfcc85d34df506f726c89f68c9fb367f945e265f)
 
 * Relocated TypedQuantity required to proper level of the schema for complexValue
 * Added end and start entities for ageRange and iso8601duration for age
@@ -89,7 +89,7 @@ There is a set of tools in [`/bin`](./bin/) to facilitate the conversion. ATM, a
 ## 2.0.1
 
 *Released July, 16, 2024*
-[Beacon-v2.0.1](https://github.com/ga4gh/beacon/tree/f6f85c445922831bd398552384593206c86287de)
+[Beacon-v2.0.1](https://github.com/ga4gh/beacon/tree/2b16fcbc3a9dde68ec0723ef46c642bb94ed276d)
 
 * Replaced ENSGLOSSARY for SO ontology family in documentation examples
 * Moved CURIE to beaconCommonComponents
