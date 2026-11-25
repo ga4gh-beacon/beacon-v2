@@ -1,6 +1,6 @@
 # Overview of the JSON schema *pedigree.json*
 
-The [JSON schema for the pedigree data](https://github.com/ga4gh-beacon/beacon-v2/blob/main/models/src/beacon-v2-default-model/common/pedigree.yaml) defines how members of a pedigree (family tree) are represented. It includes several key components:
+The [JSON schema for the pedigree data](https://github.com/ga4gh/beacon/blob/main/models/src/beacon-v2-default-model/common/pedigree.yaml) defines how members of a pedigree (family tree) are represented. It includes several key components:
 
 1. **"id"**: A unique identifier for the **pedigree**, which is distinct from a family ID. This is because one individual can be involved in multiple pedigrees related to different diseases.
 

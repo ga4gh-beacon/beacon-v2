@@ -99,7 +99,7 @@ archived (_i.e._ set to read only)
 
 * Started adding content to pages such as `networks.md and `roles.md`
 * Moved pages to different locations in navigation. Created `security.md` under *Beacon Types*.
-* Example implementations have been moved from the [`implementations-v2` repository](https://github.com/ga4gh-beacon/implementations-v2) to the [Beacon v2 Documentation](https://github.com/ga4gh-beacon/beacon-v2/edit/main/docs/implementations/) - web [access here](https://docs.genomebeacons.org/other-implementations/).
+* Example implementations have been moved from the [`implementations-v2` repository](https://github.com/ga4gh-beacon/implementations-v2) to the [Beacon v2 Documentation](https://github.com/ga4gh/beacon/edit/main/docs/implementations/) - web [access here](https://docs.genomebeacons.org/other-implementations/).
 
 ### 2022-03-23: Name Change to `beacon-v2`
 
@@ -126,7 +126,7 @@ to `beacon-v2`.
 
 The `mkdocs-macros-plugin` has been activated, allowing the use of site-wide variables:
 
-* `repo_model_url: https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src`
+* `repo_model_url: https://github.com/ga4gh/beacon/tree/main/models/src`
 * this can be used inline as `{{config.repo_model_url}}`
 
 ### 2022-03-16: Documentation Content and Formats Updates
@@ -152,7 +152,7 @@ Since moving to source in YAML the existence of a separate `yaml` export seems u
 ### 2022-03-09: Nesting models
 
 The structure of the `models` directory has now be changed to have the default model as one of possibly multiple
-options as per the discussions in [#1](https://github.com/ga4gh-beacon/beacon-v2/issues/1).
+options as per the discussions in [#1](https://github.com/ga4gh/beacon/issues/1).
 The current structure (below) might not be final (e.g. placing of the `beaconConfiguration.yaml`, `beaconMap.yaml`, `endpoints.yaml` files?).
 
 ```
@@ -194,13 +194,13 @@ git -C $BEACONFRAMEWORKPATH pull
 
 ### 2022-02-24: Path fixes
 
-* changed the path replacements to the current repo, resulting in e.g. <https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/responses/sections/beaconInformationalResponseMeta.json>
+* changed the path replacements to the current repo, resulting in e.g. <https://raw.githubusercontent.com/ga4gh/beacon/main/framework/json/responses/sections/beaconInformationalResponseMeta.json>
 
 ### 2022-02-23: Re-tool
 
 * [x] replacement of the previopus general `yamler.py` with a dedicated `beaconYamler.py`
-* [x] moving replacements to [bin/config.yaml](https://github.com/ga4gh-beacon/beacon-v2/bin/config.yaml)
-* [x] requirement for complete arguments (in and out paths, in- and out formats) - see [bin/yamlerRunner.sh](https://github.com/ga4gh-beacon/beacon-v2/bin/yamlerRunner.sh)
+* [x] moving replacements to [bin/config.yaml](https://github.com/ga4gh/beacon/bin/config.yaml)
+* [x] requirement for complete arguments (in and out paths, in- and out formats) - see [bin/yamlerRunner.sh](https://github.com/ga4gh/beacon/bin/yamlerRunner.sh)
 
 ### 2022-02-22: Creation of repository
 

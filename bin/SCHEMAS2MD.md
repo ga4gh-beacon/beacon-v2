@@ -36,7 +36,7 @@ Editing the schemas directly at the YAML/JSON level has two advantages, the firs
 
 The **Markdown** format can be directly rendered as tables at the GitHub repository, and it can be used with [MkDocs](https://www.mkdocs.org/) to create [HTML](https://docs.genomebeacons.org) documentation. 
 
-Everytime a `git push` is performed to the [repo](https://github.com/ga4gh-beacon/beacon-v2) the documentation at [Github Pages](https://docs.genomebeacons.org) gets updated. Note that only content under directory `docs/` will make it to [Github Pages](https://docs.genomebeacons.org).
+Everytime a `git push` is performed to the [repo](https://github.com/ga4gh/beacon) the documentation at [Github Pages](https://docs.genomebeacons.org) gets updated. Note that only content under directory `docs/` will make it to [Github Pages](https://docs.genomebeacons.org).
 
 Before creating this tool, the author made an exhaustive search on what had been dveloped by the _community_ to automatically convert YAML/JSON to Markdown tables and found that there were many ways to go from YAML/JSON to HTML (e.g., CPAN, Python, Node.js), but not much from YAML/JSON to Markdown. Obviously, even in the case we had found something, some major tweaking will be needed in order to display things the way we want.
 
@@ -134,7 +134,7 @@ _NB:_ The decission to take YAMLs (and not JSON) as an input is deliberate and m
 
 _NB:_ The script only processes the `Terms` nested **up to 3 degrees of hierarchy**. Before Adoption of VRS/PXF that limit was OK.
 
-_NB:_ The script also includes the Beacon v2 Models examples from [beacon-v2 repo](https://github.com/ga4gh-beacon/beacon-v2) in JSON format.
+_NB:_ The script also includes the Beacon v2 Models examples from [beacon-v2 repo](https://github.com/ga4gh/beacon) in JSON format.
 
 # AUTHOR 
 

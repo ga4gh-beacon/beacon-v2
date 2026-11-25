@@ -3,13 +3,13 @@ site_description: Documentation for the GA4GH Beacon standard
 site_author: Michael Baudis, Manuel Rueda, Laureen Fromont & Beacon Developers
 copyright: '&copy; Copyright 2021-2025, Beacon v2 Documentation Contributors'
 repo_name: beacon-v2
-repo_url: https://github.com/ga4gh-beacon/beacon-v2
+repo_url: https://github.com/ga4gh/beacon
 edit_uri: edit/main/docs/
 
 beacon_major_version: v2
-repo_icon: " [:fontawesome-brands-github:](https://github.com/ga4gh-beacon/beacon-v2/)"
-repo_framework_icon: " [:fontawesome-brands-github:](https://github.com/ga4gh-beacon/beacon-v2/tree/main/framework/src)"
-repo_models_icon: " [:fontawesome-brands-github:](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src)"
+repo_icon: " [:fontawesome-brands-github:](https://github.com/ga4gh/beacon/)"
+repo_framework_icon: " [:fontawesome-brands-github:](https://github.com/ga4gh/beacon/tree/main/framework/src)"
+repo_models_icon: " [:fontawesome-brands-github:](https://github.com/ga4gh/beacon/tree/main/models/src)"
 
 #<----------------------------- Navigation ----------------------------------->#
 
@@ -53,7 +53,7 @@ nav:
     - Beacon Development:
         - How to Contribute: contribute
         - Repository and Branch Organization: code-organization
-        - Github Repositories &#8599;: https://github.com/ga4gh-beacon/
+        - Github Repositories &#8599;: https://github.com/ga4gh/beacon/
     # - Download PDF: pdf/beacon.pdf
 
 #<--------------------------- / Navigation ----------------------------------->#
@@ -92,8 +92,8 @@ markdown_extensions:
         custom_checkbox: true
     - tables
     - mdx_gh_links:
-        user: ga4gh-beacon
-        repo: beacon-v2
+        user: ga4gh
+        repo: beacon
     - pymdownx.emoji:
           emoji_index: !!python/name:materialx.emoji.twemoji
           emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -124,6 +124,6 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github 
-      link: https://github.com/ga4gh-beacon
+      link: https://github.com/ga4gh/beacon
 
 # https://pypi.org/project/mkdocs-with-pdf/ for more PDF configuration ...

@@ -15,7 +15,7 @@
 | [treatments](./obj/treatments.md) | Treatment(s) prescribed/administered, defined by treatment ID, date and age of onset, dose, schedule and duration. | array | [ageAtOnset](./obj/ageAtOnset.md), [cumulativeDose](./obj/cumulativeDose.md), [doseIntervals](./obj/doseIntervals.md), [routeOfAdministration](./obj/routeOfAdministration.md), [treatmentCode](./obj/treatmentCode.md) | NA | NA|
 
 ## Examples
-These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
+These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh/beacon/tree/main/models/json/beacon-v2-default-model).
 
 === "MIN"
 	```json

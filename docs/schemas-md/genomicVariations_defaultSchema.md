@@ -9,7 +9,7 @@
 | [variation](./obj/variation.md) | NA | oneOf | [LegacyVariation](./obj/LegacyVariation.md), [MolecularVariation](./obj/MolecularVariation.md), [SystemicVariation](./obj/SystemicVariation.md) | NA | NA|
 
 ## Examples
-These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
+These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh/beacon/tree/main/models/json/beacon-v2-default-model).
 
 === "MIN"
 	```json

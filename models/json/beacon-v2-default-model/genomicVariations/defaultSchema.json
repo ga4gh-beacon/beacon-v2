@@ -5,7 +5,7 @@
             "description": "",
             "properties": {
                 "alleleOrigin": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
+                    "$ref": "https://raw.githubusercontent.com/ga4gh/beacon/main/framework/json/common/ontologyTerm.json",
                     "description": "Ontology value for allele origin of variant in sample from the Variant Origin (SO:0001762). Categories are `somatic variant`, `germline variant`, `maternal variant`, `paternal variant`, `de novo variant`, `pedigree specific variant`, `population specific variant`. Corresponds to Variant Inheritance in FHIR.",
                     "examples": [
                         {
@@ -86,7 +86,7 @@
                     "type": "string"
                 },
                 "zygosity": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
+                    "$ref": "https://raw.githubusercontent.com/ga4gh/beacon/main/framework/json/common/ontologyTerm.json",
                     "description": "Ontology term for zygosity in which variant is present in the sample from the Zygosity Ontology (GENO:0000391) , e.g `heterozygous` (GENO:0000135)",
                     "examples": [
                         {
@@ -153,7 +153,7 @@
             "description": "Genomic feature(s) related to the variant. NOTE: Although genes could also be referenced using these attributes, they have an independent section to allow direct queries.",
             "properties": {
                 "featureClass": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
+                    "$ref": "https://raw.githubusercontent.com/ga4gh/beacon/main/framework/json/common/ontologyTerm.json",
                     "description": "Ontology term that describes the class of genomic feature affected by the variant. Values from SO (Sequence ontology) are recommended, e.g. `SO:0001623: 5 prime UTR variant`",
                     "examples": [
                         {
@@ -163,7 +163,7 @@
                     ]
                 },
                 "featureID": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
+                    "$ref": "https://raw.githubusercontent.com/ga4gh/beacon/main/framework/json/common/ontologyTerm.json",
                     "description": "Where applicable, ID/accession/name of genomic feature related to the `featureClass`, preferably in CURIE format. If the value is a gene id or name, it points to the gene related to the `featureClass`, e.g. `the 5 prime UTR upstream of TP53`",
                     "examples": [
                         {
@@ -355,7 +355,7 @@
                         }
                     ],
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json"
+                        "$ref": "https://raw.githubusercontent.com/ga4gh/beacon/main/framework/json/common/ontologyTerm.json"
                     },
                     "type": "array"
                 }
@@ -369,7 +369,7 @@
                     "$ref": "#/$defs/SoftwareTool"
                 },
                 "category": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
+                    "$ref": "https://raw.githubusercontent.com/ga4gh/beacon/main/framework/json/common/ontologyTerm.json",
                     "description": "Ontology term for the type of disease, condition, phenotypic measurement, etc.",
                     "examples": [
                         {
@@ -403,7 +403,7 @@
                     "type": "string"
                 },
                 "effect": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
+                    "$ref": "https://raw.githubusercontent.com/ga4gh/beacon/main/framework/json/common/ontologyTerm.json",
                     "description": "Ontology term for the phenotypic or clinical effect",
                     "examples": [
                         {
@@ -417,7 +417,7 @@
                     ]
                 },
                 "evidenceType": {
-                    "$ref": "https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json",
+                    "$ref": "https://raw.githubusercontent.com/ga4gh/beacon/main/framework/json/common/ontologyTerm.json",
                     "description": "Ontology term for the type of evidence supporting variant-disease association Recommended: values from the Evidence & Conclusion Ontology (ECO)",
                     "examples": [
                         {

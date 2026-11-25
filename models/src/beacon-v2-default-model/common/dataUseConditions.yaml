@@ -13,7 +13,7 @@ $defs:
     allOf:
       - description: Data Use Ontology codes and additional information associated
           with a data object (e.g. sample, dataset).
-      - $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+      - $ref: https://raw.githubusercontent.com/ga4gh/beacon/main/framework/json/common/ontologyTerm.json
       - type: object
         required:
           - version
@@ -25,7 +25,7 @@ $defs:
           modifiers:
             type: array
             items:
-              $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json
+              $ref: https://raw.githubusercontent.com/ga4gh/beacon/main/framework/json/common/ontologyTerm.json
             examples:
               - id: EFO:0001645
                 label: coronary artery disease
