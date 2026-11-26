@@ -11,7 +11,7 @@
 | [version](./obj/version.md) | Version of the dataset | string | NA | v1.1 | NA|
 
 ## Examples
-These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
+These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh/beacon/tree/main/models/json/beacon-v2-default-model).
 
 === "MAX"
 	```json

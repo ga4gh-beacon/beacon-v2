@@ -45,7 +45,7 @@ sub beacon_yaml2md {
     # Defining a few variables
     my $version = '2.0.0';
 
-    # https://github.com/ga4gh-beacon/beacon-v2-Models/tree/main/BEACON-V2-draft3-Model
+    # https://github.com/ga4gh/beacon-Models/tree/main/BEACON-V2-draft3-Model
     my $schema_dir   = './deref_schemas';
     my $markdown_dir = '../docs/schemas-md';
     my $obj          = 'obj';
@@ -493,7 +493,7 @@ sub add_external_links {
       : ( any { ( $_ eq $key ) } @vrs )
       ? "[$key](https://vrs.ga4gh.org/en/stable/terms_and_model.html#$key)"
       : ( any { ( $_ eq $key ) } @framework )
-      ? "[$key](https://github.com/ga4gh-beacon/beacon-v2/blob/main/framework/src/common/$key.yaml)"
+      ? "[$key](https://github.com/ga4gh/beacon/blob/main/framework/src/common/$key.yaml)"
 
       # NB: Ad hoc solution for properties having equal name (lc)
       : ( $key eq 'AgeRange' || $key eq 'Value' )
@@ -643,7 +643,7 @@ sub add_tabs_with_examples {
     my $str = <<EOF;
 
 ## Examples
-These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
+These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh/beacon-Models).
 
 EOF
 
@@ -785,7 +785,7 @@ Editing the schemas directly at the YAML/JSON level has two advantages, the firs
 
 The B<Markdown> format can be directly rendered as tables at the GitHub repository, and it can be used with L<MkDocs|https://www.mkdocs.org/> to create L<HTML|https://docs.genomebeacons.org> documentation. 
 
-Everytime a C<git push> is performed to the L<repo|https://github.com/ga4gh-beacon/beacon-v2> the documentation at L<Github Pages|https://docs.genomebeacons.org> gets updated. Note that only content under directory C<docs/> will make it to L<Github Pages|https://docs.genomebeacons.org>.
+Everytime a C<git push> is performed to the L<repo|https://github.com/ga4gh/beacon> the documentation at L<Github Pages|https://docs.genomebeacons.org> gets updated. Note that only content under directory C<docs/> will make it to L<Github Pages|https://docs.genomebeacons.org>.
 
 Before creating this tool, the author made an exhaustive search on what had been dveloped by the I<community> to automatically convert YAML/JSON to Markdown tables and found that there were many ways to go from YAML/JSON to HTML (e.g., CPAN, Python, Node.js), but not much from YAML/JSON to Markdown. Obviously, even in the case we had found something, some major tweaking will be needed in order to display things the way we want.
 
@@ -886,7 +886,7 @@ I<NB:> The decission to take YAMLs (and not JSON) as an input is deliberate and 
 
 I<NB:> The script only processes the C<Terms> nested B<up to 3 degrees of hierarchy>. Before Adoption of VRS/PXF that limit was OK.
 
-I<NB:> The script also includes the Beacon v2 Models examples from L<beacon-v2 repo|https://github.com/ga4gh-beacon/beacon-v2> in JSON format.
+I<NB:> The script also includes the Beacon v2 Models examples from L<beacon-v2 repo|https://github.com/ga4gh/beacon> in JSON format.
 
 =head1 AUTHOR 
 

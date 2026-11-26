@@ -14,7 +14,7 @@ The only exception is: `service-info` which is a required GA4GH standard and has
 
 ### Schema Language and Conventions
 
-The **Beacon API** follows [OpenAPI 3.0.2](https://spec.openapis.org/oas/v3.0.2) specification for the [endpoints](https://github.com/ga4gh-beacon/beacon-v2/blob/main/framework/src/endpoints.yaml), in conjuntion with JSON Schema ([2020-12]( https://json-schema.org/draft/2020-12/schema)) to define the [Framework](framework.md) {{config.repo_framework_icon}} and the [Models](models.md) {{config.repo_models_icon}} components. The specification uses JSON [references](https://json-spec.readthedocs.io/reference.html) (`$ref`) to reference internal (e.g., definitions) or external concepts/terms (e.g., [VRS](https://vrs.ga4gh.org/en/latest/terms_and_model.html)).
+The **Beacon API** follows [OpenAPI 3.0.2](https://spec.openapis.org/oas/v3.0.2) specification for the [endpoints](https://github.com/ga4gh/beacon/blob/main/framework/src/endpoints.yaml), in conjuntion with JSON Schema ([2020-12]( https://json-schema.org/draft/2020-12/schema)) to define the [Framework](framework.md) {{config.repo_framework_icon}} and the [Models](models.md) {{config.repo_models_icon}} components. The specification uses JSON [references](https://json-spec.readthedocs.io/reference.html) (`$ref`) to reference internal (e.g., definitions) or external concepts/terms (e.g., [VRS](https://vrs.ga4gh.org/en/latest/terms_and_model.html)).
 
 The Beacon specification is written in [YAML](https://yaml.org). The original files are located under `src` directory (see below). For technical purposes, we also provide a **copy** of the original YAML in JSON format (see `json` directory below). Changes in the specification must be performed in the YAML version and are then rewritten to the JSON version.
 
@@ -260,34 +260,34 @@ reference individuals directly (if existing). For most purposes one can equate B
 ##### `Age`
 
 * [PXF Age](https://phenopacket-schema.readthedocs.io/en/latest/age.html)
-* [Beacon v2 Age](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/age.yaml)
+* [Beacon v2 Age](https://github.com/ga4gh/beacon/tree/main/models/src/beacon-v2-default-model/common/age.yaml)
 
 ##### `AgeRange`
 
 * [PXF AgeRange](https://phenopacket-schema.readthedocs.io/en/latest/age.html#agerange)
-* [Beacon v2 AgeRange](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/ageRange.yaml)
+* [Beacon v2 AgeRange](https://github.com/ga4gh/beacon/tree/main/models/src/beacon-v2-default-model/common/ageRange.yaml)
 
 ##### `Evidence`
 
 * [PXF Evidence](https://phenopacket-schema.readthedocs.io/en/latest/evidence.html)
-* [Beacon v2 Evidence](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/evidence.yaml)
+* [Beacon v2 Evidence](https://github.com/ga4gh/beacon/tree/main/models/src/beacon-v2-default-model/common/evidence.yaml)
 
 ##### `KaryotypicSex`
 
 * [PXF](https://github.com/phenopackets/phenopacket-schema/blob/master/docs/karyotypicsex.rst)
-* [Beacon](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/commonDefinitions.yaml)
+* [Beacon](https://github.com/ga4gh/beacon/tree/main/models/src/beacon-v2-default-model/common/commonDefinitions.yaml)
 
 ##### `ReferenceRange`
 
 * [PXF ReferenceRange](https://phenopacket-schema.readthedocs.io/en/latest/reference-range.html)
-* [Beacon v2 ReferenceRange](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/referenceRange.yaml)
+* [Beacon v2 ReferenceRange](https://github.com/ga4gh/beacon/tree/main/models/src/beacon-v2-default-model/common/referenceRange.yaml)
 
 While `unit` in Beacon points to a `Unit` definition, this is itself an `OntologyTerm` i.e. structurally the same.
 
 ##### `Value`
 
 * [PXF Value](https://phenopacket-schema.readthedocs.io/en/latest/value.html)
-* [Beacon v2 Value](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/value.yaml)
+* [Beacon v2 Value](https://github.com/ga4gh/beacon/tree/main/models/src/beacon-v2-default-model/common/value.yaml)
 
 
 
@@ -296,28 +296,28 @@ While `unit` in Beacon points to a `Unit` definition, this is itself an `Ontolog
 ##### `ComplexValue `
 
 * [PXF ComplexValue](https://phenopacket-schema.readthedocs.io/en/latest/complex-value.html)
-* [Beacon v2 ComplexValue](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/complexValue.yaml)
+* [Beacon v2 ComplexValue](https://github.com/ga4gh/beacon/tree/main/models/src/beacon-v2-default-model/common/complexValue.yaml)
 
 Renamed `ComplexValue.TypedQuantity.quantityType` compared to GA4GH Phenopackets v2 `ComplexValue.TypedQuantity.type` due to problematic use of `type` as parameter
 
 ##### `ExternalReference`
 
 * [PXF ExternalReference](https://phenopacket-schema.readthedocs.io/en/latest/externalreference.html)
-* [Beacon v2 ExternalReference](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/externalReference.yaml)
+* [Beacon v2 ExternalReference](https://github.com/ga4gh/beacon/tree/main/models/src/beacon-v2-default-model/common/externalReference.yaml)
 
 Renamed `ExternalReference.notes` compared to GA4GH Phenopackets v2 `ExternalReference.description` due to problematic use of `description` as parameter
 
 ##### `Measurement`
 
 * [PXF Measurement](https://phenopacket-schema.readthedocs.io/en/latest/measurement.html)
-* [Beacon v2 Measurement](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/measurement.yaml)
+* [Beacon v2 Measurement](https://github.com/ga4gh/beacon/tree/main/models/src/beacon-v2-default-model/common/measurement.yaml)
 
 Added `notes` and `date`.
 
 ##### `PhenotypicFeature`
 
 * [PXF PhenotypicFeature](https://phenopacket-schema.readthedocs.io/en/latest/phenotype.html)
-* [Beacon v2 PhenotypicFeature](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/phenotypicFeature.yaml)
+* [Beacon v2 PhenotypicFeature](https://github.com/ga4gh/beacon/tree/main/models/src/beacon-v2-default-model/common/phenotypicFeature.yaml)
 
 Beacon | Phenopackets
 --------- | ------------
@@ -328,7 +328,7 @@ Beacon | Phenopackets
 ##### `Procedure `
 
 * [PXF Procedure](https://phenopacket-schema.readthedocs.io/en/latest/procedure.html)
-* [Beacon v2 Procedure](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/procedure.yaml)
+* [Beacon v2 Procedure](https://github.com/ga4gh/beacon/tree/main/models/src/beacon-v2-default-model/common/procedure.yaml)
 
 Beacon | Phenopackets
 --------- | ------------
@@ -339,7 +339,7 @@ Beacon | Phenopackets
 ##### `TimeElement `
 
 * [PXF TimeElement](https://phenopacket-schema.readthedocs.io/en/latest/time-element.html)
-* [Beacon v2 TimeElement](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/timeElement.yaml)
+* [Beacon v2 TimeElement](https://github.com/ga4gh/beacon/tree/main/models/src/beacon-v2-default-model/common/timeElement.yaml)
 
 The specific parameters have been aligned w/ minimal differences in naming or use of general parameters.
 
@@ -356,7 +356,7 @@ The specific parameters have been aligned w/ minimal differences in naming or us
 ##### `Treatment `
 
 * [PXF Treatment](https://phenopacket-schema.readthedocs.io/en/latest/treatment.html)
-* [Beacon v2 Treatment](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/treatment.yaml)
+* [Beacon v2 Treatment](https://github.com/ga4gh/beacon/tree/main/models/src/beacon-v2-default-model/common/treatment.yaml)
 
 Beacon still has an `ageOfOnset` parameter (?). Also, PXF `agent` has been renamed to a more general `treatmentCode`.
 
@@ -370,7 +370,7 @@ While the Beacon & Phenopackets schemas for "pedigree" representation are not al
 
 ##### `Sex`
 
-Beacon directly uses the (IMO preferable) [representation through an ontology term](https://github.com/ga4gh-beacon/beacon-v2/tree/main/models/src/beacon-v2-default-model/common/commonDefinitions.yaml), while PXF uses an [ordinal mapping](https://phenopacket-schema.readthedocs.io/en/latest/sex.html)
+Beacon directly uses the (IMO preferable) [representation through an ontology term](https://github.com/ga4gh/beacon/tree/main/models/src/beacon-v2-default-model/common/commonDefinitions.yaml), while PXF uses an [ordinal mapping](https://phenopacket-schema.readthedocs.io/en/latest/sex.html)
 
 
 ##### LINK: [Phenopackets Documentation](https://phenopacket-schema.readthedocs.io/en/latest/index.html)

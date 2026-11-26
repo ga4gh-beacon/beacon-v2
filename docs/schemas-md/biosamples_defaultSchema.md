@@ -22,7 +22,7 @@
 | [tumorProgression](./obj/tumorProgression.md) | Tumor progression category indicating primary, metastatic or recurrent progression. Ontology value from Neoplasm by Special Category ontology (NCIT:C7062), e.g. NCIT:C84509 (Primary Malignant Neoplasm). | object | [id](./obj/id.md), [label](./obj/label.md) | `[{"id": "NCIT:C84509", "label": "Primary Malignant Neoplasm"}, {"id": "NCIT:C4813", "label": "Recurrent Malignant Neoplasm"}]` | NA|
 
 ## Examples
-These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
+These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh/beacon/tree/main/models/json/beacon-v2-default-model).
 
 === "MIN"
 	```json

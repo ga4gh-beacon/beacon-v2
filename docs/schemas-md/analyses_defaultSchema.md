@@ -12,7 +12,7 @@
 | [variantCaller](./obj/variantCaller.md) | Reference to variant calling software / pipeline | string | NA | GATK4.0 | NA|
 
 ## Examples
-These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
+These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh/beacon/tree/main/models/json/beacon-v2-default-model).
 
 === "MIN"
 	```json

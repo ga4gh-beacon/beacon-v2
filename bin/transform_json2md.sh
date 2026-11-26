@@ -69,7 +69,7 @@ do
  # NB: Dereferencing performed only at the schema-level
  echo "Fixing relative paths in YAML $schema ..."
  sed -e "s#\.\./common#../../$mod_dir\/common#" \
-     -e "s#https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/ontologyTerm.json#$adhoc_url/ontologyTerm.json#" $mod_dir/$schema/defaultSchema.json > $out_dir/$schema/defaultSchema.mod.json
+     -e "s#https://raw.githubusercontent.com/ga4gh/beacon/main/framework/json/common/ontologyTerm.json#$adhoc_url/ontologyTerm.json#" $mod_dir/$schema/defaultSchema.json > $out_dir/$schema/defaultSchema.mod.json
 
  echo "Dereferencing \$ref in YAML $schema ..."
  $jsonref $out_dir/$schema/defaultSchema.mod.json > $out_dir/$schema/defaultSchema.json

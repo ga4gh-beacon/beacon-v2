@@ -13,7 +13,7 @@
 | [runDate](./obj/runDate.md) | Date at which the experiment was performed. | string | NA | 2021-10-18 | NA|
 
 ## Examples
-These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
+These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh/beacon/tree/main/models/json/beacon-v2-default-model).
 
 === "MIN"
 	```json

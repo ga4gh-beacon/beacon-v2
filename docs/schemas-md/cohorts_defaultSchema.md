@@ -11,7 +11,7 @@
 | [name](./obj/name.md) | Name of the cohort. For `user-defined` this field could be generated upon the query, e.g. a value that is a concatenationor some representation of the user query. | string | NA | Wellcome Trust Case Control Consortium, GCAT Genomes for Life | NA|
 
 ## Examples
-These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh-beacon/beacon-v2-Models).
+These are examples extracted directly from the [GitHub repository](https://github.com/ga4gh/beacon/tree/main/models/json/beacon-v2-default-model).
 
 === "MIN"
 	```json

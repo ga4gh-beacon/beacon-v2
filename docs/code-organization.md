@@ -1,6 +1,6 @@
 # Repository and Branch Organization
 
-The development of Beacon code and documentation happens in the [`beacon-v2` repository](https://github.com/ga4gh-beacon/beacon-v2).
+The development of Beacon code and documentation happens in the [`beacon-v2` repository](https://github.com/ga4gh/beacon).
 
 [![Branch Structure](img/Beacon2API_branch_decision_tree.png)](img/Beacon2API_branch_decision_tree.png)
 
