@@ -1,0 +1,61 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "info": {},
+    "meta": {
+        "apiVersion": "string",
+        "beaconId": "string",
+        "returnedSchemas": [
+            {
+                "map": "beacon-map-v2.0.0"
+            }
+        ]
+    },
+    "response": {
+        "aggregationTerms": [
+            {
+                "description": "Aggregation by the karyotypic sex of the individuals. The karyotypic sex is determined by the chromosomal composition of the individual.",
+                "id": "karyotypicSex",
+                "label": "karyotypic sex",
+                "modelProperty": "individual.karyotypicSex"
+            },
+            {
+                "description": "Aggregation by the sex ploidy of the individuals.",
+                "id": "karyotypicSexPloidy",
+                "label": "sex ploidy",
+                "modelProperty": "individual.karyotypicSex",
+                "selectors": [
+                    {
+                        "label": "Diploid",
+                        "value": "diploid"
+                    },
+                    {
+                        "label": "Aneuploid",
+                        "value": "aneuploid"
+                    },
+                    {
+                        "label": "Polyploid",
+                        "value": "polyploid"
+                    }
+                ]
+            },
+            {
+                "description": "Aggregation by the age of onset of the individuals. The age of onset is calculated as the difference between the date of onset and the date of birth of the individual.",
+                "id": "ageOfOnset",
+                "label": "Age of Onset",
+                "modelProperty": "individual.diseases.ageofOnset",
+                "selectors": [
+                    {
+                        "label": "younger than 65 years",
+                        "sortOrder": 1,
+                        "splitValue": "P65Y"
+                    },
+                    {
+                        "label": "65 years and older",
+                        "sortOrder": 2,
+                        "splitValue": "P150Y"
+                    }
+                ]
+            }
+        ]
+    }
+}

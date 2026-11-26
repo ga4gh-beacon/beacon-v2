@@ -1,6 +1,16 @@
 {
     "components": {
         "parameters": {
+            "aggregators": {
+                "in": "query",
+                "name": "aggregators",
+                "schema": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
             "alternateBases": {
                 "in": "query",
                 "name": "alternateBases",
@@ -255,6 +265,9 @@
                     },
                     {
                         "$ref": "#/components/parameters/filters"
+                    },
+                    {
+                        "$ref": "#/components/parameters/aggregators"
                     }
                 ],
                 "responses": {

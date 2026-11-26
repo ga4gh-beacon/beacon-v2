@@ -37,6 +37,12 @@ $defs:
         $ref: ../../common/beaconCommonComponents.yaml#/$defs/CountAdjustedTo
       countPrecision:
         $ref: ../../common/beaconCommonComponents.yaml#/$defs/CountPrecision
+      resultsAggregation:
+        description: >-
+          Aggregation of results for this result set.
+          TODO: Evaluate if `results` and `resultsAggregation` should be mutually
+          exclusive.
+        $ref: ./beaconAggregationResults.yaml
       resultsHandovers:
         description: >-
           List of handover objects that apply to this resultset, not to the whole

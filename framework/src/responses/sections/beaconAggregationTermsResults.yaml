@@ -1,0 +1,86 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+description: >-
+  List of aggregation terms supported for this beacon. The aggregation terms detail
+  the respective property which include the aggregation categories (e.g. all diagnoses or ageAtDiagnosis) applied when generating summaries.
+type: object
+properties:
+  aggregationTerms:
+    type: array
+    items:
+      $ref: "#/$defs/AggregationTermInResponse" 
+$defs:
+  AggregationTermInResponse:
+    properties:
+      id:
+        type: string
+        description: >-
+          The id of the aggregation to be used in the request.
+        examples:
+          - SexAtBirth
+          - FollowupTime
+          - HistologicalDiagnoses
+      label:  
+        description: >-
+          The label for the aggregation concept being reported on.
+        type: string
+        examples:
+          - Sex at Birth
+          - Follow-up Time After Diagnosis
+          - Diagnoses
+      modelProperty:
+        description: >-
+          The property in the data model on which the aggregation is actually performed. This is informative.
+        type: string
+        examples:
+          - individual.sex
+          - biosample.histologicalDiagnosis
+      description:
+        description: >-
+          Human readable description of the aggregation performed for this term.
+        type: string
+      selectors:
+        description: >-
+          Optional selectors for limiting or binning the aggregation on the
+          `modelProperty`. If this parameter is present, it indicates that only
+          the indicated values would be aggregated or that the results would be
+          returned in bins (e.g. for continuous values).
+        oneOf:
+          - $ref: "../../requests/aggregationTerms.yaml#/#/$defs/ValueSelectors"
+          - $ref: "../../requests/aggregationTerms.yaml#/#/$defs/RangeSelectors"
+          - $ref: "../../requests/aggregationTerms.yaml#/#/$defs/SplitSelectors"
+    required:
+      - id
+      - modelProperty    
+    examples:
+      - id: karyotypicSex
+        label: karyotypic sex
+        modelProperty: individual.karyotypicSex
+        description: >-
+          Aggregation by the karyotypic sex of the individuals. The karyotypic
+          sex is determined by the chromosomal composition of the individual.
+      - id: karyotypicSexPloidy
+        label: sex ploidy
+        modelProperty: individual.karyotypicSex
+        description: >-
+          Aggregation by the sex ploidy of the individuals.
+        selectors:
+          - value: diploid
+            label: Diploid
+          - value: aneuploid
+            label: Aneuploid
+          - value: polyploid
+            label: Polyploid
+      - id: ageOfOnset
+        label: Age of Onset
+        modelProperty: individual.diseases.ageofOnset
+        description: >-
+          Aggregation by the age of onset of the individuals. The age of onset
+          is calculated as the difference between the date of onset and the date
+          of birth of the individual.
+        selectors:
+          - splitValue: P65Y
+            label: younger than 65 years
+            sortOrder: 1
+          - splitValue: P150Y
+            label: 65 years and older   # Note: This label depends on the preceding
+            sortOrder: 2

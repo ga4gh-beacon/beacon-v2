@@ -1,0 +1,31 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Definition for a response that provides solely summaries of records in the beacon but not delivers individual records. While summaries might be also part of other response types (e.g. result set specific in `beaconResultsetResponse`) this response type specifically focuses on providing aggregated statistics of a beacon resource similarily to the `beaconBooleanResponse` and `beaconCountResponse`.",
+    "properties": {
+        "beaconHandovers": {
+            "$ref": "../common/beaconCommonComponents.json#/$defs/ListOfHandovers",
+            "description": "List of handovers that apply to the whole response, not to any resultset or result in particular."
+        },
+        "info": {
+            "$ref": "../common/info.json",
+            "description": "Additional details that could be of interest. Provided to clearly enclose any attribute that is not part of the Beacon specification."
+        },
+        "meta": {
+            "$ref": "./sections/beaconResponseMeta.json",
+            "description": "Information about the response that could be relevant for the Beacon client in order to interpret the results."
+        },
+        "responseAggregation": {
+            "$ref": "./sections/beaconAggregationResults.json",
+            "description": "Aggregation of results for the overall response from the beacon."
+        },
+        "responseSummary": {
+            "$ref": "./sections/beaconCountResponseSection.json",
+            "description": "Response summary, including Boolean and optionally results count."
+        }
+    },
+    "required": [
+        "meta",
+        "responseSummary"
+    ],
+    "type": "object"
+}

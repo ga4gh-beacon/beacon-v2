@@ -1,6 +1,16 @@
 {
     "components": {
         "parameters": {
+            "aggregators": {
+                "in": "query",
+                "name": "aggregators",
+                "schema": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
             "entryId": {
                 "in": "path",
                 "name": "id",
@@ -114,6 +124,9 @@
                     },
                     {
                         "$ref": "#/components/parameters/filters"
+                    },
+                    {
+                        "$ref": "#/components/parameters/aggregators"
                     }
                 ],
                 "responses": {

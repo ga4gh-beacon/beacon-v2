@@ -19,6 +19,10 @@
             "$ref": "./sections/beaconResultsets.json",
             "description": "Response for queries that recovers any result."
         },
+        "responseAggregation": {
+            "$ref": "./sections/beaconAggregationResults.json",
+            "description": "Aggregation of results for the overall response from the beacon."
+        },
         "responseSummary": {
             "$ref": "./sections/beaconSummaryResponseSection.json",
             "description": "Response summary, including Boolean and optionally results count."

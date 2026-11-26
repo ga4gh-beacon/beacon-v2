@@ -22,6 +22,7 @@ paths:
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
         - $ref: '#/components/parameters/filters'
+        - $ref: '#/components/parameters/aggregators'
       description: Get a Beacon *cohorts* response
       operationId: getCohorts
       tags:
@@ -244,3 +245,10 @@ components:
         example1:
           value:
             - OMIABIS:0001017
+    aggregators:
+      name: aggregators
+      in: query
+      schema:
+        type: array
+        items:
+          type: string

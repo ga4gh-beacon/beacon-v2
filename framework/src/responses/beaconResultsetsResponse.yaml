@@ -21,6 +21,10 @@ properties:
     description: >-
       Response summary, including Boolean and optionally results count.
     $ref: ./sections/beaconSummaryResponseSection.yaml
+  responseAggregation:
+    description: >-
+      Aggregation of results for the overall response from the beacon.
+    $ref: ./sections/beaconAggregationResults.yaml
   info:
     description: >-
       Additional details that could be of interest. Provided to clearly

@@ -13,6 +13,18 @@ query:
   filters:
     - id: EFO:0001212
       scope: biosamples
+  aggregators:
+    - requestId: aggr3
+      aggregationTerms:
+        - id: SexAtBirth
+        - id: HistologicalDiagnoses
+          selectors:
+            - value: NCIT:C2919
+              label: Prostate Adenocarcinoma
+            - value: NCIT:C4017
+              label: Breast Ductal Carcinoma
+            - value: NCIT:C3512
+              label: Lung Adenocarcinoma
   includeResultsetResponses: HIT
   pagination:
     skip: 0

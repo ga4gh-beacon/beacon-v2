@@ -1,0 +1,50 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+aggregators:
+  - requestId: aggr1
+    aggregationTerms:
+      - id: Sex
+
+  - requestId: aggr2
+    aggregationTerms:
+      - id: Sex
+        selectors:
+          - value: NCIT:C16576
+          - value: NCIT:C20197
+
+  - requestId: aggr3
+    aggregationTerms:
+      - id: SexAtBirth
+      - id: HistologicalDiagnoses
+        selectors:
+          - value: NCIT:C2919
+            label: Prostate Adenocarcinoma
+          - value: NCIT:C4017
+            label: Breast Ductal Carcinoma
+          - value: NCIT:C3512
+            label: Lung Adenocarcinoma
+
+  - requestId: aggr4
+    aggregationTerms:
+      - id: AgeOfOnset
+        selectors:
+          - rangeBounds:
+              - P0D
+              - P18M
+            label: birth to 18 months
+            sortOrder: 1
+          - rangeBounds:
+              - P18M
+              - P10Y
+            label: 1.5 to 10 years
+            sortOrder: 2
+          - rangeBounds:
+              - P10Y
+              - P60Y
+            label: 10 to 60 years
+            sortOrder: 3
+          - rangeBounds:
+              - P60Y
+            label: 60 years and older
+            sortOrder: 4
+
+
