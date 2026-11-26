@@ -34,7 +34,7 @@ There is a set of tools in [`/bin`](./bin/) to facilitate the conversion. ATM, a
 ## 2.2.1
 
 *Released, November, 26, 2026*
-[Beacon-v2.2.1](https://github.com/ga4gh-beacon/beacon-v2/tree/ab863c4ebf126a85b56b99cf5e9f365bb5302e00)
+[Beacon-v2.2.1](https://github.com/ga4gh-beacon/beacon-v2/tree/5f690d9acdbc07c8b31dd46c7f665ccd7f7767d9)
 
 * Split the errorResponse meta for informational vs entryType endpoints
 * Improving descriptions
