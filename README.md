@@ -31,10 +31,22 @@ There is a set of tools in [`/bin`](./bin/) to facilitate the conversion. ATM, a
 
 ### Changelog
 
-## 2.2
+## 2.2.1
+
+*Released, November, 26, 2026*
+[Beacon-v2.2.1](https://github.com/ga4gh-beacon/beacon-v2/tree/71ae43da6b588d7060be2851acddc70f083bd914)
+
+* Split the errorResponse meta for informational vs entryType endpoints
+* Improving descriptions
+* Add missing requirement for yaml-json conversion
+* Clean up some incorrect examples and description fields
+* Fixing spelling mistakes
+* Fixing CURIE regex pattern to not allow whitespaces
+
+## 2.2.0
 
 *Released, July, 1, 2025*
-[Beacon-v2.2](https://github.com/ga4gh-beacon/beacon-v2/tree/81dbe9c0ed693b4e897d81abb1043954bd2e65ba)
+[Beacon-v2.2.0](https://github.com/ga4gh-beacon/beacon-v2/tree/81dbe9c0ed693b4e897d81abb1043954bd2e65ba)
 
 * De-restricting Resultset formats
 * filteringTerms scope definition modification
