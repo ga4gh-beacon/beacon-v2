@@ -351,7 +351,7 @@
             ],
             "post": {
                 "description": "Get a *genomic variations* response for one experimental run, identified by its (unique) 'id'",
-                "operationId": "potOneRunGenomicVariations",
+                "operationId": "postOneRunGenomicVariants",
                 "requestBody": {
                     "content": {
                         "application/json": {

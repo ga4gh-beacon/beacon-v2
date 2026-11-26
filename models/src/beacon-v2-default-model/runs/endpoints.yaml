@@ -113,7 +113,7 @@ paths:
       description: >-
         Get a *genomic variations* response for one experimental run, identified
         by its (unique) 'id'
-      operationId: potOneRunGenomicVariations
+      operationId: postOneRunGenomicVariants
       tags:
         - POST Endpoints
       requestBody:
