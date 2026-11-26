@@ -2,6 +2,9 @@
 
 The development of Beacon code and documentation happens in the [`beacon-v2` repository](https://github.com/ga4gh-beacon/beacon-v2).
 
+[![Branch Structure](img/Beacon2API_branch_decision_tree.png)](img/Beacon2API_branch_decision_tree.png)
+
+
 ## Core branches
 
 ### `main`
@@ -43,6 +46,8 @@ As the beaconFilteringTermsResults.json "type" property of the FilteringTerm is 
 Some of the instances of the schema were missing attributes and other aspects that are required to make a beacon work. This is mandatory to be urgently fixed and this is the purpose of this branch deployment.
 
 <b>Current status:</b><span style="color:blue">Waiting for PR to be accepted.</span>
+
+
 
 ## Feature and subfeature branches
 

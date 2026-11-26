@@ -2,8 +2,8 @@
 <h2>Progenetix & Beacon<span style="color: red; font-weight: 800;"><sup>+</sup></span></h2>
 
 The Beacon+ implementation - developed in the Python & MongoDB based [`bycon` project](https://github.com/progenetix/bycon/) -
-implements an expanding set of Beacon v2 paths for the [Progenetix](https://progenetix.org)
-resource :flag_ch:.
+implements an expanding set of Beacon {{config.beacon_major_version}} paths for the [Progenetix](https://progenetix.org)
+and other resource :flag_ch:.
 
 ### Scoped responses from query object
 
@@ -25,7 +25,7 @@ to `https://progenetix.org/beacon/variants/` or `https://progenetix.org/beacon/b
 {
     "$schema":"beaconRequestBody.json",
     "meta": {
-        "apiVersion": "2.0",
+        "apiVersion": "2.1",
         "requestedSchemas": [
             {
                 "entityType": "genomicVariant",

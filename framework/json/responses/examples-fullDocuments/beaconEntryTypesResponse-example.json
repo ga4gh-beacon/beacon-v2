@@ -30,7 +30,6 @@
                 },
                 "description": "A Dataset is a collection of records, like rows in a database or cards in a cardholder.",
                 "endpoint": "/datasets",
-                "filteringTermsReference": "./datasets/filteringTerms.json",
                 "id": "dataset",
                 "name": "Dataset",
                 "ontologyTermForThisType": {
@@ -49,7 +48,6 @@
                 },
                 "description": "A generic entry type to allow testing and playing with the specification.",
                 "endpoint": "./exampleEntries",
-                "filteringTermsReference": "./exampleEntry/filteringTerms.json",
                 "id": "exampleEntry",
                 "name": "Example Entry",
                 "ontologyTermForThisType": {

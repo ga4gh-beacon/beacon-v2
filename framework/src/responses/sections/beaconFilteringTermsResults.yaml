@@ -10,9 +10,9 @@ properties:
   filteringTerms:
     type: array
     items:
-      $ref: '#/$defs/FilteringTerm'
+      $ref: '#/$defs/FilteringTermInResponse'
 $defs:
-  FilteringTerm:
+  FilteringTermInResponse:
     type: object
     description: >-
       Entities can be filtered using this term.

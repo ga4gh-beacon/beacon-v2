@@ -24,8 +24,6 @@ $defs:
           Parameters used for the entry type specific query elements.
         $ref: ./requestParameters.yaml
       filters:
-        description: >-
-          Ontology based filters. Using CURIE syntax is encouraged.
         $ref: ./filteringTerms.yaml
       includeResultsetResponses:
         $ref: ../common/beaconCommonComponents.yaml#/$defs/IncludeResultsetResponses

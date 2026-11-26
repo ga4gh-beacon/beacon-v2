@@ -161,6 +161,7 @@ properties:
     example: {}
   info:
     $ref: ../common/info.yaml
+
 required:
   - id
   - biosampleStatus

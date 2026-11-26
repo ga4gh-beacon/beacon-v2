@@ -30,8 +30,13 @@ $defs:
       exists:
         type: boolean
       resultsCount:
-        description: Number of results in this Resultset.
+        description: >-
+          Precise or approximate number of results in this Resultset.
         type: integer
+      countAdjustedTo:
+        $ref: ../../common/beaconCommonComponents.yaml#/$defs/CountAdjustedTo
+      countPrecision:
+        $ref: ../../common/beaconCommonComponents.yaml#/$defs/CountPrecision
       resultsHandovers:
         description: >-
           List of handover objects that apply to this resultset, not to the whole

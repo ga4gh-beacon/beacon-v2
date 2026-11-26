@@ -5,6 +5,23 @@ of the Beacon project site(s) as well as with overarching repository organizatio
 
 ## Changes
 
+### 2024-08-08: [genomebeacons.org](https://genomebeacons.org) now default Beacon domain
+
+We have now migrated towards general use fo the `genomebeacons.org` domain for
+Beacon-related services and documentation. The main addresses are:
+
+* [genomebeacons.org](https://genomebeacons.org) - main site for information, news ...
+* [docs.genomebeacons.org](https://docs.genomebeacons.org) - documentation site for API development and implementations
+
+In due course we will disentangle the current pages and purge the more general Beacon
+information from [docs.genomebeacons.org](https://docs.genomebeacons.org). A start
+has been made with the **F**requently **A**sked **Q**uestions section which is now under
+[genomebeacons.org/FAQ](https://genomebeacons.org/FAQ).
+
+The old domain [beacon-project.io](https://beacon-project.io) still exists but
+is only used for forwarding.
+
+
 ### 2023-06-12: Restructured and extended documentation
 
 * new separation of navigation areas into "Introducing Beacon", "Using Beacons",
@@ -102,7 +119,7 @@ to `beacon-v2`.
 
 * Reorganization of navigation
 * Deleted page `implement-and-deploy.md`
-* Added pages: [What is Beacon v2](what-is-beacon-v2.md) and [Implementation options](implementations-options.md)
+* Added pages: [What is Beacon](what-is-beacon-v2.md) and [Implementation options](implementations-options.md)
 * [Filters](filters.md) Page Updated
 
 ### 2022-03-18: Macros and Variables for Documentation pages
@@ -120,9 +137,9 @@ The `mkdocs-macros-plugin` has been activated, allowing the use of site-wide var
 
 ### 2022-03-14: Documentation in Repository
 
-As of today the new/emerging Beacon v2 documentation is meintained in this repository. We're testing rendered versions (same text/code base) through Github actions ([here](https://beacon-project.io/beacon-v2/)) and [ReadTheDocs](https://beacon-v2-unity.readthedocs.io/en/latest/).
+As of today the new/emerging Beacon v2 documentation is meintained in this repository. We're testing rendered versions (same text/code base) through Github actions ([here](https://genomebeacons.org/beacon-v2/)) and [ReadTheDocs](https://beacon-v2-unity.readthedocs.io/en/latest/).
 
-* [x] testing of [ReadTheDocs version](https://beacon-v2-unity.readthedocs.io/) vs. a [`material` themed build](https://beacon-project.io/beacon-v2/)
+* [x] testing of [ReadTheDocs version](https://beacon-v2-unity.readthedocs.io/) vs. a [`material` themed build](https://genomebeacons.org/beacon-v2/)
 * [x] created and linked [docs.genomebeacons.org](https://docs.genomebeacons.org)
 sub-domain to the Github hosted version of the rendered documentation
 * [x] merging of previous separate documentation repository content from _beacon-v2-schema-documentation_

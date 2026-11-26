@@ -1,7 +1,7 @@
 openapi: 3.0.2
 servers: []
 info:
-  version: 2.0.0
+  version: 2.2.1
   title: GA4GH Beacon API Specification - Individuals Endpoints
   description: TBD
   contact:
@@ -113,7 +113,7 @@ paths:
       description: >-
         Get a *genomic variations* response for one individual, identified by
         its (unique) 'id'
-      operationId: potOneIndividualGenomicVariants
+      operationId: postOneIndividualGenomicVariants
       tags:
         - POST Endpoints
       requestBody:
@@ -182,7 +182,7 @@ paths:
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/limit'
       description: Get the list of filtering terms that could be used with individuals.
-      operationId: getIndivualsFilteringTerms
+      operationId: getIndividualsFilteringTerms
       tags:
         - GET Endpoints
       responses:
@@ -257,7 +257,7 @@ components:
       name: includeResultsetResponses
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/IncludeResultsetResponses
     entryId:
       name: id
       in: path

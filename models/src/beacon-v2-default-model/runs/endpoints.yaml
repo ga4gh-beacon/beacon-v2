@@ -1,7 +1,7 @@
 openapi: 3.0.2
 servers: []
 info:
-  version: 2.0.0
+  version: 2.2.1
   title: GA4GH Beacon API Specification - Runs Endpoints
   description: TBD
   contact:
@@ -113,7 +113,7 @@ paths:
       description: >-
         Get a *genomic variations* response for one experimental run, identified
         by its (unique) 'id'
-      operationId: potOneRunGenomicVariations
+      operationId: postOneRunGenomicVariants
       tags:
         - POST Endpoints
       requestBody:
@@ -211,7 +211,7 @@ components:
       name: includeResultsetResponses
       in: query
       schema:
-        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/definitions/IncludeResultsetResponses
+        $ref: https://raw.githubusercontent.com/ga4gh-beacon/beacon-v2/main/framework/json/common/beaconCommonComponents.json#/$defs/IncludeResultsetResponses
     entryId:
       name: id
       in: path

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-#   Script to dereference JSON $ref in Beacon v2 Models schemas
+#   Script to dereference JSON $ref in Beacon Models schemas
 #
 #    ------------ DEPRECATED ------------
 #   *******************************************************

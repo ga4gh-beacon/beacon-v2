@@ -31,13 +31,13 @@ different entities (such as biosamples or genomic variants) can be queried.
 
 <figure markdown>
   ![Beacon Network](img/beacon-network.png){ width="640" }
-  <figcaption>Beacon v2 Networks</figcaption>
+  <figcaption>Beacon Networks</figcaption>
 </figure>
 
 ## Networking heterogeneous beacons
 
 In addition to genomic variation queries with Boolean responses
-the Beacon v2 protocol permits the implementers to support different types of
+the Beacon {{config.beacon_major_version}} protocol permits the implementers to support different types of
 entities (e.g. biosample and analysis data) both to be queried against and to be
 returned in Beacon responses - so a request may retrieve information about the
 samples in which an indicated genomic variant had been found or information about

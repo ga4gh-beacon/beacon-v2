@@ -24,7 +24,7 @@ diseases:
     stage:
       id: OGMS:0000119
       label: acute onset
-measures:
+measurements:
   - assayCode:
       id: LOINC:26515-7
       label: Platelets [#/volume] in Blood

@@ -3,6 +3,12 @@
         "ResultsetInstance": {
             "additionalProperties": true,
             "properties": {
+                "countAdjustedTo": {
+                    "$ref": "../../common/beaconCommonComponents.json#/$defs/CountAdjustedTo"
+                },
+                "countPrecision": {
+                    "$ref": "../../common/beaconCommonComponents.json#/$defs/CountPrecision"
+                },
                 "exists": {
                     "type": "boolean"
                 },
@@ -22,7 +28,7 @@
                     "type": "array"
                 },
                 "resultsCount": {
-                    "description": "Number of results in this Resultset.",
+                    "description": "Precise or approximate number of results in this Resultset.",
                     "type": "integer"
                 },
                 "resultsHandovers": {

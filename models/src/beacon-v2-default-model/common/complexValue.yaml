@@ -26,10 +26,10 @@ $defs:
         description: Quantity denoting the outcome of the measurement
         $ref: ./quantity.yaml
         example:
-          quentity:
-            unit:
-              id: NCIT:C49670
-              label: Millimeter of Mercury
+          unit:
+            id: NCIT:C49670
+            label: Millimeter of Mercury
+          value: 110
     required:
       - quantityType
       - quantity
