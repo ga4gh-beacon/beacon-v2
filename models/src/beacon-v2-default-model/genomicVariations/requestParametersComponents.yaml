@@ -9,7 +9,7 @@ $defs:
       Genome Browser assembly (e.g. "hg38") or Genome Reference Consortium Human (e.g.
       "GRCh38.p13") names.
     type: string
-    example:
+    examples:
       - GCF_000001405.39
       - hg38
       - GRCh38.p13
@@ -21,7 +21,7 @@ $defs:
       although alternatively names, synonymous or aliases e.g. "chr9" could be
       used in conjunction with an `Assembly` parameter.
     type: string
-    example:
+    examples:
       - refseq:NC_000009.12
       - chr9
       - NC_012920.1
