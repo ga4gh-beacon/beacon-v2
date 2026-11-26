@@ -9,7 +9,7 @@
                 }
             },
             "requestedSchema": {
-                "description": "Schema to be used to format the `result` field in the resposne. The response will use Beacon format.",
+                "description": "Schema to be used to format the `result` field in the response. The response will use Beacon format.",
                 "example": "ga4gh-service-info-v1.0",
                 "in": "query",
                 "name": "requestedSchema",
@@ -44,7 +44,7 @@
         "contact": {
             "email": "beacon@ga4gh.org"
         },
-        "description": "A Beacon is a web service for genetic data sharing that can be queried for  information about variants, individuals, biosamples, and other entities.",
+        "description": "A Beacon is a web service for genetic data sharing that can be queried for information about variants, individuals, biosamples, and other entities.",
         "license": {
             "name": "Apache 2.0",
             "url": "https://www.apache.org/licenses/LICENSE-2.0.html"

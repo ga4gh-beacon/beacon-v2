@@ -11,7 +11,7 @@
     },
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "additionalProperties": true,
-    "description": "Schema for the Enrty Types list.",
+    "description": "Schema for the Entry Types list.",
     "properties": {
         "entryTypes": {
             "$ref": "#/$defs/EntryTypes",
